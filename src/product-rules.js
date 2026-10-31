@@ -15,7 +15,7 @@ const ProductRules=(()=>{
  function find(s,id){return s.products.find(p=>p.id===id);}
  function ideal(age,income){const v=[...ideals[age]];if(income===0){v[0]+=2;v[3]++;}if(income===2){v[0]=Math.max(.5,v[0]-1);v[3]=Math.max(.5,v[3]-1);}return v.map(n=>n/sum(v));}
  function sector(s){const physical=['dnvb','wearables','electric-mobility','gadgets','fashion','consumables','beauty','pet','home-garden'].includes(s.marketId);return {physical,basePrice:physical?150:100,baseCost:physical?24:9};}
- function unitCost(s,p,meta={skills:[]}){const [q,c,n,f]=p.attributes,b=sector(s).baseCost;return Math.round(b*(1+q*.14+c*.12+n*.10+f*.16)*(p.scale==='lean'?1.25:1)*(meta.skills?.includes('negotiation')?.86:1)*100)/100;}
+ function unitCost(s,p,meta={skills:[]}){const [q,c,n,f]=p.attributes,b=sector(s).baseCost;return Math.round(b*(1+q*.14+c*.12+n*.10+f*.16)*(p.scale==='lean'?1.25:1)*(meta.skills?.includes('negotiation')?.86:1)*(s.finance?.inflationFactor||1)*(1+(s.finance?.suppliers?.production?.adjustment||0))*100)/100;}
  function fit(p){if(!p.level)return 0;const target=ideal(p.age,p.income),shape=p.attributes.map(v=>v/Math.max(1,sum(p.attributes)));return clamp(1-sum(shape.map((v,i)=>Math.abs(v-target[i])))/2,0,1);}
  function willingness(s,p){return sector(s).basePrice*[1.8,1,.65][p.income]*(.6+p.level*.1)*(.5+fit(p)*.7)*(p.scale==='lean'?.85:1);}
  function nps(s,p){return clamp(Math.round((fit(p)-.55)*140+(p.level-4)*6-Math.max(0,(p.price||0)/Math.max(1,willingness(s,p))-.75)*90),-100,100);}

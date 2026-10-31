@@ -37,6 +37,8 @@ Questão de design: avaliar adequação do capital próprio mínimo aos diferent
 
 ## Backlog futuro
 
+- [ ] Inflação dinâmica/macroeconomia. Na Fase 4, usar 3% fixos ao ano sobre custos variáveis e aluguel.
+
 - [ ] Definição da cultura da empresa: escolhas, efeitos e relação com a equipe ainda a discutir.
 - [ ] Branding: escopo e mecânicas ainda a discutir.
 - [ ] Sistema de relacionamento com investidores: confiança, cobrança e consequências. Relação deteriorada pode permitir a destituição do founder. Definir governança que sustente isso mesmo com 85% de participação econômica; não tratar participação minoritária como poder automático de destituir.
@@ -77,3 +79,4 @@ Marketplace removido da seleção por decisão do usuário.
 Usar a mesma régua: tamanho do público, demografia e renda. Separar visualmente demografia e renda. Mostrar descrição curta por empresa e descrição, prós e contras por perfil de founder.
 
 Outros setores físicos além dos seis listados não foram aprovados. A renomeação de Consumíveis para Alimentos & bebidas também não foi confirmada.
+

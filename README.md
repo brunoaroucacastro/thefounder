@@ -1,6 +1,6 @@
 # The Founder
 
-Jogo de gestão de empresas em pixel art. Protótipo 0.7 para PC/navegador.
+Jogo de gestão de empresas em pixel art. Protótipo 0.8 para PC/navegador.
 
 ## Jogar
 
@@ -18,6 +18,7 @@ Baixe `dist/The-Founder-Jogar.html` pelo botão de download do GitHub e abra no 
 - Campanhas com escalar/reduzir/otimizar, eficiência, especialistas, bloqueios, saturação e ROAS. Regras em `docs/FASE-2-MARKETING.md`.
 - D20 animado: clique para rolar, veja bônus/penalidades e resultado, avance pela sequência ou pule. O resultado salvo não muda ao rever ou reabrir.
 - Catálogo de produtos nomeados, radar, persona, pesquisa, compra única/recorrência, desenvolvimento com D20, preço livre, adoção, obsolescência e gerações. Regras em `docs/FASE-3-PRODUTO.md`.
+- Administrativo-financeiro: percentuais, benchmarks, negociação interativa, inflação, propostas bancárias e contratos. Regras em `docs/FASE-4-ADMINISTRATIVO-FINANCEIRO.md`.
 
 ## Desenvolvimento
 
@@ -37,6 +38,8 @@ node scripts/build.cjs
 `src/dice.js` e `src/dice.css` apresentam as rolagens já salvas sem interferir nas regras ou no RNG. A sequência retoma ao escolher Continuar. Preferência de movimento reduzido é respeitada. A geometria, interface e cores são originais, inspiradas no ritual de rolagem de RPGs.
 
 `src/product-rules.js` implementa a economia do catálogo e `src/product-ui.js` o editor. Schema 4 preserva o produto antigo como assinatura, preço e clientes; faz backup pré-produtos. Novas ações dependentes de desenvolvimento falho são puladas sem cobrança.
+
+`src/finance-rules.js` e `src/finance-ui.js` implementam a Fase 4. Schema 5 preserva dívida antiga como legado e cria backup pré-financeiro. Ofertas de banco exigem aceitação explícita pela agenda; propostas de fornecedor podem ser aceitas ou renegociadas durante a apresentação D20. Todos os valores são fictícios de jogo.
 
 ## Limites desta versão
 

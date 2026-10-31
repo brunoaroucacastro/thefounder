@@ -1,4 +1,4 @@
-THE FOUNDER — Protótipo 0.7 / Fase 3
+THE FOUNDER — Protótipo 0.8 / Fase 4
 
 JOGAR
 Abra dist/The-Founder-Jogar.html no navegador. É um arquivo único offline.
@@ -38,3 +38,13 @@ DESENVOLVIMENTO
 node tests/game.cjs
 node scripts/build.cjs
 Testes de lógica e integração com DOM simulado, não de layout no navegador.
+
+ADMINISTRATIVO-FINANCEIRO / CADERNO
+DRE com valores e percentuais. Pesquise um benchmark por R$ 500; são dois
+D20, um para a categoria e outro para a qualidade dos dados.
+Negocie Produto/operação ou Aluguel. Ofertas podem ser aceitas ou você pode
+insistir duas vezes, com risco. Efeitos valem no próximo mês.
+No crédito, consultar gera uma proposta, não um depósito. Aceite pela agenda.
+Juros correm na carência; principal é amortizado depois, em parcelas.
+A inflação de fornecedores é fixa em 3% ao ano. Financeiro tem especialidade
+em fornecedores, crédito ou pesquisa. Veja docs/FASE-4-ADMINISTRATIVO-FINANCEIRO.md.

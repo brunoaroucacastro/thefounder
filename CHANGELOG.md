@@ -1,5 +1,15 @@
 # Histórico de desenvolvimento
 
+## 0.8 — Fase 4: Administrativo-financeiro — 31/10/2026
+
+- DRE com percentuais e conciliação de caixa; juros e principal separados.
+- Pesquisa de benchmarks com categoria sorteada, D20 de qualidade e incerteza assimétrica.
+- Fornecedores com oferta, até duas insistências interativas no D20, desconto até 10%, risco de +5% e intervalo de seis meses.
+- Inflação anual fixa de 3% sobre custos variáveis/aluguel, sem cobrança retroativa.
+- Bancos fictícios, propostas de taxa/carência/prazo, aceitação pela agenda, amortização automática e antecipada, score e bloqueio crítico.
+- Financeiro com especialização; save schema 5 e backup. IDs de rolagem permitem múltiplos dados e respostas sem repetir o fechamento.
+- 23 testes financeiros e integração do fluxo. Inspeção visual no navegador continua pendente.
+
 ## 0.7 — Fase 3: catálogo, atributos e ciclo de produtos — 31/10/2026
 
 - Conceitos nomeados, persona por idade/classe, radar de atributos e escolhas com tradeoffs.
