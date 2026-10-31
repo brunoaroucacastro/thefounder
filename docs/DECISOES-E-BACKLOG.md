@@ -59,8 +59,7 @@ Foco B2C, mantendo os dois lados. Esta seleção substitui a lista inicial de 12
 3. Consumíveis, com alimentos e bebidas como exemplos.
 4. Beleza & cosméticos — maquiagem, perfumes e cuidados com a pele.
 5. Pet — produtos e acessórios para animais de estimação.
-6. Garden — produtos de jardinagem e cultivo, vasos e ferramentas.
-7. Home — utensílios domésticos, organização e decoração.
+6. Home & Garden — utensílios domésticos, organização, decoração, vasos, ferramentas e produtos de jardinagem e cultivo.
 
 Mecânicas e públicos específicos ainda a definir.
 
@@ -77,4 +76,4 @@ Marketplace removido da seleção por decisão do usuário.
 
 Usar a mesma régua: tamanho do público, demografia e renda. Separar visualmente demografia e renda. Mostrar descrição curta por empresa e descrição, prós e contras por perfil de founder.
 
-Outros setores físicos além dos sete listados não foram aprovados. A renomeação de Consumíveis para Alimentos & bebidas também não foi confirmada.
+Outros setores físicos além dos seis listados não foram aprovados. A renomeação de Consumíveis para Alimentos & bebidas também não foi confirmada.
