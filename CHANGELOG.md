@@ -1,5 +1,15 @@
 # Histórico de desenvolvimento
 
+## 0.18 — Menus mais claros e direção acolhedora — 31/10/2026
+
+- Cabeçalho compacto por área, retrato pixel do founder e navegação direta entre menus.
+- Janela ampliada com corpo rolável; barra inferior duplicada some enquanto a aba está aberta. Sem reintroduzir Missão ou agenda nas abas.
+- Ações de produto sobem para o topo; funil de marketing e adoção ficam expansíveis.
+- Paleta pastel vibrante, cores por área, botões com resposta de clique e animações que respeitam movimento reduzido.
+- Escritório mais claro e marcadores mostram quantas ações foram planejadas na área.
+- Testes de regras existentes e pacote final em DOM simulado passaram. Inspeção visual real pendente.
+
+
 ## 0.17 — Prazos do capital inicial — 31/10/2026
 
 - Banco inicial: 12 pagamentos de principal + juros de 2,5% sobre o saldo, primeira cobrança no mês 1.

@@ -1,4 +1,4 @@
-THE FOUNDER — Protótipo 0.17 / Integração e balanceamento
+THE FOUNDER — Protótipo 0.18 / Integração e balanceamento
 
 JOGAR
 Abra dist/The-Founder-Jogar.html no navegador. É um arquivo único offline.
@@ -80,3 +80,6 @@ Missão removida. Agenda visível somente no escritório; ao abrir uma aba ela s
 
 CONTRATOS — NOVAS JORNADAS
 Banco: 12 pagamentos mensais, principal + juros de 2,5% sobre o saldo. Amigos/família: R$50.000 integrais no fechamento do sexto mês. Partidas anteriores mantêm os contratos anteriores.
+
+UX — 0.18
+Menus com navegação direta, botões principais em destaque e detalhes expansíveis. Agenda permanece só no escritório.
