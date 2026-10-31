@@ -1,4 +1,4 @@
-THE FOUNDER — Protótipo 0.15 / Integração e balanceamento
+THE FOUNDER — Protótipo 0.16 / Integração e balanceamento
 
 JOGAR
 Abra dist/The-Founder-Jogar.html no navegador. É um arquivo único offline.
@@ -74,3 +74,6 @@ Na criação da empresa aparece VERSÃO 0.14 · 12 MERCADOS B2C. O arquivo indep
 PERFIS — 0.15
 Escolha entre 11 perfis. Cada um dos dez especialistas ganha +1 em uma ação e −1 em outra. Primeira viagem tem 0/0. Veja as categorias ao selecionar o perfil; os modificadores aparecem no D20. Os efeitos se somam aos especialistas. Natural 1 continua crítico.
 Arquivo atual: The-Founder-0.15-Jogar.html.
+
+INTERFACE — 0.16
+Missão removida. Agenda visível somente no escritório; ao abrir uma aba ela some, e volta quando você retorna ao escritório. As ações planejadas são preservadas. Arquivo atual: The-Founder-0.16-Jogar.html.

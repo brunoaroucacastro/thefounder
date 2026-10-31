@@ -1,5 +1,13 @@
 # Histórico de desenvolvimento
 
+## 0.16 — Mais espaço nas telas de gestão — 31/10/2026
+
+- Removido o bloco Missão do escritório e seus estilos.
+- Agenda do mês aparece apenas no escritório; ocultada nas abas Produto, Marketing, Equipe, Caixa e Mural.
+- Janelas ocupam o espaço antes reservado à agenda, inclusive em telas menores.
+- Planejamento, contagem de ações e revisão do mês continuam disponíveis.
+
+
 ## 0.15 — Perfis de empreendedor com bônus e desvantagens — 31/10/2026
 
 - Dez perfis recebem exatamente +1 e −1 em categorias de ação; novo Primeira viagem neutro (0/0), opção inicial.
