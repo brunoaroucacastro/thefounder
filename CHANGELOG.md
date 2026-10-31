@@ -1,5 +1,15 @@
 # Histórico de desenvolvimento
 
+## 0.6 — Fase 2: campanhas, D20 e ROAS — 31/10/2026
+
+- Escalar, reduzir e otimizar por canal, com verba mensal explícita e agenda reversível.
+- Eficiência persistente, dados e modificadores, penalidade por saltos agressivos e bloqueio crítico no mês seguinte.
+- Especialidades de Marketing e afinidades distintas de produtos físicos/serviços.
+- Público finito compartilhado entre canais, saturação por persona e aquisição sem piso artificial.
+- Receita atribuída e ROAS por canal, com receita antiga e orgânica separadas e sem duplicar o caixa.
+- Interface de cartões, indicadores e funil; detalhes de riscos sob demanda.
+- Save schema 3, migração e backup. Testes determinísticos e integração simulada; validação visual ainda pendente.
+
 ## 0.5 — Fase 1: agenda mensal e D20 — 31/10/2026
 
 - Agenda visual com até quatro ações: adicionar, remover e reordenar antes de aprovar.

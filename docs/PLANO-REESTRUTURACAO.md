@@ -1,6 +1,6 @@
 # Reestruturação — seis fases
 
-Status em 31/10/2026: Fase 1 autorizada pelo usuário e implementada no protótipo 0.5, aguardando teste de partida pelo usuário. Fases 2–6 permanecem planejadas. Base: feedbacks fornecidos pelo usuário. A execução seguirá uma fase por vez: proposta, aprovação, implementação, testes, partida do usuário e ajustes.
+Status em 31/10/2026: Fases 1 e 2 autorizadas e implementadas nos protótipos 0.5 e 0.6. Fases 3–6 permanecem planejadas. Base: feedbacks fornecidos pelo usuário. A execução seguirá uma fase por vez: proposta, aprovação, implementação, testes, partida do usuário e ajustes.
 
 ## Diagnóstico do protótipo
 
@@ -92,4 +92,4 @@ Riscos principais: funções sobrescritas em cadeia, estado global e ações com
 
 ## Próxima entrega
 
-Testar a Fase 1 em partida e ajustar a agenda. As fases seguintes permanecem no backlog até validar a partida anterior. O D20 já atende aos eventos aleatórios existentes; riscos específicos de campanhas e desenvolvimento entram nas fases respectivas. Desenvolvimento e reunião preservam seus efeitos antigos nesta entrega.
+Testar a Fase 2 em partida. Campanhas já têm riscos e regras documentadas em `FASE-2-MARKETING.md`. Desenvolvimento e reunião ainda preservam efeitos anteriores; sua reformulação pertence às Fases 3 e 5. Não avançar automaticamente para a próxima fase sem pedido do usuário.

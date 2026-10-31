@@ -1,6 +1,6 @@
 # The Founder
 
-Jogo de gestão de empresas em pixel art. Protótipo 0.5 para PC/navegador.
+Jogo de gestão de empresas em pixel art. Protótipo 0.6 para PC/navegador.
 
 ## Jogar
 
@@ -14,7 +14,8 @@ Baixe `dist/The-Founder-Jogar.html` pelo botão de download do GitHub e abra no 
 - Quatro fontes de capital, desenvolvimento, marketing, equipe e fechamento mensal.
 - Venda, falência, aprendizados e salvamento no navegador.
 - Agenda de até quatro ações, com revisão, remoção, reordenação e aprovação antes de fechar o mês.
-- D20 compartilhado e relatório persistido do fechamento. Risco por ação será detalhado nas próximas fases.
+- D20 compartilhado e relatório persistido do fechamento.
+- Campanhas com escalar/reduzir/otimizar, eficiência, especialistas, bloqueios, saturação e ROAS. Regras em `docs/FASE-2-MARKETING.md`.
 
 ## Desenvolvimento
 
@@ -28,6 +29,8 @@ node scripts/build.cjs
 `src/` contém os arquivos editáveis. `dist/` contém o jogo em arquivo único. `docs/` reúne o GDD e decisões. Os testes verificam a lógica com DOM simulado; não substituem testes visuais no navegador.
 
 `src/rules.js` centraliza as regras da agenda, D20 e fechamento sem depender do DOM. `src/planner.js` conecta os painéis ao planejador. Saves antigos têm backup em `the-founder-v1-backup-before-agenda`; ações já realizadas no mês antigo continuam contando. Para manter seu save, substitua o HTML no mesmo local e use o mesmo navegador. Saves via arquivo local podem variar conforme o navegador.
+
+`src/campaign-rules.js` isola a simulação de marketing. A migração da Fase 1 para a Fase 2 preserva a empresa e cria backup em `the-founder-v1-backup-before-campaigns`. ROAS mostra apenas receita inicial dos novos clientes atribuídos; não é lucro nem previsão.
 
 ## Limites desta versão
 

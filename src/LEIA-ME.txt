@@ -1,53 +1,45 @@
-THE FOUNDER — Protótipo jogável 0.2 — garagem pixel art
+THE FOUNDER — Protótipo 0.6 / Fase 2
 
-COMO ABRIR
-Abra index.html no Chrome, Edge ou Firefox. Não precisa instalar nada.
-Mantenha index.html, style.css e game.js na mesma pasta.
+JOGAR
+Abra dist/The-Founder-Jogar.html no Chrome, Edge ou Firefox.
+Esse arquivo contém o jogo inteiro e não requer instalação ou internet.
+Os arquivos de src/ são editáveis e devem ficar juntos ao abrir src/index.html.
 
-COMO JOGAR
-1. Clique no computador do escritório, desenvolva o MVP duas vezes e lance.
-2. Cada mês oferece quatro ações. Ajustes de preço, contratação, pesquisa,
-   desenvolvimento e mudanças de orçamento usam uma ação cada.
-3. Fechar mês processa vendas, cancelamentos, custos e eventos.
-4. Busque R$ 1 milhão de receita acumulada. Após seis meses e três meses
-   consecutivos de lucro, você pode vender sua empresa no Financeiro.
-5. Falência ou encerramento geram pontos. Desbloqueie habilidades e funde
-   outra empresa em Aprendizados. Patrimônio e descobertas persistem.
+COMEÇAR
+Crie o founder e a empresa. Clique no computador para desenvolver o MVP duas
+vezes e lançar. Cada decisão entra na agenda. Remova ou reordene antes de
+clicar em Revisar mês e Aprovar. Você tem até quatro ações por mês.
+
+MARKETING / TELEFONE
+Cada canal tem verba mensal e eficiência persistente. Escale ou reduza a
+verba, ou otimize a campanha por R$ 500. Um ajuste por canal/mês.
+Saltos de verba acima de 25% penalizam o D20. Especialistas ajudam no seu
+canal. O 1 natural causa falha crítica e bloqueio no próximo mês: o canal
+não gasta nem adquire clientes durante o bloqueio. Reduzir verba é sempre
+respeitado, inclusive durante bloqueios.
+O orçamento volta automaticamente após o mês bloqueado, a menos que você
+reduza ou pause a verba.
+
+ROAS
+Receita inicial dos novos clientes atribuídos ao canal dividida pelo gasto.
+Receita de clientes antigos e aquisição orgânica ficam de fora.
+ROAS não é lucro. Sem gasto aparece um traço.
+O público é finito e compartilhado entre os canais. Após alcançar toda a
+persona, investimento incremental não traz novos alcançados.
+
+SALVAMENTO
+Salva no navegador. Preserve o mesmo navegador e caminho do HTML para
+continuar o save; arquivos locais variam conforme o navegador.
+Há migração de saves e backup pré-campanhas.
 
 ESCOPO
-Demo em HTML/JavaScript para validar as mecânicas do GDD antes de Unity.
-Um mercado: software B2B. Um produto: assinatura Flow. Inclui preço com
-demanda elástica, qualidade, três canais com retornos decrescentes, suporte,
-motivação, contratações, promoções, demissões, crédito, eventos e DRE.
-O calendário avança por fechamento mensal. Não há simulação diária.
-A DRE é operacional: investimentos e eventos aparecem diretamente no caixa.
-Não inclui impostos, fusões, outros setores, Steam ou o projeto Unity.
-Os valores são fictícios; o balanceamento é experimental.
+Desenvolvimento e reunião ainda usam regras anteriores; risco por produto
+entra na Fase 3. Pessoas, administrativo-financeiro e balanceamento serão
+aprofundados depois. Os setores e públicos revisados estão documentados,
+mas ainda não foram aplicados à seleção do jogo. Valores experimentais.
 
-SALVAMENTO E ÁUDIO
-Salva neste navegador usando localStorage. Trocar de navegador ou mover a
-pasta pode mudar o acesso ao save. Navegação privada pode apagar os dados.
-Som ambiente sintetizado é opcional. Fontes online são opcionais: o jogo
-funciona sem internet usando fontes do sistema.
-
-ARQUIVOS
-index.html: interface; style.css: janelas; game.js: simulação e salvamento.
-scene.js: cenário pixel art, animações e objetos clicáveis.
-scene.css: HUD e apresentação da garagem.
-
-NOVIDADES 0.2
-Escritório isométrico ocupa a tela. Pixel art vibrante desenhada em código.
-Clique no computador, telefone, mesa da equipe, caderno, mural e café.
-Contratações aparecem no cenário; personagens e vapor do café são animados.
-Os saves da versão 0.1 são preservados no mesmo navegador e caminho.
-
-VERSÃO 0.3 — CRIAÇÃO
-Tela inicial com Nova jornada e Continuar. Founder com nome, cabelo, pele,
-roupa e perfil. Empresa com nome e 12 modelos, público e capital inicial.
-Distribuições fictícias. Perfil ainda cosmético; traits aguardam definição.
-Mercado/segmento e renda/porte influenciam aquisição e tolerância ao preço.
-Operação ainda mensal e compartilhada: estoque, projetos e regulação não
-são simulados individualmente. Os quatro financiamentos estão ativos;
-destituição e consequências entre jornadas do relacionamento são backlog.
-Capital experimental: próprio 12 mil; amigos 35 mil; banco 75 mil; VC 150 mil.
-Amigos: seis meses de carência, principal em parcelas de 1.750 sem juros.
+DESENVOLVIMENTO
+node tests/game.cjs
+node scripts/build.cjs
+Regras: docs/FASE-2-MARKETING.md.
+Testes de lógica e integração com DOM simulado; não comprovam layout.
