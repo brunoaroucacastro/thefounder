@@ -1,0 +1,355 @@
+{
+  "status": "Proposta não implementada",
+  "date": "2026-10-31",
+  "populationYear": 2024,
+  "adultPopulationApprox": 160946558,
+  "classShares": [
+    0.031,
+    0.215,
+    0.47
+  ],
+  "agePopulationApprox": [
+    21735261,
+    32474207,
+    60803935,
+    45933155
+  ],
+  "rows": [
+    {
+      "name": "Gadgets & tecnologia",
+      "ageRate": [
+        0.85,
+        0.9,
+        0.7,
+        0.4
+      ],
+      "classRate": [
+        0.9,
+        0.7,
+        0.4
+      ],
+      "age": [
+        17,
+        27,
+        39,
+        17
+      ],
+      "income": [
+        8,
+        41,
+        51
+      ],
+      "people": 58970819,
+      "evidence": "Hipótese",
+      "scope": "Dispositivos e acessórios; intenção anual, não posse de smartphone."
+    },
+    {
+      "name": "Moda & vestuário",
+      "ageRate": [
+        0.95,
+        0.95,
+        0.9,
+        0.75
+      ],
+      "classRate": [
+        0.98,
+        0.95,
+        0.85
+      ],
+      "age": [
+        15,
+        22,
+        39,
+        24
+      ],
+      "income": [
+        5,
+        32,
+        63
+      ],
+      "people": 102061041,
+      "evidence": "Hipótese",
+      "scope": "Roupas, calçados e acessórios; compra física ou online."
+    },
+    {
+      "name": "Consumíveis",
+      "ageRate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "classRate": [
+        1,
+        1,
+        1
+      ],
+      "age": [
+        13,
+        20,
+        38,
+        29
+      ],
+      "income": [
+        4,
+        30,
+        66
+      ],
+      "people": 115237736,
+      "evidence": "Hipótese",
+      "scope": "Alimentos e bebidas; teto amplo de compradores adultos."
+    },
+    {
+      "name": "Beleza & cosméticos",
+      "ageRate": [
+        0.75,
+        0.9,
+        0.85,
+        0.65
+      ],
+      "classRate": [
+        0.9,
+        0.8,
+        0.65
+      ],
+      "age": [
+        13,
+        23,
+        41,
+        23
+      ],
+      "income": [
+        6,
+        34,
+        60
+      ],
+      "people": 81342390,
+      "evidence": "Hipótese",
+      "scope": "Maquiagem, perfumes e cuidados pessoais; não só higiene básica."
+    },
+    {
+      "name": "Pet",
+      "ageRate": [
+        0.3,
+        0.55,
+        0.6,
+        0.45
+      ],
+      "classRate": [
+        0.6,
+        0.55,
+        0.4
+      ],
+      "age": [
+        8,
+        22,
+        45,
+        25
+      ],
+      "income": [
+        6,
+        36,
+        58
+      ],
+      "people": 52283489,
+      "evidence": "Hipótese",
+      "scope": "Adultos compradores de produtos pet; não número de pets ou lares."
+    },
+    {
+      "name": "Home & Garden",
+      "ageRate": [
+        0.25,
+        0.65,
+        0.8,
+        0.65
+      ],
+      "classRate": [
+        0.85,
+        0.7,
+        0.45
+      ],
+      "age": [
+        5,
+        20,
+        46,
+        29
+      ],
+      "income": [
+        7,
+        39,
+        54
+      ],
+      "people": 62503596,
+      "evidence": "Hipótese",
+      "scope": "Utensílios, decoração e jardinagem; não toda a indústria de construção."
+    },
+    {
+      "name": "Fintechs",
+      "ageRate": [
+        0.589,
+        0.6992,
+        0.559771307922752,
+        0.263810952546151
+      ],
+      "classRate": [
+        0.768,
+        0.776,
+        0.49589999999999995
+      ],
+      "age": [
+        15,
+        28,
+        42,
+        15
+      ],
+      "income": [
+        6,
+        39,
+        55
+      ],
+      "people": 68196437,
+      "evidence": "Proxy TIC C6",
+      "scope": "Atividade financeira online como aproximação; inclui bancos tradicionais."
+    },
+    {
+      "name": "Healthtechs",
+      "ageRate": [
+        0.46549999999999997,
+        0.6072000000000001,
+        0.4873227827606882,
+        0.27264414182740115
+      ],
+      "classRate": [
+        0.6048,
+        0.6208,
+        0.4611
+      ],
+      "age": [
+        14,
+        27,
+        41,
+        18
+      ],
+      "income": [
+        5,
+        36,
+        59
+      ],
+      "people": 59379269,
+      "evidence": "Proxy TIC C6",
+      "scope": "Busca de saúde online indica interesse; não comprova uso/pagamento por consulta."
+    },
+    {
+      "name": "Educação",
+      "ageRate": [
+        0.4845,
+        0.4232,
+        0.29799778525189197,
+        0.13079065772860582
+      ],
+      "classRate": [
+        0.4608,
+        0.6013999999999999,
+        0.3045
+      ],
+      "age": [
+        22,
+        28,
+        38,
+        12
+      ],
+      "income": [
+        5,
+        45,
+        50
+      ],
+      "people": 46143507,
+      "evidence": "Proxy TIC C8",
+      "scope": "Autoestudo online; não representa apenas matrículas pagas."
+    },
+    {
+      "name": "Redes sociais & conteúdo",
+      "ageRate": [
+        0.874,
+        0.8556,
+        0.7139757174893367,
+        0.3794778520743894
+      ],
+      "classRate": [
+        0.6816,
+        0.8924,
+        0.6960000000000001
+      ],
+      "age": [
+        18,
+        26,
+        40,
+        16
+      ],
+      "income": [
+        4,
+        35,
+        61
+      ],
+      "people": 86929747,
+      "evidence": "Proxy TIC C5",
+      "scope": "Redes sociais como referência da categoria; não soma usuários de streaming."
+    },
+    {
+      "name": "Softwares & aplicativos",
+      "ageRate": [
+        0.8075,
+        0.782,
+        0.5570367463882067,
+        0.27258723577772964
+      ],
+      "classRate": [
+        0.9119999999999999,
+        0.8245,
+        0.5655
+      ],
+      "age": [
+        20,
+        28,
+        38,
+        14
+      ],
+      "income": [
+        6,
+        38,
+        56
+      ],
+      "people": 75858056,
+      "evidence": "Hipótese",
+      "scope": "Apps utilitários e jogos, gratuitos ou pagos; união não observada nas fontes."
+    },
+    {
+      "name": "Mobilidade & delivery",
+      "ageRate": [
+        0.8075,
+        0.8280000000000001,
+        0.6448382162437349,
+        0.29431454617040786
+      ],
+      "classRate": [
+        0.864,
+        0.8245,
+        0.5655
+      ],
+      "age": [
+        18,
+        28,
+        40,
+        14
+      ],
+      "income": [
+        6,
+        38,
+        56
+      ],
+      "people": 75618567,
+      "evidence": "Hipótese",
+      "scope": "Potencial de uso de pelo menos uma modalidade; sem somar públicos sobrepostos."
+    }
+  ]
+}
