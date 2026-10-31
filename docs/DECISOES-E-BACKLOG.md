@@ -57,7 +57,12 @@ Foco B2C, mantendo os dois lados. Esta seleção substitui a lista inicial de 12
 1. Gadgets & tecnologia.
 2. Moda & vestuário (brandwear).
 3. Consumíveis, com alimentos e bebidas como exemplos.
-4. Beleza & cosméticos — adicionado: maquiagem, perfumes e cuidados com a pele. Mecânicas e público a definir.
+4. Beleza & cosméticos — maquiagem, perfumes e cuidados com a pele.
+5. Pet — produtos e acessórios para animais de estimação.
+6. Garden — produtos de jardinagem e cultivo, vasos e ferramentas.
+7. Home — utensílios domésticos, organização e decoração.
+
+Mecânicas e públicos específicos ainda a definir.
 
 ### Plataformas e serviços digitais
 
@@ -66,9 +71,10 @@ Foco B2C, mantendo os dois lados. Esta seleção substitui a lista inicial de 12
 3. Educação.
 4. Redes sociais & conteúdo — inclui streaming e entretenimento.
 5. Softwares & aplicativos — inclui jogos.
-6. Marketplaces.
-7. Mobilidade & delivery.
+6. Mobilidade & delivery.
+
+Marketplace removido da seleção por decisão do usuário.
 
 Usar a mesma régua: tamanho do público, demografia e renda. Separar visualmente demografia e renda. Mostrar descrição curta por empresa e descrição, prós e contras por perfil de founder.
 
-Outros setores físicos sugeridos não foram aprovados. A renomeação de Consumíveis para Alimentos & bebidas também não foi confirmada.
+Outros setores físicos além dos sete listados não foram aprovados. A renomeação de Consumíveis para Alimentos & bebidas também não foi confirmada.
