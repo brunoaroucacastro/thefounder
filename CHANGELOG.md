@@ -1,5 +1,14 @@
 # Histórico de desenvolvimento
 
+## 0.12 — Os 12 mercados B2C na criação de empresa — 31/10/2026
+
+- Seis produtos físicos e seis serviços, conforme tabela enviada, substituem os antigos na seleção inicial.
+- Públicos nacionais estimados e percentuais de idade/classe aplicados exatamente ao jogo; descrições curtas e blocos visuais separados.
+- Catálogo central com IDs; índices antigos preservados para não transformar empresas salvas em outro setor.
+- Simulador usa os novos mercados; seis testes específicos de tabela, criação, regras e compatibilidade.
+- Aportes da versão 0.11 preservados. HTML independente atualizado.
+
+
 ## 0.11 — Aportes iniciais revisados — 31/10/2026
 
 - Próprio R$25 mil, amigos/família R$50 mil, banco R$80 mil e VC R$150 mil para novas jornadas.

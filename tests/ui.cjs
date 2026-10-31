@@ -7,7 +7,7 @@ function boot(storage=new Map()){
  const els=new Map(),ctx2d=new Proxy({},{get:()=>()=>{}}),world={html:'',insertAdjacentHTML(_,html){this.html+=html;},querySelector(){return {textContent:''}}};
  const el=id=>{if(!els.has(id))els.set(id,{innerHTML:'',textContent:'',style:{},classList:{add(){},remove(){}},open:false,value:'Nova empresa',showModal(){this.open=true},close(){this.open=false},remove(){},querySelector(sel){return sel==='.world'?world:null},getContext(){return ctx2d},addEventListener(){},getBoundingClientRect(){return {left:0,top:0,width:1280,height:800}}});return els.get(id);};
  const ctx=vm.createContext({document:{getElementById:el},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},window:{},Date:class extends Date {static now(){return 123456789}},requestAnimationFrame:()=>{},setTimeout:schedule,clearTimeout:id=>timers.delete(id),console,Math});
- for(const f of ['campaign-rules','product-rules','finance-rules','people-rules','rules','game','scene','create','planner','product-ui','finance-ui','people-ui','dice'])vm.runInContext(fs.readFileSync('src/'+f+'.js','utf8'),ctx,{filename:f+'.js'});
+ for(const f of ['market-data','campaign-rules','product-rules','finance-rules','people-rules','rules','game','scene','create','planner','product-ui','finance-ui','people-ui','dice'])vm.runInContext(fs.readFileSync('src/'+f+'.js','utf8'),ctx,{filename:f+'.js'});
  return {run:code=>vm.runInContext(code,ctx),storage,el,world,advanceTime};
 }
 let app=boot();const run=code=>app.run(code);

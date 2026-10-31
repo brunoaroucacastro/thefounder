@@ -22,6 +22,5 @@ const rows=[
 const result=rows.map(([name,ageRate,classRate,evidence,scope])=>{let counts=classes.map((x,i)=>adult*x*classRate[i]);return {name,ageRate,classRate,age:pct(ages.map((x,i)=>x*ageRate[i])),income:pct(counts),people:Math.round(counts.reduce((a,b)=>a+b,0)),evidence,scope};});
 for(const r of result){if(r.age.reduce((a,b)=>a+b)!==100||r.income.reduce((a,b)=>a+b)!==100)throw Error('Percentuais inválidos');}
 let table='| Mercado | Público estimado ABC 18+ | 18–24 | 25–34 | 35–54 | 55+ | A | B | C | Base |\n|---|---:|---:|---:|---:|---:|---:|---:|---:|---|\n'+result.map(r=>`| ${r.name} | ${Math.round(r.people/1e6)} milhões | ${[...r.age,...r.income].map(x=>x+'%').join(' | ')} | ${r.evidence} |`).join('\n');
-fs.writeFileSync('docs/MERCADOS-base.json',JSON.stringify({status:'Proposta não implementada',date:'2026-10-31',populationYear:2024,adultPopulationApprox:adult,classShares:classes,agePopulationApprox:ages,rows:result},null,2));
+fs.writeFileSync('docs/MERCADOS-base.json',JSON.stringify({status:'Base aplicada na versão 0.12; valores arredondados em src/market-data.js',date:'2026-10-31',populationYear:2024,adultPopulationApprox:adult,classShares:classes,agePopulationApprox:ages,rows:result},null,2));
 fs.writeFileSync('docs/MERCADOS-tabela.md',table+'\n');console.log(table);console.log('Adultos aproximados:',adult,'ABC aproximado:',adult*.716);
-

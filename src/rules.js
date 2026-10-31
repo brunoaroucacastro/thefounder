@@ -1,5 +1,6 @@
 /* Pure domain rules: no DOM, globals, localStorage or callbacks in the plan. */
 const GameRules=(()=>{
+ const markets=typeof MarketData!=='undefined'?MarketData:require('./market-data.js');
  const campaigns=typeof CampaignRules!=='undefined'?CampaignRules:require('./campaign-rules.js');
  const products=typeof ProductRules!=='undefined'?ProductRules:require('./product-rules.js');
  const finance=typeof FinanceRules!=='undefined'?FinanceRules:require('./finance-rules.js');
@@ -11,7 +12,7 @@ const GameRules=(()=>{
   const s=copy(input);if(s.schemaVersion>6)throw Error('Save de uma versão mais nova. Abra-o na versão correspondente.');
   if(!s.schemaVersion||s.schemaVersion<2){s.legacyUsed=limit(4-(s.actions??4),0,4);s.plan=[];s.planRevision=0;s.nextId=1;s.schemaVersion=2;}
   s.plan??=[];s.planRevision??=0;s.nextId??=1;s.legacyUsed??=0;s.rolls??=[];s.rng??=(seed>>>0)||123456789;s.companyId??='company-'+s.rng;
-  s.marketId??=['dnvb','wearables','electric-mobility','saas','games','ai-app','health-network','charging','shared-mobility','fintech','marketplace','edtech'][s.business]||'legacy-default';
+  s.marketId??=markets.ids[s.business]||'legacy-default';
   campaigns.ensure(s);products.ensure(s);finance.ensure(s);people.ensure(s);s.rollSequence??=0;s.schemaVersion=6;
   s.team.forEach(p=>{if(!p.id)p.id='person-'+s.nextId++;});return s;
  }

@@ -13,7 +13,7 @@ Status em 31/10/2026: Fases 1–5 autorizadas e implementadas nos protótipos 0.
 - Financeiro tem DRE, crédito e amortização simples, sem negociação ou benchmarks. Motivação é global; contratação imediata; promoções são garantidas.
 - Save em localStorage não tem versão/migrações. Mercados são índices de array: trocar a ordem pode alterar a identidade de uma empresa antiga.
 - Testes atuais exercitam regras com DOM simulado; não comprovam layout, cliques reais, foco ou comportamento do navegador. O HTML independente é o formato de entrega a preservar.
-- A seleção dos 12 setores revisados e a proposta de distribuição de públicos ainda não estão implementadas. Não misturar essa pendência com aprovação automática de todos os números propostos.
+- A seleção dos 12 setores revisados e a tabela estimada enviada foram implementadas na versão 0.12; veja MERCADOS-IMPLEMENTADOS.md. Não misturar essa pendência com aprovação automática de todos os números propostos.
 
 ## Arquitetura proposta
 
@@ -82,7 +82,7 @@ Aceite: não existe dinheiro/ação duplicados por reload ou cliques repetidos; 
 2. Proposta D20: natural 1 crítico; total pode exceder 20; tabelas limitam efeitos, não o dado. Natural 20 não dá sucesso especial automático salvo regra da ação.
 3. Custos de tentativa: proposta cobrar ao executar tentativas válidas, mesmo se falharem; ação impossível por pré-requisito deve ser detectada na revisão. Definir consequência de dependência que falha durante resolução.
 4. Separar fracasso de execução de erro estratégico: D20 alto pode executar bem um produto sem demanda. Pesquisas e pessoas reduzem incerteza, não garantem lucro.
-5. Novas tabelas de público/tamanho ainda exigem decisão. Não apresentar extrapolação de gameplay como dado real.
+5. A tabela estimada enviada foi aplicada na versão 0.12. Não apresentar extrapolação de gameplay como dado real.
 
 ## Estratégia de testes e riscos
 

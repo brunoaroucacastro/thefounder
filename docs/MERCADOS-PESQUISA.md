@@ -1,6 +1,6 @@
 # Mercados B2C — pesquisa e cenário inicial
 
-Pesquisa em 31/10/2026. Base comparável principal: Brasil, 2024. Proposta para discussão; não aplicada ao jogo.
+Pesquisa em 31/10/2026. Base comparável principal: Brasil, 2024. Base aplicada na versão 0.12 conforme tabela arredondada enviada pelo jogador. Implementação e compatibilidade em MERCADOS-IMPLEMENTADOS.md.
 
 ## Como interpretar
 
@@ -77,4 +77,3 @@ Manter uma futura opção para incluir DE, especialmente relevante para alimento
 | Redes sociais & conteúdo | 87 milhões | 18% | 26% | 40% | 16% | 4% | 35% | 61% | Proxy TIC C5 |
 | Softwares & aplicativos | 76 milhões | 20% | 28% | 38% | 14% | 6% | 38% | 56% | Hipótese |
 | Mobilidade & delivery | 76 milhões | 18% | 28% | 40% | 14% | 6% | 38% | 56% | Hipótese |
-

@@ -1,4 +1,4 @@
-THE FOUNDER — Protótipo 0.11 / Integração e balanceamento
+THE FOUNDER — Protótipo 0.12 / Integração e balanceamento
 
 JOGAR
 Abra dist/The-Founder-Jogar.html no navegador. É um arquivo único offline.
@@ -61,3 +61,6 @@ Saves anteriores continuam com sua economia original. Para experimentar o novo b
 
 APORTES — NOVAS JORNADAS
 Próprio R$25.000; amigos/família R$50.000 (devolução de R$2.500/mês do mês 7 ao 26); banco R$80.000 (juros iniciais R$2.000/mês); VC R$150.000. Empresas salvas mantêm os valores e contratos anteriores.
+
+MERCADOS INICIAIS
+Nova jornada: seis produtos físicos e seis serviços B2C. Os cartões mostram público, idade e classe econômica (Brasil, ABC, 18+, estimativas para gameplay). Empresas antigas conservam seus setores e números históricos.

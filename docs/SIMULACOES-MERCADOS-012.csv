@@ -1,0 +1,1921 @@
+business,market,capital,seed,strategy,months,bankrupt,launched,profitable,cash,revenue,customers
+12,"Gadgets & tecnologia",0,123,"lean",24,false,true,18,19679,137781,127
+12,"Gadgets & tecnologia",0,714,"lean",24,false,true,10,5751,65709,15
+12,"Gadgets & tecnologia",0,2026,"lean",24,false,true,18,19179,137781,127
+12,"Gadgets & tecnologia",0,4567,"lean",24,false,true,19,30603,145341,128
+12,"Gadgets & tecnologia",0,8123,"lean",24,false,true,19,14567,143073,125
+12,"Gadgets & tecnologia",0,14567,"lean",24,false,true,19,23067,143073,125
+12,"Gadgets & tecnologia",0,98765,"lean",24,false,true,17,5408,106722,113
+12,"Gadgets & tecnologia",0,414141,"lean",24,false,true,8,5762,51471,5
+12,"Gadgets & tecnologia",0,123456789,"lean",24,false,true,19,20103,145341,128
+12,"Gadgets & tecnologia",0,314159265,"lean",24,false,true,19,21593,142191,127
+12,"Gadgets & tecnologia",1,123,"lean",24,false,true,18,2179,137781,127
+12,"Gadgets & tecnologia",1,714,"lean",24,true,true,17,-229,124677,97
+12,"Gadgets & tecnologia",1,2026,"lean",24,false,true,18,1679,137781,127
+12,"Gadgets & tecnologia",1,4567,"lean",24,false,true,19,10603,145341,128
+12,"Gadgets & tecnologia",1,8123,"lean",24,true,true,19,-433,143073,125
+12,"Gadgets & tecnologia",1,14567,"lean",24,false,true,19,3067,143073,125
+12,"Gadgets & tecnologia",1,98765,"lean",24,false,true,17,1571,103572,48
+12,"Gadgets & tecnologia",1,414141,"lean",24,true,true,8,-1738,51471,5
+12,"Gadgets & tecnologia",1,123456789,"lean",24,false,true,19,103,145341,128
+12,"Gadgets & tecnologia",1,314159265,"lean",24,false,true,19,1593,142191,127
+12,"Gadgets & tecnologia",2,123,"lean",24,false,true,0,26679,137781,127
+12,"Gadgets & tecnologia",2,714,"lean",24,false,true,0,11297,128268,123
+12,"Gadgets & tecnologia",2,2026,"lean",24,false,true,0,26179,137781,127
+12,"Gadgets & tecnologia",2,4567,"lean",24,false,true,0,37603,145341,128
+12,"Gadgets & tecnologia",2,8123,"lean",24,false,true,0,21567,143073,125
+12,"Gadgets & tecnologia",2,14567,"lean",24,false,true,0,30067,143073,125
+12,"Gadgets & tecnologia",2,98765,"lean",24,false,true,0,13420,124992,125
+12,"Gadgets & tecnologia",2,414141,"lean",24,false,true,0,7121,64386,70
+12,"Gadgets & tecnologia",2,123456789,"lean",24,false,true,0,27103,145341,128
+12,"Gadgets & tecnologia",2,314159265,"lean",24,false,true,0,28593,142191,127
+12,"Gadgets & tecnologia",3,123,"lean",24,false,true,18,144679,137781,127
+12,"Gadgets & tecnologia",3,714,"lean",24,false,true,17,129297,128268,123
+12,"Gadgets & tecnologia",3,2026,"lean",24,false,true,18,144179,137781,127
+12,"Gadgets & tecnologia",3,4567,"lean",24,false,true,19,155603,145341,128
+12,"Gadgets & tecnologia",3,8123,"lean",24,false,true,19,139567,143073,125
+12,"Gadgets & tecnologia",3,14567,"lean",24,false,true,19,148067,143073,125
+12,"Gadgets & tecnologia",3,98765,"lean",24,false,true,17,131420,124992,125
+12,"Gadgets & tecnologia",3,414141,"lean",24,false,true,9,125121,64386,70
+12,"Gadgets & tecnologia",3,123456789,"lean",24,false,true,19,145103,145341,128
+12,"Gadgets & tecnologia",3,314159265,"lean",24,false,true,19,146593,142191,127
+13,"Moda & vestuário",0,123,"lean",24,false,true,19,25208,160335,142
+13,"Moda & vestuário",0,714,"lean",24,false,true,18,13100,112203,50
+13,"Moda & vestuário",0,2026,"lean",24,false,true,19,24708,160335,142
+13,"Moda & vestuário",0,4567,"lean",24,false,true,20,36334,168651,142
+13,"Moda & vestuário",0,8123,"lean",24,false,true,20,20251,165942,139
+13,"Moda & vestuário",0,14567,"lean",24,false,true,20,28751,165942,139
+13,"Moda & vestuário",0,98765,"lean",24,false,true,18,13320,143136,140
+13,"Moda & vestuário",0,414141,"lean",24,false,true,11,4475,78687,89
+13,"Moda & vestuário",0,123456789,"lean",24,false,true,20,25834,168651,142
+13,"Moda & vestuário",0,314159265,"lean",24,false,true,20,27404,165564,142
+13,"Moda & vestuário",1,123,"lean",24,false,true,19,5208,160335,142
+13,"Moda & vestuário",1,714,"lean",24,false,true,18,67,145530,107
+13,"Moda & vestuário",1,2026,"lean",24,false,true,19,4708,160335,142
+13,"Moda & vestuário",1,4567,"lean",24,false,true,20,16334,168651,142
+13,"Moda & vestuário",1,8123,"lean",24,false,true,20,251,165942,139
+13,"Moda & vestuário",1,14567,"lean",24,false,true,20,8751,165942,139
+13,"Moda & vestuário",1,98765,"lean",24,false,true,18,124,139545,104
+13,"Moda & vestuário",1,414141,"lean",22,true,true,9,-12,61362,9
+13,"Moda & vestuário",1,123456789,"lean",24,false,true,20,5834,168651,142
+13,"Moda & vestuário",1,314159265,"lean",24,false,true,20,7404,165564,142
+13,"Moda & vestuário",2,123,"lean",24,false,true,0,32208,160335,142
+13,"Moda & vestuário",2,714,"lean",24,false,true,0,16622,149814,137
+13,"Moda & vestuário",2,2026,"lean",24,false,true,0,31708,160335,142
+13,"Moda & vestuário",2,4567,"lean",24,false,true,0,43334,168651,142
+13,"Moda & vestuário",2,8123,"lean",24,false,true,0,27251,165942,139
+13,"Moda & vestuário",2,14567,"lean",24,false,true,0,35751,165942,139
+13,"Moda & vestuário",2,98765,"lean",24,false,true,0,18700,146034,140
+13,"Moda & vestuário",2,414141,"lean",24,false,true,0,11475,78687,89
+13,"Moda & vestuário",2,123456789,"lean",24,false,true,0,32834,168651,142
+13,"Moda & vestuário",2,314159265,"lean",24,false,true,0,34404,165564,142
+13,"Moda & vestuário",3,123,"lean",24,false,true,19,150208,160335,142
+13,"Moda & vestuário",3,714,"lean",24,false,true,18,134622,149814,137
+13,"Moda & vestuário",3,2026,"lean",24,false,true,19,149708,160335,142
+13,"Moda & vestuário",3,4567,"lean",24,false,true,20,161334,168651,142
+13,"Moda & vestuário",3,8123,"lean",24,false,true,20,145251,165942,139
+13,"Moda & vestuário",3,14567,"lean",24,false,true,20,153751,165942,139
+13,"Moda & vestuário",3,98765,"lean",24,false,true,18,136700,146034,140
+13,"Moda & vestuário",3,414141,"lean",24,false,true,11,129475,78687,89
+13,"Moda & vestuário",3,123456789,"lean",24,false,true,20,150834,168651,142
+13,"Moda & vestuário",3,314159265,"lean",24,false,true,20,152404,165564,142
+14,"Consumíveis",0,123,"lean",24,false,true,20,27015,167643,146
+14,"Consumíveis",0,714,"lean",24,false,true,19,11249,119700,50
+14,"Consumíveis",0,2026,"lean",24,false,true,20,26515,167643,146
+14,"Consumíveis",0,4567,"lean",24,false,true,21,38176,176085,146
+14,"Consumíveis",0,8123,"lean",24,false,true,21,22061,173187,143
+14,"Consumíveis",0,14567,"lean",24,false,true,21,30561,173187,143
+14,"Consumíveis",0,98765,"lean",24,false,true,19,14943,149499,144
+14,"Consumíveis",0,414141,"lean",24,false,true,13,5748,82971,93
+14,"Consumíveis",0,123456789,"lean",24,false,true,21,27676,176085,146
+14,"Consumíveis",0,314159265,"lean",24,false,true,21,29224,172809,146
+14,"Consumíveis",1,123,"lean",24,false,true,20,7015,167643,146
+14,"Consumíveis",1,714,"lean",24,false,true,19,1736,152145,107
+14,"Consumíveis",1,2026,"lean",24,false,true,20,6515,167643,146
+14,"Consumíveis",1,4567,"lean",24,false,true,21,18176,176085,146
+14,"Consumíveis",1,8123,"lean",24,false,true,21,2061,173187,143
+14,"Consumíveis",1,14567,"lean",24,false,true,21,10561,173187,143
+14,"Consumíveis",1,98765,"lean",24,false,true,19,1707,145719,105
+14,"Consumíveis",1,414141,"lean",24,true,true,11,-2041,65583,6
+14,"Consumíveis",1,123456789,"lean",24,false,true,21,7676,176085,146
+14,"Consumíveis",1,314159265,"lean",24,false,true,21,9224,172809,146
+14,"Consumíveis",2,123,"lean",24,false,true,0,34015,167643,146
+14,"Consumíveis",2,714,"lean",24,false,true,0,18348,156744,140
+14,"Consumíveis",2,2026,"lean",24,false,true,0,33515,167643,146
+14,"Consumíveis",2,4567,"lean",24,false,true,0,45176,176085,146
+14,"Consumíveis",2,8123,"lean",24,false,true,0,29061,173187,143
+14,"Consumíveis",2,14567,"lean",24,false,true,0,37561,173187,143
+14,"Consumíveis",2,98765,"lean",24,false,true,0,20391,152775,144
+14,"Consumíveis",2,414141,"lean",24,false,true,0,12748,82971,93
+14,"Consumíveis",2,123456789,"lean",24,false,true,0,34676,176085,146
+14,"Consumíveis",2,314159265,"lean",24,false,true,0,36224,172809,146
+14,"Consumíveis",3,123,"lean",24,false,true,20,152015,167643,146
+14,"Consumíveis",3,714,"lean",24,false,true,19,136348,156744,140
+14,"Consumíveis",3,2026,"lean",24,false,true,20,151515,167643,146
+14,"Consumíveis",3,4567,"lean",24,false,true,21,163176,176085,146
+14,"Consumíveis",3,8123,"lean",24,false,true,21,147061,173187,143
+14,"Consumíveis",3,14567,"lean",24,false,true,21,155561,173187,143
+14,"Consumíveis",3,98765,"lean",24,false,true,19,138391,152775,144
+14,"Consumíveis",3,414141,"lean",24,false,true,13,130748,82971,93
+14,"Consumíveis",3,123456789,"lean",24,false,true,21,152676,176085,146
+14,"Consumíveis",3,314159265,"lean",24,false,true,21,154224,172809,146
+15,"Beleza & cosméticos",0,123,"lean",24,false,true,19,24906,159138,142
+15,"Beleza & cosméticos",0,714,"lean",24,false,true,18,11981,108423,49
+15,"Beleza & cosméticos",0,2026,"lean",24,false,true,19,24406,159138,142
+15,"Beleza & cosméticos",0,4567,"lean",24,false,true,20,36049,167517,142
+15,"Beleza & cosméticos",0,8123,"lean",24,false,true,20,19917,164619,139
+15,"Beleza & cosméticos",0,14567,"lean",24,false,true,20,28417,164619,139
+15,"Beleza & cosméticos",0,98765,"lean",24,false,true,18,12738,140931,140
+15,"Beleza & cosméticos",0,414141,"lean",24,false,true,11,3841,76860,88
+15,"Beleza & cosméticos",0,123456789,"lean",24,false,true,20,25549,167517,142
+15,"Beleza & cosméticos",0,314159265,"lean",24,false,true,20,27011,164052,142
+15,"Beleza & cosméticos",1,123,"lean",24,false,true,19,4906,159138,142
+15,"Beleza & cosméticos",1,714,"lean",24,true,true,18,-399,143766,104
+15,"Beleza & cosméticos",1,2026,"lean",24,false,true,19,4406,159138,142
+15,"Beleza & cosméticos",1,4567,"lean",24,false,true,20,16049,167517,142
+15,"Beleza & cosméticos",1,8123,"lean",24,false,true,20,2417,164619,139
+15,"Beleza & cosméticos",1,14567,"lean",24,false,true,20,8417,164619,139
+15,"Beleza & cosméticos",1,98765,"lean",24,false,true,18,540,118314,49
+15,"Beleza & cosméticos",1,414141,"lean",22,true,true,9,-648,59598,9
+15,"Beleza & cosméticos",1,123456789,"lean",24,false,true,20,5549,167517,142
+15,"Beleza & cosméticos",1,314159265,"lean",24,false,true,20,7011,164052,142
+15,"Beleza & cosméticos",2,123,"lean",24,false,true,0,31906,159138,142
+15,"Beleza & cosméticos",2,714,"lean",24,false,true,0,16241,148302,137
+15,"Beleza & cosméticos",2,2026,"lean",24,false,true,0,31406,159138,142
+15,"Beleza & cosméticos",2,4567,"lean",24,false,true,0,43049,167517,142
+15,"Beleza & cosméticos",2,8123,"lean",24,false,true,0,26917,164619,139
+15,"Beleza & cosméticos",2,14567,"lean",24,false,true,0,35417,164619,139
+15,"Beleza & cosméticos",2,98765,"lean",24,false,true,0,18258,144333,140
+15,"Beleza & cosméticos",2,414141,"lean",24,false,true,0,10841,76860,88
+15,"Beleza & cosméticos",2,123456789,"lean",24,false,true,0,32549,167517,142
+15,"Beleza & cosméticos",2,314159265,"lean",24,false,true,0,34011,164052,142
+15,"Beleza & cosméticos",3,123,"lean",24,false,true,19,149906,159138,142
+15,"Beleza & cosméticos",3,714,"lean",24,false,true,18,134241,148302,137
+15,"Beleza & cosméticos",3,2026,"lean",24,false,true,19,149406,159138,142
+15,"Beleza & cosméticos",3,4567,"lean",24,false,true,20,161049,167517,142
+15,"Beleza & cosméticos",3,8123,"lean",24,false,true,20,144917,164619,139
+15,"Beleza & cosméticos",3,14567,"lean",24,false,true,20,153417,164619,139
+15,"Beleza & cosméticos",3,98765,"lean",24,false,true,18,136258,144333,140
+15,"Beleza & cosméticos",3,414141,"lean",24,false,true,11,128841,76860,88
+15,"Beleza & cosméticos",3,123456789,"lean",24,false,true,20,150549,167517,142
+15,"Beleza & cosméticos",3,314159265,"lean",24,false,true,20,152011,164052,142
+16,"Pet",0,123,"lean",24,false,true,19,24248,156366,139
+16,"Pet",0,714,"lean",24,false,true,12,9898,75726,17
+16,"Pet",0,2026,"lean",24,false,true,19,23748,156366,139
+16,"Pet",0,4567,"lean",24,false,true,20,35260,164241,139
+16,"Pet",0,8123,"lean",24,false,true,20,19159,161532,136
+16,"Pet",0,14567,"lean",24,false,true,20,27659,161532,136
+16,"Pet",0,98765,"lean",24,false,true,18,12165,138600,136
+16,"Pet",0,414141,"lean",24,false,true,11,3440,75348,84
+16,"Pet",0,123456789,"lean",24,false,true,20,24760,164241,139
+16,"Pet",0,314159265,"lean",24,false,true,20,26303,161091,139
+16,"Pet",1,123,"lean",24,false,true,19,4248,156366,139
+16,"Pet",1,714,"lean",24,false,true,18,1530,141498,103
+16,"Pet",1,2026,"lean",24,false,true,19,3748,156366,139
+16,"Pet",1,4567,"lean",24,false,true,20,15260,164241,139
+16,"Pet",1,8123,"lean",24,false,true,20,1659,161532,136
+16,"Pet",1,14567,"lean",24,false,true,20,7659,161532,136
+16,"Pet",1,98765,"lean",24,false,true,18,269,117306,49
+16,"Pet",1,414141,"lean",24,true,true,9,-1455,59787,6
+16,"Pet",1,123456789,"lean",24,false,true,20,4760,164241,139
+16,"Pet",1,314159265,"lean",24,false,true,20,6303,161091,139
+16,"Pet",2,123,"lean",24,false,true,0,31248,156366,139
+16,"Pet",2,714,"lean",24,false,true,0,15598,145656,133
+16,"Pet",2,2026,"lean",24,false,true,0,30748,156366,139
+16,"Pet",2,4567,"lean",24,false,true,0,42260,164241,139
+16,"Pet",2,8123,"lean",24,false,true,0,26159,161532,136
+16,"Pet",2,14567,"lean",24,false,true,0,34659,161532,136
+16,"Pet",2,98765,"lean",24,false,true,0,17689,142002,136
+16,"Pet",2,414141,"lean",24,false,true,0,10440,75348,84
+16,"Pet",2,123456789,"lean",24,false,true,0,31760,164241,139
+16,"Pet",2,314159265,"lean",24,false,true,0,33303,161091,139
+16,"Pet",3,123,"lean",24,false,true,19,149248,156366,139
+16,"Pet",3,714,"lean",24,false,true,18,133598,145656,133
+16,"Pet",3,2026,"lean",24,false,true,19,148748,156366,139
+16,"Pet",3,4567,"lean",24,false,true,20,160260,164241,139
+16,"Pet",3,8123,"lean",24,false,true,20,144159,161532,136
+16,"Pet",3,14567,"lean",24,false,true,20,152659,161532,136
+16,"Pet",3,98765,"lean",24,false,true,18,135689,142002,136
+16,"Pet",3,414141,"lean",24,false,true,11,128440,75348,84
+16,"Pet",3,123456789,"lean",24,false,true,20,149760,164241,139
+16,"Pet",3,314159265,"lean",24,false,true,20,151303,161091,139
+17,"Home & Garden",0,123,"lean",24,false,true,18,20542,141372,131
+17,"Home & Garden",0,714,"lean",24,false,true,10,6079,66780,15
+17,"Home & Garden",0,2026,"lean",24,false,true,18,20042,141372,131
+17,"Home & Garden",0,4567,"lean",24,false,true,19,31453,148869,131
+17,"Home & Garden",0,8123,"lean",24,false,true,19,15366,146349,128
+17,"Home & Garden",0,14567,"lean",24,false,true,19,23866,146349,128
+17,"Home & Garden",0,98765,"lean",24,false,true,17,7554,117495,122
+17,"Home & Garden",0,414141,"lean",24,false,true,8,1595,52416,5
+17,"Home & Garden",0,123456789,"lean",24,false,true,19,20953,148869,131
+17,"Home & Garden",0,314159265,"lean",24,false,true,19,22481,145845,131
+17,"Home & Garden",1,123,"lean",24,false,true,18,542,141372,131
+17,"Home & Garden",1,714,"lean",24,false,true,17,577,127890,98
+17,"Home & Garden",1,2026,"lean",24,false,true,18,42,141372,131
+17,"Home & Garden",1,4567,"lean",24,false,true,19,11453,148869,131
+17,"Home & Garden",1,8123,"lean",24,false,true,19,366,146349,128
+17,"Home & Garden",1,14567,"lean",24,false,true,19,3866,146349,128
+17,"Home & Garden",1,98765,"lean",24,false,true,17,2118,105588,48
+17,"Home & Garden",1,414141,"lean",22,true,true,8,-729,51723,8
+17,"Home & Garden",1,123456789,"lean",24,false,true,19,953,148869,131
+17,"Home & Garden",1,314159265,"lean",24,false,true,19,2481,145845,131
+17,"Home & Garden",2,123,"lean",24,false,true,0,27542,141372,131
+17,"Home & Garden",2,714,"lean",24,false,true,0,12159,131796,126
+17,"Home & Garden",2,2026,"lean",24,false,true,0,27042,141372,131
+17,"Home & Garden",2,4567,"lean",24,false,true,0,38453,148869,131
+17,"Home & Garden",2,8123,"lean",24,false,true,0,22366,146349,128
+17,"Home & Garden",2,14567,"lean",24,false,true,0,30866,146349,128
+17,"Home & Garden",2,98765,"lean",24,false,true,0,14243,128331,129
+17,"Home & Garden",2,414141,"lean",24,false,true,0,7646,66150,74
+17,"Home & Garden",2,123456789,"lean",24,false,true,0,27953,148869,131
+17,"Home & Garden",2,314159265,"lean",24,false,true,0,29481,145845,131
+17,"Home & Garden",3,123,"lean",24,false,true,18,145542,141372,131
+17,"Home & Garden",3,714,"lean",24,false,true,17,130159,131796,126
+17,"Home & Garden",3,2026,"lean",24,false,true,18,145042,141372,131
+17,"Home & Garden",3,4567,"lean",24,false,true,19,156453,148869,131
+17,"Home & Garden",3,8123,"lean",24,false,true,19,140366,146349,128
+17,"Home & Garden",3,14567,"lean",24,false,true,19,148866,146349,128
+17,"Home & Garden",3,98765,"lean",24,false,true,17,132243,128331,129
+17,"Home & Garden",3,414141,"lean",24,false,true,9,125646,66150,74
+17,"Home & Garden",3,123456789,"lean",24,false,true,19,145953,148869,131
+17,"Home & Garden",3,314159265,"lean",24,false,true,19,147481,145845,131
+18,"Fintechs",0,123,"lean",24,false,true,22,50122,139227,220
+18,"Fintechs",0,714,"lean",24,false,true,21,33132,131010,212
+18,"Fintechs",0,2026,"lean",24,false,true,22,49622,139227,220
+18,"Fintechs",0,4567,"lean",24,false,true,23,62209,145827,220
+18,"Fintechs",0,8123,"lean",24,false,true,23,45639,143847,216
+18,"Fintechs",0,14567,"lean",24,false,true,23,54139,143847,216
+18,"Fintechs",0,98765,"lean",24,false,true,21,34699,128304,217
+18,"Fintechs",0,414141,"lean",24,false,true,16,16834,73887,169
+18,"Fintechs",0,123456789,"lean",24,false,true,23,51709,145827,220
+18,"Fintechs",0,314159265,"lean",24,false,true,23,52913,143583,220
+18,"Fintechs",1,123,"lean",24,false,true,22,30122,139227,220
+18,"Fintechs",1,714,"lean",24,false,true,21,13132,131010,212
+18,"Fintechs",1,2026,"lean",24,false,true,22,29622,139227,220
+18,"Fintechs",1,4567,"lean",24,false,true,23,42209,145827,220
+18,"Fintechs",1,8123,"lean",24,false,true,23,25639,143847,216
+18,"Fintechs",1,14567,"lean",24,false,true,23,34139,143847,216
+18,"Fintechs",1,98765,"lean",24,false,true,21,14699,128304,217
+18,"Fintechs",1,414141,"lean",24,false,true,16,1834,73887,169
+18,"Fintechs",1,123456789,"lean",24,false,true,23,31709,145827,220
+18,"Fintechs",1,314159265,"lean",24,false,true,23,32913,143583,220
+18,"Fintechs",2,123,"lean",24,false,true,15,57122,139227,220
+18,"Fintechs",2,714,"lean",24,false,true,14,40132,131010,212
+18,"Fintechs",2,2026,"lean",24,false,true,15,56622,139227,220
+18,"Fintechs",2,4567,"lean",24,false,true,16,69209,145827,220
+18,"Fintechs",2,8123,"lean",24,false,true,16,52639,143847,216
+18,"Fintechs",2,14567,"lean",24,false,true,16,61139,143847,216
+18,"Fintechs",2,98765,"lean",24,false,true,12,41699,128304,217
+18,"Fintechs",2,414141,"lean",24,false,true,0,23834,73887,169
+18,"Fintechs",2,123456789,"lean",24,false,true,16,58709,145827,220
+18,"Fintechs",2,314159265,"lean",24,false,true,14,59913,143583,220
+18,"Fintechs",3,123,"lean",24,false,true,22,175122,139227,220
+18,"Fintechs",3,714,"lean",24,false,true,21,158132,131010,212
+18,"Fintechs",3,2026,"lean",24,false,true,22,174622,139227,220
+18,"Fintechs",3,4567,"lean",24,false,true,23,187209,145827,220
+18,"Fintechs",3,8123,"lean",24,false,true,23,170639,143847,216
+18,"Fintechs",3,14567,"lean",24,false,true,23,179139,143847,216
+18,"Fintechs",3,98765,"lean",24,false,true,21,159699,128304,217
+18,"Fintechs",3,414141,"lean",24,false,true,16,141834,73887,169
+18,"Fintechs",3,123456789,"lean",24,false,true,23,176709,145827,220
+18,"Fintechs",3,314159265,"lean",24,false,true,23,177913,143583,220
+19,"Healthtechs",0,123,"lean",24,false,true,22,53267,146091,231
+19,"Healthtechs",0,714,"lean",24,false,true,21,36109,137478,223
+19,"Healthtechs",0,2026,"lean",24,false,true,22,52767,146091,231
+19,"Healthtechs",0,4567,"lean",24,false,true,23,65477,152955,231
+19,"Healthtechs",0,8123,"lean",24,false,true,23,48879,150876,227
+19,"Healthtechs",0,14567,"lean",24,false,true,23,57379,150876,227
+19,"Healthtechs",0,98765,"lean",24,false,true,21,37614,134607,228
+19,"Healthtechs",0,414141,"lean",24,false,true,16,18571,77451,179
+19,"Healthtechs",0,123456789,"lean",24,false,true,23,54977,152955,231
+19,"Healthtechs",0,314159265,"lean",24,false,true,23,56177,150678,231
+19,"Healthtechs",1,123,"lean",24,false,true,22,33267,146091,231
+19,"Healthtechs",1,714,"lean",24,false,true,21,16109,137478,223
+19,"Healthtechs",1,2026,"lean",24,false,true,22,32767,146091,231
+19,"Healthtechs",1,4567,"lean",24,false,true,23,45477,152955,231
+19,"Healthtechs",1,8123,"lean",24,false,true,23,28879,150876,227
+19,"Healthtechs",1,14567,"lean",24,false,true,23,37379,150876,227
+19,"Healthtechs",1,98765,"lean",24,false,true,21,17614,134607,228
+19,"Healthtechs",1,414141,"lean",24,false,true,16,1071,77451,179
+19,"Healthtechs",1,123456789,"lean",24,false,true,23,34977,152955,231
+19,"Healthtechs",1,314159265,"lean",24,false,true,23,36177,150678,231
+19,"Healthtechs",2,123,"lean",24,false,true,16,60267,146091,231
+19,"Healthtechs",2,714,"lean",24,false,true,15,43109,137478,223
+19,"Healthtechs",2,2026,"lean",24,false,true,16,59767,146091,231
+19,"Healthtechs",2,4567,"lean",24,false,true,17,72477,152955,231
+19,"Healthtechs",2,8123,"lean",24,false,true,17,55879,150876,227
+19,"Healthtechs",2,14567,"lean",24,false,true,17,64379,150876,227
+19,"Healthtechs",2,98765,"lean",24,false,true,15,44614,134607,228
+19,"Healthtechs",2,414141,"lean",24,false,true,0,25571,77451,179
+19,"Healthtechs",2,123456789,"lean",24,false,true,17,61977,152955,231
+19,"Healthtechs",2,314159265,"lean",24,false,true,15,63177,150678,231
+19,"Healthtechs",3,123,"lean",24,false,true,22,178267,146091,231
+19,"Healthtechs",3,714,"lean",24,false,true,21,161109,137478,223
+19,"Healthtechs",3,2026,"lean",24,false,true,22,177767,146091,231
+19,"Healthtechs",3,4567,"lean",24,false,true,23,190477,152955,231
+19,"Healthtechs",3,8123,"lean",24,false,true,23,173879,150876,227
+19,"Healthtechs",3,14567,"lean",24,false,true,23,182379,150876,227
+19,"Healthtechs",3,98765,"lean",24,false,true,21,162614,134607,228
+19,"Healthtechs",3,414141,"lean",24,false,true,16,143571,77451,179
+19,"Healthtechs",3,123456789,"lean",24,false,true,23,179977,152955,231
+19,"Healthtechs",3,314159265,"lean",24,false,true,23,181177,150678,231
+20,"Educação",0,123,"lean",24,false,true,21,45533,129228,205
+20,"Educação",0,714,"lean",24,false,true,20,28799,121605,199
+20,"Educação",0,2026,"lean",24,false,true,21,45033,129228,205
+20,"Educação",0,4567,"lean",24,false,true,22,57372,135300,205
+20,"Educação",0,8123,"lean",24,false,true,22,40933,133650,202
+20,"Educação",0,14567,"lean",24,false,true,22,49433,133650,202
+20,"Educação",0,98765,"lean",24,false,true,20,30559,119361,203
+20,"Educação",0,414141,"lean",24,false,true,15,14413,68871,157
+20,"Educação",0,123456789,"lean",24,false,true,22,46872,135300,205
+20,"Educação",0,314159265,"lean",24,false,true,22,48229,133419,205
+20,"Educação",1,123,"lean",24,false,true,21,25533,129228,205
+20,"Educação",1,714,"lean",24,false,true,20,8799,121605,199
+20,"Educação",1,2026,"lean",24,false,true,21,25033,129228,205
+20,"Educação",1,4567,"lean",24,false,true,22,37372,135300,205
+20,"Educação",1,8123,"lean",24,false,true,22,20933,133650,202
+20,"Educação",1,14567,"lean",24,false,true,22,29433,133650,202
+20,"Educação",1,98765,"lean",24,false,true,20,10559,119361,203
+20,"Educação",1,414141,"lean",24,false,true,15,1913,68871,157
+20,"Educação",1,123456789,"lean",24,false,true,22,26872,135300,205
+20,"Educação",1,314159265,"lean",24,false,true,22,28229,133419,205
+20,"Educação",2,123,"lean",24,false,true,8,52533,129228,205
+20,"Educação",2,714,"lean",24,false,true,4,35799,121605,199
+20,"Educação",2,2026,"lean",24,false,true,8,52033,129228,205
+20,"Educação",2,4567,"lean",24,false,true,10,64372,135300,205
+20,"Educação",2,8123,"lean",24,false,true,5,47933,133650,202
+20,"Educação",2,14567,"lean",24,false,true,5,56433,133650,202
+20,"Educação",2,98765,"lean",24,false,true,2,37559,119361,203
+20,"Educação",2,414141,"lean",24,false,true,0,21413,68871,157
+20,"Educação",2,123456789,"lean",24,false,true,10,53872,135300,205
+20,"Educação",2,314159265,"lean",24,false,true,8,55229,133419,205
+20,"Educação",3,123,"lean",24,false,true,21,170533,129228,205
+20,"Educação",3,714,"lean",24,false,true,20,153799,121605,199
+20,"Educação",3,2026,"lean",24,false,true,21,170033,129228,205
+20,"Educação",3,4567,"lean",24,false,true,22,182372,135300,205
+20,"Educação",3,8123,"lean",24,false,true,22,165933,133650,202
+20,"Educação",3,14567,"lean",24,false,true,22,174433,133650,202
+20,"Educação",3,98765,"lean",24,false,true,20,155559,119361,203
+20,"Educação",3,414141,"lean",24,false,true,15,139413,68871,157
+20,"Educação",3,123456789,"lean",24,false,true,22,171872,135300,205
+20,"Educação",3,314159265,"lean",24,false,true,22,173229,133419,205
+21,"Redes sociais & conteúdo",0,123,"lean",24,false,true,22,54204,148137,235
+21,"Redes sociais & conteúdo",0,714,"lean",24,false,true,21,37022,139458,227
+21,"Redes sociais & conteúdo",0,2026,"lean",24,false,true,22,53704,148137,235
+21,"Redes sociais & conteúdo",0,4567,"lean",24,false,true,23,66399,154968,235
+21,"Redes sociais & conteúdo",0,8123,"lean",24,false,true,23,49807,152889,230
+21,"Redes sociais & conteúdo",0,14567,"lean",24,false,true,23,58307,152889,230
+21,"Redes sociais & conteúdo",0,98765,"lean",24,false,true,21,38530,136587,232
+21,"Redes sociais & conteúdo",0,414141,"lean",24,false,true,16,19131,78606,183
+21,"Redes sociais & conteúdo",0,123456789,"lean",24,false,true,23,55899,154968,235
+21,"Redes sociais & conteúdo",0,314159265,"lean",24,false,true,23,57104,152691,235
+21,"Redes sociais & conteúdo",1,123,"lean",24,false,true,22,34204,148137,235
+21,"Redes sociais & conteúdo",1,714,"lean",24,false,true,21,17022,139458,227
+21,"Redes sociais & conteúdo",1,2026,"lean",24,false,true,22,33704,148137,235
+21,"Redes sociais & conteúdo",1,4567,"lean",24,false,true,23,46399,154968,235
+21,"Redes sociais & conteúdo",1,8123,"lean",24,false,true,23,29807,152889,230
+21,"Redes sociais & conteúdo",1,14567,"lean",24,false,true,23,38307,152889,230
+21,"Redes sociais & conteúdo",1,98765,"lean",24,false,true,21,18530,136587,232
+21,"Redes sociais & conteúdo",1,414141,"lean",24,false,true,16,1631,78606,183
+21,"Redes sociais & conteúdo",1,123456789,"lean",24,false,true,23,35899,154968,235
+21,"Redes sociais & conteúdo",1,314159265,"lean",24,false,true,23,37104,152691,235
+21,"Redes sociais & conteúdo",2,123,"lean",24,false,true,16,61204,148137,235
+21,"Redes sociais & conteúdo",2,714,"lean",24,false,true,15,44022,139458,227
+21,"Redes sociais & conteúdo",2,2026,"lean",24,false,true,16,60704,148137,235
+21,"Redes sociais & conteúdo",2,4567,"lean",24,false,true,17,73399,154968,235
+21,"Redes sociais & conteúdo",2,8123,"lean",24,false,true,17,56807,152889,230
+21,"Redes sociais & conteúdo",2,14567,"lean",24,false,true,17,65306,152889,230
+21,"Redes sociais & conteúdo",2,98765,"lean",24,false,true,15,45530,136587,232
+21,"Redes sociais & conteúdo",2,414141,"lean",24,false,true,0,26131,78606,183
+21,"Redes sociais & conteúdo",2,123456789,"lean",24,false,true,17,62899,154968,235
+21,"Redes sociais & conteúdo",2,314159265,"lean",24,false,true,16,64104,152691,235
+21,"Redes sociais & conteúdo",3,123,"lean",24,false,true,22,179204,148137,235
+21,"Redes sociais & conteúdo",3,714,"lean",24,false,true,21,162022,139458,227
+21,"Redes sociais & conteúdo",3,2026,"lean",24,false,true,22,178704,148137,235
+21,"Redes sociais & conteúdo",3,4567,"lean",24,false,true,23,191399,154968,235
+21,"Redes sociais & conteúdo",3,8123,"lean",24,false,true,23,174806,152889,230
+21,"Redes sociais & conteúdo",3,14567,"lean",24,false,true,23,183306,152889,230
+21,"Redes sociais & conteúdo",3,98765,"lean",24,false,true,21,163530,136587,232
+21,"Redes sociais & conteúdo",3,414141,"lean",24,false,true,16,144131,78606,183
+21,"Redes sociais & conteúdo",3,123456789,"lean",24,false,true,23,180899,154968,235
+21,"Redes sociais & conteúdo",3,314159265,"lean",24,false,true,23,182104,152691,235
+22,"Softwares & aplicativos",0,123,"lean",24,false,true,22,50690,140481,224
+22,"Softwares & aplicativos",0,714,"lean",24,false,true,21,33675,132198,216
+22,"Softwares & aplicativos",0,2026,"lean",24,false,true,22,50190,140481,224
+22,"Softwares & aplicativos",0,4567,"lean",24,false,true,23,62777,147081,224
+22,"Softwares & aplicativos",0,8123,"lean",24,false,true,23,46166,145002,219
+22,"Softwares & aplicativos",0,14567,"lean",24,false,true,23,54666,145002,219
+22,"Softwares & aplicativos",0,98765,"lean",24,false,true,21,35165,129327,221
+22,"Softwares & aplicativos",0,414141,"lean",24,false,true,16,17085,74415,172
+22,"Softwares & aplicativos",0,123456789,"lean",24,false,true,23,52277,147081,224
+22,"Softwares & aplicativos",0,314159265,"lean",24,false,true,23,53466,144804,223
+22,"Softwares & aplicativos",1,123,"lean",24,false,true,22,30690,140481,224
+22,"Softwares & aplicativos",1,714,"lean",24,false,true,21,13675,132198,216
+22,"Softwares & aplicativos",1,2026,"lean",24,false,true,22,30190,140481,224
+22,"Softwares & aplicativos",1,4567,"lean",24,false,true,23,42777,147081,224
+22,"Softwares & aplicativos",1,8123,"lean",24,false,true,23,26166,145002,219
+22,"Softwares & aplicativos",1,14567,"lean",24,false,true,23,34666,145002,219
+22,"Softwares & aplicativos",1,98765,"lean",24,false,true,21,15165,129327,221
+22,"Softwares & aplicativos",1,414141,"lean",24,false,true,16,2085,74415,172
+22,"Softwares & aplicativos",1,123456789,"lean",24,false,true,23,32277,147081,224
+22,"Softwares & aplicativos",1,314159265,"lean",24,false,true,23,33466,144804,223
+22,"Softwares & aplicativos",2,123,"lean",24,false,true,15,57690,140481,224
+22,"Softwares & aplicativos",2,714,"lean",24,false,true,14,40675,132198,216
+22,"Softwares & aplicativos",2,2026,"lean",24,false,true,15,57190,140481,224
+22,"Softwares & aplicativos",2,4567,"lean",24,false,true,16,69777,147081,224
+22,"Softwares & aplicativos",2,8123,"lean",24,false,true,16,53166,145002,219
+22,"Softwares & aplicativos",2,14567,"lean",24,false,true,16,61666,145002,219
+22,"Softwares & aplicativos",2,98765,"lean",24,false,true,13,42165,129327,221
+22,"Softwares & aplicativos",2,414141,"lean",24,false,true,0,24085,74415,172
+22,"Softwares & aplicativos",2,123456789,"lean",24,false,true,16,59277,147081,224
+22,"Softwares & aplicativos",2,314159265,"lean",24,false,true,14,60466,144804,223
+22,"Softwares & aplicativos",3,123,"lean",24,false,true,22,175690,140481,224
+22,"Softwares & aplicativos",3,714,"lean",24,false,true,21,158675,132198,216
+22,"Softwares & aplicativos",3,2026,"lean",24,false,true,22,175190,140481,224
+22,"Softwares & aplicativos",3,4567,"lean",24,false,true,23,187777,147081,224
+22,"Softwares & aplicativos",3,8123,"lean",24,false,true,23,171166,145002,219
+22,"Softwares & aplicativos",3,14567,"lean",24,false,true,23,179666,145002,219
+22,"Softwares & aplicativos",3,98765,"lean",24,false,true,21,160165,129327,221
+22,"Softwares & aplicativos",3,414141,"lean",24,false,true,16,142085,74415,172
+22,"Softwares & aplicativos",3,123456789,"lean",24,false,true,23,177277,147081,224
+22,"Softwares & aplicativos",3,314159265,"lean",24,false,true,23,178466,144804,223
+23,"Mobilidade & delivery",0,123,"lean",24,false,true,22,50690,140481,224
+23,"Mobilidade & delivery",0,714,"lean",24,false,true,21,33675,132198,216
+23,"Mobilidade & delivery",0,2026,"lean",24,false,true,22,50190,140481,224
+23,"Mobilidade & delivery",0,4567,"lean",24,false,true,23,62777,147081,224
+23,"Mobilidade & delivery",0,8123,"lean",24,false,true,23,46166,145002,219
+23,"Mobilidade & delivery",0,14567,"lean",24,false,true,23,54666,145002,219
+23,"Mobilidade & delivery",0,98765,"lean",24,false,true,21,35165,129327,221
+23,"Mobilidade & delivery",0,414141,"lean",24,false,true,16,17085,74415,172
+23,"Mobilidade & delivery",0,123456789,"lean",24,false,true,23,52277,147081,224
+23,"Mobilidade & delivery",0,314159265,"lean",24,false,true,23,53466,144804,223
+23,"Mobilidade & delivery",1,123,"lean",24,false,true,22,30690,140481,224
+23,"Mobilidade & delivery",1,714,"lean",24,false,true,21,13675,132198,216
+23,"Mobilidade & delivery",1,2026,"lean",24,false,true,22,30190,140481,224
+23,"Mobilidade & delivery",1,4567,"lean",24,false,true,23,42777,147081,224
+23,"Mobilidade & delivery",1,8123,"lean",24,false,true,23,26166,145002,219
+23,"Mobilidade & delivery",1,14567,"lean",24,false,true,23,34666,145002,219
+23,"Mobilidade & delivery",1,98765,"lean",24,false,true,21,15165,129327,221
+23,"Mobilidade & delivery",1,414141,"lean",24,false,true,16,2085,74415,172
+23,"Mobilidade & delivery",1,123456789,"lean",24,false,true,23,32277,147081,224
+23,"Mobilidade & delivery",1,314159265,"lean",24,false,true,23,33466,144804,223
+23,"Mobilidade & delivery",2,123,"lean",24,false,true,15,57690,140481,224
+23,"Mobilidade & delivery",2,714,"lean",24,false,true,14,40675,132198,216
+23,"Mobilidade & delivery",2,2026,"lean",24,false,true,15,57190,140481,224
+23,"Mobilidade & delivery",2,4567,"lean",24,false,true,16,69777,147081,224
+23,"Mobilidade & delivery",2,8123,"lean",24,false,true,16,53166,145002,219
+23,"Mobilidade & delivery",2,14567,"lean",24,false,true,16,61666,145002,219
+23,"Mobilidade & delivery",2,98765,"lean",24,false,true,13,42165,129327,221
+23,"Mobilidade & delivery",2,414141,"lean",24,false,true,0,24085,74415,172
+23,"Mobilidade & delivery",2,123456789,"lean",24,false,true,16,59277,147081,224
+23,"Mobilidade & delivery",2,314159265,"lean",24,false,true,14,60466,144804,223
+23,"Mobilidade & delivery",3,123,"lean",24,false,true,22,175690,140481,224
+23,"Mobilidade & delivery",3,714,"lean",24,false,true,21,158675,132198,216
+23,"Mobilidade & delivery",3,2026,"lean",24,false,true,22,175190,140481,224
+23,"Mobilidade & delivery",3,4567,"lean",24,false,true,23,187777,147081,224
+23,"Mobilidade & delivery",3,8123,"lean",24,false,true,23,171166,145002,219
+23,"Mobilidade & delivery",3,14567,"lean",24,false,true,23,179666,145002,219
+23,"Mobilidade & delivery",3,98765,"lean",24,false,true,21,160165,129327,221
+23,"Mobilidade & delivery",3,414141,"lean",24,false,true,16,142085,74415,172
+23,"Mobilidade & delivery",3,123456789,"lean",24,false,true,23,177277,147081,224
+23,"Mobilidade & delivery",3,314159265,"lean",24,false,true,23,178466,144804,223
+12,"Gadgets & tecnologia",0,123,"oneoff",24,false,true,23,18775,69687,0
+12,"Gadgets & tecnologia",0,714,"oneoff",24,false,true,18,913,48060,0
+12,"Gadgets & tecnologia",0,2026,"oneoff",24,false,true,23,18275,69687,0
+12,"Gadgets & tecnologia",0,4567,"oneoff",24,false,true,24,29083,72446,0
+12,"Gadgets & tecnologia",0,8123,"oneoff",24,false,true,24,12693,71378,0
+12,"Gadgets & tecnologia",0,14567,"oneoff",24,false,true,24,21193,71378,0
+12,"Gadgets & tecnologia",0,98765,"oneoff",24,false,true,22,3844,58384,0
+12,"Gadgets & tecnologia",0,414141,"oneoff",24,true,true,9,-1057,22873,0
+12,"Gadgets & tecnologia",0,123456789,"oneoff",24,false,true,24,18583,72446,0
+12,"Gadgets & tecnologia",0,314159265,"oneoff",24,false,true,24,20211,71467,0
+12,"Gadgets & tecnologia",1,123,"oneoff",24,false,true,23,1275,69687,0
+12,"Gadgets & tecnologia",1,714,"oneoff",24,true,true,22,-95,62656,0
+12,"Gadgets & tecnologia",1,2026,"oneoff",24,false,true,23,775,69687,0
+12,"Gadgets & tecnologia",1,4567,"oneoff",24,false,true,24,9083,72446,0
+12,"Gadgets & tecnologia",1,8123,"oneoff",24,false,true,24,193,71378,0
+12,"Gadgets & tecnologia",1,14567,"oneoff",24,false,true,24,1193,71378,0
+12,"Gadgets & tecnologia",1,98765,"oneoff",22,true,true,18,-557,48060,0
+12,"Gadgets & tecnologia",1,414141,"oneoff",21,true,true,9,-1512,22873,0
+12,"Gadgets & tecnologia",1,123456789,"oneoff",24,false,true,24,1083,72446,0
+12,"Gadgets & tecnologia",1,314159265,"oneoff",24,false,true,24,211,71467,0
+12,"Gadgets & tecnologia",2,123,"oneoff",24,false,true,0,25775,69687,0
+12,"Gadgets & tecnologia",2,714,"oneoff",24,false,true,0,10576,65860,0
+12,"Gadgets & tecnologia",2,2026,"oneoff",24,false,true,0,25275,69687,0
+12,"Gadgets & tecnologia",2,4567,"oneoff",24,false,true,0,36083,72446,0
+12,"Gadgets & tecnologia",2,8123,"oneoff",24,false,true,0,19693,71378,0
+12,"Gadgets & tecnologia",2,14567,"oneoff",24,false,true,0,28193,71378,0
+12,"Gadgets & tecnologia",2,98765,"oneoff",24,false,true,0,12686,64792,0
+12,"Gadgets & tecnologia",2,414141,"oneoff",24,false,true,0,5083,38448,0
+12,"Gadgets & tecnologia",2,123456789,"oneoff",24,false,true,0,25583,72446,0
+12,"Gadgets & tecnologia",2,314159265,"oneoff",24,false,true,0,27211,71467,0
+12,"Gadgets & tecnologia",3,123,"oneoff",24,false,true,23,143775,69687,0
+12,"Gadgets & tecnologia",3,714,"oneoff",24,false,true,22,128576,65860,0
+12,"Gadgets & tecnologia",3,2026,"oneoff",24,false,true,23,143275,69687,0
+12,"Gadgets & tecnologia",3,4567,"oneoff",24,false,true,24,154083,72446,0
+12,"Gadgets & tecnologia",3,8123,"oneoff",24,false,true,24,137693,71378,0
+12,"Gadgets & tecnologia",3,14567,"oneoff",24,false,true,24,146193,71378,0
+12,"Gadgets & tecnologia",3,98765,"oneoff",24,false,true,22,130686,64792,0
+12,"Gadgets & tecnologia",3,414141,"oneoff",24,false,true,14,123083,38448,0
+12,"Gadgets & tecnologia",3,123456789,"oneoff",24,false,true,24,143583,72446,0
+12,"Gadgets & tecnologia",3,314159265,"oneoff",24,false,true,24,145211,71467,0
+13,"Moda & vestuário",0,123,"oneoff",24,false,true,23,26025,85262,0
+13,"Moda & vestuário",0,714,"oneoff",24,false,true,22,10431,80545,0
+13,"Moda & vestuário",0,2026,"oneoff",24,false,true,23,25525,85262,0
+13,"Moda & vestuário",0,4567,"oneoff",24,false,true,24,36629,88644,0
+13,"Moda & vestuário",0,8123,"oneoff",24,false,true,24,20138,87309,0
+13,"Moda & vestuário",0,14567,"oneoff",24,false,true,24,28638,87309,0
+13,"Moda & vestuário",0,98765,"oneoff",24,false,true,22,12440,79210,0
+13,"Moda & vestuário",0,414141,"oneoff",24,false,true,9,1411,27946,0
+13,"Moda & vestuário",0,123456789,"oneoff",24,false,true,24,26129,88644,0
+13,"Moda & vestuário",0,314159265,"oneoff",24,false,true,24,27694,87487,0
+13,"Moda & vestuário",1,123,"oneoff",24,false,true,23,6025,85262,0
+13,"Moda & vestuário",1,714,"oneoff",24,true,true,22,-1043,76540,0
+13,"Moda & vestuário",1,2026,"oneoff",24,false,true,23,5525,85262,0
+13,"Moda & vestuário",1,4567,"oneoff",24,false,true,24,16629,88644,0
+13,"Moda & vestuário",1,8123,"oneoff",24,false,true,24,138,87309,0
+13,"Moda & vestuário",1,14567,"oneoff",24,false,true,24,8638,87309,0
+13,"Moda & vestuário",1,98765,"oneoff",24,false,true,22,975,73870,0
+13,"Moda & vestuário",1,414141,"oneoff",21,true,true,9,-1544,27946,0
+13,"Moda & vestuário",1,123456789,"oneoff",24,false,true,24,6129,88644,0
+13,"Moda & vestuário",1,314159265,"oneoff",24,false,true,24,7694,87487,0
+13,"Moda & vestuário",2,123,"oneoff",24,false,true,0,33025,85262,0
+13,"Moda & vestuário",2,714,"oneoff",24,false,true,0,17431,80545,0
+13,"Moda & vestuário",2,2026,"oneoff",24,false,true,0,32525,85262,0
+13,"Moda & vestuário",2,4567,"oneoff",24,false,true,0,43629,88644,0
+13,"Moda & vestuário",2,8123,"oneoff",24,false,true,0,27138,87309,0
+13,"Moda & vestuário",2,14567,"oneoff",24,false,true,0,35638,87309,0
+13,"Moda & vestuário",2,98765,"oneoff",24,false,true,0,19440,79210,0
+13,"Moda & vestuário",2,414141,"oneoff",24,false,true,0,9183,47081,0
+13,"Moda & vestuário",2,123456789,"oneoff",24,false,true,0,33129,88644,0
+13,"Moda & vestuário",2,314159265,"oneoff",24,false,true,0,34694,87487,0
+13,"Moda & vestuário",3,123,"oneoff",24,false,true,23,151025,85262,0
+13,"Moda & vestuário",3,714,"oneoff",24,false,true,22,135431,80545,0
+13,"Moda & vestuário",3,2026,"oneoff",24,false,true,23,150525,85262,0
+13,"Moda & vestuário",3,4567,"oneoff",24,false,true,24,161629,88644,0
+13,"Moda & vestuário",3,8123,"oneoff",24,false,true,24,145138,87309,0
+13,"Moda & vestuário",3,14567,"oneoff",24,false,true,24,153638,87309,0
+13,"Moda & vestuário",3,98765,"oneoff",24,false,true,22,137440,79210,0
+13,"Moda & vestuário",3,414141,"oneoff",24,false,true,14,127183,47081,0
+13,"Moda & vestuário",3,123456789,"oneoff",24,false,true,24,151129,88644,0
+13,"Moda & vestuário",3,314159265,"oneoff",24,false,true,24,152694,87487,0
+14,"Consumíveis",0,123,"oneoff",24,false,true,23,27891,89267,0
+14,"Consumíveis",0,714,"oneoff",24,false,true,22,12220,84372,0
+14,"Consumíveis",0,2026,"oneoff",24,false,true,23,27391,89267,0
+14,"Consumíveis",0,4567,"oneoff",24,false,true,24,38536,92738,0
+14,"Consumíveis",0,8123,"oneoff",24,false,true,24,22054,91403,0
+14,"Consumíveis",0,14567,"oneoff",24,false,true,24,30554,91403,0
+14,"Consumíveis",0,98765,"oneoff",24,false,true,22,14238,83037,0
+14,"Consumíveis",0,414141,"oneoff",24,false,true,9,2019,29192,0
+14,"Consumíveis",0,123456789,"oneoff",24,false,true,24,28036,92738,0
+14,"Consumíveis",0,314159265,"oneoff",24,false,true,24,29563,91492,0
+14,"Consumíveis",1,123,"oneoff",24,false,true,23,7891,89267,0
+14,"Consumíveis",1,714,"oneoff",24,false,true,22,773,80367,0
+14,"Consumíveis",1,2026,"oneoff",24,false,true,23,7391,89267,0
+14,"Consumíveis",1,4567,"oneoff",24,false,true,24,18536,92738,0
+14,"Consumíveis",1,8123,"oneoff",24,false,true,24,2054,91403,0
+14,"Consumíveis",1,14567,"oneoff",24,false,true,24,10554,91403,0
+14,"Consumíveis",1,98765,"oneoff",24,false,true,22,308,77697,0
+14,"Consumíveis",1,414141,"oneoff",21,true,true,9,-936,29192,0
+14,"Consumíveis",1,123456789,"oneoff",24,false,true,24,8036,92738,0
+14,"Consumíveis",1,314159265,"oneoff",24,false,true,24,9563,91492,0
+14,"Consumíveis",2,123,"oneoff",24,false,true,0,34891,89267,0
+14,"Consumíveis",2,714,"oneoff",24,false,true,0,19220,84372,0
+14,"Consumíveis",2,2026,"oneoff",24,false,true,0,34391,89267,0
+14,"Consumíveis",2,4567,"oneoff",24,false,true,0,45536,92738,0
+14,"Consumíveis",2,8123,"oneoff",24,false,true,0,29054,91403,0
+14,"Consumíveis",2,14567,"oneoff",24,false,true,0,37554,91403,0
+14,"Consumíveis",2,98765,"oneoff",24,false,true,0,21238,83037,0
+14,"Consumíveis",2,414141,"oneoff",24,false,true,0,10199,49217,0
+14,"Consumíveis",2,123456789,"oneoff",24,false,true,0,35036,92738,0
+14,"Consumíveis",2,314159265,"oneoff",24,false,true,0,36563,91492,0
+14,"Consumíveis",3,123,"oneoff",24,false,true,23,152891,89267,0
+14,"Consumíveis",3,714,"oneoff",24,false,true,22,137220,84372,0
+14,"Consumíveis",3,2026,"oneoff",24,false,true,23,152391,89267,0
+14,"Consumíveis",3,4567,"oneoff",24,false,true,24,163536,92738,0
+14,"Consumíveis",3,8123,"oneoff",24,false,true,24,147054,91403,0
+14,"Consumíveis",3,14567,"oneoff",24,false,true,24,155554,91403,0
+14,"Consumíveis",3,98765,"oneoff",24,false,true,22,139238,83037,0
+14,"Consumíveis",3,414141,"oneoff",24,false,true,14,128199,49217,0
+14,"Consumíveis",3,123456789,"oneoff",24,false,true,24,153036,92738,0
+14,"Consumíveis",3,314159265,"oneoff",24,false,true,24,154563,91492,0
+15,"Beleza & cosméticos",0,123,"oneoff",24,false,true,23,24202,81346,0
+15,"Beleza & cosméticos",0,714,"oneoff",24,false,true,22,8728,76896,0
+15,"Beleza & cosméticos",0,2026,"oneoff",24,false,true,23,23702,81346,0
+15,"Beleza & cosméticos",0,4567,"oneoff",24,false,true,24,34721,84550,0
+15,"Beleza & cosméticos",0,8123,"oneoff",24,false,true,24,18267,83304,0
+15,"Beleza & cosméticos",0,14567,"oneoff",24,false,true,24,26767,83304,0
+15,"Beleza & cosméticos",0,98765,"oneoff",24,false,true,22,10774,75650,0
+15,"Beleza & cosméticos",0,414141,"oneoff",24,false,true,9,715,26522,0
+15,"Beleza & cosméticos",0,123456789,"oneoff",24,false,true,24,24221,84550,0
+15,"Beleza & cosméticos",0,314159265,"oneoff",24,false,true,24,25778,83393,0
+15,"Beleza & cosméticos",1,123,"oneoff",24,false,true,23,4202,81346,0
+15,"Beleza & cosméticos",1,714,"oneoff",24,true,true,22,-135,73158,0
+15,"Beleza & cosméticos",1,2026,"oneoff",24,false,true,23,3702,81346,0
+15,"Beleza & cosméticos",1,4567,"oneoff",24,false,true,24,14721,84550,0
+15,"Beleza & cosméticos",1,8123,"oneoff",24,false,true,24,767,83304,0
+15,"Beleza & cosméticos",1,14567,"oneoff",24,false,true,24,6767,83304,0
+15,"Beleza & cosméticos",1,98765,"oneoff",24,true,true,22,-545,70666,0
+15,"Beleza & cosméticos",1,414141,"oneoff",21,true,true,9,-2240,26522,0
+15,"Beleza & cosméticos",1,123456789,"oneoff",24,false,true,24,4221,84550,0
+15,"Beleza & cosméticos",1,314159265,"oneoff",24,false,true,24,5778,83393,0
+15,"Beleza & cosméticos",2,123,"oneoff",24,false,true,0,31202,81346,0
+15,"Beleza & cosméticos",2,714,"oneoff",24,false,true,0,15728,76896,0
+15,"Beleza & cosméticos",2,2026,"oneoff",24,false,true,0,30702,81346,0
+15,"Beleza & cosméticos",2,4567,"oneoff",24,false,true,0,41721,84550,0
+15,"Beleza & cosméticos",2,8123,"oneoff",24,false,true,0,25267,83304,0
+15,"Beleza & cosméticos",2,14567,"oneoff",24,false,true,0,33767,83304,0
+15,"Beleza & cosméticos",2,98765,"oneoff",24,false,true,0,17774,75650,0
+15,"Beleza & cosméticos",2,414141,"oneoff",24,false,true,0,8079,44767,0
+15,"Beleza & cosméticos",2,123456789,"oneoff",24,false,true,0,31221,84550,0
+15,"Beleza & cosméticos",2,314159265,"oneoff",24,false,true,0,32778,83393,0
+15,"Beleza & cosméticos",3,123,"oneoff",24,false,true,23,149202,81346,0
+15,"Beleza & cosméticos",3,714,"oneoff",24,false,true,22,133728,76896,0
+15,"Beleza & cosméticos",3,2026,"oneoff",24,false,true,23,148702,81346,0
+15,"Beleza & cosméticos",3,4567,"oneoff",24,false,true,24,159721,84550,0
+15,"Beleza & cosméticos",3,8123,"oneoff",24,false,true,24,143267,83304,0
+15,"Beleza & cosméticos",3,14567,"oneoff",24,false,true,24,151767,83304,0
+15,"Beleza & cosméticos",3,98765,"oneoff",24,false,true,22,135774,75650,0
+15,"Beleza & cosméticos",3,414141,"oneoff",24,false,true,14,126079,44767,0
+15,"Beleza & cosméticos",3,123456789,"oneoff",24,false,true,24,149221,84550,0
+15,"Beleza & cosméticos",3,314159265,"oneoff",24,false,true,24,150778,83393,0
+16,"Pet",0,123,"oneoff",24,false,true,23,23459,79744,0
+16,"Pet",0,714,"oneoff",24,false,true,22,7936,75205,0
+16,"Pet",0,2026,"oneoff",24,false,true,23,22959,79744,0
+16,"Pet",0,4567,"oneoff",24,false,true,24,33978,82948,0
+16,"Pet",0,8123,"oneoff",24,false,true,24,17474,81613,0
+16,"Pet",0,14567,"oneoff",24,false,true,24,25974,81613,0
+16,"Pet",0,98765,"oneoff",24,false,true,22,9932,73870,0
+16,"Pet",0,414141,"oneoff",24,false,true,9,403,25899,0
+16,"Pet",0,123456789,"oneoff",24,false,true,24,23478,82948,0
+16,"Pet",0,314159265,"oneoff",24,false,true,24,24988,81702,0
+16,"Pet",1,123,"oneoff",24,false,true,23,3459,79744,0
+16,"Pet",1,714,"oneoff",24,true,true,22,-1076,71200,0
+16,"Pet",1,2026,"oneoff",24,false,true,23,2959,79744,0
+16,"Pet",1,4567,"oneoff",24,false,true,24,13978,82948,0
+16,"Pet",1,8123,"oneoff",24,true,true,24,-26,81613,0
+16,"Pet",1,14567,"oneoff",24,false,true,24,5974,81613,0
+16,"Pet",1,98765,"oneoff",24,false,true,22,916,68530,0
+16,"Pet",1,414141,"oneoff",21,true,true,9,-52,25899,0
+16,"Pet",1,123456789,"oneoff",24,false,true,24,3478,82948,0
+16,"Pet",1,314159265,"oneoff",24,false,true,24,4988,81702,0
+16,"Pet",2,123,"oneoff",24,false,true,0,30459,79744,0
+16,"Pet",2,714,"oneoff",24,false,true,0,14936,75205,0
+16,"Pet",2,2026,"oneoff",24,false,true,0,29959,79744,0
+16,"Pet",2,4567,"oneoff",24,false,true,0,40978,82948,0
+16,"Pet",2,8123,"oneoff",24,false,true,0,24474,81613,0
+16,"Pet",2,14567,"oneoff",24,false,true,0,32974,81613,0
+16,"Pet",2,98765,"oneoff",24,false,true,0,16932,73870,0
+16,"Pet",2,414141,"oneoff",24,false,true,0,7563,43699,0
+16,"Pet",2,123456789,"oneoff",24,false,true,0,30478,82948,0
+16,"Pet",2,314159265,"oneoff",24,false,true,0,31988,81702,0
+16,"Pet",3,123,"oneoff",24,false,true,23,148459,79744,0
+16,"Pet",3,714,"oneoff",24,false,true,22,132936,75205,0
+16,"Pet",3,2026,"oneoff",24,false,true,23,147959,79744,0
+16,"Pet",3,4567,"oneoff",24,false,true,24,158978,82948,0
+16,"Pet",3,8123,"oneoff",24,false,true,24,142474,81613,0
+16,"Pet",3,14567,"oneoff",24,false,true,24,150974,81613,0
+16,"Pet",3,98765,"oneoff",24,false,true,22,134932,73870,0
+16,"Pet",3,414141,"oneoff",24,false,true,14,125563,43699,0
+16,"Pet",3,123456789,"oneoff",24,false,true,24,148478,82948,0
+16,"Pet",3,314159265,"oneoff",24,false,true,24,149988,81702,0
+17,"Home & Garden",0,123,"oneoff",24,false,true,23,20598,73603,0
+17,"Home & Garden",0,714,"oneoff",24,false,true,22,6498,66038,0
+17,"Home & Garden",0,2026,"oneoff",24,false,true,23,20098,73603,0
+17,"Home & Garden",0,4567,"oneoff",24,false,true,24,30990,76540,0
+17,"Home & Garden",0,8123,"oneoff",24,false,true,24,14564,75383,0
+17,"Home & Garden",0,14567,"oneoff",24,false,true,24,23064,75383,0
+17,"Home & Garden",0,98765,"oneoff",24,false,true,22,6498,66038,0
+17,"Home & Garden",0,414141,"oneoff",24,true,true,9,-450,24119,0
+17,"Home & Garden",0,123456789,"oneoff",24,false,true,24,20490,76540,0
+17,"Home & Garden",0,314159265,"oneoff",24,false,true,24,22081,75472,0
+17,"Home & Garden",1,123,"oneoff",24,false,true,23,598,73603,0
+17,"Home & Garden",1,714,"oneoff",24,true,true,22,-1002,66038,0
+17,"Home & Garden",1,2026,"oneoff",24,false,true,23,98,73603,0
+17,"Home & Garden",1,4567,"oneoff",24,false,true,24,10990,76540,0
+17,"Home & Garden",1,8123,"oneoff",24,true,true,24,-436,75383,0
+17,"Home & Garden",1,14567,"oneoff",24,false,true,24,3064,75383,0
+17,"Home & Garden",1,98765,"oneoff",23,true,true,18,-379,50552,0
+17,"Home & Garden",1,414141,"oneoff",21,true,true,9,-905,24119,0
+17,"Home & Garden",1,123456789,"oneoff",24,false,true,24,490,76540,0
+17,"Home & Garden",1,314159265,"oneoff",24,false,true,24,2081,75472,0
+17,"Home & Garden",2,123,"oneoff",24,false,true,0,27598,73603,0
+17,"Home & Garden",2,714,"oneoff",24,false,true,0,12278,69509,0
+17,"Home & Garden",2,2026,"oneoff",24,false,true,0,27098,73603,0
+17,"Home & Garden",2,4567,"oneoff",24,false,true,0,37990,76540,0
+17,"Home & Garden",2,8123,"oneoff",24,false,true,0,21564,75383,0
+17,"Home & Garden",2,14567,"oneoff",24,false,true,0,30064,75383,0
+17,"Home & Garden",2,98765,"oneoff",24,false,true,0,14352,68352,0
+17,"Home & Garden",2,414141,"oneoff",24,false,true,0,6098,40584,0
+17,"Home & Garden",2,123456789,"oneoff",24,false,true,0,27490,76540,0
+17,"Home & Garden",2,314159265,"oneoff",24,false,true,0,29081,75472,0
+17,"Home & Garden",3,123,"oneoff",24,false,true,23,145598,73603,0
+17,"Home & Garden",3,714,"oneoff",24,false,true,22,130278,69509,0
+17,"Home & Garden",3,2026,"oneoff",24,false,true,23,145098,73603,0
+17,"Home & Garden",3,4567,"oneoff",24,false,true,24,155990,76540,0
+17,"Home & Garden",3,8123,"oneoff",24,false,true,24,139564,75383,0
+17,"Home & Garden",3,14567,"oneoff",24,false,true,24,148064,75383,0
+17,"Home & Garden",3,98765,"oneoff",24,false,true,22,132352,68352,0
+17,"Home & Garden",3,414141,"oneoff",24,false,true,14,124098,40584,0
+17,"Home & Garden",3,123456789,"oneoff",24,false,true,24,145490,76540,0
+17,"Home & Garden",3,314159265,"oneoff",24,false,true,24,147081,75472,0
+18,"Fintechs",0,123,"oneoff",24,false,true,23,33537,73400,0
+18,"Fintechs",0,714,"oneoff",24,false,true,22,17657,69600,0
+18,"Fintechs",0,2026,"oneoff",24,false,true,23,33037,73400,0
+18,"Fintechs",0,4567,"oneoff",24,false,true,24,44386,76250,0
+18,"Fintechs",0,8123,"oneoff",24,false,true,24,27857,75300,0
+18,"Fintechs",0,14567,"oneoff",24,false,true,24,36357,75300,0
+18,"Fintechs",0,98765,"oneoff",24,false,true,22,19627,68650,0
+18,"Fintechs",0,414141,"oneoff",24,false,true,9,4267,24950,0
+18,"Fintechs",0,123456789,"oneoff",24,false,true,24,33886,76250,0
+18,"Fintechs",0,314159265,"oneoff",24,false,true,24,35370,75350,0
+18,"Fintechs",1,123,"oneoff",24,false,true,23,13537,73400,0
+18,"Fintechs",1,714,"oneoff",24,false,true,22,1068,66750,0
+18,"Fintechs",1,2026,"oneoff",24,false,true,23,13037,73400,0
+18,"Fintechs",1,4567,"oneoff",24,false,true,24,24386,76250,0
+18,"Fintechs",1,8123,"oneoff",24,false,true,24,7857,75300,0
+18,"Fintechs",1,14567,"oneoff",24,false,true,24,16357,75300,0
+18,"Fintechs",1,98765,"oneoff",24,false,true,22,2127,68650,0
+18,"Fintechs",1,414141,"oneoff",23,true,true,9,-718,24950,0
+18,"Fintechs",1,123456789,"oneoff",24,false,true,24,13886,76250,0
+18,"Fintechs",1,314159265,"oneoff",24,false,true,24,15370,75350,0
+18,"Fintechs",2,123,"oneoff",24,false,true,0,40537,73400,0
+18,"Fintechs",2,714,"oneoff",24,false,true,0,24657,69600,0
+18,"Fintechs",2,2026,"oneoff",24,false,true,0,40037,73400,0
+18,"Fintechs",2,4567,"oneoff",24,false,true,0,51386,76250,0
+18,"Fintechs",2,8123,"oneoff",24,false,true,0,34857,75300,0
+18,"Fintechs",2,14567,"oneoff",24,false,true,0,43357,75300,0
+18,"Fintechs",2,98765,"oneoff",24,false,true,0,26627,68650,0
+18,"Fintechs",2,414141,"oneoff",24,false,true,0,13801,41450,0
+18,"Fintechs",2,123456789,"oneoff",24,false,true,0,40886,76250,0
+18,"Fintechs",2,314159265,"oneoff",24,false,true,0,42370,75350,0
+18,"Fintechs",3,123,"oneoff",24,false,true,23,158537,73400,0
+18,"Fintechs",3,714,"oneoff",24,false,true,22,142657,69600,0
+18,"Fintechs",3,2026,"oneoff",24,false,true,23,158037,73400,0
+18,"Fintechs",3,4567,"oneoff",24,false,true,24,169386,76250,0
+18,"Fintechs",3,8123,"oneoff",24,false,true,24,152857,75300,0
+18,"Fintechs",3,14567,"oneoff",24,false,true,24,161357,75300,0
+18,"Fintechs",3,98765,"oneoff",24,false,true,22,144627,68650,0
+18,"Fintechs",3,414141,"oneoff",24,false,true,14,131801,41450,0
+18,"Fintechs",3,123456789,"oneoff",24,false,true,24,158886,76250,0
+18,"Fintechs",3,314159265,"oneoff",24,false,true,24,160370,75350,0
+19,"Healthtechs",0,123,"oneoff",24,false,true,23,36237,77600,0
+19,"Healthtechs",0,714,"oneoff",24,false,true,22,20267,73650,0
+19,"Healthtechs",0,2026,"oneoff",24,false,true,23,35737,77600,0
+19,"Healthtechs",0,4567,"oneoff",24,false,true,24,47152,80550,0
+19,"Healthtechs",0,8123,"oneoff",24,false,true,24,30628,79600,0
+19,"Healthtechs",0,14567,"oneoff",24,false,true,24,39128,79600,0
+19,"Healthtechs",0,98765,"oneoff",24,false,true,22,22244,72700,0
+19,"Healthtechs",0,414141,"oneoff",24,false,true,9,5229,26400,0
+19,"Healthtechs",0,123456789,"oneoff",24,false,true,24,36652,80550,0
+19,"Healthtechs",0,314159265,"oneoff",24,false,true,24,38141,79650,0
+19,"Healthtechs",1,123,"oneoff",24,false,true,23,16237,77600,0
+19,"Healthtechs",1,714,"oneoff",24,false,true,22,1197,70800,0
+19,"Healthtechs",1,2026,"oneoff",24,false,true,23,15737,77600,0
+19,"Healthtechs",1,4567,"oneoff",24,false,true,24,27152,80550,0
+19,"Healthtechs",1,8123,"oneoff",24,false,true,24,10628,79600,0
+19,"Healthtechs",1,14567,"oneoff",24,false,true,24,19128,79600,0
+19,"Healthtechs",1,98765,"oneoff",24,false,true,22,2243,72700,0
+19,"Healthtechs",1,414141,"oneoff",24,true,true,9,-2271,26400,0
+19,"Healthtechs",1,123456789,"oneoff",24,false,true,24,16652,80550,0
+19,"Healthtechs",1,314159265,"oneoff",24,false,true,24,18141,79650,0
+19,"Healthtechs",2,123,"oneoff",24,false,true,0,43237,77600,0
+19,"Healthtechs",2,714,"oneoff",24,false,true,0,27267,73650,0
+19,"Healthtechs",2,2026,"oneoff",24,false,true,0,42737,77600,0
+19,"Healthtechs",2,4567,"oneoff",24,false,true,0,54152,80550,0
+19,"Healthtechs",2,8123,"oneoff",24,false,true,0,37628,79600,0
+19,"Healthtechs",2,14567,"oneoff",24,false,true,0,46128,79600,0
+19,"Healthtechs",2,98765,"oneoff",24,false,true,0,29244,72700,0
+19,"Healthtechs",2,414141,"oneoff",24,false,true,0,15401,43900,0
+19,"Healthtechs",2,123456789,"oneoff",24,false,true,0,43652,80550,0
+19,"Healthtechs",2,314159265,"oneoff",24,false,true,0,45141,79650,0
+19,"Healthtechs",3,123,"oneoff",24,false,true,23,161237,77600,0
+19,"Healthtechs",3,714,"oneoff",24,false,true,22,145267,73650,0
+19,"Healthtechs",3,2026,"oneoff",24,false,true,23,160737,77600,0
+19,"Healthtechs",3,4567,"oneoff",24,false,true,24,172152,80550,0
+19,"Healthtechs",3,8123,"oneoff",24,false,true,24,155628,79600,0
+19,"Healthtechs",3,14567,"oneoff",24,false,true,24,164128,79600,0
+19,"Healthtechs",3,98765,"oneoff",24,false,true,22,147243,72700,0
+19,"Healthtechs",3,414141,"oneoff",24,false,true,14,133401,43900,0
+19,"Healthtechs",3,123456789,"oneoff",24,false,true,24,161652,80550,0
+19,"Healthtechs",3,314159265,"oneoff",24,false,true,24,163141,79650,0
+20,"Educação",0,123,"oneoff",24,false,true,23,29097,66500,0
+20,"Educação",0,714,"oneoff",24,false,true,22,13403,63000,0
+20,"Educação",0,2026,"oneoff",24,false,true,23,28597,66500,0
+20,"Educação",0,4567,"oneoff",24,false,true,24,39752,69050,0
+20,"Educação",0,8123,"oneoff",24,false,true,24,23246,68150,0
+20,"Educação",0,14567,"oneoff",24,false,true,24,31746,68150,0
+20,"Educação",0,98765,"oneoff",24,false,true,22,15397,62100,0
+20,"Educação",0,414141,"oneoff",24,false,true,9,2721,22600,0
+20,"Educação",0,123456789,"oneoff",24,false,true,24,29252,69050,0
+20,"Educação",0,314159265,"oneoff",24,false,true,24,30794,68250,0
+20,"Educação",1,123,"oneoff",24,false,true,23,9097,66500,0
+20,"Educação",1,714,"oneoff",24,true,true,22,-615,60300,0
+20,"Educação",1,2026,"oneoff",24,false,true,23,8597,66500,0
+20,"Educação",1,4567,"oneoff",24,false,true,24,19752,69050,0
+20,"Educação",1,8123,"oneoff",24,false,true,24,3246,68150,0
+20,"Educação",1,14567,"oneoff",24,false,true,24,11746,68150,0
+20,"Educação",1,98765,"oneoff",24,false,true,22,1373,58500,0
+20,"Educação",1,414141,"oneoff",21,true,true,9,-234,22600,0
+20,"Educação",1,123456789,"oneoff",24,false,true,24,9252,69050,0
+20,"Educação",1,314159265,"oneoff",24,false,true,24,10794,68250,0
+20,"Educação",2,123,"oneoff",24,false,true,0,36097,66500,0
+20,"Educação",2,714,"oneoff",24,false,true,0,20403,63000,0
+20,"Educação",2,2026,"oneoff",24,false,true,0,35597,66500,0
+20,"Educação",2,4567,"oneoff",24,false,true,0,46752,69050,0
+20,"Educação",2,8123,"oneoff",24,false,true,0,30246,68150,0
+20,"Educação",2,14567,"oneoff",24,false,true,0,38746,68150,0
+20,"Educação",2,98765,"oneoff",24,false,true,0,22397,62100,0
+20,"Educação",2,414141,"oneoff",24,false,true,0,11297,37600,0
+20,"Educação",2,123456789,"oneoff",24,false,true,0,36252,69050,0
+20,"Educação",2,314159265,"oneoff",24,false,true,0,37794,68250,0
+20,"Educação",3,123,"oneoff",24,false,true,23,154097,66500,0
+20,"Educação",3,714,"oneoff",24,false,true,22,138403,63000,0
+20,"Educação",3,2026,"oneoff",24,false,true,23,153597,66500,0
+20,"Educação",3,4567,"oneoff",24,false,true,24,164752,69050,0
+20,"Educação",3,8123,"oneoff",24,false,true,24,148246,68150,0
+20,"Educação",3,14567,"oneoff",24,false,true,24,156746,68150,0
+20,"Educação",3,98765,"oneoff",24,false,true,22,140397,62100,0
+20,"Educação",3,414141,"oneoff",24,false,true,14,129297,37600,0
+20,"Educação",3,123456789,"oneoff",24,false,true,24,154252,69050,0
+20,"Educação",3,314159265,"oneoff",24,false,true,24,155794,68250,0
+21,"Redes sociais & conteúdo",0,123,"oneoff",24,false,true,23,38555,81200,0
+21,"Redes sociais & conteúdo",0,714,"oneoff",24,false,true,22,22392,76950,0
+21,"Redes sociais & conteúdo",0,2026,"oneoff",24,false,true,23,38055,81200,0
+21,"Redes sociais & conteúdo",0,4567,"oneoff",24,false,true,24,49599,84350,0
+21,"Redes sociais & conteúdo",0,8123,"oneoff",24,false,true,24,33013,83300,0
+21,"Redes sociais & conteúdo",0,14567,"oneoff",24,false,true,24,41513,83300,0
+21,"Redes sociais & conteúdo",0,98765,"oneoff",24,false,true,22,24307,75900,0
+21,"Redes sociais & conteúdo",0,414141,"oneoff",24,false,true,14,9666,45850,0
+21,"Redes sociais & conteúdo",0,123456789,"oneoff",24,false,true,24,39099,84350,0
+21,"Redes sociais & conteúdo",0,314159265,"oneoff",24,false,true,24,40525,83350,0
+21,"Redes sociais & conteúdo",1,123,"oneoff",24,false,true,23,18555,81200,0
+21,"Redes sociais & conteúdo",1,714,"oneoff",24,false,true,22,3135,73800,0
+21,"Redes sociais & conteúdo",1,2026,"oneoff",24,false,true,23,18055,81200,0
+21,"Redes sociais & conteúdo",1,4567,"oneoff",24,false,true,24,29599,84350,0
+21,"Redes sociais & conteúdo",1,8123,"oneoff",24,false,true,24,13013,83300,0
+21,"Redes sociais & conteúdo",1,14567,"oneoff",24,false,true,24,21513,83300,0
+21,"Redes sociais & conteúdo",1,98765,"oneoff",24,false,true,22,4307,75900,0
+21,"Redes sociais & conteúdo",1,414141,"oneoff",22,true,true,9,-455,27600,0
+21,"Redes sociais & conteúdo",1,123456789,"oneoff",24,false,true,24,19099,84350,0
+21,"Redes sociais & conteúdo",1,314159265,"oneoff",24,false,true,24,20525,83350,0
+21,"Redes sociais & conteúdo",2,123,"oneoff",24,false,true,0,45555,81200,0
+21,"Redes sociais & conteúdo",2,714,"oneoff",24,false,true,0,29392,76950,0
+21,"Redes sociais & conteúdo",2,2026,"oneoff",24,false,true,0,45055,81200,0
+21,"Redes sociais & conteúdo",2,4567,"oneoff",24,false,true,0,56599,84350,0
+21,"Redes sociais & conteúdo",2,8123,"oneoff",24,false,true,0,40013,83300,0
+21,"Redes sociais & conteúdo",2,14567,"oneoff",24,false,true,0,48513,83300,0
+21,"Redes sociais & conteúdo",2,98765,"oneoff",24,false,true,0,31307,75900,0
+21,"Redes sociais & conteúdo",2,414141,"oneoff",24,false,true,0,16666,45850,0
+21,"Redes sociais & conteúdo",2,123456789,"oneoff",24,false,true,0,46099,84350,0
+21,"Redes sociais & conteúdo",2,314159265,"oneoff",24,false,true,0,47525,83350,0
+21,"Redes sociais & conteúdo",3,123,"oneoff",24,false,true,23,163555,81200,0
+21,"Redes sociais & conteúdo",3,714,"oneoff",24,false,true,22,147392,76950,0
+21,"Redes sociais & conteúdo",3,2026,"oneoff",24,false,true,23,163055,81200,0
+21,"Redes sociais & conteúdo",3,4567,"oneoff",24,false,true,24,174599,84350,0
+21,"Redes sociais & conteúdo",3,8123,"oneoff",24,false,true,24,158013,83300,0
+21,"Redes sociais & conteúdo",3,14567,"oneoff",24,false,true,24,166513,83300,0
+21,"Redes sociais & conteúdo",3,98765,"oneoff",24,false,true,22,149307,75900,0
+21,"Redes sociais & conteúdo",3,414141,"oneoff",24,false,true,14,134666,45850,0
+21,"Redes sociais & conteúdo",3,123456789,"oneoff",24,false,true,24,164099,84350,0
+21,"Redes sociais & conteúdo",3,314159265,"oneoff",24,false,true,24,165525,83350,0
+22,"Softwares & aplicativos",0,123,"oneoff",24,false,true,23,34115,74300,0
+22,"Softwares & aplicativos",0,714,"oneoff",24,false,true,22,18204,70450,0
+22,"Softwares & aplicativos",0,2026,"oneoff",24,false,true,23,33615,74300,0
+22,"Softwares & aplicativos",0,4567,"oneoff",24,false,true,24,44964,77150,0
+22,"Softwares & aplicativos",0,8123,"oneoff",24,false,true,24,28436,76200,0
+22,"Softwares & aplicativos",0,14567,"oneoff",24,false,true,24,36936,76200,0
+22,"Softwares & aplicativos",0,98765,"oneoff",24,false,true,22,20176,69500,0
+22,"Softwares & aplicativos",0,414141,"oneoff",24,false,true,9,4500,25300,0
+22,"Softwares & aplicativos",0,123456789,"oneoff",24,false,true,24,34464,77150,0
+22,"Softwares & aplicativos",0,314159265,"oneoff",24,false,true,24,35983,76300,0
+22,"Softwares & aplicativos",1,123,"oneoff",24,false,true,23,14115,74300,0
+22,"Softwares & aplicativos",1,714,"oneoff",24,false,true,22,1620,67600,0
+22,"Softwares & aplicativos",1,2026,"oneoff",24,false,true,23,13615,74300,0
+22,"Softwares & aplicativos",1,4567,"oneoff",24,false,true,24,24964,77150,0
+22,"Softwares & aplicativos",1,8123,"oneoff",24,false,true,24,8436,76200,0
+22,"Softwares & aplicativos",1,14567,"oneoff",24,false,true,24,16936,76200,0
+22,"Softwares & aplicativos",1,98765,"oneoff",24,false,true,22,2676,69500,0
+22,"Softwares & aplicativos",1,414141,"oneoff",23,true,true,9,-485,25300,0
+22,"Softwares & aplicativos",1,123456789,"oneoff",24,false,true,24,14464,77150,0
+22,"Softwares & aplicativos",1,314159265,"oneoff",24,false,true,24,15983,76300,0
+22,"Softwares & aplicativos",2,123,"oneoff",24,false,true,0,41115,74300,0
+22,"Softwares & aplicativos",2,714,"oneoff",24,false,true,0,25204,70450,0
+22,"Softwares & aplicativos",2,2026,"oneoff",24,false,true,0,40615,74300,0
+22,"Softwares & aplicativos",2,4567,"oneoff",24,false,true,0,51964,77150,0
+22,"Softwares & aplicativos",2,8123,"oneoff",24,false,true,0,35436,76200,0
+22,"Softwares & aplicativos",2,14567,"oneoff",24,false,true,0,43936,76200,0
+22,"Softwares & aplicativos",2,98765,"oneoff",24,false,true,0,27176,69500,0
+22,"Softwares & aplicativos",2,414141,"oneoff",24,false,true,0,14194,42050,0
+22,"Softwares & aplicativos",2,123456789,"oneoff",24,false,true,0,41464,77150,0
+22,"Softwares & aplicativos",2,314159265,"oneoff",24,false,true,0,42983,76300,0
+22,"Softwares & aplicativos",3,123,"oneoff",24,false,true,23,159115,74300,0
+22,"Softwares & aplicativos",3,714,"oneoff",24,false,true,22,143204,70450,0
+22,"Softwares & aplicativos",3,2026,"oneoff",24,false,true,23,158615,74300,0
+22,"Softwares & aplicativos",3,4567,"oneoff",24,false,true,24,169964,77150,0
+22,"Softwares & aplicativos",3,8123,"oneoff",24,false,true,24,153436,76200,0
+22,"Softwares & aplicativos",3,14567,"oneoff",24,false,true,24,161936,76200,0
+22,"Softwares & aplicativos",3,98765,"oneoff",24,false,true,22,145176,69500,0
+22,"Softwares & aplicativos",3,414141,"oneoff",24,false,true,14,132194,42050,0
+22,"Softwares & aplicativos",3,123456789,"oneoff",24,false,true,24,159464,77150,0
+22,"Softwares & aplicativos",3,314159265,"oneoff",24,false,true,24,160983,76300,0
+23,"Mobilidade & delivery",0,123,"oneoff",24,false,true,23,34115,74300,0
+23,"Mobilidade & delivery",0,714,"oneoff",24,false,true,22,18204,70450,0
+23,"Mobilidade & delivery",0,2026,"oneoff",24,false,true,23,33615,74300,0
+23,"Mobilidade & delivery",0,4567,"oneoff",24,false,true,24,44964,77150,0
+23,"Mobilidade & delivery",0,8123,"oneoff",24,false,true,24,28436,76200,0
+23,"Mobilidade & delivery",0,14567,"oneoff",24,false,true,24,36936,76200,0
+23,"Mobilidade & delivery",0,98765,"oneoff",24,false,true,22,20176,69500,0
+23,"Mobilidade & delivery",0,414141,"oneoff",24,false,true,9,4500,25300,0
+23,"Mobilidade & delivery",0,123456789,"oneoff",24,false,true,24,34464,77150,0
+23,"Mobilidade & delivery",0,314159265,"oneoff",24,false,true,24,35983,76300,0
+23,"Mobilidade & delivery",1,123,"oneoff",24,false,true,23,14115,74300,0
+23,"Mobilidade & delivery",1,714,"oneoff",24,false,true,22,1620,67600,0
+23,"Mobilidade & delivery",1,2026,"oneoff",24,false,true,23,13615,74300,0
+23,"Mobilidade & delivery",1,4567,"oneoff",24,false,true,24,24964,77150,0
+23,"Mobilidade & delivery",1,8123,"oneoff",24,false,true,24,8436,76200,0
+23,"Mobilidade & delivery",1,14567,"oneoff",24,false,true,24,16936,76200,0
+23,"Mobilidade & delivery",1,98765,"oneoff",24,false,true,22,2676,69500,0
+23,"Mobilidade & delivery",1,414141,"oneoff",23,true,true,9,-485,25300,0
+23,"Mobilidade & delivery",1,123456789,"oneoff",24,false,true,24,14464,77150,0
+23,"Mobilidade & delivery",1,314159265,"oneoff",24,false,true,24,15983,76300,0
+23,"Mobilidade & delivery",2,123,"oneoff",24,false,true,0,41115,74300,0
+23,"Mobilidade & delivery",2,714,"oneoff",24,false,true,0,25204,70450,0
+23,"Mobilidade & delivery",2,2026,"oneoff",24,false,true,0,40615,74300,0
+23,"Mobilidade & delivery",2,4567,"oneoff",24,false,true,0,51964,77150,0
+23,"Mobilidade & delivery",2,8123,"oneoff",24,false,true,0,35436,76200,0
+23,"Mobilidade & delivery",2,14567,"oneoff",24,false,true,0,43936,76200,0
+23,"Mobilidade & delivery",2,98765,"oneoff",24,false,true,0,27176,69500,0
+23,"Mobilidade & delivery",2,414141,"oneoff",24,false,true,0,14194,42050,0
+23,"Mobilidade & delivery",2,123456789,"oneoff",24,false,true,0,41464,77150,0
+23,"Mobilidade & delivery",2,314159265,"oneoff",24,false,true,0,42983,76300,0
+23,"Mobilidade & delivery",3,123,"oneoff",24,false,true,23,159115,74300,0
+23,"Mobilidade & delivery",3,714,"oneoff",24,false,true,22,143204,70450,0
+23,"Mobilidade & delivery",3,2026,"oneoff",24,false,true,23,158615,74300,0
+23,"Mobilidade & delivery",3,4567,"oneoff",24,false,true,24,169964,77150,0
+23,"Mobilidade & delivery",3,8123,"oneoff",24,false,true,24,153436,76200,0
+23,"Mobilidade & delivery",3,14567,"oneoff",24,false,true,24,161936,76200,0
+23,"Mobilidade & delivery",3,98765,"oneoff",24,false,true,22,145176,69500,0
+23,"Mobilidade & delivery",3,414141,"oneoff",24,false,true,14,132194,42050,0
+23,"Mobilidade & delivery",3,123456789,"oneoff",24,false,true,24,159464,77150,0
+23,"Mobilidade & delivery",3,314159265,"oneoff",24,false,true,24,160983,76300,0
+12,"Gadgets & tecnologia",0,123,"overspend",3,true,true,0,-4345,1575,18
+12,"Gadgets & tecnologia",0,714,"overspend",3,true,true,0,-2345,1575,18
+12,"Gadgets & tecnologia",0,2026,"overspend",2,true,true,0,-12255,5229,83
+12,"Gadgets & tecnologia",0,4567,"overspend",2,true,true,0,-11883,6678,106
+12,"Gadgets & tecnologia",0,8123,"overspend",2,true,true,0,-12612,3843,61
+12,"Gadgets & tecnologia",0,14567,"overspend",2,true,true,0,-11948,6426,102
+12,"Gadgets & tecnologia",0,98765,"overspend",2,true,true,0,-12677,3591,57
+12,"Gadgets & tecnologia",0,414141,"overspend",2,true,true,0,-12304,5040,80
+12,"Gadgets & tecnologia",0,123456789,"overspend",2,true,true,0,-12061,5985,95
+12,"Gadgets & tecnologia",0,314159265,"overspend",2,true,true,0,-12255,5229,83
+12,"Gadgets & tecnologia",1,123,"overspend",5,true,true,0,-92,5670,37
+12,"Gadgets & tecnologia",1,714,"overspend",18,true,true,11,-287,69615,85
+12,"Gadgets & tecnologia",1,2026,"overspend",3,true,true,0,-10297,15372,161
+12,"Gadgets & tecnologia",1,4567,"overspend",3,true,true,0,-7228,19530,204
+12,"Gadgets & tecnologia",1,8123,"overspend",3,true,true,0,-12850,11277,118
+12,"Gadgets & tecnologia",1,14567,"overspend",3,true,true,0,-10906,18837,197
+12,"Gadgets & tecnologia",1,98765,"overspend",3,true,true,0,-13045,10521,110
+12,"Gadgets & tecnologia",1,414141,"overspend",3,true,true,0,-11943,14805,155
+12,"Gadgets & tecnologia",1,123456789,"overspend",3,true,true,0,-9730,17577,184
+12,"Gadgets & tecnologia",1,314159265,"overspend",3,true,true,0,-8297,15372,161
+12,"Gadgets & tecnologia",2,123,"overspend",7,true,true,0,-4288,11907,54
+12,"Gadgets & tecnologia",2,714,"overspend",24,false,true,0,1126,113211,117
+12,"Gadgets & tecnologia",2,2026,"overspend",4,true,true,0,-10383,29232,220
+12,"Gadgets & tecnologia",2,4567,"overspend",4,true,true,0,-6455,36729,273
+12,"Gadgets & tecnologia",2,8123,"overspend",4,true,true,0,-13827,21672,165
+12,"Gadgets & tecnologia",2,14567,"overspend",4,true,true,0,-10279,35469,264
+12,"Gadgets & tecnologia",2,98765,"overspend",4,true,true,0,-14167,20349,156
+12,"Gadgets & tecnologia",2,414141,"overspend",4,true,true,0,-2242,28224,213
+12,"Gadgets & tecnologia",2,123456789,"overspend",4,true,true,0,-9346,33264,249
+12,"Gadgets & tecnologia",2,314159265,"overspend",5,true,true,0,-11940,45927,264
+12,"Gadgets & tecnologia",3,123,"overspend",24,false,true,17,84125,120708,120
+12,"Gadgets & tecnologia",3,714,"overspend",24,false,true,17,119126,113211,117
+12,"Gadgets & tecnologia",3,2026,"overspend",8,true,true,0,-17047,100359,273
+12,"Gadgets & tecnologia",3,4567,"overspend",8,true,true,0,-8276,127260,388
+12,"Gadgets & tecnologia",3,8123,"overspend",9,true,true,0,-8725,91350,211
+12,"Gadgets & tecnologia",3,14567,"overspend",9,true,true,0,-5183,150759,412
+12,"Gadgets & tecnologia",3,98765,"overspend",7,true,true,0,-4719,58842,219
+12,"Gadgets & tecnologia",3,414141,"overspend",11,true,true,0,-7881,119889,95
+12,"Gadgets & tecnologia",3,123456789,"overspend",8,true,true,0,-4471,113967,315
+12,"Gadgets & tecnologia",3,314159265,"overspend",12,true,true,0,-3164,197694,373
+13,"Moda & vestuário",0,123,"overspend",3,true,true,0,-4232,2016,23
+13,"Moda & vestuário",0,714,"overspend",3,true,true,0,-2232,2016,23
+13,"Moda & vestuário",0,2026,"overspend",2,true,true,0,-11915,6552,104
+13,"Moda & vestuário",0,4567,"overspend",2,true,true,0,-11462,8316,132
+13,"Moda & vestuário",0,8123,"overspend",2,true,true,0,-12369,4788,76
+13,"Moda & vestuário",0,14567,"overspend",2,true,true,0,-11543,8001,127
+13,"Moda & vestuário",0,98765,"overspend",2,true,true,0,-12450,4473,71
+13,"Moda & vestuário",0,414141,"overspend",2,true,true,0,-11996,6237,99
+13,"Moda & vestuário",0,123456789,"overspend",2,true,true,0,-11688,7434,118
+13,"Moda & vestuário",0,314159265,"overspend",2,true,true,0,-11915,6552,104
+13,"Moda & vestuário",1,123,"overspend",6,true,true,0,-9631,10962,59
+13,"Moda & vestuário",1,714,"overspend",24,true,true,17,-683,109368,42
+13,"Moda & vestuário",1,2026,"overspend",3,true,true,0,-9309,19215,201
+13,"Moda & vestuário",1,4567,"overspend",3,true,true,0,-6078,24003,249
+13,"Moda & vestuário",1,8123,"overspend",3,true,true,0,-12137,14049,147
+13,"Moda & vestuário",1,14567,"overspend",3,true,true,0,-9788,23184,241
+13,"Moda & vestuário",1,98765,"overspend",3,true,true,0,-12380,13104,137
+13,"Moda & vestuário",1,414141,"overspend",3,true,true,0,-11052,18270,191
+13,"Moda & vestuário",1,123456789,"overspend",3,true,true,0,-8693,21609,225
+13,"Moda & vestuário",1,314159265,"overspend",3,true,true,0,-7309,19215,201
+13,"Moda & vestuário",2,123,"overspend",7,true,true,0,-3397,15372,70
+13,"Moda & vestuário",2,714,"overspend",24,false,true,0,6956,136206,132
+13,"Moda & vestuário",2,2026,"overspend",4,true,true,0,-8569,36288,271
+13,"Moda & vestuário",2,4567,"overspend",4,true,true,0,-4349,44919,332
+13,"Moda & vestuário",2,8123,"overspend",4,true,true,0,-12531,26712,201
+13,"Moda & vestuário",2,14567,"overspend",4,true,true,0,-8254,43344,320
+13,"Moda & vestuário",2,98765,"overspend",4,true,true,0,-12969,25011,189
+13,"Moda & vestuário",2,414141,"overspend",4,true,true,0,-606,34587,259
+13,"Moda & vestuário",2,123456789,"overspend",4,true,true,0,-7451,40635,302
+13,"Moda & vestuário",2,314159265,"overspend",5,true,true,0,-9186,56637,323
+13,"Moda & vestuário",3,123,"overspend",24,false,true,17,90160,145404,135
+13,"Moda & vestuário",3,714,"overspend",24,false,true,18,124956,136206,132
+13,"Moda & vestuário",3,2026,"overspend",8,true,true,0,-13889,126819,389
+13,"Moda & vestuário",3,4567,"overspend",8,true,true,0,-1018,155484,475
+13,"Moda & vestuário",3,8123,"overspend",9,true,true,0,-6398,112896,293
+13,"Moda & vestuário",3,14567,"overspend",10,true,true,0,-4280,215523,512
+13,"Moda & vestuário",3,98765,"overspend",7,true,true,0,-1414,71694,265
+13,"Moda & vestuário",3,414141,"overspend",11,true,true,0,-975,143514,107
+13,"Moda & vestuário",3,123456789,"overspend",9,true,true,0,-8023,160461,350
+13,"Moda & vestuário",3,314159265,"overspend",13,true,true,0,-1228,269010,455
+14,"Consumíveis",0,123,"overspend",3,true,true,0,-4215,2079,24
+14,"Consumíveis",0,714,"overspend",3,true,true,0,-2215,2079,24
+14,"Consumíveis",0,2026,"overspend",2,true,true,0,-11850,6804,108
+14,"Consumíveis",0,4567,"overspend",2,true,true,0,-11381,8631,137
+14,"Consumíveis",0,8123,"overspend",2,true,true,0,-12320,4977,79
+14,"Consumíveis",0,14567,"overspend",2,true,true,0,-11445,8379,133
+14,"Consumíveis",0,98765,"overspend",2,true,true,0,-12401,4662,74
+14,"Consumíveis",0,414141,"overspend",2,true,true,0,-11931,6489,103
+14,"Consumíveis",0,123456789,"overspend",2,true,true,0,-11607,7749,123
+14,"Consumíveis",0,314159265,"overspend",2,true,true,0,-11850,6804,108
+14,"Consumíveis",1,123,"overspend",6,true,true,0,-9518,11403,61
+14,"Consumíveis",1,714,"overspend",21,true,true,15,-71,101997,64
+14,"Consumíveis",1,2026,"overspend",3,true,true,0,-9115,19971,209
+14,"Consumíveis",1,4567,"overspend",3,true,true,0,-5835,24948,259
+14,"Consumíveis",1,8123,"overspend",3,true,true,0,-11975,14679,154
+14,"Consumíveis",1,14567,"overspend",3,true,true,0,-9513,24255,252
+14,"Consumíveis",1,98765,"overspend",3,true,true,0,-12218,13734,144
+14,"Consumíveis",1,414141,"overspend",3,true,true,0,-10841,19089,200
+14,"Consumíveis",1,123456789,"overspend",3,true,true,0,-8450,22554,235
+14,"Consumíveis",1,314159265,"overspend",3,true,true,0,-7115,19971,209
+14,"Consumíveis",2,123,"overspend",7,true,true,0,-3251,15939,72
+14,"Consumíveis",2,714,"overspend",24,false,true,0,7414,137970,132
+14,"Consumíveis",2,2026,"overspend",4,true,true,0,-8212,37674,281
+14,"Consumíveis",2,4567,"overspend",4,true,true,0,-3896,46683,345
+14,"Consumíveis",2,8123,"overspend",4,true,true,0,-12223,27909,210
+14,"Consumíveis",2,14567,"overspend",4,true,true,0,-7720,45423,336
+14,"Consumíveis",2,98765,"overspend",4,true,true,0,-12661,26208,198
+14,"Consumíveis",2,414141,"overspend",4,true,true,0,-201,36162,271
+14,"Consumíveis",2,123456789,"overspend",4,true,true,0,-6997,42399,315
+14,"Consumíveis",2,314159265,"overspend",5,true,true,0,-8619,58842,335
+14,"Consumíveis",3,123,"overspend",24,false,true,17,90591,147105,135
+14,"Consumíveis",3,714,"overspend",24,false,true,18,125414,137970,132
+14,"Consumíveis",3,2026,"overspend",8,true,true,0,-12691,131481,403
+14,"Consumíveis",3,4567,"overspend",9,true,true,0,-4886,193914,519
+14,"Consumíveis",3,8123,"overspend",9,true,true,0,-5218,117306,304
+14,"Consumíveis",3,14567,"overspend",10,true,true,0,-1769,225288,535
+14,"Consumíveis",3,98765,"overspend",7,true,true,0,-637,74718,275
+14,"Consumíveis",3,414141,"overspend",12,true,true,0,-11023,154350,87
+14,"Consumíveis",3,123456789,"overspend",9,true,true,0,-6257,166887,363
+14,"Consumíveis",3,314159265,"overspend",14,true,true,0,-6709,304416,411
+15,"Beleza & cosméticos",0,123,"overspend",3,true,true,0,-4232,2016,23
+15,"Beleza & cosméticos",0,714,"overspend",3,true,true,0,-2232,2016,23
+15,"Beleza & cosméticos",0,2026,"overspend",2,true,true,0,-11996,6237,99
+15,"Beleza & cosméticos",0,4567,"overspend",2,true,true,0,-11559,7938,126
+15,"Beleza & cosméticos",0,8123,"overspend",2,true,true,0,-12434,4536,72
+15,"Beleza & cosméticos",0,14567,"overspend",2,true,true,0,-11640,7623,121
+15,"Beleza & cosméticos",0,98765,"overspend",2,true,true,0,-12498,4284,68
+15,"Beleza & cosméticos",0,414141,"overspend",2,true,true,0,-12061,5985,95
+15,"Beleza & cosméticos",0,123456789,"overspend",2,true,true,0,-11786,7056,112
+15,"Beleza & cosméticos",0,314159265,"overspend",2,true,true,0,-11996,6237,99
+15,"Beleza & cosméticos",1,123,"overspend",6,true,true,0,-9680,10773,57
+15,"Beleza & cosméticos",1,714,"overspend",24,true,true,17,-1052,107982,41
+15,"Beleza & cosméticos",1,2026,"overspend",3,true,true,0,-9552,18270,191
+15,"Beleza & cosméticos",1,4567,"overspend",3,true,true,0,-6337,22995,239
+15,"Beleza & cosméticos",1,8123,"overspend",3,true,true,0,-12332,13293,139
+15,"Beleza & cosméticos",1,14567,"overspend",3,true,true,0,-10064,22113,230
+15,"Beleza & cosméticos",1,98765,"overspend",3,true,true,0,-12510,12600,132
+15,"Beleza & cosméticos",1,414141,"overspend",3,true,true,0,-11230,17577,184
+15,"Beleza & cosméticos",1,123456789,"overspend",3,true,true,0,-8953,20601,215
+15,"Beleza & cosméticos",1,314159265,"overspend",3,true,true,0,-7552,18270,191
+15,"Beleza & cosméticos",2,123,"overspend",7,true,true,0,-3478,15057,68
+15,"Beleza & cosméticos",2,714,"overspend",24,false,true,0,6599,134820,132
+15,"Beleza & cosméticos",2,2026,"overspend",4,true,true,0,-9006,34587,259
+15,"Beleza & cosméticos",2,4567,"overspend",4,true,true,0,-4835,43029,318
+15,"Beleza & cosméticos",2,8123,"overspend",4,true,true,0,-12871,25389,192
+15,"Beleza & cosméticos",2,14567,"overspend",4,true,true,0,-8740,41454,307
+15,"Beleza & cosméticos",2,98765,"overspend",4,true,true,0,-13212,24066,182
+15,"Beleza & cosméticos",2,414141,"overspend",4,true,true,0,-930,33327,250
+15,"Beleza & cosméticos",2,123456789,"overspend",4,true,true,0,-7921,38808,289
+15,"Beleza & cosméticos",2,314159265,"overspend",5,true,true,0,-9850,54054,309
+15,"Beleza & cosméticos",3,123,"overspend",24,false,true,17,89797,143955,135
+15,"Beleza & cosméticos",3,714,"overspend",24,false,true,18,124599,134820,132
+15,"Beleza & cosméticos",3,2026,"overspend",8,true,true,0,-15396,120960,371
+15,"Beleza & cosméticos",3,4567,"overspend",8,true,true,0,-2752,148743,454
+15,"Beleza & cosméticos",3,8123,"overspend",9,true,true,0,-5002,104895,238
+15,"Beleza & cosméticos",3,14567,"overspend",10,true,true,0,-6694,206136,490
+15,"Beleza & cosméticos",3,98765,"overspend",7,true,true,0,-2176,68733,254
+15,"Beleza & cosméticos",3,414141,"overspend",11,true,true,0,-2529,138222,104
+15,"Beleza & cosméticos",3,123456789,"overspend",9,true,true,0,-10093,152964,334
+15,"Beleza & cosméticos",3,314159265,"overspend",13,true,true,0,-4247,257166,436
+16,"Pet",0,123,"overspend",3,true,true,0,-4232,2016,23
+16,"Pet",0,714,"overspend",3,true,true,0,-2232,2016,23
+16,"Pet",0,2026,"overspend",2,true,true,0,-12045,6048,96
+16,"Pet",0,4567,"overspend",2,true,true,0,-11624,7686,122
+16,"Pet",0,8123,"overspend",2,true,true,0,-12466,4410,70
+16,"Pet",0,14567,"overspend",2,true,true,0,-11688,7434,118
+16,"Pet",0,98765,"overspend",2,true,true,0,-12531,4158,66
+16,"Pet",0,414141,"overspend",2,true,true,0,-12110,5796,92
+16,"Pet",0,123456789,"overspend",2,true,true,0,-11834,6867,109
+16,"Pet",0,314159265,"overspend",2,true,true,0,-12045,6048,96
+16,"Pet",1,123,"overspend",6,true,true,0,-9680,10773,57
+16,"Pet",1,714,"overspend",24,true,true,17,-1298,107100,41
+16,"Pet",1,2026,"overspend",3,true,true,0,-9682,17766,186
+16,"Pet",1,4567,"overspend",3,true,true,0,-6515,22302,232
+16,"Pet",1,8123,"overspend",3,true,true,0,-12413,12978,136
+16,"Pet",1,14567,"overspend",3,true,true,0,-10193,21609,225
+16,"Pet",1,98765,"overspend",3,true,true,0,-12607,12222,128
+16,"Pet",1,414141,"overspend",3,true,true,0,-11376,17010,178
+16,"Pet",1,123456789,"overspend",3,true,true,0,-9082,20097,210
+16,"Pet",1,314159265,"overspend",3,true,true,0,-7682,17766,186
+16,"Pet",2,123,"overspend",7,true,true,0,-3494,14994,67
+16,"Pet",2,714,"overspend",24,false,true,0,6070,132678,129
+16,"Pet",2,2026,"overspend",4,true,true,0,-9265,33579,251
+16,"Pet",2,4567,"overspend",4,true,true,0,-5159,41769,309
+16,"Pet",2,8123,"overspend",4,true,true,0,-13033,24759,187
+16,"Pet",2,14567,"overspend",4,true,true,0,-8983,40509,300
+16,"Pet",2,98765,"overspend",4,true,true,0,-13390,23373,177
+16,"Pet",2,414141,"overspend",4,true,true,0,-1206,32256,242
+16,"Pet",2,123456789,"overspend",4,true,true,0,-8164,37863,282
+16,"Pet",2,314159265,"overspend",5,true,true,0,-10239,52542,300
+16,"Pet",3,123,"overspend",24,false,true,17,89123,141120,131
+16,"Pet",3,714,"overspend",24,false,true,18,124070,132678,129
+16,"Pet",3,2026,"overspend",8,true,true,0,-13356,114156,307
+16,"Pet",3,4567,"overspend",8,true,true,0,-3902,144270,440
+16,"Pet",3,8123,"overspend",9,true,true,0,-5717,102312,232
+16,"Pet",3,14567,"overspend",10,true,true,0,-7892,201474,479
+16,"Pet",3,98765,"overspend",7,true,true,0,-2662,66843,246
+16,"Pet",3,414141,"overspend",11,true,true,0,-3660,134379,102
+16,"Pet",3,123456789,"overspend",8,true,true,0,-541,128646,352
+16,"Pet",3,314159265,"overspend",13,true,true,0,-6043,250110,423
+17,"Home & Garden",0,123,"overspend",3,true,true,0,-4345,1575,18
+17,"Home & Garden",0,714,"overspend",3,true,true,0,-2345,1575,18
+17,"Home & Garden",0,2026,"overspend",2,true,true,0,-12174,5544,88
+17,"Home & Garden",0,4567,"overspend",2,true,true,0,-11786,7056,112
+17,"Home & Garden",0,8123,"overspend",2,true,true,0,-12563,4032,64
+17,"Home & Garden",0,14567,"overspend",2,true,true,0,-11850,6804,108
+17,"Home & Garden",0,98765,"overspend",2,true,true,0,-12628,3780,60
+17,"Home & Garden",0,414141,"overspend",2,true,true,0,-12239,5292,84
+17,"Home & Garden",0,123456789,"overspend",2,true,true,0,-11980,6300,100
+17,"Home & Garden",0,314159265,"overspend",2,true,true,0,-12174,5544,88
+17,"Home & Garden",1,123,"overspend",5,true,true,0,-76,5733,38
+17,"Home & Garden",1,714,"overspend",24,false,true,16,74,93807,40
+17,"Home & Garden",1,2026,"overspend",3,true,true,0,-10070,16254,170
+17,"Home & Garden",1,4567,"overspend",3,true,true,0,-6953,20601,215
+17,"Home & Garden",1,8123,"overspend",3,true,true,0,-12704,11844,124
+17,"Home & Garden",1,14567,"overspend",3,true,true,0,-10631,19908,208
+17,"Home & Garden",1,98765,"overspend",3,true,true,0,-12899,11088,116
+17,"Home & Garden",1,414141,"overspend",3,true,true,0,-11749,15561,163
+17,"Home & Garden",1,123456789,"overspend",3,true,true,0,-9503,18459,193
+17,"Home & Garden",1,314159265,"overspend",3,true,true,0,-8070,16254,170
+17,"Home & Garden",2,123,"overspend",7,true,true,0,-4207,12222,56
+17,"Home & Garden",2,714,"overspend",24,false,true,0,1973,116613,121
+17,"Home & Garden",2,2026,"overspend",4,true,true,0,-9962,30870,232
+17,"Home & Garden",2,4567,"overspend",4,true,true,0,-5953,38682,287
+17,"Home & Garden",2,8123,"overspend",4,true,true,0,-13568,22680,172
+17,"Home & Garden",2,14567,"overspend",4,true,true,0,-9777,37422,278
+17,"Home & Garden",2,98765,"overspend",4,true,true,0,-13908,21357,163
+17,"Home & Garden",2,414141,"overspend",4,true,true,0,-1886,29610,223
+17,"Home & Garden",2,123456789,"overspend",4,true,true,0,-8925,34902,261
+17,"Home & Garden",2,314159265,"overspend",5,true,true,0,-11276,48510,279
+17,"Home & Garden",3,123,"overspend",24,false,true,17,85124,124866,123
+17,"Home & Garden",3,714,"overspend",24,false,true,17,119973,116613,121
+17,"Home & Garden",3,2026,"overspend",8,true,true,0,-15546,105966,287
+17,"Home & Garden",3,4567,"overspend",8,true,true,0,-6543,134001,409
+17,"Home & Garden",3,8123,"overspend",9,true,true,0,-7576,95508,220
+17,"Home & Garden",3,14567,"overspend",9,true,true,0,-3094,158886,433
+17,"Home & Garden",3,98765,"overspend",7,true,true,0,-3974,61740,229
+17,"Home & Garden",3,414141,"overspend",11,true,true,0,-6327,125181,98
+17,"Home & Garden",3,123456789,"overspend",8,true,true,0,-2930,119700,331
+17,"Home & Garden",3,314159265,"overspend",12,true,true,0,-443,208278,393
+18,"Fintechs",0,123,"overspend",3,true,true,0,-3638,2376,51
+18,"Fintechs",0,714,"overspend",3,true,true,0,-1638,2376,51
+18,"Fintechs",0,2026,"overspend",2,true,true,0,-10819,5940,180
+18,"Fintechs",0,4567,"overspend",2,true,true,0,-10093,7491,227
+18,"Fintechs",0,8123,"overspend",2,true,true,0,-11545,4389,133
+18,"Fintechs",0,14567,"overspend",2,true,true,0,-10216,7227,219
+18,"Fintechs",0,98765,"overspend",2,true,true,0,-11669,4125,125
+18,"Fintechs",0,414141,"overspend",2,true,true,0,-10943,5676,172
+18,"Fintechs",0,123456789,"overspend",2,true,true,0,-10464,6699,203
+18,"Fintechs",0,314159265,"overspend",2,true,true,0,-10819,5940,180
+18,"Fintechs",1,123,"overspend",6,true,true,0,-6610,12474,123
+18,"Fintechs",1,714,"overspend",24,false,true,21,1966,121209,202
+18,"Fintechs",1,2026,"overspend",3,true,true,0,-6324,16929,333
+18,"Fintechs",1,4567,"overspend",3,true,true,0,-2331,21186,415
+18,"Fintechs",1,8123,"overspend",3,true,true,0,-9802,12705,252
+18,"Fintechs",1,14567,"overspend",3,true,true,0,-6171,20460,401
+18,"Fintechs",1,98765,"overspend",3,true,true,0,-10142,11979,238
+18,"Fintechs",1,414141,"overspend",3,true,true,0,-8149,16236,320
+18,"Fintechs",1,123456789,"overspend",3,true,true,0,-5351,19008,373
+18,"Fintechs",1,314159265,"overspend",3,true,true,0,-4324,16929,333
+18,"Fintechs",2,123,"overspend",8,true,true,0,-29,21582,138
+18,"Fintechs",2,714,"overspend",24,false,true,0,28966,121209,202
+18,"Fintechs",2,2026,"overspend",4,true,true,0,-3114,31581,444
+18,"Fintechs",2,4567,"overspend",5,true,true,0,-15199,60555,645
+18,"Fintechs",2,8123,"overspend",4,true,true,0,-8261,23793,336
+18,"Fintechs",2,14567,"overspend",4,true,true,0,-1632,37950,530
+18,"Fintechs",2,98765,"overspend",4,true,true,0,-8879,22473,318
+18,"Fintechs",2,414141,"overspend",5,true,true,0,-5249,46992,506
+18,"Fintechs",2,123456789,"overspend",4,true,true,0,-1338,35376,496
+18,"Fintechs",2,314159265,"overspend",5,true,true,0,-807,49005,527
+18,"Fintechs",3,123,"overspend",24,false,true,17,112504,125631,205
+18,"Fintechs",3,714,"overspend",24,false,true,21,146966,121209,202
+18,"Fintechs",3,2026,"overspend",9,true,true,0,-12097,131472,663
+18,"Fintechs",3,4567,"overspend",20,true,true,0,-1556,489225,842
+18,"Fintechs",3,8123,"overspend",11,true,true,0,-5122,132891,532
+18,"Fintechs",3,14567,"overspend",21,true,true,0,-87,501039,755
+18,"Fintechs",3,98765,"overspend",8,true,true,0,-1375,78441,469
+18,"Fintechs",3,414141,"overspend",13,true,true,0,-6919,132297,116
+18,"Fintechs",3,123456789,"overspend",12,true,true,0,-4579,212553,758
+18,"Fintechs",3,314159265,"overspend",21,true,true,0,-4989,428208,758
+19,"Healthtechs",0,123,"overspend",3,true,true,0,-3591,2475,53
+19,"Healthtechs",0,714,"overspend",3,true,true,0,-1591,2475,53
+19,"Healthtechs",0,2026,"overspend",2,true,true,0,-10618,6369,193
+19,"Healthtechs",0,4567,"overspend",2,true,true,0,-9846,8019,243
+19,"Healthtechs",0,8123,"overspend",2,true,true,0,-11406,4686,142
+19,"Healthtechs",0,14567,"overspend",2,true,true,0,-9969,7755,235
+19,"Healthtechs",0,98765,"overspend",2,true,true,0,-11530,4422,134
+19,"Healthtechs",0,414141,"overspend",2,true,true,0,-10757,6072,184
+19,"Healthtechs",0,123456789,"overspend",2,true,true,0,-10232,7194,218
+19,"Healthtechs",0,314159265,"overspend",2,true,true,0,-10618,6369,193
+19,"Healthtechs",1,123,"overspend",6,true,true,0,-6409,12903,127
+19,"Healthtechs",1,714,"overspend",24,false,true,21,3774,125103,209
+19,"Healthtechs",1,2026,"overspend",3,true,true,0,-5768,18117,356
+19,"Healthtechs",1,4567,"overspend",3,true,true,0,-1667,22605,442
+19,"Healthtechs",1,8123,"overspend",3,true,true,0,-9415,13530,268
+19,"Healthtechs",1,14567,"overspend",3,true,true,0,-5507,21879,428
+19,"Healthtechs",1,98765,"overspend",3,true,true,0,-9755,12804,254
+19,"Healthtechs",1,414141,"overspend",3,true,true,0,-7654,17292,340
+19,"Healthtechs",1,123456789,"overspend",3,true,true,0,-4717,20361,399
+19,"Healthtechs",1,314159265,"overspend",3,true,true,0,-3768,18117,356
+19,"Healthtechs",2,123,"overspend",9,true,true,0,-314,26895,142
+19,"Healthtechs",2,714,"overspend",24,false,true,6,30774,125103,209
+19,"Healthtechs",2,2026,"overspend",4,true,true,0,-2110,33726,473
+19,"Healthtechs",2,4567,"overspend",5,true,true,0,-13314,64581,687
+19,"Healthtechs",2,8123,"overspend",4,true,true,0,-7565,25278,356
+19,"Healthtechs",2,14567,"overspend",4,true,true,0,-396,40590,567
+19,"Healthtechs",2,98765,"overspend",4,true,true,0,-8183,23958,338
+19,"Healthtechs",2,414141,"overspend",5,true,true,0,-3828,50028,538
+19,"Healthtechs",2,123456789,"overspend",4,true,true,0,-179,37851,530
+19,"Healthtechs",2,314159265,"overspend",6,true,true,0,-5371,72897,625
+19,"Healthtechs",3,123,"overspend",24,false,true,17,114437,129855,212
+19,"Healthtechs",3,714,"overspend",24,false,true,21,148774,125103,209
+19,"Healthtechs",3,2026,"overspend",9,true,true,0,-7988,140250,708
+19,"Healthtechs",3,4567,"overspend",24,false,true,0,649,647163,968
+19,"Healthtechs",3,8123,"overspend",11,true,true,0,-1292,140976,565
+19,"Healthtechs",3,14567,"overspend",24,false,true,0,10294,639210,965
+19,"Healthtechs",3,98765,"overspend",9,true,true,0,-4666,100782,523
+19,"Healthtechs",3,414141,"overspend",13,true,true,0,-3029,140118,120
+19,"Healthtechs",3,123456789,"overspend",13,true,true,0,-939,254661,836
+19,"Healthtechs",3,314159265,"overspend",24,true,true,0,-4331,537108,810
+20,"Educação",0,123,"overspend",3,true,true,0,-3761,2112,45
+20,"Educação",0,714,"overspend",3,true,true,0,-1761,2112,45
+20,"Educação",0,2026,"overspend",2,true,true,0,-11082,5379,163
+20,"Educação",0,4567,"overspend",2,true,true,0,-10417,6798,206
+20,"Educação",0,8123,"overspend",2,true,true,0,-11731,3993,121
+20,"Educação",0,14567,"overspend",2,true,true,0,-10525,6567,199
+20,"Educação",0,98765,"overspend",2,true,true,0,-11839,3762,114
+20,"Educação",0,414141,"overspend",2,true,true,0,-11190,5148,156
+20,"Educação",0,123456789,"overspend",2,true,true,0,-10742,6105,185
+20,"Educação",0,314159265,"overspend",2,true,true,0,-11082,5379,163
+20,"Educação",1,123,"overspend",6,true,true,0,-7228,11154,111
+20,"Educação",1,714,"overspend",24,false,true,21,1092,106821,145
+20,"Educação",1,2026,"overspend",3,true,true,0,-7050,15378,303
+20,"Educação",1,4567,"overspend",3,true,true,0,-3243,19239,377
+20,"Educação",1,8123,"overspend",3,true,true,0,-10327,11583,230
+20,"Educação",1,14567,"overspend",3,true,true,0,-7036,18612,365
+20,"Educação",1,98765,"overspend",3,true,true,0,-10621,10956,218
+20,"Educação",1,414141,"overspend",3,true,true,0,-8844,14751,291
+20,"Educação",1,123456789,"overspend",3,true,true,0,-6123,17358,341
+20,"Educação",1,314159265,"overspend",3,true,true,0,-5050,15378,303
+20,"Educação",2,123,"overspend",7,true,true,0,-212,15246,124
+20,"Educação",2,714,"overspend",24,false,true,0,24636,111903,188
+20,"Educação",2,2026,"overspend",4,true,true,0,-4443,28743,405
+20,"Educação",2,4567,"overspend",5,true,true,0,-17748,55110,587
+20,"Educação",2,8123,"overspend",4,true,true,0,-9218,21747,308
+20,"Educação",2,14567,"overspend",4,true,true,0,-3208,34584,484
+20,"Educação",2,98765,"overspend",4,true,true,0,-9759,20592,292
+20,"Educação",2,414141,"overspend",5,true,true,0,-7180,42867,462
+20,"Educação",2,123456789,"overspend",4,true,true,0,-2744,32373,455
+20,"Educação",2,314159265,"overspend",5,true,true,0,-2862,44616,480
+20,"Educação",3,123,"overspend",24,false,true,17,108009,115830,190
+20,"Educação",3,714,"overspend",24,false,true,21,142636,111903,188
+20,"Educação",3,2026,"overspend",9,true,true,0,-17675,119559,602
+20,"Educação",3,4567,"overspend",13,true,true,0,-690,254199,824
+20,"Educação",3,8123,"overspend",10,true,true,0,-2161,105699,471
+20,"Educação",3,14567,"overspend",16,true,true,0,-2396,329109,817
+20,"Educação",3,98765,"overspend",8,true,true,0,-4419,71940,430
+20,"Educação",3,414141,"overspend",13,true,true,0,-12524,121077,108
+20,"Educação",3,123456789,"overspend",10,true,true,0,-1132,149787,627
+20,"Educação",3,314159265,"overspend",18,true,true,0,-1908,322212,689
+21,"Redes sociais & conteúdo",0,123,"overspend",3,true,true,0,-3529,2607,56
+21,"Redes sociais & conteúdo",0,714,"overspend",3,true,true,0,-1529,2607,56
+21,"Redes sociais & conteúdo",0,2026,"overspend",2,true,true,0,-10525,6567,199
+21,"Redes sociais & conteúdo",0,4567,"overspend",2,true,true,0,-9707,8316,252
+21,"Redes sociais & conteúdo",0,8123,"overspend",2,true,true,0,-11329,4851,147
+21,"Redes sociais & conteúdo",0,14567,"overspend",2,true,true,0,-9846,8019,243
+21,"Redes sociais & conteúdo",0,98765,"overspend",2,true,true,0,-11452,4587,139
+21,"Redes sociais & conteúdo",0,414141,"overspend",2,true,true,0,-10649,6303,191
+21,"Redes sociais & conteúdo",0,123456789,"overspend",2,true,true,0,-10124,7425,225
+21,"Redes sociais & conteúdo",0,314159265,"overspend",2,true,true,0,-10525,6567,199
+21,"Redes sociais & conteúdo",1,123,"overspend",6,true,true,0,-6085,13596,133
+21,"Redes sociais & conteúdo",1,714,"overspend",24,false,true,21,5723,129294,216
+21,"Redes sociais & conteúdo",1,2026,"overspend",3,true,true,0,-5521,18645,366
+21,"Redes sociais & conteúdo",1,4567,"overspend",3,true,true,0,-1280,23430,458
+21,"Redes sociais & conteúdo",1,8123,"overspend",3,true,true,0,-9215,13959,276
+21,"Redes sociais & conteúdo",1,14567,"overspend",3,true,true,0,-5167,22605,442
+21,"Redes sociais & conteúdo",1,98765,"overspend",3,true,true,0,-9555,13233,262
+21,"Redes sociais & conteúdo",1,414141,"overspend",3,true,true,0,-7361,17919,352
+21,"Redes sociais & conteúdo",1,123456789,"overspend",3,true,true,0,-4424,20988,411
+21,"Redes sociais & conteúdo",1,314159265,"overspend",3,true,true,0,-3521,18645,366
+21,"Redes sociais & conteúdo",2,123,"overspend",10,true,true,0,-209,33000,147
+21,"Redes sociais & conteúdo",2,714,"overspend",24,false,true,9,32723,129294,216
+21,"Redes sociais & conteúdo",2,2026,"overspend",4,true,true,0,-1647,34716,487
+21,"Redes sociais & conteúdo",2,4567,"overspend",5,true,true,0,-12264,66825,710
+21,"Redes sociais & conteúdo",2,8123,"overspend",4,true,true,0,-7179,26103,368
+21,"Redes sociais & conteúdo",2,14567,"overspend",5,true,true,0,-16830,64548,686
+21,"Redes sociais & conteúdo",2,98765,"overspend",4,true,true,0,-7797,24783,350
+21,"Redes sociais & conteúdo",2,414141,"overspend",5,true,true,0,-3024,51744,555
+21,"Redes sociais & conteúdo",2,123456789,"overspend",5,true,true,0,-17369,60192,642
+21,"Redes sociais & conteúdo",2,314159265,"overspend",6,true,true,0,-4413,74943,642
+21,"Redes sociais & conteúdo",3,123,"overspend",24,false,true,17,116556,134475,220
+21,"Redes sociais & conteúdo",3,714,"overspend",24,false,true,21,150723,129294,216
+21,"Redes sociais & conteúdo",3,2026,"overspend",9,true,true,0,-6164,144144,727
+21,"Redes sociais & conteúdo",3,4567,"overspend",24,false,true,0,10537,668613,1000
+21,"Redes sociais & conteúdo",3,8123,"overspend",12,true,true,0,-7367,164802,596
+21,"Redes sociais & conteúdo",3,14567,"overspend",24,false,true,0,19163,658548,995
+21,"Redes sociais & conteúdo",3,98765,"overspend",9,true,true,0,-3167,103983,539
+21,"Redes sociais & conteúdo",3,414141,"overspend",13,true,true,0,-833,144540,122
+21,"Redes sociais & conteúdo",3,123456789,"overspend",14,true,true,0,-82,288189,792
+21,"Redes sociais & conteúdo",3,314159265,"overspend",24,false,true,0,2253,551463,832
+22,"Softwares & aplicativos",0,123,"overspend",3,true,true,0,-3638,2376,51
+22,"Softwares & aplicativos",0,714,"overspend",3,true,true,0,-1638,2376,51
+22,"Softwares & aplicativos",0,2026,"overspend",2,true,true,0,-10773,6039,183
+22,"Softwares & aplicativos",0,4567,"overspend",2,true,true,0,-10031,7623,231
+22,"Softwares & aplicativos",0,8123,"overspend",2,true,true,0,-11514,4455,135
+22,"Softwares & aplicativos",0,14567,"overspend",2,true,true,0,-10155,7359,223
+22,"Softwares & aplicativos",0,98765,"overspend",2,true,true,0,-11638,4191,127
+22,"Softwares & aplicativos",0,414141,"overspend",2,true,true,0,-10896,5775,175
+22,"Softwares & aplicativos",0,123456789,"overspend",2,true,true,0,-10402,6831,207
+22,"Softwares & aplicativos",0,314159265,"overspend",2,true,true,0,-10773,6039,183
+22,"Softwares & aplicativos",1,123,"overspend",6,true,true,0,-6610,12474,123
+22,"Softwares & aplicativos",1,714,"overspend",24,false,true,21,2373,122100,205
+22,"Softwares & aplicativos",1,2026,"overspend",3,true,true,0,-6185,17226,339
+22,"Softwares & aplicativos",1,4567,"overspend",3,true,true,0,-2161,21549,422
+22,"Softwares & aplicativos",1,8123,"overspend",3,true,true,0,-9709,12903,256
+22,"Softwares & aplicativos",1,14567,"overspend",3,true,true,0,-6001,20823,408
+22,"Softwares & aplicativos",1,98765,"overspend",3,true,true,0,-10049,12177,242
+22,"Softwares & aplicativos",1,414141,"overspend",3,true,true,0,-8025,16500,325
+22,"Softwares & aplicativos",1,123456789,"overspend",3,true,true,0,-5181,19371,380
+22,"Softwares & aplicativos",1,314159265,"overspend",3,true,true,0,-4185,17226,339
+22,"Softwares & aplicativos",2,123,"overspend",8,true,true,0,-12,21615,139
+22,"Softwares & aplicativos",2,714,"overspend",24,false,true,2,29373,122100,205
+22,"Softwares & aplicativos",2,2026,"overspend",4,true,true,0,-2867,32109,451
+22,"Softwares & aplicativos",2,4567,"overspend",5,true,true,0,-14736,61545,655
+22,"Softwares & aplicativos",2,8123,"overspend",4,true,true,0,-8106,24123,340
+22,"Softwares & aplicativos",2,14567,"overspend",4,true,true,0,-1324,38610,539
+22,"Softwares & aplicativos",2,98765,"overspend",4,true,true,0,-8724,22803,322
+22,"Softwares & aplicativos",2,414141,"overspend",5,true,true,0,-4894,47751,514
+22,"Softwares & aplicativos",2,123456789,"overspend",4,true,true,0,-1029,36036,505
+22,"Softwares & aplicativos",2,314159265,"overspend",5,true,true,0,-451,49764,535
+22,"Softwares & aplicativos",3,123,"overspend",24,false,true,17,113087,126918,209
+22,"Softwares & aplicativos",3,714,"overspend",24,false,true,21,147373,122100,205
+22,"Softwares & aplicativos",3,2026,"overspend",9,true,true,0,-11155,133485,674
+22,"Softwares & aplicativos",3,4567,"overspend",21,true,true,0,-1714,524007,792
+22,"Softwares & aplicativos",3,8123,"overspend",11,true,true,0,-4199,134838,541
+22,"Softwares & aplicativos",3,14567,"overspend",23,true,true,0,-1459,578787,921
+22,"Softwares & aplicativos",3,98765,"overspend",8,true,true,0,-835,79596,476
+22,"Softwares & aplicativos",3,414141,"overspend",13,true,true,0,-5932,134277,117
+22,"Softwares & aplicativos",3,123456789,"overspend",12,true,true,0,-2736,216414,772
+22,"Softwares & aplicativos",3,314159265,"overspend",21,true,true,0,-1657,435468,772
+23,"Mobilidade & delivery",0,123,"overspend",3,true,true,0,-3638,2376,51
+23,"Mobilidade & delivery",0,714,"overspend",3,true,true,0,-1638,2376,51
+23,"Mobilidade & delivery",0,2026,"overspend",2,true,true,0,-10773,6039,183
+23,"Mobilidade & delivery",0,4567,"overspend",2,true,true,0,-10031,7623,231
+23,"Mobilidade & delivery",0,8123,"overspend",2,true,true,0,-11514,4455,135
+23,"Mobilidade & delivery",0,14567,"overspend",2,true,true,0,-10155,7359,223
+23,"Mobilidade & delivery",0,98765,"overspend",2,true,true,0,-11638,4191,127
+23,"Mobilidade & delivery",0,414141,"overspend",2,true,true,0,-10896,5775,175
+23,"Mobilidade & delivery",0,123456789,"overspend",2,true,true,0,-10402,6831,207
+23,"Mobilidade & delivery",0,314159265,"overspend",2,true,true,0,-10773,6039,183
+23,"Mobilidade & delivery",1,123,"overspend",6,true,true,0,-6610,12474,123
+23,"Mobilidade & delivery",1,714,"overspend",24,false,true,21,2373,122100,205
+23,"Mobilidade & delivery",1,2026,"overspend",3,true,true,0,-6185,17226,339
+23,"Mobilidade & delivery",1,4567,"overspend",3,true,true,0,-2161,21549,422
+23,"Mobilidade & delivery",1,8123,"overspend",3,true,true,0,-9709,12903,256
+23,"Mobilidade & delivery",1,14567,"overspend",3,true,true,0,-6001,20823,408
+23,"Mobilidade & delivery",1,98765,"overspend",3,true,true,0,-10049,12177,242
+23,"Mobilidade & delivery",1,414141,"overspend",3,true,true,0,-8025,16500,325
+23,"Mobilidade & delivery",1,123456789,"overspend",3,true,true,0,-5181,19371,380
+23,"Mobilidade & delivery",1,314159265,"overspend",3,true,true,0,-4185,17226,339
+23,"Mobilidade & delivery",2,123,"overspend",8,true,true,0,-12,21615,139
+23,"Mobilidade & delivery",2,714,"overspend",24,false,true,2,29373,122100,205
+23,"Mobilidade & delivery",2,2026,"overspend",4,true,true,0,-2867,32109,451
+23,"Mobilidade & delivery",2,4567,"overspend",5,true,true,0,-14736,61545,655
+23,"Mobilidade & delivery",2,8123,"overspend",4,true,true,0,-8106,24123,340
+23,"Mobilidade & delivery",2,14567,"overspend",4,true,true,0,-1324,38610,539
+23,"Mobilidade & delivery",2,98765,"overspend",4,true,true,0,-8724,22803,322
+23,"Mobilidade & delivery",2,414141,"overspend",5,true,true,0,-4894,47751,514
+23,"Mobilidade & delivery",2,123456789,"overspend",4,true,true,0,-1029,36036,505
+23,"Mobilidade & delivery",2,314159265,"overspend",5,true,true,0,-451,49764,535
+23,"Mobilidade & delivery",3,123,"overspend",24,false,true,17,113087,126918,209
+23,"Mobilidade & delivery",3,714,"overspend",24,false,true,21,147373,122100,205
+23,"Mobilidade & delivery",3,2026,"overspend",9,true,true,0,-11155,133485,674
+23,"Mobilidade & delivery",3,4567,"overspend",21,true,true,0,-1714,524007,792
+23,"Mobilidade & delivery",3,8123,"overspend",11,true,true,0,-4199,134838,541
+23,"Mobilidade & delivery",3,14567,"overspend",23,true,true,0,-1459,578787,921
+23,"Mobilidade & delivery",3,98765,"overspend",8,true,true,0,-835,79596,476
+23,"Mobilidade & delivery",3,414141,"overspend",13,true,true,0,-5932,134277,117
+23,"Mobilidade & delivery",3,123456789,"overspend",12,true,true,0,-2736,216414,772
+23,"Mobilidade & delivery",3,314159265,"overspend",21,true,true,0,-1657,435468,772
+12,"Gadgets & tecnologia",0,123,"idle",24,false,false,0,7320,0,0
+12,"Gadgets & tecnologia",0,714,"idle",24,true,false,0,-1180,0,0
+12,"Gadgets & tecnologia",0,2026,"idle",24,false,false,0,7320,0,0
+12,"Gadgets & tecnologia",0,4567,"idle",24,false,false,0,5320,0,0
+12,"Gadgets & tecnologia",0,8123,"idle",24,false,false,0,4320,0,0
+12,"Gadgets & tecnologia",0,14567,"idle",24,false,false,0,5320,0,0
+12,"Gadgets & tecnologia",0,98765,"idle",24,false,false,0,320,0,0
+12,"Gadgets & tecnologia",0,414141,"idle",24,false,false,0,2820,0,0
+12,"Gadgets & tecnologia",0,123456789,"idle",24,false,false,0,3320,0,0
+12,"Gadgets & tecnologia",0,314159265,"idle",24,false,false,0,2320,0,0
+12,"Gadgets & tecnologia",1,123,"idle",22,true,false,0,-650,0,0
+12,"Gadgets & tecnologia",1,714,"idle",20,true,false,0,-620,0,0
+12,"Gadgets & tecnologia",1,2026,"idle",22,true,false,0,-150,0,0
+12,"Gadgets & tecnologia",1,4567,"idle",23,true,false,0,-665,0,0
+12,"Gadgets & tecnologia",1,8123,"idle",23,true,false,0,-665,0,0
+12,"Gadgets & tecnologia",1,14567,"idle",20,true,false,0,-120,0,0
+12,"Gadgets & tecnologia",1,98765,"idle",20,true,false,0,-620,0,0
+12,"Gadgets & tecnologia",1,414141,"idle",24,true,false,0,-2180,0,0
+12,"Gadgets & tecnologia",1,123456789,"idle",20,true,false,0,-120,0,0
+12,"Gadgets & tecnologia",1,314159265,"idle",20,true,false,0,-620,0,0
+12,"Gadgets & tecnologia",2,123,"idle",24,false,false,0,14320,0,0
+12,"Gadgets & tecnologia",2,714,"idle",24,false,false,0,5820,0,0
+12,"Gadgets & tecnologia",2,2026,"idle",24,false,false,0,14320,0,0
+12,"Gadgets & tecnologia",2,4567,"idle",24,false,false,0,12320,0,0
+12,"Gadgets & tecnologia",2,8123,"idle",24,false,false,0,11320,0,0
+12,"Gadgets & tecnologia",2,14567,"idle",24,false,false,0,12320,0,0
+12,"Gadgets & tecnologia",2,98765,"idle",24,false,false,0,7320,0,0
+12,"Gadgets & tecnologia",2,414141,"idle",24,false,false,0,9820,0,0
+12,"Gadgets & tecnologia",2,123456789,"idle",24,false,false,0,10320,0,0
+12,"Gadgets & tecnologia",2,314159265,"idle",24,false,false,0,9320,0,0
+12,"Gadgets & tecnologia",3,123,"idle",24,false,false,0,132320,0,0
+12,"Gadgets & tecnologia",3,714,"idle",24,false,false,0,123820,0,0
+12,"Gadgets & tecnologia",3,2026,"idle",24,false,false,0,132320,0,0
+12,"Gadgets & tecnologia",3,4567,"idle",24,false,false,0,130320,0,0
+12,"Gadgets & tecnologia",3,8123,"idle",24,false,false,0,129320,0,0
+12,"Gadgets & tecnologia",3,14567,"idle",24,false,false,0,130320,0,0
+12,"Gadgets & tecnologia",3,98765,"idle",24,false,false,0,125320,0,0
+12,"Gadgets & tecnologia",3,414141,"idle",24,false,false,0,127820,0,0
+12,"Gadgets & tecnologia",3,123456789,"idle",24,false,false,0,128320,0,0
+12,"Gadgets & tecnologia",3,314159265,"idle",24,false,false,0,127320,0,0
+13,"Moda & vestuário",0,123,"idle",24,false,false,0,7320,0,0
+13,"Moda & vestuário",0,714,"idle",24,true,false,0,-1180,0,0
+13,"Moda & vestuário",0,2026,"idle",24,false,false,0,7320,0,0
+13,"Moda & vestuário",0,4567,"idle",24,false,false,0,5320,0,0
+13,"Moda & vestuário",0,8123,"idle",24,false,false,0,4320,0,0
+13,"Moda & vestuário",0,14567,"idle",24,false,false,0,5320,0,0
+13,"Moda & vestuário",0,98765,"idle",24,false,false,0,320,0,0
+13,"Moda & vestuário",0,414141,"idle",24,false,false,0,2820,0,0
+13,"Moda & vestuário",0,123456789,"idle",24,false,false,0,3320,0,0
+13,"Moda & vestuário",0,314159265,"idle",24,false,false,0,2320,0,0
+13,"Moda & vestuário",1,123,"idle",22,true,false,0,-650,0,0
+13,"Moda & vestuário",1,714,"idle",20,true,false,0,-620,0,0
+13,"Moda & vestuário",1,2026,"idle",22,true,false,0,-150,0,0
+13,"Moda & vestuário",1,4567,"idle",23,true,false,0,-665,0,0
+13,"Moda & vestuário",1,8123,"idle",23,true,false,0,-665,0,0
+13,"Moda & vestuário",1,14567,"idle",20,true,false,0,-120,0,0
+13,"Moda & vestuário",1,98765,"idle",20,true,false,0,-620,0,0
+13,"Moda & vestuário",1,414141,"idle",24,true,false,0,-2180,0,0
+13,"Moda & vestuário",1,123456789,"idle",20,true,false,0,-120,0,0
+13,"Moda & vestuário",1,314159265,"idle",20,true,false,0,-620,0,0
+13,"Moda & vestuário",2,123,"idle",24,false,false,0,14320,0,0
+13,"Moda & vestuário",2,714,"idle",24,false,false,0,5820,0,0
+13,"Moda & vestuário",2,2026,"idle",24,false,false,0,14320,0,0
+13,"Moda & vestuário",2,4567,"idle",24,false,false,0,12320,0,0
+13,"Moda & vestuário",2,8123,"idle",24,false,false,0,11320,0,0
+13,"Moda & vestuário",2,14567,"idle",24,false,false,0,12320,0,0
+13,"Moda & vestuário",2,98765,"idle",24,false,false,0,7320,0,0
+13,"Moda & vestuário",2,414141,"idle",24,false,false,0,9820,0,0
+13,"Moda & vestuário",2,123456789,"idle",24,false,false,0,10320,0,0
+13,"Moda & vestuário",2,314159265,"idle",24,false,false,0,9320,0,0
+13,"Moda & vestuário",3,123,"idle",24,false,false,0,132320,0,0
+13,"Moda & vestuário",3,714,"idle",24,false,false,0,123820,0,0
+13,"Moda & vestuário",3,2026,"idle",24,false,false,0,132320,0,0
+13,"Moda & vestuário",3,4567,"idle",24,false,false,0,130320,0,0
+13,"Moda & vestuário",3,8123,"idle",24,false,false,0,129320,0,0
+13,"Moda & vestuário",3,14567,"idle",24,false,false,0,130320,0,0
+13,"Moda & vestuário",3,98765,"idle",24,false,false,0,125320,0,0
+13,"Moda & vestuário",3,414141,"idle",24,false,false,0,127820,0,0
+13,"Moda & vestuário",3,123456789,"idle",24,false,false,0,128320,0,0
+13,"Moda & vestuário",3,314159265,"idle",24,false,false,0,127320,0,0
+14,"Consumíveis",0,123,"idle",24,false,false,0,7320,0,0
+14,"Consumíveis",0,714,"idle",24,true,false,0,-1180,0,0
+14,"Consumíveis",0,2026,"idle",24,false,false,0,7320,0,0
+14,"Consumíveis",0,4567,"idle",24,false,false,0,5320,0,0
+14,"Consumíveis",0,8123,"idle",24,false,false,0,4320,0,0
+14,"Consumíveis",0,14567,"idle",24,false,false,0,5320,0,0
+14,"Consumíveis",0,98765,"idle",24,false,false,0,320,0,0
+14,"Consumíveis",0,414141,"idle",24,false,false,0,2820,0,0
+14,"Consumíveis",0,123456789,"idle",24,false,false,0,3320,0,0
+14,"Consumíveis",0,314159265,"idle",24,false,false,0,2320,0,0
+14,"Consumíveis",1,123,"idle",22,true,false,0,-650,0,0
+14,"Consumíveis",1,714,"idle",20,true,false,0,-620,0,0
+14,"Consumíveis",1,2026,"idle",22,true,false,0,-150,0,0
+14,"Consumíveis",1,4567,"idle",23,true,false,0,-665,0,0
+14,"Consumíveis",1,8123,"idle",23,true,false,0,-665,0,0
+14,"Consumíveis",1,14567,"idle",20,true,false,0,-120,0,0
+14,"Consumíveis",1,98765,"idle",20,true,false,0,-620,0,0
+14,"Consumíveis",1,414141,"idle",24,true,false,0,-2180,0,0
+14,"Consumíveis",1,123456789,"idle",20,true,false,0,-120,0,0
+14,"Consumíveis",1,314159265,"idle",20,true,false,0,-620,0,0
+14,"Consumíveis",2,123,"idle",24,false,false,0,14320,0,0
+14,"Consumíveis",2,714,"idle",24,false,false,0,5820,0,0
+14,"Consumíveis",2,2026,"idle",24,false,false,0,14320,0,0
+14,"Consumíveis",2,4567,"idle",24,false,false,0,12320,0,0
+14,"Consumíveis",2,8123,"idle",24,false,false,0,11320,0,0
+14,"Consumíveis",2,14567,"idle",24,false,false,0,12320,0,0
+14,"Consumíveis",2,98765,"idle",24,false,false,0,7320,0,0
+14,"Consumíveis",2,414141,"idle",24,false,false,0,9820,0,0
+14,"Consumíveis",2,123456789,"idle",24,false,false,0,10320,0,0
+14,"Consumíveis",2,314159265,"idle",24,false,false,0,9320,0,0
+14,"Consumíveis",3,123,"idle",24,false,false,0,132320,0,0
+14,"Consumíveis",3,714,"idle",24,false,false,0,123820,0,0
+14,"Consumíveis",3,2026,"idle",24,false,false,0,132320,0,0
+14,"Consumíveis",3,4567,"idle",24,false,false,0,130320,0,0
+14,"Consumíveis",3,8123,"idle",24,false,false,0,129320,0,0
+14,"Consumíveis",3,14567,"idle",24,false,false,0,130320,0,0
+14,"Consumíveis",3,98765,"idle",24,false,false,0,125320,0,0
+14,"Consumíveis",3,414141,"idle",24,false,false,0,127820,0,0
+14,"Consumíveis",3,123456789,"idle",24,false,false,0,128320,0,0
+14,"Consumíveis",3,314159265,"idle",24,false,false,0,127320,0,0
+15,"Beleza & cosméticos",0,123,"idle",24,false,false,0,7320,0,0
+15,"Beleza & cosméticos",0,714,"idle",24,true,false,0,-1180,0,0
+15,"Beleza & cosméticos",0,2026,"idle",24,false,false,0,7320,0,0
+15,"Beleza & cosméticos",0,4567,"idle",24,false,false,0,5320,0,0
+15,"Beleza & cosméticos",0,8123,"idle",24,false,false,0,4320,0,0
+15,"Beleza & cosméticos",0,14567,"idle",24,false,false,0,5320,0,0
+15,"Beleza & cosméticos",0,98765,"idle",24,false,false,0,320,0,0
+15,"Beleza & cosméticos",0,414141,"idle",24,false,false,0,2820,0,0
+15,"Beleza & cosméticos",0,123456789,"idle",24,false,false,0,3320,0,0
+15,"Beleza & cosméticos",0,314159265,"idle",24,false,false,0,2320,0,0
+15,"Beleza & cosméticos",1,123,"idle",22,true,false,0,-650,0,0
+15,"Beleza & cosméticos",1,714,"idle",20,true,false,0,-620,0,0
+15,"Beleza & cosméticos",1,2026,"idle",22,true,false,0,-150,0,0
+15,"Beleza & cosméticos",1,4567,"idle",23,true,false,0,-665,0,0
+15,"Beleza & cosméticos",1,8123,"idle",23,true,false,0,-665,0,0
+15,"Beleza & cosméticos",1,14567,"idle",20,true,false,0,-120,0,0
+15,"Beleza & cosméticos",1,98765,"idle",20,true,false,0,-620,0,0
+15,"Beleza & cosméticos",1,414141,"idle",24,true,false,0,-2180,0,0
+15,"Beleza & cosméticos",1,123456789,"idle",20,true,false,0,-120,0,0
+15,"Beleza & cosméticos",1,314159265,"idle",20,true,false,0,-620,0,0
+15,"Beleza & cosméticos",2,123,"idle",24,false,false,0,14320,0,0
+15,"Beleza & cosméticos",2,714,"idle",24,false,false,0,5820,0,0
+15,"Beleza & cosméticos",2,2026,"idle",24,false,false,0,14320,0,0
+15,"Beleza & cosméticos",2,4567,"idle",24,false,false,0,12320,0,0
+15,"Beleza & cosméticos",2,8123,"idle",24,false,false,0,11320,0,0
+15,"Beleza & cosméticos",2,14567,"idle",24,false,false,0,12320,0,0
+15,"Beleza & cosméticos",2,98765,"idle",24,false,false,0,7320,0,0
+15,"Beleza & cosméticos",2,414141,"idle",24,false,false,0,9820,0,0
+15,"Beleza & cosméticos",2,123456789,"idle",24,false,false,0,10320,0,0
+15,"Beleza & cosméticos",2,314159265,"idle",24,false,false,0,9320,0,0
+15,"Beleza & cosméticos",3,123,"idle",24,false,false,0,132320,0,0
+15,"Beleza & cosméticos",3,714,"idle",24,false,false,0,123820,0,0
+15,"Beleza & cosméticos",3,2026,"idle",24,false,false,0,132320,0,0
+15,"Beleza & cosméticos",3,4567,"idle",24,false,false,0,130320,0,0
+15,"Beleza & cosméticos",3,8123,"idle",24,false,false,0,129320,0,0
+15,"Beleza & cosméticos",3,14567,"idle",24,false,false,0,130320,0,0
+15,"Beleza & cosméticos",3,98765,"idle",24,false,false,0,125320,0,0
+15,"Beleza & cosméticos",3,414141,"idle",24,false,false,0,127820,0,0
+15,"Beleza & cosméticos",3,123456789,"idle",24,false,false,0,128320,0,0
+15,"Beleza & cosméticos",3,314159265,"idle",24,false,false,0,127320,0,0
+16,"Pet",0,123,"idle",24,false,false,0,7320,0,0
+16,"Pet",0,714,"idle",24,true,false,0,-1180,0,0
+16,"Pet",0,2026,"idle",24,false,false,0,7320,0,0
+16,"Pet",0,4567,"idle",24,false,false,0,5320,0,0
+16,"Pet",0,8123,"idle",24,false,false,0,4320,0,0
+16,"Pet",0,14567,"idle",24,false,false,0,5320,0,0
+16,"Pet",0,98765,"idle",24,false,false,0,320,0,0
+16,"Pet",0,414141,"idle",24,false,false,0,2820,0,0
+16,"Pet",0,123456789,"idle",24,false,false,0,3320,0,0
+16,"Pet",0,314159265,"idle",24,false,false,0,2320,0,0
+16,"Pet",1,123,"idle",22,true,false,0,-650,0,0
+16,"Pet",1,714,"idle",20,true,false,0,-620,0,0
+16,"Pet",1,2026,"idle",22,true,false,0,-150,0,0
+16,"Pet",1,4567,"idle",23,true,false,0,-665,0,0
+16,"Pet",1,8123,"idle",23,true,false,0,-665,0,0
+16,"Pet",1,14567,"idle",20,true,false,0,-120,0,0
+16,"Pet",1,98765,"idle",20,true,false,0,-620,0,0
+16,"Pet",1,414141,"idle",24,true,false,0,-2180,0,0
+16,"Pet",1,123456789,"idle",20,true,false,0,-120,0,0
+16,"Pet",1,314159265,"idle",20,true,false,0,-620,0,0
+16,"Pet",2,123,"idle",24,false,false,0,14320,0,0
+16,"Pet",2,714,"idle",24,false,false,0,5820,0,0
+16,"Pet",2,2026,"idle",24,false,false,0,14320,0,0
+16,"Pet",2,4567,"idle",24,false,false,0,12320,0,0
+16,"Pet",2,8123,"idle",24,false,false,0,11320,0,0
+16,"Pet",2,14567,"idle",24,false,false,0,12320,0,0
+16,"Pet",2,98765,"idle",24,false,false,0,7320,0,0
+16,"Pet",2,414141,"idle",24,false,false,0,9820,0,0
+16,"Pet",2,123456789,"idle",24,false,false,0,10320,0,0
+16,"Pet",2,314159265,"idle",24,false,false,0,9320,0,0
+16,"Pet",3,123,"idle",24,false,false,0,132320,0,0
+16,"Pet",3,714,"idle",24,false,false,0,123820,0,0
+16,"Pet",3,2026,"idle",24,false,false,0,132320,0,0
+16,"Pet",3,4567,"idle",24,false,false,0,130320,0,0
+16,"Pet",3,8123,"idle",24,false,false,0,129320,0,0
+16,"Pet",3,14567,"idle",24,false,false,0,130320,0,0
+16,"Pet",3,98765,"idle",24,false,false,0,125320,0,0
+16,"Pet",3,414141,"idle",24,false,false,0,127820,0,0
+16,"Pet",3,123456789,"idle",24,false,false,0,128320,0,0
+16,"Pet",3,314159265,"idle",24,false,false,0,127320,0,0
+17,"Home & Garden",0,123,"idle",24,false,false,0,7320,0,0
+17,"Home & Garden",0,714,"idle",24,true,false,0,-1180,0,0
+17,"Home & Garden",0,2026,"idle",24,false,false,0,7320,0,0
+17,"Home & Garden",0,4567,"idle",24,false,false,0,5320,0,0
+17,"Home & Garden",0,8123,"idle",24,false,false,0,4320,0,0
+17,"Home & Garden",0,14567,"idle",24,false,false,0,5320,0,0
+17,"Home & Garden",0,98765,"idle",24,false,false,0,320,0,0
+17,"Home & Garden",0,414141,"idle",24,false,false,0,2820,0,0
+17,"Home & Garden",0,123456789,"idle",24,false,false,0,3320,0,0
+17,"Home & Garden",0,314159265,"idle",24,false,false,0,2320,0,0
+17,"Home & Garden",1,123,"idle",22,true,false,0,-650,0,0
+17,"Home & Garden",1,714,"idle",20,true,false,0,-620,0,0
+17,"Home & Garden",1,2026,"idle",22,true,false,0,-150,0,0
+17,"Home & Garden",1,4567,"idle",23,true,false,0,-665,0,0
+17,"Home & Garden",1,8123,"idle",23,true,false,0,-665,0,0
+17,"Home & Garden",1,14567,"idle",20,true,false,0,-120,0,0
+17,"Home & Garden",1,98765,"idle",20,true,false,0,-620,0,0
+17,"Home & Garden",1,414141,"idle",24,true,false,0,-2180,0,0
+17,"Home & Garden",1,123456789,"idle",20,true,false,0,-120,0,0
+17,"Home & Garden",1,314159265,"idle",20,true,false,0,-620,0,0
+17,"Home & Garden",2,123,"idle",24,false,false,0,14320,0,0
+17,"Home & Garden",2,714,"idle",24,false,false,0,5820,0,0
+17,"Home & Garden",2,2026,"idle",24,false,false,0,14320,0,0
+17,"Home & Garden",2,4567,"idle",24,false,false,0,12320,0,0
+17,"Home & Garden",2,8123,"idle",24,false,false,0,11320,0,0
+17,"Home & Garden",2,14567,"idle",24,false,false,0,12320,0,0
+17,"Home & Garden",2,98765,"idle",24,false,false,0,7320,0,0
+17,"Home & Garden",2,414141,"idle",24,false,false,0,9820,0,0
+17,"Home & Garden",2,123456789,"idle",24,false,false,0,10320,0,0
+17,"Home & Garden",2,314159265,"idle",24,false,false,0,9320,0,0
+17,"Home & Garden",3,123,"idle",24,false,false,0,132320,0,0
+17,"Home & Garden",3,714,"idle",24,false,false,0,123820,0,0
+17,"Home & Garden",3,2026,"idle",24,false,false,0,132320,0,0
+17,"Home & Garden",3,4567,"idle",24,false,false,0,130320,0,0
+17,"Home & Garden",3,8123,"idle",24,false,false,0,129320,0,0
+17,"Home & Garden",3,14567,"idle",24,false,false,0,130320,0,0
+17,"Home & Garden",3,98765,"idle",24,false,false,0,125320,0,0
+17,"Home & Garden",3,414141,"idle",24,false,false,0,127820,0,0
+17,"Home & Garden",3,123456789,"idle",24,false,false,0,128320,0,0
+17,"Home & Garden",3,314159265,"idle",24,false,false,0,127320,0,0
+18,"Fintechs",0,123,"idle",24,false,false,0,7320,0,0
+18,"Fintechs",0,714,"idle",24,true,false,0,-1180,0,0
+18,"Fintechs",0,2026,"idle",24,false,false,0,7320,0,0
+18,"Fintechs",0,4567,"idle",24,false,false,0,5320,0,0
+18,"Fintechs",0,8123,"idle",24,false,false,0,4320,0,0
+18,"Fintechs",0,14567,"idle",24,false,false,0,5320,0,0
+18,"Fintechs",0,98765,"idle",24,false,false,0,320,0,0
+18,"Fintechs",0,414141,"idle",24,false,false,0,2820,0,0
+18,"Fintechs",0,123456789,"idle",24,false,false,0,3320,0,0
+18,"Fintechs",0,314159265,"idle",24,false,false,0,2320,0,0
+18,"Fintechs",1,123,"idle",22,true,false,0,-650,0,0
+18,"Fintechs",1,714,"idle",20,true,false,0,-620,0,0
+18,"Fintechs",1,2026,"idle",22,true,false,0,-150,0,0
+18,"Fintechs",1,4567,"idle",23,true,false,0,-665,0,0
+18,"Fintechs",1,8123,"idle",23,true,false,0,-665,0,0
+18,"Fintechs",1,14567,"idle",20,true,false,0,-120,0,0
+18,"Fintechs",1,98765,"idle",20,true,false,0,-620,0,0
+18,"Fintechs",1,414141,"idle",24,true,false,0,-2180,0,0
+18,"Fintechs",1,123456789,"idle",20,true,false,0,-120,0,0
+18,"Fintechs",1,314159265,"idle",20,true,false,0,-620,0,0
+18,"Fintechs",2,123,"idle",24,false,false,0,14320,0,0
+18,"Fintechs",2,714,"idle",24,false,false,0,5820,0,0
+18,"Fintechs",2,2026,"idle",24,false,false,0,14320,0,0
+18,"Fintechs",2,4567,"idle",24,false,false,0,12320,0,0
+18,"Fintechs",2,8123,"idle",24,false,false,0,11320,0,0
+18,"Fintechs",2,14567,"idle",24,false,false,0,12320,0,0
+18,"Fintechs",2,98765,"idle",24,false,false,0,7320,0,0
+18,"Fintechs",2,414141,"idle",24,false,false,0,9820,0,0
+18,"Fintechs",2,123456789,"idle",24,false,false,0,10320,0,0
+18,"Fintechs",2,314159265,"idle",24,false,false,0,9320,0,0
+18,"Fintechs",3,123,"idle",24,false,false,0,132320,0,0
+18,"Fintechs",3,714,"idle",24,false,false,0,123820,0,0
+18,"Fintechs",3,2026,"idle",24,false,false,0,132320,0,0
+18,"Fintechs",3,4567,"idle",24,false,false,0,130320,0,0
+18,"Fintechs",3,8123,"idle",24,false,false,0,129320,0,0
+18,"Fintechs",3,14567,"idle",24,false,false,0,130320,0,0
+18,"Fintechs",3,98765,"idle",24,false,false,0,125320,0,0
+18,"Fintechs",3,414141,"idle",24,false,false,0,127820,0,0
+18,"Fintechs",3,123456789,"idle",24,false,false,0,128320,0,0
+18,"Fintechs",3,314159265,"idle",24,false,false,0,127320,0,0
+19,"Healthtechs",0,123,"idle",24,false,false,0,7320,0,0
+19,"Healthtechs",0,714,"idle",24,true,false,0,-1180,0,0
+19,"Healthtechs",0,2026,"idle",24,false,false,0,7320,0,0
+19,"Healthtechs",0,4567,"idle",24,false,false,0,5320,0,0
+19,"Healthtechs",0,8123,"idle",24,false,false,0,4320,0,0
+19,"Healthtechs",0,14567,"idle",24,false,false,0,5320,0,0
+19,"Healthtechs",0,98765,"idle",24,false,false,0,320,0,0
+19,"Healthtechs",0,414141,"idle",24,false,false,0,2820,0,0
+19,"Healthtechs",0,123456789,"idle",24,false,false,0,3320,0,0
+19,"Healthtechs",0,314159265,"idle",24,false,false,0,2320,0,0
+19,"Healthtechs",1,123,"idle",22,true,false,0,-650,0,0
+19,"Healthtechs",1,714,"idle",20,true,false,0,-620,0,0
+19,"Healthtechs",1,2026,"idle",22,true,false,0,-150,0,0
+19,"Healthtechs",1,4567,"idle",23,true,false,0,-665,0,0
+19,"Healthtechs",1,8123,"idle",23,true,false,0,-665,0,0
+19,"Healthtechs",1,14567,"idle",20,true,false,0,-120,0,0
+19,"Healthtechs",1,98765,"idle",20,true,false,0,-620,0,0
+19,"Healthtechs",1,414141,"idle",24,true,false,0,-2180,0,0
+19,"Healthtechs",1,123456789,"idle",20,true,false,0,-120,0,0
+19,"Healthtechs",1,314159265,"idle",20,true,false,0,-620,0,0
+19,"Healthtechs",2,123,"idle",24,false,false,0,14320,0,0
+19,"Healthtechs",2,714,"idle",24,false,false,0,5820,0,0
+19,"Healthtechs",2,2026,"idle",24,false,false,0,14320,0,0
+19,"Healthtechs",2,4567,"idle",24,false,false,0,12320,0,0
+19,"Healthtechs",2,8123,"idle",24,false,false,0,11320,0,0
+19,"Healthtechs",2,14567,"idle",24,false,false,0,12320,0,0
+19,"Healthtechs",2,98765,"idle",24,false,false,0,7320,0,0
+19,"Healthtechs",2,414141,"idle",24,false,false,0,9820,0,0
+19,"Healthtechs",2,123456789,"idle",24,false,false,0,10320,0,0
+19,"Healthtechs",2,314159265,"idle",24,false,false,0,9320,0,0
+19,"Healthtechs",3,123,"idle",24,false,false,0,132320,0,0
+19,"Healthtechs",3,714,"idle",24,false,false,0,123820,0,0
+19,"Healthtechs",3,2026,"idle",24,false,false,0,132320,0,0
+19,"Healthtechs",3,4567,"idle",24,false,false,0,130320,0,0
+19,"Healthtechs",3,8123,"idle",24,false,false,0,129320,0,0
+19,"Healthtechs",3,14567,"idle",24,false,false,0,130320,0,0
+19,"Healthtechs",3,98765,"idle",24,false,false,0,125320,0,0
+19,"Healthtechs",3,414141,"idle",24,false,false,0,127820,0,0
+19,"Healthtechs",3,123456789,"idle",24,false,false,0,128320,0,0
+19,"Healthtechs",3,314159265,"idle",24,false,false,0,127320,0,0
+20,"Educação",0,123,"idle",24,false,false,0,7320,0,0
+20,"Educação",0,714,"idle",24,true,false,0,-1180,0,0
+20,"Educação",0,2026,"idle",24,false,false,0,7320,0,0
+20,"Educação",0,4567,"idle",24,false,false,0,5320,0,0
+20,"Educação",0,8123,"idle",24,false,false,0,4320,0,0
+20,"Educação",0,14567,"idle",24,false,false,0,5320,0,0
+20,"Educação",0,98765,"idle",24,false,false,0,320,0,0
+20,"Educação",0,414141,"idle",24,false,false,0,2820,0,0
+20,"Educação",0,123456789,"idle",24,false,false,0,3320,0,0
+20,"Educação",0,314159265,"idle",24,false,false,0,2320,0,0
+20,"Educação",1,123,"idle",22,true,false,0,-650,0,0
+20,"Educação",1,714,"idle",20,true,false,0,-620,0,0
+20,"Educação",1,2026,"idle",22,true,false,0,-150,0,0
+20,"Educação",1,4567,"idle",23,true,false,0,-665,0,0
+20,"Educação",1,8123,"idle",23,true,false,0,-665,0,0
+20,"Educação",1,14567,"idle",20,true,false,0,-120,0,0
+20,"Educação",1,98765,"idle",20,true,false,0,-620,0,0
+20,"Educação",1,414141,"idle",24,true,false,0,-2180,0,0
+20,"Educação",1,123456789,"idle",20,true,false,0,-120,0,0
+20,"Educação",1,314159265,"idle",20,true,false,0,-620,0,0
+20,"Educação",2,123,"idle",24,false,false,0,14320,0,0
+20,"Educação",2,714,"idle",24,false,false,0,5820,0,0
+20,"Educação",2,2026,"idle",24,false,false,0,14320,0,0
+20,"Educação",2,4567,"idle",24,false,false,0,12320,0,0
+20,"Educação",2,8123,"idle",24,false,false,0,11320,0,0
+20,"Educação",2,14567,"idle",24,false,false,0,12320,0,0
+20,"Educação",2,98765,"idle",24,false,false,0,7320,0,0
+20,"Educação",2,414141,"idle",24,false,false,0,9820,0,0
+20,"Educação",2,123456789,"idle",24,false,false,0,10320,0,0
+20,"Educação",2,314159265,"idle",24,false,false,0,9320,0,0
+20,"Educação",3,123,"idle",24,false,false,0,132320,0,0
+20,"Educação",3,714,"idle",24,false,false,0,123820,0,0
+20,"Educação",3,2026,"idle",24,false,false,0,132320,0,0
+20,"Educação",3,4567,"idle",24,false,false,0,130320,0,0
+20,"Educação",3,8123,"idle",24,false,false,0,129320,0,0
+20,"Educação",3,14567,"idle",24,false,false,0,130320,0,0
+20,"Educação",3,98765,"idle",24,false,false,0,125320,0,0
+20,"Educação",3,414141,"idle",24,false,false,0,127820,0,0
+20,"Educação",3,123456789,"idle",24,false,false,0,128320,0,0
+20,"Educação",3,314159265,"idle",24,false,false,0,127320,0,0
+21,"Redes sociais & conteúdo",0,123,"idle",24,false,false,0,7320,0,0
+21,"Redes sociais & conteúdo",0,714,"idle",24,true,false,0,-1180,0,0
+21,"Redes sociais & conteúdo",0,2026,"idle",24,false,false,0,7320,0,0
+21,"Redes sociais & conteúdo",0,4567,"idle",24,false,false,0,5320,0,0
+21,"Redes sociais & conteúdo",0,8123,"idle",24,false,false,0,4320,0,0
+21,"Redes sociais & conteúdo",0,14567,"idle",24,false,false,0,5320,0,0
+21,"Redes sociais & conteúdo",0,98765,"idle",24,false,false,0,320,0,0
+21,"Redes sociais & conteúdo",0,414141,"idle",24,false,false,0,2820,0,0
+21,"Redes sociais & conteúdo",0,123456789,"idle",24,false,false,0,3320,0,0
+21,"Redes sociais & conteúdo",0,314159265,"idle",24,false,false,0,2320,0,0
+21,"Redes sociais & conteúdo",1,123,"idle",22,true,false,0,-650,0,0
+21,"Redes sociais & conteúdo",1,714,"idle",20,true,false,0,-620,0,0
+21,"Redes sociais & conteúdo",1,2026,"idle",22,true,false,0,-150,0,0
+21,"Redes sociais & conteúdo",1,4567,"idle",23,true,false,0,-665,0,0
+21,"Redes sociais & conteúdo",1,8123,"idle",23,true,false,0,-665,0,0
+21,"Redes sociais & conteúdo",1,14567,"idle",20,true,false,0,-120,0,0
+21,"Redes sociais & conteúdo",1,98765,"idle",20,true,false,0,-620,0,0
+21,"Redes sociais & conteúdo",1,414141,"idle",24,true,false,0,-2180,0,0
+21,"Redes sociais & conteúdo",1,123456789,"idle",20,true,false,0,-120,0,0
+21,"Redes sociais & conteúdo",1,314159265,"idle",20,true,false,0,-620,0,0
+21,"Redes sociais & conteúdo",2,123,"idle",24,false,false,0,14320,0,0
+21,"Redes sociais & conteúdo",2,714,"idle",24,false,false,0,5820,0,0
+21,"Redes sociais & conteúdo",2,2026,"idle",24,false,false,0,14320,0,0
+21,"Redes sociais & conteúdo",2,4567,"idle",24,false,false,0,12320,0,0
+21,"Redes sociais & conteúdo",2,8123,"idle",24,false,false,0,11320,0,0
+21,"Redes sociais & conteúdo",2,14567,"idle",24,false,false,0,12320,0,0
+21,"Redes sociais & conteúdo",2,98765,"idle",24,false,false,0,7320,0,0
+21,"Redes sociais & conteúdo",2,414141,"idle",24,false,false,0,9820,0,0
+21,"Redes sociais & conteúdo",2,123456789,"idle",24,false,false,0,10320,0,0
+21,"Redes sociais & conteúdo",2,314159265,"idle",24,false,false,0,9320,0,0
+21,"Redes sociais & conteúdo",3,123,"idle",24,false,false,0,132320,0,0
+21,"Redes sociais & conteúdo",3,714,"idle",24,false,false,0,123820,0,0
+21,"Redes sociais & conteúdo",3,2026,"idle",24,false,false,0,132320,0,0
+21,"Redes sociais & conteúdo",3,4567,"idle",24,false,false,0,130320,0,0
+21,"Redes sociais & conteúdo",3,8123,"idle",24,false,false,0,129320,0,0
+21,"Redes sociais & conteúdo",3,14567,"idle",24,false,false,0,130320,0,0
+21,"Redes sociais & conteúdo",3,98765,"idle",24,false,false,0,125320,0,0
+21,"Redes sociais & conteúdo",3,414141,"idle",24,false,false,0,127820,0,0
+21,"Redes sociais & conteúdo",3,123456789,"idle",24,false,false,0,128320,0,0
+21,"Redes sociais & conteúdo",3,314159265,"idle",24,false,false,0,127320,0,0
+22,"Softwares & aplicativos",0,123,"idle",24,false,false,0,7320,0,0
+22,"Softwares & aplicativos",0,714,"idle",24,true,false,0,-1180,0,0
+22,"Softwares & aplicativos",0,2026,"idle",24,false,false,0,7320,0,0
+22,"Softwares & aplicativos",0,4567,"idle",24,false,false,0,5320,0,0
+22,"Softwares & aplicativos",0,8123,"idle",24,false,false,0,4320,0,0
+22,"Softwares & aplicativos",0,14567,"idle",24,false,false,0,5320,0,0
+22,"Softwares & aplicativos",0,98765,"idle",24,false,false,0,320,0,0
+22,"Softwares & aplicativos",0,414141,"idle",24,false,false,0,2820,0,0
+22,"Softwares & aplicativos",0,123456789,"idle",24,false,false,0,3320,0,0
+22,"Softwares & aplicativos",0,314159265,"idle",24,false,false,0,2320,0,0
+22,"Softwares & aplicativos",1,123,"idle",22,true,false,0,-650,0,0
+22,"Softwares & aplicativos",1,714,"idle",20,true,false,0,-620,0,0
+22,"Softwares & aplicativos",1,2026,"idle",22,true,false,0,-150,0,0
+22,"Softwares & aplicativos",1,4567,"idle",23,true,false,0,-665,0,0
+22,"Softwares & aplicativos",1,8123,"idle",23,true,false,0,-665,0,0
+22,"Softwares & aplicativos",1,14567,"idle",20,true,false,0,-120,0,0
+22,"Softwares & aplicativos",1,98765,"idle",20,true,false,0,-620,0,0
+22,"Softwares & aplicativos",1,414141,"idle",24,true,false,0,-2180,0,0
+22,"Softwares & aplicativos",1,123456789,"idle",20,true,false,0,-120,0,0
+22,"Softwares & aplicativos",1,314159265,"idle",20,true,false,0,-620,0,0
+22,"Softwares & aplicativos",2,123,"idle",24,false,false,0,14320,0,0
+22,"Softwares & aplicativos",2,714,"idle",24,false,false,0,5820,0,0
+22,"Softwares & aplicativos",2,2026,"idle",24,false,false,0,14320,0,0
+22,"Softwares & aplicativos",2,4567,"idle",24,false,false,0,12320,0,0
+22,"Softwares & aplicativos",2,8123,"idle",24,false,false,0,11320,0,0
+22,"Softwares & aplicativos",2,14567,"idle",24,false,false,0,12320,0,0
+22,"Softwares & aplicativos",2,98765,"idle",24,false,false,0,7320,0,0
+22,"Softwares & aplicativos",2,414141,"idle",24,false,false,0,9820,0,0
+22,"Softwares & aplicativos",2,123456789,"idle",24,false,false,0,10320,0,0
+22,"Softwares & aplicativos",2,314159265,"idle",24,false,false,0,9320,0,0
+22,"Softwares & aplicativos",3,123,"idle",24,false,false,0,132320,0,0
+22,"Softwares & aplicativos",3,714,"idle",24,false,false,0,123820,0,0
+22,"Softwares & aplicativos",3,2026,"idle",24,false,false,0,132320,0,0
+22,"Softwares & aplicativos",3,4567,"idle",24,false,false,0,130320,0,0
+22,"Softwares & aplicativos",3,8123,"idle",24,false,false,0,129320,0,0
+22,"Softwares & aplicativos",3,14567,"idle",24,false,false,0,130320,0,0
+22,"Softwares & aplicativos",3,98765,"idle",24,false,false,0,125320,0,0
+22,"Softwares & aplicativos",3,414141,"idle",24,false,false,0,127820,0,0
+22,"Softwares & aplicativos",3,123456789,"idle",24,false,false,0,128320,0,0
+22,"Softwares & aplicativos",3,314159265,"idle",24,false,false,0,127320,0,0
+23,"Mobilidade & delivery",0,123,"idle",24,false,false,0,7320,0,0
+23,"Mobilidade & delivery",0,714,"idle",24,true,false,0,-1180,0,0
+23,"Mobilidade & delivery",0,2026,"idle",24,false,false,0,7320,0,0
+23,"Mobilidade & delivery",0,4567,"idle",24,false,false,0,5320,0,0
+23,"Mobilidade & delivery",0,8123,"idle",24,false,false,0,4320,0,0
+23,"Mobilidade & delivery",0,14567,"idle",24,false,false,0,5320,0,0
+23,"Mobilidade & delivery",0,98765,"idle",24,false,false,0,320,0,0
+23,"Mobilidade & delivery",0,414141,"idle",24,false,false,0,2820,0,0
+23,"Mobilidade & delivery",0,123456789,"idle",24,false,false,0,3320,0,0
+23,"Mobilidade & delivery",0,314159265,"idle",24,false,false,0,2320,0,0
+23,"Mobilidade & delivery",1,123,"idle",22,true,false,0,-650,0,0
+23,"Mobilidade & delivery",1,714,"idle",20,true,false,0,-620,0,0
+23,"Mobilidade & delivery",1,2026,"idle",22,true,false,0,-150,0,0
+23,"Mobilidade & delivery",1,4567,"idle",23,true,false,0,-665,0,0
+23,"Mobilidade & delivery",1,8123,"idle",23,true,false,0,-665,0,0
+23,"Mobilidade & delivery",1,14567,"idle",20,true,false,0,-120,0,0
+23,"Mobilidade & delivery",1,98765,"idle",20,true,false,0,-620,0,0
+23,"Mobilidade & delivery",1,414141,"idle",24,true,false,0,-2180,0,0
+23,"Mobilidade & delivery",1,123456789,"idle",20,true,false,0,-120,0,0
+23,"Mobilidade & delivery",1,314159265,"idle",20,true,false,0,-620,0,0
+23,"Mobilidade & delivery",2,123,"idle",24,false,false,0,14320,0,0
+23,"Mobilidade & delivery",2,714,"idle",24,false,false,0,5820,0,0
+23,"Mobilidade & delivery",2,2026,"idle",24,false,false,0,14320,0,0
+23,"Mobilidade & delivery",2,4567,"idle",24,false,false,0,12320,0,0
+23,"Mobilidade & delivery",2,8123,"idle",24,false,false,0,11320,0,0
+23,"Mobilidade & delivery",2,14567,"idle",24,false,false,0,12320,0,0
+23,"Mobilidade & delivery",2,98765,"idle",24,false,false,0,7320,0,0
+23,"Mobilidade & delivery",2,414141,"idle",24,false,false,0,9820,0,0
+23,"Mobilidade & delivery",2,123456789,"idle",24,false,false,0,10320,0,0
+23,"Mobilidade & delivery",2,314159265,"idle",24,false,false,0,9320,0,0
+23,"Mobilidade & delivery",3,123,"idle",24,false,false,0,132320,0,0
+23,"Mobilidade & delivery",3,714,"idle",24,false,false,0,123820,0,0
+23,"Mobilidade & delivery",3,2026,"idle",24,false,false,0,132320,0,0
+23,"Mobilidade & delivery",3,4567,"idle",24,false,false,0,130320,0,0
+23,"Mobilidade & delivery",3,8123,"idle",24,false,false,0,129320,0,0
+23,"Mobilidade & delivery",3,14567,"idle",24,false,false,0,130320,0,0
+23,"Mobilidade & delivery",3,98765,"idle",24,false,false,0,125320,0,0
+23,"Mobilidade & delivery",3,414141,"idle",24,false,false,0,127820,0,0
+23,"Mobilidade & delivery",3,123456789,"idle",24,false,false,0,128320,0,0
+23,"Mobilidade & delivery",3,314159265,"idle",24,false,false,0,127320,0,0
