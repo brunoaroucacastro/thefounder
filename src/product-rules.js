@@ -25,7 +25,7 @@ const ProductRules=(()=>{
  function nextLevel(p){return p.level===0?4:Math.min(10,p.level+1);}
  function developmentCost(p){return p.level===0?(p.scale==='lean'?6000:30000):Math.round((p.scale==='lean'?2500:5000)*Math.pow(1.6,Math.max(0,p.level-4)));}
  function difficulty(p){return p.level===0?6:Math.min(18,8+Math.max(0,p.level-4)*2);}
- function modifiers(s,meta){const best=Math.max(0,...s.team.filter(p=>p.role==='Produto').map(p=>p.level));return [{label:'Especialista de produto',value:Math.min(4,best)},{label:'Foco do catálogo',value:-Math.min(4,Math.max(0,s.products.filter(p=>!p.retired).length-1))},...(meta.skills?.includes('product')?[{label:'Habilidade de produto',value:2}]:[])];}
+ function modifiers(s,meta,kind='development'){const best=Math.max(0,...s.team.filter(p=>p.role==='Produto'&&(!p.specialty||p.specialty===kind)).map(p=>p.level));return [{label:'Especialista de produto',value:Math.min(4,best)},{label:'Foco do catálogo',value:-Math.min(4,Math.max(0,s.products.filter(p=>!p.retired).length-1))},...(meta.skills?.includes('product')?[{label:'Habilidade de produto',value:2}]:[])];}
  function cost(s,a){const p=find(s,a.productId);if(a.type==='product_develop')return p?developmentCost(p):0;if(a.type==='product_research')return 1000;return 0;}
  function validAttributes(values,budget){return Array.isArray(values)&&values.length===4&&values.every(v=>Number.isInteger(v)&&v>=0&&v<=10)&&sum(values)===budget;}
  function validate(s,a){ensure(s);const p=find(s,a.productId);
@@ -48,7 +48,7 @@ const ProductRules=(()=>{
   validate(s,a);let p=find(s,a.productId);
   if(a.type==='product_create'){const parent=a.parentId?find(s,a.parentId):null,id='product-'+a.id;p={id,familyId:parent?.familyId||id,name:a.name.trim(),generation:parent?parent.generation+1:1,mode:a.mode,scale:a.scale,age:a.age,income:a.income,level:0,attributes:[0,0,0,0],blueprint:[...a.attributes],price:null,launched:false,retired:false,active:0,uniqueBuyers:0,launchMonth:null,nextObsolete:null,parentId:parent?.id||null,history:[]};s.products.push(p);s.catalogStarted=true;return {status:'executed',productId:id,note:'Conceito criado. Falta desenvolver e lançar.'};}
   if(a.type==='product_research'){
-   if(preview)return {status:'planned'};const die=roll(s,{label:'Pesquisa · '+ages[a.age]+' / '+classes[a.income],modifiers:modifiers(s,meta),difficulty:10});let note='Pesquisa inconclusiva. Nenhuma preferência foi validada.';
+   if(preview)return {status:'planned'};const die=roll(s,{label:'Pesquisa · '+ages[a.age]+' / '+classes[a.income],modifiers:modifiers(s,meta,'research'),difficulty:10});let note='Pesquisa inconclusiva. Nenhuma preferência foi validada.';
    if(!die.critical&&die.total>=10){const axis=die.natural%4,key=a.age+'-'+a.income,rank=ideal(a.age,a.income)[axis];s.marketResearch[key]??={};s.marketResearch[key][axis]={priority:rank>=.30?'Alta':rank>=.18?'Média':'Baixa',confidence:die.total>=18?'Alta':'Parcial',month:s.month};meta.productInsights??=[];const insight={marketId:s.marketId,age:a.age,income:a.income,axis,...s.marketResearch[key][axis]};meta.productInsights=meta.productInsights.filter(x=>!(x.marketId===insight.marketId&&x.age===a.age&&x.income===a.income&&x.axis===axis));meta.productInsights.push(insight);note=axes[axis]+': prioridade '+s.marketResearch[key][axis].priority.toLowerCase()+' para esta persona.';}
    return {status:die.critical?'critical':die.outcome,die,note};
   }

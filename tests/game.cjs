@@ -6,3 +6,6 @@ require('./ui.cjs');
 require('./dice.cjs');
 require('./product-ui.cjs');
 require('./finance-ui.cjs');
+
+require('./people.cjs');
+require('./people-ui.cjs');

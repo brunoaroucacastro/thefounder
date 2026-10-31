@@ -1,4 +1,4 @@
-THE FOUNDER — Protótipo 0.8 / Fase 4
+THE FOUNDER — Protótipo 0.9 / Fase 5
 
 JOGAR
 Abra dist/The-Founder-Jogar.html no navegador. É um arquivo único offline.
@@ -48,3 +48,8 @@ No crédito, consultar gera uma proposta, não um depósito. Aceite pela agenda.
 Juros correm na carência; principal é amortizado depois, em parcelas.
 A inflação de fornecedores é fixa em 3% ao ano. Financeiro tem especialidade
 em fornecedores, crédito ou pesquisa. Veja docs/FASE-4-ADMINISTRATIVO-FINANCEIRO.md.
+
+PESSOAS — FASE 5
+Na área Pessoas, abra uma seleção por especialidade. No próximo mês chegam três candidatos: escolha um para contratar pela agenda.
+Treine com D20: sucesso promove até nível 5 e aumenta salário em 20% já no fechamento; falha consome o investimento sem aumento.
+A motivação é individual. Uma reunião por mês pode ajudar ou piorar o clima. A pessoa menos motivada passa por uma verificação mensal de retenção.

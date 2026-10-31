@@ -1,5 +1,16 @@
 # Histórico de desenvolvimento
 
+## 0.9 — Fase 5: Pessoas — 31/10/2026
+
+- Seleção por área/especialidade; três candidatos no próximo mês, uma contratação por seleção, cancelamento e limite de 12 pessoas.
+- Níveis 1–5, senioridades, salários distintos, treino D20 com dificuldade/custo crescentes e promoção com +20% de salário no próprio fechamento.
+- Motivação individual limitada a 0–100; efeitos de contratação, desligamento, resultados, atividade e treinamento.
+- Reunião D20 uma vez por mês, incluindo resultado 5; faixas de retenção sem sobreposição, uma verificação mensal para a pessoa menos motivada.
+- Retratos pixel, estrelas, barras de clima, recrutamento visual e histórico de motivação.
+- Produto separa especialidades de pesquisa/desenvolvimento; bônus D20 usa o melhor especialista.
+- Save schema 6 com backup; ações antigas preservadas. 21 testes de pessoas e integração de recrutamento, save e D20. Inspeção visual no navegador ainda pendente.
+
+
 ## 0.8 — Fase 4: Administrativo-financeiro — 31/10/2026
 
 - DRE com percentuais e conciliação de caixa; juros e principal separados.

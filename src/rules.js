@@ -3,15 +3,16 @@ const GameRules=(()=>{
  const campaigns=typeof CampaignRules!=='undefined'?CampaignRules:require('./campaign-rules.js');
  const products=typeof ProductRules!=='undefined'?ProductRules:require('./product-rules.js');
  const finance=typeof FinanceRules!=='undefined'?FinanceRules:require('./finance-rules.js');
+ const people=typeof PeopleRules!=='undefined'?PeopleRules:require('./people-rules.js');
  const copy=x=>JSON.parse(JSON.stringify(x)),limit=(x,a,b)=>Math.max(a,Math.min(b,x));
  const staff=[{name:'Lia',role:'Produto',salary:4500,color:'#be8066'},{name:'Caio',role:'Marketing',salary:3500,color:'#809ec1'},{name:'Nina',role:'Suporte',salary:2800,color:'#beac5e'},{name:'Ivo',role:'Financeiro',salary:3800,color:'#b49b72'}];
  const labels={develop:'Desenvolver produto',launch:'Lançar produto',research:'Ouvir clientes',price:'Ajustar preço',campaign:'Ajustar campanha',budget:'Orçamento de marketing',hire:'Contratar',promote:'Promover',fire:'Desligar',meeting:'Reunião da equipe',loan:'Captar R$ 20 mil',repay:'Amortizar dívida',target:'Escolher público'};
  function migrate(input,seed=Date.now()){
-  const s=copy(input);if(s.schemaVersion>5)throw Error('Save de uma versão mais nova. Abra-o na versão correspondente.');
+  const s=copy(input);if(s.schemaVersion>6)throw Error('Save de uma versão mais nova. Abra-o na versão correspondente.');
   if(!s.schemaVersion||s.schemaVersion<2){s.legacyUsed=limit(4-(s.actions??4),0,4);s.plan=[];s.planRevision=0;s.nextId=1;s.schemaVersion=2;}
   s.plan??=[];s.planRevision??=0;s.nextId??=1;s.legacyUsed??=0;s.rolls??=[];s.rng??=(seed>>>0)||123456789;s.companyId??='company-'+s.rng;
   s.marketId??=['dnvb','wearables','electric-mobility','saas','games','ai-app','health-network','charging','shared-mobility','fintech','marketplace','edtech'][s.business]||'legacy-default';
-  campaigns.ensure(s);products.ensure(s);finance.ensure(s);s.rollSequence??=0;s.schemaVersion=5;
+  campaigns.ensure(s);products.ensure(s);finance.ensure(s);people.ensure(s);s.rollSequence??=0;s.schemaVersion=6;
   s.team.forEach(p=>{if(!p.id)p.id='person-'+s.nextId++;});return s;
  }
  function rollD20(state,{label='D20',modifiers=[],difficulty=11}={},random){
@@ -22,10 +23,12 @@ const GameRules=(()=>{
   const total=natural+mods.reduce((a,m)=>a+m.value,0),critical=natural===1;
   const r={id:state.companyId+'-die-'+(state.rollSequence=(state.rollSequence||0)+1),label,natural,modifiers:mods,total,difficulty,critical,outcome:critical?'critical':total>=difficulty?'success':'failure',month:state.month};state.rolls.push(r);state.rolls=state.rolls.slice(-100);return r;
  }
- function cost(s,a,meta){if(finance.kinds.includes(a.type))return finance.cost(s,a);if(products.kinds.includes(a.type))return products.cost(s,a);switch(a.type){case'campaign':return a.mode==='optimize'?500:0;case'develop':return 3000;case'research':return 500;case'hire':return meta.skills.includes('people')?600:1200;case'fire':return s.team.find(p=>p.id===a.personId)?.salary??0;case'repay':return Math.min(10000,s.debt);default:return 0;}}
+ function cost(s,a,meta){if(people.kinds.includes(a.type))return people.cost(s,a,meta);if(finance.kinds.includes(a.type))return finance.cost(s,a);if(products.kinds.includes(a.type))return products.cost(s,a);switch(a.type){case'campaign':return a.mode==='optimize'?500:0;case'develop':return 3000;case'research':return 500;case'hire':return meta.skills.includes('people')?600:1200;case'fire':return s.team.find(p=>p.id===a.personId)?.salary??0;case'repay':return Math.min(10000,s.debt);default:return 0;}}
  function apply(s,a,meta,context={}){
+ if(people.kinds.includes(a.type)){people.validate(s,a,context.touched);const paid=people.cost(s,a,meta);if(s.cash<paid)throw Error('Caixa insuficiente para esta ação de pessoas.');s.cash-=paid;return {id:a.id,type:a.type,label:describe(a),cost:paid,...people.apply(s,a,{...context,roll:(state,options)=>rollD20(state,options,context.random)})};}
   if(finance.kinds.includes(a.type)){finance.validate(s,a,context.touched);const paid=finance.cost(s,a);if(s.cash<paid)throw Error('Caixa insuficiente para esta ação financeira.');s.cash-=paid;const effect=finance.apply(s,a,{...context,roll:(state,options)=>rollD20(state,options,context.random)});return {id:a.id,type:a.type,label:describe(a),cost:paid,...effect};}
   if(products.kinds.includes(a.type)){products.validate(s,a);const paid=products.cost(s,a);if(s.cash<paid)throw Error('Caixa insuficiente para esta tentativa.');s.cash-=paid;const effect=products.apply(s,a,{...context,meta,roll:(state,options)=>rollD20(state,options,context.random)});products.sync(s);return {id:a.id,type:a.type,label:describe(a),cost:paid,...effect};}
+  if(['meeting','promote'].includes(a.type)){return apply(s,{...a,type:a.type==='meeting'?'people_meeting':'people_train'},meta,context);}
   if(!labels[a.type])throw Error('Ação desconhecida');
   const p=s.team.find(p=>p.id===a.personId);let n;
   if(['promote','fire'].includes(a.type)&&!p)throw Error('Pessoa não está na equipe nesta etapa.');
@@ -45,9 +48,9 @@ const GameRules=(()=>{
    case'price':s.price=a.value;break;
    case'budget':case'campaign':{const effect=campaigns.apply(s,a,{...context,roll:(state,options)=>rollD20(state,options,context.random)});return {id:a.id,type:a.type,label:describe(a),cost:paid,...effect};}
    case'target':s.target=a.value;break;
-   case'hire':s.team.push({...staff[a.index],id:'hire-'+a.id,level:1,...(a.index===1?{specialty:['ads','seo','social'].includes(a.specialty)?a.specialty:'ads'}:a.index===3?{specialty:['suppliers','credit','benchmarks'].includes(a.specialty)?a.specialty:'suppliers'}:{})});break;
+   case'hire':people.bump(s,5);s.team.push({...staff[a.index],motivation:82,id:'hire-'+a.id,level:1,...(a.index===1?{specialty:['ads','seo','social'].includes(a.specialty)?a.specialty:'ads'}:a.index===3?{specialty:['suppliers','credit','benchmarks'].includes(a.specialty)?a.specialty:'suppliers'}:{})});break;
    case'promote':p.salary=Math.round(p.salary*1.2);p.level++;s.motivation=limit(s.motivation+12,0,100);break;
-   case'fire':s.team=s.team.filter(x=>x.id!==a.personId);s.motivation=limit(s.motivation-8,0,100);break;
+   case'fire':s.team=s.team.filter(x=>x.id!==a.personId);people.bump(s,-5);break;
    case'meeting':s.motivation=limit(s.motivation+14,0,100);break;
    case'loan':s.finance.legacyBalance+=20000;s.cash+=20000;finance.sync(s);break;
    case'repay':finance.payoff(s,paid);break;
@@ -56,7 +59,7 @@ const GameRules=(()=>{
   const legacy=products.find(s,'legacy-product');if(legacy&&['develop','research','launch','price'].includes(a.type)){if(a.type==='develop'||a.type==='research'){legacy.level=Math.min(10,legacy.level+1);legacy.attributes=products.allocate(legacy.level,legacy.attributes);}if(a.type==='launch'){legacy.launched=true;legacy.launchMonth=s.month+1;legacy.nextObsolete=s.month+6;}if(a.type==='price')legacy.price=a.value;products.sync(s);}
   return {id:a.id,type:a.type,label:describe(a),cost:paid,status:'executed',...(a.type==='loan'?{credit:20000}:{})};
  }
- function describe(a){let label=({finance_benchmark:'Pesquisar benchmark',finance_supplier:'Negociar fornecedor',finance_credit:'Consultar crédito',finance_accept:'Aceitar proposta',finance_repay:'Amortizar dívida',product_create:'Criar produto',product_develop:'Desenvolver produto',product_launch:'Lançar produto',product_research:'Pesquisar persona',product_price:'Reajustar produto',product_retire:'Arquivar produto'}[a.type])||labels[a.type]||a.type;if(a.supplierId)label+=' · '+finance.supplierNames[a.supplierId];if(a.bankId)label+=' · '+finance.banks.find(b=>b.id===a.bankId)?.name+' · R$ '+a.amount;if(a.type==='finance_repay')label+=' · R$ '+a.amount;if(a.productName||a.name)label+=' · '+(a.productName||a.name);if(a.type==='campaign')label+=' · '+({scale:'Escalar',reduce:'Reduzir',optimize:'Otimizar'}[a.mode]||'')+' · '+campaigns.names[a.channel]+(a.mode==='optimize'?'':' · R$ '+a.value+'/mês');if(a.type==='budget')label+=' · '+['Busca','SEO','Redes'][a.index]+' · R$ '+a.value+'/mês';if(a.type==='price')label+=' · R$ '+a.value;if(a.type==='hire')label+=' · '+(staff[a.index]?.name||'');if(a.personName)label+=' · '+a.personName;if(a.type==='target')label+=' · '+['18–24','25–34','35–54','55+'][a.value];return label;}
+ function describe(a){let label=({people_cancel:'Encerrar seleção',people_recruit:'Abrir seleção',people_hire:'Contratar candidato',people_train:'Treinar e promover',people_fire:'Desligar',people_meeting:'Reunião geral',finance_benchmark:'Pesquisar benchmark',finance_supplier:'Negociar fornecedor',finance_credit:'Consultar crédito',finance_accept:'Aceitar proposta',finance_repay:'Amortizar dívida',product_create:'Criar produto',product_develop:'Desenvolver produto',product_launch:'Lançar produto',product_research:'Pesquisar persona',product_price:'Reajustar produto',product_retire:'Arquivar produto'}[a.type])||labels[a.type]||a.type;if(a.role)label+=' · '+a.role;if(a.specialty&&a.role)label+=' · '+(people.specialties[a.role]?.[a.specialty]||a.specialty);if(a.supplierId)label+=' · '+finance.supplierNames[a.supplierId];if(a.bankId)label+=' · '+finance.banks.find(b=>b.id===a.bankId)?.name+' · R$ '+a.amount;if(a.type==='finance_repay')label+=' · R$ '+a.amount;if(a.productName||a.name)label+=' · '+(a.productName||a.name);if(a.type==='campaign')label+=' · '+({scale:'Escalar',reduce:'Reduzir',optimize:'Otimizar'}[a.mode]||'')+' · '+campaigns.names[a.channel]+(a.mode==='optimize'?'':' · R$ '+a.value+'/mês');if(a.type==='budget')label+=' · '+['Busca','SEO','Redes'][a.index]+' · R$ '+a.value+'/mês';if(a.type==='price')label+=' · R$ '+a.value;if(a.type==='hire')label+=' · '+(staff[a.index]?.name||'');if(a.personName)label+=' · '+a.personName;if(a.type==='target')label+=' · '+['18–24','25–34','35–54','55+'][a.value];return label;}
  function project(input,meta){let state=migrate(input),m=copy(meta),entries=[],errors=[],touched=new Set();
   if(state.plan.length>4-state.legacyUsed)errors.push({index:-1,message:'Máximo de quatro ações por mês.'});
   state.plan.forEach((a,index)=>{try{entries.push(apply(state,a,m,{preview:true,touched}));}catch(e){errors.push({index,message:e.message});entries.push({id:a.id,label:describe(a),status:'invalid',cost:0});}});
@@ -85,20 +88,20 @@ const GameRules=(()=>{
 
   }
   payroll=s.team.reduce((a,p)=>a+p.salary,0);interest=finance.interest(s);rent=finance.rent(s);profit=revenue-cogs-payroll-rent-marketing-interest;
-  s.cash+=profit;s.totalRevenue+=revenue;s.month++;s.actions=4;s.streak=profit>0?s.streak+1:0;s.motivation=limit(s.motivation-4-(overload>.1?5:0),0,100);
+  s.cash+=profit;s.totalRevenue+=revenue;s.month++;s.actions=4;s.streak=profit>0?s.streak+1:0;
   const events=[...entries.filter(e=>e.note).map(e=>e.label+': '+e.note),...(s.catalogStarted?products.ageProducts(s):[])],monthRolls=entries.flatMap(e=>e.rollCards?e.rollCards.map(c=>c.die):e.die?[e.die]:[]);let eventCash=0,friendsPaid=0;const monthRoll=label=>{const r=rollD20(s,{label},context.random);monthRolls.push(r);return r;};
-  if(s.month%3===0){const r=monthRoll('Evento do trimestre');if(r.natural<=6){eventCash=-1500;events.push(r.critical?'Falha crítica: pane no servidor · −R$ 1.500':'Pane no servidor · −R$ 1.500');}else if(r.natural<=13){eventCash=2000;events.push('Parceria extraordinária · +R$ 2.000');}else{s.motivation=limit(s.motivation+8,0,100);events.push('Elogio de cliente · ânimo +8');}s.cash+=eventCash;}
-  if(s.motivation<35&&s.team.length){const r=monthRoll('Risco de saída da equipe');if(r.natural<=7){const p=s.team.pop();events.push(p.name+' pediu demissão.');}}
+  if(s.month%3===0){const r=monthRoll('Evento do trimestre');if(r.natural<=6){eventCash=-1500;events.push(r.critical?'Falha crítica: pane no servidor · −R$ 1.500':'Pane no servidor · −R$ 1.500');}else if(r.natural<=13){eventCash=2000;events.push('Parceria extraordinária · +R$ 2.000');}else{people.bump(s,8);events.push('Elogio de cliente · ânimo +8');}s.cash+=eventCash;}
   if(s.capital===1&&s.month>6&&s.friendsDebt>0){const due=Math.min(1750,s.friendsDebt);if(s.cash>=due){s.cash-=due;s.friendsDebt-=due;friendsPaid=due;events.push('Parcela aos amigos paga.');}else{s.trust=limit(s.trust-15,0,100);events.push('Parcela aos amigos atrasada · confiança −15.');}}
   if(s.capital===3&&s.month%3===0){s.trust=limit(s.trust+(revenue>(s.history.at(-3)?.revenue||0)*1.2?8:-15),0,100);events.push('Confiança dos investidores: '+s.trust+'/100.');}
   const financeClose=finance.settleMonth(s);events.push(...financeClose.events);
-  const report={creditReceived:entries.reduce((n,e)=>n+(e.credit||0),0),bankPrincipalPaid:financeClose.principalPaid,rent,month:s.month,revenue,cogs,payroll,marketing,interest,profit,reach,leads,newCustomers,churn,startCash,actionCost:entries.reduce((a,e)=>a+e.cost,0),eventCash,friendsPaid,cash:s.cash,entries,events,rolls:monthRolls,acquisition,productSales,token:expected};
+  const peopleClose=people.settle(s,{entries,profit,revenue,roll:(state,options)=>rollD20(state,options,context.random)});events.push(...peopleClose.events);monthRolls.push(...peopleClose.rolls);
+  const report={peopleChanges:peopleClose.changes,creditReceived:entries.reduce((n,e)=>n+(e.credit||0),0),bankPrincipalPaid:financeClose.principalPaid,rent,month:s.month,revenue,cogs,payroll,marketing,interest,profit,reach,leads,newCustomers,churn,startCash,actionCost:entries.reduce((a,e)=>a+e.cost,0),eventCash,friendsPaid,cash:s.cash,entries,events,rolls:monthRolls,acquisition,productSales,token:expected};
   // history retains the canonical financial close, including financing and actions.
   s.history.push(report);s.lastMonthReport=report;s.lastResolvedToken=expected;
   if(s.cash<0){s.ended=true;const xp=2+Math.floor(s.month/3)+Math.floor(s.totalRevenue/100000);m.xp=(m.xp||0)+xp;m.runs=(m.runs||0)+1;report.bankruptcyXP=xp;}
   s.logs.unshift(...events.map(text=>({text,month:startMonth})),{text:'Fechamento: '+newCustomers+' novos clientes; resultado R$ '+profit+'.',month:startMonth});s.logs=s.logs.slice(0,35);
   return {state:s,meta:m,report,bankrupt:s.cash<0};
  }
- return {finance,products,campaigns,migrate,rollD20,cost,describe,project,enqueue,edit,token,resolve};
+ return {people,finance,products,campaigns,migrate,rollD20,cost,describe,project,enqueue,edit,token,resolve};
 })();
 if(typeof module!=='undefined')module.exports=GameRules;
