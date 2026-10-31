@@ -47,3 +47,28 @@ Questão de design: avaliar adequação do capital próprio mínimo aos diferent
 ## Direção visual já escolhida
 
 Escritório isométrico, pixel art vibrante e caricata, interação por objetos do cenário. Referências fornecidas: Game Dev Tycoon, News Tower e escritório em pixel art.
+
+## Setores aprovados — revisão de 31/10/2026
+
+Foco B2C, mantendo os dois lados. Esta seleção substitui a lista inicial de 12 arquétipos no planejamento; migração do jogo ainda pendente.
+
+### Produtos físicos
+
+1. Gadgets & tecnologia.
+2. Moda & vestuário (brandwear).
+3. Consumíveis, com alimentos e bebidas como exemplos.
+4. Beleza & cosméticos — adicionado: maquiagem, perfumes e cuidados com a pele. Mecânicas e público a definir.
+
+### Plataformas e serviços digitais
+
+1. Fintechs.
+2. Healthtechs.
+3. Educação.
+4. Redes sociais & conteúdo — inclui streaming e entretenimento.
+5. Softwares & aplicativos — inclui jogos.
+6. Marketplaces.
+7. Mobilidade & delivery.
+
+Usar a mesma régua: tamanho do público, demografia e renda. Separar visualmente demografia e renda. Mostrar descrição curta por empresa e descrição, prós e contras por perfil de founder.
+
+Outros setores físicos sugeridos não foram aprovados. A renomeação de Consumíveis para Alimentos & bebidas também não foi confirmada.
