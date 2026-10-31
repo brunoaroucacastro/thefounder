@@ -1,5 +1,13 @@
 # Histórico de desenvolvimento
 
+## 0.17 — Prazos do capital inicial — 31/10/2026
+
+- Banco inicial: 12 pagamentos de principal + juros de 2,5% sobre o saldo, primeira cobrança no mês 1.
+- Amigos/família: devolução integral no mês 6, sem parcelas anteriores.
+- Previsão, fechamento e painel usam a mesma regra; contratos antigos preservados.
+- Oito testes específicos e configuração inicial no simulador.
+
+
 ## 0.16 — Mais espaço nas telas de gestão — 31/10/2026
 
 - Removido o bloco Missão do escritório e seus estilos.

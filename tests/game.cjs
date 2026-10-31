@@ -17,3 +17,5 @@ require('./markets.cjs');
 
 require('./founders.cjs');
 require('./founder-ui.cjs');
+
+require('./initial-funding.cjs');

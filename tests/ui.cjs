@@ -20,7 +20,7 @@ run('reviewMonth();editPlan(3,0);editPlan(1,-1)');assert.equal(run('s.plan.lengt
 app=boot(app.storage);assert.equal(run('s.plan.length'),3);assert.equal(run('s.team.length'),0);run('reviewMonth();approveMonth()');assert.equal(run('s.team.length'),3);
 for(let i=0;i<6;i++)run('tab='+i+';render()');
 run('s.cash=1;save();reviewMonth();approveMonth()');assert.equal(run('s.ended'),true);assert.equal(run('meta.runs'),1);
-run('draft.capital=1;foundCompany();s.cash=100000;s.month=6;save();reviewMonth();approveMonth()');assert.equal(run('s.friendsDebt'),47500);assert.equal(run('s.cash'),run('s.lastMonthReport.cash'));
+run('draft.capital=1;foundCompany();s.cash=100000;s.month=6;save();reviewMonth();approveMonth()');assert.equal(run('s.friendsDebt'),0);assert.equal(run('s.cash'),run('s.lastMonthReport.cash'));
 run('draft.capital=3;foundCompany()');assert.equal(run('s.equity'),.85);
 run('draft.capital=2;foundCompany()');assert.equal(run('s.debt'),80000);
 run('draft.capital=0;foundCompany()');assert.equal(run('s.cash'),25000);

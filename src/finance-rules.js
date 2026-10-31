@@ -7,6 +7,8 @@ const FinanceRules=(()=>{
  const kinds=['finance_benchmark','finance_supplier','finance_credit','finance_accept','finance_repay'];
  function ensure(s){if(!s.finance)s.finance={legacyBalance:s.debt||0,loans:[],offers:[],creditScore:65,creditBlockedUntil:0,lastCreditRequest:-1,inflationFactor:1,lastInflationYear:Math.floor(s.month/12),suppliers:{production:{adjustment:0,availableAfter:0,offer:null},rent:{adjustment:0,availableAfter:0,offer:null}},benchmarks:[]};return s;}
  function sync(s){ensure(s);s.debt=round(s.finance.legacyBalance+s.finance.loans.reduce((n,l)=>n+l.balance,0));}
+ function initialFunding(s){if(s.initialFundingVersion===2)return s;ensure(s);if(s.capital===2&&s.finance.legacyBalance>0){const amount=s.finance.legacyBalance;s.finance.legacyBalance=0;s.finance.loans.push({id:'initial-bank',bankId:'initial',bankName:'Banco inicial',amount,balance:amount,rate:.025,months:12,grace:0,installment:round(amount/12),nextDueMonth:s.month+1,overdue:0});sync(s);}if(s.capital===1){s.friendsTerms={mode:'balloon',dueMonth:s.month+6};delete s.friendsInstallment;}s.initialFundingVersion=2;return s;}
+ function friendsDue(s,month=s.month+1){if(s.capital!==1||!(s.friendsDebt>0))return 0;if(s.friendsTerms?.mode==='balloon')return month>=s.friendsTerms.dueMonth?s.friendsDebt:0;return month>6?Math.min(s.friendsInstallment??1750,s.friendsDebt):0;}
  function rent(s){ensure(s);return round((s.officeMode==='garage'&&s.team.length<3?500:2000)*s.finance.inflationFactor*(1+s.finance.suppliers.rent.adjustment));}
  function interest(s){ensure(s);return round(s.finance.legacyBalance*.025+s.finance.loans.reduce((n,l)=>n+l.balance*l.rate,0));}
  function principalDue(s){ensure(s);return round(s.finance.loans.reduce((n,l)=>n+(s.month+1>=l.nextDueMonth?Math.min(l.balance,l.installment+(l.overdue||0)):0),0));}
@@ -73,6 +75,6 @@ const FinanceRules=(()=>{
   const year=Math.floor(s.month/12);if(year>s.finance.lastInflationYear){s.finance.inflationFactor*=Math.pow(1.03,year-s.finance.lastInflationYear);s.finance.lastInflationYear=year;events.push('Inflação anual: custos variáveis e aluguel +3% a partir do próximo mês.');}
   sync(s);return {principalPaid,events};
  }
- return {banks,categories,supplierNames,kinds,ensure,sync,rent,interest,principalDue,specialist,modifiers,findOffer,cost,validate,payoff,benchmarkTarget,apply,respondSupplier,settleMonth};
+ return {banks,categories,supplierNames,kinds,ensure,sync,initialFunding,friendsDue,rent,interest,principalDue,specialist,modifiers,findOffer,cost,validate,payoff,benchmarkTarget,apply,respondSupplier,settleMonth};
 })();
 if(typeof module!=='undefined')module.exports=FinanceRules;

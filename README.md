@@ -1,6 +1,6 @@
 # The Founder
 
-Jogo de gestão de empresas em pixel art. Protótipo 0.16 para PC/navegador.
+Jogo de gestão de empresas em pixel art. Protótipo 0.17 para PC/navegador.
 
 ## Jogar
 
@@ -64,3 +64,5 @@ Entrega 0.14: número da versão visível na criação, cartões gerados exclusi
 Versão 0.15: 11 perfis de founder com modificadores reais no D20 (+1/−1 ou primeira viagem 0/0). Distribuição completa em docs/PERFIS-EMPREENDEDOR.md. Arquivo jogável versionado: The-Founder-0.15-Jogar.html.
 
 Versão 0.16: bloco Missão removido; agenda só aparece no escritório e as abas ganham altura. Ações planejadas são preservadas ao abrir/fechar abas. Arquivo atual: The-Founder-0.16-Jogar.html.
+
+Versão 0.17: capital bancário inicial pago em 12 meses com juros sobre o saldo; amigos/família devolvidos integralmente no mês 6. Novas jornadas; contratos anteriores preservados. Ver docs/CONTRATOS-INICIAIS.md.
