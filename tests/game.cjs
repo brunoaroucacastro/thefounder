@@ -19,3 +19,5 @@ require('./founders.cjs');
 require('./founder-ui.cjs');
 
 require('./initial-funding.cjs');
+
+require('./month-recap.cjs');

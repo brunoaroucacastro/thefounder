@@ -1,5 +1,16 @@
 # Histórico de desenvolvimento
 
+## 0.19 — Fechamento com consequências em destaque — 31/10/2026
+
+- Resumo narrativo do mês com resultado operacional e mudança no caixa separados, novos compradores, conquistas e alertas.
+- Destaques factuais para lançamento, primeiro faturamento e primeiro lucro, sem recompensas inventadas.
+- Conquistas e problemas derivam do relatório salvo; apresentação não recalcula a economia nem rola dados.
+- Sugestão contextual de próxima área; DRE completa, produtos, motivação, ROAS e replay continuam acessíveis.
+- Som breve só quando o áudio já estiver ligado; animações respeitam movimento reduzido.
+- Nove testes de fechamento, incluindo não duplicação, falência, neutralidade e lucro versus liquidez.
+- Análise da gameplay registrada separadamente, com propostas ainda não implementadas.
+
+
 ## 0.18 — Menus mais claros e direção acolhedora — 31/10/2026
 
 - Cabeçalho compacto por área, retrato pixel do founder e navegação direta entre menus.

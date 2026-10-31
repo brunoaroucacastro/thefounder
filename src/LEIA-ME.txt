@@ -1,4 +1,4 @@
-THE FOUNDER — Protótipo 0.18 / Integração e balanceamento
+THE FOUNDER — Protótipo 0.19 / Integração e balanceamento
 
 JOGAR
 Abra dist/The-Founder-Jogar.html no navegador. É um arquivo único offline.
@@ -83,3 +83,6 @@ Banco: 12 pagamentos mensais, principal + juros de 2,5% sobre o saldo. Amigos/fa
 
 UX — 0.18
 Menus com navegação direta, botões principais em destaque e detalhes expansíveis. Agenda permanece só no escritório.
+
+FECHAMENTO — 0.19
+Ao concluir os dados, veja conquistas, alertas e resultado do negócio separado da mudança no caixa. Ver números completos abre o relatório anterior; Planejar próximo mês leva à área sugerida. Sem novos sorteios ou cobranças ao rever resultados. Arquivo atual: The-Founder-0.19-Jogar.html.
