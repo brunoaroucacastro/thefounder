@@ -1,10 +1,10 @@
 const fs=require('fs');
 const root='src/';
 let html=fs.readFileSync(root+'index.html','utf8');
-for(const name of ['style.css','scene.css']){let css=fs.readFileSync(root+name,'utf8').replace(/@import\s+url\([^;]+;/g,'');html=html.replace('<link rel="stylesheet" href="'+name+'">',()=>'<style>\n'+css+'\n</style>');}
-for(const name of ['game.js','scene.js','create.js']){let js=fs.readFileSync(root+name,'utf8');html=html.replace('<script src="'+name+'"></script>',()=>'<script>\n'+js+'\n</script>');}
-html=html.replaceAll('PROTÓTIPO 0.1','PROTÓTIPO 0.3.1');
+for(const name of ['style.css','scene.css','agenda.css']){let css=fs.readFileSync(root+name,'utf8').replace(/@import\s+url\([^;]+;/g,'');html=html.replace('<link rel="stylesheet" href="'+name+'">',()=>'<style>\n'+css+'\n</style>');}
+for(const name of ['rules.js','game.js','scene.js','create.js','planner.js']){let js=fs.readFileSync(root+name,'utf8');html=html.replace('<script src="'+name+'"></script>',()=>'<script>\n'+js+'\n</script>');}
+html=html.replaceAll('PROTÓTIPO 0.1','PROTÓTIPO 0.5');
 if(/<script[^>]+src=|<link[^>]+stylesheet/.test(html))throw Error('External assets remain');
 const vm=require('vm');for(const match of html.matchAll(/<script>([\s\S]*?)<\/script>/g))new vm.Script(match[1]);
 fs.writeFileSync('dist/The-Founder-Jogar.html',html,'utf8');
-console.log('PASS: HTML independente, dois estilos e três scripts incorporados; sintaxe validada. '+Buffer.byteLength(html)+' bytes.');
+console.log('PASS: HTML independente, três estilos e cinco scripts incorporados; sintaxe validada. '+Buffer.byteLength(html)+' bytes.');
