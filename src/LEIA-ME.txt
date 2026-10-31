@@ -1,4 +1,4 @@
-THE FOUNDER — Protótipo 0.6 / Fase 2
+THE FOUNDER — Protótipo 0.6.1 / Fase 2 + D20 animado
 
 JOGAR
 Abra dist/The-Founder-Jogar.html no Chrome, Edge ou Firefox.
@@ -43,3 +43,9 @@ node tests/game.cjs
 node scripts/build.cjs
 Regras: docs/FASE-2-MARKETING.md.
 Testes de lógica e integração com DOM simulado; não comprovam layout.
+
+D20 ANIMADO
+Ao aprovar um mês com sorteios, clique em Rolar D20 ou no dado.
+Veja modificadores, total e consequência, e avance para a próxima rolagem.
+Pular animações abre o fechamento. Rever dados rolando repete a apresentação,
+sem mudar resultados. Continuar retoma uma sequência interrompida.

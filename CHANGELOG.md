@@ -1,5 +1,14 @@
 # Histórico de desenvolvimento
 
+## 0.6.1 — D20 animado e resolução cinematográfica — 31/10/2026
+
+- Cena própria para cada rolagem: D20 facetado animado, dificuldade/faixas, modificadores, total e consequência.
+- Clique para rolar, avanço sequencial, pular animações e rever resultados do fechamento.
+- Resultado econômico salvo antes da apresentação. Reabrir, pular e rever não sorteiam novamente nem cobram ações.
+- Cursor persistido retoma a sequência ao escolher Continuar. Eventos usam suas próprias faixas, sem exibir dificuldade enganosa.
+- Respeita preferência de movimento reduzido e cancela timers ao sair.
+- Onze testes de apresentação com relógio controlado, além das regressões existentes. Layout ainda sem inspeção visual no navegador.
+
 ## 0.6 — Fase 2: campanhas, D20 e ROAS — 31/10/2026
 
 - Escalar, reduzir e otimizar por canal, com verba mensal explícita e agenda reversível.

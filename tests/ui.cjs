@@ -1,11 +1,14 @@
 const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
 // Integration harness, not a browser/layout test. Executes the shipped scripts.
 function boot(storage=new Map()){
+ let now=0,nextTimer=1;const timers=new Map();
+ function schedule(fn,delay=0){const id=nextTimer++;timers.set(id,{fn,at:now+delay});return id;}
+ function advanceTime(ms){const until=now+ms;let count=0;while(true){const next=[...timers].filter(([,v])=>v.at<=until).sort((a,b)=>a[1].at-b[1].at)[0];if(!next)break;if(count++>10000)throw Error('Timer loop');now=next[1].at;timers.delete(next[0]);next[1].fn();}now=until;}
  const els=new Map(),ctx2d=new Proxy({},{get:()=>()=>{}}),world={html:'',insertAdjacentHTML(_,html){this.html+=html;},querySelector(){return {textContent:''}}};
- const el=id=>{if(!els.has(id))els.set(id,{innerHTML:'',textContent:'',style:{},open:false,value:'Nova empresa',showModal(){this.open=true},close(){this.open=false},remove(){},querySelector(sel){return sel==='.world'?world:null},getContext(){return ctx2d},addEventListener(){},getBoundingClientRect(){return {left:0,top:0,width:1280,height:800}}});return els.get(id);};
- const ctx=vm.createContext({document:{getElementById:el},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},window:{},requestAnimationFrame:()=>{},setTimeout:()=>1,clearTimeout:()=>{},console,Math});
- for(const f of ['campaign-rules','rules','game','scene','create','planner'])vm.runInContext(fs.readFileSync('src/'+f+'.js','utf8'),ctx,{filename:f+'.js'});
- return {run:code=>vm.runInContext(code,ctx),storage,el,world};
+ const el=id=>{if(!els.has(id))els.set(id,{innerHTML:'',textContent:'',style:{},classList:{add(){},remove(){}},open:false,value:'Nova empresa',showModal(){this.open=true},close(){this.open=false},remove(){},querySelector(sel){return sel==='.world'?world:null},getContext(){return ctx2d},addEventListener(){},getBoundingClientRect(){return {left:0,top:0,width:1280,height:800}}});return els.get(id);};
+ const ctx=vm.createContext({document:{getElementById:el},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},window:{},requestAnimationFrame:()=>{},setTimeout:schedule,clearTimeout:id=>timers.delete(id),console,Math});
+ for(const f of ['campaign-rules','rules','game','scene','create','planner','dice'])vm.runInContext(fs.readFileSync('src/'+f+'.js','utf8'),ctx,{filename:f+'.js'});
+ return {run:code=>vm.runInContext(code,ctx),storage,el,world,advanceTime};
 }
 let app=boot();const run=code=>app.run(code);
 run('develop();develop();launch();');assert.equal(run('s.launched'),false);assert.equal(run('s.cash'),60000);assert.equal(run('s.plan.length'),3);assert.equal(run('s.actions'),1);assert(run('product()').includes('Prévia da agenda'));
@@ -35,7 +38,8 @@ campaignApp.el('campaignBudget0').value='6000';mkt('campaignRisk(0)');assert(cam
 const startingCash=mkt('s.cash');mkt("campaignAction(0,'scale')");assert.equal(mkt('s.budgets[0]'),500);assert.equal(mkt('s.cash'),startingCash);assert.equal(mkt('s.plan[0].type'),'campaign');
 mkt('reviewMonth()');assert(campaignApp.el('modalBody').innerHTML.includes('resultado incerto'));mkt('editPlan(0,0);closeModal()');assert.equal(mkt('s.plan.length'),0);
 mkt('hire(1)');assert(campaignApp.el('modalBody').innerHTML.includes('Qual especialidade'));assert.equal(mkt('s.plan.length'),0);
-mkt("closeModal();queueAction('hire',{index:1,specialty:'seo'});queueAction('campaign',{channel:1,mode:'optimize'});reviewMonth();approveMonth()");assert.equal(mkt('s.team[0].specialty'),'seo');assert.equal(mkt('s.lastMonthReport.rolls.length'),1);assert.equal(mkt('s.cash'),mkt('s.lastMonthReport.cash'));assert(campaignApp.el('modalBody').innerHTML.includes('ROAS de aquisição'));
+mkt("closeModal();queueAction('hire',{index:1,specialty:'seo'});queueAction('campaign',{channel:1,mode:'optimize'});reviewMonth();approveMonth()");assert.equal(mkt('s.team[0].specialty'),'seo');assert.equal(mkt('s.lastMonthReport.rolls.length'),1);assert.equal(mkt('s.cash'),mkt('s.lastMonthReport.cash'));assert(campaignApp.el('modalBody').innerHTML.includes('Rolar D20'));mkt('skipDice()');assert(campaignApp.el('modalBody').innerHTML.includes('ROAS de aquisição'));
 const resumed=boot(campaignApp.storage);assert.equal(resumed.run('s.team[0].specialty'),'seo');assert.equal(resumed.run('s.lastMonthReport.rolls.length'),1);
 const phase1Save=JSON.parse(campaignApp.storage.get('the-founder-v1'));phase1Save.s.schemaVersion=2;delete phase1Save.s.campaigns;delete phase1Save.s.audienceExposure;const upgradeStore=new Map([['the-founder-v1',JSON.stringify(phase1Save)]]);const upgrade=boot(upgradeStore);assert.equal(upgrade.run('s.schemaVersion'),3);assert(upgradeStore.has('the-founder-v1-backup-before-campaigns'));
 console.log('✓ Integração MKT: cartões, risco de escala, agenda, revisão D20, especialidade, relatório, retomada e backup da Fase 1.');
+module.exports=boot;
