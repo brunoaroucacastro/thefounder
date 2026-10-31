@@ -9,3 +9,6 @@ require('./finance-ui.cjs');
 
 require('./people.cjs');
 require('./people-ui.cjs');
+
+require('./balance.cjs');
+require('./balance-ui.cjs');

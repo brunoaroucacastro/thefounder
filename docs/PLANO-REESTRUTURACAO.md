@@ -1,6 +1,6 @@
 # Reestruturação — seis fases
 
-Status em 31/10/2026: Fases 1–5 autorizadas e implementadas nos protótipos 0.5–0.9. Fase 6 permanece planejada. Base: feedbacks fornecidos pelo usuário. A execução seguirá uma fase por vez: proposta, aprovação, implementação, testes, partida do usuário e ajustes.
+Status em 31/10/2026: Fases 1–5 autorizadas e implementadas nos protótipos 0.5–0.9. Fase 6 implementada parcialmente na versão 0.10: integração, simulações e primeira calibração; validação visual real pendente. Base: feedbacks fornecidos pelo usuário. A execução seguirá uma fase por vez: proposta, aprovação, implementação, testes, partida do usuário e ajustes.
 
 ## Diagnóstico do protótipo
 
@@ -92,4 +92,4 @@ Riscos principais: funções sobrescritas em cadeia, estado global e ações com
 
 ## Próxima entrega
 
-Testar a Fase 5 em partida. Regras experimentais e limites em `FASE-5-PESSOAS.md`. Fase 6 será dedicada à integração e ao balanceamento. Não avançar automaticamente para a próxima fase sem pedido do usuário.
+Testar a versão jogável 0.10 em partida. Simulações, calibração e limites em `FASE-6-INTEGRACAO-BALANCEAMENTO.md`; inspeção visual real e ajustes por feedback permanecem pendentes. Não avançar automaticamente para a próxima fase sem pedido do usuário.

@@ -23,10 +23,10 @@ run('s.cash=1;save();reviewMonth();approveMonth()');assert.equal(run('s.ended'),
 run('draft.capital=1;foundCompany();s.cash=100000;s.month=6;save();reviewMonth();approveMonth()');assert.equal(run('s.friendsDebt'),33250);assert.equal(run('s.cash'),run('s.lastMonthReport.cash'));
 run('draft.capital=3;foundCompany()');assert.equal(run('s.equity'),.85);
 run('draft.capital=2;foundCompany()');assert.equal(run('s.debt'),75000);
-run('draft.capital=0;foundCompany()');assert.equal(run('s.cash'),12000);
+run('draft.capital=0;foundCompany()');assert.equal(run('s.cash'),25000);
 run('s.month=6;s.streak=3;s.cash=70000;s.customers=200;s.history=[{month:6,revenue:20000,profit:10000,cogs:2800,payroll:2000,marketing:3200,interest:0,reach:10000,leads:400,newCustomers:30,churn:10}];sell()');assert.equal(run('s.ended'),true);assert.equal(run('meta.wealth'),334000);
 // Failed persistence must not advance a month or apply any charges.
-run('draft.capital=0;foundCompany();develop();reviewMonth();localStorage.setItem=()=>{throw Error("disco cheio")};approveMonth()');assert.equal(run('s.month'),0);assert.equal(run('s.cash'),12000);assert.equal(run('s.plan.length'),1);
+run('draft.capital=0;foundCompany();develop();reviewMonth();localStorage.setItem=()=>{throw Error("disco cheio")};approveMonth()');assert.equal(run('s.month'),0);assert.equal(run('s.cash'),25000);assert.equal(run('s.plan.length'),1);
 console.log('✓ Integração: planejamento, prévia, cancelar, aprovação única, reload, finanças, falência, capitais, venda e falha de persistência.');
 const shared=new Map(),first=boot(shared),second=boot(shared);
 first.run('develop()');const latest=shared.get('the-founder-v1');second.run('meeting()');assert.equal(shared.get('the-founder-v1'),latest);assert.equal(second.run('s.plan.length'),0);

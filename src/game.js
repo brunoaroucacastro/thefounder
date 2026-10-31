@@ -4,7 +4,7 @@ let meta={wealth:0,xp:0,skills:[],runs:0,knowledge:[]},s,tab=0,audioCtx,osc,gain
 function fresh(name='Aurora Labs'){return {name,month:0,cash:60000,price:89,quality:35,launched:false,dev:0,customers:0,motivation:82,team:[],budgets:[500,500,0],debt:0,actions:4,research:0,history:[],logs:[{text:'As chaves são suas. Comece desenvolvendo seu primeiro produto.',month:0}],totalRevenue:0,ended:false,streak:0};}
 try{let data=JSON.parse(localStorage.getItem(KEY));if(data){s=data.s;meta=data.meta;}}catch(e){}if(!s)s=fresh();
 const tabs=['Visão geral','Produto & preço','Marketing','Pessoas','Administrativo-financeiro','Aprendizados'],icons=['◈','◇','↗','♙','▥','✧'];
-function save(){if(s.schemaVersion>5)return;try{localStorage.setItem(KEY,JSON.stringify({s,meta}));}catch(e){toast('O navegador bloqueou o salvamento. Mantenha esta aba aberta.');}}
+function save(){if(s.schemaVersion>6)return;try{localStorage.setItem(KEY,JSON.stringify({s,meta}));}catch(e){toast('O navegador bloqueou o salvamento. Mantenha esta aba aberta.');}}
 function toast(t){$('toast').textContent=t;$('toast').style.opacity=1;clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>$('toast').style.opacity=0,3600);}
 function log(t){s.logs.unshift({text:t,month:s.month});s.logs=s.logs.slice(0,35);}
 function modal(html){$('modalBody').innerHTML=html;if(!$('modal').open)$('modal').showModal();}

@@ -1,6 +1,6 @@
 # The Founder
 
-Jogo de gestão de empresas em pixel art. Protótipo 0.9 para PC/navegador.
+Jogo de gestão de empresas em pixel art. Protótipo 0.10 para PC/navegador.
 
 ## Jogar
 
@@ -50,3 +50,5 @@ Mercados e percentuais são fictícios. A operação mensal ainda é compartilha
 Cada etapa terá um commit com título claro em português e uma entrada no CHANGELOG. O histórico anterior ao GitHub está documentado como retrospectiva, não como commits antigos reconstruídos.
 
 Fase 5: recrutamento com três candidatos no mês seguinte, especialidades, treino/promoção D20 até nível 5, motivação individual, reunião mensal e retenção. Regras puras em src/people-rules.js; interface em src/people-ui.js. Limites e parâmetros em docs/FASE-5-PESSOAS.md.
+
+Fase 6 (entrega jogável): novas jornadas enxutas, calibração versionada, métricas separadas e 1.920 simulações de 24 meses. `node scripts/simulate.cjs` reproduz os cenários; detalhes/limitações em docs/FASE-6-INTEGRACAO-BALANCEAMENTO.md. Validação visual real pendente por bloqueio do controle de navegador.

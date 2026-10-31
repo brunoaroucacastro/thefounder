@@ -31,8 +31,8 @@ const CampaignRules=(()=>{
   const organic=200,total=rows.reduce((n,r)=>n+r.potential,organic),unique=Math.min(remaining,total),scale=total?unique/total:0;
   let assigned=0;rows.forEach(r=>{r.reach=Math.floor(r.potential*scale);assigned+=r.reach;});
   const organicReach=unique-assigned;
-  rows.forEach(r=>{r.leads=Math.floor(r.reach*.10);r.newCustomers=s.launched?Math.floor(r.leads*conversion):0;r.attributedRevenue=r.newCustomers*s.price;r.roas=r.spend>0?r.attributedRevenue/r.spend:null;const c=s.campaigns[r.channel];c.reached+=r.reach;if(r.spend>0)c.activeMonths++;c.last={...r,month:s.month+1};});
-  const organicLeads=Math.floor(organicReach*.10),organicCustomers=s.launched?Math.floor(organicLeads*conversion):0;
+  rows.forEach(r=>{r.leads=Math.floor(r.reach*(s.balanceVersion===1?.55:.10));r.newCustomers=s.launched?Math.floor(r.leads*conversion):0;r.attributedRevenue=r.newCustomers*s.price;r.roas=r.spend>0?r.attributedRevenue/r.spend:null;const c=s.campaigns[r.channel];c.reached+=r.reach;if(r.spend>0)c.activeMonths++;c.last={...r,month:s.month+1};});
+  const organicLeads=Math.floor(organicReach*(s.balanceVersion===1?.55:.10)),organicCustomers=s.launched?Math.floor(organicLeads*conversion):0;
   s.audienceExposure[target]=seen+unique;
   const spend=rows.reduce((n,r)=>n+r.spend,0),attributedRevenue=rows.reduce((n,r)=>n+r.attributedRevenue,0);
   return {channels:rows,reach:unique,leads:rows.reduce((n,r)=>n+r.leads,organicLeads),newCustomers:rows.reduce((n,r)=>n+r.newCustomers,organicCustomers),organicCustomers,spend,attributedRevenue,roas:spend?attributedRevenue/spend:null,audience:size,seen:s.audienceExposure[target],saturation:size?s.audienceExposure[target]/size:1};

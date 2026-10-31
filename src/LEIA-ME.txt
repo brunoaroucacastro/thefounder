@@ -1,4 +1,4 @@
-THE FOUNDER — Protótipo 0.9 / Fase 5
+THE FOUNDER — Protótipo 0.10 / Integração e balanceamento
 
 JOGAR
 Abra dist/The-Founder-Jogar.html no navegador. É um arquivo único offline.
@@ -53,3 +53,8 @@ PESSOAS — FASE 5
 Na área Pessoas, abra uma seleção por especialidade. No próximo mês chegam três candidatos: escolha um para contratar pela agenda.
 Treine com D20: sucesso promove até nível 5 e aumenta salário em 20% já no fechamento; falha consome o investimento sem aumento.
 A motivação é individual. Uma reunião por mês pode ajudar ou piorar o clima. A pessoa menos motivada passa por uma verificação mensal de retenção.
+
+JOGAR
+Abra The-Founder-Jogar.html no Chrome ou Edge. Clique em NOVA JORNADA, crie o founder e a empresa. As decisões entram na agenda e só executam quando você revisa e aprova o mês.
+Novas jornadas: garagem R$500/mês e marketing R$500/mês. A terceira contratação amplia o escritório para aluguel base de R$2.000.
+Saves anteriores continuam com sua economia original. Para experimentar o novo balanceamento, comece uma Nova jornada.

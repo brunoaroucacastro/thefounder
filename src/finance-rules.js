@@ -7,7 +7,7 @@ const FinanceRules=(()=>{
  const kinds=['finance_benchmark','finance_supplier','finance_credit','finance_accept','finance_repay'];
  function ensure(s){if(!s.finance)s.finance={legacyBalance:s.debt||0,loans:[],offers:[],creditScore:65,creditBlockedUntil:0,lastCreditRequest:-1,inflationFactor:1,lastInflationYear:Math.floor(s.month/12),suppliers:{production:{adjustment:0,availableAfter:0,offer:null},rent:{adjustment:0,availableAfter:0,offer:null}},benchmarks:[]};return s;}
  function sync(s){ensure(s);s.debt=round(s.finance.legacyBalance+s.finance.loans.reduce((n,l)=>n+l.balance,0));}
- function rent(s){ensure(s);return round(2000*s.finance.inflationFactor*(1+s.finance.suppliers.rent.adjustment));}
+ function rent(s){ensure(s);return round((s.officeMode==='garage'&&s.team.length<3?500:2000)*s.finance.inflationFactor*(1+s.finance.suppliers.rent.adjustment));}
  function interest(s){ensure(s);return round(s.finance.legacyBalance*.025+s.finance.loans.reduce((n,l)=>n+l.balance*l.rate,0));}
  function principalDue(s){ensure(s);return round(s.finance.loans.reduce((n,l)=>n+(s.month+1>=l.nextDueMonth?Math.min(l.balance,l.installment+(l.overdue||0)):0),0));}
  function specialist(s,kind){return Math.min(4,Math.max(0,...s.team.filter(p=>p.role==='Financeiro'&&p.specialty===kind).map(p=>p.level)));}
@@ -66,7 +66,7 @@ const FinanceRules=(()=>{
   }else throw Error('Escolha inválida.');
   if(s.history.length)s.history[s.history.length-1]=s.lastMonthReport;s.planRevision++;return {state:s,entry};
  }
- function settleMonth(s){ensure(s);let principalPaid=0;const events=[];
+ function settleMonth(s){ensure(s);let principalPaid=0;const events=[];if(s.officeMode==='garage'&&s.team.length>=3){s.officeMode='office';events.push('Equipe ampliada: aluguel base do escritório R$ 2.000/mês.');}
   for(const l of s.finance.loans){if(!l.balance||s.month<l.nextDueMonth)continue;const due=Math.min(l.balance,l.installment+(l.overdue||0)),paid=round(Math.min(due,Math.max(0,s.cash)));s.cash=round(s.cash-paid);l.balance=round(l.balance-paid);l.overdue=round(due-paid);principalPaid=round(principalPaid+paid);l.nextDueMonth=s.month+1;if(paid<due){s.finance.creditScore=clamp(s.finance.creditScore-10,0,100);events.push(l.bankName+': amortização em atraso de R$ '+l.overdue+'.');}else s.finance.creditScore=clamp(s.finance.creditScore+1,0,100);}
   for(const p of Object.values(s.finance.suppliers)){if(p.pendingAdjustment!==undefined){p.adjustment=p.pendingAdjustment;delete p.pendingAdjustment;}if(p.offer?.status==='open'&&s.month>p.offer.expiresAt){p.offer.status='expired';events.push('Uma oferta de fornecedor expirou.');}}
   for(const o of s.finance.offers)if(o.status==='open'&&s.month>o.expiresAt)o.status='expired';

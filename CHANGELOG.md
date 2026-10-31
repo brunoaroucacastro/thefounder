@@ -1,5 +1,17 @@
 # Histórico de desenvolvimento
 
+## 0.10 — Versão jogável: integração e primeira calibração — 31/10/2026
+
+- Capital próprio inicial aumentado para R$25.000, conforme feedback do jogador; abaixo dos R$35.000 de amigos/família.
+
+- Garagem de R$500 e marketing inicial R$500/mês em novas jornadas; expansão a partir da terceira contratação. Saves anteriores preservam economia.
+- Calibração de aquisição/compra única/recorrência com 1.920 partidas reproduzíveis em 48 cenários, quatro políticas e dez sementes.
+- Receita distingue unidades vendidas, cobranças e assinantes; HUD deixa de chamar transações de clientes únicos.
+- Criação transacional de empresa e revisão sinalizando treino/reunião com D20.
+- Sete testes novos e integração de save/rollback; 121 testes nomeados mais integrações. Build independente.
+- Fase 6 parcialmente validada: inspeção visual real interrompida pelo controle de segurança do navegador.
+
+
 ## 0.9 — Fase 5: Pessoas — 31/10/2026
 
 - Seleção por área/especialidade; três candidatos no próximo mês, uma contratação por seleção, cancelamento e limite de 12 pessoas.
