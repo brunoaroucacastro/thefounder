@@ -16,7 +16,7 @@ const CampaignRules=(()=>{
   if(preview){s.budgets[i]=value;return {status:'planned',channel:i,mode,budget:value};}
   // Reducing financial exposure is guaranteed; the die affects remaining efficiency.
   if(blocked(s,i)){s.budgets[i]=value;return {status:'executed',channel:i,mode,budget:value,note:'Verba reduzida durante bloqueio; sem sorteio.'};}
-  const die=roll(s,{label:mode+' · '+names[i],modifiers:modifiers(s,a,models),difficulty:11});
+  const die=roll(s,{label:mode+' · '+names[i],category:'campaign_'+mode,modifiers:modifiers(s,a,models),difficulty:11});
   let delta=die.critical?-.30:die.total<=10?-Math.min(.30,(11-die.total)*.03):Math.min(.30,(die.total-10)*.03);
   campaign.efficiency=clamp(before+delta,.35,2);
   if(die.critical){campaign.blockedMonth=s.month+2;s.budgets[i]=mode==='reduce'?value:old;}else s.budgets[i]=value;

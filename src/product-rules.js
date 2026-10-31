@@ -48,13 +48,13 @@ const ProductRules=(()=>{
   validate(s,a);let p=find(s,a.productId);
   if(a.type==='product_create'){const parent=a.parentId?find(s,a.parentId):null,id='product-'+a.id;p={id,familyId:parent?.familyId||id,name:a.name.trim(),generation:parent?parent.generation+1:1,mode:a.mode,scale:a.scale,age:a.age,income:a.income,level:0,attributes:[0,0,0,0],blueprint:[...a.attributes],price:null,launched:false,retired:false,active:0,uniqueBuyers:0,launchMonth:null,nextObsolete:null,parentId:parent?.id||null,history:[]};s.products.push(p);s.catalogStarted=true;return {status:'executed',productId:id,note:'Conceito criado. Falta desenvolver e lançar.'};}
   if(a.type==='product_research'){
-   if(preview)return {status:'planned'};const die=roll(s,{label:'Pesquisa · '+ages[a.age]+' / '+classes[a.income],modifiers:modifiers(s,meta,'research'),difficulty:10});let note='Pesquisa inconclusiva. Nenhuma preferência foi validada.';
+   if(preview)return {status:'planned'};const die=roll(s,{label:'Pesquisa · '+ages[a.age]+' / '+classes[a.income],category:'persona_research',modifiers:modifiers(s,meta,'research'),difficulty:10});let note='Pesquisa inconclusiva. Nenhuma preferência foi validada.';
    if(!die.critical&&die.total>=10){const axis=die.natural%4,key=a.age+'-'+a.income,rank=ideal(a.age,a.income)[axis];s.marketResearch[key]??={};s.marketResearch[key][axis]={priority:rank>=.30?'Alta':rank>=.18?'Média':'Baixa',confidence:die.total>=18?'Alta':'Parcial',month:s.month};meta.productInsights??=[];const insight={marketId:s.marketId,age:a.age,income:a.income,axis,...s.marketResearch[key][axis]};meta.productInsights=meta.productInsights.filter(x=>!(x.marketId===insight.marketId&&x.age===a.age&&x.income===a.income&&x.axis===axis));meta.productInsights.push(insight);note=axes[axis]+': prioridade '+s.marketResearch[key][axis].priority.toLowerCase()+' para esta persona.';}
    return {status:die.critical?'critical':die.outcome,die,note};
   }
   if(a.type==='product_develop'){
    const target=nextLevel(p),before=p.level;if(preview){p.level=target;p.attributes=[...a.attributes];return {status:'planned',productId:p.id,note:'Prévia supõe sucesso; dependências podem ser puladas.'};}
-   const die=roll(s,{label:'Desenvolver · '+p.name,modifiers:modifiers(s,meta),difficulty:difficulty(p)});
+   const die=roll(s,{label:'Desenvolver · '+p.name,category:'product_development',modifiers:modifiers(s,meta),difficulty:difficulty(p)});
    if(die.critical){p.level=Math.max(0,p.level-1);const axis=p.attributes.indexOf(Math.max(...p.attributes));if(p.attributes[axis]>0)p.attributes[axis]--;}
    else if(die.outcome==='success'){p.level=target;p.attributes=[...a.attributes];}
    return {status:die.critical?'critical':die.outcome,die,productId:p.id,note:die.critical?'Falha crítica: nível '+before+' → '+p.level+'.':die.outcome==='success'?'Entrega concluída: nível '+before+' → '+p.level+'.':'Tentativa falhou. O nível foi mantido e o investimento foi consumido.'};

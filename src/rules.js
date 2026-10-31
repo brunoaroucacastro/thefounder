@@ -1,5 +1,6 @@
 /* Pure domain rules: no DOM, globals, localStorage or callbacks in the plan. */
 const GameRules=(()=>{
+ const founders=typeof FounderRules!=='undefined'?FounderRules:require('./founder-rules.js');
  const markets=typeof MarketData!=='undefined'?MarketData:require('./market-data.js');
  const campaigns=typeof CampaignRules!=='undefined'?CampaignRules:require('./campaign-rules.js');
  const products=typeof ProductRules!=='undefined'?ProductRules:require('./product-rules.js');
@@ -13,16 +14,16 @@ const GameRules=(()=>{
   if(!s.schemaVersion||s.schemaVersion<2){s.legacyUsed=limit(4-(s.actions??4),0,4);s.plan=[];s.planRevision=0;s.nextId=1;s.schemaVersion=2;}
   s.plan??=[];s.planRevision??=0;s.nextId??=1;s.legacyUsed??=0;s.rolls??=[];s.rng??=(seed>>>0)||123456789;s.companyId??='company-'+s.rng;
   s.marketId??=markets.ids[s.business]||'legacy-default';
-  campaigns.ensure(s);products.ensure(s);finance.ensure(s);people.ensure(s);s.rollSequence??=0;s.schemaVersion=6;
+  founders.ensure(s);campaigns.ensure(s);products.ensure(s);finance.ensure(s);people.ensure(s);s.rollSequence??=0;s.schemaVersion=6;
   s.team.forEach(p=>{if(!p.id)p.id='person-'+s.nextId++;});return s;
  }
- function rollD20(state,{label='D20',modifiers=[],difficulty=11}={},random){
+ function rollD20(state,{label='D20',modifiers=[],difficulty=11,category=null}={},random){
   let u;if(random){u=random();}else{let x=state.rng>>>0;x^=x<<13;x^=x>>>17;x^=x<<5;state.rng=x>>>0;u=state.rng/4294967296;}
   if(!(u>=0&&u<1))throw Error('Sorteio inválido');
-  const natural=1+Math.floor(u*20),mods=modifiers.map(m=>({label:String(m.label),value:Number(m.value)}));
+  const natural=1+Math.floor(u*20),mods=[...modifiers,...founders.modifiers(state,category)].map(m=>({...m,label:String(m.label),value:Number(m.value)}));
   if(mods.some(m=>!Number.isFinite(m.value)))throw Error('Modificador inválido');
   const total=natural+mods.reduce((a,m)=>a+m.value,0),critical=natural===1;
-  const r={id:state.companyId+'-die-'+(state.rollSequence=(state.rollSequence||0)+1),label,natural,modifiers:mods,total,difficulty,critical,outcome:critical?'critical':total>=difficulty?'success':'failure',month:state.month};state.rolls.push(r);state.rolls=state.rolls.slice(-100);return r;
+  const r={id:state.companyId+'-die-'+(state.rollSequence=(state.rollSequence||0)+1),label,category,natural,modifiers:mods,total,difficulty,critical,outcome:critical?'critical':total>=difficulty?'success':'failure',month:state.month};state.rolls.push(r);state.rolls=state.rolls.slice(-100);return r;
  }
  function cost(s,a,meta){if(people.kinds.includes(a.type))return people.cost(s,a,meta);if(finance.kinds.includes(a.type))return finance.cost(s,a);if(products.kinds.includes(a.type))return products.cost(s,a);switch(a.type){case'campaign':return a.mode==='optimize'?500:0;case'develop':return 3000;case'research':return 500;case'hire':return meta.skills.includes('people')?600:1200;case'fire':return s.team.find(p=>p.id===a.personId)?.salary??0;case'repay':return Math.min(10000,s.debt);default:return 0;}}
  function apply(s,a,meta,context={}){
@@ -103,6 +104,6 @@ const GameRules=(()=>{
   s.logs.unshift(...events.map(text=>({text,month:startMonth})),{text:'Fechamento: '+newCustomers+' novos clientes; resultado R$ '+profit+'.',month:startMonth});s.logs=s.logs.slice(0,35);
   return {state:s,meta:m,report,bankrupt:s.cash<0};
  }
- return {people,finance,products,campaigns,migrate,rollD20,cost,describe,project,enqueue,edit,token,resolve};
+ return {founders,people,finance,products,campaigns,migrate,rollD20,cost,describe,project,enqueue,edit,token,resolve};
 })();
 if(typeof module!=='undefined')module.exports=GameRules;

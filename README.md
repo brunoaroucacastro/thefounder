@@ -1,6 +1,6 @@
 # The Founder
 
-Jogo de gestão de empresas em pixel art. Protótipo 0.14 para PC/navegador.
+Jogo de gestão de empresas em pixel art. Protótipo 0.15 para PC/navegador.
 
 ## Jogar
 
@@ -60,3 +60,5 @@ Versão 0.12: os 12 mercados do estudo enviado foram aplicados à criação de e
 Versão 0.13: percentuais etários e de classe corrigidos para o posicionamento de gameplay fornecido pelo jogador (3 mercados por idade dominante, 4 por classe). A tabela de pesquisa da 0.12 foi substituída nesses dois critérios; públicos mantidos. Fonte de verdade: docs/MERCADOS-POSICIONAMENTO.md e src/market-data.js.
 
 Entrega 0.14: número da versão visível na criação, cartões gerados exclusivamente dos 12 mercados atuais e normalização de seleção legada. `node tests/release.cjs` executa o HTML final em DOM simulado depois do build. O build não altera o número da versão embutido em scripts. Para jogar, use o arquivo versionado The-Founder-0.14-Jogar.html entregue no chat.
+
+Versão 0.15: 11 perfis de founder com modificadores reais no D20 (+1/−1 ou primeira viagem 0/0). Distribuição completa em docs/PERFIS-EMPREENDEDOR.md. Arquivo jogável versionado: The-Founder-0.15-Jogar.html.

@@ -26,14 +26,14 @@ const FinanceRules=(()=>{
   if(a.type==='finance_benchmark'){
    if(preview)return {status:'planned'};
    const select=roll(s,{label:'Categoria do benchmark',modifiers:[],difficulty:1});select.kind='selection';const category=categories[(select.natural-1)%categories.length];
-   const die=roll(s,{label:'Pesquisar benchmark · '+category.name,modifiers:modifiers(s,'benchmarks'),difficulty:11});let note='Pesquisa inconclusiva: nenhum benchmark confiável foi registrado.';
+   const die=roll(s,{label:'Pesquisar benchmark · '+category.name,category:'benchmarks',modifiers:modifiers(s,'benchmarks'),difficulty:11});let note='Pesquisa inconclusiva: nenhum benchmark confiável foi registrado.';
    if(!die.critical&&die.total>=11){const value=benchmarkTarget(s,category.id),width=Math.max(0,20-die.total)*2,offset=.25+((select.natural*7)%11)/20,low=Math.max(0,Math.floor(value-width*offset)),high=Math.ceil(value+width*(1-offset));f.benchmarks.push({id:a.id,category:category.id,name:category.name,low,high,month:s.month+1,confidence:die.total>=20?'Exata':die.total>=16?'Alta':'Parcial'});note=category.name+': referência simulada '+low+'% a '+high+'% da receita.';}
    return {status:die.critical?'critical':die.outcome,die,rollCards:[{die:select,display:{tone:'neutral',title:'CATEGORIA ESCOLHIDA',effect:category.name,target:'SORTEIO',targetValue:'D20',rule:'O dado escolhe um dos cinco custos.',label:'O que vamos investigar?'}},{die}],note};
   }
   if(a.type==='finance_supplier'){
    touched?.add('supplier-'+a.supplierId);const p=f.suppliers[a.supplierId],before=p.adjustment;p.availableAfter=s.month+6;
    if(preview)return {status:'planned'};
-   const die=roll(s,{label:'Negociar · '+supplierNames[a.supplierId],modifiers:modifiers(s,'suppliers'),difficulty:11});let note;
+   const die=roll(s,{label:'Negociar · '+supplierNames[a.supplierId],category:'suppliers',modifiers:modifiers(s,'suppliers'),difficulty:11});let note;
    if(die.critical||die.total<=10){p.adjustment=die.critical?.05:Math.min(.05,Math.ceil((11-die.total)/2)/100);p.offer=null;note='Negociação fracassou: novo custo '+Math.round(p.adjustment*100)+'% maior a partir do próximo mês. Nova tentativa em seis meses.';}
    else{const discount=clamp(die.total-10,1,10)/100;p.offer={id:a.id,supplierId:a.supplierId,status:'open',discount,score:die.total,attempts:0,failures:0,expiresAt:s.month+1};note='Oferta: '+Math.round(discount*100)+'% de desconto. Aceite ou insista até duas vezes após o fechamento; vigência no próximo mês.';}
    // Supplier conditions obtained during a close affect the following month.
@@ -42,7 +42,7 @@ const FinanceRules=(()=>{
   }
   if(a.type==='finance_credit'){
    f.lastCreditRequest=s.month;const bank=banks.find(b=>b.id===a.bankId);if(preview)return {status:'planned'};
-   const die=roll(s,{label:'Crédito · '+bank.name,modifiers:modifiers(s,'credit'),difficulty:bank.dc});let note;
+   const die=roll(s,{label:'Crédito · '+bank.name,category:'credit',modifiers:modifiers(s,'credit'),difficulty:bank.dc});let note;
    if(die.critical){f.creditScore=clamp(f.creditScore-20,0,100);f.creditBlockedUntil=s.month+4;note='Falha crítica: proposta negada e três meses seguintes sem consultas a bancos.';}
    else if(die.total<bank.dc){f.creditScore=clamp(f.creditScore-5,0,100);note='Crédito negado. Você pode consultar outro banco no próximo mês.';}
    else{const rate=Math.max(.008,bank.rate-(die.total-bank.dc)*.001),months=die.total>=20?24:die.total>=15?18:12,grace=die.total>=18?2:die.total>=15?1:0;const offer={id:'offer-'+a.id,bankId:bank.id,bankName:bank.name,amount:a.amount,rate,months,grace,expiresAt:s.month+3,status:'open'};f.offers.push(offer);note='Proposta recebida: R$ '+a.amount+', '+(rate*100).toFixed(2)+'%/mês, '+months+' parcelas, '+grace+' mês(es) de carência do principal. Aceite pela agenda; dinheiro ainda não entrou.';}
@@ -58,7 +58,7 @@ const FinanceRules=(()=>{
   let entry=null;if(choice==='accept'){p.adjustment=-o.discount;o.status='accepted';}
   else if(choice==='reject'){o.status='rejected';}
   else if(choice==='insist'){
-   if(o.attempts>=2)throw Error('As duas insistências já foram usadas.');o.attempts++;const die=roll(s,{label:'Insistir · '+supplierNames[supplierId],modifiers:modifiers(s,'suppliers'),difficulty:o.score});let note;
+   if(o.attempts>=2)throw Error('As duas insistências já foram usadas.');o.attempts++;const die=roll(s,{label:'Insistir · '+supplierNames[supplierId],category:'suppliers',modifiers:modifiers(s,'suppliers'),difficulty:o.score});let note;
    if(die.critical){p.adjustment=.05;o.status='lost';note='Falha crítica: fornecedor perdido, custo +5%. Negociação encerrada.';}
    else if(die.total>=o.score){o.score=die.total;o.discount=Math.max(o.discount,clamp(die.total-10,1,10)/100);note='Oferta atual: '+Math.round(o.discount*100)+'% de desconto. '+(2-o.attempts)+' insistência(s) restante(s).';}
    else{o.failures++;if(o.failures>=2){o.status='lost';note='Segunda insistência malsucedida: oferta retirada. Condição anterior mantida.';}else note='Insistência falhou. A oferta anterior foi mantida.';}

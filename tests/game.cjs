@@ -14,3 +14,6 @@ require('./balance.cjs');
 require('./balance-ui.cjs');
 
 require('./markets.cjs');
+
+require('./founders.cjs');
+require('./founder-ui.cjs');

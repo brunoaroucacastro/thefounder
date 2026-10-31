@@ -1,5 +1,14 @@
 # Histórico de desenvolvimento
 
+## 0.15 — Perfis de empreendedor com bônus e desvantagens — 31/10/2026
+
+- Dez perfis recebem exatamente +1 e −1 em categorias de ação; novo Primeira viagem neutro (0/0), opção inicial.
+- IDs estáveis preservam perfis dos saves; rolagens salvas continuam intactas.
+- Modificador central por categoria, visível no dado, sem somar duas vezes. Reuniões usam o total e mantêm natural 1 crítico.
+- Criação mostra efeitos efetivos e prós/contras correspondentes.
+- Treze testes de regras e integração de criação/rolagem/save/replay; 142 testes nomeados mais integrações. Pacote final verificado em DOM simulado.
+
+
 ## 0.14 — Correção da entrega e da seleção inicial — 31/10/2026
 
 - Criação itera apenas os 12 mercados atuais; um índice legado na seleção é normalizado para Gadgets.
