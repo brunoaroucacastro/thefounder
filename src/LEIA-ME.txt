@@ -1,0 +1,53 @@
+THE FOUNDER — Protótipo jogável 0.2 — garagem pixel art
+
+COMO ABRIR
+Abra index.html no Chrome, Edge ou Firefox. Não precisa instalar nada.
+Mantenha index.html, style.css e game.js na mesma pasta.
+
+COMO JOGAR
+1. Clique no computador do escritório, desenvolva o MVP duas vezes e lance.
+2. Cada mês oferece quatro ações. Ajustes de preço, contratação, pesquisa,
+   desenvolvimento e mudanças de orçamento usam uma ação cada.
+3. Fechar mês processa vendas, cancelamentos, custos e eventos.
+4. Busque R$ 1 milhão de receita acumulada. Após seis meses e três meses
+   consecutivos de lucro, você pode vender sua empresa no Financeiro.
+5. Falência ou encerramento geram pontos. Desbloqueie habilidades e funde
+   outra empresa em Aprendizados. Patrimônio e descobertas persistem.
+
+ESCOPO
+Demo em HTML/JavaScript para validar as mecânicas do GDD antes de Unity.
+Um mercado: software B2B. Um produto: assinatura Flow. Inclui preço com
+demanda elástica, qualidade, três canais com retornos decrescentes, suporte,
+motivação, contratações, promoções, demissões, crédito, eventos e DRE.
+O calendário avança por fechamento mensal. Não há simulação diária.
+A DRE é operacional: investimentos e eventos aparecem diretamente no caixa.
+Não inclui impostos, fusões, outros setores, Steam ou o projeto Unity.
+Os valores são fictícios; o balanceamento é experimental.
+
+SALVAMENTO E ÁUDIO
+Salva neste navegador usando localStorage. Trocar de navegador ou mover a
+pasta pode mudar o acesso ao save. Navegação privada pode apagar os dados.
+Som ambiente sintetizado é opcional. Fontes online são opcionais: o jogo
+funciona sem internet usando fontes do sistema.
+
+ARQUIVOS
+index.html: interface; style.css: janelas; game.js: simulação e salvamento.
+scene.js: cenário pixel art, animações e objetos clicáveis.
+scene.css: HUD e apresentação da garagem.
+
+NOVIDADES 0.2
+Escritório isométrico ocupa a tela. Pixel art vibrante desenhada em código.
+Clique no computador, telefone, mesa da equipe, caderno, mural e café.
+Contratações aparecem no cenário; personagens e vapor do café são animados.
+Os saves da versão 0.1 são preservados no mesmo navegador e caminho.
+
+VERSÃO 0.3 — CRIAÇÃO
+Tela inicial com Nova jornada e Continuar. Founder com nome, cabelo, pele,
+roupa e perfil. Empresa com nome e 12 modelos, público e capital inicial.
+Distribuições fictícias. Perfil ainda cosmético; traits aguardam definição.
+Mercado/segmento e renda/porte influenciam aquisição e tolerância ao preço.
+Operação ainda mensal e compartilhada: estoque, projetos e regulação não
+são simulados individualmente. Os quatro financiamentos estão ativos;
+destituição e consequências entre jornadas do relacionamento são backlog.
+Capital experimental: próprio 12 mil; amigos 35 mil; banco 75 mil; VC 150 mil.
+Amigos: seis meses de carência, principal em parcelas de 1.750 sem juros.

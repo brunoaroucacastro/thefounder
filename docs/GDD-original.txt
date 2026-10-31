@@ -1,0 +1,88 @@
+1. Visão Geral
+Nome provisório: the founder
+Gênero: management
+Plataforma: PC (Steam)
+Público Alvo: Jovens adultos de 21 a 30 anos
+Loop Principal: Criar empresa → criar produtos → mexer nas alavancas de escala/otimização → quebrar ou vender → começar novamente
+
+2. Proposta de Valor
+O que torna o jogo único: Sou um empreendedor. Tenho muitas coisas que aprendi na prática e acredito que ainda que você leia muito sobre, somente praticando vai conseguir aprender de fato.
+
+A ideia é por meio de um jogo de videogame, divertido, mostrar um pouco do que é empreender, quais os desafios, tentar emular as partes boas e partes ruins
+
+Qual dor ou desejo você atende: quero proporcionar à quem tem vontade, o que é a experiência de empreender. Além disso, você poder aprender algo de forma divertida enquanto joga. Jogadores de videogame são competitivos e persistentes. Essas características no mundo real tem tudo para dar certo.
+
+Comparáveis: Game Dev Tycoon, Roller Coaster Tycoon, Supermarket Simulator, News Tower
+
+3. Core Gameplay
+
+3.1 Mecânicas Principais
+
+- Criação da Empresa: o momento inicial é escolher a área em que você quer empreender (ex: saúde, finanças, tech, produto físico, etc.) Utilizar os mercados mais em alta no mercado. Cada mercado terá suas particularidades que serão descobertas ao longo da gameplay.
+- Gestão do Tempo: cada ação feita tomará seu tempo, todo mês sua folha de pagamento sai e você precisa administrar isso
+- Gestão de Pessoas: você poderá contratar funcionários e precisará acompanhar a performance deles .estão entregando proejtos no prazo? com qualidade? quais as metas dessas pessoas? caso não performem, demitir. Caso performem, quando promover. Colaboiradores terão uma barra de motivação dentro da empresa e você pdoerá acompanhar seus feedbacks sobre o que pode melhorar na empresa
+- Gestão Financeira (PREÇO): ter uma tela de DRE mas simplificada (ex: quando faturou, custo de matéria prima, custo de pessoas, custos de aluguel) a ideia aqui é a pessoa entender se ela está dentro ou fora dos becnhmarks de mercado e atuar na otimização e redução de custos (ou aumentar o preço). Ter uma dinâmica de pricing (se o produto for muito caro, as pessoas param de comprar, se for muito barato, você sai no prejuízo. Cada produto vai ter sua própria curva de função lucro). Aqui você poderá pegar empréstimos a taxas determinadas de pagamento
+- P&D (PRODUTO): Ter uma mecânica de desenvolvimento de produtos, parecida com o jogo Game Dev Tycoon. Você tem um time que faz pesquisas e descobre novas áreas, produtos, atributos, públicos alvos, etc. E depois você desenvovle. 
+- Marketing (PROMOÇÃO): A ideia para mim é ter uma visibilidade de funil (atenção, consideração, decisão, recorrência). Ter uma dinâmica de invesitmento em canais baseados no livro Traction e para cada mercado ter um canal de tração que é mais eficiente. Nesse funil terão canais que jogarão mais gente para o toppo, tem canais que jogarão mais gente para converter. A mecânica de gestão aqui terá a ver com alocação de verba em cada canal e com o time disponível para executar essa estratégia.
+- Visão Geral: Ser baseado nos 4P's (lembrando, a ideia aqui é levar práticas de mercado para dentro do jogo. Em produto, vamos ter uma parte de coleta de indicadores de NPS e MHS + feedbacks do clietne para optar se o time de produto continua desenvolvendo ou cria novas demandas. 
+- Opinião dos Colaboradores: você poderá usar parte do seu tempo parar fazer uma reunião de algum tem aenvolvendo o time. A depender do coalborador, eles podem dar opiniões do que tem de experiência do mercado (ex: em uma reunião financeira, o colaborador pode informar que um benchmark para % de matéria prima nesse setor é de 30 a 35% e você ver que está em 40
+- Aprendizado ao falir: Quando você quebrar sua empresa, há uma conta de pagar dívidas e sobra um dinheiro. O dinheiro que sobrar você tem de caixa para a próxima empresa (ou seja, fica menos suscetível a falir). Além disso, você terá uma árvore de habilidades (como de um RPG) relativos ao aprendizados que teve no último negócio que te deixarão mais apto a evoluir (ex: consegue negociar descontos maiores, consegue contratar melhor colaboradores). Além disso, os aprendizados que forem validados no caminho ficam registrados,d a mesma forma que Game Dev Tycoon faz. Lá, se você lançar um jogo de Ação Medieval e der certo, você descobre que essa combinação funciona e quando for lançar um novo jogo, ao selecionar Açao + Medieval aparece um simbolo de (+++) por exemplo
+
+4. Loop de Gameplay
+
+Loop Curto
+- São essas ações em cada área. Desenvovler um produto, criar uma ação de marketing, etc. Todas elas levam tempo e recursos e você precisa conseguir depois medir a eficiência
+
+Loop Médio
+- Seria a análise de fechamento de mês e fechamento de ano fiscal
+
+Loop Longo
+- Vender a empresa ao fim de tudo, ser fundido a uma outra ou simplesmente quebrar. Quebrar a empresa fará parte do processo e poderá ser feito a qualquer momento. Com mais dinheiro, conhecimento e habilidades você sempre estará um pouco mais apto
+
+100% do Jogo
+- Seria o caso da pessoa querer ter uma emrpesa vendida/bem sucedida em cada mercado ou se tornar um bilionário
+
+5. Progressão e Sistema de Recompensas
+
+- Construçao do Negócio: a empresa ganhando estrutura, funcionários, faturamento
+-  Dinheiro: o seu caixa pessoal resultante do lucro que tira da venda dos negócios
+- Árvore de Habilidades: são pontos que você ganha/conquista conforme vai empreendendo e atingidno determinadas conqusitas (ex: se você contrata mais de 20 pesssoas, você desbloqueia uma habilidade de grestoer de pessoas e ganha 5% de ferformance nost imes, algo assim)
+- Conhecimento: sistema que registra para próximas gameplays combinações ou dinâmicas que deram certo
+- Dificuldade escalável: Quanto mais sua empresa cresce, mais complexidade ganha, surgem concorrentes, regulações do governo, pessoas piratiando/copiando seues produtos 
+
+7. Level Design
+
+Aqui queria que fosse algo bem simples, remetendo ao que o Game Dev Tycoon faz. O jogo seria apenas de clicar, nao precisaria andar. O cenário seria sua própria empresa (escritório) funcionando ao fundo. Você veria os bonequinhos dos funcionários andando por aí, mas seria algo feito de forma automática.
+
+8. Interface
+
+Queria pensar um jeito de fazer isso referenciando o mercado mas sem ser chato. Usando gráficos, tabelas, diagramas, mas de uma maneira simples de entneder e visualizar.
+
+9. Arte e Estilo
+
+Com certeza um estilo 2D, mas não realista. Pensar a melhor forma de fazer. Acho que não tem que ser exatametne igual o mundo real. Tem que ser mais colorido, com mais personalidade
+
+10. Áudio
+A música não será o forte do jogo, mas com certeza ter alguma de fundo, que pode ser desativada caso a pessoa queira.
+
+11. Monetização
+
+Preço fixo, em torno de US$14,90
+
+12. Escopo Técnico
+
+- Engine Unity
+- Singleplayer
+- Sistema de salvamento automático
+
+13. Roadmap
+
+- Primeiro, vamos definir como vão ser as dinâmicas/mecânicas de gameplay. Como os pontos se alteram. Penso em ter um sistema por trás que tenha essa relação (ex: se a pessoa escolheu a área financeira, ter já definido como essas métricas por trás se comportam). Minha referência é o modo de construção de montanhas russas no roller coaster. Por trás, há uma física que cada coisa que você faz na motanha russa muda a pontuação de nausea, intensidade e empolgação.
+
+- Depois, começar prototipando mecânica a mecânica, se a gameplay também é divertida
+
+- Fazer uma demo com apenas uma área de mercado, escalando até $XX milhões de faturamento
+
+- Fazer jogo completo
+
+==
