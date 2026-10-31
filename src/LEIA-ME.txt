@@ -1,51 +1,40 @@
-THE FOUNDER — Protótipo 0.6.1 / Fase 2 + D20 animado
+THE FOUNDER — Protótipo 0.7 / Fase 3
 
 JOGAR
-Abra dist/The-Founder-Jogar.html no Chrome, Edge ou Firefox.
-Esse arquivo contém o jogo inteiro e não requer instalação ou internet.
-Os arquivos de src/ são editáveis e devem ficar juntos ao abrir src/index.html.
+Abra dist/The-Founder-Jogar.html no navegador. É um arquivo único offline.
+Ao abrir src/index.html, mantenha todos os arquivos da pasta src juntos.
 
-COMEÇAR
-Crie o founder e a empresa. Clique no computador para desenvolver o MVP duas
-vezes e lançar. Cada decisão entra na agenda. Remova ou reordene antes de
-clicar em Revisar mês e Aprovar. Você tem até quatro ações por mês.
+SEU PRIMEIRO PRODUTO
+Clique no computador, escolha Novo produto e dê um nome. Defina persona,
+compra única ou recorrência e distribua quatro pontos no radar.
+Adicionar o conceito à agenda não desenvolve nem cobra dinheiro.
+Selecione o conceito, tente desenvolver e escolha preço/cobrança ao lançar.
+Tudo passa pela agenda e aprovação. Uma tentativa de desenvolvimento pode
+falhar. Nesse caso, o lançamento dependente é pulado sem cobrar.
 
-MARKETING / TELEFONE
-Cada canal tem verba mensal e eficiência persistente. Escale ou reduza a
-verba, ou otimize a campanha por R$ 500. Um ajuste por canal/mês.
-Saltos de verba acima de 25% penalizam o D20. Especialistas ajudam no seu
-canal. O 1 natural causa falha crítica e bloqueio no próximo mês: o canal
-não gasta nem adquire clientes durante o bloqueio. Reduzir verba é sempre
-respeitado, inclusive durante bloqueios.
-O orçamento volta automaticamente após o mês bloqueado, a menos que você
-reduza ou pause a verba.
+PRODUTO E RISCO
+Enxuto: tentativa de MVP R$ 6 mil, custo unitário maior.
+Completo: tentativa de MVP R$ 30 mil, operação mais eficiente.
+Melhorias custam mais e ficam difíceis até nível 10. Natural 1 perde nível.
+Pesquisas revelam pistas da persona e podem falhar. Preço elevado pode
+zerar vendas. Compra única só cobra novas vendas; assinatura cobra a base
+retida. Atributos influenciam custos, preferência e NPS.
+Acompanhe a curva de adoção, o histórico de preços e a obsolescência.
+Próxima geração substitui a anterior ao lançar, encerrando assinaturas dela.
 
-ROAS
-Receita inicial dos novos clientes atribuídos ao canal dividida pelo gasto.
-Receita de clientes antigos e aquisição orgânica ficam de fora.
-ROAS não é lucro. Sem gasto aparece um traço.
-O público é finito e compartilhado entre os canais. Após alcançar toda a
-persona, investimento incremental não traz novos alcançados.
+MARKETING E D20
+No telefone: escalar, reduzir e otimizar, uma mudança por canal/mês.
+ROAS usa receita inicial de novos clientes atribuídos, não receita antiga.
+Saturação limita novos alcançados. O D20 é animado, pode ser pulado e revisto.
 
-SALVAMENTO
-Salva no navegador. Preserve o mesmo navegador e caminho do HTML para
-continuar o save; arquivos locais variam conforme o navegador.
-Há migração de saves e backup pré-campanhas.
-
-ESCOPO
-Desenvolvimento e reunião ainda usam regras anteriores; risco por produto
-entra na Fase 3. Pessoas, administrativo-financeiro e balanceamento serão
-aprofundados depois. Os setores e públicos revisados estão documentados,
-mas ainda não foram aplicados à seleção do jogo. Valores experimentais.
+SAVE E ESCOPO
+Preserve navegador e caminho do HTML para retomar. Há migração e backups.
+Os setores revisados estão documentados, mas a lista da criação ainda usa
+os arquétipos anteriores. Números, custos e dificuldade são experimentais.
+Não há estoque físico nem operação detalhada por setor nesta versão.
+Leia docs/FASE-3-PRODUTO.md para regras e limites.
 
 DESENVOLVIMENTO
 node tests/game.cjs
 node scripts/build.cjs
-Regras: docs/FASE-2-MARKETING.md.
-Testes de lógica e integração com DOM simulado; não comprovam layout.
-
-D20 ANIMADO
-Ao aprovar um mês com sorteios, clique em Rolar D20 ou no dado.
-Veja modificadores, total e consequência, e avance para a próxima rolagem.
-Pular animações abre o fechamento. Rever dados rolando repete a apresentação,
-sem mudar resultados. Continuar retoma uma sequência interrompida.
+Testes de lógica e integração com DOM simulado, não de layout no navegador.

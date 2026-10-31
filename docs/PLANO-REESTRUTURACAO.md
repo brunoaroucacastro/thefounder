@@ -1,6 +1,6 @@
 # Reestruturação — seis fases
 
-Status em 31/10/2026: Fases 1 e 2 autorizadas e implementadas nos protótipos 0.5 e 0.6. Fases 3–6 permanecem planejadas. Base: feedbacks fornecidos pelo usuário. A execução seguirá uma fase por vez: proposta, aprovação, implementação, testes, partida do usuário e ajustes.
+Status em 31/10/2026: Fases 1, 2 e 3 autorizadas e implementadas nos protótipos 0.5–0.7. Fases 4–6 permanecem planejadas. Base: feedbacks fornecidos pelo usuário. A execução seguirá uma fase por vez: proposta, aprovação, implementação, testes, partida do usuário e ajustes.
 
 ## Diagnóstico do protótipo
 
@@ -92,4 +92,4 @@ Riscos principais: funções sobrescritas em cadeia, estado global e ações com
 
 ## Próxima entrega
 
-Testar a Fase 2 em partida. Campanhas já têm riscos e regras documentadas em `FASE-2-MARKETING.md`. Desenvolvimento e reunião ainda preservam efeitos anteriores; sua reformulação pertence às Fases 3 e 5. Não avançar automaticamente para a próxima fase sem pedido do usuário.
+Testar a Fase 3 em partida. Regras experimentais e limites em `FASE-3-PRODUTO.md`. O catálogo já tem riscos, atributos e ciclo de vida. Reunião ainda usa os efeitos anteriores até a Fase 5. Não avançar automaticamente para a próxima fase sem pedido do usuário.

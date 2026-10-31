@@ -1,5 +1,16 @@
 # Histórico de desenvolvimento
 
+## 0.7 — Fase 3: catálogo, atributos e ciclo de produtos — 31/10/2026
+
+- Conceitos nomeados, persona por idade/classe, radar de atributos e escolhas com tradeoffs.
+- MVP enxuto/completo, desenvolvimento e melhorias com D20 animado, custos/dificuldade crescentes até nível 10 e perda de nível em crítico.
+- Pesquisa de persona com pistas persistentes, preço em aberto e compra única/recorrência escolhida no lançamento.
+- Demanda por aderência/NPS/preço, custo variável por atributos, histórico de preços e margens reais.
+- Catálogo com competição por leads, atribuição de marketing por produto e contabilidade separada por modelo de cobrança.
+- Curva de adoção, abismo de 15%, obsolescência e novas gerações com família estável.
+- Dependências que falharam são puladas sem custo. Save schema 4, backup e migração do produto antigo.
+- 23 testes de produto e integração do fluxo visual, além das regressões. Layout ainda não inspecionado no navegador.
+
 ## 0.6.1 — D20 animado e resolução cinematográfica — 31/10/2026
 
 - Cena própria para cada rolagem: D20 facetado animado, dificuldade/faixas, modificadores, total e consequência.

@@ -1,6 +1,6 @@
 # The Founder
 
-Jogo de gestão de empresas em pixel art. Protótipo 0.6.1 para PC/navegador.
+Jogo de gestão de empresas em pixel art. Protótipo 0.7 para PC/navegador.
 
 ## Jogar
 
@@ -17,6 +17,7 @@ Baixe `dist/The-Founder-Jogar.html` pelo botão de download do GitHub e abra no 
 - D20 compartilhado e relatório persistido do fechamento.
 - Campanhas com escalar/reduzir/otimizar, eficiência, especialistas, bloqueios, saturação e ROAS. Regras em `docs/FASE-2-MARKETING.md`.
 - D20 animado: clique para rolar, veja bônus/penalidades e resultado, avance pela sequência ou pule. O resultado salvo não muda ao rever ou reabrir.
+- Catálogo de produtos nomeados, radar, persona, pesquisa, compra única/recorrência, desenvolvimento com D20, preço livre, adoção, obsolescência e gerações. Regras em `docs/FASE-3-PRODUTO.md`.
 
 ## Desenvolvimento
 
@@ -34,6 +35,8 @@ node scripts/build.cjs
 `src/campaign-rules.js` isola a simulação de marketing. A migração da Fase 1 para a Fase 2 preserva a empresa e cria backup em `the-founder-v1-backup-before-campaigns`. ROAS mostra apenas receita inicial dos novos clientes atribuídos; não é lucro nem previsão.
 
 `src/dice.js` e `src/dice.css` apresentam as rolagens já salvas sem interferir nas regras ou no RNG. A sequência retoma ao escolher Continuar. Preferência de movimento reduzido é respeitada. A geometria, interface e cores são originais, inspiradas no ritual de rolagem de RPGs.
+
+`src/product-rules.js` implementa a economia do catálogo e `src/product-ui.js` o editor. Schema 4 preserva o produto antigo como assinatura, preço e clientes; faz backup pré-produtos. Novas ações dependentes de desenvolvimento falho são puladas sem cobrança.
 
 ## Limites desta versão
 
