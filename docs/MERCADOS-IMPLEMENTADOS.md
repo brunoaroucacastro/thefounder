@@ -1,3 +1,5 @@
+> Atualização 0.13: idade e classe foram substituídas pelas tabelas de posicionamento de gameplay do jogador. Este documento registra a base histórica; consulte MERCADOS-POSICIONAMENTO.md para os valores em uso.
+
 # Mercados iniciais — versão 0.12
 
 Implementação da tabela anexada pelo jogador em 31/10/2026. Números aplicados exatamente como enviados: públicos arredondados em milhões, idade e classe somando 100% separadamente. Referência Brasil, pessoas de 18 anos ou mais, apenas classes A/B/C. São estimativas de modelagem, não estatísticas oficiais nem clientes garantidos. Os públicos dos setores se sobrepõem; não se somam as linhas. Não foi feita nova pesquisa nesta etapa.

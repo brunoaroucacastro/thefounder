@@ -1,6 +1,6 @@
 # The Founder
 
-Jogo de gestão de empresas em pixel art. Protótipo 0.12 para PC/navegador.
+Jogo de gestão de empresas em pixel art. Protótipo 0.13 para PC/navegador.
 
 ## Jogar
 
@@ -56,3 +56,5 @@ Fase 6 (entrega jogável): novas jornadas enxutas, calibração versionada, mét
 Aportes da versão 0.11: próprio R$25 mil, amigos/família R$50 mil, banco R$80 mil e VC R$150 mil. Condições e resultados atualizados em docs/APORTES-INICIAIS.md.
 
 Versão 0.12: os 12 mercados do estudo enviado foram aplicados à criação de empresa e ao motor de público. Descrições, demografia e classes separadas; catálogo histórico preservado para saves antigos. Consulte docs/MERCADOS-IMPLEMENTADOS.md.
+
+Versão 0.13: percentuais etários e de classe corrigidos para o posicionamento de gameplay fornecido pelo jogador (3 mercados por idade dominante, 4 por classe). A tabela de pesquisa da 0.12 foi substituída nesses dois critérios; públicos mantidos. Fonte de verdade: docs/MERCADOS-POSICIONAMENTO.md e src/market-data.js.

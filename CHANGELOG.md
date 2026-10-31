@@ -1,5 +1,14 @@
 # Histórico de desenvolvimento
 
+## 0.13 — Correção do posicionamento etário e econômico — 31/10/2026
+
+- Aplicadas exatamente as novas tabelas do jogador, substituindo os percentuais de pesquisa usados na 0.12.
+- Três mercados por idade dominante e quatro por classe; análises mantidas separadas.
+- Justificativas de idade e classe em detalhes expansíveis; rótulo claro de posicionamento de gameplay.
+- Públicos, identidade dos setores e aportes preservados. Correção vale para os 12 setores B2C existentes.
+- Oito testes de mercados (129 no total), build independente e simulações atualizadas.
+
+
 ## 0.12 — Os 12 mercados B2C na criação de empresa — 31/10/2026
 
 - Seis produtos físicos e seis serviços, conforme tabela enviada, substituem os antigos na seleção inicial.

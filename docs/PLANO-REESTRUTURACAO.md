@@ -93,3 +93,5 @@ Riscos principais: funções sobrescritas em cadeia, estado global e ações com
 ## Próxima entrega
 
 Testar a versão jogável 0.10 em partida. Simulações, calibração e limites em `FASE-6-INTEGRACAO-BALANCEAMENTO.md`; inspeção visual real e ajustes por feedback permanecem pendentes. Não avançar automaticamente para a próxima fase sem pedido do usuário.
+
+Atualização 0.13: percentuais de idade/classe substituídos pelo posicionamento de gameplay enviado pelo jogador; públicos mantidos. Ver MERCADOS-POSICIONAMENTO.md.

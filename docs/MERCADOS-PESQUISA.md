@@ -1,3 +1,5 @@
+> Atualização 0.13: idade e classe foram substituídas pelas tabelas de posicionamento de gameplay do jogador. Este documento registra a base histórica; consulte MERCADOS-POSICIONAMENTO.md para os valores em uso.
+
 # Mercados B2C — pesquisa e cenário inicial
 
 Pesquisa em 31/10/2026. Base comparável principal: Brasil, 2024. Base aplicada na versão 0.12 conforme tabela arredondada enviada pelo jogador. Implementação e compatibilidade em MERCADOS-IMPLEMENTADOS.md.

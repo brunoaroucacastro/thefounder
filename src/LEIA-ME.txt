@@ -1,4 +1,4 @@
-THE FOUNDER — Protótipo 0.12 / Integração e balanceamento
+THE FOUNDER — Protótipo 0.13 / Integração e balanceamento
 
 JOGAR
 Abra dist/The-Founder-Jogar.html no navegador. É um arquivo único offline.
@@ -64,3 +64,6 @@ Próprio R$25.000; amigos/família R$50.000 (devolução de R$2.500/mês do mês
 
 MERCADOS INICIAIS
 Nova jornada: seis produtos físicos e seis serviços B2C. Os cartões mostram público, idade e classe econômica (Brasil, ABC, 18+, estimativas para gameplay). Empresas antigas conservam seus setores e números históricos.
+
+CORREÇÃO DE PÚBLICOS — 0.13
+Idade e classe seguem as tabelas de posicionamento fornecidas pelo jogador, não a distribuição da pesquisa anterior. São três mercados por idade dominante e quatro por classe. Abra os detalhes de cada bloco para ver a lógica. Os tamanhos de público foram mantidos.

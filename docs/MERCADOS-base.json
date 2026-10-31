@@ -1,5 +1,5 @@
 {
-  "status": "Base aplicada na versão 0.12; valores arredondados em src/market-data.js",
+  "status": "Base de pesquisa histórica; idade/classe substituídas por posicionamento de gameplay na 0.13. Públicos mantidos.",
   "date": "2026-10-31",
   "populationYear": 2024,
   "adultPopulationApprox": 160946558,
