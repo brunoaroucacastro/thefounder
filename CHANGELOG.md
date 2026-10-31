@@ -1,5 +1,13 @@
 # Histórico de desenvolvimento
 
+## 0.11 — Aportes iniciais revisados — 31/10/2026
+
+- Próprio R$25 mil, amigos/família R$50 mil, banco R$80 mil e VC R$150 mil para novas jornadas.
+- Amigos/família: parcela R$2.500 por 20 meses após seis meses de carência. Banco: juros iniciais R$2.000/mês.
+- Parcela salva por contrato; saves antigos conservam R$1.750/mês e seus saldos. DRE, revisão e simulações usam a mesma parcela.
+- HTML independente regenerado e testes de contratação de capital atualizados.
+
+
 ## 0.10 — Versão jogável: integração e primeira calibração — 31/10/2026
 
 - Capital próprio inicial aumentado para R$25.000, conforme feedback do jogador; abaixo dos R$35.000 de amigos/família.

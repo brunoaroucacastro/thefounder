@@ -1,5 +1,7 @@
 # Fase 6 — integração e primeira calibração — versão 0.10
 
+> Registro histórico da versão 0.10. A versão 0.11 aumentou amigos/família para R$50 mil e banco para R$80 mil; consulte APORTES-INICIAIS.md para condições e simulações atuais.
+
 ## Entrega jogável
 
 HTML independente em dist/The-Founder-Jogar.html, sem instalação ou servidor. Capital próprio inicial aumentado de R$12.000 para R$25.000 por solicitação do jogador; continua abaixo de amigos/família (R$35.000). Novas jornadas começam em garagem (R$500/mês, antes de inflação/negociação), com marketing total de R$500/mês. Ao contratar a terceira pessoa, o aluguel base passa a R$2.000 e a empresa permanece no escritório ampliado. Saves existentes mantêm sua economia anterior; a nova calibração exige Nova jornada. Schema continua 6; `balanceVersion:1` identifica a economia nova.

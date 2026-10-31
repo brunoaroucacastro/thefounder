@@ -6,7 +6,7 @@ function boot(storage=new Map()){
  function advanceTime(ms){const until=now+ms;let count=0;while(true){const next=[...timers].filter(([,v])=>v.at<=until).sort((a,b)=>a[1].at-b[1].at)[0];if(!next)break;if(count++>10000)throw Error('Timer loop');now=next[1].at;timers.delete(next[0]);next[1].fn();}now=until;}
  const els=new Map(),ctx2d=new Proxy({},{get:()=>()=>{}}),world={html:'',insertAdjacentHTML(_,html){this.html+=html;},querySelector(){return {textContent:''}}};
  const el=id=>{if(!els.has(id))els.set(id,{innerHTML:'',textContent:'',style:{},classList:{add(){},remove(){}},open:false,value:'Nova empresa',showModal(){this.open=true},close(){this.open=false},remove(){},querySelector(sel){return sel==='.world'?world:null},getContext(){return ctx2d},addEventListener(){},getBoundingClientRect(){return {left:0,top:0,width:1280,height:800}}});return els.get(id);};
- const ctx=vm.createContext({document:{getElementById:el},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},window:{},requestAnimationFrame:()=>{},setTimeout:schedule,clearTimeout:id=>timers.delete(id),console,Math});
+ const ctx=vm.createContext({document:{getElementById:el},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},window:{},Date:class extends Date {static now(){return 123456789}},requestAnimationFrame:()=>{},setTimeout:schedule,clearTimeout:id=>timers.delete(id),console,Math});
  for(const f of ['campaign-rules','product-rules','finance-rules','people-rules','rules','game','scene','create','planner','product-ui','finance-ui','people-ui','dice'])vm.runInContext(fs.readFileSync('src/'+f+'.js','utf8'),ctx,{filename:f+'.js'});
  return {run:code=>vm.runInContext(code,ctx),storage,el,world,advanceTime};
 }
@@ -20,9 +20,9 @@ run('reviewMonth();editPlan(3,0);editPlan(1,-1)');assert.equal(run('s.plan.lengt
 app=boot(app.storage);assert.equal(run('s.plan.length'),3);assert.equal(run('s.team.length'),0);run('reviewMonth();approveMonth()');assert.equal(run('s.team.length'),3);
 for(let i=0;i<6;i++)run('tab='+i+';render()');
 run('s.cash=1;save();reviewMonth();approveMonth()');assert.equal(run('s.ended'),true);assert.equal(run('meta.runs'),1);
-run('draft.capital=1;foundCompany();s.cash=100000;s.month=6;save();reviewMonth();approveMonth()');assert.equal(run('s.friendsDebt'),33250);assert.equal(run('s.cash'),run('s.lastMonthReport.cash'));
+run('draft.capital=1;foundCompany();s.cash=100000;s.month=6;save();reviewMonth();approveMonth()');assert.equal(run('s.friendsDebt'),47500);assert.equal(run('s.cash'),run('s.lastMonthReport.cash'));
 run('draft.capital=3;foundCompany()');assert.equal(run('s.equity'),.85);
-run('draft.capital=2;foundCompany()');assert.equal(run('s.debt'),75000);
+run('draft.capital=2;foundCompany()');assert.equal(run('s.debt'),80000);
 run('draft.capital=0;foundCompany()');assert.equal(run('s.cash'),25000);
 run('s.month=6;s.streak=3;s.cash=70000;s.customers=200;s.history=[{month:6,revenue:20000,profit:10000,cogs:2800,payroll:2000,marketing:3200,interest:0,reach:10000,leads:400,newCustomers:30,churn:10}];sell()');assert.equal(run('s.ended'),true);assert.equal(run('meta.wealth'),334000);
 // Failed persistence must not advance a month or apply any charges.

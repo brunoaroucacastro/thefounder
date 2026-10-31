@@ -43,13 +43,13 @@
       "strategy": "lean",
       "capital": 1,
       "runs": 120,
-      "bankruptcy": 0.016666666666666666,
+      "bankruptcy": 0.03333333333333333,
       "launch": 1,
-      "meanMonths": 23.983333333333334,
-      "medianCash": 41125,
-      "p10Cash": 5587,
-      "p90Cash": 83877,
-      "meanRevenue": 157146
+      "meanMonths": 24,
+      "medianCash": 42625,
+      "p10Cash": 7087,
+      "p90Cash": 85377,
+      "meanRevenue": 157382
     },
     {
       "strategy": "lean",
@@ -58,9 +58,9 @@
       "bankruptcy": 0,
       "launch": 1,
       "meanMonths": 24,
-      "medianCash": 67625,
-      "p10Cash": 32087,
-      "p90Cash": 110377,
+      "medianCash": 69625,
+      "p10Cash": 34087,
+      "p90Cash": 112377,
       "meanRevenue": 157609
     },
     {
@@ -91,13 +91,13 @@
       "strategy": "oneoff",
       "capital": 1,
       "runs": 120,
-      "bankruptcy": 0.20833333333333334,
+      "bankruptcy": 0.10833333333333334,
       "launch": 1,
-      "meanMonths": 23.483333333333334,
-      "medianCash": 10444,
-      "p10Cash": -705,
-      "p90Cash": 41718,
-      "meanRevenue": 72352
+      "meanMonths": 23.775,
+      "medianCash": 11944,
+      "p10Cash": -35,
+      "p90Cash": 43218,
+      "meanRevenue": 73451
     },
     {
       "strategy": "oneoff",
@@ -106,9 +106,9 @@
       "bankruptcy": 0,
       "launch": 1,
       "meanMonths": 24,
-      "medianCash": 36944,
-      "p10Cash": 15372,
-      "p90Cash": 68218,
+      "medianCash": 38944,
+      "p10Cash": 17372,
+      "p90Cash": 70218,
       "meanRevenue": 74866
     },
     {
@@ -139,25 +139,25 @@
       "strategy": "overspend",
       "capital": 1,
       "runs": 120,
-      "bankruptcy": 0.875,
+      "bankruptcy": 0.8416666666666667,
       "launch": 1,
-      "meanMonths": 5.691666666666666,
-      "medianCash": -1703,
-      "p10Cash": -16890,
-      "p90Cash": 16536,
-      "meanRevenue": 63388
+      "meanMonths": 6.825,
+      "medianCash": -5285,
+      "p10Cash": -10211,
+      "p90Cash": 23544,
+      "meanRevenue": 80649
     },
     {
       "strategy": "overspend",
       "capital": 2,
       "runs": 120,
-      "bankruptcy": 0.8166666666666667,
+      "bankruptcy": 0.8,
       "launch": 1,
-      "meanMonths": 8.675,
-      "medianCash": -4889,
-      "p10Cash": -13282,
-      "p90Cash": 48544,
-      "meanRevenue": 112675
+      "meanMonths": 9.4,
+      "medianCash": -3024,
+      "p10Cash": -13201,
+      "p90Cash": 50544,
+      "meanRevenue": 121950
     },
     {
       "strategy": "overspend",
@@ -189,10 +189,10 @@
       "runs": 120,
       "bankruptcy": 1,
       "launch": 0,
-      "meanMonths": 18.3,
-      "medianCash": -605,
-      "p10Cash": -855,
-      "p90Cash": -75,
+      "meanMonths": 21.4,
+      "medianCash": -620,
+      "p10Cash": -665,
+      "p90Cash": -120,
       "meanRevenue": 0
     },
     {
@@ -202,9 +202,9 @@
       "bankruptcy": 0,
       "launch": 0,
       "meanMonths": 24,
-      "medianCash": 9320,
-      "p10Cash": 5320,
-      "p90Cash": 12320,
+      "medianCash": 11320,
+      "p10Cash": 7320,
+      "p90Cash": 14320,
       "meanRevenue": 0
     },
     {
@@ -220,5 +220,12 @@
       "meanRevenue": 0
     }
   ],
-  "totalRuns": 1920
+  "totalRuns": 1920,
+  "initialCapital": [
+    25000,
+    50000,
+    80000,
+    150000
+  ],
+  "friendsInstallment": 2500
 }

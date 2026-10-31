@@ -64,7 +64,7 @@ const GameRules=(()=>{
   if(state.plan.length>4-state.legacyUsed)errors.push({index:-1,message:'Máximo de quatro ações por mês.'});
   state.plan.forEach((a,index)=>{try{entries.push(apply(state,a,m,{preview:true,touched}));}catch(e){errors.push({index,message:e.message});entries.push({id:a.id,label:describe(a),status:'invalid',cost:0});}});
   const expenses=finance.rent(state)+state.team.reduce((n,p)=>n+p.salary,0)+campaigns.forecast(state)+finance.interest(state);
-  const friendsDue=state.capital===1&&state.month+1>6?Math.min(1750,state.friendsDebt||0):0;
+  const friendsDue=state.capital===1&&state.month+1>6?Math.min(state.friendsInstallment??1750,state.friendsDebt||0):0;
   return {state,meta:m,entries,errors,cost:entries.reduce((n,e)=>n+e.cost,0),expenses,friendsDue,principalDue:finance.principalDue(state),reserve:state.cash-expenses-friendsDue-finance.principalDue(state)};
  }
  function enqueue(input,meta,action){let s=migrate(input);if(s.ended)throw Error('Esta jornada terminou.');if(s.plan.length>=4-s.legacyUsed)throw Error('Agenda cheia. Remova uma ação para substituir.');const a={...action,id:s.companyId+'-'+s.nextId++};s.plan.push(a);const p=project(s,meta);if(p.errors.length)throw Error(p.errors.at(-1).message);s.planRevision++;return s;}
@@ -91,7 +91,7 @@ const GameRules=(()=>{
   s.cash+=profit;s.totalRevenue+=revenue;s.month++;s.actions=4;s.streak=profit>0?s.streak+1:0;
   const events=[...entries.filter(e=>e.note).map(e=>e.label+': '+e.note),...(s.catalogStarted?products.ageProducts(s):[])],monthRolls=entries.flatMap(e=>e.rollCards?e.rollCards.map(c=>c.die):e.die?[e.die]:[]);let eventCash=0,friendsPaid=0;const monthRoll=label=>{const r=rollD20(s,{label},context.random);monthRolls.push(r);return r;};
   if(s.month%3===0){const r=monthRoll('Evento do trimestre');if(r.natural<=6){eventCash=-1500;events.push(r.critical?'Falha crítica: pane no servidor · −R$ 1.500':'Pane no servidor · −R$ 1.500');}else if(r.natural<=13){eventCash=2000;events.push('Parceria extraordinária · +R$ 2.000');}else{people.bump(s,8);events.push('Elogio de cliente · ânimo +8');}s.cash+=eventCash;}
-  if(s.capital===1&&s.month>6&&s.friendsDebt>0){const due=Math.min(1750,s.friendsDebt);if(s.cash>=due){s.cash-=due;s.friendsDebt-=due;friendsPaid=due;events.push('Parcela aos amigos paga.');}else{s.trust=limit(s.trust-15,0,100);events.push('Parcela aos amigos atrasada · confiança −15.');}}
+  if(s.capital===1&&s.month>6&&s.friendsDebt>0){const due=Math.min(s.friendsInstallment??1750,s.friendsDebt);if(s.cash>=due){s.cash-=due;s.friendsDebt-=due;friendsPaid=due;events.push('Parcela aos amigos paga.');}else{s.trust=limit(s.trust-15,0,100);events.push('Parcela aos amigos atrasada · confiança −15.');}}
   if(s.capital===3&&s.month%3===0){s.trust=limit(s.trust+(revenue>(s.history.at(-3)?.revenue||0)*1.2?8:-15),0,100);events.push('Confiança dos investidores: '+s.trust+'/100.');}
   const financeClose=finance.settleMonth(s);events.push(...financeClose.events);
   const peopleClose=people.settle(s,{entries,profit,revenue,roll:(state,options)=>rollD20(state,options,context.random)});events.push(...peopleClose.events);monthRolls.push(...peopleClose.rolls);

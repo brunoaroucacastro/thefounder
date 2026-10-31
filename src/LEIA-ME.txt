@@ -1,4 +1,4 @@
-THE FOUNDER — Protótipo 0.10 / Integração e balanceamento
+THE FOUNDER — Protótipo 0.11 / Integração e balanceamento
 
 JOGAR
 Abra dist/The-Founder-Jogar.html no navegador. É um arquivo único offline.
@@ -58,3 +58,6 @@ JOGAR
 Abra The-Founder-Jogar.html no Chrome ou Edge. Clique em NOVA JORNADA, crie o founder e a empresa. As decisões entram na agenda e só executam quando você revisa e aprova o mês.
 Novas jornadas: garagem R$500/mês e marketing R$500/mês. A terceira contratação amplia o escritório para aluguel base de R$2.000.
 Saves anteriores continuam com sua economia original. Para experimentar o novo balanceamento, comece uma Nova jornada.
+
+APORTES — NOVAS JORNADAS
+Próprio R$25.000; amigos/família R$50.000 (devolução de R$2.500/mês do mês 7 ao 26); banco R$80.000 (juros iniciais R$2.000/mês); VC R$150.000. Empresas salvas mantêm os valores e contratos anteriores.
