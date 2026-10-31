@@ -1,4 +1,4 @@
-THE FOUNDER — Protótipo 0.13 / Integração e balanceamento
+THE FOUNDER — Protótipo 0.14 / Integração e balanceamento
 
 JOGAR
 Abra dist/The-Founder-Jogar.html no navegador. É um arquivo único offline.
@@ -67,3 +67,6 @@ Nova jornada: seis produtos físicos e seis serviços B2C. Os cartões mostram p
 
 CORREÇÃO DE PÚBLICOS — 0.13
 Idade e classe seguem as tabelas de posicionamento fornecidas pelo jogador, não a distribuição da pesquisa anterior. São três mercados por idade dominante e quatro por classe. Abra os detalhes de cada bloco para ver a lógica. Os tamanhos de público foram mantidos.
+
+IDENTIFIQUE A CÓPIA
+Na criação da empresa aparece VERSÃO 0.14 · 12 MERCADOS B2C. O arquivo independente desta entrega chama-se The-Founder-0.14-Jogar.html. A criação oferece apenas os seis produtos físicos e os seis serviços aprovados.

@@ -1,13 +1,13 @@
 const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
 // Integration harness, not a browser/layout test. Executes the shipped scripts.
-function boot(storage=new Map()){
+function boot(storage=new Map(),bundle=null){
  let now=0,nextTimer=1;const timers=new Map();
  function schedule(fn,delay=0){const id=nextTimer++;timers.set(id,{fn,at:now+delay});return id;}
  function advanceTime(ms){const until=now+ms;let count=0;while(true){const next=[...timers].filter(([,v])=>v.at<=until).sort((a,b)=>a[1].at-b[1].at)[0];if(!next)break;if(count++>10000)throw Error('Timer loop');now=next[1].at;timers.delete(next[0]);next[1].fn();}now=until;}
  const els=new Map(),ctx2d=new Proxy({},{get:()=>()=>{}}),world={html:'',insertAdjacentHTML(_,html){this.html+=html;},querySelector(){return {textContent:''}}};
  const el=id=>{if(!els.has(id))els.set(id,{innerHTML:'',textContent:'',style:{},classList:{add(){},remove(){}},open:false,value:'Nova empresa',showModal(){this.open=true},close(){this.open=false},remove(){},querySelector(sel){return sel==='.world'?world:null},getContext(){return ctx2d},addEventListener(){},getBoundingClientRect(){return {left:0,top:0,width:1280,height:800}}});return els.get(id);};
  const ctx=vm.createContext({document:{getElementById:el},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},window:{},Date:class extends Date {static now(){return 123456789}},requestAnimationFrame:()=>{},setTimeout:schedule,clearTimeout:id=>timers.delete(id),console,Math});
- for(const f of ['market-data','campaign-rules','product-rules','finance-rules','people-rules','rules','game','scene','create','planner','product-ui','finance-ui','people-ui','dice'])vm.runInContext(fs.readFileSync('src/'+f+'.js','utf8'),ctx,{filename:f+'.js'});
+ if(bundle){for(const match of bundle.matchAll(/<script>([\s\S]*?)<\/script>/g))vm.runInContext(match[1],ctx);}else for(const f of ['market-data','campaign-rules','product-rules','finance-rules','people-rules','rules','game','scene','create','planner','product-ui','finance-ui','people-ui','dice'])vm.runInContext(fs.readFileSync('src/'+f+'.js','utf8'),ctx,{filename:f+'.js'});
  return {run:code=>vm.runInContext(code,ctx),storage,el,world,advanceTime};
 }
 let app=boot();const run=code=>app.run(code);

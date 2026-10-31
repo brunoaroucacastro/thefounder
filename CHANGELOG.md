@@ -1,5 +1,14 @@
 # Histórico de desenvolvimento
 
+## 0.14 — Correção da entrega e da seleção inicial — 31/10/2026
+
+- Criação itera apenas os 12 mercados atuais; um índice legado na seleção é normalizado para Gadgets.
+- Versão 0.14 visível na criação para identificar a cópia aberta. Arquivo entregue com nome versionado.
+- Corrigida substituição de versão no empacotador: 0.13 não vira 0.133.
+- Teste do HTML final verifica os nomes exatos dos seis produtos e seis serviços, versão, percentuais e fundação.
+- 129 testes anteriores passaram, mais o teste de entrega em DOM simulado. Sem nova alegação de inspeção visual real.
+
+
 ## 0.13 — Correção do posicionamento etário e econômico — 31/10/2026
 
 - Aplicadas exatamente as novas tabelas do jogador, substituindo os percentuais de pesquisa usados na 0.12.
