@@ -1,5 +1,14 @@
 # Histórico de desenvolvimento
 
+## 0.23 — Os 4Ps, MVP de R$8 mil e reviews reais
+
+- Produto com até quatro pontos e linguagem simples; persona sem orçamento explícito.
+- Desenvolvimento fixo de R$8.000 separado do custo variável e do estoque; preço numa etapa própria com margem bruta.
+- Praça com alcance/comissão e promoção com até quatro pontos; construção direta sem D20 neste fluxo.
+- Relógio contínuo, novas janelas para vender o mesmo produto e avaliações de 1–5 estrelas a cada dez unidades vendidas.
+- Save próprio e dez testes de regras mais integração do HTML independente.
+
+
 ## 0.22 — Gadgets, pesquisa de persona e radar de atributos
 
 - Catálogo inicial com fone, mouse e teclado; caixa de som pesquisável após duas criações.

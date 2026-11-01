@@ -57,7 +57,7 @@ const PilotWorld=(()=>{
   // Actual visitors advance with sales processing. No random decorative transactions.
   if(phase==='selling'&&s.sales&&s.sales.seen<s.leads){const u=clamp(s.sales.elapsed/.85,0,1),x=1030-(1030-788)*Math.min(1,u*2),y=458-Math.sin(u*Math.PI)*10,p=FirstLoop.client(s);person(c,x,y,[p.color,'#88b8a4','#c79595'][s.sales.seen%3],[p.hair,'#5e4852','#af835a'][s.sales.seen%3],'#e8b793',t,'walk',u>.7?'happy':'normal');text(c,(s.sales.seen+1)+' / '+s.leads,x,y+23,'#a18a68',9,'center');}
   if(phase==='opportunity'){person(c,974,445,'#af96bf','#60506a','#eac09a',t,'idle','happy');text(c,'4 fones?',974,351+Math.sin(t*3)*2,'#a58a6c',14,'center');}
-  if(v.saleFlash>0){const u=1-v.saleFlash;text(c,'+'+(v.saleValue||0).toFixed(0),882,324-u*45,'#63936d',20,'center');text(c,'✓',740,340-u*25,'#99b77e',24,'center');}
+  if(v.reviewFlash>0){text(c,'NOVA AVALIAÇÃO',730,295,'#947648',13,'center');text(c,'★'.repeat(v.reviewStars||1)+'☆'.repeat(5-(v.reviewStars||1)),730,317,'#be9746',21,'center');}if(v.saleFlash>0){const u=1-v.saleFlash;text(c,'+'+(v.saleValue||0).toFixed(0),882,324-u*45,'#63936d',20,'center');text(c,'✓',740,340-u*25,'#99b77e',24,'center');}
   if(celebrate){text(c,'✦',fp.x-37,fp.y-98,'#e4bf68',21);text(c,'✦',hp.x+35,hp.y-75,'#a8c28c',15);}
  }
  function clamp(n,a,b){return Math.max(a,Math.min(b,n));}

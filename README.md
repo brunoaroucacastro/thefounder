@@ -1,5 +1,10 @@
 # The Founder
 
+## Jogar 0.23 — Os 4Ps
+
+Baixe `dist/The-Founder-Primeira-Aposta-0.23.html` e abra no navegador. MVP de R$8 mil, até quatro pontos de produto, preço por margem, escolha de praça e pontos de promoção. Desenvolvimento e campanha sem D20; tempo visível e review a cada dez vendas. [Regras e validação](docs/QUATRO-PS-023.md). Save próprio.
+
+
 ## Jogar 0.22 — Crie seu gadget
 
 Baixe `dist/The-Founder-Primeira-Aposta-0.22.html` e abra no navegador. Fone, mouse e teclado; pesquisa obrigatória com três personas por produto; quatro pontos num radar de seis atributos opostos; conceito visual com descrição e efeitos reais em custo e vendas. Pesquisa de caixa de som após duas criações. [Regras](docs/GADGETS-022.md). Save separado.
