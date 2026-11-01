@@ -1,5 +1,10 @@
 # The Founder
 
+## Jogar 0.26 — Público vivo
+
+Baixe `dist/The-Founder-Primeira-Aposta-0.26.html` e abra no navegador. Três caminhos após o ciclo, campanhas de aquisição/reconversão, compradores diferentes e reviews baseados na compra real. Conversão responde a preço, qualidade e prova social. Preço confirmado antes do D20; CAC e panorama por produto no botão Produtos. [Regras e verificação](docs/PUBLICO-E-CONTAS-026.md). Save separado com importação por cópia quando disponível.
+
+
 ## Jogar 0.25 — Próxima geração
 
 Baixe `dist/The-Founder-Primeira-Aposta-0.25.html` e abra no navegador. Evolua do nível 4 ao 10 com investimento, atributo extra, nome da geração e D20 progressivamente mais difícil. Lance novas campanhas para o mesmo produto, com orçamento, pontos e nova rolagem. Estoque antigo conserva a versão original. [Regras e validação](docs/EVOLUCAO-E-CAMPANHAS-025.md).

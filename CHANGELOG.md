@@ -1,5 +1,15 @@
 # Histórico de desenvolvimento
 
+## 0.26 — Público vivo, CAC e panorama por produto
+
+- Preço antes do D20 da campanha, CAC estimado/realizado e contribuição após aquisição sem cobrança duplicada.
+- Panorama opcional com vendas, investimento, resultado, caixa, estoque, CAC e estrelas por linha e versão.
+- Três caminhos após o ciclo: novo produto, otimização e continuar vendendo.
+- Aquisição e reconversão com interessados identificados, expiração e limite de convites.
+- Conversão ligada a produto, preço e prova social; perfis de compradores e reviews variados por compra real, com RNG separado dos dados.
+- 22 testes novos de regras, integração do HTML, migração por cópia e regressões anteriores.
+
+
 ## 0.25 — Evolução e novas campanhas do produto
 
 - MVP nível4, evolução até10 com custos e dificuldades crescentes, +1 atributo e nome da nova geração.
