@@ -1,5 +1,14 @@
 # Histórico de desenvolvimento
 
+## 0.24 — D20 de volta e produção em volume
+
+- Restabelecidos D20 do protótipo e da campanha com efeitos reais e resultados persistidos.
+- Preço movido para depois do marketing e do lote; margem de contribuição inclui desconto de fabricação e comissão.
+- Quantidade livre de 100 a 10.000 unidades, descontos de 0/2/4/6/8/10% e compra antecipada condicionada ao caixa.
+- Reposição por volume com lotes, custo médio e baixa conciliados; reviews e continuidade preservados.
+- Dez testes de regras e integração do HTML 0.24; save independente e regressões anteriores.
+
+
 ## 0.23 — Os 4Ps, MVP de R$8 mil e reviews reais
 
 - Produto com até quatro pontos e linguagem simples; persona sem orçamento explícito.

@@ -1,5 +1,10 @@
 # The Founder
 
+## Jogar 0.24 — D20 e produção em volume
+
+Baixe `dist/The-Founder-Primeira-Aposta-0.24.html` e abra no navegador. D20 nos testes do produto e campanha; preço depois do marketing e do lote, com margem de contribuição incluindo comissão. Quantidade livre de 100 a 10.000, descontos de até 10% e reposição com custo médio real. [Regras e validação](docs/D20-E-VOLUME-024.md). Save separado.
+
+
 ## Jogar 0.23 — Os 4Ps
 
 Baixe `dist/The-Founder-Primeira-Aposta-0.23.html` e abra no navegador. MVP de R$8 mil, até quatro pontos de produto, preço por margem, escolha de praça e pontos de promoção. Desenvolvimento e campanha sem D20; tempo visível e review a cada dez vendas. [Regras e validação](docs/QUATRO-PS-023.md). Save próprio.
