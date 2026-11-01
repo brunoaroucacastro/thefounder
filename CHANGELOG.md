@@ -1,5 +1,14 @@
 # Histórico de desenvolvimento
 
+## 0.22 — Gadgets, pesquisa de persona e radar de atributos
+
+- Catálogo inicial com fone, mouse e teclado; caixa de som pesquisável após duas criações.
+- Pesquisa obrigatória revela três personas com dores próprias para cada tipo de gadget.
+- Radar com seis eixos opostos e quatro pontos livres; atributos alteram custo material, aderência e vendas.
+- Revelação do conceito com desenho, nome e descrição da proposta e contrapartida; histórico e prateleira preservam a família criada.
+- Save independente; nove testes de gadgets, integração do pacote 0.22 e regressões anteriores.
+
+
 ## 0.21 — Produção em lotes e capacidade compartilhada
 
 - Lotes pré-pagos de 12/24/48 unidades, estoque físico e compradores perdidos sem reposição.

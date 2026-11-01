@@ -1,5 +1,10 @@
 # The Founder
 
+## Jogar 0.22 — Crie seu gadget
+
+Baixe `dist/The-Founder-Primeira-Aposta-0.22.html` e abra no navegador. Fone, mouse e teclado; pesquisa obrigatória com três personas por produto; quatro pontos num radar de seis atributos opostos; conceito visual com descrição e efeitos reais em custo e vendas. Pesquisa de caixa de som após duas criações. [Regras](docs/GADGETS-022.md). Save separado.
+
+
 ## Jogar 0.21 — Oficina em movimento
 
 Baixe `dist/The-Founder-Primeira-Aposta-0.21.html` e abra no navegador. Produza lotes antes de vender, administre estoque e escolha entre repor ou preparar o próximo produto. O catálogo anterior continua vendendo durante a próxima criação. Save separado das versões anteriores. [Regras e verificação](docs/OPERACAO-021.md).
