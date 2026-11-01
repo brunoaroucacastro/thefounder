@@ -1,5 +1,14 @@
 # Histórico de desenvolvimento
 
+## 0.20 — A primeira aposta
+
+- Novo experimento independente: oficina animada, público concreto, fone com duas características visíveis e preço.
+- Construção, teste e preparação de campanha acontecem no cenário; D20 mostra faixas e efeitos reais de qualidade, alcance e vendas.
+- Vendas por visitante, custos conciliados, reajuste em andamento e oportunidade comercial disputando a última decisão.
+- Resumo causal e novo produto com caixa e histórico preservados; save isolado e proteção contra duplicação/conflito entre abas.
+- GDD consolidado, 13 testes de regras e integração do HTML empacotado. Versão completa 0.19 preservada.
+
+
 ## 0.19 — Fechamento com consequências em destaque — 31/10/2026
 
 - Resumo narrativo do mês com resultado operacional e mudança no caixa separados, novos compradores, conquistas e alertas.

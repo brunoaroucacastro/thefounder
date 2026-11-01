@@ -1,5 +1,16 @@
 # The Founder
 
+## Novo protótipo 0.20 — A primeira aposta
+
+Baixe e abra `dist/The-Founder-Primeira-Aposta-0.20.html`. Uma oficina viva para criar, testar e vender seu primeiro fone: três públicos, combinações visuais, campanhas, D20 com consequências e vendas acontecendo no cenário. Experimento separado, com save próprio; a versão completa 0.19 permanece disponível abaixo.
+
+[GDD atualizado](docs/GDD-ATUAL.md) · [Escopo e verificação](docs/PRIMEIRA-APOSTA.md)
+
+Para desenvolver: `node tests/first-loop.cjs`, `node scripts/build-first-loop.cjs` e `node tests/first-loop-ui.cjs`.
+
+---
+
+
 Jogo de gestão de empresas em pixel art. Protótipo 0.19 para PC/navegador.
 
 ## Jogar

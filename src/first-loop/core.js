@@ -1,0 +1,73 @@
+/* A small playable product business. Pure transitions; no DOM or implicit randomness. */
+const FirstLoop=(()=>{
+ const founders=typeof FounderRules!=='undefined'?FounderRules:require('../founder-rules.js');
+ const copy=s=>JSON.parse(JSON.stringify(s)),round=n=>Math.round(n*100)/100,clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+ const clients=[
+  {id:'calls',name:'Bia',title:'Vive em chamadas',need:['mic','battery'],budget:180,color:'#5c96c5',hair:'#59414b',quote:'Quero ser ouvida. E bateria até o fim do dia.',short:'Microfone + bateria'},
+  {id:'sport',name:'Ravi',title:'Treina com música',need:['water','comfort'],budget:140,color:'#de8b55',hair:'#49383a',quote:'Precisa aguentar suor e ficar confortável.',short:'Proteção + conforto'},
+  {id:'study',name:'Luna',title:'Estuda em todo lugar',need:['comfort','battery'],budget:100,color:'#9a85bd',hair:'#875c42',quote:'Vou usar por horas. E meu orçamento é curto.',short:'Conforto + bateria'}
+ ];
+ const features=[
+  {id:'battery',name:'Bateria longa',icon:'▰',cost:6,color:'#8bbf76',detail:'Aguenta uma rotina inteira.'},
+  {id:'mic',name:'Microfone nítido',icon:'♩',cost:10,color:'#76afd2',detail:'Voz clara nas chamadas.'},
+  {id:'comfort',name:'Almofadas macias',icon:'☁',cost:4,color:'#e6b579',detail:'Conforto para usar por horas.'},
+  {id:'water',name:'Proteção contra suor',icon:'♧',cost:9,color:'#82c5bc',detail:'Feito para acompanhar o treino.'}
+ ];
+ const campaigns=[
+  {id:'demo',name:'Mostre funcionando',icon:'▶',cost:200,leads:34,fit:'calls',category:'campaign_optimize',detail:'Grave uma demonstração do fone.',trade:'Alcance menor. Promessa bem demonstrada.'},
+  {id:'creator',name:'Chame um criador',icon:'★',cost:350,leads:48,fit:'sport',category:'campaign_scale',detail:'Alguém experimenta e apresenta o produto.',trade:'Mais alcance. Custo maior.'},
+  {id:'offer',name:'Faça uma oferta',icon:'%',cost:200,leads:50,fit:'study',category:'campaign_reduce',detail:'Um preço de estreia para chamar atenção.',trade:'Mais interesse. Cada venda rende 15% menos.'}
+ ];
+ function fresh(seed=Date.now(),opts={}){return {schema:1,revision:0,id:'pilot-'+(seed>>>0),rng:(seed>>>0)||123456789,company:String(opts.company||'Aurora').slice(0,24),founder:{name:'Alex',profile:10,hair:'#674457',shirt:'#ed9564',skin:'#f2bd8b',...opts.founder},cash:25000,cycle:1,phase:'intro',focus:4,clientId:null,features:[],price:120,name:'Meu primeiro fone',quality:0,polish:false,early:false,projectCost:0,campaignId:null,campaignCost:0,setupCost:0,rent:0,materials:0,revenue:0,sold:0,capacity:36,leads:0,test:null,marketing:null,rolls:[],job:null,sales:null,offer:null,history:[],log:[],eventSeq:0,startCash:25000,lastEvent:null,paused:false,speed:1};}
+ function load(raw){const s=JSON.parse(raw);if(s.schema!==1||!Number.isFinite(s.cash)||!Number.isFinite(s.rng)||!Array.isArray(s.history)||!Number.isInteger(s.focus)||s.focus<0||s.focus>4||!Array.isArray(s.features)||!s.founder||!['intro','customer','design','building','repairing','testReady','testOutcome','campaign','campaignWork','campaignReady','campaignOutcome','launching','selling','opportunity','recap'].includes(s.phase))throw Error('Este save não pertence ao experimento.');return s;}
+ const client=s=>clients.find(c=>c.id===s.clientId),campaign=s=>campaigns.find(c=>c.id===s.campaignId);
+ const unitCost=s=>24+s.features.reduce((n,id)=>n+(features.find(f=>f.id===id)?.cost||0),0);
+ const match=s=>client(s)?client(s).need.filter(id=>s.features.includes(id)).length:0;
+ const netPrice=s=>round(s.price*(s.campaignId==='offer'?.85:1));
+ function rate(s){const c=client(s),p=netPrice(s),relative=p/c.budget,afford=relative<=1?clamp(1-(relative-.55)*.75,.4,.95):clamp(.4-(relative-1)*1.4,.05,.4);return clamp((.18+.55*match(s)/2)*afford*[.65,.85,1,1.1][s.quality]+(s.polish?.03:0),.01,.92);}
+ function log(s,text,kind='info',actor=null){s.lastEvent={actor,id:s.cycle+'-'+(s.eventSeq=(s.eventSeq||0)+1),text,kind};s.log.push(s.lastEvent);if(s.log.length>120)s.log.shift();}
+ function spend(s,amount,focus=0){if(s.focus<focus)throw Error('As quatro decisões deste ciclo já estão comprometidas.');if(s.cash<amount)throw Error('Faltou caixa para essa aposta.');s.cash=round(s.cash-amount);s.focus-=focus;}
+ function die(s,category,label,random){let u;if(random)u=random();else{let x=s.rng>>>0;x^=x<<13;x^=x>>>17;x^=x<<5;s.rng=x>>>0;u=s.rng/4294967296;}if(!(u>=0&&u<1))throw Error('Sorteio inválido');const natural=1+Math.floor(u*20),modifiers=founders.modifiers(s,category),total=natural+modifiers.reduce((n,m)=>n+m.value,0),grade=natural===1?'critical':total<11?'partial':total<16?'normal':total<20?'great':'exceptional',r={id:s.id+'-'+s.cycle+'-'+s.rolls.length,natural,total,modifiers,grade,label,category};s.rolls.push(r);return r;}
+ function job(s,type,duration,next){s.job={type,elapsed:0,duration,next};s.phase=type;}
+ function result(s){const costs=round(s.projectCost+s.campaignCost+s.setupCost+s.rent+s.materials),profit=round(s.revenue-costs),notes=[];if(match(s)===2)notes.push('As duas necessidades de '+client(s).name+' foram atendidas.');else if(match(s)===1)notes.push('O fone resolveu só uma das duas necessidades do público.');else notes.push('As características escolhidas não resolveram o que esse público pediu.');if(s.sales?.reasons?.price)notes.push(s.sales.reasons.price+' pessoas recusaram por preço.');if(s.sales?.reasons?.capacity)notes.push('A capacidade do lote acabou. Ficaram compradores sem atendimento.');if(s.marketing.grade==='partial'||s.marketing.grade==='critical')notes.push('A campanha trouxe menos interessados do que a execução normal.');if(s.quality===0)notes.push('O protótipo saiu com uma limitação conhecida.');return {cycle:s.cycle,name:s.name,clientId:s.clientId,features:[...s.features],quality:s.quality,price:s.price,netPrice:netPrice(s),sold:s.sold,leads:s.leads,revenue:s.revenue,costs,profit,cash:s.cash,unsatisfied:s.sales?.lost||0,reasons:copy(s.sales?.reasons||{}),notes};}
+ function finish(s){s.cash=round(s.cash-500);s.rent=500;s.phase='recap';s.job=null;s.summary=result(s);s.history.push(copy(s.summary));log(s,s.summary.profit>=0?'O lote '+s.cycle+' se pagou!':'O lote trouxe aprendizados para a próxima aposta.',s.summary.profit>=0?'good':'warn');}
+ function sale(s,quantity,discount=1){let fulfilled=0;for(let i=0;i<quantity;i++){if(s.sold>=s.capacity||s.cash<unitCost(s))break;s.cash=round(s.cash+round(netPrice(s)*discount)-unitCost(s));s.materials=round(s.materials+unitCost(s));s.revenue=round(s.revenue+round(netPrice(s)*discount));s.sold++;fulfilled++;}return fulfilled;}
+ function reach(s,grade){const factor={critical:.35,partial:.65,normal:1,great:1.45,exceptional:1.8}[grade];return Math.max(1,Math.round(campaign(s).leads*factor*(campaign(s).fit===s.clientId?1.25:1)+(s.early?6:0)));}
+ function act(input,a,{random}={}){const s=copy(input);let changed=true;
+  switch(a.type){
+   case'start':if(s.phase!=='intro')throw Error('A partida já começou.');s.phase='customer';log(s,'Escolha uma pessoa. O que seu fone vai resolver?');break;
+   case'customer':if(s.phase!=='customer'||!clients.some(c=>c.id===a.id))throw Error('Escolha um dos três públicos.');s.clientId=a.id;s.phase='design';log(s,client(s).quote);break;
+   case'backClient':if(s.phase!=='design')throw Error('O protótipo já está em construção.');s.phase='customer';break;
+   case'feature':if(s.phase!=='design'||!features.some(f=>f.id===a.id))throw Error('A bancada já está em execução.');if(s.features.includes(a.id))s.features=s.features.filter(id=>id!==a.id);else{if(s.features.length>=2)throw Error('Cabem duas características. Troque uma para testar outra combinação.');s.features.push(a.id);}break;
+   case'price':if(s.phase!=='design'||![80,120,160].includes(a.price))throw Error('Preço indisponível.');s.price=a.price;break;
+   case'name':if(s.phase!=='design'||typeof a.name!=='string')throw Error('Nome indisponível.');s.name=a.name.slice(0,28);break;
+   case'build':if(s.phase!=='design'||s.features.length!==2)throw Error('Escolha duas características para construir.');spend(s,300,1);s.projectCost=300;s.name=s.name.trim()||'Fone Aurora';job(s,'building',5,'testReady');log(s,'Seu protótipo está tomando forma na bancada.');break;
+   case'test':if(s.phase!=='testReady'||s.test)throw Error('O teste deste produto já foi realizado.');s.test=die(s,'product_development','Teste do protótipo',random);s.quality=['critical','partial'].includes(s.test.grade)?0:s.test.grade==='normal'?1:s.test.grade==='great'?2:3;s.phase='testOutcome';log(s,s.quality?'O protótipo passou no teste.':'O teste encontrou um problema. Você pode corrigir ou assumir o risco.',s.quality?'good':'warn');break;
+   case'testChoice':if(s.phase!=='testOutcome')throw Error('O teste já foi resolvido.');if(s.quality===0){if(a.choice==='repair'){const cost=s.test.grade==='critical'?300:200;spend(s,cost,1);s.projectCost+=cost;s.quality=1;job(s,'repairing',3,'campaign');log(s,'O diagnóstico virou uma correção. Sem repetir o dado.');}else if(a.choice==='risk'){s.phase='campaign';log(s,'Você decidiu lançar com a limitação. Menos pessoas vão comprar.','warn');}else throw Error('Escolha corrigir ou assumir a limitação.');}else if(s.quality>=2){if(!['polish','early'].includes(a.choice))throw Error('Escolha como aproveitar a folga.');s.polish=a.choice==='polish';s.early=a.choice==='early';s.phase='campaign';log(s,s.polish?'Um acabamento melhor para conquistar confiança.':'Demonstração adiantada: seis interessados extras.','good');}else{if(a.choice!=='continue')throw Error('Escolha continuar.');s.phase='campaign';}break;
+   case'campaign':if(s.phase!=='campaign'||!campaigns.some(c=>c.id===a.id))throw Error('A campanha já está em execução.');s.campaignId=a.id;spend(s,campaign(s).cost,1);s.campaignCost=campaign(s).cost;job(s,'campaignWork',4,'campaignReady');log(s,'Sua promessa está virando uma campanha.');break;
+   case'rollCampaign':if(s.phase!=='campaignReady'||s.marketing)throw Error('A campanha já foi testada.');s.marketing=die(s,campaign(s).category,'Estreia da campanha',random);s.leads=reach(s,s.marketing.grade);s.phase='campaignOutcome';log(s,s.leads+' pessoas se interessaram. Agora o fone precisa convencer.',s.leads<20?'warn':'good');break;
+   case'launch':if(s.phase!=='campaignOutcome')throw Error('O lote já foi lançado.');spend(s,100,1);s.setupCost=100;s.sales={seen:0,elapsed:0,lost:0,buyersFromVisitors:0,reasons:{price:0,fit:0,quality:0,capacity:0,cash:0,timing:0}};s.offer={status:'waiting'};job(s,'launching',3,'selling');log(s,'O fone ganhou uma vitrine. O lote atende até 36 pedidos.');break;
+   case'reprice':if(s.phase!=='selling'||![80,120,160].includes(a.price)||a.price===s.price)throw Error('Escolha um novo preço enquanto as vendas acontecem.');spend(s,0,1);s.price=a.price;log(s,'Novo preço: R$ '+netPrice(s)+'. Vale para os próximos compradores.');break;
+   case'offer':if(s.phase!=='opportunity'||s.offer.status!=='open')throw Error('Essa proposta já foi decidida.');if(a.choice==='accept'){if(s.focus<1)throw Error('Não restou foco para esse pedido extra.');spend(s,0,1);const done=sale(s,4,.8);s.offer={status:'accepted',quantity:done};log(s,'Pedido fechado: '+done+' fones com 20% de desconto.','good');}else if(a.choice==='decline'){s.offer={status:'declined'};log(s,'Você guardou a capacidade para vender pelo preço normal.');}else throw Error('Escolha aceitar ou manter seu preço.');s.phase='selling';break;
+   case'next':if(s.phase!=='recap')throw Error('Conclua esse lote antes.');{const next=fresh(s.rng,{company:s.company,founder:s.founder});next.cash=s.cash;next.startCash=s.cash;next.cycle=s.cycle+1;next.phase='customer';next.history=copy(s.history);next.name='Fone Aurora '+next.cycle;next.id=s.id;next.revision=s.revision;return {...next,revision:next.revision+1};}
+   case'pause':s.paused=!s.paused;break;
+   case'speed':s.speed=s.speed===1?3:1;break;
+   default:changed=false;throw Error('Ação desconhecida.');
+  }
+  if(changed)s.revision++;return s;
+ }
+ function tick(input,dt){if(input.paused||!Number.isFinite(dt)||dt<=0)return input;const active=['building','repairing','campaignWork','launching','selling'];if(!active.includes(input.phase))return input;const s=copy(input),step=Math.min(dt,.2)*s.speed;
+  if(s.job){s.job.elapsed=Math.min(s.job.duration,s.job.elapsed+step);if(s.job.elapsed>=s.job.duration){s.phase=s.job.next;s.job=null;}return s;}
+  if(s.phase==='selling'){
+   s.sales.elapsed+=step;if(s.sales.elapsed<.85)return s;s.sales.elapsed-=.85;
+   if(s.sales.seen>=s.leads){finish(s);return s;}
+   const i=s.sales.seen,willBuy=Math.floor((i+1)*rate(s))>Math.floor(i*rate(s));s.sales.seen++;
+   if(willBuy&&s.sold<s.capacity&&s.cash>=unitCost(s)){sale(s,1);s.sales.buyersFromVisitors++;log(s,match(s)===2?'É disso que eu precisava! Vou levar.':match(s)===1?'Já resolve uma parte do que preciso. Vou experimentar.':'Vou experimentar.','sale',['Bruna','João','Carol','Pedro','Iara','Davi'][i%6]);}
+   else{let reason=willBuy?(s.sold>=s.capacity?'capacity':'cash'):netPrice(s)>client(s).budget?'price':match(s)<2?'fit':s.quality===0?'quality':'timing';s.sales.reasons[reason]++;s.sales.lost++;log(s,{capacity:'Eu compraria, mas a capacidade do lote acabou.',price:'Hoje esse preço não cabe no meu orçamento.',fit:'Faltou uma coisa que eu precisava.',quality:'Vou esperar uma versão mais confiável.',cash:'Não conseguimos materiais para atender esse pedido.',timing:'Gostei. Vou pensar antes de comprar.'}[reason],'lost',['Bruna','João','Carol','Pedro','Iara','Davi'][i%6]);}
+   if(s.sales.seen===8&&s.leads>12&&s.sold<s.capacity-4&&s.focus>0){s.offer.status='open';s.phase='opportunity';log(s,'Uma loja quer quatro fones com desconto. Você decide.');}
+  }
+  return s;
+ }
+ return {clients,features,campaigns,fresh,load,client,campaign,unitCost,match,netPrice,rate,reach,act,tick,result};
+})();
+if(typeof module!=='undefined')module.exports=FirstLoop;
