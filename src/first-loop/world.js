@@ -18,7 +18,7 @@ const PilotWorld=(()=>{
  function desk(c,x,y,color='#e7b282'){rect(c,x-53,y+6,8,47,'#aa7c70');rect(c,x+47,y-2,8,47,'#97756e');poly(c,[[x-70,y],[x+4,y-34],[x+80,y],[x+4,y+35]],'#ac7b70');poly(c,[[x-70,y-7],[x+4,y-41],[x+80,y-7],[x+4,y+28]],color,'#c08b74');line(c,x-63,y-6,x+4,y+22,'#f8d1a0',3);}
  function plant(c,x,y,t){poly(c,[[x-13,y],[x+13,y],[x+9,y+24],[x-8,y+24]],'#d8a290');rect(c,x-15,y-2,30,7,'#edbfa0');line(c,x,y-39,x,y,'#6f9d7b',3);for(let i=0;i<5;i++){const dx=Math.sin(i*2)*17,dy=-19-i*6;oval(c,x+dx,y+dy+Math.sin(t+i),9,5,i%2?'#a1c88b':'#80b096');}}
  function targets(s){if(['building','repairing','testReady','testOutcome','testing'].includes(s.phase))return [{x:495,y:370},{x:595,y:300}];if(['campaign','campaignWork','campaignReady','campaignOutcome','campaignRolling'].includes(s.phase))return [{x:771,y:350},{x:870,y:340}];if(['launching','selling','opportunity','recap'].includes(s.phase))return [{x:730,y:438},{x:878,y:430}];if(s.phase==='design')return [{x:475,y:366},{x:592,y:310}];return [{x:335,y:423},{x:575,y:360}];}
- function actors(s,v,dt){const goal=targets(s);v.actors??=goal.map(p=>({...p}));v.actors.forEach((p,i)=>{const dx=goal[i].x-p.x,dy=goal[i].y-p.y,d=Math.hypot(dx,dy),speed=190*dt*s.speed,ratio=d?Math.min(1,speed/d):0;p.x+=dx*ratio;p.y+=dy*ratio;p.moving=d>3;});}
+ function actors(s,v,dt){const goal=targets(s);if(s.crew)goal[1]={x:595,y:300};v.actors??=goal.map(p=>({...p}));v.actors.forEach((p,i)=>{const dx=goal[i].x-p.x,dy=goal[i].y-p.y,d=Math.hypot(dx,dy),speed=190*dt*s.speed,ratio=d?Math.min(1,speed/d):0;p.x+=dx*ratio;p.y+=dy*ratio;p.moving=d>3;});}
  function render(c,s,t,v={}){
   c.clearRect(0,0,width,height);c.imageSmoothingEnabled=false;const phase=s.phase,working=['building','repairing'].includes(phase),filming=['campaignWork','campaignRolling'].includes(phase),packing=phase==='launching',selling=['selling','opportunity','recap'].includes(phase),celebrate=phase==='recap'&&s.summary?.profit>=0;
   // A sunny neighbourhood: small moving clouds, street and growing plants.
@@ -41,14 +41,14 @@ const PilotWorld=(()=>{
   rect(c,751,258,21,13,'#f5e2b6');rect(c,754,260,15,3,'#b1bfa0');if(filming){text(c,s.campaignId==='offer'?'%':s.campaignId==='creator'?'★':'▶',820,216+Math.sin(t*3)*3,'#dfa86e',26);text(c,'✦',859,221,'#f1cd7a',16);}
   // Shop front and packing station become active only at launch.
   desk(c,730,416,'#e8c490');if((selling||packing)&&!v.actors?.[0]?.moving){headphones(c,731,388,1.05,s.features,'#dfa174',s.polish||s.quality>=2);poly(c,[[687,442],[750,442],[750,464],[687,464]],'#fff0c8','#c5a17a');text(c,'R$ '+FirstLoop.netPrice(s),719,457,'#7c8f67',12,'center');}
-  desk(c,887,395);for(let i=0;i<Math.min(7,Math.ceil(s.sold/4));i++){let x=866+(i%3)*19,y=384-Math.floor(i/3)*15;rect(c,x,y,18,16,'#cba374');rect(c,x+1,y+1,16,4,'#e5c18c');rect(c,x+7,y+1,3,15,'#f6e6b5');}
-  if(packing)for(let i=0;i<3;i++)text(c,'□',865+i*18,370+Math.sin(t*4+i)*3,'#ceaa72',22);
+  desk(c,887,395);for(let i=0;i<Math.min(18,Math.ceil((s.operations?s.stock:s.sold)/2));i++){let x=866+(i%3)*19,y=384-Math.floor(i/3)*15;rect(c,x,y,18,16,'#cba374');rect(c,x+1,y+1,16,4,'#e5c18c');rect(c,x+7,y+1,3,15,'#f6e6b5');}
+  if(s.operations){text(c,'ESTOQUE '+s.stock,850,435,'#735f66',14);if(s.stock===0&&phase==='selling')text(c,'SEM ESTOQUE',825,360,'#b75f64',16);if(s.crew){text(c,s.crew.type==='produce'?'MONTANDO '+s.crew.quantity:'PRÓXIMO PROJETO',485,250,'#85734f',12);rect(c,485,256,110,7,'#ae9383');rect(c,485,256,110*s.crew.elapsed/s.crew.duration,7,'#8caf80');}const old=(s.portfolio||[]).filter(p=>p.stock>0);old.slice(-3).forEach((p,i)=>{headphones(c,944+i*25,277+i*11,.4,p.features,'#99b9a0');text(c,p.stock,944+i*25,300+i*11,'#745b64',10);});}if(packing)for(let i=0;i<3;i++)text(c,'□',865+i*18,370+Math.sin(t*4+i)*3,'#ceaa72',22);
   // The physical shelf remembers actual completed products.
   if(s.history.length){poly(c,[[436,94],[572,34],[572,76],[436,136]],'#c69976');s.history.slice(-4).forEach((p,i)=>{headphones(c,454+i*30,112-i*13,.38,p.features,['#d89678','#9fbfac','#b3a1c5','#dfc17e'][i],p.profit>0);});text(c,'SUAS CRIAÇÕES',463,137,'#b28b74',9);}
   plant(c,246,343,t);plant(c,1026,340,t+1);plant(c,610,175,t+2);
   // A worker's position and gesture correspond to the current job.
   const goal=targets(s);v.actors??=goal.map(p=>({...p}));const fp=v.actors[0],hp=v.actors[1],mood=celebrate?'happy':phase==='testOutcome'&&s.quality===0?'worry':'normal';
-  person(c,hp.x,hp.y,'#83b7ad','#775e4a','#deb18c',t+1,hp.moving?'walk':working||packing?'work':celebrate?'cheer':'idle',mood);
+  person(c,hp.x,hp.y,'#83b7ad','#775e4a','#deb18c',t+1,hp.moving?'walk':working||packing||s.crew?'work':celebrate?'cheer':'idle',mood);
   person(c,fp.x,fp.y,s.founder.shirt||'#ed9564',s.founder.hair||'#674457',s.founder.skin||'#f2bd8b',t,fp.moving?'walk':working?'work':celebrate?'cheer':filming?'work':'idle',mood);
   if(fp.moving&&['campaign','campaignWork','launching'].includes(phase))headphones(c,fp.x+18,fp.y-28,.42,s.features,'#e4a079',false);
   text(c,s.founder.name||'Alex',fp.x,fp.y+22,'#917a64',10,'center');text(c,'Nina · produção',hp.x,hp.y+22,'#917a64',9,'center');

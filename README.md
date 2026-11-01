@@ -1,5 +1,10 @@
 # The Founder
 
+## Jogar 0.21 — Oficina em movimento
+
+Baixe `dist/The-Founder-Primeira-Aposta-0.21.html` e abra no navegador. Produza lotes antes de vender, administre estoque e escolha entre repor ou preparar o próximo produto. O catálogo anterior continua vendendo durante a próxima criação. Save separado das versões anteriores. [Regras e verificação](docs/OPERACAO-021.md).
+
+
 ## Novo protótipo 0.20 — A primeira aposta
 
 Baixe e abra `dist/The-Founder-Primeira-Aposta-0.20.html`. Uma oficina viva para criar, testar e vender seu primeiro fone: três públicos, combinações visuais, campanhas, D20 com consequências e vendas acontecendo no cenário. Experimento separado, com save próprio; a versão completa 0.19 permanece disponível abaixo.

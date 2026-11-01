@@ -3,5 +3,5 @@ const root='src/first-loop/';let html=fs.readFileSync(root+'index.html','utf8');
 html=html.replace('<link rel="stylesheet" href="play.css">',()=>'<style>\n'+fs.readFileSync(root+'play.css','utf8')+'\n</style>');
 for(const name of ['../founder-rules.js','core.js','world.js','play.js']){const content=fs.readFileSync(path.join(root,name),'utf8');new vm.Script(content,{filename:name});html=html.replace('<script src="'+name+'"></script>',()=>'<script>\n'+content+'\n</script>');}
 if(/<script[^>]+src=|<link[^>]+stylesheet/.test(html))throw Error('O pacote ainda depende de arquivos externos.');
-fs.writeFileSync('dist/The-Founder-Primeira-Aposta-0.20.html',html);
-console.log('PASS: primeira aposta 0.20 independente; quatro scripts, um estilo; '+Buffer.byteLength(html)+' bytes.');
+fs.writeFileSync('dist/The-Founder-Primeira-Aposta-0.21.html',html);
+console.log('PASS: primeira aposta 0.21 independente; quatro scripts, um estilo; '+Buffer.byteLength(html)+' bytes.');

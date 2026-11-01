@@ -1,5 +1,14 @@
 # Histórico de desenvolvimento
 
+## 0.21 — Produção em lotes e capacidade compartilhada
+
+- Lotes pré-pagos de 12/24/48 unidades, estoque físico e compradores perdidos sem reposição.
+- Nina divide a bancada entre reposição e preparação do próximo projeto; pesquisa reduz custo e duração da criação seguinte.
+- Estoque do catálogo anterior continua vendendo enquanto outro produto é desenvolvido.
+- Custos reequilibrados mantendo R$25 mil iniciais; fechamento destaca caixa e estoque encalhado separadamente.
+- Save independente e dez testes de operação, com integração do HTML 0.21 e regressão anterior.
+
+
 ## 0.20 — A primeira aposta
 
 - Novo experimento independente: oficina animada, público concreto, fone com duas características visíveis e preço.
