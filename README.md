@@ -1,5 +1,10 @@
 # The Founder
 
+## Jogar 0.25 — Próxima geração
+
+Baixe `dist/The-Founder-Primeira-Aposta-0.25.html` e abra no navegador. Evolua do nível 4 ao 10 com investimento, atributo extra, nome da geração e D20 progressivamente mais difícil. Lance novas campanhas para o mesmo produto, com orçamento, pontos e nova rolagem. Estoque antigo conserva a versão original. [Regras e validação](docs/EVOLUCAO-E-CAMPANHAS-025.md).
+
+
 ## Jogar 0.24 — D20 e produção em volume
 
 Baixe `dist/The-Founder-Primeira-Aposta-0.24.html` e abra no navegador. D20 nos testes do produto e campanha; preço depois do marketing e do lote, com margem de contribuição incluindo comissão. Quantidade livre de 100 a 10.000, descontos de até 10% e reposição com custo médio real. [Regras e validação](docs/D20-E-VOLUME-024.md). Save separado.

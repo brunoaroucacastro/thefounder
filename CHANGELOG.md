@@ -1,5 +1,14 @@
 # Histórico de desenvolvimento
 
+## 0.25 — Evolução e novas campanhas do produto
+
+- MVP nível4, evolução até10 com custos e dificuldades crescentes, +1 atributo e nome da nova geração.
+- Tentativas falhas preservam produto e estoque; sucessos criam projeto novo e mantêm unidades antigas no catálogo.
+- Novas campanhas pagas do produto atual, três tamanhos, pontos próprios e D20; substituídas ondas gratuitas.
+- Dados e investimentos persistidos uma única vez; lançamento da nova geração cobra melhoria e campanha, sem outro MVP.
+- Importação por cópia do save0.24, onze testes de regras e integração do HTML com regressões anteriores.
+
+
 ## 0.24 — D20 de volta e produção em volume
 
 - Restabelecidos D20 do protótipo e da campanha com efeitos reais e resultados persistidos.
