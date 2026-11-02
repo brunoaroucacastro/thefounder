@@ -1,0 +1,3 @@
+const fs=require('fs'),assert=require('node:assert/strict'),{C,launch,until,beforeTest}=require('./modern-support.cjs'),rows=[];
+for(const margin of [10,35,45,60]){const s0=beforeTest(),price=C.priceFor(s0,margin),s=until(launch({price,die:14}),'recap'),m=C.windowMetrics(s);rows.push({margin,price,interested:s.leads,sold:s.sold,conversion:m.conversion,contribution:m.contribution,campaignFixed:m.campaignFixedFee,operation:m.rent,result:m.operatingProfit,cash:s.cash});}
+assert(rows[1].result>rows[0].result+1000);assert(rows[1].result>0);assert(rows[2].result>0);assert.equal(rows[3].sold,0);assert.equal(C.fresh(3,{commercial:true}).margin,35);fs.writeFileSync('docs/MARGENS-034.json',JSON.stringify(rows,null,2));console.log(JSON.stringify(rows,null,2));

@@ -1,0 +1,218 @@
+[
+  {
+    "persona": "student",
+    "place": "online",
+    "promos": [
+      "creator"
+    ],
+    "interested": 906,
+    "buyers": 79,
+    "conversion": 0.08719646799116998,
+    "sold": 79,
+    "demand": 79,
+    "lostStock": 0,
+    "price": 78,
+    "cac": 8.75,
+    "fixedCampaign": 600,
+    "operatingProfit": 1205.75,
+    "cumulativeProfit": -7794.25
+  },
+  {
+    "persona": "student",
+    "place": "local",
+    "promos": [
+      "creator"
+    ],
+    "interested": 733,
+    "buyers": 55,
+    "conversion": 0.07503410641200546,
+    "sold": 55,
+    "demand": 55,
+    "lostStock": 0,
+    "price": 78,
+    "cac": 8.75,
+    "fixedCampaign": 600,
+    "operatingProfit": 383.75,
+    "cumulativeProfit": -8616.25
+  },
+  {
+    "persona": "student",
+    "place": "partner",
+    "promos": [
+      "creator"
+    ],
+    "interested": 630,
+    "buyers": 45,
+    "conversion": 0.07142857142857142,
+    "sold": 45,
+    "demand": 45,
+    "lostStock": 0,
+    "price": 78,
+    "cac": 8.75,
+    "fixedCampaign": 600,
+    "operatingProfit": 41.25,
+    "cumulativeProfit": -8958.75
+  },
+  {
+    "persona": "travel",
+    "place": "online",
+    "promos": [
+      "demo"
+    ],
+    "interested": 654,
+    "buyers": 25,
+    "conversion": 0.0382262996941896,
+    "sold": 25,
+    "demand": 25,
+    "lostStock": 0,
+    "price": 105,
+    "cac": 12.25,
+    "fixedCampaign": 350,
+    "operatingProfit": -156.25,
+    "cumulativeProfit": -9156.25
+  },
+  {
+    "persona": "travel",
+    "place": "local",
+    "promos": [
+      "demo"
+    ],
+    "interested": 953,
+    "buyers": 48,
+    "conversion": 0.05036726128016789,
+    "sold": 48,
+    "demand": 48,
+    "lostStock": 0,
+    "price": 105,
+    "cac": 12.25,
+    "fixedCampaign": 350,
+    "operatingProfit": 850,
+    "cumulativeProfit": -8150
+  },
+  {
+    "persona": "travel",
+    "place": "partner",
+    "promos": [
+      "demo"
+    ],
+    "interested": 830,
+    "buyers": 43,
+    "conversion": 0.051807228915662654,
+    "sold": 43,
+    "demand": 43,
+    "lostStock": 0,
+    "price": 105,
+    "cac": 12.25,
+    "fixedCampaign": 350,
+    "operatingProfit": 631.25,
+    "cumulativeProfit": -8368.75
+  },
+  {
+    "persona": "music",
+    "place": "online",
+    "promos": [
+      "demo"
+    ],
+    "interested": 679,
+    "buyers": 45,
+    "conversion": 0.0662739322533137,
+    "sold": 45,
+    "demand": 45,
+    "lostStock": 0,
+    "price": 135,
+    "cac": 15,
+    "fixedCampaign": 350,
+    "operatingProfit": 1450,
+    "cumulativeProfit": -7550
+  },
+  {
+    "persona": "music",
+    "place": "local",
+    "promos": [
+      "demo"
+    ],
+    "interested": 887,
+    "buyers": 54,
+    "conversion": 0.060879368658399095,
+    "sold": 54,
+    "demand": 54,
+    "lostStock": 0,
+    "price": 135,
+    "cac": 15,
+    "fixedCampaign": 350,
+    "operatingProfit": 1990,
+    "cumulativeProfit": -7010
+  },
+  {
+    "persona": "music",
+    "place": "partner",
+    "promos": [
+      "demo"
+    ],
+    "interested": 776,
+    "buyers": 48,
+    "conversion": 0.061855670103092786,
+    "sold": 48,
+    "demand": 48,
+    "lostStock": 0,
+    "price": 135,
+    "cac": 15,
+    "fixedCampaign": 350,
+    "operatingProfit": 1630,
+    "cumulativeProfit": -7370
+  },
+  {
+    "persona": "music",
+    "place": "online",
+    "promos": [],
+    "interested": 391,
+    "buyers": 70,
+    "conversion": 0.17902813299232737,
+    "sold": 70,
+    "demand": 70,
+    "lostStock": 0,
+    "price": 95,
+    "cac": 15,
+    "fixedCampaign": 0,
+    "operatingProfit": 500,
+    "cumulativeProfit": -8500
+  },
+  {
+    "persona": "music",
+    "place": "online",
+    "promos": [
+      "demo"
+    ],
+    "interested": 679,
+    "buyers": 100,
+    "conversion": 0.14727540500736377,
+    "sold": 100,
+    "demand": 130,
+    "lostStock": 30,
+    "price": 95,
+    "cac": 15,
+    "fixedCampaign": 350,
+    "operatingProfit": 750,
+    "cumulativeProfit": -8250
+  },
+  {
+    "persona": "music",
+    "place": "online",
+    "promos": [
+      "demo",
+      "creator",
+      "offer"
+    ],
+    "interested": 1389,
+    "buyers": 100,
+    "conversion": 0.07199424046076314,
+    "sold": 100,
+    "demand": 260,
+    "lostStock": 160,
+    "price": 95,
+    "cac": 15,
+    "fixedCampaign": 1200,
+    "operatingProfit": -100,
+    "cumulativeProfit": -9100
+  }
+]

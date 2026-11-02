@@ -1,0 +1,50 @@
+[
+  {
+    "margin": 10,
+    "price": 83.33,
+    "interested": 679,
+    "sold": 100,
+    "conversion": 0.14727540500736377,
+    "contribution": 833,
+    "campaignFixed": 350,
+    "operation": 900,
+    "result": -417,
+    "cash": 15583
+  },
+  {
+    "margin": 35,
+    "price": 115.38,
+    "interested": 679,
+    "sold": 87,
+    "conversion": 0.12812960235640647,
+    "contribution": 3513.06,
+    "campaignFixed": 350,
+    "operation": 900,
+    "result": 2263.06,
+    "cash": 17483.06
+  },
+  {
+    "margin": 45,
+    "price": 136.36,
+    "interested": 679,
+    "sold": 44,
+    "conversion": 0.06480117820324006,
+    "contribution": 2699.84,
+    "campaignFixed": 350,
+    "operation": 900,
+    "result": 1449.84,
+    "cash": 14089.84
+  },
+  {
+    "margin": 60,
+    "price": 187.5,
+    "interested": 679,
+    "sold": 0,
+    "conversion": 0,
+    "contribution": 0,
+    "campaignFixed": 350,
+    "operation": 900,
+    "result": -1250,
+    "cash": 8750
+  }
+]

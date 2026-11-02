@@ -1,5 +1,5 @@
 const assert=require('node:assert/strict'),C=require('../src/first-loop/core.js'),A=C.Audience,M=A.Model,U=C.G.U;
-const flags={gadgets:true,fourPs:true,bulkDice:true,evolution:true,accounting:true,behavior:true,universal:true,reach:true,commercial:true,unitAcquisition:false};
+const flags={gadgets:true,fourPs:true,bulkDice:true,evolution:true,accounting:true,behavior:true,universal:true,reach:true,commercial:true,unitAcquisition:false,modernGameplay:false};
 const clone=x=>JSON.parse(JSON.stringify(x));
 function base(){const s=C.fresh(20261102,flags);return Object.assign(s,{productId:'headphones',lineage:'test-line',clientId:'music',placeId:'online',quality:1,personaCandidates:['music','student'],attributes:{quality:2,durability:0,performance:2,practicality:0,versatility:0,economy:0}});}
 const buyer=s=>A.profile(s,{id:'buyer-fixed',seed:42,personaId:s.clientId});

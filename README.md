@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.34 — Fluxo e economia
+
+Abra dist/The-Founder-Primeira-Aposta-0.34.html. Lançamento direto, vendas rápidas, margem sugerida de 35%, D20 central e reaproveitamento de estoque. [Regras e validação](docs/REVISAO-034.md).
+
 ## Jogar 0.33 — Interromper vendas e reajustar
 
 Abra `dist/The-Founder-Primeira-Aposta-0.33.html`. Durante as vendas, use Encerrar vendas e rever estratégia. O estoque fica guardado e há um atalho para reajustar preço e preparar outra campanha, sem outro MVP. [Regras e validação](docs/INTERRUPCAO-033.md).

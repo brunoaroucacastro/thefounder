@@ -1,3 +1,12 @@
+## 0.34 — Ritmo e retorno para reinvestir
+
+- Economia mais generosa para produtos alinhados; MC sugerida de 35%, preço livre e preços excessivos ainda perdem vendas.
+- Produção 4× e vendas 8×; lançamento único com D20 central e efeitos explícitos.
+- Persona persistente, radar corrigido, conversão ao vivo e caderno de descobertas.
+- Vitrines gratuitas por idade; campanha por ações opcionais com custos fixos separados do CAC.
+- Interrupção corrigida, reposição clara, crédito de 80% por desmantelamento e redistribuição por R.
+- Contabilidade separa contribuição, investimento e caixa; testes de conservação e migração.
+
 ## 0.33 — Interromper vendas e corrigir o rumo
 
 - Botão para encerrar a janela e retornar às decisões, inclusive durante uma proposta de loja.
