@@ -1,3 +1,12 @@
+## 0.31 — Alcance e CAC por unidade
+
+- CAC variável por unidade vendida, sem reserva fixa ou teto de 36 clientes; desconto industrial não reduz o CAC da versão.
+- Alcance calibrado por quatro idades, D20 0,60–1,40 e chegadas que atendem a janela inteira.
+- Fechamento separa demanda, preço, estoque, caixa e lucro operacional por rodada.
+- Migração com backup, devolução única de saldo antigo e histórico preservado.
+- Dez testes novos da economia, integração do HTML e cenários completos.
+- Proposta de descobertas com D20 baseada em fontes primárias de Game Dev Tycoon; ainda sem implementar.
+
 ## 0.30 — Pedidos e evolução sem brechas
 
 - Pedido de loja respeita a aceitação do preço com desconto; validação na oferta e na confirmação.

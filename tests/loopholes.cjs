@@ -1,6 +1,6 @@
 const fs=require('fs'),assert=require('assert/strict');
 const C=require('../src/first-loop/core.js');
-const flags={gadgets:true,fourPs:true,bulkDice:true,evolution:true,accounting:true,behavior:true,universal:true,reach:true,commercial:true};
+const flags={gadgets:true,fourPs:true,bulkDice:true,evolution:true,accounting:true,behavior:true,universal:true,reach:true,commercial:true,unitAcquisition:false};
 const act=(s,type,args={},r=.6)=>C.act(s,{type,...args},{random:()=>r});
 function until(s,phase,max=5000,accept=false,restock=false){for(let i=0;i<max&&s.phase!==phase;i++){if(s.phase==='opportunity')s=act(s,'offer',{choice:accept?'accept':'decline'});else {if(restock&&s.phase==='selling'&&s.stock<20&&!s.crew&&s.cash>=C.batchTotal(s,100))s=act(s,'crew',{task:'produce',quantity:100});s=C.tick(s,.2);}}assert.equal(s.phase,phase,'não chegou em '+phase);return s;}
 let seed;for(let n=1;n<=30;n++){let s=act(C.fresh(n,flags),'start');s=act(s,'product',{id:'headphones'});if(s.personaCandidates.includes('music')){seed=n;break;}}assert(seed);

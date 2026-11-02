@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.31 — Alcance e CAC por unidade
+
+Abra `dist/The-Founder-Primeira-Aposta-0.31.html`. A campanha traz interessados; produto e preço decidem compras; o CAC é descontado por unidade vendida. Sem reserva de R$550, com fechamento por janela e migração de save com backup. [Regras e validação](docs/ECONOMIA-031.md). [Proposta de aprendizado com D20 — para discussão](docs/PROPOSTA-APRENDIZADO-D20.md).
+
 ## Jogar 0.30 — Correções de pedidos e evolução
 
 Abra `dist/The-Founder-Primeira-Aposta-0.30.html`. Pedidos respeitam o preço aceito pelo comprador; a melhoria reserva caixa para fabricar e lançar a próxima versão. Usa o mesmo save da 0.29. [Detalhes](docs/CORRECOES-030.md).
