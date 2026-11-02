@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.32 — Descobertas com D20
+
+Abra `dist/The-Founder-Primeira-Aposta-0.32.html`. Depois da campanha, escolha Tirar uma lição para investigar produto ou apresentação. Uma descoberta vira um símbolo guardado na empresa e reaparece na próxima criação. Uma tentativa por campanha, sem reroll ao recarregar. [Regras e validação](docs/APRENDIZADO-032.md).
+
 ## Jogar 0.31 — Alcance e CAC por unidade
 
 Abra `dist/The-Founder-Primeira-Aposta-0.31.html`. A campanha traz interessados; produto e preço decidem compras; o CAC é descontado por unidade vendida. Sem reserva de R$550, com fechamento por janela e migração de save com backup. [Regras e validação](docs/ECONOMIA-031.md). [Proposta de aprendizado com D20 — para discussão](docs/PROPOSTA-APRENDIZADO-D20.md).

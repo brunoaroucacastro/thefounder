@@ -1,3 +1,12 @@
+## 0.32 — Descobertas com D20
+
+- Investigação opcional de Produto ou Campanha após experiências com evidência suficiente.
+- D20 com alvo 11, crítico, descobertas, intuição e tentativa única persistida antes da animação.
+- Memória contextual da empresa, símbolos nos atributos e canais e indicação de personas conhecidas.
+- Responsável e bônus de análise preparados para futura equipe; contratação não adicionada nesta etapa.
+- Saves anteriores preservados com backup, sem inventar evidência histórica.
+- Testes de regras e integração do HTML para descoberta, persistência e reutilização.
+
 ## 0.31 — Alcance e CAC por unidade
 
 - CAC variável por unidade vendida, sem reserva fixa ou teto de 36 clientes; desconto industrial não reduz o CAC da versão.
