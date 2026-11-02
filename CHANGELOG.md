@@ -1,3 +1,12 @@
+## 0.28 — Campanhas e descoberta
+
+- Alcance por quatro idades, verba, praça, persona, D20, marca, boca a boca, cobertura e desgaste.
+- Pontos recalibrados para permitir concentração e mistura conforme o contexto.
+- Recomendações orgânicas sem nova verba, com teto por clientes pagos e por janela; sem cascata.
+- Pistas qualitativas após campanhas, sem pesos de persona, adequação numérica ou previsão exata de compradores.
+- CAC pago separado das indicações, contabilidade preservada e migração 0.27 com backup.
+- Testes de regras, duas campanhas em interface simulada e 1.400 combinações de balanceamento.
+
 ## 0.27 — Produto e persona
 
 - Dez personas de fone; seis atributos universais, pesos fixos e sem classe de renda.

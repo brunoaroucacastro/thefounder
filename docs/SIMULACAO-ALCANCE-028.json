@@ -1,0 +1,460 @@
+{
+  "description": "Balanceamento sintético de alcance; aquisição de 10% é uma hipótese fixa da simulação, não a conversão do jogo.",
+  "combinations": 1400,
+  "optimalStrategies": [
+    {
+      "persona": "Clara",
+      "worn": "none",
+      "creator": 0,
+      "demo": 1,
+      "offer": 3,
+      "total": 582
+    },
+    {
+      "persona": "Clara",
+      "worn": "creator",
+      "creator": 0,
+      "demo": 1,
+      "offer": 3,
+      "total": 582
+    },
+    {
+      "persona": "Clara",
+      "worn": "demo",
+      "creator": 0,
+      "demo": 0,
+      "offer": 4,
+      "total": 579
+    },
+    {
+      "persona": "Clara",
+      "worn": "offer",
+      "creator": 0,
+      "demo": 4,
+      "offer": 0,
+      "total": 566
+    },
+    {
+      "persona": "Luna",
+      "worn": "none",
+      "creator": 1,
+      "demo": 0,
+      "offer": 3,
+      "total": 574
+    },
+    {
+      "persona": "Luna",
+      "worn": "creator",
+      "creator": 0,
+      "demo": 0,
+      "offer": 4,
+      "total": 572
+    },
+    {
+      "persona": "Luna",
+      "worn": "demo",
+      "creator": 1,
+      "demo": 0,
+      "offer": 3,
+      "total": 574
+    },
+    {
+      "persona": "Luna",
+      "worn": "offer",
+      "creator": 3,
+      "demo": 1,
+      "offer": 0,
+      "total": 556
+    },
+    {
+      "persona": "Daniel",
+      "worn": "none",
+      "creator": 0,
+      "demo": 1,
+      "offer": 3,
+      "total": 578
+    },
+    {
+      "persona": "Daniel",
+      "worn": "creator",
+      "creator": 0,
+      "demo": 1,
+      "offer": 3,
+      "total": 578
+    },
+    {
+      "persona": "Daniel",
+      "worn": "demo",
+      "creator": 0,
+      "demo": 0,
+      "offer": 4,
+      "total": 575
+    },
+    {
+      "persona": "Daniel",
+      "worn": "offer",
+      "creator": 0,
+      "demo": 4,
+      "offer": 0,
+      "total": 561
+    },
+    {
+      "persona": "Ravi",
+      "worn": "none",
+      "creator": 0,
+      "demo": 1,
+      "offer": 3,
+      "total": 579
+    },
+    {
+      "persona": "Ravi",
+      "worn": "creator",
+      "creator": 0,
+      "demo": 1,
+      "offer": 3,
+      "total": 579
+    },
+    {
+      "persona": "Ravi",
+      "worn": "demo",
+      "creator": 0,
+      "demo": 0,
+      "offer": 4,
+      "total": 578
+    },
+    {
+      "persona": "Ravi",
+      "worn": "offer",
+      "creator": 0,
+      "demo": 4,
+      "offer": 0,
+      "total": 556
+    },
+    {
+      "persona": "Leo",
+      "worn": "none",
+      "creator": 0,
+      "demo": 0,
+      "offer": 4,
+      "total": 579
+    },
+    {
+      "persona": "Leo",
+      "worn": "creator",
+      "creator": 0,
+      "demo": 0,
+      "offer": 4,
+      "total": 579
+    },
+    {
+      "persona": "Leo",
+      "worn": "demo",
+      "creator": 0,
+      "demo": 0,
+      "offer": 4,
+      "total": 579
+    },
+    {
+      "persona": "Leo",
+      "worn": "offer",
+      "creator": 3,
+      "demo": 1,
+      "offer": 0,
+      "total": 552
+    },
+    {
+      "persona": "Bia",
+      "worn": "none",
+      "creator": 0,
+      "demo": 1,
+      "offer": 3,
+      "total": 581
+    },
+    {
+      "persona": "Bia",
+      "worn": "creator",
+      "creator": 0,
+      "demo": 1,
+      "offer": 3,
+      "total": 581
+    },
+    {
+      "persona": "Bia",
+      "worn": "demo",
+      "creator": 0,
+      "demo": 0,
+      "offer": 4,
+      "total": 577
+    },
+    {
+      "persona": "Bia",
+      "worn": "offer",
+      "creator": 0,
+      "demo": 4,
+      "offer": 0,
+      "total": 568
+    },
+    {
+      "persona": "Marina",
+      "worn": "none",
+      "creator": 0,
+      "demo": 3,
+      "offer": 1,
+      "total": 581
+    },
+    {
+      "persona": "Marina",
+      "worn": "creator",
+      "creator": 0,
+      "demo": 3,
+      "offer": 1,
+      "total": 581
+    },
+    {
+      "persona": "Marina",
+      "worn": "demo",
+      "creator": 0,
+      "demo": 0,
+      "offer": 4,
+      "total": 570
+    },
+    {
+      "persona": "Marina",
+      "worn": "offer",
+      "creator": 0,
+      "demo": 4,
+      "offer": 0,
+      "total": 576
+    },
+    {
+      "persona": "Sofia",
+      "worn": "none",
+      "creator": 0,
+      "demo": 1,
+      "offer": 3,
+      "total": 578
+    },
+    {
+      "persona": "Sofia",
+      "worn": "creator",
+      "creator": 0,
+      "demo": 1,
+      "offer": 3,
+      "total": 578
+    },
+    {
+      "persona": "Sofia",
+      "worn": "demo",
+      "creator": 0,
+      "demo": 0,
+      "offer": 4,
+      "total": 575
+    },
+    {
+      "persona": "Sofia",
+      "worn": "offer",
+      "creator": 0,
+      "demo": 4,
+      "offer": 0,
+      "total": 561
+    },
+    {
+      "persona": "Paulo",
+      "worn": "none",
+      "creator": 0,
+      "demo": 1,
+      "offer": 3,
+      "total": 578
+    },
+    {
+      "persona": "Paulo",
+      "worn": "creator",
+      "creator": 0,
+      "demo": 1,
+      "offer": 3,
+      "total": 578
+    },
+    {
+      "persona": "Paulo",
+      "worn": "demo",
+      "creator": 0,
+      "demo": 0,
+      "offer": 4,
+      "total": 577
+    },
+    {
+      "persona": "Paulo",
+      "worn": "offer",
+      "creator": 0,
+      "demo": 4,
+      "offer": 0,
+      "total": 556
+    },
+    {
+      "persona": "Ana",
+      "worn": "none",
+      "creator": 0,
+      "demo": 1,
+      "offer": 3,
+      "total": 580
+    },
+    {
+      "persona": "Ana",
+      "worn": "creator",
+      "creator": 0,
+      "demo": 1,
+      "offer": 3,
+      "total": 580
+    },
+    {
+      "persona": "Ana",
+      "worn": "demo",
+      "creator": 0,
+      "demo": 0,
+      "offer": 4,
+      "total": 575
+    },
+    {
+      "persona": "Ana",
+      "worn": "offer",
+      "creator": 0,
+      "demo": 4,
+      "offer": 0,
+      "total": 570
+    }
+  ],
+  "sequentialCampaigns": [
+    {
+      "wave": 1,
+      "promo": "creator",
+      "leads": 556,
+      "organic": 9,
+      "brandBefore": 1,
+      "brandAfter": 1.0055555555555555,
+      "coverage": 565,
+      "paidCustomers": 55,
+      "organicLifetime": 9
+    },
+    {
+      "wave": 2,
+      "promo": "creator",
+      "leads": 448,
+      "organic": 15,
+      "brandBefore": 1.0055555555555555,
+      "brandAfter": 1.0141836734693876,
+      "coverage": 1028,
+      "paidCustomers": 99,
+      "organicLifetime": 24
+    },
+    {
+      "wave": 3,
+      "promo": "creator",
+      "leads": 407,
+      "organic": 16,
+      "brandBefore": 1.0141836734693876,
+      "brandAfter": 1.0250294570658451,
+      "coverage": 1451,
+      "paidCustomers": 139,
+      "organicLifetime": 40
+    },
+    {
+      "wave": 4,
+      "promo": "creator",
+      "leads": 392,
+      "organic": 15,
+      "brandBefore": 1.0250294570658451,
+      "brandAfter": 1.036812225644975,
+      "coverage": 1858,
+      "paidCustomers": 178,
+      "organicLifetime": 55
+    },
+    {
+      "wave": 5,
+      "promo": "creator",
+      "leads": 386,
+      "organic": 14,
+      "brandBefore": 1.036812225644975,
+      "brandAfter": 1.0492326979957318,
+      "coverage": 2258,
+      "paidCustomers": 216,
+      "organicLifetime": 69
+    },
+    {
+      "wave": 6,
+      "promo": "creator",
+      "leads": 384,
+      "organic": 14,
+      "brandBefore": 1.0492326979957318,
+      "brandAfter": 1.0620513636800295,
+      "coverage": 2656,
+      "paidCustomers": 254,
+      "organicLifetime": 83
+    },
+    {
+      "wave": 7,
+      "promo": "demo",
+      "leads": 609,
+      "organic": 20,
+      "brandBefore": 1.0620513636800295,
+      "brandAfter": 1.0764344626061442,
+      "coverage": 3285,
+      "paidCustomers": 314,
+      "organicLifetime": 103
+    },
+    {
+      "wave": 8,
+      "promo": "demo",
+      "leads": 478,
+      "organic": 18,
+      "brandBefore": 1.0764344626061442,
+      "brandAfter": 1.091013238567752,
+      "coverage": 3781,
+      "paidCustomers": 361,
+      "organicLifetime": 121
+    },
+    {
+      "wave": 9,
+      "promo": "demo",
+      "leads": 428,
+      "organic": 11,
+      "brandBefore": 1.091013238567752,
+      "brandAfter": 1.1016487568162399,
+      "coverage": 4220,
+      "paidCustomers": 403,
+      "organicLifetime": 132
+    },
+    {
+      "wave": 10,
+      "promo": "demo",
+      "leads": 393,
+      "organic": 10,
+      "brandBefore": 1.1016487568162399,
+      "brandAfter": 1.10952185581816,
+      "coverage": 4623,
+      "paidCustomers": 442,
+      "organicLifetime": 142
+    },
+    {
+      "wave": 11,
+      "promo": "demo",
+      "leads": 375,
+      "organic": 8,
+      "brandBefore": 1.10952185581816,
+      "brandAfter": 1.1150330848704904,
+      "coverage": 5006,
+      "paidCustomers": 479,
+      "organicLifetime": 150
+    },
+    {
+      "wave": 12,
+      "promo": "demo",
+      "leads": 362,
+      "organic": 7,
+      "brandBefore": 1.1150330848704904,
+      "brandAfter": 1.1185297763834412,
+      "coverage": 5375,
+      "paidCustomers": 515,
+      "organicLifetime": 157
+    }
+  ]
+}

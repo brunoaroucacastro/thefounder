@@ -1,5 +1,10 @@
 # The Founder
 
+## Jogar 0.28 — Campanhas e descoberta
+
+Abra `dist/The-Founder-Primeira-Aposta-0.28.html`. Campanhas encontram idades diferentes, a empresa constrói reputação e compradores satisfeitos podem trazer indicações limitadas. Pistas após a campanha substituem previsões exatas e a nota de adequação. CAC realizado e contas continuam visíveis. Saves 0.27 continuam com backup automático. [Regras e validação](docs/ALCANCE-E-DESCOBERTA-028.md).
+
+
 ## Jogar 0.27 — Produto e persona
 
 Abra `dist/The-Founder-Primeira-Aposta-0.27.html`. Dez personas de fone, seis atributos universais e progressão de 4 a 15 pontos. Adequação altera preço aceito, vendas e reviews. Nova partida, com save separado; versões anteriores preservadas. [Regras](docs/PRODUTO-E-PERSONA-027.md).
