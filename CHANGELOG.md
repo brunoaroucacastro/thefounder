@@ -1,3 +1,10 @@
+## 0.30 — Pedidos e evolução sem brechas
+
+- Pedido de loja respeita a aceitação do preço com desconto; validação na oferta e na confirmação.
+- Melhoria exige caixa para a tentativa, campanha atual e lote mínimo da próxima versão antes de cobrar. Cancelar o plano preserva a versão atual.
+- Conversão, CAC e equilíbrio das campanhas preservados; diagnóstico do teto de aquisição registrado.
+- Save 0.29 mantido. Regressões de exploração e progressão incluídas.
+
 ## 0.29 — Mercado, produto e lançamento
 
 - Pesquisa de mercado por R$1.000 entrega duas personas sorteadas; nova rodada paga e idades visíveis.

@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.30 — Correções de pedidos e evolução
+
+Abra `dist/The-Founder-Primeira-Aposta-0.30.html`. Pedidos respeitam o preço aceito pelo comprador; a melhoria reserva caixa para fabricar e lançar a próxima versão. Usa o mesmo save da 0.29. [Detalhes](docs/CORRECOES-030.md).
+
 ## Jogar 0.29 — Mercado, produto e lançamento
 
 Abra `dist/The-Founder-Primeira-Aposta-0.29.html`. Pesquisa de mercado por R$1.000 encontra duas personas, com nova pesquisa paga, idade e lembrete na bancada. Mínimos ocultos aparecem nos reviews. CAC em reais antes do preço, contribuição após aquisição e preço livre. Estoque e reposição visíveis; janela de até sete dias, sem vendas perpétuas. Comece uma nova partida: save separado, preservando a 0.28. [GDD e regras](docs/GDD-029-MERCADO-E-PRODUTO.md).
