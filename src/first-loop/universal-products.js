@@ -1,0 +1,27 @@
+/* Approved universal product model. Legacy data stays in gadgets.js for old saves/tests. */
+const UniversalProducts=(()=>{
+ const axes=[{id:'quality',name:'Qualidade',hint:'Excelência da experiência',cost:9,color:'#ac8cc4'},{id:'durability',name:'Durabilidade',hint:'Resistência e vida útil',cost:5,color:'#7eadd1'},{id:'performance',name:'Desempenho',hint:'Eficiência na função',cost:6,color:'#e48a6d'},{id:'practicality',name:'Praticidade',hint:'Facilidade e conveniência',cost:4,color:'#80b58b'},{id:'versatility',name:'Versatilidade',hint:'Diferentes usos e aparelhos',cost:4,color:'#72bcb3'},{id:'economy',name:'Economia',hint:'Projeto de menor custo',cost:-5,color:'#dca85b'}];
+ const budgets={4:4,5:6,6:8,7:10,8:12,9:14,10:15};
+ const headphones=[
+ ['noise','Clara','Trabalha em ambiente barulhento','Preciso me concentrar sem ouvir cada conversa ao meu redor.',220,[.3,0,.5,.1,.1,0],[0,.6,.4,0]],
+ ['student','Luna','Estuda e precisa se concentrar','Quero estudar por horas sem distrações e sem gastar demais.',100,[.1,0,.3,.1,0,.5],[.85,.15,0,0]],
+ ['commute','Daniel','Passa horas no transporte','Quero ouvir no trajeto sem barulho excessivo ou desconforto.',150,[.1,.3,.1,.5,0,0],[.25,.4,.35,0]],
+ ['sport','Ravi','Treina e se movimenta','Não quero um fone que caia, incomode ou estrague com o suor.',160,[0,.3,.1,.5,.1,0],[.25,.5,.25,0]],
+ ['gamer','Leo','Joga no competitivo','Preciso ouvir com precisão e me comunicar sem atraso.',220,[.3,.1,.5,0,.1,0],[.55,.4,.05,0]],
+ ['calls','Bia','Alterna reuniões e aparelhos','Alterno computador e celular. Quero conexão estável e chamadas claras.',200,[.3,.1,0,.1,.5,0],[0,.55,.45,0]],
+ ['travel','Marina','Viaja com frequência','Quero conforto, silêncio e confiança para viagens longas.',320,[0,.1,.3,.5,.1,0],[0,.35,.6,.05]],
+ ['music','Sofia','Ama ouvir música','Quero ouvir os detalhes, com equilíbrio e boa definição.',350,[.5,.1,.3,.1,0,0],[.25,.4,.35,0]],
+ ['durable','Paulo','Cansou de fones que quebram','Quero parar de trocar de fone por defeitos e desgaste.',140,[.1,.5,0,0,.1,.3],[.3,.45,.25,0]],
+ ['privacy','Ana','Busca paz e privacidade','Quero relaxar e ter meu espaço, mesmo dividindo a casa.',180,[.5,0,.1,.3,0,.1],[0,.5,.5,0]]
+ ];
+ const others={mouse:[['calls','Bia','Trabalha com precisão','Preciso de precisão e uma experiência boa por horas.',180,[.5,.1,.3,.1,0,0]],['sport','Ravi','Joga no competitivo','Quero resposta rápida sem falhar nas partidas.',140,[.3,.1,.5,0,.1,0]],['study','Luna','Estuda e trabalha','Preciso de algo acessível, prático e adaptável.',100,[0,.1,0,.3,.1,.5]]],keyboard:[['calls','Bia','Escreve o dia inteiro','Quero digitar confortavelmente, sem complicação.',180,[.3,.1,0,.5,.1,0]],['sport','Ravi','Personaliza o setup','Quero adaptar o teclado ao meu jeito de jogar.',140,[.1,.1,.3,0,.5,0]],['study','Luna','Divide o setup','Preciso de um teclado econômico que aguente a rotina.',100,[.1,.3,0,.1,0,.5]]],speaker:[['calls','Bia','Ouve música em casa','Quero som agradável num produto que dure.',180,[.5,.3,.1,.1,0,0]],['sport','Ravi','Leva música a encontros','Quero usar com aparelhos e situações diferentes.',140,[0,.1,.1,.3,.5,0]],['study','Luna','Compra com cuidado','Quero pagar pouco por uma solução durável.',100,[.1,.3,0,.1,0,.5]]]};
+ function personas(s){return (s.productId==='headphones'?headphones:others[s.productId]||others.mouse).map((p,i)=>({id:p[0],name:p[1],title:p[2],quote:p[3],short:p[3],budget:p[4],weights:Object.fromEntries(axes.map((a,j)=>[a.id,p[5][j]])),ages:p[6]||[[.1,.35,.45,.1],[.45,.35,.15,.05],[.55,.3,.1,.05]][i],need:[],color:['#5c96c5','#de8b55','#9a85bd','#82b79c','#bd9366'][i%5],hair:['#59414b','#49383a','#875c42'][i%3]}));}
+ const empty=()=>Object.fromEntries(axes.map(a=>[a.id,0])),total=points=>Object.values(points).reduce((n,v)=>n+v,0),budget=level=>budgets[level]||4;
+ function fit(s,weights){return Math.max(0,Math.min(1,axes.reduce((n,a)=>n+(s.attributes[a.id]||0)*(weights[a.id]||0),0)/4.5));}
+ const selectedFit=s=>{const p=personas(s).find(p=>p.id===s.clientId);return p?fit(s,p.weights):0;};
+ const note=s=>selectedFit(s)*15;
+ function cost(s){return Math.max(12,({headphones:30,mouse:24,keyboard:38,speaker:44}[s.productId]||30)+axes.reduce((n,a)=>n+(s.attributes[a.id]||0)*a.cost,0));}
+ function description(s){const ranked=axes.filter(a=>s.attributes[a.id]>0).sort((a,b)=>s.attributes[b.id]-s.attributes[a.id]),base={headphones:'Fone de ouvido',mouse:'Mouse',keyboard:'Teclado',speaker:'Caixa de som'}[s.productId]||'Gadget';if(!ranked.length)return base+' básico, com componentes padrão e sem especialização.';const a=ranked[0],names={quality:'caprichado',durability:'resistente',performance:'eficiente',practicality:'prático',versatility:'versátil',economy:'econômico'},trade={quality:'Experiência refinada; componentes mais caros.',durability:'Feito para resistir à rotina; materiais mais caros.',performance:'Mais eficiência na tarefa; componentes mais exigentes.',practicality:'Uso simples e conveniente; construção aprimorada.',versatility:'Mais usos e adaptações; projeto mais complexo.',economy:'Construção acessível, preservando margem ou preço menor.'};return base+' '+names[a.id]+(ranked[1]?' com foco em '+ranked[1].name.toLowerCase():' especializado')+'. '+trade[a.id];}
+ return {axes,budgets,headphones,personas,empty,total,budget,fit,selectedFit,note,cost,description};
+})();
+if(typeof module!=='undefined')module.exports=UniversalProducts;

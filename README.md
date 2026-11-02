@@ -1,5 +1,10 @@
 # The Founder
 
+## Jogar 0.27 — Produto e persona
+
+Abra `dist/The-Founder-Primeira-Aposta-0.27.html`. Dez personas de fone, seis atributos universais e progressão de 4 a 15 pontos. Adequação altera preço aceito, vendas e reviews. Nova partida, com save separado; versões anteriores preservadas. [Regras](docs/PRODUTO-E-PERSONA-027.md).
+
+
 ## Jogar 0.26 — Público vivo
 
 Baixe `dist/The-Founder-Primeira-Aposta-0.26.html` e abra no navegador. Três caminhos após o ciclo, campanhas de aquisição/reconversão, compradores diferentes e reviews baseados na compra real. Conversão responde a preço, qualidade e prova social. Preço confirmado antes do D20; CAC e panorama por produto no botão Produtos. [Regras e verificação](docs/PUBLICO-E-CONTAS-026.md). Save separado com importação por cópia quando disponível.

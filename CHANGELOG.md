@@ -1,3 +1,10 @@
+## 0.27 — Produto e persona
+
+- Dez personas de fone; seis atributos universais, pesos fixos e sem classe de renda.
+- MVP 4 pontos; evolução até 15, teto 5 por atributo, redistribuição por geração.
+- Valor percebido, conversão e reviews relativos ao produto, preço e expectativas.
+- Save separado, paginação das personas, testes de regras e integração.
+
 # Histórico de desenvolvimento
 
 ## 0.26 — Público vivo, CAC e panorama por produto
