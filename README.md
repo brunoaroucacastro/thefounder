@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.33 — Interromper vendas e reajustar
+
+Abra `dist/The-Founder-Primeira-Aposta-0.33.html`. Durante as vendas, use Encerrar vendas e rever estratégia. O estoque fica guardado e há um atalho para reajustar preço e preparar outra campanha, sem outro MVP. [Regras e validação](docs/INTERRUPCAO-033.md).
+
 ## Jogar 0.32 — Descobertas com D20
 
 Abra `dist/The-Founder-Primeira-Aposta-0.32.html`. Depois da campanha, escolha Tirar uma lição para investigar produto ou apresentação. Uma descoberta vira um símbolo guardado na empresa e reaparece na próxima criação. Uma tentativa por campanha, sem reroll ao recarregar. [Regras e validação](docs/APRENDIZADO-032.md).

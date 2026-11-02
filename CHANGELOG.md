@@ -1,3 +1,12 @@
+## 0.33 — Interromper vendas e corrigir o rumo
+
+- Botão para encerrar a janela e retornar às decisões, inclusive durante uma proposta de loja.
+- Atalho de reajuste de preço para a próxima campanha, sem segundo MVP.
+- Estoque, vendas e gastos preservados; contatos cancelados não viram visitas fantasmas.
+- Estrutura proporcional ao tempo da janela, sem multa de cancelamento ou cobrança duplicada.
+- Produção já paga continua e descobertas exigem evidência real.
+- Seis novos testes de regras e integração do HTML; regressões preservadas.
+
 ## 0.32 — Descobertas com D20
 
 - Investigação opcional de Produto ou Campanha após experiências com evidência suficiente.
