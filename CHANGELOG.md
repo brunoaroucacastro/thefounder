@@ -1,3 +1,14 @@
+## 0.29 — Mercado, produto e lançamento
+
+- Pesquisa de mercado por R$1.000 entrega duas personas sorteadas; nova rodada paga e idades visíveis.
+- Persona reaparece na bancada e na campanha; descarte de projeto antes do MVP sem reembolso de pesquisa.
+- Uma exigência relevante por persona, penalidade gradual oculta e aprendizado pelos reviews.
+- Nova conversão por produto, preço relativo e boca a boca, sem bônus direto de marketing ou penalidade de Economia irrelevante.
+- CAC contratado em reais, reserva e consumo por cliente; margem após CAC, preço digitável e contribuição negativa permitida.
+- Estoque em destaque, reposição durante e entre rodadas e janela de lançamento de até sete dias.
+- Saldo da reserva devolvido, estoque restante guardado e três caminhos após encerrar; sem renda automática do catálogo.
+- Save separado preserva a 0.28. Dez testes focados, integração do HTML e regressões; sem varredura massiva.
+
 ## 0.28 — Campanhas e descoberta
 
 - Alcance por quatro idades, verba, praça, persona, D20, marca, boca a boca, cobertura e desgaste.

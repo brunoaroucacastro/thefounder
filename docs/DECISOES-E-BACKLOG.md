@@ -80,3 +80,18 @@ Usar a mesma régua: tamanho do público, demografia e renda. Separar visualment
 
 Outros setores físicos além dos seis listados não foram aprovados. A renomeação de Consumíveis para Alimentos & bebidas também não foi confirmada.
 
+
+## Revisão de conversão — 02/11/2026
+
+Decisão mais recente sobre aquisição: mostrar CAC em reais (cálculo interno pode partir de percentual). Campanhas aumentam interessados, sem bônus direto de conversão. Revisar os demais pontos com o usuário antes da atualização consolidada do código. Registro detalhado em REVISAO-CONVERSAO-DECISOES.md; prevalece sobre propostas anteriores conflitantes.
+
+
+Ponto 2 aprovado: nota linear com normalização fixa. Adicionar pontos em atributo de peso zero não reduz nota nem conversão ao mesmo preço. Economia reduz custo sem penalidade implícita de valor percebido. Redistribuir retirando pontos relevantes pode reduzir a nota. Ver REVISAO-CONVERSAO-DECISOES.md. Código continua aguardando revisão consolidada.
+
+
+Ponto 3 aprovado: CAC unitário em reais conhecido antes do preço, parametrizado internamente por percentual do custo do produto (exemplo: 25% de R40 = R10). Contribuição = preço menos custo do produto menos CAC. Preço livre e contribuição negativa permitidos. Não usar comissão sobre o preço de venda nem expor o percentual ao jogador. Alinhar cobrança e verba total na consolidação, sem duplicar aquisição. Ver REVISAO-CONVERSAO-DECISOES.md.
+
+
+## Consolidação 0.29 — 02/11/2026
+
+Implementados CAC antes do preço e contribuição após CAC, nova conversão sem bônus de campanha, mínimos graduais relevantes e feedbacks, pesquisa de mercado R$1.000 com duas personas e idade, descarte pré-MVP e lançamento com ciclo finito e reposição. Nova partida preserva o save anterior. Detalhes em GDD-029-MERCADO-E-PRODUTO.md. Último upgrade aguarda discussão; não foi rebalanceado.
