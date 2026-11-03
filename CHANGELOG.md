@@ -1,3 +1,8 @@
+## 0.37 — Oficina com contornos mais definidos
+
+- Cena renderizada na densidade da tela e prévia do produto com mais resolução.
+- Sprites dos gadgets redesenhados e detalhes adicionais na bancada e nos personagens.
+
 ## 0.36 — Oficina isométrica e criação dentro do jogo
 
 - Oficina em pixel art com projeção única, mobiliário reutilizável e personagens animados.
