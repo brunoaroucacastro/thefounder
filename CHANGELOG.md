@@ -1,3 +1,11 @@
+## 0.36 — Oficina isométrica e criação dentro do jogo
+
+- Oficina em pixel art com projeção única, mobiliário reutilizável e personagens animados.
+- Estoque, pesquisa, montagem e atendimento aparecem no cenário.
+- Barras de jogo, fonte pixel incorporada e consultas a Produtos, Clientes e Caixa.
+- Painel lateral de criação com sprite, persona e pontos de atributos.
+- Regras, preços, economia e saves preservados; validação no navegador e testes de integração.
+
 ## 0.35 — Menos exposição, mais oficina
 
 - Persona com faixa única; afinidades de canais e ações descobertas ao jogar.

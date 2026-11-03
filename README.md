@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.36 — Oficina e criação do produto
+
+Abra dist/The-Founder-Primeira-Aposta-0.36.html. Oficina isométrica, navegação dentro do jogo e painel lateral de criação. [Direção e validação](docs/OFICINA-036.md).
+
 ## Jogar 0.35 — Uma oficina de invenções
 
 Abra dist/The-Founder-Primeira-Aposta-0.35.html. Textos curtos, descobertas sem dicas antecipadas, D20 compacto, lote livre e placar do lançamento. Evoluir retorna à prancheta de atributos. [Direção e validação](docs/DIRECAO-035.md).
