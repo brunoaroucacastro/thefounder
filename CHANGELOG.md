@@ -1,3 +1,8 @@
+## 0.40 — Marketing e tração
+
+- Mix de seis canais com esforço total de 100% e saturação por persona e produto.
+- Lançamento pelo e-commerce com histórico de alcance e campanhas sem cobrança.
+
 ## 0.39 — Planejamento do lote
 
 - A tela de produção identifica a quantidade a fabricar para o estoque e o custo do lote.

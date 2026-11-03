@@ -19,8 +19,42 @@ const MarketReach=(()=>{
  function fatigue(s,promo){const p=readProduct(s),decay=2**(-Math.max(0,now(s)-p.pressureAt)/2),used=sum(Object.values(promo));return used?Object.entries(promo).reduce((n,[c,v])=>n+v*(.6+.4*Math.exp(-p.pressure[c]*decay)),0)/used:1;}
  function campaignStrength(promo,a,unit=false,modern=false){if(modern){const selected=Object.entries(promo).filter(([,v])=>v>0);return(1+.65*selected.reduce((n,[c])=>n+unitCoefficients[c][a],0))*(selected.length===3?1.08:1);}if(unit)return 1+.24*Object.entries(promo).reduce((n,[c,v])=>n+unitCoefficients[c][a]*v**.9,0);const pairs=Object.entries(promo),max=Math.max(...pairs.map(([,v])=>v)),dominant=pairs.filter(([,v])=>v===max),focus=max>2?.03*(max-2)*sum(dominant.map(([c])=>coefficients[c][a]))/dominant.length:0;return 1+.24*pairs.reduce((n,[c,v])=>n+coefficients[c][a]*v**.9,0)+focus;}
  function roundWithin(values,limits){const out=values.map((v,i)=>Math.min(limits[i],Math.floor(v))),target=Math.min(sum(limits),Math.round(sum(values)));const order=values.map((v,i)=>({i,f:v-Math.floor(v)})).sort((a,b)=>b.f-a.f);let left=target-sum(out);for(const x of order){if(left>0&&out[x.i]<limits[x.i]){out[x.i]++;left--;}}return out;}
- function plan(s,{promo=s.promo,budget=150+sum(Object.values(promo))*100,grade='normal',criticalSuccess=false}={}){if(!Number.isFinite(budget)||budget<0||Object.values(promo).some(v=>!Number.isInteger(v)||v<0)||sum(Object.values(promo))>4)throw Error('Campanha inválida.');const p=readProduct(s),persona=G.personas(s).find(p=>p.id===s.clientId),weights=demography.map((d,i)=>d*(.25+.75*(persona?.ages[i]??.25))),den=sum(weights),R=(s.modernGameplay?{critical:.6,partial:.8,normal:1,great:1.15,exceptional:1.3}:s.unitAcquisition?{critical:.6,partial:.8,normal:1,great:1.2,exceptional:1.4}:{critical:.35,partial:.65,normal:1,great:1.45,exceptional:1.8})[grade];if(!Number.isFinite(R))throw Error('Resultado de campanha inválido.');const B=s.market?.brand||1,W=wordOfMouth(s).factor,S=fatigue(s,promo),cost={online:2,local:2.5,partner:1.7}[s.placeId]||2,limits=demography.map((d,i)=>Math.max(0,population*d-p.covered[i])),expected=demography.map((d,i)=>{const N=population*d,E=((s.unitAcquisition?population*.004:budget/cost)+(s.early?6:0))*weights[i]/den*campaignStrength(promo,i,s.unitAcquisition,s.modernGameplay)*(s.modernGameplay?(venueCoefficients[s.placeId]?.[i]||1):1)*R*(s.modernGameplay&&criticalSuccess?1.1:1)*B*W*S;return limits[i]*(-Math.expm1(-E/N));}),byAge=roundWithin(expected,limits);return{total:sum(byAge),byAge,expected,budget,kind:'paid',brand:B,wom:W,fatigue:S};}
- function commit(s,options){const result=plan(s,options),m=ensure(s),p=product(s),decay=2**(-Math.max(0,now(s)-p.pressureAt)/2);for(const c of Object.keys(p.pressure))p.pressure[c]=p.pressure[c]*decay+(s.modernGameplay?(options.promo[c]>0?.8:0):(result.budget/550)*(options.promo[c]||0)/4);p.pressureAt=now(s);result.byAge.forEach((n,i)=>p.covered[i]+=n);p.organicThisWave=0;m.serial++;m.active={...result,id:m.serial,legacy:false,remaining:[...result.byAge],organicQueue:[],organicEntered:0};return result.total;}
+ function legacyPlan(s,{promo=s.promo,budget=150+sum(Object.values(promo))*100,grade='normal',criticalSuccess=false}={}){if(!Number.isFinite(budget)||budget<0||Object.values(promo).some(v=>!Number.isInteger(v)||v<0)||sum(Object.values(promo))>4)throw Error('Campanha inválida.');const p=readProduct(s),persona=G.personas(s).find(p=>p.id===s.clientId),weights=demography.map((d,i)=>d*(.25+.75*(persona?.ages[i]??.25))),den=sum(weights),R=(s.modernGameplay?{critical:.6,partial:.8,normal:1,great:1.15,exceptional:1.3}:s.unitAcquisition?{critical:.6,partial:.8,normal:1,great:1.2,exceptional:1.4}:{critical:.35,partial:.65,normal:1,great:1.45,exceptional:1.8})[grade];if(!Number.isFinite(R))throw Error('Resultado de campanha inválido.');const B=s.market?.brand||1,W=wordOfMouth(s).factor,S=fatigue(s,promo),cost={online:2,local:2.5,partner:1.7}[s.placeId]||2,limits=demography.map((d,i)=>Math.max(0,population*d-p.covered[i])),expected=demography.map((d,i)=>{const N=population*d,E=((s.unitAcquisition?population*.004:budget/cost)+(s.early?6:0))*weights[i]/den*campaignStrength(promo,i,s.unitAcquisition,s.modernGameplay)*(s.modernGameplay?(venueCoefficients[s.placeId]?.[i]||1):1)*R*(s.modernGameplay&&criticalSuccess?1.1:1)*B*W*S;return limits[i]*(-Math.expm1(-E/N));}),byAge=roundWithin(expected,limits);return{total:sum(byAge),byAge,expected,budget,kind:'paid',brand:B,wom:W,fatigue:S};}
+
+ const channels=['Redes sociais','Anúncios pagos','Influenciadores','Relações públicas','Conteúdo','SEO'];
+ const defaultMix=()=>[20,20,15,15,15,15];
+ const validMix=m=>Array.isArray(m)&&m.length===6&&m.every(p=>Number.isInteger(p)&&p>=0)&&sum(m)===100;
+ const ageAffinity=[[.95,.88,.64,.42],[.72,.83,.75,.53],[.86,.77,.54,.31],[.35,.47,.71,.86],[.57,.73,.78,.65],[.40,.64,.82,.88]];
+ const productAffinity={headphones:[1.12,.94,1.2,.9,.95,.84],mouse:[.9,1.06,.85,.85,1.04,1.2],keyboard:[.93,.91,1.05,1.12,1.19,1.08],speaker:[1.06,.9,1.13,1.22,.95,.88]};
+ const saturation=[2.4,1.6,2.8,1.2,1.9,1.1];
+ const marketingRange=[.8,1.5];
+ function marketing(s,mix){
+  if(!validMix(mix))throw Error('Distribua exatamente 100% do esforço.');
+  const [young,adult,middle,older]=G.personas(s).find(p=>p.id===s.clientId)?.ages||[.25,.25,.25,.25];
+  // The existing 35–54 bin contributes five of its twenty years to 50+.
+  const ages=[young,adult,middle*.75,older+middle*.25];
+  const product=productAffinity[s.productId]||productAffinity.headphones;
+  const a=ageAffinity.map((row,i)=>sum(row.map((v,j)=>v*ages[j]))*product[i]);
+  const effortAt=lambda=>a.map((v,i)=>Math.max(0,Math.log(v/lambda)/saturation[i]));
+  let low=0,high=Math.max(...a);
+  for(let i=0;i<48;i++){
+   const mid=(low+high)/2;
+   if(sum(effortAt(mid))>1)low=mid;else high=mid;
+  }
+  const score=effort=>sum(effort.map((p,i)=>a[i]*(-Math.expm1(-saturation[i]*p))/saturation[i]));
+  const efficiency=clamp(score(mix.map(p=>p/100))/score(effortAt(high)),0,1);
+  return marketingRange[0]+(marketingRange[1]-marketingRange[0])*efficiency;
+ }
+ function plan(s,options={}){
+  if(!s.traction)return legacyPlan(s,options);
+  const mix=options.mix||s.traction;
+  const base=legacyPlan({...s,placeId:null},{...options,promo:{demo:0,creator:0,offer:0},budget:0});
+  const multiplier=marketing(s,mix);
+  const limits=demography.map((d,i)=>population*d-readProduct(s).covered[i]);
+  const byAge=roundWithin(base.byAge.map((n,i)=>Math.min(limits[i],n*multiplier)),limits);
+  return {...base,baseLeads:base.total,total:sum(byAge),byAge,mix:[...mix],multiplier};
+ }
+ function commit(s,options){const result=plan(s,options),m=ensure(s),p=product(s),decay=2**(-Math.max(0,now(s)-p.pressureAt)/2);if(!s.traction)for(const c of Object.keys(p.pressure))p.pressure[c]=p.pressure[c]*decay+(s.modernGameplay?(options.promo[c]>0?.8:0):(result.budget/550)*(options.promo[c]||0)/4);p.pressureAt=now(s);result.byAge.forEach((n,i)=>p.covered[i]+=n);p.organicThisWave=0;m.serial++;m.active={...result,id:m.serial,legacy:false,remaining:[...result.byAge],organicQueue:[],organicEntered:0};return result.total;}
  function beginRetarget(s){const m=ensure(s);m.serial++;m.active={id:m.serial,kind:'retarget',remaining:[0,0,0,0],organicQueue:[],byAge:[0,0,0,0],legacy:false};product(s).organicThisWave=0;}
  function pick(weights,u){let t=u*sum(weights);for(let i=0;i<weights.length;i++){t-=weights[i];if(t<0)return i;}return weights.length-1;}
  function stamp(s,id,a,source){const people=G.personas(s),weights=people.map(p=>(p.ages[a]||0)*(p.id===s.clientId?20:1));const chosen=people[pick(weights,random(id+':persona'))];return{id,seed:Math.floor(random(id)*4294967296),personaId:chosen.id,ageIndex:a,source};}
@@ -31,7 +65,7 @@ const MarketReach=(()=>{
  function startOrganic(s){if(!organicPotential(s))throw Error('Ainda não há novas recomendações para circular.');const m=ensure(s);m.serial++;m.active={id:m.serial,kind:'organic',remaining:[0,0,0,0],organicQueue:[],byAge:[0,0,0,0],organicEntered:0};return inviteOrganic(s);}
  function message(s){const a=s.market?.active;if(!a||a.legacy||!['campaignOutcome','recampaignOutcome','selling','recap'].includes(s.phase))return'Observe as reações e os reviews para aprender quem sua campanha alcança.';if(a.kind==='retarget')return'Quem já conhecia o produto voltou para olhar de novo.';if(a.kind==='organic')return'As recomendações trouxeram pessoas sem uma nova campanha paga.';if(a.fatigue<.82)return'A abordagem parece conhecida. Talvez seja hora de mudar a apresentação.';if(sum(a.byAge||[])>0){const i=a.byAge.indexOf(Math.max(...a.byAge));return['A novidade chamou atenção de pessoas mais jovens.','Jovens adultos apareceram bastante nesta apresentação.','A apresentação chamou atenção de adultos com a rotina estabelecida.','Pessoas mais velhas apareceram bastante nesta apresentação.'][i];}return'As primeiras reações estão chegando. Os compradores vão contar o que acharam.';}
  function brandLabel(s){const b=s.market?.brand||1;return b<.94?'Reputação abalada':b>1.18?'Marca respeitada':b>1.04?'Ganhando confiança':'Marca pouco conhecida';}
- return{ages,demography,population,coefficients,unitCoefficients,venueCoefficients,now,key,ensure,product,readProduct,validate,enable,recordReview,closeBrand,wordOfMouth,fatigue,campaignStrength,plan,commit,beginRetarget,nextBuyer,paidCustomer,organicPotential,inviteOrganic,startOrganic,message,brandLabel};
+ return {channels,defaultMix,validMix,marketing,ages,demography,population,coefficients,unitCoefficients,venueCoefficients,now,key,ensure,product,readProduct,validate,enable,recordReview,closeBrand,wordOfMouth,fatigue,campaignStrength,plan,commit,beginRetarget,nextBuyer,paidCustomer,organicPotential,inviteOrganic,startOrganic,message,brandLabel};
 })();
 if(typeof module!=='undefined')module.exports=MarketReach;
 
