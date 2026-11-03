@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.35 — Uma oficina de invenções
+
+Abra dist/The-Founder-Primeira-Aposta-0.35.html. Textos curtos, descobertas sem dicas antecipadas, D20 compacto, lote livre e placar do lançamento. Evoluir retorna à prancheta de atributos. [Direção e validação](docs/DIRECAO-035.md).
+
 ## Jogar 0.34 — Fluxo e economia
 
 Abra dist/The-Founder-Primeira-Aposta-0.34.html. Lançamento direto, vendas rápidas, margem sugerida de 35%, D20 central e reaproveitamento de estoque. [Regras e validação](docs/REVISAO-034.md).

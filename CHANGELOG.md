@@ -1,3 +1,13 @@
+## 0.35 — Menos exposição, mais oficina
+
+- Persona com faixa única; afinidades de canais e ações descobertas ao jogar.
+- Cards legíveis, identidade roxa/creme e botões consistentes; explicações opcionais.
+- D20 compacto com cenas e reações humanas, mantendo efeitos e aleatoriedade.
+- Quantidade livre com slider e campo numérico; descontos preservados.
+- Placar animado com vendas, gráfico, estrelas, conversão e contribuição reais.
+- Evolução volta aos atributos do novo nível antes da campanha, sem cobrar de novo.
+- Saves preservados; fluxo validado por testes e inspeção de navegador.
+
 ## 0.34 — Ritmo e retorno para reinvestir
 
 - Economia mais generosa para produtos alinhados; MC sugerida de 35%, preço livre e preços excessivos ainda perdem vendas.
