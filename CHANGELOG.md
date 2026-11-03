@@ -1,3 +1,9 @@
+## 0.41 — Sprints semanais e fim de semana
+
+- Cinco dias úteis por sprint, com pausa e velocidades 1×, 2× e 4×.
+- Desenvolvimento e campanha avançam em dias úteis.
+- Fechamento financeiro de sexta-feira, histórico e escolha de fim de semana.
+
 ## 0.40 — Marketing e tração
 
 - Mix de seis canais com esforço total de 100% e saturação por persona e produto.
