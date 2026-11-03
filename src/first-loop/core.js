@@ -217,7 +217,7 @@ const FirstLoop=(()=>{
  }
 
  const secondsPerWorkday=12;
- const moneyCategories={cogs:'Produtos vendidos',projectCost:'Desenvolvimento',campaignCost:'Aquisição',campaignFixedCost:'Campanha',rent:'Operação',scrapLoss:'Perdas de estoque',setupCost:'Abertura',operatingCost:'Pesquisa e operação',fees:'Taxas'};
+ const moneyCategories={cogs:'Produtos vendidos',projectCost:'Desenvolvimento',campaignCost:'Aquisição',campaignFixedCost:'Campanha',rent:'Operação',scrapLoss:'Perdas de estoque',setupCost:'Abertura',operatingCost:'Pesquisa e operação',fees:'Taxas',salary:'Equipe',office:'Aluguel'};
  function enableWeekly(s){
   if(s.weekly||!s.modernGameplay)return s;
   return {...s,speed:[1,2,4].includes(s.speed)?s.speed:1,weekly:{
@@ -232,7 +232,7 @@ const FirstLoop=(()=>{
   const cashDelta=round(after.cash-before.cash);
   const inflow=Math.max(0,revenue,cashDelta);
   const outflow=round(inflow-cashDelta);
-  const entry=(category,amount)=>{if(amount)week.entries.push({id:++week.sequence,day:week.days+1,source,category,amount});};
+  const entry=(category,amount)=>postWeekly(week,week.days+1,source,category,amount);
   entry('receita',revenue);
   entry('entradas',inflow);
   entry('saídas',outflow);
@@ -241,23 +241,35 @@ const FirstLoop=(()=>{
   if(!sameProject&&outflow)entry('projectCost',outflow);
   if(after.lastEvent?.id!==before.lastEvent?.id&&after.lastEvent?.kind==='milestone')week.events.push(after.lastEvent.text);
  }
- function closeWeek(s){
+ function postWeekly(w,day,source,category,amount){
+  if(!amount)return;
+  const type=({'receita':'revenue','entradas':'receipt','saídas':'payment'})[category]||'expense';
+  w.entries.push({id:++w.sequence,day,week:Math.ceil(day/5),source,category,type,amount,status:'posted'});
+ }
+ function settleWeeklyObligations(s){
   const w=s.weekly,number=w.reports.length+1;
   for(const obligation of w.obligations){
+   if(obligation.active===false)continue;
    const days=Math.max(0,Math.min(5,w.days-obligation.startDay));
    const charge=round(obligation.amount*days/5);
    const id=obligation.id+':'+number;
    if(!charge||w.entries.some(e=>e.source===id))continue;
+   const category=['salary','office'].includes(obligation.category)?obligation.category:'fixed';
    s.cash=round(s.cash-charge);
-   w.entries.push({id:++w.sequence,day:w.days,source:id,category:'fixed',amount:charge},
-    {id:++w.sequence,day:w.days,source:id,category:'saídas',amount:charge});
+   postWeekly(w,w.days,id,category,charge);
+   postWeekly(w,w.days,id,'saídas',charge);
   }
+ }
+ function closeWeek(s){
+  const w=s.weekly,number=w.reports.length+1;
   const total=category=>round(w.entries.filter(e=>e.category===category).reduce((sum,e)=>sum+e.amount,0));
   const expenses=Object.fromEntries([...Object.keys(moneyCategories),'fixed'].map(k=>[k,total(k)]));
   const costs=round(Object.values(expenses).reduce((sum,v)=>sum+v,0));
   const revenue=total('receita');
+  const inflow=total('entradas'),outflow=total('saídas');
+  const cashDifference=round(s.cash-round(w.cashStart+inflow-outflow));
   w.reports.push({number,revenue,expenses,costs,result:round(revenue-costs),cashStart:w.cashStart,
-   inflow:total('entradas'),outflow:total('saídas'),cashEnd:s.cash,entries:w.entries,events:w.events});
+   inflow,outflow,cashDifference,cashEnd:s.cash,entries:w.entries,events:w.events});
   if(w.effect?.extraFocus)s.focus=Math.max(0,s.focus-1);
   w.entries=[];w.events=[];w.stage='report';w.elapsed=0;w.effect=null;
   s.paused=true;s.revision++;
@@ -310,7 +322,7 @@ const FirstLoop=(()=>{
    s.weekly.elapsed=Math.max(0,before.weekly.elapsed-secondsPerWorkday);
    recordMovement(before,s,'dia útil');
    s.weekly.days++;
-   if(s.weekly.days%5===0)closeWeek(s);
+   if(s.weekly.days%5===0){settleWeeklyObligations(s);closeWeek(s);}
    else s.revision++;
    if(s.phase==='opportunity')break;
   }

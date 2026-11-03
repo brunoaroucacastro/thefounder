@@ -82,10 +82,25 @@
     button('Trabalhar <small>+1 ação de foco · −5% de progresso</small>','weekend','data-choice="work"','secondary')+
     button('Estudar <small>'+(product?'Registrar um insight sobre '+esc(product.name):'Disponível depois da primeira rodada de vendas')+'</small>','weekend','data-choice="study" '+(!product?'disabled':''),'secondary')+'</div>';
   }else{
-   html='<small>SEXTA-FEIRA</small><h2>Fechamento da semana '+r.number+'</h2>'+
-    '<div class="week-totals"><div>Receita <b>'+money(r.revenue)+'</b></div><div>Resultado <b>'+money(r.result)+'</b></div><div>Caixa final <b>'+money(r.cashEnd)+'</b></div></div>'+
-    '<div class="week-finance"><section><h3>Despesas · '+money(r.costs)+'</h3>'+ (Object.entries(r.expenses).filter(([,n])=>n).map(([k,n])=>'<div>'+esc(C.moneyCategories[k]||'Custos fixos')+' <b>'+money(n)+'</b></div>').join('')||'<p>Sem despesas nesta semana.</p>')+
-    '</section><section><h3>Movimentos do caixa</h3><div>Saldo inicial <b>'+money(r.cashStart)+'</b></div><div>Entradas <b>'+money(r.inflow)+'</b></div><div>Saídas <b>'+money(r.outflow)+'</b></div></section></div>'+
+   const previous=w.reports.at(-2);
+   const difference=key=>{
+    if(!previous)return '<small>Primeira semana</small>';
+    const delta=r[key]-previous[key];
+    const signed=(delta>0?'+':'')+money(delta);
+    const percent=previous[key]===0?'sem base comparável':new Intl.NumberFormat('pt-BR',{style:'percent',signDisplay:'exceptZero',maximumFractionDigits:1}).format(delta/Math.abs(previous[key]));
+    return '<small>'+signed+' · '+percent+'</small>';
+   };
+   const tile=(label,key)=>'<div>'+label+' <b>'+money(r[key])+'</b>'+difference(key)+'</div>';
+   const reconciliation=r.cashDifference??Math.round((r.cashEnd-r.cashStart-r.inflow+r.outflow)*100)/100;
+   html='<small>SEXTA-FEIRA</small><h2>Semana '+String(r.number).padStart(2,'0')+' encerrada</h2>'+
+    '<div class="week-totals">'+tile('Receita','revenue')+tile('Despesas','costs')+tile('Resultado','result')+'</div>'+
+    (previous?'<p class="week-comparison">Em relação à semana '+previous.number+'</p>':'')+
+    (r.cashEnd<0?'<p class="week-alert" role="alert">Caixa negativo · '+money(r.cashEnd)+'</p>':'')+
+    (reconciliation?'<p class="week-alert" role="alert">Diferença na conciliação · '+money(reconciliation)+'</p>':'')+
+    '<div class="week-finance"><section><h3>Despesas por categoria</h3>'+
+    (Object.entries(r.expenses).filter(([,n])=>n).map(([k,n])=>'<div>'+esc(C.moneyCategories[k]||'Custos fixos')+' <b>'+money(n)+'</b></div>').join('')||'<p>Sem despesas nesta semana.</p>')+
+    '</section><section><h3>Caixa</h3><div>Saldo inicial <b>'+money(r.cashStart)+'</b></div><div>Recebimentos <b>'+money(r.inflow)+'</b></div><div>Pagamentos <b>'+money(r.outflow)+'</b></div>'+
+    '<div class="week-cash-end">Saldo final <b>'+money(r.cashEnd)+'</b></div></section></div>'+
     (r.events.length?'<ul>'+r.events.map(e=>'<li>'+esc(e)+'</li>').join('')+'</ul>':'')+
     '<div class="tray-foot">'+button('Histórico','weeklyHistory','','secondary')+button('Ir para casa →','readWeek')+'</div>';
   }

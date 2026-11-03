@@ -1,3 +1,9 @@
+## 0.42 — Fechamento financeiro semanal
+
+- Receita, despesas e resultado com comparação semanal e caixa separado.
+- Conciliação de recebimentos e pagamentos, alerta de caixa negativo e registros datados.
+- Despesas recorrentes liquidadas antes da consolidação, com categorias de equipe e aluguel.
+
 ## 0.41 — Sprints semanais e fim de semana
 
 - Cinco dias úteis por sprint, com pausa e velocidades 1×, 2× e 4×.
