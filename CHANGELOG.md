@@ -1,3 +1,7 @@
+## 0.39 — Planejamento do lote
+
+- A tela de produção identifica a quantidade a fabricar para o estoque e o custo do lote.
+
 ## 0.38 — Radar na criação
 
 - O radar volta a aparecer junto aos controles de atributos.
