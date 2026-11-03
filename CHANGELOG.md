@@ -1,3 +1,7 @@
+## 0.38 — Radar na criação
+
+- O radar volta a aparecer junto aos controles de atributos.
+
 ## 0.37 — Oficina com contornos mais definidos
 
 - Cena renderizada na densidade da tela e prévia do produto com mais resolução.

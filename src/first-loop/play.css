@@ -50,3 +50,5 @@ body{background:#312940}button{border-radius:5px;border-color:#816584;box-shadow
 
 /* Creation fits fully at 1280×720, with the radar collapsed. */
 .creation-title h2{margin-bottom:8px}.creation-hero{padding:10px 0}.creation-hero>.gadget-preview{height:100px}.points-heading{margin:10px 0 8px}.pixel-attributes{gap:7px}.creation-cost{margin-top:10px;padding-top:10px}.brand,.creation-title h2,.workshop-nav button{text-shadow:.4px 0 currentColor}.workshop-nav button.active{background:#23464b}.workshop-info-panel button{font-family:Consolas}
+
+.creation-radar .radar{display:block;width:100%;height:190px;margin:auto}
