@@ -1,3 +1,7 @@
+# 0.55 · Modo de testes
+
+- Temporário: toda vez que o jogo é aberto ou recarregado, a partida começa do zero e o save anterior é apagado. Para desligar, use START_FRESH = false em src/first-loop/play.js.
+
 # 0.54 · Legendas dos canais
 
 - Marketing explica o que é cada canal, sem dizer para qual público ele funciona.

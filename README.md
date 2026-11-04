@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.55 — Modo de testes
+
+Abra dist/The-Founder-Primeira-Aposta-0.55.html. Temporário: cada abertura começa uma partida do zero.
+
 ## Jogar 0.54 — Legendas dos canais
 
 Abra dist/The-Founder-Primeira-Aposta-0.54.html. Canais explicados no marketing e rendimento do mix na comparação de campanhas.
