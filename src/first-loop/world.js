@@ -81,19 +81,7 @@ const PilotWorld=(()=>{
  function targets(s){const research=['personaResearch','gadgetResearch'].includes(s.phase),selling=['selling','opportunity','recap'].includes(s.phase);return [P(selling?9.9:6.6,selling?3.5:7.6),P(2.8,5.65)];}
  function actors(s,v,dt){const goal=targets(s);v.actors??=goal.map(([x,y])=>({x,y}));if(v.actors.some(p=>p.x>width||p.y>height))v.actors=goal.map(([x,y])=>({x,y}));v.actors.forEach((p,i)=>{const key=goal[i].join(',');if(p.goal!==key){const selling=['selling','opportunity','recap'].includes(s.phase);p.path=i===0&&p.goal?(selling?[P(8.5,7.2),P(8.5,3.3),goal[i]]:[P(8.5,3.3),P(8.5,7.2),goal[i]]):[goal[i]];p.goal=key;}const [x,y]=p.path?.[0]||goal[i],d=Math.hypot(x-p.x,y-p.y),ratio=d?Math.min(1,36*dt*s.speed/d):0;p.x+=(x-p.x)*ratio;p.y+=(y-p.y)*ratio;p.moving=d>1;if(d<=1&&p.path?.length>1)p.path.shift();});}
 
- const bedroomBounds=[0,20,320,160];
- function renderBedroom(c,s,v,art){
-  c.drawImage(art,...bedroomBounds);
-  const task=s.crew||s.job;
-  if(task) localProgress(c,193,65,s.crew?'PREPARANDO LOTES':'EM ANDAMENTO',task.elapsed/task.duration);
-  if(v.saleFlash>0){
-   R(c,189,66,44,12,ink);
-   R(c,190,67,42,10,'#edb747');
-   label(c,'+ R$ '+Math.round(v.saleValue||0),211,74,ink,5,'center');
-  }
-  if(v.reviewFlash>0) label(c,(v.reviewStars||0)+'/5',202,91,'#ffde9b',6,'center');
- }
- function render(c,s,t,v={}){c.imageSmoothingEnabled=false;c.clearRect(0,0,width,height);const art=typeof document==='undefined'?null:document.getElementById('bedroom-art');if(art?.naturalWidth){renderBedroom(c,s,v,art);return;}room(c);const [fx,fy]=P(10.6,0,39);R(c,fx+4,fy+1,3,8,'#546979');c.beginPath();c.arc(fx,fy,6,0,Math.PI*2);c.fillStyle='#76898d';c.fill();c.strokeStyle=ink;c.lineWidth=1;c.stroke();for(let i=0;i<3;i++){const a=t*4+i*Math.PI*2/3;line(c,[fx,fy],[fx+Math.cos(a)*5,fy+Math.sin(a)*5],'#c3c8b8');}
+ function render(c,s,t,v={}){c.imageSmoothingEnabled=false;c.clearRect(0,0,width,height);room(c);const [fx,fy]=P(10.6,0,39);R(c,fx+4,fy+1,3,8,'#546979');c.beginPath();c.arc(fx,fy,6,0,Math.PI*2);c.fillStyle='#76898d';c.fill();c.strokeStyle=ink;c.lineWidth=1;c.stroke();for(let i=0;i<3;i++){const a=t*4+i*Math.PI*2/3;line(c,[fx,fy],[fx+Math.cos(a)*5,fy+Math.sin(a)*5],'#c3c8b8');}
   const design=['design','upgradeAttributes','upgradePlan','building','repairing','testReady','testOutcome','testing','upgradeWork','upgradeReady','upgradeOutcome','upgradeTesting'].includes(s.phase),research=['personaResearch','gadgetResearch'].includes(s.phase),working=!!s.job||!!s.crew,selling=['selling','opportunity','recap'].includes(s.phase),objects=[],add=(depth,draw)=>objects.push({depth,draw}),archived=(s.portfolio||[]).filter(p=>p.stock>0);
   ['headphones','keyboard','mouse'].forEach((kind,i)=>{const stock=(s.productId===kind?s.stock:0)+archived.filter(p=>p.productId===kind).reduce((n,p)=>n+p.stock,0);add(4.5+i*2.5,()=>shelf(c,3+i*2.5,.5,kind,stock));});add(8.2,()=>plant(c,.8,7.8));
   add(9.4,()=>{const [x,y]=P(2.8,5.65);person(c,x,y,'#ded4ad','#48362e','#e2ae80',t,working&&!research?'work':'idle','normal',true);});
@@ -109,7 +97,7 @@ const PilotWorld=(()=>{
   if(design&&!working)poly(c,[P(1.25,6.45,13),P(4.55,6.45,13),P(4.55,7.8,13),P(1.25,7.8,13)],'#ffd35a20','#f2bd4b');
   if(v.saleFlash>0){const [x,y]=P(10.6,4.3,34+(1-v.saleFlash)*7);R(c,x-15,y-7,35,10,ink);R(c,x-14,y-6,33,8,'#edb747');label(c,'+ R$ '+Math.round(v.saleValue||0),x+2,y,ink,4,'center');}
   if(s.phase==='selling'&&s.stock===0){const [x,y]=P(10.7,4.3,30);localProgress(c,x,y,'SEM ESTOQUE',0);}if(v.reviewFlash>0){const [x,y]=P(9.8,4.1,40);R(c,x-13,y-7,27,10,'#fff0ca');label(c,(v.reviewStars||0)+'/5',x,y,ink,5,'center');}}
- function hit(s,x,y){if(typeof document!=='undefined'&&document.getElementById('bedroom-art')?.naturalWidth){if(x>=153&&x<=235&&y>=61&&y<=111)return 'bench';if(x>=180&&x<=216&&y>111&&y<=144)return 'products';return null;}return [['bench',P(2.8,7)],['products',P(7,.8)],['cash',P(7,8.6)],['clients',P(10.5,4.5)]].find(([,p])=>Math.abs(x-p[0])<22&&Math.abs(y-(p[1]-8))<16)?.[0]||null;}
+ function hit(s,x,y){return [['bench',P(2.8,7)],['products',P(7,.8)],['cash',P(7,8.6)],['clients',P(10.5,4.5)]].find(([,p])=>Math.abs(x-p[0])<22&&Math.abs(y-(p[1]-8))<16)?.[0]||null;}
  return {width,height,render,actors,headphones:gadget,person,project:P,hit};
 })();
 if(typeof module!=='undefined')module.exports=PilotWorld;
