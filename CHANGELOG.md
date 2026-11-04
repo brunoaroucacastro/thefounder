@@ -1,3 +1,7 @@
+## 0.45 — Tempo de planejamento do produto
+
+- O calendário avança à metade da velocidade durante escolhas e ajustes de produto.
+
 ## 0.44 — Ritmo do dia útil
 
 - Dia útil de 18 segundos em 1× e pausa durante o planejamento de marketing.

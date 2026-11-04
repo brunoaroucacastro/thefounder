@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict');
 const {C,act,flags}=require('./modern-support.cjs');
-function step(s,n=1){for(let i=0;i<n;i++)s=C.tick(s,18/s.speed);return s;}
+function step(s,n=1){for(let i=0;i<n;i++){const day=s.weekly.days;for(let j=0;j<121&&s.weekly.days===day&&s.weekly.stage==="work";j++)s=C.tick(s,.3/s.speed);}return s;}
 function choose(s,choice='study'){return act(act(s,'readWeek'),'weekend',{choice});}
 function scenario(speed){
  let s=C.enableWeekly(C.fresh(3,{...flags,traction:true}));

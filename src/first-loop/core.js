@@ -386,11 +386,14 @@ const FirstLoop=(()=>{
   recordMovement(input,next,a.type);
   return next;
  }
+ function productPlanning(s){
+  return ['catalog','customer','design','blueprint','upgradePlan','upgradeAttributes'].includes(s.phase);
+ }
  function tick(input,dt){
   if(!input.weekly)return advanceSimulation(input,dt);
   if(input.weekly.stage!=='work'||input.paused||input.launchResultOpen||input.phase==='opportunity'||input.phase==='intro'||!Number.isFinite(dt)||dt<=0)return input;
   if(['promotion','recampaignPlan'].includes(input.phase)&&!input.job&&!input.crew)return input;
-  let s={...input,weekly:{...input.weekly,elapsed:input.weekly.elapsed+dt*input.speed}};
+  let s={...input,weekly:{...input.weekly,elapsed:input.weekly.elapsed+dt*input.speed*(productPlanning(input)?.5:1)}};
   s.weekly.minute??=0;
   while(s.weekly.elapsed+1e-8>=secondsPerMinute&&s.weekly.stage==='work'){
    const before=s;
@@ -409,6 +412,6 @@ const FirstLoop=(()=>{
   }
   return s;
  }
- return {enableSocial,enableWeekly,studyTarget,moneyCategories,enableTraction,materialPayment,dismantleQuote,rollModifiers,launchFee,promotionCosts,promotionCost,windowOperatingCost,Learning,windowMetrics,campaignGradeFactor,shopCanBuy,upgradeLaunchReserve,pricingCost,quoteCAC,cac,reserved,acquisitionRoom,Reach,enableReach:Reach.enable,axes:s=>G.axesFor(s),pointBudget,technicalNote:s=>s.universal?G.U.note(s):null,G,Book,Audience,warmCandidates,retargetLimit,enableBehavior,enableAccounting,acquisitionMetrics,forecast,overview,snapshot,enableEvolution,upgradeDifficulty,upgradeCost,campaignBudget,campaignPotential,discountTiers,validQuantity,volumeDiscount,batchUnitCost,batchTotal,maxMargin,contribution,productionTime,gradeFactor,places,place,developmentCost,priceFor,fourReach,personas:s=>s.gadgets?(s.commercial&&s.personaCandidates?.length?G.personas(s).filter(p=>s.personaCandidates.includes(p.id)):G.personas(s)):clients,clients,features,campaigns,fresh,load,client,campaign,unitCost,match,netPrice,rate,reach,act,tick,result};
+ return {productPlanning,enableSocial,enableWeekly,studyTarget,moneyCategories,enableTraction,materialPayment,dismantleQuote,rollModifiers,launchFee,promotionCosts,promotionCost,windowOperatingCost,Learning,windowMetrics,campaignGradeFactor,shopCanBuy,upgradeLaunchReserve,pricingCost,quoteCAC,cac,reserved,acquisitionRoom,Reach,enableReach:Reach.enable,axes:s=>G.axesFor(s),pointBudget,technicalNote:s=>s.universal?G.U.note(s):null,G,Book,Audience,warmCandidates,retargetLimit,enableBehavior,enableAccounting,acquisitionMetrics,forecast,overview,snapshot,enableEvolution,upgradeDifficulty,upgradeCost,campaignBudget,campaignPotential,discountTiers,validQuantity,volumeDiscount,batchUnitCost,batchTotal,maxMargin,contribution,productionTime,gradeFactor,places,place,developmentCost,priceFor,fourReach,personas:s=>s.gadgets?(s.commercial&&s.personaCandidates?.length?G.personas(s).filter(p=>s.personaCandidates.includes(p.id)):G.personas(s)):clients,clients,features,campaigns,fresh,load,client,campaign,unitCost,match,netPrice,rate,reach,act,tick,result};
 })();
 if(typeof module!=='undefined')module.exports=FirstLoop;
