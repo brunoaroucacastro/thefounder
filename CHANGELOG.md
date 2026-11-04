@@ -1,3 +1,7 @@
+# 0.49 · Nova arte da oficina
+
+- Refeitos piso, paredes, janelas, balcão e detalhes de personagens. Sombras de contato e iluminação na mesma projeção isométrica.
+
 # 0.48 · Recursos visuais da navegação
 
 - Ícone Oficina: Office Chair de Delapouite, via Game-icons.net (CC BY 3.0), com fundo removido e cor adaptada. https://game-icons.net/1x1/delapouite/office-chair.html · https://creativecommons.org/licenses/by/3.0/
