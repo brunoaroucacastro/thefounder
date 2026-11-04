@@ -205,6 +205,7 @@ const PilotWorld=(()=>{
    else{const bars=[.35,.52,.45,.7,.62,.82].map((h,i)=>Math.min(1,h*(.6+Math.min(1,(s.sold||0)/60)*.6)+(i===5?.1*Math.sin(t*3):0)));
     bars.forEach((h,i)=>{c.fillStyle=i===5?'#4fbf8a':'#5a8bd6';c.fillRect(12+i*20,70-h*56,13,h*56);});}
   });
+  if(s.job&&!RESEARCH.includes(s.phase)||s.crew)screenArea(c,()=>{rrect(c,96,40,34,28,4);c.fillStyle='#2d2a4a';c.fill();circle(c,113,52,7,'#c98e6b');c.beginPath();c.arc(113,50,8,Math.PI,0);c.fillStyle='#875c42';c.fill();rrect(c,104,59,18,9,3);c.fillStyle='#4fbf8a';c.fill();c.fillStyle='#fff';c.font='800 6px "Segoe UI",system-ui,sans-serif';c.fillText('NINA',98,47);});
   if(sale){const g=P(4.8,.45,1.4);c.save();c.globalAlpha=.5;circle(c,g[0],g[1],60,grad(c,'r',[g[0],g[1],0,g[0],g[1],60],[[0,'rgba(127,255,190,.8)'],[1,'rgba(127,255,190,0)']],'rgba(127,255,190,.2)'));c.restore();}
  }
  function stockOf(s){const archived=(s.portfolio||[]).filter(p=>p&&p.stock>0);const by={};for(const kind of ['headphones','keyboard','mouse'])by[kind]=(s.productId===kind?s.stock||0:0)+archived.filter(p=>p.productId===kind).reduce((n,p)=>n+p.stock,0);return by;}
@@ -242,7 +243,7 @@ const PilotWorld=(()=>{
   if(o.progress!=null){rrect(c,x-w/2+8,y+h/2-6,w-16,3,1.5);c.fillStyle='rgba(36,29,51,.15)';c.fill();rrect(c,x-w/2+8,y+h/2-6,(w-16)*Math.max(0,Math.min(1,o.progress)),3,1.5);c.fillStyle='#f2a93b';c.fill();}
   c.fillStyle=o.color||'#241d33';c.textAlign='center';c.textBaseline='middle';c.fillText(text,x,y-(o.progress!=null?2:0)+.5);c.textAlign='left';c.textBaseline='alphabetic';c.restore();}
  const SPOTS={bench:{at:[4.8,.4,1.45],w:80,h:62,label:'COMPUTADOR',tag:[4.75,.3,1.97]},products:{at:[7.35,.3,1.05],w:52,h:70,label:'PRODUTOS',tag:[7.35,.3,2.3]},cash:{at:[.36,4.26,.85],w:38,h:34,label:'CONTAS',tag:[.36,4.26,1.35]},clients:{at:[4.82,0,2.17],w:86,h:24,label:'CLIENTES',tag:[4.82,0,2.58]}};
- function markers(c,s,t){for(const [key,sp] of Object.entries(SPOTS)){const p=P(...sp.tag);pill(c,p[0],p[1],sp.label,{alpha:.78,font:'800 9px "Segoe UI",system-ui,sans-serif',h:17,pad:14});}
+ function markers(c,s,t){for(const [key,sp] of Object.entries(SPOTS)){if(key==='bench'&&s.phase==='intro')continue;const p=P(...sp.tag);pill(c,p[0],p[1],sp.label,{alpha:.78,font:'800 9px "Segoe UI",system-ui,sans-serif',h:17,pad:14});}
   if(s.phase==='intro'){const p=P(4.9,2.05,2.35),b=Math.sin(t*4)*3;pill(c,p[0],p[1]+b,'CLIQUE NO COMPUTADOR',{bg:'#f2a93b',border:'#a8661c'});}}
  function bubbles(c,s,t,v){
   const task=s.crew||s.job,research=RESEARCH.includes(s.phase);
@@ -250,7 +251,7 @@ const PilotWorld=(()=>{
    const msg=research?'PESQUISA '+Math.floor(ratio*100)+'%':s.crew?'MONTAGEM '+Math.floor(ratio*(s.crew.quantity||0))+'/'+(s.crew.quantity||0):'DESENVOLVENDO '+Math.floor(ratio*100)+'%';pill(c,at[0],at[1],msg,{progress:ratio,h:28});}
   if(s.phase==='selling'&&(s.stock||0)===0){const p=P(6.7,4.6,1.1);pill(c,p[0],p[1],'SEM ESTOQUE',{bg:'#e46d6d',color:'#fff',border:'#9c3b3b'});}
   if(s.phase==='opportunity'){const p=P(4.8,.4,2.05),b=Math.sin(t*5)*2;pill(c,p[0],p[1]+b,'💬 NOVA PROPOSTA',{bg:'#8fd4ff',border:'#3a7ea8'});}
-  if((v.saleFlash||0)>0){const p=P(4.8,.4,1.95),k=1-v.saleFlash;pill(c,p[0],p[1]-k*44,'+ R$ '+Math.round(v.saleValue||0).toLocaleString('pt-BR'),{bg:'#4fbf8a',color:'#fff',border:'#2a7a54',alpha:Math.min(1,v.saleFlash*2.5),font:'900 13px "Segoe UI",system-ui,sans-serif'});}
+  if((v.saleFlash||0)>0){const p=P(4.15,.6,1.85),k=1-v.saleFlash;pill(c,p[0],p[1]-k*44,'+ R$ '+Math.round(v.saleValue||0).toLocaleString('pt-BR'),{bg:'#4fbf8a',color:'#fff',border:'#2a7a54',alpha:Math.min(1,v.saleFlash*2.5),font:'900 13px "Segoe UI",system-ui,sans-serif'});}
   if((v.reviewFlash||0)>0){const n=Math.max(0,Math.min(5,Math.round(v.reviewStars||0))),p=P(4.2,1,2.25);pill(c,p[0],p[1]-(1-v.reviewFlash)*30,'★'.repeat(n)+'☆'.repeat(5-n),{color:'#c47d1f',alpha:Math.min(1,v.reviewFlash*2.5),font:'900 13px "Segoe UI",system-ui,sans-serif'});}
  }
 

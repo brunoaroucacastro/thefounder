@@ -1,3 +1,15 @@
+# 0.52 · Correções do playtest
+
+- Botão ⏩ Avançar até terminar nas esperas de pesquisa, protótipo, campanha e montagem (cerca de 8× mais rápido; para no fechamento da semana).
+- Escolher o gadget pede confirmação antes de cobrar a pesquisa.
+- Etiqueta de preço mostra a faixa de valor percebido pela persona; lote mostra interessados previstos, caixa e faixas de desconto.
+- Resultado do D20 da campanha explica o alcance: base × mix × dado.
+- Trilha de criação com as etapas reais; texto do fim de semana reescrito; fechamento usa Fechar a semana.
+- Vendas e resumo mostram quantas vendas faltam para pagar o investimento e o lucro por venda depois disso.
+- Nina passa a ser a sócia com oficina própria e aparece em chamada no monitor enquanto trabalha.
+- Tema: resumo de estoque legível, blocos claros no lugar do bege antigo, texto secundário dos botões em linha própria, layout compacto em telas pequenas.
+- Planilhas em docs/: PLAYTEST-051.xlsx (status dos problemas) e PERSONAS-E-AVALIACOES.xlsx (personas, canais e avaliações para revisão).
+
 # 0.51 · Quarto do fundador em ilustração vetorial
 
 - A oficina em pixel foi substituída pelo quarto do fundador: cena isométrica vetorial com luz da janela, luminária, varal de luzes, gato e sombras suaves, nítida em qualquer resolução.

@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.52 — Correções do playtest
+
+Abra dist/The-Founder-Primeira-Aposta-0.52.html. Botão para avançar as esperas, confirmação de compras, dicas de preço e lote, ponto de equilíbrio nas vendas e tema revisado. [Problemas e status](docs/PLAYTEST-051.md).
+
 ## Jogar 0.51 — Quarto do fundador
 
 Abra dist/The-Founder-Primeira-Aposta-0.51.html. Nova arte vetorial: o jogo acontece no quarto do fundador, com computador, estante de produtos, cofrinho das contas e quadro de clientes clicáveis. Interface com tema novo; regras e saves da 0.49 preservados.
