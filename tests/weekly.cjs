@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict');
 const {C,act,flags}=require('./modern-support.cjs');
-function step(s,n=1){for(let i=0;i<n;i++)s=C.tick(s,12/s.speed);return s;}
+function step(s,n=1){for(let i=0;i<n;i++)s=C.tick(s,18/s.speed);return s;}
 function choose(s,choice='study'){return act(act(s,'readWeek'),'weekend',{choice});}
 function scenario(speed){
  let s=C.enableWeekly(C.fresh(3,{...flags,traction:true}));
@@ -11,6 +11,7 @@ function scenario(speed){
  s=act(s,'customer',{id:s.personaCandidates[0]});
  s=act(s,'attribute',{id:'quality',delta:1});
  s=act(s,'reveal');
+ assert.deepEqual(C.tick(s,180),s);
  s=act(act(s,'confirmPromotion'),'build');
  assert.equal(s.job.daysRequired,5);
  s=step(s,3);
@@ -43,7 +44,7 @@ function scenario(speed){
  s=act(s,'launchAndRoll');
  assert.equal(s.revenue,0);
  s=act(s,'ackLaunch');
- s=step(s);
+ while(s.phase==='launching')s=C.tick(s,.3/s.speed);
  assert.equal(s.phase,'selling');
  assert.equal(s.revenue,0);
  for(let i=0;i<12&&s.phase!=='recap';i++){

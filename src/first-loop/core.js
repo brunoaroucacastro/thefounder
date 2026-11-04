@@ -276,12 +276,13 @@ const FirstLoop=(()=>{
   return s;
  }
 
- const secondsPerWorkday=12;
+ const secondsPerWorkday=18;
+ const secondsPerMinute=secondsPerWorkday/60;
  const moneyCategories={cogs:'Produtos vendidos',projectCost:'Desenvolvimento',campaignCost:'Aquisição',campaignFixedCost:'Campanha',rent:'Operação',scrapLoss:'Perdas de estoque',setupCost:'Abertura',operatingCost:'Pesquisa e operação',fees:'Taxas',salary:'Equipe',office:'Aluguel'};
  function enableWeekly(s){
   if(s.weekly||!s.modernGameplay)return s;
   return {...s,speed:[1,2,4].includes(s.speed)?s.speed:1,weekly:{
-   days:0,elapsed:0,stage:'work',cashStart:s.cash,entries:[],events:[],reports:[],choices:[],obligations:[],insights:[],effect:null,sequence:0
+   days:0,minute:0,elapsed:0,stage:'work',cashStart:s.cash,entries:[],events:[],reports:[],choices:[],obligations:[],insights:[],effect:null,sequence:0
   }};
  }
  function recordMovement(before,after,source){
@@ -388,16 +389,22 @@ const FirstLoop=(()=>{
  function tick(input,dt){
   if(!input.weekly)return advanceSimulation(input,dt);
   if(input.weekly.stage!=='work'||input.paused||input.launchResultOpen||input.phase==='opportunity'||input.phase==='intro'||!Number.isFinite(dt)||dt<=0)return input;
+  if(['promotion','recampaignPlan'].includes(input.phase)&&!input.job&&!input.crew)return input;
   let s={...input,weekly:{...input.weekly,elapsed:input.weekly.elapsed+dt*input.speed}};
-  while(s.weekly.elapsed+1e-8>=secondsPerWorkday&&s.weekly.stage==='work'){
+  s.weekly.minute??=0;
+  while(s.weekly.elapsed+1e-8>=secondsPerMinute&&s.weekly.stage==='work'){
    const before=s;
-   s=advanceSimulation(before,1,60);
+   s=advanceSimulation(before,1,1);
    if(s===before)break;
-   s.weekly.elapsed=Math.max(0,before.weekly.elapsed-secondsPerWorkday);
+   s.weekly.elapsed=Math.max(0,before.weekly.elapsed-secondsPerMinute);
    recordMovement(before,s,'dia útil');
-   s.weekly.days++;
-   if(s.weekly.days%5===0){settleWeeklyObligations(s);closeWeek(s);}
-   else s.revision++;
+   s.weekly.minute++;
+   if(s.weekly.minute===60){
+    s.weekly.minute=0;
+    s.weekly.days++;
+    if(s.weekly.days%5===0){settleWeeklyObligations(s);closeWeek(s);}
+    else s.revision++;
+   }
    if(s.phase==='opportunity')break;
   }
   return s;

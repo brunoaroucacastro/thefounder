@@ -1,3 +1,9 @@
+## 0.44 — Ritmo do dia útil
+
+- Dia útil de 18 segundos em 1× e pausa durante o planejamento de marketing.
+- Progresso e vendas processados ao longo do dia, com relógio de ponteiros.
+- A reação ao D20 distingue falha crítica do multiplicador de marketing.
+
 ## 0.43 — Nexus e reputação
 
 - Feed automático de lançamentos e experiências de compra, com perfis e novidades.
