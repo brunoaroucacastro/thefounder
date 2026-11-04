@@ -1,3 +1,13 @@
+# 0.53 · Personas, canais e avaliações v2
+
+- 24 personas novas (6 por produto) com pesos 35/25/20/10/10/0 equilibrados: cada atributo é o principal de exatamente uma persona; cada uma tem um atributo que não importa.
+- Idades equilibradas (25% por faixa em cada produto), com mais público 55+. O mínimo exigido é o atributo principal de cada persona, inclusive Versatilidade.
+- Pesquisa mostra a fala da persona e três comentários que dão pistas dos atributos, sem citar nomes.
+- Canais novos: SEO, Redes Sociais (Influenciadores), E-mail Marketing, Out of Home, PR e Produção de Conteúdo. Cada persona tem um mix ideal; a eficiência do marketing é a sobreposição entre o seu mix e o dela.
+- 161 frases de avaliação, sem repetição e quase sem citar o atributo pelo nome.
+- Vale para partidas novas; saves anteriores mantêm as personas e os canais antigos.
+- Fonte: docs/PERSONAS-E-AVALIACOES-v2.xlsx. Teste: node tests/personas-v2.cjs.
+
 # 0.52 · Correções do playtest
 
 - Botão ⏩ Avançar até terminar nas esperas de pesquisa, protótipo, campanha e montagem (cerca de 8× mais rápido; para no fechamento da semana).

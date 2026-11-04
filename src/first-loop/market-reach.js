@@ -22,6 +22,8 @@ const MarketReach=(()=>{
  function legacyPlan(s,{promo=s.promo,budget=150+sum(Object.values(promo))*100,grade='normal',criticalSuccess=false}={}){if(!Number.isFinite(budget)||budget<0||Object.values(promo).some(v=>!Number.isInteger(v)||v<0)||sum(Object.values(promo))>4)throw Error('Campanha inválida.');const p=readProduct(s),persona=G.personas(s).find(p=>p.id===s.clientId),weights=demography.map((d,i)=>d*(.25+.75*(persona?.ages[i]??.25))),den=sum(weights),R=(s.modernGameplay?{critical:.6,partial:.8,normal:1,great:1.15,exceptional:1.3}:s.unitAcquisition?{critical:.6,partial:.8,normal:1,great:1.2,exceptional:1.4}:{critical:.35,partial:.65,normal:1,great:1.45,exceptional:1.8})[grade];if(!Number.isFinite(R))throw Error('Resultado de campanha inválido.');const B=s.market?.brand||1,W=wordOfMouth(s).factor,S=fatigue(s,promo),cost={online:2,local:2.5,partner:1.7}[s.placeId]||2,limits=demography.map((d,i)=>Math.max(0,population*d-p.covered[i])),expected=demography.map((d,i)=>{const N=population*d,E=((s.unitAcquisition?population*.004:budget/cost)+(s.early?6:0))*weights[i]/den*campaignStrength(promo,i,s.unitAcquisition,s.modernGameplay)*(s.modernGameplay?(venueCoefficients[s.placeId]?.[i]||1):1)*R*(s.modernGameplay&&criticalSuccess?1.1:1)*B*W*S;return limits[i]*(-Math.expm1(-E/N));}),byAge=roundWithin(expected,limits);return{total:sum(byAge),byAge,expected,budget,kind:'paid',brand:B,wom:W,fatigue:S};}
 
  const channels=['Redes sociais','Anúncios pagos','Influenciadores','Relações públicas','Conteúdo','SEO'];
+ const channelsV2=['SEO (Buscas)','Redes Sociais (Influenciadores)','E-mail Marketing','Out of Home (Mídia Offline)','PR (Revistas, Jornais, Portais)','Produção de Conteúdo'];
+ const channelNames=s=>s&&s.personaSet==='v2'?channelsV2:channels;
  const defaultMix=()=>[20,20,15,15,15,15];
  const validMix=m=>Array.isArray(m)&&m.length===6&&m.every(p=>Number.isInteger(p)&&p>=0)&&sum(m)===100;
  const ageAffinity=[[.95,.88,.64,.42],[.72,.83,.75,.53],[.86,.77,.54,.31],[.35,.47,.71,.86],[.57,.73,.78,.65],[.40,.64,.82,.88]];
@@ -30,6 +32,9 @@ const MarketReach=(()=>{
  const marketingRange=[.8,1.5];
  function marketing(s,mix){
   if(!validMix(mix))throw Error('Distribua exatamente 100% do esforço.');
+  const ideal=s.personaSet==='v2'&&G.personas(s).find(p=>p.id===s.clientId)?.channels;
+  // v2: eficiência = sobreposição entre o mix do jogador e o mix ideal da persona (100% quando igual).
+  if(ideal)return marketingRange[0]+(marketingRange[1]-marketingRange[0])*clamp(sum(mix.map((p,i)=>Math.min(p,ideal[i])))/100,0,1);
   const [young,adult,middle,older]=G.personas(s).find(p=>p.id===s.clientId)?.ages||[.25,.25,.25,.25];
   // The existing 35–54 bin contributes five of its twenty years to 50+.
   const ages=[young,adult,middle*.75,older+middle*.25];
@@ -136,7 +141,7 @@ const MarketReach=(()=>{
  function startOrganic(s){if(!organicPotential(s))throw Error('Ainda não há novas recomendações para circular.');const m=ensure(s);m.serial++;m.active={id:m.serial,kind:'organic',remaining:[0,0,0,0],organicQueue:[],byAge:[0,0,0,0],organicEntered:0};return inviteOrganic(s);}
  function message(s){const a=s.market?.active;if(!a||a.legacy||!['campaignOutcome','recampaignOutcome','selling','recap'].includes(s.phase))return'Observe as reações e os reviews para aprender quem sua campanha alcança.';if(a.kind==='retarget')return'Quem já conhecia o produto voltou para olhar de novo.';if(a.kind==='organic')return'As recomendações trouxeram pessoas sem uma nova campanha paga.';if(a.fatigue<.82)return'A abordagem parece conhecida. Talvez seja hora de mudar a apresentação.';if(sum(a.byAge||[])>0){const i=a.byAge.indexOf(Math.max(...a.byAge));return['A novidade chamou atenção de pessoas mais jovens.','Jovens adultos apareceram bastante nesta apresentação.','A apresentação chamou atenção de adultos com a rotina estabelecida.','Pessoas mais velhas apareceram bastante nesta apresentação.'][i];}return'As primeiras reações estão chegando. Os compradores vão contar o que acharam.';}
  function brandLabel(s){const b=s.market?.brand||1;return b<.94?'Reputação abalada':b>1.18?'Marca respeitada':b>1.04?'Ganhando confiança':'Marca pouco conhecida';}
- return {gadgetMarkets,enableGrowth,growthProfile,settleGrowth,renewGrowth,channels,defaultMix,validMix,marketing,ages,demography,population,coefficients,unitCoefficients,venueCoefficients,now,key,ensure,product,readProduct,validate,enable,recordReview,closeBrand,wordOfMouth,fatigue,campaignStrength,plan,commit,beginRetarget,nextBuyer,paidCustomer,organicPotential,inviteOrganic,startOrganic,message,brandLabel};
+ return {gadgetMarkets,enableGrowth,growthProfile,settleGrowth,renewGrowth,channels,channelsV2,channelNames,defaultMix,validMix,marketing,ages,demography,population,coefficients,unitCoefficients,venueCoefficients,now,key,ensure,product,readProduct,validate,enable,recordReview,closeBrand,wordOfMouth,fatigue,campaignStrength,plan,commit,beginRetarget,nextBuyer,paidCustomer,organicPotential,inviteOrganic,startOrganic,message,brandLabel};
 })();
 if(typeof module!=='undefined')module.exports=MarketReach;
 

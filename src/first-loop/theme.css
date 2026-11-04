@@ -106,3 +106,6 @@ html,body{height:100%;overflow:hidden}
  .workshop-nav button{font-size:12px!important;padding:6px 8px!important;margin:4px 1px!important}
 }
 @media (max-height:760px){#game{min-height:0!important}}
+
+/* 0.53 — comentários da persona (pistas da pesquisa) */
+.persona-comment{margin:4px 0 0!important;font-size:13px!important;font-style:italic;color:var(--q-ink-soft)!important;line-height:1.35}

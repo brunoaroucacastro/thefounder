@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.53 — Personas v2
+
+Abra dist/The-Founder-Primeira-Aposta-0.53.html e comece uma empresa nova. Personas equilibradas com pistas nos comentários, seis canais de marketing novos e avaliações variadas. [Planilha de referência](docs/PERSONAS-E-AVALIACOES-v2.xlsx).
+
 ## Jogar 0.52 — Correções do playtest
 
 Abra dist/The-Founder-Primeira-Aposta-0.52.html. Botão para avançar as esperas, confirmação de compras, dicas de preço e lote, ponto de equilíbrio nas vendas e tema revisado. [Problemas e status](docs/PLAYTEST-051.md).
