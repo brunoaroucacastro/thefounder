@@ -1,3 +1,7 @@
+# Organização dos recursos visuais
+
+- Ícones SVG versionados como arquivos de origem e incorporados ao gerar a versão offline.
+
 # 0.49 · Nova arte da oficina
 
 - Refeitos piso, paredes, janelas, balcão e detalhes de personagens. Sombras de contato e iluminação na mesma projeção isométrica.
