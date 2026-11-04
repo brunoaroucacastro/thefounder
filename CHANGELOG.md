@@ -1,3 +1,8 @@
+# 0.48 · Recursos visuais da navegação
+
+- Ícone Oficina: Office Chair de Delapouite, via Game-icons.net (CC BY 3.0), com fundo removido e cor adaptada. https://game-icons.net/1x1/delapouite/office-chair.html · https://creativecommons.org/licenses/by/3.0/
+- Ícone Clientes: personagem blue.svg de GDQuest (CC0). https://github.com/GDQuest/game-sprites
+
 ## 0.47 — Audiência e saturação de gadgets
 
 - Base da empresa, reputação, distribuição e renovação por produto e persona.
