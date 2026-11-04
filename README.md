@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.54 — Legendas dos canais
+
+Abra dist/The-Founder-Primeira-Aposta-0.54.html. Canais explicados no marketing e rendimento do mix na comparação de campanhas.
+
 ## Jogar 0.53 — Personas v2
 
 Abra dist/The-Founder-Primeira-Aposta-0.53.html e comece uma empresa nova. Personas equilibradas com pistas nos comentários, seis canais de marketing novos e avaliações variadas. [Planilha de referência](docs/PERSONAS-E-AVALIACOES-v2.xlsx).

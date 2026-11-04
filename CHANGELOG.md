@@ -1,3 +1,9 @@
+# 0.54 · Legendas dos canais
+
+- Marketing explica o que é cada canal, sem dizer para qual público ele funciona.
+- Comparar campanhas mostra quanto o mix rendeu, na escala de ×0,80 a ×1,50.
+- Decisão de design: as personas não dão pistas de canal; o jogador descobre comparando resultados.
+
 # 0.53 · Personas, canais e avaliações v2
 
 - 24 personas novas (6 por produto) com pesos 35/25/20/10/10/0 equilibrados: cada atributo é o principal de exatamente uma persona; cada uma tem um atributo que não importa.
