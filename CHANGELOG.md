@@ -1,3 +1,7 @@
+# 0.50 · Quarto do fundador
+
+- Arte do quarto no cenário jogável, com pedidos online e indicadores de atividade sobre a cena. O personagem faz parte da ilustração estática nesta versão.
+
 # Organização dos recursos visuais
 
 - Ícones SVG versionados como arquivos de origem e incorporados ao gerar a versão offline.

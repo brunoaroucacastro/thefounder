@@ -4,6 +4,7 @@ html=html.replace('<link rel="stylesheet" href="pixel-font.css">',()=>'<style>\n
 html=html.replace('<link rel="stylesheet" href="play.css">',()=>'<style>\n'+fs.readFileSync(root+'play.css','utf8')+'\n</style>');
 for(const name of ['../founder-rules.js','universal-products.js','gadgets.js','product-book.js','market-reach.js','consumer-model.js','audience.js','learning.js','core.js','world.js','play.js']){const content=fs.readFileSync(path.join(root,name),'utf8');new vm.Script(content,{filename:name});html=html.replace('<script src="'+name+'"></script>',()=>'<script>\n'+content+'\n</script>');}
 html=html.replace(/src="(assets\/[\w-]+\.svg)"/g,(_,file)=>'src="data:image/svg+xml;base64,'+fs.readFileSync(root+file).toString('base64')+'"');
+html=html.replace('src="assets/bedroom.webp"',()=> 'src="data:image/webp;base64,'+fs.readFileSync(root+'assets/bedroom.webp').toString('base64')+'"');
 if(/<script[^>]+src=|<link[^>]+stylesheet/.test(html))throw Error('O pacote ainda depende de arquivos externos.');
-fs.writeFileSync('dist/The-Founder-Primeira-Aposta-0.49.html',html);
-console.log('PASS: primeira aposta 0.49 independente; onze scripts, estilo e fonte pixel incorporados; '+Buffer.byteLength(html)+' bytes.');
+fs.writeFileSync('dist/The-Founder-Primeira-Aposta-0.50.html',html);
+console.log('PASS: primeira aposta 0.50 independente; onze scripts, estilo e fonte pixel incorporados; '+Buffer.byteLength(html)+' bytes.');
