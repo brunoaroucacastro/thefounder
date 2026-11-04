@@ -1,3 +1,8 @@
+## 0.43 — Nexus e reputação
+
+- Feed automático de lançamentos e experiências de compra, com perfis e novidades.
+- Avaliações e posts sorteados independentemente a partir da mesma experiência.
+
 ## 0.42 — Fechamento financeiro semanal
 
 - Receita, despesas e resultado com comparação semanal e caixa separado.
