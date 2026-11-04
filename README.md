@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.56 — Modo de testes
+
+Abra dist/The-Founder-Primeira-Aposta-0.56.html. Temporário: cada abertura começa do zero e nada é salvo no navegador.
+
 ## Jogar 0.55 — Modo de testes
 
 Abra dist/The-Founder-Primeira-Aposta-0.55.html. Temporário: cada abertura começa uma partida do zero.

@@ -1,3 +1,8 @@
+# 0.56 · Modo de testes sem depender do navegador
+
+- Corrige o aviso Salvamento indisponível, que travava o jogo ao abrir em locais sem armazenamento, como o painel do app.
+- No modo de testes a partida fica só na memória: funciona em qualquer lugar, com várias abas ao mesmo tempo, e não apaga saves antigos.
+
 # 0.55 · Modo de testes
 
 - Temporário: toda vez que o jogo é aberto ou recarregado, a partida começa do zero e o save anterior é apagado. Para desligar, use START_FRESH = false em src/first-loop/play.js.
