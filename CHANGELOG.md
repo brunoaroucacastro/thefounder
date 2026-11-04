@@ -1,3 +1,9 @@
+## 0.46 — Decisões e continuidade de vendas
+
+- Prioridades independentes de marketing e mix normalizado.
+- Lotes ajustáveis por passos, reposição após campanha e prorrogação de sete dias.
+- Controles de venda estáveis, investigação de marketing e ritmo mais lento nas decisões.
+
 ## 0.45 — Tempo de planejamento do produto
 
 - O calendário avança à metade da velocidade durante escolhas e ajustes de produto.

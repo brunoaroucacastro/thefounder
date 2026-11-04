@@ -185,6 +185,20 @@ const FirstLoop=(()=>{
    case'redistributionCommit':if(!s.modernGameplay||s.phase!=='upgradePlan'||s.upgrade.mode!=='redistribute'||G.U.axes.every(a=>s.upgrade.attributes[a.id]===s.attributes[a.id]))throw Error('Redistribua os atributos antes de confirmar.');if(s.cash<s.upgrade.cost+upgradeLaunchReserve(s))throw Error('Faltou caixa para redistribuir e fabricar a próxima versão.');spend(s,s.upgrade.cost);s.projectCost+=s.upgrade.cost;s.upgrade.roll={natural:null,total:null,modifiers:[],success:true,grade:'reconfigured',label:'Redistribuição de atributos'};return activateUpgrade(s);
    case'promoToggle':if(!s.modernGameplay||s.phase!=='promotion'||!Object.hasOwn(s.promo,a.id))throw Error('Campanha indisponível.');s.promo[a.id]=s.promo[a.id]>0?0:1;break;
    case'recampaignToggle':if(!s.modernGameplay||s.phase!=='recampaignPlan'||!Object.hasOwn(s.campaignDraft.promo,a.id))throw Error('Campanha indisponível.');s.campaignDraft.promo[a.id]=s.campaignDraft.promo[a.id]>0?0:1;break;
+   case'extendSales':{
+    if(!s.traction||s.phase!=='recap'||!s.sales||s.stock<1||!s.marketing)throw Error('É preciso ter estoque e uma campanha encerrada.');
+    const previous=s.marketing;
+    const leads=Reach.commit(s,{mix:previous.mix||s.traction,promo:s.promo,grade:previous.grade,criticalSuccess:previous.natural===20});
+    if(!leads)throw Error('O público disponível para esta linha já foi alcançado.');
+    s.campaignType='reach';s.retargetQueue=[];s.retargetCursor=0;
+    s.leads=s.sales.seen+leads;
+    s.wave++;s.phase='selling';s.offer={status:'waiting'};
+    s.marketing={...previous,id:s.id+':extension:'+s.cycle+':'+s.wave,mix:[...s.market.active.mix],actualLeads:leads,baseLeads:s.market.active.baseLeads};
+    s.campaignHistory.push({kind:'extension',roll:copy(s.marketing)});
+    openWindow(s);
+    log(s,'Campanha prorrogada por 7 dias úteis. '+leads+' novos interessados.','milestone');
+    break;
+   }
    case'stopSales':if(!s.unitAcquisition||!['selling','opportunity'].includes(s.phase)||!s.sales||s.sales.windowClosed)throw Error('Não há vendas abertas para encerrar.');{const left=Math.max(0,s.leads-s.sales.seen);s.sales.unserved=(s.sales.unserved||0)+left;s.sales.stoppedContacts=left;s.leads=s.sales.seen;s.sales.windowClosed=true;s.sales.finishReason='stopped';if(s.market?.active){s.market.active.remaining=[0,0,0,0];s.market.active.organicQueue=[];}s.retargetQueue=[];s.retargetCursor=0;if(s.offer?.status==='open')s.offer.status='declined';finish(s);log(s,'Vendas interrompidas. Estoque guardado; você pode rever preço, melhorar ou criar outro produto.');}break;
    case'relaunchPrice':if(!s.unitAcquisition||s.phase!=='recap')throw Error('Encerre a janela para rever o lançamento.');return applyAction(applyAction(s,{type:'newCampaign'}),{type:'campaignPrice'});
    case'learningOpen':Learning.open(s);break;
@@ -200,7 +214,12 @@ const FirstLoop=(()=>{
    case'attribute':if(!s.gadgets||s.phase!=='design'||!G.axesFor(s).some(x=>x.id===a.id)||![1,-1].includes(a.delta))throw Error('Atributo indisponível.');if(a.delta>0&&G.total(s)>=pointBudget(s))throw Error('Os quatro pontos já foram usados. Retire um para redistribuir.');if(s.universal&&s.attributes[a.id]+a.delta>5)throw Error('Máximo de cinco pontos por atributo.');if(s.attributes[a.id]+a.delta<0)throw Error('Este atributo já está em zero.');s.attributes[a.id]+=a.delta;break;
    case'marketingMix':
     if(!s.traction||!['promotion','recampaignPlan'].includes(s.phase)||!Reach.validMix(a.mix))throw Error('Mix de marketing inválido.');
-    s.traction=[...a.mix];break;
+    s.traction=[...a.mix];
+    if(a.weights){
+     if(!Array.isArray(a.weights)||a.weights.length!==6||a.weights.some(v=>!Number.isInteger(v)||v<0||v>100))throw Error('Prioridades inválidas.');
+     s.tractionWeights=[...a.weights];
+    }else s.tractionWeights=null;
+    break;
    case'reveal':if(!s.gadgets||s.phase!=='design'||(s.fourPs?G.total(s)>pointBudget(s):G.total(s)!==4))throw Error('Use até quatro pontos no MVP.');s.description=G.description(s);if(s.traction)s.placeId='online';s.phase=s.traction?'promotion':s.bulkDice?'place':s.fourPs?'pricing':'blueprint';log(s,s.description);break;
    case'setPrice':if(!s.commercial||s.phase!=='pricing'||!Number.isFinite(a.price)||a.price<=0||!Number.isSafeInteger(Math.round(a.price*100)))throw Error('Informe um preço positivo em reais.');s.price=round(a.price);if(s.price<=0)throw Error('O menor preço é R$0,01.');s.margin=(s.price-pricingCost(s)-cac(s))/s.price*100;break;
    case'margin':if(s.commercial){if(s.phase!=='pricing'||!Number.isFinite(a.margin)||a.margin>=100)throw Error('Margem indisponível.');s.margin=a.margin;s.price=priceFor(s,s.margin);if(s.price<=0)throw Error('Preço muito pequeno.');break;}if(!s.fourPs||s.phase!=='pricing'||!Number.isInteger(a.margin)||a.margin<10||a.margin>maxMargin(s))throw Error('Escolha uma margem de 10% a 80%.');s.margin=a.margin;s.price=priceFor(s,s.margin);break;
@@ -241,7 +260,7 @@ const FirstLoop=(()=>{
    case'name':if(s.phase!=='design'||typeof a.name!=='string')throw Error('Nome indisponível.');s.name=a.name.slice(0,28);break;
    case'build':if(s.gadgets?s.phase!=='blueprint'||(s.fourPs?G.total(s)>pointBudget(s):G.total(s)!==4):s.phase!=='design'||s.features.length!==2)throw Error('Escolha duas características para construir.');const buildCost=developmentCost(s);const promotionFee=s.traction?0:s.modernGameplay?promotionCost(s.promo):s.fourPs&&!s.unitAcquisition?150+Object.values(s.promo).reduce((n,v)=>n+v,0)*100:0;if(s.fourPs&&(!s.placeId||(!s.bulkDice&&!Number.isFinite(s.price))))throw Error('Conclua os quatro Ps.');if(s.commercial&&s.cash<buildCost+place(s).cost+promotionFee+launchFee(s)+materialPayment(s,100*unitCost(s)))throw Error('Reserve caixa para o MVP, aquisição e pelo menos cem unidades antes de desenvolver.');spend(s,buildCost+(s.fourPs?place(s).cost+promotionFee:0),1);if(s.fourPs){s.campaignCost=s.commercial?0:promotionFee;s.operatingCost+=place(s).cost;s.campaignId='demo';s.quality=1;}if(s.accounting)acquireCampaign(s,s.id+'-'+s.cycle+'-initial',s.modernGameplay?0:promotionFee);if(s.modernGameplay){s.campaignFixedCost=(s.campaignFixedCost||0)+promotionFee;contract(s).fixedCost=promotionFee;}s.projectCost=buildCost;s.name=s.name.trim()||'Fone Aurora';job(s,'building',s.fourPs?(s.prepared?12:20):s.operations?(s.prepared?4:10):5,s.fourPs&&!s.bulkDice?'campaignWork':'testReady');log(s,'Seu protótipo está tomando forma na bancada.');break;
    case'test':if(s.fourPs&&!s.bulkDice)throw Error('Este MVP não usa D20.');if(s.phase!=='testReady'||s.test)throw Error('O teste deste produto já foi realizado.');s.test=die(s,'product_development','Teste do protótipo',random);s.quality=['critical','partial'].includes(s.test.grade)?0:s.test.grade==='normal'?1:s.test.grade==='great'?2:3;s.executionCritical=!!s.modernGameplay&&s.test.natural===20;s.phase='testOutcome';log(s,s.quality?'O protótipo passou no teste.':'O teste encontrou um problema. Você pode corrigir ou assumir o risco.',s.quality?'good':'warn');break;
-   case'testChoice':if(s.phase!=='testOutcome')throw Error('O teste já foi resolvido.');if(s.quality===0){if(a.choice==='repair'){const cost=s.test.grade==='critical'?300:200;spend(s,cost,1);s.projectCost+=cost;s.quality=1;job(s,'repairing',3,'campaign');log(s,'O diagnóstico virou uma correção. Sem repetir o dado.');}else if(a.choice==='risk'){s.phase='campaign';log(s,'Você decidiu lançar com a limitação. Menos pessoas vão comprar.','warn');}else throw Error('Escolha corrigir ou assumir a limitação.');}else if(s.modernGameplay){if(a.choice!=='continue')throw Error('Confirme a execução para continuar.');s.phase='campaign';}else if(s.quality>=2){if(!['polish','early'].includes(a.choice))throw Error('Escolha como aproveitar a folga.');s.polish=a.choice==='polish';s.early=a.choice==='early';s.phase='campaign';log(s,s.polish?'Um acabamento melhor para conquistar confiança.':'Demonstração adiantada: seis interessados extras.','good');}else{if(a.choice!=='continue')throw Error('Escolha continuar.');s.phase='campaign';}break;
+   case'testChoice':if(s.phase!=='testOutcome')throw Error('O teste já foi resolvido.');if(s.quality===0){if(a.choice==='repair'){const cost=s.test.grade==='critical'?300:200;spend(s,cost,1);s.projectCost+=cost;s.quality=1;job(s,'repairing',s.weekly?60:3,'campaign');log(s,'O diagnóstico virou uma correção. Sem repetir o dado.');}else if(a.choice==='risk'){s.phase='campaign';log(s,'Você decidiu lançar com a limitação. Menos pessoas vão comprar.','warn');}else throw Error('Escolha corrigir ou assumir a limitação.');}else if(s.modernGameplay){if(a.choice!=='continue')throw Error('Confirme a execução para continuar.');s.phase='campaign';}else if(s.quality>=2){if(!['polish','early'].includes(a.choice))throw Error('Escolha como aproveitar a folga.');s.polish=a.choice==='polish';s.early=a.choice==='early';s.phase='campaign';log(s,s.polish?'Um acabamento melhor para conquistar confiança.':'Demonstração adiantada: seis interessados extras.','good');}else{if(a.choice!=='continue')throw Error('Escolha continuar.');s.phase='campaign';}break;
    case'campaign':if(s.phase!=='campaign'||!campaigns.some(c=>c.id===a.id))throw Error('A campanha já está em execução.');s.campaignId=a.id;spend(s,campaign(s).cost,1);s.campaignCost=campaign(s).cost;job(s,'campaignWork',4,'campaignReady');log(s,'Sua promessa está virando uma campanha.');break;
    case'rollCampaign':if(s.fourPs&&!s.bulkDice)throw Error('A promoção usa o plano escolhido.');if(s.phase!=='campaignReady'||s.marketing||(s.accounting&&!s.priceConfirmed))throw Error('A campanha já foi testada.');s.marketing=die(s,s.modernGameplay?'campaign_plan':s.bulkDice?({demo:'campaign_optimize',creator:'campaign_scale',offer:'campaign_reduce'}[Object.keys(s.promo).sort((a,b)=>s.promo[b]-s.promo[a])[0]]):campaign(s).category,'Estreia da campanha',random);s.leads=s.bulkDice?Math.round(fourReach(s)*gradeFactor(s.marketing.grade))+(s.early?6:0):reach(s,s.marketing.grade);if(s.modernGameplay)s.marketing.baseLeads=fourReach(s);if(s.reach)s.leads=Reach.commit(s,{promo:s.promo,budget:s.unitAcquisition?150+Object.values(s.promo).reduce((n,v)=>n+v,0)*100:s.commercial?contract(s).budget:s.campaignCost,grade:s.marketing.grade,criticalSuccess:s.marketing.natural===20});s.marketing.actualLeads=s.leads;if(s.traction)Object.assign(s.marketing,{mix:[...s.market.active.mix],marketingMultiplier:s.market.active.multiplier,baseLeads:s.market.active.baseLeads});if(s.accounting){s.priceLocked=true;s.activeAcquisition=s.acquisitionCampaigns.at(-1)?.id||null;const c=s.acquisitionCampaigns.at(-1);if(c)c.leads=s.leads;}s.phase='campaignOutcome';log(s,s.leads+' pessoas se interessaram. Agora o fone precisa convencer.',s.leads<20?'warn':'good');break;
    case'batch':if(!s.operations||(s.bulkDice?s.phase!=='batchPlanning'||!validQuantity(a.quantity,s.modernGameplay):s.phase!=='campaignOutcome'||![12,24,48].includes(a.quantity)))throw Error('Escolha 12, 24 ou 48 unidades.');s.batchSize=a.quantity;break;
@@ -276,7 +295,7 @@ const FirstLoop=(()=>{
   return s;
  }
 
- const secondsPerWorkday=18;
+ const secondsPerWorkday=24;
  const secondsPerMinute=secondsPerWorkday/60;
  const moneyCategories={cogs:'Produtos vendidos',projectCost:'Desenvolvimento',campaignCost:'Aquisição',campaignFixedCost:'Campanha',rent:'Operação',scrapLoss:'Perdas de estoque',setupCost:'Abertura',operatingCost:'Pesquisa e operação',fees:'Taxas',salary:'Equipe',office:'Aluguel'};
  function enableWeekly(s){
@@ -380,6 +399,7 @@ const FirstLoop=(()=>{
   if(next===input)return next;
   // Product and version changes create a new core state. The company calendar stays with the save.
   next.weekly??=copy(input.weekly);
+  if(next.cycle!==input.cycle&&next.generation>1&&input.tractionWeights){next.tractionWeights=copy(input.tractionWeights);next.traction=copy(input.traction);}
   if(input.social&&!next.social)next.social=copy(input.social);
   if(input.branding&&!next.branding)next.branding=copy(input.branding);
   if(next.weekly.effect?.extraFocus&&(next.focus<input.focus||next.cycle!==input.cycle))next.weekly.effect.extraFocus=false;
@@ -387,7 +407,7 @@ const FirstLoop=(()=>{
   return next;
  }
  function productPlanning(s){
-  return ['catalog','customer','design','blueprint','upgradePlan','upgradeAttributes'].includes(s.phase);
+  return !s.job&&!s.crew&&s.phase!=='launching';
  }
  function tick(input,dt){
   if(!input.weekly)return advanceSimulation(input,dt);

@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict');
 const {C,act,flags}=require('./modern-support.cjs');
-function step(s,n=1){for(let i=0;i<n;i++){const day=s.weekly.days;for(let j=0;j<121&&s.weekly.days===day&&s.weekly.stage==="work";j++)s=C.tick(s,.3/s.speed);}return s;}
+function step(s,n=1){for(let i=0;i<n;i++){const day=s.weekly.days;for(let j=0;j<121&&s.weekly.days===day&&s.weekly.stage==="work";j++)s=C.tick(s,.4/s.speed);}return s;}
 function choose(s,choice='study'){return act(act(s,'readWeek'),'weekend',{choice});}
 function scenario(speed){
  let s=C.enableWeekly(C.fresh(3,{...flags,traction:true}));
@@ -44,7 +44,7 @@ function scenario(speed){
  s=act(s,'launchAndRoll');
  assert.equal(s.revenue,0);
  s=act(s,'ackLaunch');
- while(s.phase==='launching')s=C.tick(s,.3/s.speed);
+ while(s.phase==='launching')s=C.tick(s,.4/s.speed);
  assert.equal(s.phase,'selling');
  assert.equal(s.revenue,0);
  for(let i=0;i<12&&s.phase!=='recap';i++){
