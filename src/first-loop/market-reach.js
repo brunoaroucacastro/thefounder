@@ -45,27 +45,98 @@ const MarketReach=(()=>{
   const efficiency=clamp(score(mix.map(p=>p/100))/score(effortAt(high)),0,1);
   return marketingRange[0]+(marketingRange[1]-marketingRange[0])*efficiency;
  }
+
+ const gadgetMarkets={headphones:5000000,keyboard:3000000,mouse:2000000};
+ const renewal=1-Math.pow(.5,1/36);
+ const growthWeek=s=>s.weekly?.reports.length??Math.floor((s.clock||0)/300);
+ function enableGrowth(s){
+  if(!s.traction||!s.market||s.market.growth)return s;
+  return {...s,market:{...s.market,growth:{audience:0,reputation:70,segments:{},validated:{},lastWindow:null}}};
+ }
+ function growthProfile(s){
+  const growth=s.market?.growth;
+  if(!growth||!gadgetMarkets[s.productId]||!s.clientId)return null;
+  const key=s.productId+':'+s.clientId;
+  const capacity=Math.floor(gadgetMarkets[s.productId]/G.personas(s).length);
+  const segment=growth.segments[key]||{available:capacity,firstWeek:growthWeek(s),week:growthWeek(s),allowance:Math.floor(capacity*.12),used:0};
+  const validated=Object.keys(growth.validated).length;
+  const audience=growth.audience;
+  const distribution=validated>=5&&audience>=10000?12:validated>=3&&audience>=2500?6:validated>=2&&audience>=500?2.5:1;
+  return {key,capacity,segment,distribution,audience,reputation:growth.reputation};
+ }
+ function growthPlan(s,options,mix,multiplier,profile){
+  const {capacity,segment,distribution,audience,reputation}=profile;
+  const grade={critical:.6,partial:.8,normal:1,great:1.15,exceptional:1.3}[options.grade||'normal'];
+  const novelty=.25+.75*Math.exp(-(growthWeek(s)-segment.firstWeek)/8);
+  const saturation=Math.sqrt(segment.available/capacity);
+  const weekRoom=segment.week===growthWeek(s)?segment.allowance-segment.used:Math.floor(segment.available*.12);
+  const base= (600+.4*audience)*distribution*(.5+reputation/100)/1.2*novelty*saturation*grade*(options.criticalSuccess?1.1:1)/1.35;
+  const total=Math.max(0,Math.min(segment.available,weekRoom,Math.round(base*multiplier)));
+  const persona=G.personas(s).find(p=>p.id===s.clientId);
+  const weights=demography.map((d,i)=>d*(.25+.75*(persona?.ages[i]??.25)));
+  const byAge=roundWithin(weights.map(w=>total*w/sum(weights)),weights.map(()=>total));
+  return {total,byAge,budget:0,kind:'paid',baseLeads:Math.round(base),mix:[...mix],multiplier,growthKey:profile.key};
+ }
+ function reserveGrowth(s,result){
+  const profile=growthProfile(s);
+  const g=s.market.growth;
+  const segment=g.segments[profile.key]??={...profile.segment};
+  if(segment.week!==growthWeek(s)){
+   segment.week=growthWeek(s);
+   segment.allowance=Math.floor(segment.available*.12);
+   segment.used=0;
+  }
+  segment.available-=result.total;
+  segment.used+=result.total;
+ }
+ function settleGrowth(s,metrics,window){
+  const g=s.market?.growth,active=s.market?.active;
+  if(!g||!active?.growthKey||!window||g.lastWindow===window.id)return;
+  g.lastWindow=window.id;
+  const reviews=s.reviews.slice(window.reviewStart);
+  const confidence=Math.min(1,Math.sqrt(reviews.length/10));
+  const quality=reviews.length?sum(reviews.map(r=>r.stars))/reviews.length:3.5;
+  const signal=(quality-3.5)*confidence;
+  g.reputation=clamp(g.reputation+.9*signal,0,100);
+  const followed=.04*Math.max(0,metrics.seen-metrics.buyers);
+  const retained=metrics.buyers*clamp(.35+.33*signal,.05,.65);
+  const loss=g.audience*.025*Math.max(0,-signal);
+  g.audience=clamp(Math.round(g.audience-loss+(followed+retained)*(1-g.audience/200000)),0,200000);
+  if(metrics.sold>=60&&reviews.length>=3&&quality>=4)g.validated[active.growthKey]=true;
+ }
+ function renewGrowth(s){
+  const g=s.market?.growth;
+  if(!g)return;
+  g.audience=Math.round(g.audience*.98);
+  for(const [key,segment] of Object.entries(g.segments)){
+   const productId=key.split(':')[0];
+   const capacity=Math.floor(gadgetMarkets[productId]/G.personas({...s,productId}).length);
+   segment.available=Math.min(capacity,segment.available+Math.round((capacity-segment.available)*renewal));
+  }
+ }
  function plan(s,options={}){
   if(!s.traction)return legacyPlan(s,options);
   const mix=options.mix||s.traction;
   const base=legacyPlan({...s,placeId:null},{...options,promo:{demo:0,creator:0,offer:0},budget:0});
   const multiplier=marketing(s,mix);
+  const profile=growthProfile(s);
+  if(profile)return growthPlan(s,options,mix,multiplier,profile);
   const limits=demography.map((d,i)=>population*d-readProduct(s).covered[i]);
   const byAge=roundWithin(base.byAge.map((n,i)=>Math.min(limits[i],n*multiplier)),limits);
   return {...base,baseLeads:base.total,total:sum(byAge),byAge,mix:[...mix],multiplier};
  }
- function commit(s,options){const result=plan(s,options),m=ensure(s),p=product(s),decay=2**(-Math.max(0,now(s)-p.pressureAt)/2);if(!s.traction)for(const c of Object.keys(p.pressure))p.pressure[c]=p.pressure[c]*decay+(s.modernGameplay?(options.promo[c]>0?.8:0):(result.budget/550)*(options.promo[c]||0)/4);p.pressureAt=now(s);result.byAge.forEach((n,i)=>p.covered[i]+=n);p.organicThisWave=0;m.serial++;m.active={...result,id:m.serial,legacy:false,remaining:[...result.byAge],organicQueue:[],organicEntered:0};return result.total;}
+ function commit(s,options){const result=plan(s,options),m=ensure(s),p=product(s),decay=2**(-Math.max(0,now(s)-p.pressureAt)/2);if(!s.traction)for(const c of Object.keys(p.pressure))p.pressure[c]=p.pressure[c]*decay+(s.modernGameplay?(options.promo[c]>0?.8:0):(result.budget/550)*(options.promo[c]||0)/4);p.pressureAt=now(s);if(result.growthKey)reserveGrowth(s,result);else result.byAge.forEach((n,i)=>p.covered[i]+=n);p.organicThisWave=0;m.serial++;m.active={...result,id:m.serial,legacy:false,remaining:[...result.byAge],organicQueue:[],organicEntered:0};return result.total;}
  function beginRetarget(s){const m=ensure(s);m.serial++;m.active={id:m.serial,kind:'retarget',remaining:[0,0,0,0],organicQueue:[],byAge:[0,0,0,0],legacy:false};product(s).organicThisWave=0;}
  function pick(weights,u){let t=u*sum(weights);for(let i=0;i<weights.length;i++){t-=weights[i];if(t<0)return i;}return weights.length-1;}
  function stamp(s,id,a,source){const people=G.personas(s),weights=people.map(p=>(p.ages[a]||0)*(p.id===s.clientId?20:1));const chosen=people[pick(weights,random(id+':persona'))];return{id,seed:Math.floor(random(id)*4294967296),personaId:chosen.id,ageIndex:a,source};}
  function nextBuyer(s,id){const active=ensure(s).active;if(!active||active.legacy)return null;if(active.organicQueue.length){const a=active.organicQueue.shift();active.organicEntered=(active.organicEntered||0)+1;return stamp(s,id,a,'organic');}if(!sum(active.remaining))return null;const a=pick(active.remaining,random(id+':age'));active.remaining[a]--;return stamp(s,id,a,'paid');}
  function paidCustomer(s){product(s).paidCustomers++;}
- function organicPotential(s){const p=readProduct(s),w=wordOfMouth(s),credit=Math.max(0,Math.floor(.35*p.paidCustomers)-p.organicGenerated),waveLimit=Math.max(0,30-p.organicThisWave),available=sum(ages.map((_,a)=>p.signals.some(r=>r.age===a&&r.stars>=4)?Math.max(0,population*demography[a]-p.covered[a]):0));return Math.max(0,Math.min(available,waveLimit,credit,Math.floor(credit*w.enthusiasm)));}
+ function organicPotential(s){const p=readProduct(s);if(p.organicThisWave>=30)return 0;const w=wordOfMouth(s),credit=Math.max(0,Math.floor(.35*p.paidCustomers)-p.organicGenerated),waveLimit=Math.max(0,30-p.organicThisWave),available=sum(ages.map((_,a)=>p.signals.some(r=>r.age===a&&r.stars>=4)?Math.max(0,population*demography[a]-p.covered[a]):0));return Math.max(0,Math.min(available,waveLimit,credit,Math.floor(credit*w.enthusiasm)));}
  function inviteOrganic(s){const n=organicPotential(s);if(!n)return 0;const m=ensure(s),p=product(s);m.active??={kind:'organic',remaining:[0,0,0,0],organicQueue:[],byAge:[0,0,0,0]};let issued=0;const weights=ages.map((_,a)=>p.signals.filter(r=>r.age===a&&r.stars>=4).reduce((n,r)=>n+(r.stars-3)*2**(-Math.max(0,now(s)-r.at)/2),0));for(let i=0;i<n;i++){const eligible=weights.map((w,a)=>p.covered[a]<population*demography[a]?w:0);if(!sum(eligible))break;const a=pick(eligible,random(s.id+':organic:'+key(s)+':'+p.organicGenerated));p.covered[a]++;p.organicGenerated++;p.organicThisWave++;m.active.organicQueue.push(a);m.organicTotal++;issued++;}m.lastOrganic=issued;return issued;}
  function startOrganic(s){if(!organicPotential(s))throw Error('Ainda não há novas recomendações para circular.');const m=ensure(s);m.serial++;m.active={id:m.serial,kind:'organic',remaining:[0,0,0,0],organicQueue:[],byAge:[0,0,0,0],organicEntered:0};return inviteOrganic(s);}
  function message(s){const a=s.market?.active;if(!a||a.legacy||!['campaignOutcome','recampaignOutcome','selling','recap'].includes(s.phase))return'Observe as reações e os reviews para aprender quem sua campanha alcança.';if(a.kind==='retarget')return'Quem já conhecia o produto voltou para olhar de novo.';if(a.kind==='organic')return'As recomendações trouxeram pessoas sem uma nova campanha paga.';if(a.fatigue<.82)return'A abordagem parece conhecida. Talvez seja hora de mudar a apresentação.';if(sum(a.byAge||[])>0){const i=a.byAge.indexOf(Math.max(...a.byAge));return['A novidade chamou atenção de pessoas mais jovens.','Jovens adultos apareceram bastante nesta apresentação.','A apresentação chamou atenção de adultos com a rotina estabelecida.','Pessoas mais velhas apareceram bastante nesta apresentação.'][i];}return'As primeiras reações estão chegando. Os compradores vão contar o que acharam.';}
  function brandLabel(s){const b=s.market?.brand||1;return b<.94?'Reputação abalada':b>1.18?'Marca respeitada':b>1.04?'Ganhando confiança':'Marca pouco conhecida';}
- return {channels,defaultMix,validMix,marketing,ages,demography,population,coefficients,unitCoefficients,venueCoefficients,now,key,ensure,product,readProduct,validate,enable,recordReview,closeBrand,wordOfMouth,fatigue,campaignStrength,plan,commit,beginRetarget,nextBuyer,paidCustomer,organicPotential,inviteOrganic,startOrganic,message,brandLabel};
+ return {gadgetMarkets,enableGrowth,growthProfile,settleGrowth,renewGrowth,channels,defaultMix,validMix,marketing,ages,demography,population,coefficients,unitCoefficients,venueCoefficients,now,key,ensure,product,readProduct,validate,enable,recordReview,closeBrand,wordOfMouth,fatigue,campaignStrength,plan,commit,beginRetarget,nextBuyer,paidCustomer,organicPotential,inviteOrganic,startOrganic,message,brandLabel};
 })();
 if(typeof module!=='undefined')module.exports=MarketReach;
 

@@ -1,3 +1,8 @@
+## 0.47 — Audiência e saturação de gadgets
+
+- Base da empresa, reputação, distribuição e renovação por produto e persona.
+- Campanha unificada com escolha de público e previsão de alcance.
+
 ## 0.46 — Decisões e continuidade de vendas
 
 - Prioridades independentes de marketing e mix normalizado.
