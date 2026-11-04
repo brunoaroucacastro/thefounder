@@ -1,3 +1,11 @@
+# 0.51 · Quarto do fundador em ilustração vetorial
+
+- A oficina em pixel foi substituída pelo quarto do fundador: cena isométrica vetorial com luz da janela, luminária, varal de luzes, gato e sombras suaves, nítida em qualquer resolução.
+- Pontos clicáveis no próprio quarto: computador (criar e acompanhar), estante (produtos), cofrinho (caixa) e quadro de notas (clientes).
+- O fundador trabalha sentado no computador e vai até as caixas para montar o lote; as caixas no chão e a estante mostram o estoque.
+- A tela do monitor muda com a fase: pesquisa, projeto do produto e painel de vendas, com destaque a cada venda e avaliação.
+- Interface com novo tema: tipografia sem serifa, cartões arredondados e a mesma paleta da cena. Regras, economia e saves não mudaram.
+
 # Organização dos recursos visuais
 
 - Ícones SVG versionados como arquivos de origem e incorporados ao gerar a versão offline.

@@ -1,5 +1,11 @@
 # The Founder
 
+## Jogar 0.51 — Quarto do fundador
+
+Abra dist/The-Founder-Primeira-Aposta-0.51.html. Nova arte vetorial: o jogo acontece no quarto do fundador, com computador, estante de produtos, cofrinho das contas e quadro de clientes clicáveis. Interface com tema novo; regras e saves da 0.49 preservados.
+
+Para desenvolver: edite src/first-loop/ (cena em world.js, tema em theme.css), rode node tests/workshop.cjs e gere o arquivo com node scripts/build-first-loop.cjs.
+
 ## Jogar 0.36 — Oficina e criação do produto
 
 Abra dist/The-Founder-Primeira-Aposta-0.36.html. Oficina isométrica, navegação dentro do jogo e painel lateral de criação. [Direção e validação](docs/OFICINA-036.md).
