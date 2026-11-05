@@ -1,6 +1,6 @@
 # The Founder — decisões de design e backlog
 
-Atualizado em 31/10/2026. Complemento ao GDD original. Este documento registra discussões; não implica implementação no protótipo.
+Atualizado em 05/11/2026. Complemento ao GDD original. Este documento registra discussões; não implica implementação no protótipo.
 
 ## Processo de trabalho
 
@@ -95,3 +95,30 @@ Ponto 3 aprovado: CAC unitário em reais conhecido antes do preço, parametrizad
 ## Consolidação 0.29 — 02/11/2026
 
 Implementados CAC antes do preço e contribuição após CAC, nova conversão sem bônus de campanha, mínimos graduais relevantes e feedbacks, pesquisa de mercado R$1.000 com duas personas e idade, descarte pré-MVP e lançamento com ciclo finito e reposição. Nova partida preserva o save anterior. Detalhes em GDD-029-MERCADO-E-PRODUTO.md. Último upgrade aguarda discussão; não foi rebalanceado.
+
+
+## Backlog — minigames de marketing (05/11/2026)
+
+Bruno aprovou duas mecânicas como boas candidatas: "ficaram bem maneiras". Elas ficam guardadas para desenvolvermos juntos depois. Ainda não estão no jogo. As outras três testadas (combos, decifrar canais e propostas) e a do mapa de boca a boca foram descartadas.
+
+Protótipo jogável: amostras-marketing/laboratorio.html, com as duas abas.
+
+### Central de oportunidades
+
+Inspirada na mecânica de Dispatch. Oportunidades descritas só em texto aparecem com tempo para acabar, e o jogador manda a pessoa certa do time. Quem foi enviado fica ocupado por alguns segundos. Foi a primeira que divertiu no teste.
+
+### Marketing Viral (tabuleiro)
+
+Puzzle de 10×10 com 3 personas, 3 entusiastas e 3 detratores. O jogador recebe 5 cartas (Influenciador, Redes Sociais, Assessoria PR) e joga 3. Regras completas: docs/gdd/sistemas/GDD_Minigame_Marketing_Tabuleiro.pdf.
+
+Decisões assumidas no protótipo, onde o GDD não fechava: célula já bloqueada não reage nem conta; dois detratores atingidos na mesma jogada disparam os dois; a célula do detrator fica bloqueada e não conta como alcance.
+
+### A definir quando retomarmos
+
+- Usar uma das duas, as duas ou uma mistura, e em que momento do jogo cada uma aparece.
+- Com que frequência roda (por semana ou por campanha) e como isso conversa com as vendas sem prazo.
+- Como o resultado vira interessados e vendas no jogo.
+- Como as personas v2 e o mix de canais entram: no protótipo do tabuleiro, as personas são só estrelas, e os canais do jogo são 6 enquanto as cartas são 3.
+- Como manter a descoberta de canais sem dicas, até existir a mecânica em que o time passa esses dados.
+- Balanceamento: os números dos protótipos são provisórios.
+- Enquanto isso, a tela atual de controles continua no jogo, com a previsão de interessados que muda ao vivo e revela o melhor mix.
