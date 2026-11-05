@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.57 — Feedbacks do playtest
+
+Abra dist/The-Founder-Primeira-Aposta-0.57.html. Vendas sem prazo, desenvolvimento mais curto, renomear a qualquer momento e correção da queda de conversão após melhorar o produto.
+
 ## Jogar 0.56 — Modo de testes
 
 Abra dist/The-Founder-Primeira-Aposta-0.56.html. Temporário: cada abertura começa do zero e nada é salvo no navegador.

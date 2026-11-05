@@ -1,3 +1,13 @@
+# 0.57 · Feedbacks do playtest
+
+- Corrige bug: melhorar o produto ou criar outro perdia as personas e os canais v2, derrubando a conversão de algumas personas.
+- Corrige bug: saves com personas v2 eram recusados na fase de vendas ao carregar.
+- Vendas sem prazo: a campanha renova sozinha até o estoque acabar ou o jogador encerrar; sai a contagem de dias restantes.
+- Faltam N vendas agora atualiza ao vivo.
+- Desenvolvimento mais curto (protótipo 2 dias, campanha 1 dia) e mensagens do que está sendo feito em cada etapa.
+- Produto pode ser renomeado a qualquer momento.
+- Tela do protótipo sem texto espremido; lote com faixas de desconto clicáveis; sai a dica de preço da pesquisa.
+
 # 0.56 · Modo de testes sem depender do navegador
 
 - Corrige o aviso Salvamento indisponível, que travava o jogo ao abrir em locais sem armazenamento, como o painel do app.

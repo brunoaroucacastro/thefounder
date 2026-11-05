@@ -110,3 +110,21 @@ html,body{height:100%;overflow:hidden}
 /* 0.53 — comentários da persona (pistas da pesquisa) */
 .persona-comment{margin:4px 0 0!important;font-size:13px!important;font-style:italic;color:var(--q-ink-soft)!important;line-height:1.35}
 .channel-note{display:block;font-size:11.5px;font-weight:600;color:var(--q-ink-soft);line-height:1.25;margin-top:1px}
+
+/* 0.57 — tela do protótipo, nome do produto e faixas de desconto */
+.blueprint{display:block!important}
+.blueprint .gadget-preview{margin:0 0 10px}
+.blueprint>div:nth-child(2){margin-bottom:14px}
+.blueprint p{line-height:1.45;margin:8px 0 12px}
+.creation-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.blueprint .result-actions{max-width:none}
+.blueprint .result-actions button{font-size:14px;min-width:150px}
+.rename-row{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:13px;font-weight:800;color:var(--q-ink-soft)}
+.rename-row input{flex:1;min-width:0;padding:6px 10px}
+.order-name{display:block;width:100%;margin:2px 0 6px;padding:4px 8px;font-weight:800;font-size:14px}
+.batch-tiers{margin:10px 0}
+.batch-tiers>small{display:block;color:var(--q-ink-soft)!important;font-weight:700;margin:4px 0}
+.tier-row{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+#tray .tier-row button.tier{flex:1 1 76px;padding:6px 4px;font-size:12px;line-height:1.2;box-shadow:0 2px 0 var(--q-line-strong)!important}
+#tray .tier-row button.tier.active{background:var(--q-accent)!important;border-color:var(--q-accent-d)!important}
+#work-order{min-width:280px}.order-name{font-size:13px!important}
