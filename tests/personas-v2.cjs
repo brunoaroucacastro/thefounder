@@ -34,6 +34,15 @@ assert.equal(C.load(JSON.stringify(o)).phase,'recap');
 o.cash+=100000;const up=act(until(act(act(o,'upgradeOpen'),'upgradeStart'),'upgradeReady'),'rollUpgrade',{},15);const res=act(up,'upgradeResolve');assert.equal(res.personaSet,'v2');assert.equal(C.G.personas(res).find(p=>p.id===res.clientId).name,po.name);assert.deepEqual(R.channelNames(res),R.channelsV2);
 assert.equal(act(o,'next').personaSet,'v2');assert.equal(C.load(JSON.stringify(res)).personaSet,'v2');for(const id of U.v2.headphones.map(p=>p.id)){const w={...o,clientId:id};w.learningWindow=o.learningWindow&&{...o.learningWindow,personaId:id};assert.equal(C.load(JSON.stringify(w)).clientId,id);}
 console.log('PASS 0.57: vendas sem prazo ('+o.sold+' vendas em '+wave+' ondas, fim por '+o.sales.finishReason+'), desenvolvimento curto, renomear e personas preservadas na melhoria.');
+
+// 0.58: quebra-cabeça de decisões substitui os pontos nas partidas v2.
+{const G=U;assert.deepEqual(G.gridSize(4),[4,3]);let q=act(act(C.fresh(5,{...flags,traction:true,personaSet:'v2'}),'start'),'product',{id:'headphones'});q=until(q,'customer');q=act(q,'customer',{id:q.personaCandidates[0]});
+const nobre={k:'nobre',cells:[[0,0],[1,0],[0,1],[1,1]]},cap={k:'capricho',cells:[[2,0]]},bar={k:'barato',cells:[[0,2],[1,2],[2,2],[3,2]]};
+assert.throws(()=>act(q,'designGrid',{pieces:[nobre,{k:'capricho',cells:[[1,1]]}]}));assert.throws(()=>act(q,'designGrid',{pieces:[{k:'barato',cells:[[1,0],[2,0],[3,0],[4,0]]}]}));
+q=act(q,'designGrid',{pieces:[nobre,cap]});assert.equal(q.attributes.quality,5,'3 + 1 + vizinho');assert.equal(C.load(JSON.stringify(q)).attributes.quality,5);q=act(q,'designGrid',{pieces:[nobre,bar]});assert.equal(q.attributes.quality,1,'conflito nobre e barato');assert.equal(q.attributes.economy,3);
+assert.equal(C.load(JSON.stringify(q)).designGrid.length,2);q=act(q,'reveal');q=act(q,'confirmPromotion');q=until(act(q,'build'),'testReady');q=act(q,'test',{},15);q=act(q,'testChoice',{choice:q.quality===0?'repair':'continue'});q=until(q,'batchPlanning');q=act(q,'confirmBatch');q=act(q,'setPrice',{price:90});q=act(q,'confirmPrice');q=act(q,'rollCampaign',{},13);q=act(q,'launchReview');q=until(act(q,'launch'),'selling');q=act(q,'stopSales');q.cash+=100000;
+const r2=act(until(act(act(q,'upgradeOpen'),'upgradeStart'),'upgradeReady'),'rollUpgrade',{},15),n=act(r2,'upgradeResolve');assert.equal(n.designGrid.length,2);assert.deepEqual(G.gridSize(n.level),[4,4]);const n2=act(n,'designGrid',{pieces:[...n.designGrid,{k:'capricho',cells:[[0,3]]}]});assert.equal(n2.upgrade.attributes.quality,2);assert.equal(act(n2,'upgradeAttributesDone').attributes.quality,2);
+console.log('PASS 0.58: quebra-cabeça com encaixe validado, vizinhos, lançamento, save e melhoria com espaço maior.');}
 // Saves antigos (sem personaSet) continuam com as personas anteriores.
 assert.equal(C.G.personas({...C.fresh(1,flags),productId:'headphones'}).length,10);
 console.log('PASS personas v2: equilíbrio, partida completa ('+s.sold+' vendas, '+s.reviews.length+' avaliações), canais novos e saves antigos preservados.');

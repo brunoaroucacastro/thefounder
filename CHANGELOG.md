@@ -1,3 +1,10 @@
+# 0.58 · Quebra-cabeça de decisões
+
+- Em partidas novas, criar e melhorar o produto usa o quebra-cabeça no lugar dos pontos: peças de decisão num espaço limitado, com vizinhos que ajudam ou atrapalham.
+- O espaço cresce com o nível do produto (de 4×3 a 7×6). As regras valem para todo produto; só os nomes das peças mudam.
+- O que a persona quer continua escondido: a dedução vem dos comentários e das avaliações.
+- Protótipos em amostras-produto/laboratorio.html.
+
 # 0.57 · Feedbacks do playtest
 
 - Corrige bug: melhorar o produto ou criar outro perdia as personas e os canais v2, derrubando a conversão de algumas personas.

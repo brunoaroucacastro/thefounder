@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.58 — Quebra-cabeça de decisões
+
+Abra dist/The-Founder-Primeira-Aposta-0.58.html. O produto agora é criado encaixando decisões num espaço limitado.
+
 ## Jogar 0.57 — Feedbacks do playtest
 
 Abra dist/The-Founder-Primeira-Aposta-0.57.html. Vendas sem prazo, desenvolvimento mais curto, renomear a qualquer momento e correção da queda de conversão após melhorar o produto.

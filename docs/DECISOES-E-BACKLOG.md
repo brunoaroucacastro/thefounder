@@ -122,3 +122,12 @@ Decisões assumidas no protótipo, onde o GDD não fechava: célula já bloquead
 - Como manter a descoberta de canais sem dicas, até existir a mecânica em que o time passa esses dados.
 - Balanceamento: os números dos protótipos são provisórios.
 - Enquanto isso, a tela atual de controles continua no jogo, com a previsão de interessados que muda ao vivo e revela o melhor mix.
+
+
+## Desenvolvimento do produto — quebra-cabeça de decisões (05/11/2026)
+
+Bruno escolheu o quebra-cabeça entre os três protótipos testados (fórmula, quebra-cabeça e antecipar problemas). Implementado na 0.58 para partidas novas.
+
+Decisões assumidas: a meta da persona fica escondida, ao contrário do protótipo; o custo por unidade continua vindo dos atributos; cada peça pode ser usada uma vez.
+
+A definir: como atrelar o quebra-cabeça às demais mecânicas; balanceamento, porque o espaço permite mais atributos que os 4 pontos anteriores; nomes de peças para camiseta, móveis, pet e consumíveis no jogo.
