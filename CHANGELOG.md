@@ -1,3 +1,9 @@
+# 0.59 · Campanha no tabuleiro
+
+- Em partidas novas, a campanha é jogada no tabuleiro Marketing Viral antes de abrir as vendas, no lugar do mix de canais e do D20 da campanha.
+- A pontuação define a força: de flop a muito bem direcionada, mudando o número de interessados.
+- O D20 do protótipo e o da melhoria continuam.
+
 # 0.58 · Quebra-cabeça de decisões
 
 - Em partidas novas, criar e melhorar o produto usa o quebra-cabeça no lugar dos pontos: peças de decisão num espaço limitado, com vizinhos que ajudam ou atrapalham.

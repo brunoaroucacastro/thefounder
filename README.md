@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.59 — Campanha no tabuleiro
+
+Abra dist/The-Founder-Primeira-Aposta-0.59.html. A campanha agora é jogada no tabuleiro Marketing Viral.
+
 ## Jogar 0.58 — Quebra-cabeça de decisões
 
 Abra dist/The-Founder-Primeira-Aposta-0.58.html. O produto agora é criado encaixando decisões num espaço limitado.

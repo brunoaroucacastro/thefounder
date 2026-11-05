@@ -131,3 +131,12 @@ Bruno escolheu o quebra-cabeça entre os três protótipos testados (fórmula, q
 Decisões assumidas: a meta da persona fica escondida, ao contrário do protótipo; o custo por unidade continua vindo dos atributos; cada peça pode ser usada uma vez.
 
 A definir: como atrelar o quebra-cabeça às demais mecânicas; balanceamento, porque o espaço permite mais atributos que os 4 pontos anteriores; nomes de peças para camiseta, móveis, pet e consumíveis no jogo.
+
+
+## Marketing — tabuleiro no jogo (05/11/2026)
+
+O Marketing Viral entrou na 0.59 para partidas novas. A Central de oportunidades continua no backlog.
+
+Decisões assumidas: o tabuleiro substitui o mix de canais e o D20 da campanha; a pontuação vira a força da campanha (0 = flop; menos de 35 = fraca; menos de 70 = válida; menos de 110 = bem direcionada; acima disso = muito bem direcionada); um flop reduz o alcance, sem zerar as vendas; a renovação automática das vendas mantém a força da última campanha.
+
+A definir: ligar os seis canais e o mix ideal de cada persona às cartas; balanceamento das faixas de pontuação.
