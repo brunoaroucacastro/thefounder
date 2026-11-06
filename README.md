@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.62 — Campanha com mais canais e fases
+
+Abra dist/The-Founder-Primeira-Aposta-0.62.html. Oito canais, quatro fases e campanhas que perdem força com o tempo.
+
 ## Jogar 0.61 — Escolher peças ao melhorar
 
 Abra dist/The-Founder-Primeira-Aposta-0.61.html. Ao melhorar o produto, você decide quais peças manter.

@@ -154,3 +154,10 @@ A definir: pesquisa para liberar peças; balanceamento do jogo após os produtos
 ## Melhorar o produto (06/11/2026)
 
 Decisão de Bruno: ao melhorar, o jogador começa escolhendo quais peças manter; pode manter ou remover todas. É o único momento em que peças saem. Implementado na 0.61.
+
+
+## Marketing — canais e fases (06/11/2026)
+
+Proposta aprovada e implementada na 0.62. Decisões: o tabuleiro evolui pela experiência da empresa (campanhas feitas), não pela versão do produto; a campanha perde 25% de força a cada renovação, até o piso de 20%; Redes Sociais usa 8 alvos numa região 5×5.
+
+Fora por enquanto: verba por carta, mais tipos de pessoa e objetivos variados de campanha. A definir: balanceamento econômico da queda de força e o caderno de descobertas por persona.

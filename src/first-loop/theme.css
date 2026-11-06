@@ -186,3 +186,10 @@ html,body{height:100%;overflow:hidden}
 .gdone{display:grid;gap:4px;justify-items:center;text-align:center;background:#eaf7ef;border:1.5px solid #a9dbbd;border-radius:12px;padding:10px}.gdone h3{margin:0;font-weight:900}.gdone b{font-size:20px;font-weight:900}.gdone small{color:var(--q-ink-soft)}.gradar{width:100%;max-width:300px}.gradar svg{width:100%;height:auto}
 .gboard{max-width:250px!important;margin-inline:auto}
 .gkeep{margin:0;color:var(--q-ink-soft)}.gread span{background:var(--q-card);border:1.5px solid var(--q-line);border-radius:9px;padding:5px 8px;display:grid}.gread small{font-size:11px;font-weight:800}.gread b{font-weight:900}
+
+/* 0.62 — canais e fases do tabuleiro */
+.bc.k-k{background:#2a9d8f}.bc.k-x{background:repeating-linear-gradient(135deg,#343859 0 4px,#23263c 4px 8px);cursor:default}.bc.half{box-shadow:inset 0 0 0 3px #8ff0bf}.bc.hit.k-k{background:#3fae7d}
+.blegend .k-k{background:#2a9d8f}.blegend .k-x{background:repeating-linear-gradient(135deg,#343859 0 3px,#23263c 3px 6px)}
+.brow{display:flex;flex-wrap:wrap;gap:6px}#board-modal .brow button{font:800 13px var(--q-font);padding:7px 10px;border-radius:10px;border:1.5px solid var(--q-line);background:var(--q-card);color:var(--q-ink);cursor:pointer}#board-modal .brow button:disabled{opacity:.45}#board-modal .brow button.primary{background:var(--q-accent);border-color:var(--q-accent-d)}
+.breport{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:13px;margin-top:3px}.breport small{flex-basis:100%;font-weight:800;color:var(--q-ink-soft)}.breport b{font-weight:900}
+.bc{font-size:clamp(9px,1.5vw,15px)!important}

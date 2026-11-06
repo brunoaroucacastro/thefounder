@@ -1,3 +1,12 @@
+# 0.62 · Campanha com mais canais e fases
+
+- O tabuleiro agora tem 8 canais com padrões próprios: Influenciador, Assessoria PR, Out of Home, SEO, Redes Sociais, E-mail, Conteúdo e Televisão.
+- Redes Sociais passa a ter região escolhida; E-mail só alcança vizinhos de quem já foi atingido; Conteúdo cresce na jogada seguinte.
+- Quatro fases pela experiência da empresa em campanhas, de 6×6 a 12×12, com Céticos, Concorrentes e Comunidades.
+- A pontuação usa percentual do público e multiplicador de personas, e os canais preferidos da persona influenciam o resultado, com relatório por canal no fim.
+- Trocar cartas custa R$ 1.000 e dobra a cada troca na campanha.
+- A campanha perde força ao renovar sozinha; uma nova campanha renova o alcance.
+
 # 0.61 · Escolher peças ao melhorar o produto
 
 - Ao melhorar o produto, as peças da versão anterior voltam, e o jogador escolhe quais manter. Esta é a única hora em que peças podem sair.
