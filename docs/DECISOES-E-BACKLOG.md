@@ -140,3 +140,12 @@ O Marketing Viral entrou na 0.59 para partidas novas. A Central de oportunidades
 Decisões assumidas: o tabuleiro substitui o mix de canais e o D20 da campanha; a pontuação vira a força da campanha (0 = flop; menos de 35 = fraca; menos de 70 = válida; menos de 110 = bem direcionada; acima disso = muito bem direcionada); um flop reduz o alcance, sem zerar as vendas; a renovação automática das vendas mantém a força da última campanha.
 
 A definir: ligar os seis canais e o mix ideal de cada persona às cartas; balanceamento das faixas de pontuação.
+
+
+## Prancheta — versão 0.60 (06/11/2026)
+
+Substitui o quebra-cabeça da 0.58. Regras e números estão em src/first-loop/universal-products.js. A oferta tem tamanho 3, com espaço para um upgrade futuro que mostre mais peças.
+
+Decisões assumidas: cada nova versão começa com a prancheta vazia, então um azar nas peças pode gerar um produto pior que o anterior; as trocas de peças entram como investimento do produto; a meta da persona continua escondida.
+
+A definir: se a nova versão aproveita peças da anterior; pesquisa para liberar peças; balanceamento do jogo após os produtos mais fortes.

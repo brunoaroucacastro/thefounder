@@ -1,0 +1,84 @@
+<title>Prancheta de Versões</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800;900&display=swap">
+<style>
+/* Layout: prancheta do The Founder; a grade é a estrela, com oferta de formas e atributos ao lado. */
+:root{color-scheme:dark;--night:#1b1d31;--night2:#24273f;--night3:#343859;--paper:#fff7ea;--card:#fffdf8;--ink:#241d33;--soft:#655d78;--line:#eadbc4;--sun:#f2a93b;--sun2:#a8661c;--good:#2f8a5f;--dim:#b9b6cf;--font:"Nunito","Segoe UI",system-ui,sans-serif}
+*{box-sizing:border-box}body{background:var(--night);color:var(--paper);font:600 15px/1.45 var(--font)}
+.wrap{max-width:900px;margin:auto;padding-block:16px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:12px}
+h1{margin:0;font-size:24px;font-weight:900}h2{margin:0;font-size:19px;font-weight:900}h3{margin:0;font-size:14px;font-weight:900}p{margin:0}
+button{font:800 14px/1.2 var(--font);color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:10px;padding:8px 11px;cursor:pointer;min-width:0}button:hover:not(:disabled){border-color:var(--sun)}button:focus-visible{outline:3px solid #7fd0ff;outline-offset:2px}button:disabled{opacity:.45;cursor:default}
+.go{background:var(--sun);border-color:var(--sun2);box-shadow:0 3px 0 var(--sun2)}.row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}.lead{color:var(--dim)}
+.tabs button{background:var(--night2);color:var(--paper);border-color:var(--night3)}.tabs button.on{background:var(--sun);color:var(--ink);border-color:var(--sun2)}.tabs small{display:block;font-size:11px;opacity:.75;margin-top:2px}
+.panel{background:var(--paper);color:var(--ink);border-radius:16px;padding:14px;display:grid;gap:10px;min-width:0}.soft{color:var(--soft)}
+.two{display:grid;gap:16px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.two>*{min-width:0}@media (max-width:700px){.two{grid-template-columns:minmax(0,1fr)}}.col{display:grid;gap:10px;align-content:start}
+.grid{display:grid;gap:3px;background:var(--night);padding:6px;border-radius:12px;width:100%;max-width:400px}.c{aspect-ratio:1;padding:0;border:0;border-radius:5px;background:#565a7d;color:#fff;font:900 clamp(13px,2.6vw,20px)/1 var(--font);display:grid;place-items:center}
+.c.dead{background:repeating-linear-gradient(45deg,#3a3550 0 5px,#2a2640 5px 10px);pointer-events:none}.c.fit{outline:3px solid #fff7ea;outline-offset:-3px;filter:brightness(1.3)}.c.no{outline:3px solid #ff8f87;outline-offset:-3px}
+.offer{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.o{display:grid;gap:5px;justify-items:center;padding:8px 4px;min-height:112px;align-content:center}.o.on{background:#ffe9c4;border-color:var(--sun2)}.o small{font-weight:900;font-size:13px}.o em{font-style:normal;font-size:11px;font-weight:800}
+.shape{display:inline-grid;gap:2px}.shape i{width:11px;height:11px;border-radius:2px;display:block}
+.attr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}.at{display:grid;gap:1px;padding:6px 8px;text-align:left}.at.on{border-color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}.at b{font-size:17px;font-weight:900;font-variant-numeric:tabular-nums}.at small{font-size:11.5px;color:var(--soft);font-weight:800}
+.stats{display:flex;flex-wrap:wrap;gap:6px}.m{background:var(--card);border:1.5px solid var(--line);border-radius:9px;padding:4px 10px;font-variant-numeric:tabular-nums}.m small{display:block;font-size:11px;color:var(--soft);font-weight:800}.m b{font-weight:900;font-size:16px}
+.rules{display:grid;gap:4px}.rules div{background:var(--card);border:1.5px solid var(--line);border-radius:9px;padding:5px 10px;font-size:13px;font-weight:800}.rules .on{background:#eaf7ef;border-color:#a9dbbd}.rules .off{background:#fff0ee;border-color:#f0b9b4}
+.msg{font-weight:800;min-height:1.4em}.end{background:#eaf7ef;border:1.5px solid #a9dbbd;border-radius:12px;padding:11px;display:grid;gap:6px;justify-items:center;text-align:center}.big{font-size:24px;font-weight:900;color:var(--good)}.radar{width:100%;max-width:320px;height:auto}.radar text{font:800 11px var(--font);fill:var(--ink)}
+.toggle{font-size:13px}.toggle button.on{background:#ffe9c4;border-color:var(--sun2)}
+</style>
+<div class="wrap">
+ <header class="bar"><div><h1>Prancheta de Versões</h1><p class="lead">Escolha uma de 3 formas, gire, diga o que ela melhora e encaixe. As outras duas vão embora. Colocou, ficou.</p></div></header>
+ <nav class="tabs row" id="tabs" aria-label="Níveis"></nav>
+ <main class="panel" id="st"></main>
+</div>
+<script>
+const $=id=>document.getElementById(id),brl=n=>'R$ '+Math.round(n).toLocaleString('pt-BR');
+const AX={Q:['Qualidade','#8f6bd1',9],D:['Durabilidade','#3f8fe0',5],P:['Desempenho','#d9744f',6],R:['Praticidade','#3fae7d',4],V:['Versatilidade','#2aa7a0',4],E:['Economia','#c9a227',-5]};
+/* Raridade: quanto mais complexa a forma, mais pontos e mais rara. As formas "separadas" têm partes que não se tocam, mas giram juntas. */
+const TIER={1:['Comum','#6d7a8c',1],2:['Incomum','#2f8a5f',2],3:['Rara','#3f6fd1',3],4:['Épica','#a14fc9',4]};
+const P=(s)=>{const o=[];s.split('/').forEach((r,y)=>[...r].forEach((ch,x)=>{if(ch==='#')o.push([x,y]);}));return o;};
+const SH=[
+[1,'##'],[1,'###'],[1,'##/#.'],[1,'#.#'],[1,'#./.#'],
+[2,'##/##'],[2,'###/#..'],[2,'###/.#.'],[2,'##./.##'],[2,'####'],[2,'#.#/.#.'],[2,'##.#'],[2,'#../.#./..#'],[2,'#.#/#..'],
+[3,'##./.##/..#'],[3,'#.#/###'],[3,'.#./###/.#.'],[3,'##/##/#.'],[3,'.##/##./.#.'],[3,'####/.#..'],[3,'#.../####'],[3,'##../.###'],[3,'#.#/.#./#.#'],[3,'##.##'],[3,'##/../##'],
+[4,'#.#/###/#.#'],[4,'###/#.#/###'],[4,'##../.##./..##'],[4,'##.##/#...#'],[4,'###/.#./###'],[4,'#.#.#/.#.#.']].map(([t,s])=>({t,c:P(s)}));
+const LV=[
+{k:'Fácil',v:'V1, primeiro produto',w:3,h:3,dead:[],star:[],limit:3,odds:[65,31,4,0],ref:[3,4,5],note:'Três peças, grade pequena. O produto sai simples, por mais que você caprichar.'},
+{k:'Médio',v:'V3, produto em evolução',w:4,h:4,dead:[],star:[[1,2]],limit:4,odds:[35,40,22,3],ref:[6,8,10],note:'Mais espaço e peças mais fortes. Regra nova: a estrela.'},
+{k:'Difícil',v:'V5, produto maduro',w:5,h:5,dead:[[0,0],[4,4],[4,0],[0,4]],star:[[1,1],[3,3]],limit:6,odds:[15,35,35,15],ref:[9,12,14],note:'Formas raras, cantos perdidos. Regra nova: Qualidade e Economia se atrapalham.'}];
+const ORDER=Object.keys(AX),OFFER=3;let lv=0;
+const rotate=(c,r)=>{for(let i=0;i<r;i++)c=c.map(([x,y])=>[-y,x]);const a=Math.min(...c.map(q=>q[0])),b=Math.min(...c.map(q=>q[1]));return c.map(([x,y])=>[x-a,y-b]);};
+const fitsBoard=(L,sh)=>[0,1,2,3].some(r=>{const c=rotate(sh.c,r);return Math.max(...c.map(q=>q[0]))<L.w&&Math.max(...c.map(q=>q[1]))<L.h;});
+/* Regras puras: valor = raridade + estrelas; grade cheia dá +1 no mais forte; Qualidade encostada em Economia perde 1; teto 5 por atributo. */
+function draw1(L,rand=Math.random){let roll=rand()*L.odds.reduce((a,b)=>a+b,0),t=1;for(let i=0;i<4;i++){if(roll<L.odds[i]){t=i+1;break;}roll-=L.odds[i];}const pool=SH.filter(s=>s.t===t&&fitsBoard(L,s)),all=pool.length?pool:SH.filter(s=>fitsBoard(L,s));return all[Math.floor(rand()*all.length)];}
+const deal=(L,rand)=>Array.from({length:OFFER},()=>({sh:draw1(L,rand),rot:0}));
+function score(L,placed){const v=Object.fromEntries(ORDER.map(a=>[a,0])),own={};placed.forEach(p=>p.cells.forEach(q=>own[q.join()]=p));let stars=0,clash=0;
+ placed.forEach(p=>{v[p.a]+=p.sh.t;const n=p.cells.filter(q=>L.star.some(k=>k[0]===q[0]&&k[1]===q[1])).length;v[p.a]+=n;stars+=n;});
+ if(L===LV[2])placed.filter(p=>p.a==='Q').forEach(p=>{if(p.cells.some(([x,y])=>[[x+1,y],[x-1,y],[x,y+1],[x,y-1]].some(q=>own[q.join()]?.a==='E'))){v.Q--;clash++;}});
+ const space=L.w*L.h-L.dead.length,used=placed.reduce((n,p)=>n+p.cells.length,0),full=used===space;if(full){const top=ORDER.slice().sort((a,b)=>v[b]-v[a])[0];v[top]++;}
+ ORDER.forEach(a=>v[a]=Math.max(0,Math.min(5,v[a])));return{v,total:ORDER.reduce((n,a)=>n+v[a],0),cost:Math.max(5,30+ORDER.reduce((n,a)=>n+v[a]*AX[a][2],0)),stars,clash,full,free:space-used};}
+function legal(L,placed,cells){const dead=new Set(L.dead.map(q=>q.join())),used=new Set(placed.flatMap(p=>p.cells.map(q=>q.join())));return cells.every(q=>q[0]>=0&&q[1]>=0&&q[0]<L.w&&q[1]<L.h&&!dead.has(q.join())&&!used.has(q.join()));}
+function fitsAnywhere(L,placed,sh){for(let r=0;r<4;r++){const c=rotate(sh.c,r);for(let x=0;x<L.w;x++)for(let y=0;y<L.h;y++)if(legal(L,placed,c.map(([a,b])=>[a+x,b+y])))return true;}return false;}
+function radar(v){const cx=160,cy=125,R=88,n=ORDER.length,pt=(i,val)=>{const t=-Math.PI/2+i/n*Math.PI*2,r=R*val/5;return[cx+Math.cos(t)*r,cy+Math.sin(t)*r];},ring=val=>ORDER.map((_,i)=>pt(i,val).map(x=>x.toFixed(1)).join(',')).join(' ');
+ return `<svg class="radar" viewBox="0 0 320 250" role="img" aria-label="Radar dos atributos">${[1,2,3,4,5].map(k=>`<polygon points="${ring(k)}" fill="none" stroke="#d9c4a3"/>`).join('')}${ORDER.map((_,i)=>{const[x,y]=pt(i,5);return `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#d9c4a3"/>`;}).join('')}<polygon points="${ORDER.map((a,i)=>pt(i,v[a]).map(x=>x.toFixed(1)).join(',')).join(' ')}" fill="#f2a93b66" stroke="#a8661c" stroke-width="2"/>${ORDER.map((a,i)=>{const[x,y]=pt(i,6.1);return `<text x="${x}" y="${y+4}" text-anchor="middle">${AX[a][0]} ${v[a]}</text>`;}).join('')}</svg>`;}
+function game(i){const L=LV[i],root=$('st'),s={placed:[],offer:deal(L),pick:0,attr:'Q',hover:null,done:false,resets:0,spent:0,msg:'Escolha a forma, gire se precisar, escolha o atributo e clique na grade.'};
+ const shapeHtml=(o,col)=>{const c=rotate(o.sh.c,o.rot),w=Math.max(...c.map(q=>q[0]))+1,h=Math.max(...c.map(q=>q[1]))+1,set=new Set(c.map(q=>q.join()));let h2='';for(let y=0;y<h;y++)for(let x=0;x<w;x++)h2+=`<i style="background:${set.has(x+','+y)?col:'transparent'}"></i>`;return `<span class="shape" style="grid-template-columns:repeat(${w},11px)">${h2}</span>`;};
+ const nextCost=()=>1000*2**s.resets,finish=()=>{s.done=true;s.hover=null;};
+ function draw(){const r=score(L,s.placed),own={};s.placed.forEach(p=>p.cells.forEach(q=>own[q.join()]=p));const dead=new Set(L.dead.map(q=>q.join())),star=new Set(L.star.map(q=>q.join()));let cells='';
+  for(let y=0;y<L.h;y++)for(let x=0;x<L.w;x++){const k=x+','+y,p=own[k],d=dead.has(k);cells+=`<button class="c ${d?'dead':''}" data-c="${k}" ${d?'tabindex="-1" aria-hidden="true"':''} aria-label="Casa ${x+1},${y+1}${p?', '+AX[p.a][0]:star.has(k)?', estrela':''}" style="${p?'background:'+AX[p.a][1]:''}">${star.has(k)?'★':''}</button>`;}
+  const col=AX[s.attr][1],left=L.limit-s.placed.length,anyFit=s.offer.some(o=>fitsAnywhere(L,s.placed,o.sh));
+  const rank=r.total>=L.ref[2]?'Excepcional':r.total>=L.ref[1]?'Muito bom':r.total>=L.ref[0]?'Bom':'Simples';
+  root.innerHTML=`<div><h2>${L.k}: ${L.v}</h2><p class="soft">${L.note}</p></div>
+  <div class="two"><div class="col"><div class="grid" style="grid-template-columns:repeat(${L.w},minmax(0,1fr))">${cells}</div><p class="msg" aria-live="polite">${!s.done&&!anyFit?'Nenhuma destas formas cabe. Troque as peças ou construa.':s.msg}</p>
+  <div class="rules"><div class="${r.full?'on':''}">Encher a grade: +1 no atributo mais forte${r.full?' ✓':''}</div>${L.star.length?`<div class="${r.stars?'on':''}">★ Cobrir uma estrela: +1 nessa peça (${r.stars}/${L.star.length})</div>`:''}${L===LV[2]?`<div class="${r.clash?'off':''}">Qualidade encostada em Economia: −1 Qualidade${r.clash?' ('+r.clash+')':''}</div>`:''}</div></div>
+  <div class="col">${s.done?`<div class="end"><h3>${rank}</h3>${radar(r.v)}<p class="big">${r.total} pontos · ${brl(r.cost)} por unidade</p><p class="soft">Régua desta versão: Bom ${L.ref[0]}, Muito bom ${L.ref[1]}, Excepcional ${L.ref[2]}.${s.spent?' Gasto em trocas: '+brl(s.spent)+'.':''}</p><button class="go" id="again">Montar outro</button></div>`:`
+  <div><div class="bar"><h3>1. Escolha a forma</h3><button id="reset">Trocar peças · ${brl(nextCost())}</button></div><div class="offer">${s.offer.map((o,j)=>`<button class="o ${s.pick===j?'on':''}" data-o="${j}" ${!fitsAnywhere(L,s.placed,o.sh)?'disabled':''}>${shapeHtml(o,col)}<small>+${o.sh.t}</small><em style="color:${TIER[o.sh.t][1]}">${TIER[o.sh.t][0]}</em></button>`).join('')}</div><div class="row" style="margin-top:6px"><button id="rot">Girar a selecionada (R)</button></div></div>
+  <div><h3>2. O que ela melhora?</h3><div class="attr">${ORDER.map(a=>`<button class="at ${s.attr===a?'on':''}" data-a="${a}"><small style="color:${AX[a][1]}">■ ${AX[a][0]}</small><b>${r.v[a]}<small>/5</small></b></button>`).join('')}</div></div>
+  <div class="stats"><div class="m"><small>Peças</small><b>${s.placed.length} de ${L.limit}</b></div><div class="m"><small>Pontos</small><b>${r.total}</b></div><div class="m"><small>Custo por unidade</small><b>${brl(r.cost)}</b></div><div class="m"><small>Gasto em trocas</small><b>${brl(s.spent)}</b></div></div>
+  <div class="row"><button class="go" id="build" ${s.placed.length?'':'disabled'}>Construir protótipo</button><button id="again">Recomeçar</button></div>`}</div></div>`;
+  root.querySelectorAll('[data-o]').forEach(b=>b.onclick=()=>{s.pick=+b.dataset.o;s.hover=null;draw();});
+  root.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{s.attr=b.dataset.a;draw();});
+  root.querySelectorAll('[data-c]').forEach(b=>{b.onmouseenter=()=>{if(!s.done){s.hover=b.dataset.c.split(',').map(Number);paint();}};b.onclick=()=>{if(s.done)return;const[x,y]=b.dataset.c.split(',').map(Number),o=s.offer[s.pick],cells=rotate(o.sh.c,o.rot).map(([a,c])=>[a+x,c+y]);if(!legal(L,s.placed,cells)){s.msg='Essa forma não cabe aí. Tente girar.';s.hover=[x,y];draw();return;}s.placed.push({sh:o.sh,a:s.attr,cells});s.hover=null;if(s.placed.length>=L.limit||score(L,s.placed).free===0){finish();draw();return;}s.offer=deal(L);s.pick=Math.max(0,s.offer.findIndex(q=>fitsAnywhere(L,s.placed,q.sh)));s.msg='Encaixada. Ela fica aí.';draw();};});
+  const rt=$('rot');if(rt)rt.onclick=turn;const rs=$('reset');if(rs)rs.onclick=()=>{s.spent+=nextCost();s.resets++;s.offer=deal(L);s.pick=Math.max(0,s.offer.findIndex(q=>fitsAnywhere(L,s.placed,q.sh)));s.msg='Peças trocadas. A próxima troca custa o dobro.';draw();};const bd=$('build');if(bd)bd.onclick=()=>{finish();draw();};const ag=$('again');if(ag)ag.onclick=()=>game(i);paint();}
+ function turn(){const o=s.offer[s.pick];if(!o||s.done)return;o.rot=(o.rot+1)%4;draw();}
+ function paint(){const o=s.offer[s.pick],prev=s.hover&&o?rotate(o.sh.c,o.rot).map(([a,c])=>[a+s.hover[0],c+s.hover[1]]):[],ok=prev.length&&legal(L,s.placed,prev),set=new Set(prev.map(q=>q.join()));root.querySelectorAll('[data-c]').forEach(e=>{const h=set.has(e.dataset.c);e.classList.toggle('fit',h&&!!ok);e.classList.toggle('no',h&&!ok);});}
+ document.onkeydown=e=>{if(e.key==='r'||e.key==='R')turn();};draw();}
+function chrome(){$('tabs').innerHTML=LV.map((L,j)=>`<button data-l="${j}" class="${j===lv?'on':''}" aria-pressed="${j===lv}">${L.k}<small>${L.v} · ${L.limit} peças</small></button>`).join('');$('tabs').querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{lv=+b.dataset.l;chrome();game(lv);});}
+chrome();game(0);
+</script>

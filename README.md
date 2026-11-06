@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.60 — Prancheta com peças sorteadas
+
+Abra dist/The-Founder-Primeira-Aposta-0.60.html. Peças sorteadas por raridade, permanentes, com limite por versão e radar no fim da montagem.
+
 ## Jogar 0.59 — Campanha no tabuleiro
 
 Abra dist/The-Founder-Primeira-Aposta-0.59.html. A campanha agora é jogada no tabuleiro Marketing Viral.

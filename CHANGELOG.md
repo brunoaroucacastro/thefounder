@@ -1,3 +1,11 @@
+# 0.60 · Prancheta com peças sorteadas
+
+- Em partidas novas, o produto é montado escolhendo 1 de 3 formas sorteadas, em qualquer atributo. Colocou, ficou; ao escolher, as 3 são trocadas.
+- 31 formas em quatro raridades, inclusive separadas. Mais complexa vale mais e é mais rara.
+- Limite de peças e grade por versão, de 3 peças em 3×3 a 7 peças em 6×6, com estrelas, cantos perdidos e o conflito entre Qualidade e Economia nas versões avançadas.
+- Trocar peças custa R$ 1.000 e dobra a cada troca na montagem.
+- Radar e régua de pontuação aparecem no fim da montagem. Oferta salva na partida, sem reroll ao recarregar.
+
 # 0.59 · Campanha no tabuleiro
 
 - Em partidas novas, a campanha é jogada no tabuleiro Marketing Viral antes de abrir as vendas, no lugar do mix de canais e do D20 da campanha.
