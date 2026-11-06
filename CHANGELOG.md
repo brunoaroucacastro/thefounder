@@ -1,3 +1,9 @@
+# 0.61 · Escolher peças ao melhorar o produto
+
+- Ao melhorar o produto, as peças da versão anterior voltam, e o jogador escolhe quais manter. Esta é a única hora em que peças podem sair.
+- O limite passa a contar o total de peças, de 3 na V1 a 9 na V7.
+- Casas inutilizáveis surgem só na parte nova da grade, para nenhuma peça mantida se perder.
+
 # 0.60 · Prancheta com peças sorteadas
 
 - Em partidas novas, o produto é montado escolhendo 1 de 3 formas sorteadas, em qualquer atributo. Colocou, ficou; ao escolher, as 3 são trocadas.

@@ -146,6 +146,11 @@ A definir: ligar os seis canais e o mix ideal de cada persona às cartas; balanc
 
 Substitui o quebra-cabeça da 0.58. Regras e números estão em src/first-loop/universal-products.js. A oferta tem tamanho 3, com espaço para um upgrade futuro que mostre mais peças.
 
-Decisões assumidas: cada nova versão começa com a prancheta vazia, então um azar nas peças pode gerar um produto pior que o anterior; as trocas de peças entram como investimento do produto; a meta da persona continua escondida.
+Decisões assumidas: as trocas de peças entram como investimento do produto; a meta da persona continua escondida.
 
-A definir: se a nova versão aproveita peças da anterior; pesquisa para liberar peças; balanceamento do jogo após os produtos mais fortes.
+A definir: pesquisa para liberar peças; balanceamento do jogo após os produtos mais fortes.
+
+
+## Melhorar o produto (06/11/2026)
+
+Decisão de Bruno: ao melhorar, o jogador começa escolhendo quais peças manter; pode manter ou remover todas. É o único momento em que peças saem. Implementado na 0.61.

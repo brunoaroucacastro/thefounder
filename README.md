@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.61 — Escolher peças ao melhorar
+
+Abra dist/The-Founder-Primeira-Aposta-0.61.html. Ao melhorar o produto, você decide quais peças manter.
+
 ## Jogar 0.60 — Prancheta com peças sorteadas
 
 Abra dist/The-Founder-Primeira-Aposta-0.60.html. Peças sorteadas por raridade, permanentes, com limite por versão e radar no fim da montagem.
