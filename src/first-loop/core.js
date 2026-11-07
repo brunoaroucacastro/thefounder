@@ -115,7 +115,7 @@ const FirstLoop=(()=>{
  const netPrice=s=>s.fourPs?s.price:round(s.price*(s.campaignId==='offer'?.85:1));
  const place=s=>{const p=places.find(p=>p.id===s.placeId);return s.commercial&&p?{...p,fee:0,...(s.modernGameplay?{cost:0}:{})}:p;};
  const launchFee=s=>s.modernGameplay?0:100;
- const developmentCost=s=>s.fourPs?8000:s.operations?(s.prepared?500:1000):300;
+ const developmentCost=s=>s.fourPs?4000:s.operations?(s.prepared?500:1000):300;
  const discountTiers=[{quantity:100,discount:0},{quantity:300,discount:.02},{quantity:1000,discount:.04},{quantity:3000,discount:.06},{quantity:5000,discount:.08},{quantity:10000,discount:.10}];
  const validQuantity=(q,modern=false)=>Number.isSafeInteger(q)&&q>=(modern?1:100)&&(modern||q<=10000);
  const volumeDiscount=q=>{if(!validQuantity(q,true))throw Error('Escolha uma quantidade inteira positiva.');return discountTiers.filter(t=>q>=t.quantity).at(-1)?.discount||0;};
@@ -166,7 +166,7 @@ const FirstLoop=(()=>{
  const gradeFactor=grade=>({critical:.35,partial:.65,normal:1,great:1.45,exceptional:1.8}[grade]);
  function reach(s,grade){const factor={critical:.35,partial:.65,normal:1,great:1.45,exceptional:1.8}[grade];return Math.max(1,Math.round(campaign(s).leads*factor*(campaign(s).fit===s.clientId?1.25:1)+(s.early?6:0)));}
  const upgradeDifficulty=s=>8+(s.level-4)*2;
- const upgradeCost=s=>Math.round(4000*1.35**(s.level-4));
+ const upgradeCost=s=>Math.round(4000*1.35**(s.level-3)/50)*50;
  const campaignBudget=d=>Math.round((150+Object.values(d.promo).reduce((n,v)=>n+v,0)*100)*d.scale);
  const campaignPotential=(s,d)=>s.reach?Reach.plan(s,{promo:d.promo,budget:campaignBudget(d)}).total:Math.round(fourReach({...s,promo:d.promo})*Math.sqrt(d.scale));
  const campaignCategory=p=>({demo:'campaign_optimize',creator:'campaign_scale',offer:'campaign_reduce'}[Object.keys(p).sort((a,b)=>p[b]-p[a])[0]]);

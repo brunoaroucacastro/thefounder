@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.71 — MVP de R$4.000
+
+Abra dist/The-Founder-Primeira-Aposta-0.71.html, com a pasta dist/audio ao lado.
+
 ## Jogar 0.70 — Peças de encaixe
 
 Abra dist/The-Founder-Primeira-Aposta-0.70.html, com a pasta dist/audio ao lado.

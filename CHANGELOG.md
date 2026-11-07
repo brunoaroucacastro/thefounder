@@ -1,3 +1,8 @@
+# 0.71 · MVP mais barato e evolução que encarece
+
+- O MVP passa de R$8.000 para R$4.000.
+- Cada evolução de nível custa mais que a anterior, sempre acima do MVP: NV4→5 R$5.400, 5→6 R$7.300, 6→7 R$9.850, 7→8 R$13.300, 8→9 R$17.950, 9→10 R$24.200.
+
 # 0.70 · Peças de encaixe na prancheta
 
 - Três peças novas de 2 casas separadas, Incomuns (+2): cantos opostos, e dois saltos de cavalo espelhados.
