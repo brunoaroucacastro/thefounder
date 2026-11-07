@@ -262,3 +262,12 @@ html,body{height:100%;overflow:hidden}
 #attr-tip{position:fixed;z-index:2100;max-width:280px;padding:10px 12px;border-radius:10px;background:#26213a;color:#fff;font-size:13px;line-height:1.35;box-shadow:0 8px 24px rgba(15,16,32,.35)}
 #attr-tip b{color:#fff}
 #attr-tip{font-family:var(--q-font,Nunito,"Segoe UI",sans-serif)!important}
+
+/* 0.72 — popup do nome do produto */
+.name-pop{position:fixed;inset:0;z-index:60;display:grid;place-items:center;background:rgba(15,16,32,.55);padding:16px}
+.name-card{display:grid;gap:10px;width:min(340px,100%);padding:20px 22px;border-radius:16px;background:var(--q-card,#fff8ea);border:1.5px solid var(--q-line-strong,#cfc6dd);box-shadow:0 16px 40px rgba(15,16,32,.4);text-align:center}
+.name-card h3{margin:0;font-size:18px;color:var(--q-ink,#26213a)}
+.name-card input{font:inherit;font-size:18px;font-weight:800;text-align:center;padding:10px 12px;border-radius:10px;border:2px solid var(--q-line-strong,#cfc6dd);background:#fff;color:var(--q-ink,#26213a)}
+.name-card input:focus{outline:3px solid #5b3df5;outline-offset:1px}
+.name-card small{opacity:.7}
+.product-title{margin:0 0 6px}

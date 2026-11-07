@@ -1,3 +1,8 @@
+# 0.72 · Nome do produto em popup
+
+- O campo de nome saiu do topo da criação. Quando a montagem termina e o radar aparece, abre uma popup pequena no meio da tela pedindo só o nome.
+- O nome é obrigatório (pelo menos 2 letras); depois de confirmado aparece no topo e fica definitivo ao sair da prancheta.
+
 # 0.71 · MVP mais barato e evolução que encarece
 
 - O MVP passa de R$8.000 para R$4.000.
