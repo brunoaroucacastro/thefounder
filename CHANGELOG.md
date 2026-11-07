@@ -1,3 +1,11 @@
+# 0.66 · Som
+
+- Música de fundo em loop (And So It Begins, de Artificial.Music).
+- Menu de som no botão ♫ da barra de cima: liga e desliga a música e os efeitos, com volume separado para cada um. A escolha fica salva no navegador.
+- Efeitos: moeda a cada venda, notificação ao encaixar peça ou jogar carta de marketing, bocejo no fim da semana, teclado de vez em quando durante um trabalho, clique em elementos.
+- Dado: 20 natural toca o sucesso máximo, acima de 10 toca o sucesso, de 2 a 10 toca o erro e 1 natural toca a falha máxima. No tabuleiro de marketing vale a nota da campanha.
+- Créditos dos sons em docs/CREDITOS.md. Os arquivos ficam em dist/audio, ao lado do HTML.
+
 # 0.65 · Nome definitivo, custos em vermelho e Nexus social
 
 - O produto não tem mais nome genérico: é preciso dar um nome antes de sair da prancheta, e depois ele fica travado.

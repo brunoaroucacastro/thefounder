@@ -246,3 +246,11 @@ html,body{height:100%;overflow:hidden}
 .nexus-author .nx-who{display:block!important;width:auto!important;height:auto!important;background:none!important;color:#26213a!important;place-items:initial!important;text-align:left}
 .nexus-author .nx-avatar{display:inline-grid!important;width:36px!important;height:36px!important;background:var(--post-color,#5b3df5)!important;color:#fff!important;border-radius:50%}
 .nx-who small{color:#7b7590!important}
+
+/* 0.66 — menu de som */
+#audio-menu{position:fixed;z-index:2000;display:grid;gap:10px;min-width:230px;padding:14px 16px;border-radius:14px;background:var(--q-card,#fff);color:var(--q-ink,#26213a);border:1.5px solid var(--q-line-strong,#cfc6dd);box-shadow:0 10px 30px rgba(15,16,32,.35);font-family:var(--q-font,inherit)}
+#audio-menu b{font-size:15px}
+#audio-menu label{display:flex;gap:8px;align-items:center;font-size:14px}
+#audio-menu label.vol{display:grid;gap:4px;font-size:12px;opacity:.85;padding-left:24px}
+#audio-menu input[type=range]{width:100%;accent-color:#5b3df5}
+.time #sound{display:inline-flex!important;align-items:center;justify-content:center;min-width:32px}

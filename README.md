@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.66 — Som
+
+Abra dist/The-Founder-Primeira-Aposta-0.66.html. A pasta dist/audio precisa estar ao lado do arquivo para ter som.
+
 ## Jogar 0.65 — Nome definitivo e Nexus social
 
 Abra dist/The-Founder-Primeira-Aposta-0.65.html.
