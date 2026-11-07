@@ -1,3 +1,8 @@
+# 0.68 · Palavras-chave e ajuda dos atributos
+
+- As falas das personas destacam em negrito o trecho que revela o que importa (ou não importa) para elas, nas 72 frases.
+- Na prancheta, cada atributo tem um ? na bolinha: clicando, aparece uma descrição curta que vale para qualquer produto.
+
 # 0.67 · Som do dado
 
 - Ao rolar o D20 toca uma rolagem sorteada entre 9 cortadas do arquivo de dado, sem repetir a anterior.

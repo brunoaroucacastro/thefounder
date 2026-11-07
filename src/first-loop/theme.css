@@ -254,3 +254,11 @@ html,body{height:100%;overflow:hidden}
 #audio-menu label.vol{display:grid;gap:4px;font-size:12px;opacity:.85;padding-left:24px}
 #audio-menu input[type=range]{width:100%;accent-color:#5b3df5}
 .time #sound{display:inline-flex!important;align-items:center;justify-content:center;min-width:32px}
+
+/* 0.68 — palavras-chave e ajuda dos atributos */
+.persona-comment b{font-weight:800;color:var(--q-ink,#26213a)}
+.attr-help{display:inline-grid;place-items:center;width:17px;height:17px;border-radius:50%;background:var(--c,#5b3df5);color:#fff!important;font-size:11px;font-weight:800;line-height:1;cursor:help;vertical-align:1px}
+.attr-help:hover{filter:brightness(1.15);box-shadow:0 0 0 2px #fff,0 0 0 3px var(--c,#5b3df5)}
+#attr-tip{position:fixed;z-index:2100;max-width:280px;padding:10px 12px;border-radius:10px;background:#26213a;color:#fff;font-size:13px;line-height:1.35;box-shadow:0 8px 24px rgba(15,16,32,.35)}
+#attr-tip b{color:#fff}
+#attr-tip{font-family:var(--q-font,Nunito,"Segoe UI",sans-serif)!important}
