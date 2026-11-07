@@ -344,6 +344,7 @@ node.innerHTML='<div class="dice-popup '+kind+'">'+button('×','diceClose','aria
   workshopLayout();resize();weeklyPopup();socialPopup();if($('weekly-modal').hidden){dicePopup();resultPopup();if(knowledgeOpen)knowledgeBook();}else{for(const id of ['dice-modal','launch-results','knowledge-book','workshop-info'])$(id).hidden=true;}const modalVisible=socialOpen||!$('weekly-modal').hidden||!$('dice-modal').hidden||!$('launch-results').hidden||!$('knowledge-book').hidden||!$('workshop-info').hidden;for(const id of ['world','tray','work-order','status-bar','workshop-nav'])$(id).inert=modalVisible;updateLive();
  }
  function updateLive(){
+  {const cash=$('cash'),txt=money(g.cash);if(cash&&cash.textContent!==txt){const up=g.cash>(cash._v??g.cash);cash.textContent=txt;cash._v=g.cash;if(up){cash.classList.remove('cash-up');void cash.offsetWidth;cash.classList.add('cash-up');}}}
   if(g.phase==='selling'){
    const sales=$('sales-count'),contacts=$('sales-contacts'),rate=$('conversion-live'),detail=$('conversion-detail');
    const m=C.windowMetrics(g);

@@ -288,3 +288,5 @@ html,body{height:100%;overflow:hidden}
 .bc.hit.k-p{background:#2fae6a!important;color:#fff!important;box-shadow:0 0 0 2px #fff,0 0 12px 3px rgba(47,174,106,.8)!important;animation:bpop .35s}
 @keyframes bpop{0%{transform:scale(1)}50%{transform:scale(1.18)}100%{transform:scale(1)}}
 .help-card,.help-card *{font-family:var(--q-font,Nunito,"Segoe UI",sans-serif)!important}
+#cash.cash-up{animation:cashup .6s ease-out}
+@keyframes cashup{0%{color:#3fdc8c;transform:scale(1.12)}100%{transform:none}}

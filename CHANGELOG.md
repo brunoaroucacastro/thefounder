@@ -1,3 +1,7 @@
+# 0.74 · Caixa em tempo real
+
+- O caixa na barra de cima sobe a cada venda, com um brilho verde, em vez de só atualizar quando a fase muda.
+
 # 0.73 · Feedbacks de 07/11: clareza e economia
 
 - Catálogo: deixa claro que você vai desenvolver o produto do zero, não comprar um pronto.
