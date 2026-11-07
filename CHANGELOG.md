@@ -1,3 +1,11 @@
+# 0.75 · Banco e empréstimos
+
+- Nova seção Banco em Caixa: empréstimo Pequeno (R$10.000, 4 semanas, 8%), Médio (R$30.000, 8 semanas, 15%) e Grande (R$80.000, 12 semanas, 25%).
+- Um empréstimo por vez. Médio libera depois de 1 produto com lucro, Grande depois de 3.
+- A parcela sai do caixa no fim de cada semana; os juros aparecem como despesa no relatório.
+- Se faltar caixa: multa de 10% somada à dívida. No segundo atraso, o banco vende o estoque com 50% de desconto (no máximo o custo do estoque) para cobrar.
+- Na tela de lote, com empréstimo ativo, aparece quantas unidades por semana é preciso vender para cobrir a parcela.
+
 # 0.74 · Caixa em tempo real
 
 - O caixa na barra de cima sobe a cada venda, com um brilho verde, em vez de só atualizar quando a fase muda.

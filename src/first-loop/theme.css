@@ -290,3 +290,13 @@ html,body{height:100%;overflow:hidden}
 .help-card,.help-card *{font-family:var(--q-font,Nunito,"Segoe UI",sans-serif)!important}
 #cash.cash-up{animation:cashup .6s ease-out}
 @keyframes cashup{0%{color:#3fdc8c;transform:scale(1.12)}100%{transform:none}}
+
+/* 0.75 — banco */
+.bank{display:grid;gap:8px;margin:10px 0;padding:12px;border-radius:12px;background:rgba(91,61,245,.06);border:1.5px solid var(--q-line,#e3dfeb)}
+.bank h3{margin:0}
+.loan-offers{display:grid;gap:8px}
+.loan-offer,.loan-active{display:grid;gap:4px;padding:10px 12px;border-radius:10px;background:var(--q-card,#fff);border:1.5px solid var(--q-line-strong,#cfc6dd)}
+.loan-offer span,.loan-active span{font-size:13px}
+.loan-offer.locked{opacity:.6}
+.loan-offer button{justify-self:start}
+.loan-active.late{border-color:#d64545}

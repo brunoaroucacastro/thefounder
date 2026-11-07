@@ -284,6 +284,7 @@ const FirstLoop=(()=>{
    case'backClient':if(s.phase!=='design')throw Error('O protótipo já está em construção.');s.phase='customer';break;
    case'feature':if(s.phase!=='design'||!features.some(f=>f.id===a.id))throw Error('A bancada já está em execução.');if(s.features.includes(a.id))s.features=s.features.filter(id=>id!==a.id);else{if(s.features.length>=2)throw Error('Cabem duas características. Troque uma para testar outra combinação.');s.features.push(a.id);}break;
    case'price':if(s.fourPs)throw Error('Defina o preço na etapa de margem.');if(s.phase!=='design'||![80,120,160].includes(a.price))throw Error('Preço indisponível.');s.price=a.price;break;
+   case'loanTake':{if(!s.weekly)throw Error('O banco abre quando o calendário semanal começa.');if(s.loan)throw Error('Quite o empréstimo atual antes de pegar outro.');const o=loanStatus(s).find(x=>x.id===a.id);if(!o)throw Error('Empréstimo indisponível.');if(!o.open)throw Error('Lucre com mais '+o.missing+' produto'+(o.missing>1?'s':'')+' para liberar este empréstimo.');s.cash=round(s.cash+o.amount);s.loan={id:o.id+'-'+(s.loansDone||0),name:o.name,amount:o.amount,total:o.total,weeks:o.weeks,installment:o.installment,paidWeeks:0,debt:0,late:0};log(s,'Empréstimo '+o.name+' contratado: '+o.amount.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})+' em '+o.weeks+' parcelas semanais.','milestone');break;}
    case'name':if(s.nameLocked)throw Error('O nome do produto já foi definido.');if((s.personaSet==='v2'?!s.productId:s.phase!=='design')||typeof a.name!=='string')throw Error('Nome indisponível.');s.name=a.name.slice(0,28);break;
    case'build':if(s.gadgets?s.phase!=='blueprint'||(!s.boardCampaign&&(s.fourPs?G.total(s)>pointBudget(s):G.total(s)!==4)):s.phase!=='design'||s.features.length!==2)throw Error('Escolha duas características para construir.');const buildCost=developmentCost(s);const promotionFee=s.traction?0:s.modernGameplay?promotionCost(s.promo):s.fourPs&&!s.unitAcquisition?150+Object.values(s.promo).reduce((n,v)=>n+v,0)*100:0;if(s.fourPs&&(!s.placeId||(!s.bulkDice&&!Number.isFinite(s.price))))throw Error('Conclua os quatro Ps.');if(s.commercial&&s.cash<buildCost+place(s).cost+promotionFee+launchFee(s)+materialPayment(s,100*unitCost(s)))throw Error('Reserve caixa para o MVP, aquisição e pelo menos cem unidades antes de desenvolver.');spend(s,buildCost+(s.fourPs?place(s).cost+promotionFee:0),1);if(s.fourPs){s.campaignCost=s.commercial?0:promotionFee;s.operatingCost+=place(s).cost;s.campaignId='demo';s.quality=1;}if(s.accounting)acquireCampaign(s,s.id+'-'+s.cycle+'-initial',s.modernGameplay?0:promotionFee);if(s.modernGameplay){s.campaignFixedCost=(s.campaignFixedCost||0)+promotionFee;contract(s).fixedCost=promotionFee;}s.projectCost=buildCost;s.name=s.name.trim()||'Fone Aurora';job(s,'building',s.fourPs?(s.prepared?12:20):s.operations?(s.prepared?4:10):5,s.fourPs&&!s.bulkDice?'campaignWork':'testReady');log(s,'Seu protótipo está tomando forma na bancada da Nina.');break;
    case'test':if(s.fourPs&&!s.bulkDice)throw Error('Este MVP não usa D20.');if(s.phase!=='testReady'||s.test)throw Error('O teste deste produto já foi realizado.');s.test=die(s,'product_development','Teste do protótipo',random);s.quality=['critical','partial'].includes(s.test.grade)?0:s.test.grade==='normal'?1:s.test.grade==='great'?2:3;s.executionCritical=!!s.modernGameplay&&s.test.natural===20;s.phase='testOutcome';log(s,s.quality?'O protótipo passou no teste.':'O teste encontrou um problema. Você pode corrigir ou assumir o risco.',s.quality?'good':'warn');break;
@@ -326,7 +327,7 @@ const FirstLoop=(()=>{
 
  const secondsPerWorkday=24;
  const secondsPerMinute=secondsPerWorkday/60;
- const moneyCategories={cogs:'Produtos vendidos',projectCost:'Desenvolvimento',campaignCost:'Aquisição',campaignFixedCost:'Campanha',rent:'Operação',scrapLoss:'Perdas de estoque',setupCost:'Abertura',operatingCost:'Pesquisa e operação',fees:'Taxas',salary:'Equipe',office:'Aluguel'};
+ const moneyCategories={cogs:'Produtos vendidos',projectCost:'Desenvolvimento',campaignCost:'Aquisição',campaignFixedCost:'Campanha',rent:'Operação',scrapLoss:'Perdas de estoque',setupCost:'Abertura',interest:'Juros do empréstimo',operatingCost:'Pesquisa e operação',fees:'Taxas',salary:'Equipe',office:'Aluguel'};
  function enableWeekly(s){
   if(s.weekly||!s.modernGameplay)return s;
   return {...s,speed:[1,2,4].includes(s.speed)?s.speed:1,weekly:{
@@ -355,6 +356,19 @@ const FirstLoop=(()=>{
   const type=({'receita':'revenue','entradas':'receipt','saídas':'payment'})[category]||'expense';
   w.entries.push({id:++w.sequence,day,week:Math.ceil(day/5),source,category,type,amount,status:'posted'});
  }
+ const loanOffers=[{id:'small',name:'Pequeno',amount:10000,weeks:4,rate:.08,needs:0},{id:'medium',name:'Médio',amount:30000,weeks:8,rate:.15,needs:1},{id:'large',name:'Grande',amount:80000,weeks:12,rate:.25,needs:3}];
+ const profitableProducts=s=>(s.history||[]).filter(h=>(h.profit||0)>0).length;
+ function loanStatus(s){const wins=profitableProducts(s);return loanOffers.map(o=>{const installment=Math.ceil(o.amount*(1+o.rate)/o.weeks),total=installment*o.weeks;return{...o,total,installment,open:wins>=o.needs,missing:Math.max(0,o.needs-wins)};});}
+ function settleLoan(s){
+  const L=s.loan,w=s.weekly;if(!L||!w)return;const number=w.reports.length+1,id='loan:'+L.id+':'+number;if(w.entries.some(e=>e.source===id))return;
+  const scheduled=L.paidWeeks<L.weeks?L.installment:0,due=round(scheduled+L.debt);if(!due){s.loan=null;s.loansDone=(s.loansDone||0)+1;return;}
+  const interestPart=scheduled?round((L.total-L.amount)/L.weeks):0;
+  if(scheduled)L.paidWeeks++;
+  if(s.cash>=due){s.cash=round(s.cash-due);postWeekly(w,w.days,id,'saídas',due);postWeekly(w,w.days,id,'interest',interestPart);L.debt=0;log(s,'Parcela do empréstimo paga: '+due.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})+'.','milestone');}
+  else{const fee=round(due*.1);L.debt=round(due+fee);L.late++;postWeekly(w,w.days,id,'interest',interestPart+fee);log(s,'Faltou caixa para a parcela do empréstimo. Multa de 10% somada à dívida.','warn');
+   if(L.late>=2&&(s.stock||0)>0){const units=s.stock,book=s.bulkDice?(s.inventoryBook||0):round(units*unitCost(s)),proceeds=Math.min(book,round(units*(s.price||0)*.5));s.stock=0;if(s.bulkDice)s.inventoryBook=0;const loss=Math.max(0,round(book-proceeds));s.scrapLoss=round((s.scrapLoss||0)+loss);postWeekly(w,w.days,id+':venda','scrapLoss',loss);s.cash=round(s.cash+proceeds);postWeekly(w,w.days,id+':venda','entradas',proceeds);const paid=Math.min(L.debt,s.cash);s.cash=round(s.cash-paid);L.debt=round(L.debt-paid);postWeekly(w,w.days,id+':venda','saídas',paid);log(s,'O banco vendeu '+units+' unidades do estoque com 50% de desconto para cobrar a dívida.','warn');}}
+  if(L.paidWeeks>=L.weeks&&!L.debt){s.loan=null;s.loansDone=(s.loansDone||0)+1;log(s,'Empréstimo quitado.','good');}
+ }
  function settleWeeklyObligations(s){
   const w=s.weekly,number=w.reports.length+1;
   for(const obligation of w.obligations){
@@ -368,6 +382,7 @@ const FirstLoop=(()=>{
    postWeekly(w,w.days,id,category,charge);
    postWeekly(w,w.days,id,'saídas',charge);
   }
+  settleLoan(s);
  }
  function closeWeek(s){
   const w=s.weekly,number=w.reports.length+1;
@@ -419,6 +434,8 @@ const FirstLoop=(()=>{
    const next=applyAction(input,a,options);
    if(input.social&&!next.social)next.social=copy(input.social);
   if(input.branding&&!next.branding)next.branding=copy(input.branding);
+  if(input.loan!==undefined&&next.loan===undefined)next.loan=copy(input.loan);
+  if(input.loansDone&&next.loansDone===undefined)next.loansDone=input.loansDone;
    return next;
   }
   if(a.type==='weekend')return weekend(copy(input),a.choice);
@@ -434,6 +451,8 @@ const FirstLoop=(()=>{
   if(next.cycle!==input.cycle&&next.generation>1&&input.tractionWeights){next.tractionWeights=copy(input.tractionWeights);next.traction=copy(input.traction);}
   if(input.social&&!next.social)next.social=copy(input.social);
   if(input.branding&&!next.branding)next.branding=copy(input.branding);
+  if(input.loan!==undefined&&next.loan===undefined)next.loan=copy(input.loan);
+  if(input.loansDone&&next.loansDone===undefined)next.loansDone=input.loansDone;
   if(next.weekly.effect?.extraFocus&&(next.focus<input.focus||next.cycle!==input.cycle))next.weekly.effect.extraFocus=false;
   recordMovement(input,next,a.type);
   return next;
@@ -464,6 +483,6 @@ const FirstLoop=(()=>{
   }
   return s;
  }
- return {productPlanning,enableSocial,enableWeekly,studyTarget,moneyCategories,enableTraction,materialPayment,dismantleQuote,rollModifiers,launchFee,promotionCosts,promotionCost,windowOperatingCost,Learning,windowMetrics,campaignGradeFactor,shopCanBuy,upgradeLaunchReserve,pricingCost,quoteCAC,cac,reserved,acquisitionRoom,Reach,enableReach:Reach.enable,axes:s=>G.axesFor(s),pointBudget,technicalNote:s=>s.universal?G.U.note(s):null,G,Book,Audience,warmCandidates,retargetLimit,enableBehavior,enableAccounting,acquisitionMetrics,forecast,overview,snapshot,enableEvolution,upgradeDifficulty,upgradeCost,campaignBudget,campaignPotential,discountTiers,validQuantity,volumeDiscount,batchUnitCost,batchTotal,maxMargin,contribution,productionTime,gradeFactor,places,place,developmentCost,priceFor,fourReach,personas:s=>s.gadgets?(s.commercial&&s.personaCandidates?.length?G.personas(s).filter(p=>s.personaCandidates.includes(p.id)):G.personas(s)):clients,clients,features,campaigns,fresh,load,client,campaign,unitCost,match,netPrice,rate,reach,act,tick,result};
+ return {productPlanning,enableSocial,enableWeekly,studyTarget,moneyCategories,enableTraction,materialPayment,dismantleQuote,rollModifiers,launchFee,promotionCosts,promotionCost,windowOperatingCost,Learning,windowMetrics,campaignGradeFactor,shopCanBuy,upgradeLaunchReserve,pricingCost,quoteCAC,cac,reserved,acquisitionRoom,Reach,enableReach:Reach.enable,axes:s=>G.axesFor(s),pointBudget,technicalNote:s=>s.universal?G.U.note(s):null,G,Book,Audience,warmCandidates,retargetLimit,enableBehavior,enableAccounting,acquisitionMetrics,forecast,overview,snapshot,enableEvolution,upgradeDifficulty,upgradeCost,loanStatus,loanOffers,campaignBudget,campaignPotential,discountTiers,validQuantity,volumeDiscount,batchUnitCost,batchTotal,maxMargin,contribution,productionTime,gradeFactor,places,place,developmentCost,priceFor,fourReach,personas:s=>s.gadgets?(s.commercial&&s.personaCandidates?.length?G.personas(s).filter(p=>s.personaCandidates.includes(p.id)):G.personas(s)):clients,clients,features,campaigns,fresh,load,client,campaign,unitCost,match,netPrice,rate,reach,act,tick,result};
 })();
 if(typeof module!=='undefined')module.exports=FirstLoop;
