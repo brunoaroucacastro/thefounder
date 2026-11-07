@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.73 — Feedbacks de 07/11
+
+Abra dist/The-Founder-Primeira-Aposta-0.73.html, com a pasta dist/audio ao lado.
+
 ## Jogar 0.72 — Nome em popup
 
 Abra dist/The-Founder-Primeira-Aposta-0.72.html, com a pasta dist/audio ao lado.

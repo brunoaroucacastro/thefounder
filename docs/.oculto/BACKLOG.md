@@ -12,3 +12,12 @@ Ideias guardadas para puxar depois. Não entram no jogo até o Bruno pedir.
 - Rebranding seria a única forma de mudar o nome depois disso.
 - Custa dinheiro e derruba a reputação do produto (avaliações e confiança voltam a subir aos poucos).
 - Em aberto: valor do custo, tamanho da queda de reputação, se o histórico de vendas e avaliações acompanha o nome novo.
+
+## Descanso de fim de semana (feedback de 07/11/2026)
+- A tela de descanso aparece vezes demais e a interação fica repetitiva e incômoda.
+- Repensar a frequência (por exemplo, só de tantas em tantas semanas ou só quando houver algo em jogo) e a forma (escolha rápida sem abrir uma tela inteira, ou uma decisão automática com opção de mudar).
+- Não mexer até o Bruno pedir.
+
+## Céticos no tabuleiro de marketing (feedback de 07/11/2026)
+- A dinâmica atual (precisa de 2 alcances para contar) não está boa.
+- Repensar depois. Continua no jogo como está por enquanto.

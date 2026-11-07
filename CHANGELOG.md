@@ -1,3 +1,13 @@
+# 0.73 · Feedbacks de 07/11: clareza e economia
+
+- Catálogo: deixa claro que você vai desenvolver o produto do zero, não comprar um pronto.
+- Tutoriais curtos que abrem na primeira vez e ficam num botão ? : como desenvolver (prancheta), personas e necessidades, preço e margem de contribuição, campanha de marketing.
+- Campanha: objetivo em destaque (alcançar todas as personas ★), passo 1º canal / 2º tabuleiro, cartas pulsando enquanto nenhuma está escolhida e aviso ao clicar no tabuleiro sem carta.
+- Persona alcançada fica verde com brilho.
+- Redes Sociais: 10 pessoas ao acaso em todo o tabuleiro.
+- Economia: produto que atende a persona agora tem mais conversão e aceita preço maior; produto errado continua igual. Na simulação, o mesmo lote de 100 fones a R$110 vende em 19 dias (antes nem vendia) e a R$90 em 10 dias (antes 92).
+- Descanso de fim de semana e céticos foram para o backlog.
+
 # 0.72 · Nome do produto em popup
 
 - O campo de nome saiu do topo da criação. Quando a montagem termina e o radar aparece, abre uma popup pequena no meio da tela pedindo só o nome.

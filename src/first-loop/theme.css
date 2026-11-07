@@ -271,3 +271,20 @@ html,body{height:100%;overflow:hidden}
 .name-card input:focus{outline:3px solid #5b3df5;outline-offset:1px}
 .name-card small{opacity:.7}
 .product-title{margin:0 0 6px}
+
+/* 0.73 — ajuda, catálogo e campanha mais clara */
+.help-btn{position:absolute;top:10px;right:12px;z-index:5;width:30px;height:30px;min-height:0!important;padding:0!important;border-radius:50%!important;display:grid!important;place-items:center;font-weight:900!important;font-size:16px!important;background:#5b3df5!important;color:#fff!important;border:0!important;box-shadow:0 3px 0 #3a26b0!important}
+.btop h2 .help-btn{position:static;display:inline-grid!important;vertical-align:middle;margin-left:6px;width:26px;height:26px;font-size:14px!important}
+.help-pop{position:fixed;inset:0;z-index:2200;display:grid;place-items:center;padding:16px;background:rgba(15,16,32,.55)}
+.help-card{width:min(420px,100%);display:grid;gap:12px;padding:20px 22px;border-radius:16px;background:var(--q-card,#fff8ea);color:var(--q-ink,#26213a);border:1.5px solid var(--q-line-strong,#cfc6dd);box-shadow:0 16px 40px rgba(15,16,32,.4);font-family:var(--q-font,inherit)}
+.help-card h3{margin:0;font-size:18px}
+.help-card ul{margin:0;padding-left:18px;display:grid;gap:8px;font-size:14px;line-height:1.4}
+.help-card button{justify-self:end}
+.bgoal{margin:6px 0;padding:8px 10px;border-radius:10px;background:#fff3c4;border:1.5px solid #e0a92e;color:#3a2a06}
+.bhand.waiting .bcard:not([disabled]){animation:bpulse 1.6s ease-in-out infinite}
+.bhand.nudge{animation:bshake .4s}
+@keyframes bpulse{0%,100%{box-shadow:0 0 0 0 rgba(91,61,245,0)}50%{box-shadow:0 0 0 4px rgba(91,61,245,.45)}}
+@keyframes bshake{0%,100%{transform:none}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.bc.hit.k-p{background:#2fae6a!important;color:#fff!important;box-shadow:0 0 0 2px #fff,0 0 12px 3px rgba(47,174,106,.8)!important;animation:bpop .35s}
+@keyframes bpop{0%{transform:scale(1)}50%{transform:scale(1.18)}100%{transform:scale(1)}}
+.help-card,.help-card *{font-family:var(--q-font,Nunito,"Segoe UI",sans-serif)!important}
