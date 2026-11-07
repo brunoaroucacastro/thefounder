@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.69 — Fim de semana com som
+
+Abra dist/The-Founder-Primeira-Aposta-0.69.html, com a pasta dist/audio ao lado.
+
 ## Jogar 0.68 — Palavras-chave e ajuda dos atributos
 
 Abra dist/The-Founder-Primeira-Aposta-0.68.html, com a pasta dist/audio ao lado.

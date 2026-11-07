@@ -1,3 +1,10 @@
+# 0.69 · Fim de semana com som
+
+- Na sexta, a música vai sumindo aos poucos até o fim da semana.
+- Quando a semana acaba, toca o Short UI Break e, em seguida, o bocejo.
+- Na semana seguinte, a música recomeça do início.
+- Crédito adicionado em docs/CREDITOS.md.
+
 # 0.68 · Palavras-chave e ajuda dos atributos
 
 - As falas das personas destacam em negrito o trecho que revela o que importa (ou não importa) para elas, nas 72 frases.

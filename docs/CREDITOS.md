@@ -16,6 +16,7 @@ A fonte e a licença ainda precisam ser confirmadas antes do lançamento. O padr
 |---|---|---|---|
 | Cada venda | Money Collect 1 | freesound_community | `freesound_community-money-collect-1-101476.mp3` |
 | Encaixar peça na prancheta ou jogar carta no tabuleiro de marketing | New Notification 040 | Universfield | `universfield-new-notification-040-493469.mp3` |
+| Fim da semana, logo depois que a música some | Short UI Break 6 | pietix | `pietix-short-ui-break-6-547055.mp3` |
 | Fim da semana | Male Yawn Effect | DRAGON-STUDIO | `dragon-studio-male-yawn-effect-376879.mp3` |
 | Trabalho em andamento (de vez em quando) | Typing Keyboard ASMR | DRAGON-STUDIO | `dragon-studio-typing-keyboard-asmr-356116.mp3` |
 | Dado acima de 10 ou resultado bom | UI Success Chime | SoundShelfStudio | `soundshelfstudio-ui-success-chime-513565.mp3` |
