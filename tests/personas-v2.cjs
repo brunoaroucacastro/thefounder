@@ -26,7 +26,7 @@ let o=act(act(C.fresh(9,{...flags,traction:true,personaSet:'v2'}),'start'),'prod
 const po=C.G.personas(o).find(p=>p.id===o.personaCandidates[0]);o=act(o,'customer',{id:po.id});const to=Object.entries(po.weights).sort((a,b)=>b[1]-a[1]);for(const [id] of [to[0],to[0],to[1],to[2]])o=act(o,'attribute',{id,delta:1});
 o=act(o,'reveal');o=act(o,'confirmPromotion');o=until(act(o,'build'),'testReady');assert(o.clock<=200,'desenvolvimento mais curto: '+o.clock);
 o=act(o,'test',{},15);o=act(o,'testChoice',{choice:o.quality===0?'repair':'continue'});o=until(o,'batchPlanning');o=act(o,'batch',{quantity:300});o=act(o,'confirmBatch');o=act(o,'setPrice',{price:Math.round(po.budget*.5)});o=act(o,'confirmPrice');o=act(o,'rollCampaign',{},13);o=act(o,'launchReview');o=until(act(o,'launch'),'selling');
-assert.equal(act(o,'name',{name:'Nome novo'}).name,'Nome novo');assert.equal(C.load(JSON.stringify(o)).personaSet,'v2');
+assert.throws(()=>act(o,'name',{name:'Nome novo'}),/já foi definido/);assert.equal(o.name,'Produto Teste');assert.equal(C.load(JSON.stringify(o)).personaSet,'v2');
 const startClock=o.clock,firstEnd=o.sales.windowEnd;let wave=o.wave;for(let i=0;i<30000&&o.phase!=='recap';i++){o=o.phase==='opportunity'?act(o,'offer',{choice:'decline'}):C.tick(o,.2);if(o.phase==='selling'&&o.wave>wave)wave=o.wave;}
 assert(wave>1||o.clock<firstEnd,'a campanha deveria renovar sem prazo');assert(['stock','audience'].includes(o.sales.finishReason),'encerrou por '+o.sales.finishReason);if(o.sales.finishReason==='stock')assert.equal(o.stock,0);
 assert.equal(C.load(JSON.stringify(o)).phase,'recap');

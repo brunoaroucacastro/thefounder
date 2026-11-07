@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.65 — Nome definitivo e Nexus social
+
+Abra dist/The-Founder-Primeira-Aposta-0.65.html.
+
 ## Jogar 0.64 — Pistas mais claras
 
 Abra dist/The-Founder-Primeira-Aposta-0.64.html. As personas dizem com clareza o que não importa para elas.

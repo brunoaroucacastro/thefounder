@@ -1,3 +1,10 @@
+# 0.65 · Nome definitivo, custos em vermelho e Nexus social
+
+- O produto não tem mais nome genérico: é preciso dar um nome antes de sair da prancheta, e depois ele fica travado.
+- Nos balanços, custos aparecem em vermelho e com sinal negativo; resultados negativos também.
+- Os canais da campanha geram posts no Nexus: jornal (PR), telejornal (TV), influenciadora, outdoor, blog de comparativos (SEO), newsletter, anúncio patrocinado e artigo da marca.
+- Nexus com cara de rede social: perfil da empresa com seguidores e curtidas, abas Tudo/Imprensa/Clientes/Sua marca, selo de verificado e manchetes.
+
 # 0.64 · Pistas do que não importa mais claras
 
 - O comentário que aponta o atributo sem importância agora começa sempre com “Não me importo…”, nas 24 personas, para não ser confundido com uma exigência.
