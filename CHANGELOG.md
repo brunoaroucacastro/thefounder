@@ -1,3 +1,8 @@
+# 0.64 · Pistas do que não importa mais claras
+
+- O comentário que aponta o atributo sem importância agora começa sempre com “Não me importo…”, nas 24 personas, para não ser confundido com uma exigência.
+- Planilha docs/PERSONAS-E-AVALIACOES-v2.xlsx atualizada.
+
 # 0.63 · Montagem do produto em janela grande
 
 - Corrige a grade do produto, que aparecia encolhida a ponto de sumir.

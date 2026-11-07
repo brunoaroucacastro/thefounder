@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.64 — Pistas mais claras
+
+Abra dist/The-Founder-Primeira-Aposta-0.64.html. As personas dizem com clareza o que não importa para elas.
+
 ## Jogar 0.63 — Montagem em janela grande
 
 Abra dist/The-Founder-Primeira-Aposta-0.63.html. A montagem do produto agora abre numa janela grande.
