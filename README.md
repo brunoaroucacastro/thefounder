@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.70 — Peças de encaixe
+
+Abra dist/The-Founder-Primeira-Aposta-0.70.html, com a pasta dist/audio ao lado.
+
 ## Jogar 0.69 — Fim de semana com som
 
 Abra dist/The-Founder-Primeira-Aposta-0.69.html, com a pasta dist/audio ao lado.

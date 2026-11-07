@@ -6,5 +6,5 @@ html=html.replace('<link rel="stylesheet" href="play.css">',()=>'<style>\n'+fs.r
 for(const name of ['../founder-rules.js','universal-products.js','gadgets.js','product-book.js','market-reach.js','consumer-model.js','audience.js','learning.js','core.js','world.js','sound.js','play.js']){const content=fs.readFileSync(path.join(root,name),'utf8');new vm.Script(content,{filename:name});html=html.replace('<script src="'+name+'"></script>',()=>'<script>\n'+content+'\n</script>');}
 html=html.replace(/src="(assets\/[\w-]+\.svg)"/g,(_,file)=>'src="data:image/svg+xml;base64,'+fs.readFileSync(root+file).toString('base64')+'"');
 if(/<script[^>]+src=|<link[^>]+stylesheet/.test(html))throw Error('O pacote ainda depende de arquivos externos.');
-fs.mkdirSync('dist/audio',{recursive:true});for(const f of fs.readdirSync(root+'audio'))fs.copyFileSync(root+'audio/'+f,'dist/audio/'+f);fs.writeFileSync('dist/The-Founder-Primeira-Aposta-0.69.html',html);
-console.log('PASS: primeira aposta 0.69 independente; doze scripts, estilos, tema e fonte incorporados; '+Buffer.byteLength(html)+' bytes.');
+fs.mkdirSync('dist/audio',{recursive:true});for(const f of fs.readdirSync(root+'audio'))fs.copyFileSync(root+'audio/'+f,'dist/audio/'+f);fs.writeFileSync('dist/The-Founder-Primeira-Aposta-0.70.html',html);
+console.log('PASS: primeira aposta 0.70 independente; doze scripts, estilos, tema e fonte incorporados; '+Buffer.byteLength(html)+' bytes.');

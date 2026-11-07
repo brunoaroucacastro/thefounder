@@ -1,3 +1,9 @@
+# 0.70 · Peças de encaixe na prancheta
+
+- Três peças novas de 2 casas separadas, Incomuns (+2): cantos opostos, e dois saltos de cavalo espelhados.
+- Elas completam os buracos que a escada de 5 casas deixa no 3×3: a peça nova fecha o canto e sobra um dominó (ou a dupla diagonal) para o resto.
+- Agora são 34 formas.
+
 # 0.69 · Fim de semana com som
 
 - Na sexta, a música vai sumindo aos poucos até o fim da semana.
