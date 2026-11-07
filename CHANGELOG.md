@@ -1,3 +1,9 @@
+# 0.63 · Montagem do produto em janela grande
+
+- Corrige a grade do produto, que aparecia encolhida a ponto de sumir.
+- Montar e melhorar o produto agora abre numa janela grande no meio da tela, com a grade à esquerda e as escolhas à direita.
+- Girar vale para as 3 formas de uma vez e fica ao lado de Trocar peças.
+
 # 0.62 · Campanha com mais canais e fases
 
 - O tabuleiro agora tem 8 canais com padrões próprios: Influenciador, Assessoria PR, Out of Home, SEO, Redes Sociais, E-mail, Conteúdo e Televisão.

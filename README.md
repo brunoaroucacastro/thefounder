@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.63 — Montagem em janela grande
+
+Abra dist/The-Founder-Primeira-Aposta-0.63.html. A montagem do produto agora abre numa janela grande.
+
 ## Jogar 0.62 — Campanha com mais canais e fases
 
 Abra dist/The-Founder-Primeira-Aposta-0.62.html. Oito canais, quatro fases e campanhas que perdem força com o tempo.
