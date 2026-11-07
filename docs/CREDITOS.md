@@ -22,7 +22,8 @@ A fonte e a licença ainda precisam ser confirmadas antes do lançamento. O padr
 | D20 natural ou resultado máximo | Success | updatepelgo | `updatepelgo-success-221935.mp3` |
 | Dado de 10 ou menos, ou resultado ruim | Error Mistake Sound Effect (Incorrect Answer) | lesiakower | `lesiakower-error-mistake-sound-effect-incorrect-answer-437420.mp3` |
 | D1 natural ou falha máxima | UI Drop Error | SoundShelfStudio | `soundshelfstudio-ui-drop-error-521939.mp3` |
+| Rolagem do D20 (uma de 9 rolagens, sorteada a cada vez) | Dice Roll | u_ngsgp0r6zb | `u_ngsgp0r6zb-dice-roll-201898.mp3` |
 | Clique em elementos (alterna com o próximo) | Computer Mouse Click | Universfield | `universfield-computer-mouse-click-352734.mp3` |
 | Clique em elementos (alterna com o anterior) | Mouse Click | matthewvakaliuk73627 | `matthewvakaliuk73627-mouse-click-290204.mp3` |
 
-Os arquivos ficam em `src/first-loop/audio/` e o build copia tudo para `dist/audio/`. A música foi renomeada para `artificial-music-and-so-it-begins.mp3`, sem espaços. Os outros arquivos mantêm o nome original.
+Os arquivos ficam em `src/first-loop/audio/` e o build copia tudo para `dist/audio/`. A música foi renomeada para `artificial-music-and-so-it-begins.mp3`, sem espaços. Os outros arquivos mantêm o nome original. O arquivo de dado foi cortado em 9 rolagens, `u_ngsgp0r6zb-dice-roll-201898-1.wav` até `-9.wav`.

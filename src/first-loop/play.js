@@ -9,7 +9,7 @@
  function notify(text){$('toast').textContent=text;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),2800);}
  function persist(next){if(blocked)throw Error('Recarregue a página: o save está indisponível.');const current=saveStore.getItem(KEY);if(current!==expected)throw Error('A partida mudou em outra aba. Recarregue para continuar.');const raw=JSON.stringify(next);saveStore.setItem(KEY,raw);expected=raw;}
  function fail(e){blocked=true;notify('O progresso foi pausado: '+e.message);$('notice').textContent='Salvamento indisponível. Recarregue para preservar sua última partida salva.';}
- function tone(kind){Sfx.play({sale:'coin',great:'good',good:'good',bad:'bad'}[kind]);}
+ function tone(kind){if(kind==='roll'){Sfx.roll();return;}Sfx.play({sale:'coin',great:'good',good:'good',bad:'bad'}[kind]);}
  let gridUi={pick:0,attr:'quality',hover:null,rot:0,key:'',finished:false};
  const U_=()=>C.G.U,gridPieces=()=>g.designPieces||[];
  function gridSync(){const key=(g.designOffer||[]).join()+'|'+gridPieces().length+'|'+g.level;if(key!==gridUi.key){gridUi.key=key;gridUi.hover=null;gridUi.finished=false;const U=U_(),cfg=U.gridConfig(g.level),i=(g.designOffer||[]).findIndex(n=>U.gridFitsAnywhere(cfg,gridPieces(),n));gridUi.pick=Math.max(0,i);}}

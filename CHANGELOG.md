@@ -1,3 +1,8 @@
+# 0.67 · Som do dado
+
+- Ao rolar o D20 toca uma rolagem sorteada entre 9 cortadas do arquivo de dado, sem repetir a anterior.
+- Crédito adicionado em docs/CREDITOS.md.
+
 # 0.66 · Som
 
 - Música de fundo em loop (And So It Begins, de Artificial.Music).

@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.67 — Som do dado
+
+Abra dist/The-Founder-Primeira-Aposta-0.67.html, com a pasta dist/audio ao lado.
+
 ## Jogar 0.66 — Som
 
 Abra dist/The-Founder-Primeira-Aposta-0.66.html. A pasta dist/audio precisa estar ao lado do arquivo para ter som.
