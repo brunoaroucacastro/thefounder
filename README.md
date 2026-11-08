@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.81 — Loja ao vivo e escritório
+
+Abra dist/The-Founder-Primeira-Aposta-0.81.html, com a pasta dist/audio ao lado. Cenário de teste: dist/The-Founder-Cenario-NV8-Escritorio-0.81.html (#reset recomeça).
+
 ## Jogar 0.80 — Escritório e equipe
 
 Abra dist/The-Founder-Primeira-Aposta-0.80.html, com a pasta dist/audio ao lado.

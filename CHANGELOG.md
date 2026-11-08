@@ -1,3 +1,11 @@
+# 0.81 · Sprint visual: loja ao vivo, equipe e escritório
+
+- Vendas viraram uma loja ao vivo: produto com selo de nível e estrelas, faturamento com +R$ flutuando a cada venda, estoque em caixas, funil com 10 bolinhas, força da campanha como bateria, avaliações em balões e quatro botões-ícone (Repor, Programar, Campanha, Encerrar).
+- Campanha pela loja: encerra as vendas e já abre a nova campanha.
+- Equipe virou o escritório: 3 mesas (você e 2 vagas), cartões coloridos por área, candidatos como cartas viradas com borda bronze/prata/ouro, perfil com motivação em rostinho e treino com D20 de verdade (meta à vista).
+- Ao alugar a sala, o quarto vira escritório: sem cama, com quadro, duas mesas novas e os funcionários sentados nelas, com a camisa da cor da área.
+- Cenário NV8 atualizado para 0.81.
+
 # 0.80 · Escritório e equipe (RH)
 
 - Ao faturar R$100 mil no total, chega a proposta de uma sala comercial: 2 vagas, aluguel de R$2.500 por semana.
