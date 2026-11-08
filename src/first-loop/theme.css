@@ -433,3 +433,109 @@ html,body{height:100%;overflow:hidden}
 #workshop-info .tm-acard[data-id=product]{background:#7b5cd6!important}#workshop-info .tm-acard[data-id=marketing]{background:#ef8a3c!important}#workshop-info .tm-acard[data-id=finance]{background:#2f9a6a!important}
 #tray .ls-act{background:var(--q-card,#fffdf8)!important}
 .tm-profile small{display:block}
+
+/* ===== 0.82 · direção de arte por área ===== */
+/* painéis de informação rolam em vez de cortar */
+#workshop-info{overflow-y:auto!important;align-items:start!important;padding:16px!important}
+#workshop-info>.workshop-info-panel{margin:auto 0!important;max-width:100%}
+.workshop-info-panel.cash-wide{width:min(760px,94vw)!important}
+
+/* ---- Caixa & banco: lúdico, cartões de título ---- */
+.cx{display:grid;gap:14px}
+.cx-vault{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#2f9a6a,#257a54);color:#fff;border:3px solid #1b5a3d;border-radius:18px;padding:14px 18px;box-shadow:0 5px 0 #1b5a3d}
+.cx-vault small{display:block;font-weight:900;letter-spacing:.14em!important;font-size:11px;opacity:.85;color:#fff!important}
+.cx-vault b{font-size:32px;font-weight:900;line-height:1.05}
+.cx-coin{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:28px;font-weight:900;color:#8a5a00;background:radial-gradient(circle at 35% 30%,#ffe99a,#f2b93b 60%,#c98a1c);border:3px solid #9c6a12;box-shadow:inset 0 -3px 0 #c98a1c,0 3px 0 #1b5a3d}
+.cx-deeds{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.cx-deed{display:grid;justify-items:center;gap:4px;background:#fff;border:2.5px solid #26213a;border-radius:10px;padding:0 10px 10px;text-align:center;overflow:hidden}
+.cx-deed i{font-style:normal;width:calc(100% + 20px);color:#fff;font-weight:900;font-size:12px;letter-spacing:.12em;padding:7px 4px;border-bottom:2.5px solid #26213a}
+.cx-deed b{font-size:21px;font-weight:900;margin-top:6px}
+.cx-deed small{font-size:11px!important}
+.cx .bank{background:#fff7ea;border:2px dashed #d9c4a3;border-radius:14px;padding:12px}
+.cx .bank h3{margin:0 0 8px;font-size:16px}
+.cx .bank-intro{margin:0 0 10px;font-size:13px}
+.cx .loan-offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-bottom:8px}
+.cx .loan-offer{display:grid;gap:6px;background:#fff;border:2.5px solid #26213a;border-radius:10px;padding:0 10px 10px;overflow:hidden;text-align:center}
+.cx .loan-offer>i{font-style:normal;margin:0 -10px;color:#fff;font-weight:900;letter-spacing:.1em;font-size:12px;padding:7px 4px;border-bottom:2.5px solid #26213a;background:#ef8a3c;text-transform:uppercase}
+.cx .loan-offer:nth-child(2)>i{background:#3d8bf5}.cx .loan-offer:nth-child(3)>i{background:#7b5cd6}.cx .loan-offer:nth-child(4)>i{background:#c2453f}
+.cx .lo-amt{font-size:24px;font-weight:900;margin-top:4px}
+.cx .loan-offer ul{list-style:none;margin:0;padding:0;display:grid;gap:3px;font-size:12px}
+.cx .loan-offer li{display:flex;justify-content:space-between;gap:6px;border-bottom:1px dotted #d9c4a3;padding:2px 0}
+.cx .loan-offer li span{color:var(--q-ink-soft)}
+.cx .loan-offer.locked{filter:grayscale(.85);opacity:.7}
+.cx .loan-active{display:grid;gap:4px;background:#fff;border:2.5px solid #26213a;border-left:12px solid #ef8a3c;border-radius:10px;padding:10px 12px}
+.cx-actions{display:flex;flex-wrap:wrap;gap:8px}
+.cx-actions button{flex:1 1 180px}
+
+/* ---- Vitrine de produtos: laboratório ---- */
+#product-overview .pv-lab{background-color:#f3f7fb!important;background-image:linear-gradient(#dbe6f2 1px,transparent 1px),linear-gradient(90deg,#dbe6f2 1px,transparent 1px)!important;background-size:22px 22px!important}
+.pv-lab .book-head small{color:#3d6fa8!important;font-weight:900;letter-spacing:.12em}
+.pv-credit{font-size:13px;margin:4px 0 12px}
+.pv-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.pv-card{position:relative;display:grid;grid-template-columns:132px 1fr;gap:14px;background:#fff;border:2px solid #b9cbe0;border-radius:14px;padding:12px;box-shadow:0 4px 0 #b9cbe0}
+.pv-card::before{content:'';position:absolute;top:-9px;left:42px;width:62px;height:18px;background:#f6e3a1cc;transform:rotate(-4deg);border-radius:2px}
+.pv-photo{position:relative;display:grid;place-items:center;border-radius:10px;min-height:132px;background-color:#1f4f86;background-image:linear-gradient(#ffffff1f 1px,transparent 1px),linear-gradient(90deg,#ffffff1f 1px,transparent 1px);background-size:12px 12px;box-shadow:inset 0 0 0 3px #173d68}
+.pv-photo svg{filter:drop-shadow(0 6px 4px #0006)}
+.pv-lvl{position:absolute;right:6px;bottom:6px;background:#f2a93b;color:#26213a;font-weight:900;font-size:12px;border-radius:999px;padding:2px 8px;border:2px solid #9c5f14}
+.pv-body h3{margin:0 0 4px;font-size:19px}
+.pv-vers{display:flex;flex-wrap:wrap;align-items:center;gap:3px;margin-bottom:8px}
+.pv-vers span{background:#e9e1fb;color:#4a3b8a;font-weight:900;font-size:11px;border-radius:6px;padding:2px 6px}
+.pv-vers span:last-child{background:#7b5cd6;color:#fff}
+.pv-vers i{font-style:normal;color:#9aa3b5;font-weight:900}
+.pv-stats{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.pv-stat{display:grid;grid-template-columns:auto 1fr;column-gap:6px;align-items:center;background:#f6f8fb;border-radius:8px;padding:5px 7px}
+.pv-stat span{grid-row:span 2;font-size:18px}
+.pv-stat b{font-size:14px;font-weight:900;line-height:1.1}
+.pv-stat small{font-size:10.5px!important;letter-spacing:0!important}
+.pv-stat.pos b{color:var(--q-good)}.pv-stat.neg b{color:var(--q-bad)}
+.pv-card details{grid-column:1/-1;font-size:12.5px}
+.pv-card details summary{cursor:pointer;font-weight:800;color:#3d6fa8}
+@media (max-width:560px){.pv-card{grid-template-columns:1fr}.pv-photo{min-height:120px}}
+
+/* ---- Área de produto: papel milimetrado de laboratório ---- */
+body[data-area=product] #tray{background-color:#f4f8fc!important;background-image:linear-gradient(#dde8f3 1px,transparent 1px),linear-gradient(90deg,#dde8f3 1px,transparent 1px)!important;background-size:20px 20px!important;border-color:#2f5f96!important}
+body[data-area=product] #tray::before{content:'\1F9EA  LABORATÓRIO';display:inline-block;margin:0 0 8px;background:#2f5f96;color:#fff;font:900 11px var(--q-font);letter-spacing:.14em;padding:4px 10px;border-radius:999px}
+body[data-area=product] #tray .choice,body[data-area=product] #tray .path-choice{border-color:#b9cbe0!important;box-shadow:0 3px 0 #b9cbe0!important}
+body[data-area=product] #tray h2,body[data-area=product] #tray h3{color:#1f3f66!important}
+
+/* ---- Área de marketing: sala de criação estilo anos 60 ---- */
+body[data-area=marketing] #tray{background-color:#f7efdc!important;background-image:radial-gradient(#e9dcbd 1px,transparent 1.2px)!important;background-size:14px 14px!important;border-color:#4a3222!important;border-top:8px solid #6b4529!important}
+body[data-area=marketing] #tray::before{content:'\1F4E3  SALA DE CRIAÇÃO';display:inline-block;margin:0 0 8px;background:#c8553d;color:#fff7e6;font:700 11px Georgia,'Times New Roman',serif!important;letter-spacing:.2em;padding:4px 12px;border-radius:2px;box-shadow:3px 3px 0 #4a3222}
+body[data-area=marketing] #tray h2,body[data-area=marketing] #tray h3,body[data-area=marketing] .bpanel h2,body[data-area=marketing] .bpanel h3{font-family:Georgia,'Times New Roman',serif!important;color:#3b2a1e!important;letter-spacing:.01em!important}
+body[data-area=marketing] #tray h2,body[data-area=marketing] .bpanel h2{text-transform:uppercase;font-weight:700!important}
+body[data-area=marketing] #tray .choice,body[data-area=marketing] #tray .venue-card{background:#fffaf0!important;border:2px solid #3b2a1e!important;box-shadow:3px 3px 0 #3b2a1e!important;border-radius:4px!important}
+body[data-area=marketing] .bpanel{background-color:#f7efdc;background-image:radial-gradient(#e9dcbd 1px,transparent 1.2px);background-size:14px 14px;border:8px solid #5a3b26;border-radius:6px;box-shadow:0 0 0 3px #2e1e13,var(--q-shadow)}
+body[data-area=marketing] .bcard{position:relative;background:#fffaf0;border:2px solid #3b2a1e;border-radius:3px;box-shadow:3px 3px 0 #3b2a1e;padding-top:12px;font-family:Georgia,'Times New Roman',serif!important;overflow:hidden}
+body[data-area=marketing] .bcard::before{content:'';position:absolute;left:0;right:0;top:0;height:6px;background:#d9a441}
+body[data-area=marketing] .bcard:nth-child(4n+2)::before{background:#2f7f7a}body[data-area=marketing] .bcard:nth-child(4n+3)::before{background:#c8553d}body[data-area=marketing] .bcard:nth-child(4n)::before{background:#7a8b3a}
+body[data-area=marketing] .bcard small{font-family:var(--q-font)!important}
+body[data-area=marketing] .bcard.on{background:#fff1c2;transform:rotate(-1.2deg)}
+#workshop-info .workshop-info-panel{box-sizing:border-box!important;min-width:0}
+.cx-vault>div{min-width:0}.cx-vault b{font-size:clamp(22px,6.5vw,32px)!important;overflow-wrap:anywhere}
+@media (max-width:520px){#workshop-info .workshop-info-panel{padding:16px!important}.cx-deeds{grid-template-columns:1fr 1fr 1fr}.cx-deed{padding:0 6px 8px}.cx-deed i{width:calc(100% + 12px);font-size:10px;letter-spacing:.06em}.cx-deed b{font-size:15px}}
+#workshop-info .workshop-info-panel.cash-wide{width:min(760px,100%)!important}#workshop-info .workshop-info-panel.team-wide{width:min(940px,100%)!important}
+@media (max-width:420px){.cx-deeds{grid-template-columns:1fr!important}.cx-deed{grid-template-columns:auto 1fr;justify-items:start;text-align:left;padding:0 10px 0 0!important;gap:0 10px;align-items:center}.cx-deed i{width:auto!important;grid-row:span 2;align-self:stretch;display:grid;place-items:center;border-bottom:0!important;border-right:2.5px solid #26213a;font-size:10px!important;min-width:96px}.cx-deed b{margin-top:6px;font-size:17px!important}.cx-deed small{padding-bottom:6px}}
+
+/* ---- Contratação: cartas viram currículos ---- */
+.tm-cand{height:330px}
+#workshop-info .cv-env{background:#d9b77a!important;border:2px solid #a8844a!important;color:#5a3b1a!important;display:grid!important;place-items:center;align-content:center!important;gap:4px;overflow:hidden;box-shadow:0 4px 0 #a8844a!important}
+#workshop-info .cv-env .cv-flap{position:absolute;left:0;right:0;top:0;height:46%;background:#e6c88f;clip-path:polygon(0 0,100% 0,50% 100%);border-bottom:2px solid #a8844a}
+#workshop-info .cv-env .cv-seal{position:relative;z-index:1;width:40px;height:40px;border-radius:50%;background:#c2453f;display:grid;place-items:center;font-size:20px;box-shadow:0 2px 0 #7a2620;margin-top:38px}
+#workshop-info .cv-env b{font-size:16px;color:#5a3b1a!important}#workshop-info .cv-env small{color:#7a5a30!important;font-size:11px}
+.tm-cv{background:#fffef9!important;background-image:repeating-linear-gradient(#fffef9 0 21px,#eef0f5 21px 22px)!important;border:1px solid #d8d2c4!important;border-top:7px solid var(--tier)!important;border-radius:6px!important;justify-items:stretch!important;text-align:left;gap:8px!important;padding:14px 12px 10px!important;box-shadow:0 6px 14px #0002;overflow:hidden}
+.cv-clip{position:absolute;top:-6px;right:22px;width:14px;height:34px;border:3px solid #9aa3b5;border-radius:8px;background:transparent}
+.cv-head{display:grid;grid-template-columns:62px 1fr;gap:10px;align-items:center}
+.cv-photo{width:62px;height:70px;background:#eef2f7;border:2px solid #fff;outline:1px solid #cfd6e0;box-shadow:0 2px 4px #0002;display:grid;place-items:center;overflow:hidden}
+.cv-photo svg{width:56px;height:auto}
+.cv-head small{display:block;font-size:9.5px!important;font-weight:900;letter-spacing:.18em!important;color:#9aa3b5!important}
+.cv-head b{display:block;font-size:16px;line-height:1.1}
+.cv-head span{font-size:11.5px;color:var(--q-ink-soft);font-weight:800}
+.cv-rows{display:grid;grid-template-columns:auto 1fr;gap:3px 8px;margin:0;font-size:12px}
+.cv-rows dt{color:#8a8fa0;font-weight:800}.cv-rows dd{margin:0;font-weight:900}.cv-rows i{font-style:normal;color:#e0a526}
+.cv-skills{display:grid;gap:2px;font-size:11.5px;font-weight:800}
+.cv-skills small{font-size:9.5px!important;font-weight:900;letter-spacing:.16em!important;color:#9aa3b5!important}
+.cv-skills span{color:#2f6b4a}
+.cv-stamp{position:absolute;right:10px;bottom:58px;transform:rotate(-14deg);border:3px solid var(--tier);color:var(--tier);font-weight:900;font-size:13px;letter-spacing:.12em;padding:2px 8px;border-radius:6px;opacity:.85;background:#fffef9cc}
+.tm-cv button{margin-top:auto}
+.tm-cv .cv-stamp{position:static;justify-self:end;margin:-34px 2px 0 0}
+.pv-grid{grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr))!important}

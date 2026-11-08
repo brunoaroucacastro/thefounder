@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Founder · Amostras de arte</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#0f1020;color:#fff7ea;font-family:Nunito,system-ui,sans-serif}
+body{display:flex;flex-direction:column}
+nav{display:flex;gap:8px;padding:10px 16px;align-items:center;flex-wrap:wrap;background:#1b1d31;border-bottom:1px solid #2c2f4a}
+nav h1{font-size:15px;margin:0 12px 0 0;letter-spacing:.04em}
+nav button{font:inherit;font-weight:900;font-size:14px;border:0;border-radius:999px;padding:8px 16px;background:#2c2f4a;color:#fff7ea;cursor:pointer}
+nav button[aria-pressed=true]{background:#f2a93b;color:#241d33}
+nav span{opacity:.6;font-size:13px;margin-left:auto}
+iframe{flex:1;border:0;width:100%}
+</style>
+</head>
+<body>
+<nav><h1>THE FOUNDER · QUARTO DO FUNDADOR</h1>
+<button data-src="a-vetorial.html" aria-pressed="true">A · Vetorial 2D</button>
+<button data-src="b-3d.html">B · 3D low-poly</button>
+<button data-src="c-pixel.html">C · Pixel art</button>
+<span>Mesma cena, mesmo layout, três estilos</span></nav>
+<iframe id="f" src="a-vetorial.html" title="Amostra"></iframe>
+<script>
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-pressed',x===b));document.getElementById('f').src=b.dataset.src});
+</script>
+</body>
+</html>
