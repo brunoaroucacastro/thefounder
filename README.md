@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.79 — Balanço com gráficos
+
+Abra dist/The-Founder-Primeira-Aposta-0.79.html, com a pasta dist/audio ao lado.
+
 ## Jogar 0.78 — Crescimento de público
 
 Abra dist/The-Founder-Primeira-Aposta-0.78.html, com a pasta dist/audio ao lado.

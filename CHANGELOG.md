@@ -1,3 +1,11 @@
+# 0.79 · Balanço com gráficos, preço por campanha e trocas com valor fixo
+
+- Prancheta: toda oferta tem pelo menos uma peça Comum ou Incomum (as menores), de preferência uma que caiba no espaço livre.
+- Trocar peças e trocar cartas de marketing agora têm preço fixo: 1/3 do custo de desenvolvimento do nível (NV4 R$1.350, NV5 R$1.800, NV6 R$2.400, NV7 R$3.300, NV8 R$4.400, NV9 R$6.000, NV10 R$8.000).
+- Antes de cada nova campanha, o jogo pede para definir o preço.
+- Balanço semanal com gráfico de barras das últimas 8 semanas: faturamento (padrão), lucro, clientes novos e novos seguidores, com variação contra a semana anterior.
+- Custo zero não aparece mais como -R$ 0 em vermelho.
+
 # 0.78 · Crescimento de público para escalar
 
 - Degraus de distribuição achatados: ×1, ×2, ×3,5 e ×5 (antes ×1, ×2,5, ×6 e ×12), para o topo não explodir.

@@ -307,3 +307,26 @@ html,body{height:100%;overflow:hidden}
 .line-version{display:grid;grid-template-columns:1fr auto;gap:2px 10px;font-size:13px}
 .line-version details{grid-column:1/-1}
 .roll-target{margin:8px 0;padding:8px 10px;border-radius:10px;background:#fff3c4;border:1.5px solid #e0a92e;color:#3a2a06;font-size:13px}
+
+/* 0.79 — gráfico semanal */
+.wk-chart{display:grid;gap:8px;margin:10px 0;padding:12px;border-radius:12px;border:1.5px solid var(--q-line,#e3dfeb);background:var(--q-card,#fff)}
+.wk-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.wk-head b{font-size:13px;color:var(--q-ink-2,#5f5874)}
+.wk-head strong{font-size:20px;color:var(--q-ink,#26213a)}
+.wk-head .up{font-size:12px;color:#2f8a5f}.wk-head .down{font-size:12px;color:#c23b3b}
+.wk-tabs{display:flex;flex-wrap:wrap;gap:4px}
+.week-sheet .wk-tabs button{min-height:0!important;padding:4px 10px!important;border-radius:999px!important;font-size:12px!important;box-shadow:none!important;background:transparent!important;border:1.5px solid var(--q-line-strong,#cfc6dd)!important}
+.week-sheet .wk-tabs button.on{background:#26213a!important;color:#fff!important;border-color:#26213a!important}
+.wk-bars{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:2px;height:130px;align-items:stretch}
+.wk-col{display:grid;grid-template-rows:auto auto 16px;align-content:end;height:100%;cursor:default}
+.wk-col .wk-up{display:flex;align-items:flex-end;justify-content:center;border-bottom:1px solid var(--q-line-strong,#cfc6dd)}
+.wk-col .wk-down{display:flex;align-items:flex-start;justify-content:center}
+.wk-col i{display:block;width:min(26px,70%);min-height:0}
+.wk-col .wk-up i{background:#8f7ce0;border-radius:4px 4px 0 0}
+.wk-col .wk-down i{background:#e08a8a;border-radius:0 0 4px 4px}
+.wk-col.now .wk-up i{background:#5b3df5}.wk-col.now .wk-down i{background:#d64545}
+.wk-col:hover i{filter:brightness(1.1)}
+.wk-col small{text-align:center;font-size:10px;color:var(--q-ink-2,#7b7590)}
+.wk-col{display:flex!important;flex-direction:column;position:relative;padding-bottom:16px;box-sizing:border-box}
+.wk-col .wk-up,.wk-col .wk-down{flex:none}
+.wk-col small{position:absolute;left:0;right:0;bottom:0}
