@@ -1,3 +1,9 @@
+# 0.76 · Evolução mais acessível e nova rolagem paga
+
+- Metas da evolução 2 pontos menores: NV4→5 6+, 5→6 8+, 6→7 10+, 7→8 12+, 8→9 14+, 9→10 16+.
+- Custos fixos e múltiplos de 3: R$5.400, R$7.200, R$9.900, R$13.200, R$18.000, R$24.000.
+- Se a tentativa não passar, dá para rolar de novo por 1/3 do custo; cada nova rolagem dobra (ex.: 1.800, 3.600, 7.200…).
+
 # 0.75 · Banco e empréstimos
 
 - Nova seção Banco em Caixa: empréstimo Pequeno (R$10.000, 4 semanas, 8%), Médio (R$30.000, 8 semanas, 15%) e Grande (R$80.000, 12 semanas, 25%).

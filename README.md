@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.76 — Evolução com nova rolagem
+
+Abra dist/The-Founder-Primeira-Aposta-0.76.html, com a pasta dist/audio ao lado.
+
 ## Jogar 0.75 — Banco e empréstimos
 
 Abra dist/The-Founder-Primeira-Aposta-0.75.html, com a pasta dist/audio ao lado.
