@@ -1,5 +1,11 @@
 # The Founder
 
+## Jogar 0.80 — Escritório e equipe
+
+Abra dist/The-Founder-Primeira-Aposta-0.80.html, com a pasta dist/audio ao lado.
+
+Para testar direto do escritório: dist/The-Founder-Cenario-NV8-Escritorio-0.80.html (fone NV8, 1000 vendas, nota 3,9, 3000 seguidores, R$150 mil). Abra com #reset no fim do endereço para recomeçar o cenário.
+
 ## Jogar 0.79 — Balanço com gráficos
 
 Abra dist/The-Founder-Primeira-Aposta-0.79.html, com a pasta dist/audio ao lado.

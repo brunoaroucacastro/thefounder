@@ -1,3 +1,15 @@
+# 0.80 · Escritório e equipe (RH)
+
+- Ao faturar R$100 mil no total, chega a proposta de uma sala comercial: 2 vagas, aluguel de R$2.500 por semana.
+- Novo botão EQUIPE: buscar candidatos por área (R$1.500, 2 dias úteis, 2 candidatos), contratar, treinar e demitir.
+- Níveis 1–5 (Júnior 60%, Pleno 35%, Sênior 5%), salário semanal por nível, motivação de 0 a 100 (cai 2 por semana; sobe com boas campanhas, contratações e treinos; cai com flops, demissões e treinos que falham).
+- Produto: +1 no D20 de desenvolvimento, 4 peças na prancheta, desenvolvimento 15–35% mais rápido.
+- Marketing: +1 carta jogada na campanha e +4% de pontuação por nível.
+- Administrativo-financeiro: empréstimos com +20% de valor e 50% mais semanas, e compra programada de estoque (quando chegar a X, comprar Y).
+- Conselhos: com chance por senioridade (10/20/40%), o especialista dá uma dica na sua etapa (persona, canal ou preço).
+- Treino: custa R$1.500 × nível, chance de 75% a 40%; ao subir de nível, o salário sobe.
+- Cenário de teste: dist/The-Founder-Cenario-NV8-Escritorio-0.80.html (gerado por scripts/build-scenario-nv8.cjs).
+
 # 0.79 · Balanço com gráficos, preço por campanha e trocas com valor fixo
 
 - Prancheta: toda oferta tem pelo menos uma peça Comum ou Incomum (as menores), de preferência uma que caiba no espaço livre.

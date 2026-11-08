@@ -330,3 +330,17 @@ html,body{height:100%;overflow:hidden}
 .wk-col{display:flex!important;flex-direction:column;position:relative;padding-bottom:16px;box-sizing:border-box}
 .wk-col .wk-up,.wk-col .wk-down{flex:none}
 .wk-col small{position:absolute;left:0;right:0;bottom:0}
+
+/* 0.80 — equipe e escritório */
+.office-offer,.office-line,.staff-card,.auto-restock,.recruit{display:grid;gap:6px;margin:8px 0;padding:10px 12px;border-radius:12px;border:1.5px solid var(--q-line-strong,#cfc6dd);background:var(--q-card,#fff)}
+.office-offer{background:#fff3c4;border-color:#e0a92e}
+.staff-top{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.staff-top span{font-size:12px;color:var(--q-ink-2,#5f5874)}
+.staff-card small{font-size:12px;color:var(--q-ink-2,#5f5874)}
+.staff-card .bonus{color:#2f6a4f}
+.mood{height:6px;border-radius:99px;background:#e3dfeb;overflow:hidden}.mood i{display:block;height:100%;background:#3fae7d}
+.staff-actions,.hr-areas{display:flex;flex-wrap:wrap;gap:6px}
+.cands{display:grid;gap:6px}
+.auto-restock label{font-size:13px}.auto-restock input{width:90px;font:inherit}
+.auto-restock.locked{opacity:.75}
+.team-tip{margin:0 0 8px;padding:8px 12px;border-radius:10px;background:#eef6ff;border:1.5px solid #3d8bf5;color:#1c2b44;font-size:13px}
