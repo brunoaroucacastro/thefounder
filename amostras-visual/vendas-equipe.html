@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vendas e Equipe — protótipo</title>
+<style>
+:root{--ink:#241d33;--soft:#5b5470;--card:#fffdf8;--paper:#fff7ea;--cream:#f6efe2;--line:#eadbc4;--line2:#d9c4a3;--navy:#1b1d31;--navy2:#24273f;--navy3:#2f3352;--accent:#f2a93b;--accentd:#c47d1f;--good:#2f8a5f;--bad:#c2453f;
+ --prod:#7b5cd6;--mkt:#ef8a3c;--fin:#2f9a6a;--ppl:#3d8bf5;--font:"Nunito","Segoe UI Variable Text","Segoe UI",system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 30% 20%,#2f3352,#1b1d31 70%);font-family:var(--font);color:var(--ink);display:grid;place-items:start center;padding:24px 16px}
+.wrap{width:min(1080px,100%);display:grid;gap:14px}
+.tabs{display:flex;gap:8px}
+.tabs button{font:inherit;font-weight:900;border:0;border-radius:999px;padding:8px 18px;background:#ffffff1a;color:#fff;cursor:pointer}
+.tabs button.on{background:var(--accent);color:var(--ink);box-shadow:0 3px 0 var(--accentd)}
+.note{color:#cfc8e8;font-size:13px;margin:0}
+.panel{background:var(--paper);border-radius:20px;box-shadow:0 18px 40px rgba(10,8,25,.38),0 3px 0 rgba(10,8,25,.12);padding:18px;display:none}
+.panel.on{display:block}
+h2{margin:0;font-size:22px}
+small{color:var(--soft)}
+.card{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:14px;position:relative}
+.lbl{font-size:11px;font-weight:900;letter-spacing:1px;color:var(--soft);text-transform:uppercase;display:flex;align-items:center;gap:6px}
+/* ---------- VENDAS ---------- */
+.sale-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.prod-badge{width:64px;height:64px;border-radius:18px;background:#efe6ff;display:grid;place-items:center;position:relative;flex:none}
+.lvl{position:absolute;right:-8px;bottom:-8px;background:var(--prod);color:#fff;font-weight:900;font-size:12px;border-radius:999px;padding:3px 8px;border:2px solid var(--paper)}
+.stars{color:#f2b51b;font-size:20px;letter-spacing:1px}
+.stars em{font-style:normal;color:var(--ink);font-size:14px;font-weight:900;margin-left:6px}
+.money{margin-left:auto;text-align:right}
+.money strong{display:block;font-size:26px;color:var(--good)}
+.grid2{display:grid;grid-template-columns:1fr 1.3fr;gap:12px}
+.stock{display:grid;gap:8px}
+.boxes{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;min-height:76px;align-content:end}
+.box{aspect-ratio:1;border-radius:4px;background:linear-gradient(#e2b977,#c99652);box-shadow:inset 0 -3px 0 #a87a3c,inset 0 0 0 1px #8e6430;position:relative;transition:transform .3s,opacity .3s}
+.box::after{content:"";position:absolute;left:45%;top:0;bottom:0;width:10%;background:#f3d9a6aa}
+.box.gone{transform:translateY(-10px) scale(.4);opacity:0}
+.truck{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:800;color:var(--soft)}
+.truck[hidden]{display:none}
+.truck svg{animation:drive 1.2s ease-in-out infinite alternate}
+@keyframes drive{to{transform:translateX(6px)}}
+.big{font-size:30px;font-weight:900;line-height:1}
+.funnel{display:grid;gap:10px}
+.frow{display:flex;align-items:center;gap:10px;font-weight:800}
+.dots{display:flex;gap:5px}
+.dot{width:16px;height:16px;border-radius:50%;background:#e3dfeb;transition:background .3s,transform .3s}
+.dot.on{background:var(--ppl);transform:scale(1.1)}
+.battery{display:flex;align-items:center;gap:14px}
+.bat{width:120px;height:40px;border:3px solid var(--ink);border-radius:8px;padding:3px;display:flex;gap:3px;position:relative}
+.bat::after{content:"";position:absolute;right:-9px;top:10px;width:5px;height:14px;background:var(--ink);border-radius:0 3px 3px 0}
+.bat i{flex:1;border-radius:3px;background:#e3dfeb}
+.bat i.on{background:var(--mkt)}
+.bat.low i.on{background:var(--bad)}
+.reviews{display:flex;gap:10px;overflow:hidden}
+.bubble{flex:1;min-width:0;background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px;position:relative;font-size:13px;animation:pop .4s}
+.bubble::after{content:"";position:absolute;left:18px;bottom:-9px;width:14px;height:14px;background:#fff;border-right:2px solid var(--line);border-bottom:2px solid var(--line);transform:rotate(45deg)}
+.who{display:flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;font-weight:800;color:var(--soft)}
+@keyframes pop{from{transform:scale(.85);opacity:0}}
+.actions{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.act{font:inherit;border:0;cursor:pointer;border-radius:16px;padding:12px 6px 10px;display:grid;justify-items:center;gap:6px;font-weight:900;color:var(--ink);background:var(--card);box-shadow:0 4px 0 var(--line2),inset 0 0 0 2px var(--line);transition:transform .1s}
+.act:hover{transform:translateY(-2px)}.act:active{transform:translateY(2px);box-shadow:0 1px 0 var(--line2),inset 0 0 0 2px var(--line)}
+.act .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center}
+.act small{font-weight:700;font-size:11px}
+.float{position:absolute;font-weight:900;color:var(--good);pointer-events:none;animation:up 1.2s ease-out forwards;font-size:16px;text-shadow:0 2px 0 #fff}
+@keyframes up{to{transform:translateY(-46px);opacity:0}}
+.pop{position:fixed;inset:0;background:rgba(15,16,32,.55);display:none;place-items:center;padding:16px;z-index:9}
+.pop.on{display:grid}
+.pop .card{width:min(380px,100%);display:grid;gap:12px}
+.pop input[type=range]{width:100%;accent-color:var(--accent)}
+.btn{font:inherit;font-weight:900;border:0;border-radius:12px;padding:10px 16px;cursor:pointer;background:var(--accent);box-shadow:0 3px 0 var(--accentd);color:var(--ink)}
+.btn.sec{background:var(--card);box-shadow:0 3px 0 var(--line2),inset 0 0 0 2px var(--line)}
+.stackprev{display:flex;flex-wrap:wrap;gap:2px;min-height:40px}
+.stackprev .box{width:12px}
+.tag{display:inline-block;padding:3px 9px;border-radius:999px;background:#e6f5ec;color:var(--good);font-weight:900;font-size:12px}
+.rule{display:flex;align-items:center;gap:10px;font-weight:800}
+.rule input{width:80px;font:inherit;font-weight:900;padding:6px;border-radius:10px;border:2px solid var(--line2);text-align:center}
+/* ---------- EQUIPE ---------- */
+.office{display:grid;grid-template-columns:1.25fr 1fr;gap:14px}
+.floor{background:linear-gradient(#cfa877,#b88c5c);border-radius:18px;padding:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;position:relative;box-shadow:inset 0 0 0 6px #8e6a44}
+.floor::before{content:"SALA COMERCIAL · R$2.500/SEMANA";position:absolute;top:-11px;left:18px;background:var(--navy3);color:#fff;font-size:10px;font-weight:900;letter-spacing:1px;padding:4px 10px;border-radius:999px}
+.desk{background:#ffffff22;border-radius:14px;min-height:190px;display:grid;justify-items:center;align-content:end;padding:10px 6px;gap:6px;cursor:pointer;position:relative;transition:background .2s}
+.desk:hover{background:#ffffff38}
+.desk.sel{outline:3px solid var(--accent);outline-offset:2px}
+.desk .name{font-weight:900;color:#fff;font-size:13px;text-shadow:0 1px 0 #0005}
+.desk .area{font-size:10px;font-weight:900;color:#fff;border-radius:999px;padding:2px 8px}
+.plus{width:58px;height:58px;border-radius:50%;border:3px dashed #fff;display:grid;place-items:center;color:#fff;font-size:30px;font-weight:900;margin-bottom:30px}
+.envelope{font-size:12px;font-weight:900;color:#fff;text-align:center;margin-bottom:24px}
+.side{display:grid;gap:12px;align-content:start}
+.areas{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.acard{font:inherit;border:0;cursor:pointer;border-radius:16px;padding:14px 8px;display:grid;justify-items:center;gap:6px;color:#fff;font-weight:900;box-shadow:0 4px 0 #0003;transition:transform .1s}
+.acard:hover{transform:translateY(-3px)}
+.acard small{color:#fffd;font-weight:700;font-size:11px;text-align:center}
+.cands{display:grid;grid-template-columns:1fr 1fr;gap:12px;perspective:800px}
+.cand{height:300px;position:relative;transform-style:preserve-3d;transition:transform .6s;cursor:pointer}
+.cand.flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;display:grid;justify-items:center;align-content:start;gap:6px;padding:12px}
+.back{background:repeating-linear-gradient(45deg,#2f3352,#2f3352 10px,#3a3f63 10px,#3a3f63 20px);border:4px solid #fff;color:#fff;align-content:center;font-weight:900}
+.front{transform:rotateY(180deg);background:var(--card);border:5px solid}
+.tier-1{border-color:#c88a4a}.tier-2{border-color:#aab3c2}.tier-3{border-color:#e8b923}
+.ribbon{font-size:10px;font-weight:900;letter-spacing:1px;color:#fff;border-radius:999px;padding:3px 10px}
+.perks{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
+.perk{font-size:11px;font-weight:900;border-radius:8px;padding:3px 7px;background:#f1ecff;color:#4b3a8f}
+.coins{font-weight:900;color:#9c5f14}
+.staff{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:center}
+.mood{display:flex;align-items:center;gap:8px}
+.mood .bar{flex:1;height:8px;border-radius:99px;background:#e3dfeb;overflow:hidden}
+.mood .bar i{display:block;height:100%;background:var(--good)}
+.d20wrap{display:flex;align-items:center;gap:14px}
+.d20{width:64px;height:70px;flex:none;position:relative;display:grid;place-items:center;font-weight:900;font-size:22px;color:#fff}
+.d20 svg{position:absolute;inset:0}
+.d20 b{position:relative}
+.d20.roll{animation:spin .9s ease-out}
+@keyframes spin{to{transform:rotate(720deg)}}
+.result{font-weight:900}
+.result.ok{color:var(--good)}.result.no{color:var(--bad)}
+@media (max-width:760px){.grid2,.office{grid-template-columns:1fr}.actions{grid-template-columns:repeat(2,1fr)}.floor{grid-template-columns:repeat(3,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <div class="tabs"><button class="on" data-tab="vendas">🛒 Vendas</button><button data-tab="equipe">♟ Equipe</button></div>
+ <p class="note">Protótipo de visual, separado do jogo. Os números são de exemplo e mudam sozinhos para mostrar o movimento.</p>
+
+ <!-- VENDAS -->
+ <section class="panel on" id="vendas">
+  <div class="sale-head">
+   <div class="prod-badge"><svg width="44" height="44" viewBox="0 0 48 48"><path d="M8 28a16 16 0 0 1 32 0" fill="none" stroke="#5b4a9e" stroke-width="5" stroke-linecap="round"/><rect x="4" y="26" width="10" height="16" rx="4" fill="#7b5cd6"/><rect x="34" y="26" width="10" height="16" rx="4" fill="#7b5cd6"/></svg><span class="lvl">NV 8</span></div>
+   <div><h2>Pulso Pro</h2><div class="stars">★★★★<span style="color:#e3dfeb">★</span><em>3,9 · 100 avaliações</em></div></div>
+   <div class="money"><small>Faturamento</small><strong id="rev">R$ 168.336</strong><small id="sold">1.002 vendidos</small></div>
+  </div>
+  <div class="grid2">
+   <div class="card stock"><div class="lbl">📦 Estoque</div><div class="big" id="stockN">498</div><div class="boxes" id="boxes"></div><div class="truck" id="truck" hidden><svg width="34" height="20" viewBox="0 0 34 20"><rect x="1" y="3" width="20" height="12" rx="2" fill="#3d8bf5"/><path d="M21 7h7l4 4v4H21z" fill="#2f6fd0"/><circle cx="8" cy="16" r="3" fill="#241d33"/><circle cx="26" cy="16" r="3" fill="#241d33"/></svg> 500 unidades chegando</div></div>
+   <div class="card funnel"><div class="lbl">👥 Funil desta semana</div>
+    <div class="frow"><span class="big" id="visits">2.538</span><small>visitas</small></div>
+    <div class="frow"><div class="dots" id="dots"></div><span id="conv">39,6%</span></div>
+    <div class="frow"><span class="big" id="buys">1.002</span><small>compras</small><span class="tag" id="margin">+R$ 115 por venda</span></div>
+   </div>
+  </div>
+  <div class="card battery" style="margin-top:12px"><div><div class="lbl">📣 Força da campanha</div><small id="batTxt">Rende 20% do início. Hora de uma nova campanha.</small></div><div class="bat low" id="bat"></div></div>
+  <div class="lbl" style="margin:14px 0 8px">💬 O que estão dizendo</div>
+  <div class="reviews" id="reviews"></div>
+  <div class="actions" style="margin-top:22px">
+   <button class="act" data-pop="repor"><span class="ic" style="background:#e9f2ff">📦</span>Repor<small>comprar estoque</small></button>
+   <button class="act" data-pop="programar"><span class="ic" style="background:#e6f5ec">⏱</span>Programar<small>compra automática</small></button>
+   <button class="act" data-pop="campanha"><span class="ic" style="background:#fff0e3">📣</span>Campanha<small>nova campanha</small></button>
+   <button class="act" data-pop="encerrar"><span class="ic" style="background:#fbe9e8">⏹</span>Encerrar<small>parar vendas</small></button>
+  </div>
+ </section>
+
+ <!-- EQUIPE -->
+ <section class="panel" id="equipe">
+  <div class="office">
+   <div class="floor" id="floor"></div>
+   <div class="side" id="side"></div>
+  </div>
+ </section>
+</div>
+
+<div class="pop" id="pop"><div class="card" id="popc"></div></div>
+
+<script>
+const $=id=>document.getElementById(id),fmt=n=>'R$ '+Math.round(n).toLocaleString('pt-BR');
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button,.panel').forEach(e=>e.classList.remove('on'));b.classList.add('on');$(b.dataset.tab).classList.add('on');});
+// ---------- VENDAS ----------
+let stock=498,sold=1002,rev=168336,visits=2538,force=2;const price=168,margin=115;
+function drawBoxes(){const n=Math.ceil(stock/50),el=$('boxes');while(el.children.length<n){const b=document.createElement('i');b.className='box';el.prepend(b);}while(el.children.length>n){const b=el.firstElementChild;b.classList.add('gone');setTimeout(()=>b.remove(),300);el.appendChild(document.createElement('i')).remove();break;}$('stockN').textContent=stock.toLocaleString('pt-BR');}
+for(let i=0;i<10;i++)$('boxes').appendChild(Object.assign(document.createElement('i'),{className:'box'}));
+for(let i=0;i<10;i++)$('dots').appendChild(Object.assign(document.createElement('i'),{className:'dot'}));
+function drawDots(){const on=Math.round(sold/visits*10);[...$('dots').children].forEach((d,i)=>d.classList.toggle('on',i<on));$('conv').textContent=(sold/visits*100).toFixed(1).replace('.',',')+'%';}
+function drawBat(){$('bat').innerHTML='';for(let i=0;i<10;i++)$('bat').appendChild(Object.assign(document.createElement('i'),{className:i<force?'on':''}));$('bat').classList.toggle('low',force<=3);$('batTxt').textContent=force<=3?'Rende '+force*10+'% do início. Hora de uma nova campanha.':'Rende '+force*10+'% do início.';}
+const R=[['Uso todo dia e não penso em trocar.','Luca',4],['O material passa uma impressão simples demais.','Carol',3],['Funciona na TV e no celular, a família toda usa.','Marta',5],['Senti falta de cuidado nos detalhes.','Rafa',3],['Fácil de usar, até minha mãe conseguiu.','Júlio',4]];let ri=0;
+function avatar(c){return '<svg width="22" height="26" viewBox="0 0 22 26"><rect x="4" y="2" width="14" height="13" rx="3" fill="#edbd97"/><rect x="4" y="1" width="14" height="4" fill="'+c+'"/><rect x="1" y="16" width="20" height="10" rx="3" fill="#7b5cd6"/></svg>';}
+function addReview(){const[t,n,s]=R[ri++%R.length],el=$('reviews'),b=document.createElement('div');b.className='bubble';b.innerHTML='<span class="stars" style="font-size:13px">'+'★'.repeat(s)+'<span style="color:#e3dfeb">'+'★'.repeat(5-s)+'</span></span><br>'+t+'<div class="who">'+avatar(['#5a3b26','#d9a441','#2b2b2b'][ri%3])+n+'</div>';el.prepend(b);while(el.children.length>3)el.lastChild.remove();}
+function floatMoney(){const f=document.createElement('span');f.className='float';f.textContent='+'+fmt(margin);const r=$('rev').getBoundingClientRect();f.style.left=(r.left+r.width-60)+'px';f.style.top=(r.top+window.scrollY)+'px';f.style.position='absolute';document.body.appendChild(f);setTimeout(()=>f.remove(),1200);}
+function tick(){visits+=Math.random()<.7?1+Math.floor(Math.random()*3):0;if(stock>0&&Math.random()<.45){stock--;sold++;rev+=price;floatMoney();drawBoxes();}$('rev').textContent=fmt(rev);$('sold').textContent=sold.toLocaleString('pt-BR')+' vendidos';$('visits').textContent=visits.toLocaleString('pt-BR');$('buys').textContent=sold.toLocaleString('pt-BR');drawDots();if(Math.random()<.08)addReview();}
+drawBoxes();drawDots();drawBat();addReview();addReview();addReview();setInterval(tick,700);
+const pops={
+ repor:()=>'<h2>📦 Repor estoque</h2><input type="range" min="100" max="5000" step="100" value="1000" id="q"><div class="stackprev" id="sp"></div><div class="frow"><span class="big" id="qn">1.000</span><small>unidades</small><span class="tag" id="disc">2% de desconto</span></div><div class="frow">Custo <b id="qc" style="margin-left:auto">'+fmt(1000*46)+'</b></div><div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn sec" data-close>Cancelar</button><button class="btn" data-buy>Comprar</button></div>',
+ programar:()=>'<h2>⏱ Compra programada</h2><small>Quem cuida: Vítor (Financeiro)</small><div class="rule">Quando o estoque chegar a <input value="50"> 📦</div><div class="rule">comprar <input value="500"> 📦</div><div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn sec" data-close>Cancelar</button><button class="btn" data-close>Ativar</button></div>',
+ campanha:()=>'<h2>📣 Nova campanha</h2><small>Você define o preço e joga o tabuleiro de novo. A força volta a 100%.</small><div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn sec" data-close>Agora não</button><button class="btn" data-camp>Começar</button></div>',
+ encerrar:()=>'<h2>⏹ Encerrar vendas?</h2><small>O estoque que sobrar fica guardado. Você volta para o resumo do produto.</small><div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn sec" data-close>Continuar vendendo</button><button class="btn" data-close>Encerrar</button></div>'};
+document.querySelectorAll('[data-pop]').forEach(b=>b.onclick=()=>{$('popc').innerHTML=pops[b.dataset.pop]();$('pop').classList.add('on');const q=$('q');if(q){const up=()=>{const v=+q.value,d=v>=3000?6:v>=1000?4:v>=500?2:0;$('qn').textContent=v.toLocaleString('pt-BR');$('disc').textContent=d+'% de desconto';$('qc').textContent=fmt(v*46*(1-d/100));$('sp').innerHTML='<i class="box"></i>'.repeat(Math.min(60,Math.ceil(v/100)));};q.oninput=up;up();}});
+$('pop').onclick=e=>{if(e.target.id==='pop'||e.target.dataset.close!==undefined)$('pop').classList.remove('on');if(e.target.dataset.buy!==undefined){$('pop').classList.remove('on');$('truck').hidden=false;setTimeout(()=>{stock+=+($('q')?.value||1000);$('truck').hidden=true;drawBoxes();},2500);}if(e.target.dataset.camp!==undefined){$('pop').classList.remove('on');force=10;drawBat();}};
+// ---------- EQUIPE ----------
+const AREAS={product:{n:'Produto',c:'var(--prod)',hex:'#7b5cd6',ic:'📐',perks:['🎲 +1 no D20','🧩 4 peças','⚡ mais rápido']},marketing:{n:'Marketing',c:'var(--mkt)',hex:'#ef8a3c',ic:'📣',perks:['🃏 +1 carta','📈 +campanha']},finance:{n:'Financeiro',c:'var(--fin)',hex:'#2f9a6a',ic:'🧮',perks:['🏦 empréstimo melhor','⏱ compra programada']}};
+const TIER=l=>l>=5?3:l>=3?2:1,TNAME=['','Júnior','Pleno','Sênior'],TCOL=['','#c88a4a','#8e98aa','#d9a90f'],SAL=[0,1200,1600,2200,2900,3800];
+let desks=[{founder:true,name:'Você'},null,null],sel=1,search=null,cands=null,team={};
+function person(c,shirt,seated=true){return '<svg width="70" height="92" viewBox="0 0 70 92"><rect x="8" y="60" width="54" height="10" rx="3" fill="#6b4a2c"/><rect x="12" y="70" width="6" height="20" fill="#5a3d22"/><rect x="52" y="70" width="6" height="20" fill="#5a3d22"/><rect x="40" y="40" width="22" height="18" rx="2" fill="#2a2f45"/><rect x="42" y="42" width="18" height="12" fill="#6fd0ff"/>'+(c?'<rect x="16" y="8" width="18" height="18" rx="5" fill="#edbd97"/><rect x="16" y="6" width="18" height="6" rx="3" fill="'+c+'"/><rect x="11" y="27" width="28" height="30" rx="8" fill="'+shirt+'"/><circle cx="22" cy="17" r="1.5" fill="#534342"/><circle cx="29" cy="17" r="1.5" fill="#534342"/>':'<rect x="14" y="36" width="24" height="22" rx="6" fill="#3a3f63" opacity=".5"/>')+'</svg>';}
+function moodFace(m){return m>=80?'😀':m>=50?'🙂':m>=30?'😐':'😟';}
+function drawFloor(){$('floor').innerHTML=desks.map((d,i)=>{if(d?.founder)return '<div class="desk">'+person('#5a3b26','#f2a93b')+'<span class="name">Você</span><span class="area" style="background:var(--navy3)">Fundador</span></div>';if(d)return '<div class="desk'+(sel===i?' sel':'')+'" data-desk="'+i+'">'+person(d.hair,AREAS[d.area].hex)+'<span class="name">'+d.name+' '+'★'.repeat(d.level)+'</span><span class="area" style="background:'+AREAS[d.area].c+'">'+AREAS[d.area].n+'</span></div>';return '<div class="desk'+(sel===i?' sel':'')+'" data-desk="'+i+'">'+(search?'<div class="envelope">✉️<br>Buscando '+AREAS[search.area].n+'<br><span id="cd">'+search.left.toFixed(1)+'</span> dias</div>':'<div class="plus">＋</div>')+person(null)+'<span class="name">Mesa vazia</span></div>';}).join('');
+ document.querySelectorAll('[data-desk]').forEach(e=>e.onclick=()=>{sel=+e.dataset.desk;drawFloor();drawSide();});}
+function drawSide(){const d=desks[sel];let h='';
+ if(d){const t=TIER(d.level),A=AREAS[d.area];h='<div class="card staff"><div style="grid-row:span 2">'+person(d.hair,A.hex)+'</div><div><h2>'+d.name+'</h2><span class="ribbon" style="background:'+TCOL[t]+'">'+TNAME[t].toUpperCase()+' · NÍVEL '+d.level+'</span></div><div class="perks" style="justify-content:flex-start">'+A.perks.map(p=>'<span class="perk">'+p+'</span>').join('')+'</div></div>'+
+  '<div class="card"><div class="lbl">Motivação</div><div class="mood"><span style="font-size:26px">'+moodFace(d.mot)+'</span><div class="bar"><i style="width:'+d.mot+'%"></i></div><b>'+d.mot+'</b></div></div>'+
+  '<div class="card"><div class="lbl">🎓 Treinar · <span class="coins">'+fmt(1500*d.level)+'</span></div>'+(d.level<5?'<div class="d20wrap"><div class="d20" id="d20"><svg viewBox="0 0 100 110"><path d="M50 3 94 28 94 80 50 107 6 80 6 28Z" fill="#7b5cd6" stroke="#5b4a9e" stroke-width="4"/></svg><b id="d20n">?</b></div><div><b>Meta: '+(21-Math.round([0,.75,.65,.55,.4][d.level]*20))+'+ no D20</b><br><small>'+Math.round([0,.75,.65,.55,.4][d.level]*100)+'% de chance · se passar, vira nível '+(d.level+1)+'</small><br><span class="result" id="tres"></span></div></div><button class="btn" id="train" style="margin-top:10px">Rolar treino</button>':'<b>Nível máximo</b>')+'</div>';}
+ else if(cands){h='<div class="lbl">Clique nas cartas para revelar</div><div class="cands">'+cands.map((c,i)=>{const t=TIER(c.level),A=AREAS[c.area];return '<div class="cand" data-c="'+i+'"><div class="face back">✉️<br>Candidato '+(i+1)+'</div><div class="face front tier-'+t+'">'+person(c.hair,A.hex)+'<b>'+c.name+'</b><span class="ribbon" style="background:'+TCOL[t]+'">'+TNAME[t].toUpperCase()+' · '+'★'.repeat(c.level)+'</span><span class="coins">🪙 '+fmt(SAL[c.level])+'/sem</span><div class="perks">'+A.perks.map(p=>'<span class="perk">'+p+'</span>').join('')+'</div><button class="btn" data-hire="'+i+'">Contratar</button></div></div>';}).join('')+'</div>';}
+ else if(search)h='<div class="card"><div class="lbl">✉️ Busca em andamento</div><p>Procurando alguém de <b>'+AREAS[search.area].n+'</b>. Os candidatos chegam em 2 dias úteis.</p></div>';
+ else h='<div class="lbl">Escolha a área da vaga · busca custa '+fmt(1500)+'</div><div class="areas">'+Object.entries(AREAS).map(([k,a])=>'<button class="acard" data-area="'+k+'" style="background:'+a.c+'"><span style="font-size:34px">'+a.ic+'</span>'+a.n+'<small>'+a.perks.join(' · ')+'</small></button>').join('')+'</div><p class="note" style="color:var(--soft)">Júnior é comum, Pleno é menos, Sênior é raro (borda dourada).</p>';
+ $('side').innerHTML=h;
+ document.querySelectorAll('[data-area]').forEach(b=>b.onclick=()=>{search={area:b.dataset.area,left:2};drawFloor();drawSide();const iv=setInterval(()=>{search.left=Math.max(0,search.left-.1);const cd=$('cd');if(cd)cd.textContent=search.left.toFixed(1);if(search.left<=0){clearInterval(iv);const lv=()=>{const r=Math.random();return r<.6?1+(Math.random()<.5?0:1):r<.95?3+(Math.random()<.5?0:1):5;};const names=['Vítor','Iara','Caio','Bruna','Heitor','Olívia'],hair=['#2b2b2b','#d9a441','#5a3b26','#a33b2b'];cands=[0,1].map(()=>({area:search.area,level:lv(),name:names[Math.floor(Math.random()*names.length)],hair:hair[Math.floor(Math.random()*4)]}));cands[1].level=Math.max(cands[1].level,3);search=null;drawFloor();drawSide();}},90);});
+ document.querySelectorAll('.cand').forEach(c=>c.onclick=e=>{if(e.target.dataset.hire!==undefined){const k=cands[+e.target.dataset.hire];desks[sel]={...k,mot:80};cands=null;drawFloor();drawSide();return;}c.classList.add('flip');});
+ const tr=$('train');if(tr)tr.onclick=()=>{const d=desks[sel],ch=[0,.75,.65,.55,.4][d.level],meta=21-Math.round(ch*20),n=1+Math.floor(Math.random()*20),die=$('d20');die.classList.remove('roll');void die.offsetWidth;die.classList.add('roll');let k=0;const iv=setInterval(()=>{$('d20n').textContent=1+Math.floor(Math.random()*20);if(++k>8){clearInterval(iv);$('d20n').textContent=n;const ok=n>=meta;$('tres').className='result '+(ok?'ok':'no');$('tres').textContent=ok?'Passou! Agora é nível '+(d.level+1)+'.':'Não foi desta vez. Motivação −10.';setTimeout(()=>{if(ok){d.level++;d.mot=Math.min(100,d.mot+10);}else d.mot=Math.max(0,d.mot-10);drawFloor();drawSide();},1400);}},90);};
+}
+drawFloor();drawSide();
+</script>
+</body>
+</html>
