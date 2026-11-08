@@ -1,3 +1,14 @@
+# 0.77 · Detalhes de produto, marketing e dados
+
+- Avançar até terminar agora aparece na barra de velocidade (selo ACELERANDO, 1×/2×/4× desmarcados); clicar numa velocidade cancela.
+- A barra de tarefa mostra os dias para conclusão e quanto falta (ex.: 4,3 dias para conclusão, falta 86%).
+- A campanha depois de melhorar o produto não pede mais para escolher outra persona.
+- Avaliações das versões anteriores ficam guardadas: aparecem em Versões anteriores da linha, com nota média e comentários.
+- Redistribuir (R$750) agora leva para a prancheta no mesmo nível, sem dado.
+- Dificuldade do marketing sobe mais devagar: Iniciante nas 4 primeiras campanhas, Em crescimento até a 10ª, Experiente até a 18ª.
+- Aprendizado de produto voltou a funcionar (procurava as personas antigas).
+- As metas do dado aparecem antes de investir: teste do protótipo 11+, evolução com a meta e a chance.
+
 # 0.76 · Evolução mais acessível e nova rolagem paga
 
 - Metas da evolução 2 pontos menores: NV4→5 6+, 5→6 8+, 6→7 10+, 7→8 12+, 8→9 14+, 9→10 16+.

@@ -25,7 +25,7 @@ const MarketReach=(()=>{
  const Board=(()=>{
   const cards={inf:{n:'Influenciador',d:'Área 3×3',tag:'Precisão',ch:1},pr:{n:'Assessoria PR',d:'Uma linha inteira',tag:'Controle',ch:4},ooh:{n:'Out of Home',d:'Uma coluna inteira',tag:'Cruza com PR',ch:3},seo:{n:'SEO',d:'Uma diagonal inteira (R gira)',tag:'Cantos difíceis',ch:0},soc:{n:'Redes Sociais',d:'10 pessoas ao acaso em todo o tabuleiro',tag:'Sorte',ch:1},email:{n:'E-mail',d:'5 casas vizinhas de quem já foi alcançado',tag:'Finalização',ch:2},cont:{n:'Conteúdo',d:'2×2 agora, vira 4×4 na jogada seguinte',tag:'Investimento',ch:5},tv:{n:'Televisão',d:'Linha + coluna',tag:'Alto risco',ch:3}};
   const stages=[{label:'Iniciante',n:6,plays:3,p:2,e:2,d:1,k:0,rival:0,clusters:false,cards:['inf','pr','ooh'],bars:[50,85,120,150]},{label:'Em crescimento',n:8,plays:3,p:3,e:3,d:2,k:3,rival:0,clusters:false,cards:['inf','pr','ooh','seo','soc'],bars:[25,50,75,100]},{label:'Experiente',n:10,plays:4,p:3,e:3,d:3,k:4,rival:1,clusters:false,cards:['inf','pr','ooh','seo','soc','email','cont'],bars:[25,50,75,100]},{label:'Referência',n:12,plays:5,p:4,e:4,d:5,k:6,rival:1,clusters:true,cards:['inf','pr','ooh','seo','soc','email','cont','tv'],bars:[25,50,75,100]}];
-  const stageFor=exp=>exp<2?0:exp<4?1:exp<7?2:3;
+  const stageFor=exp=>exp<4?0:exp<10?1:exp<18?2:3;
   const shuffle=(a,rand)=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(rand()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
   const area=(n,c,rx=1)=>{const r=Math.floor(c/n),k=c%n,o=[];for(let a=r-rx;a<=r+rx;a++)for(let b=k-rx;b<=k+rx;b++)if(a>=0&&a<n&&b>=0&&b<n)o.push(a*n+b);return o;};
   function create(stage=2,rand=Math.random){const S=stages[stage],n=S.n,kind=Array(n*n).fill('c'),blocked=[];

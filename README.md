@@ -1,5 +1,9 @@
 # The Founder
 
+## Jogar 0.77 — Detalhes de produto e marketing
+
+Abra dist/The-Founder-Primeira-Aposta-0.77.html, com a pasta dist/audio ao lado.
+
 ## Jogar 0.76 — Evolução com nova rolagem
 
 Abra dist/The-Founder-Primeira-Aposta-0.76.html, com a pasta dist/audio ao lado.
