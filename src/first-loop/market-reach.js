@@ -92,10 +92,14 @@ const MarketReach=(()=>{
   if(!growth||!gadgetMarkets[s.productId]||!s.clientId)return null;
   const key=s.productId+':'+s.clientId;
   const capacity=Math.floor(gadgetMarkets[s.productId]/G.personas(s).length);
-  const segment=growth.segments[key]||{available:capacity,firstWeek:growthWeek(s),week:growthWeek(s),allowance:Math.floor(capacity*.12),used:0};
+  const gen=s.generation||1,stored=growth.segments[key];
+  const segment=stored?{...stored,firstWeek:stored.generation===gen||stored.generation===undefined&&gen===1?stored.firstWeek:growthWeek(s)}:{available:capacity,firstWeek:growthWeek(s),week:growthWeek(s),allowance:Math.floor(capacity*.12),used:0,generation:gen};
   const validated=Object.keys(growth.validated).length;
   const audience=growth.audience;
-  const distribution=validated>=5&&audience>=10000?12:validated>=3&&audience>=2500?6:validated>=2&&audience>=500?2.5:1;
+  const byMarket=validated>=5&&audience>=10000?3:validated>=3&&audience>=2500?2:validated>=2&&audience>=500?1:0;
+  const own=(s.reviews||[]).length>=3?s.reviews:(s.lineReviews?.at(-1)?.reviews||[]),rating=own.length>=3?own.reduce((n,r)=>n+r.stars,0)/own.length:0;
+  const byLevel=rating>=4?((s.level||4)>=10?3:(s.level||4)>=8?2:(s.level||4)>=6?1:0):0;
+  const distribution=[1,2,3.5,5][Math.max(byMarket,byLevel)];
   return {key,capacity,segment,distribution,audience,reputation:growth.reputation};
  }
  function growthPlan(s,options,mix,multiplier,profile){
@@ -115,6 +119,7 @@ const MarketReach=(()=>{
   const profile=growthProfile(s);
   const g=s.market.growth;
   const segment=g.segments[profile.key]??={...profile.segment};
+  const gen=s.generation||1;if(segment.generation!==gen){if(segment.generation!==undefined||gen>1)segment.firstWeek=growthWeek(s);segment.generation=gen;}
   if(segment.week!==growthWeek(s)){
    segment.week=growthWeek(s);
    segment.allowance=Math.floor(segment.available*.12);
@@ -133,7 +138,7 @@ const MarketReach=(()=>{
   const signal=(quality-3.5)*confidence;
   g.reputation=clamp(g.reputation+.9*signal,0,100);
   const followed=.04*Math.max(0,metrics.seen-metrics.buyers);
-  const retained=metrics.buyers*clamp(.35+.33*signal,.05,.65);
+  const retained=metrics.buyers*clamp(.5+.3*signal,.05,.8);
   const loss=g.audience*.025*Math.max(0,-signal);
   g.audience=clamp(Math.round(g.audience-loss+(followed+retained)*(1-g.audience/200000)),0,200000);
   if(metrics.sold>=60&&reviews.length>=3&&quality>=4)g.validated[active.growthKey]=true;
@@ -141,7 +146,7 @@ const MarketReach=(()=>{
  function renewGrowth(s){
   const g=s.market?.growth;
   if(!g)return;
-  g.audience=Math.round(g.audience*.98);
+  g.audience=Math.round(g.audience*.99);
   for(const [key,segment] of Object.entries(g.segments)){
    const productId=key.split(':')[0];
    const capacity=Math.floor(gadgetMarkets[productId]/G.personas({...s,productId}).length);

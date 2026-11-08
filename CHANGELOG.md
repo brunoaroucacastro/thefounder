@@ -1,3 +1,11 @@
+# 0.78 · Crescimento de público para escalar
+
+- Degraus de distribuição achatados: ×1, ×2, ×3,5 e ×5 (antes ×1, ×2,5, ×6 e ×12), para o topo não explodir.
+- A distribuição também destrava pelo nível do produto com nota média 4+: ×2 no NV6, ×3,5 no NV8 e ×5 no NV10. Vale o maior entre nível e segmentos validados.
+- Cada nova versão renova a novidade da campanha, como um lançamento.
+- Seguidores: retêm 50–80% dos compradores satisfeitos (antes 35–65%) e perdem 1% por semana (antes 2%).
+- Ainda sem calibração por simulação.
+
 # 0.77 · Detalhes de produto, marketing e dados
 
 - Avançar até terminar agora aparece na barra de velocidade (selo ACELERANDO, 1×/2×/4× desmarcados); clicar numa velocidade cancela.
