@@ -127,7 +127,12 @@ Para não redesenhar tela por tela do zero, vale criar um kit de peças reaprove
 
 Cada fase vira uma versão. As fases 2 e 3 são as que mais mudam a cara do jogo.
 
-## 6. Decisões para você
+## 6. Decisões tomadas (08/11/2026)
+
+- **Estilo:** manter o vetorial atual (o mesmo do quarto) para ícones, retratos e cartas.
+- **Escritório:** ao alugar a sala, o cenário troca do quarto para uma sala comercial com 3 mesas de computador (você mais 2 funcionários).
+
+## 7. Decisões em aberto (texto original)
 
 1. **Começar pelos protótipos (fase 0)?** Eu montaria Vendas e Equipe como páginas separadas para você aprovar o visual antes de mexer no jogo.
 2. **Estilo de arte:** manter o vetorial da "Amostra A" (o mesmo do quarto) para ícones, retratos e cartas?
