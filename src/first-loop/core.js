@@ -430,6 +430,17 @@ const FirstLoop=(()=>{
   const summary=s.history.at(-1);
   return summary?.productId?summary:null;
  }
+ const lifeBase=()=>({outfit:'basic',owned:['basic'],collection:[],friends:{},flags:{},spent:0,outing:null,history:[]});
+ function lifeAction(s,a){
+  s.life={...lifeBase(),...(s.life||{})};const L=s.life,spend=Number(a.spend||0);
+  if(!Number.isFinite(spend)||spend<0||spend>5000)throw Error('Valor inválido.');
+  if(spend>0){if(s.cash<spend)throw Error('Dinheiro insuficiente para isso.');s.cash=round(s.cash-spend);L.spent=round((L.spent||0)+spend);}
+  const p=a.patch&&typeof a.patch==='object'?JSON.parse(JSON.stringify(a.patch)):{};
+  for(const [k,v] of Object.entries(p)){if(!['outfit','owned','collection','friends','flags','outing','history'].includes(k))continue;
+   if(k==='friends'||k==='flags')L[k]={...(L[k]||{}),...v};else L[k]=v;}
+  if(a.endWeekend){L.outing=null;s.revision++;return s.weekly?.stage==='weekend'?weekend(s,a.endWeekend==='work'?'work':'rest'):s;}
+  s.revision++;return s;
+ }
  function weekend(s,choice){
   const w=s.weekly,number=w.reports.length;
   if(w.stage!=='weekend'||!['rest','work','study'].includes(choice))throw Error('Escolha uma atividade do fim de semana.');
@@ -450,7 +461,8 @@ const FirstLoop=(()=>{
  function dealDesign(s){const rand=()=>{let x=s.rng>>>0;x^=x<<13;x^=x>>>17;x^=x<<5;s.rng=x>>>0;return s.rng/4294967296;};s.designOffer=Array.from({length:teamMember(s,'product')?4:3},()=>G.U.gridDraw(s.level,rand));if(!s.designOffer.some(n=>G.U.gridShapes[n].t<=2)){const cfg=G.U.gridConfig(s.level),small=G.U.gridShapes.map((x,i)=>i).filter(i=>G.U.gridShapes[i].t<=2),fit=small.filter(i=>G.U.gridFitsAnywhere(cfg,s.designPieces||[],i)),pool=fit.length?fit:small;s.designOffer[Math.floor(rand()*s.designOffer.length)]=pool[Math.floor(rand()*pool.length)];}}
  function act(input,a,options){const next=act0(input,a,options);if(next.boardCampaign&&['design','upgradeAttributes'].includes(next.phase)&&!next.designOffer&&!next.designKeep)dealDesign(next);if(next.boardCampaign&&next.phase==='catalog'&&next.designPieces?.length){next.designPieces=[];next.designOffer=null;next.designResets=0;next.attributes=G.U.empty();}return next;}
  function act0(input,a,options){
-  if(a.type==='socialSeen'){
+  if(a.type==='life')return lifeAction(copy(input),a);
+ if(a.type==='socialSeen'){
    if(!input.social)throw Error('Nexus indisponível.');
    const s=copy(input);
    s.social.lastSeen=s.social.posts.length;
@@ -463,7 +475,7 @@ const FirstLoop=(()=>{
   if(input.branding&&!next.branding)next.branding=copy(input.branding);
   if(input.loan!==undefined&&next.loan===undefined)next.loan=copy(input.loan);
   if(input.loansDone&&next.loansDone===undefined)next.loansDone=input.loansDone;
-  for(const k of ['team','office','officeOffer','autoRestock'])if(input[k]!==undefined&&next[k]===undefined)next[k]=copy(input[k]);
+  for(const k of ['team','office','officeOffer','autoRestock','life'])if(input[k]!==undefined&&next[k]===undefined)next[k]=copy(input[k]);
    return next;
   }
   if(a.type==='weekend')return weekend(copy(input),a.choice);
@@ -481,7 +493,7 @@ const FirstLoop=(()=>{
   if(input.branding&&!next.branding)next.branding=copy(input.branding);
   if(input.loan!==undefined&&next.loan===undefined)next.loan=copy(input.loan);
   if(input.loansDone&&next.loansDone===undefined)next.loansDone=input.loansDone;
-  for(const k of ['team','office','officeOffer','autoRestock'])if(input[k]!==undefined&&next[k]===undefined)next[k]=copy(input[k]);
+  for(const k of ['team','office','officeOffer','autoRestock','life'])if(input[k]!==undefined&&next[k]===undefined)next[k]=copy(input[k]);
   if(next.weekly.effect?.extraFocus&&(next.focus<input.focus||next.cycle!==input.cycle))next.weekly.effect.extraFocus=false;
   recordMovement(input,next,a.type);
   return next;

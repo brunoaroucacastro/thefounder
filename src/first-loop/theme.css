@@ -571,3 +571,39 @@ body[data-area=marketing] .bcard[data-ch=tv]{background:#a8ece0;transform:rotate
 body[data-area=marketing] .bpanel .bcard.on{outline:3px solid #3a3346!important;transform:rotate(0) scale(1.03)}
 body[data-area=marketing] .bpanel>p,body[data-area=marketing] .bpanel>small,body[data-area=marketing] .bpanel .blegend{background:#fffaf0e6;border-radius:4px;padding:4px 8px}
 body[data-area=marketing] #board-modal .bcard{border-radius:2px!important;border:0!important}
+
+/* ===== 0.84 · bairro do fim de semana ===== */
+#town{position:fixed;inset:0;z-index:3000;background:#1b1d31;font-family:var(--q-font)}
+#town[hidden]{display:none}
+#town-cv{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+body.town-open{overflow:hidden}
+#town .tw-hud{position:absolute;left:10px;right:10px;top:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;pointer-events:none}
+#town .tw-hud>*{pointer-events:auto}
+#town .tw-time{display:flex;gap:8px;align-items:baseline;background:#fffdf8;border-radius:999px;padding:6px 14px;box-shadow:0 3px 0 #0003;color:#241d33}
+#town .tw-time b{font-weight:900}#town .tw-time span{font-weight:900;font-size:18px;color:#7b5cd6}
+#town .tw-where,#town .tw-cash{background:#ffffffd9;border-radius:999px;padding:6px 12px;font-weight:800;font-size:13px;color:#241d33}
+#town .tw-cash{color:#2f8a5f}
+#town .tw-btn{margin-left:auto;background:#f2a93b;border:2px solid #9c5f14;border-radius:12px;padding:7px 12px;font:900 13px var(--q-font);color:#241d33;cursor:pointer;box-shadow:0 3px 0 #9c5f14}
+#town .tw-btn+.tw-btn{margin-left:0;background:#fffdf8;border-color:#d9c4a3;box-shadow:0 3px 0 #d9c4a3}
+#town .tw-btn[hidden]{display:none}
+#tw-dialog{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);width:min(620px,calc(100% - 24px))}
+#tw-dialog[hidden]{display:none}
+#town .tw-say{background:#fffdf8;border:3px solid #241d33;border-radius:16px;padding:14px 16px;box-shadow:0 8px 0 #0004;color:#241d33}
+#town .tw-say b{display:inline-block;background:#7b5cd6;color:#fff;border-radius:999px;padding:2px 10px;font-weight:900;font-size:13px;margin-bottom:6px}
+#town .tw-say p{margin:4px 0 10px;font-size:15px;line-height:1.4}
+#town .tw-opts{display:flex;flex-wrap:wrap;gap:8px}
+#town .tw-opts button{flex:1 1 180px;background:#fff7ea;border:2px solid #d9c4a3;border-radius:10px;padding:8px 10px;font:800 14px var(--q-font);color:#241d33;cursor:pointer;text-align:left}
+#town .tw-opts button:hover{background:#ffe9c4;border-color:#c47d1f}
+#town .tw-opts button:disabled{opacity:.5;cursor:default}
+#tw-toast{position:absolute;left:50%;top:64px;transform:translateX(-50%) translateY(-8px);background:#241d33;color:#fff;border-radius:999px;padding:8px 16px;font-weight:800;font-size:13px;opacity:0;transition:.25s;pointer-events:none}
+#tw-toast.on{opacity:1;transform:translateX(-50%)}
+#tw-mini{position:absolute;inset:0;background:#0f1020cc;display:grid;place-items:center;padding:10px}
+#tw-mini[hidden]{display:none}
+#town .tw-mini-box{background:#fffdf8;border-radius:16px;padding:12px;width:min(800px,100%);box-shadow:0 18px 40px #0008;color:#241d33}
+#town .tw-mini-head{display:flex;justify-content:space-between;gap:10px;margin-bottom:8px;font-size:16px}
+#town .tw-mini-head span{font-weight:900;color:#7b5cd6}
+#tw-mini-cv{width:100%;height:auto;border-radius:10px;display:block;touch-action:none;cursor:crosshair}
+#tw-mini-help{font-size:13px;margin:8px 0;color:#5b5470}
+#tw-mini-actions{display:flex;gap:8px;flex-wrap:wrap}
+#tw-mini-actions button{flex:1 1 160px;background:#f2a93b;border:2px solid #9c5f14;border-radius:10px;padding:9px;font:900 14px var(--q-font);cursor:pointer}
+#tw-mini-actions button+button{background:#fff7ea;border-color:#d9c4a3}
