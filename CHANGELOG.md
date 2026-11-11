@@ -1,3 +1,12 @@
+# 0.85 · Refino gráfico (só visual)
+
+- Bairro: personagens com contorno e brilho no cabelo; prédios com telhado de beiral, janelas com moldura e porta com degrau; árvores, bancos, postes e canteiros redesenhados; sombras no chão que esticam no fim da tarde; sol, lua, estrelas e nuvens; gato, pombos e carros com contorno.
+- Casa, bar e galeria: paredes com degradê e sombra de canto; luz da janela no piso e azulejos na cozinha; lambri e letreiro de neon no bar; vitrines e piso encerado na galeria.
+- Minigames (só o desenho): sinuca com moldura de madeira, caçapas e bolas com volume; vôlei com casario, varal de luzes e areia; garrinha com gabinete, painel e garra de três dedos.
+- Quarto e escritório: brilho nas quinas e sombra de canto; varal de fotos, livros, chinelos e manta no quarto; sol da janela no piso, capacho e relógio no escritório.
+- Painéis: acabamento das barras, janelas, botões, placas do bairro e janela dos minigames.
+- Sem mudança em regras, economia, save, células bloqueadas, pontos clicáveis ou lógica dos minigames.
+
 # 0.81 · Sprint visual: loja ao vivo, equipe e escritório
 
 - Vendas viraram uma loja ao vivo: produto com selo de nível e estrelas, faturamento com +R$ flutuando a cada venda, estoque em caixas, funil com 10 bolinhas, força da campanha como bateria, avaliações em balões e quatro botões-ícone (Repor, Programar, Campanha, Encerrar).
