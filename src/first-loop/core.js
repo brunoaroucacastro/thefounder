@@ -431,6 +431,18 @@ const FirstLoop=(()=>{
   return summary?.productId?summary:null;
  }
  const lifeBase=()=>({outfit:'basic',owned:['basic'],collection:[],friends:{},flags:{},spent:0,outing:null,history:[]});
+ function weekendSales(input,minutes){
+  // A loja online segue vendendo no sábado e no domingo, sem avançar o calendário da empresa.
+  if(!input.weekly||input.weekly.stage!=='weekend'||input.phase!=='selling')return input;
+  const n=Math.max(0,Math.min(30,Math.floor(Number(minutes)||0)));if(!n)return input;
+  let s=input;const sold0=input.sold,rev0=(input.revenue||0)+(input.legacyRevenue||0);
+  const wasPaused=input.paused;s={...input,paused:false};for(let i=0;i<n&&s.phase==='selling';i++){const next=advanceSimulation(s,1,1);if(next===s)break;s=next;}if(s.paused!==wasPaused)s.paused=wasPaused;if(s.sold===input.sold&&s.cash===input.cash)return input;
+  if(s===input)return input;
+  s.weekly=copy(s.weekly||input.weekly);const ws=s.weekly.weekendSales&&s.weekly.weekendSales.week===input.weekly.reports.length?s.weekly.weekendSales:{week:input.weekly.reports.length,units:0,revenue:0};
+  ws.units+=Math.max(0,s.sold-sold0);ws.revenue=round(ws.revenue+Math.max(0,(s.revenue||0)+(s.legacyRevenue||0)-rev0));s.weekly.weekendSales=ws;
+  for(const k of ['team','office','officeOffer','autoRestock','life','loan','loansDone','social','branding'])if(input[k]!==undefined&&s[k]===undefined)s[k]=copy(input[k]);
+  s.weekly.cashStart=s.cash;s.revision=(s.revision||0)+1;return s;
+ }
  function lifeAction(s,a){
   s.life={...lifeBase(),...(s.life||{})};const L=s.life,spend=Number(a.spend||0);
   if(!Number.isFinite(spend)||spend<0||spend>5000)throw Error('Valor inválido.');
@@ -462,6 +474,7 @@ const FirstLoop=(()=>{
  function act(input,a,options){const next=act0(input,a,options);if(next.boardCampaign&&['design','upgradeAttributes'].includes(next.phase)&&!next.designOffer&&!next.designKeep)dealDesign(next);if(next.boardCampaign&&next.phase==='catalog'&&next.designPieces?.length){next.designPieces=[];next.designOffer=null;next.designResets=0;next.attributes=G.U.empty();}return next;}
  function act0(input,a,options){
   if(a.type==='life')return lifeAction(copy(input),a);
+ if(a.type==='weekendSales')return weekendSales(input,a.minutes);
  if(a.type==='socialSeen'){
    if(!input.social)throw Error('Nexus indisponível.');
    const s=copy(input);
