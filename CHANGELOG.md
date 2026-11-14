@@ -4,7 +4,8 @@
 - Rua, praça, quadra, casa, bar, galeria, padaria e banca foram redesenhados em tiles, com telhados de telha, janelas, toldos e placas.
 - As pessoas viraram sprites de 16×24 com contorno, 4 direções e passo animado. Gato, pombos, carros, bola de vôlei e varal de luzinhas também ganharam versão em pixel.
 - A luz muda com o horário: filtro quente no fim de tarde e, à noite, postes, janelas e luminárias com poças de luz em degraus.
-- Rotas, portas, pontos clicáveis, pessoas e horários continuam iguais. O quarto e o escritório ainda estão no estilo antigo.
+- Rotas, portas, pontos clicáveis, pessoas e horários continuam iguais.
+- Quarto e escritório em pixel art 2D, vista de cima em 3/4: piso de tábuas ou de lajotas, parede do fundo com janela, mural de clientes, quadro de desempenho e TV da Nexus, mesas, estante de produtos, cama, gato, caixas do estoque e a equipe sentada nas mesas. O fundador aparece de fone, de costas para o monitor, e o monitor mostra a fase da empresa em pixels. Os pontos clicáveis acompanham o novo desenho e os marcadores e balões continuam nítidos por cima.
 - Minigames em pixel art: sinuca com mesa de madeira, caçapas, taco e bolas em pixel; vôlei com casario, varal de luzes, areia e os jogadores nos sprites do bairro; garrinha com gabinete, garra, vidro e prêmios desenhados em pixel. A física, as chances e as regras não mudaram.
 - Os prêmios da garrinha também aparecem em pixel na estante da casa, no balcão do Zé e na máquina da galeria.
 
