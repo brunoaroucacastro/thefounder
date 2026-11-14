@@ -4,7 +4,9 @@
 - Rua, praça, quadra, casa, bar, galeria, padaria e banca foram redesenhados em tiles, com telhados de telha, janelas, toldos e placas.
 - As pessoas viraram sprites de 16×24 com contorno, 4 direções e passo animado. Gato, pombos, carros, bola de vôlei e varal de luzinhas também ganharam versão em pixel.
 - A luz muda com o horário: filtro quente no fim de tarde e, à noite, postes, janelas e luminárias com poças de luz em degraus.
-- Rotas, portas, pontos clicáveis, pessoas e horários continuam iguais. Os minigames, o quarto e o escritório ainda estão no estilo antigo.
+- Rotas, portas, pontos clicáveis, pessoas e horários continuam iguais. O quarto e o escritório ainda estão no estilo antigo.
+- Minigames em pixel art: sinuca com mesa de madeira, caçapas, taco e bolas em pixel; vôlei com casario, varal de luzes, areia e os jogadores nos sprites do bairro; garrinha com gabinete, garra, vidro e prêmios desenhados em pixel. A física, as chances e as regras não mudaram.
+- Os prêmios da garrinha também aparecem em pixel na estante da casa, no balcão do Zé e na máquina da galeria.
 
 # 0.85 · Refino gráfico (só visual)
 
