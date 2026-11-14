@@ -39,3 +39,20 @@ Sinal observável de cada um, a medir no playtest: tempo sem nenhuma decisão no
 4. Como saberemos se funcionou?
 
 Ideias em teste entram com prazo e critério de avaliação, para não virarem compromisso permanente.
+
+## Ciclo: o que muda para repetir continuar interessante (decisão E10)
+Regra: **todo ciclo novo precisa trazer pelo menos uma decisão que o anterior não tinha.** Uma mecânica que não cria uma decisão nova nessa escada não entra.
+
+| Etapa | Decisão nova que aparece | Situação hoje |
+|---|---|---|
+| 1º produto | Produto, persona, montagem, lote, preço e campanha: aprender o básico | Existe |
+| Depois das 1ªs vendas | Evoluir o produto, fazer outra campanha ou criar outro produto. Estudar no fim de semana | Existe |
+| 2 produtos concluídos | Nova categoria (caixa de som), com público e necessidades diferentes | Existe |
+| R$ 100 mil faturados | Alugar o escritório e contratar: pessoas custam salário todo mês | Existe |
+| Mais produtos lucrativos | Empréstimos médio e grande: escalar com dívida | Existe |
+| Depois disso | **Nada novo aparece.** É aqui que a repetição esvazia | Lacuna |
+
+Ordem proposta para preencher a lacuna (todas já estão no backlog):
+1. **Falência real:** a dívida e a equipe passam a poder quebrar a empresa. Dá peso a todas as decisões anteriores.
+2. **Funcionários que sugerem:** a equipe passa a opinar sobre preço, lote e aprendizados, e a decisão vira "confio na minha equipe?".
+3. **Metas de vida no bairro:** o dinheiro ganha destino (casa, compras, família), e surge o dilema entre trabalho e vida pessoal.
