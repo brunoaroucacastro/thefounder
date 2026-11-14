@@ -36,3 +36,9 @@ Ideias guardadas para puxar depois. Não entram no jogo até o Bruno pedir.
 - O dinheiro da empresa compra coisas para a vida: casa melhor, móveis, roupas, carro, família.
 - Relações do bairro (amigos, família) pedem tempo, e o jogador às vezes escolhe entre o trabalho e a interação social.
 - Os minigames geram essa interação social e vão alimentar mecânicas futuras.
+
+## Calendário estilo Persona 3 (pedido do Bruno, 14/11/2026)
+- Referência: em Persona 3 cada período do dia é uma escolha entre ir ao Tártaro (aqui, trabalhar) ou aproveitar: pessoas, cidade, livros.
+- Ideia para The Founder: dividir o fim de semana (e talvez as noites) em períodos, cada um com uma escolha: trabalhar, encontrar alguém do bairro, ir à cidade, comprar livros.
+- Livros comprados no bairro melhorariam atributos do fundador (por exemplo intuição de produto, de campanha, de finanças), como os livros do Persona 3 sobem os atributos sociais.
+- Em aberto: quantos períodos por fim de semana, se as noites dos dias úteis entram, e quais atributos do fundador existem.

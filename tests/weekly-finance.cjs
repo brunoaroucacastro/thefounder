@@ -3,7 +3,7 @@ const {C,act,flags}=require('./modern-support.cjs');
 const {boot}=require('./workshop-ui.cjs');
 let s=act(C.enableWeekly(C.fresh(3,{...flags,traction:true})),'start');
 s=C.tick(s,240);
-s=act(act(s,'readWeek'),'weekend',{choice:'rest'});
+s=act(act(s,'readWeek'),'weekend',{choice:'social'});
 s.weekly.obligations.push({id:'office',category:'office',startDay:7,amount:50000});
 s.weekly.obligations.push({id:'employee',category:'salary',startDay:9,amount:500});
 s=C.tick(s,240);

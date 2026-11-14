@@ -290,7 +290,8 @@ const Town=(()=>{
   if(L.flags?.homeCozy){S.box(7,1,1,1,.5,'#b47ad6',{top:'#c9a2e6'});S.box(7,1.75,1,.25,1.0,'#9c66c6',{solid:false});
    S.put(8,6,1,1,()=>{B(8.3,6.3,0,.4,.4,.45,'#e9e6df');const sx=8.5*TT,sy=6.5*TT-10;for(const [dx,dy,c2] of [[-4,-4,'#3f8f5a'],[4,-5,'#4fa868'],[0,-9,'#5fbf74']]){F(sx+dx-2,sy+dy-4,4,7,c2);F(sx+dx-1,sy+dy-5,2,1,c2);}});}
   // mesa redonda com frutas
-  S.put(8,6,1,1,()=>{B(8.1,6.35,0,.3,.3,.45,'#9c6a45');F(8.47*TT,6.5*TT-8,2,8,'#5a3b26');O(8.5*TT,6.5*TT-10,7,3,'#c98f5a');O(8.5*TT,6.5*TT-11,6,2,'#d9a06a');F(8.5*TT-4,6.5*TT-13,3,3,'#e46d6d');F(8.5*TT,6.5*TT-13,3,3,'#ffe46b');});
+  S.put(8,6,1,1,()=>{B(8.1,6.35,0,.3,.3,.45,'#9c6a45');F(8.47*TT,6.5*TT-8,2,8,'#5a3b26');O(8.5*TT,6.5*TT-10,7,3,'#c98f5a');O(8.5*TT,6.5*TT-11,6,2,'#d9a06a');F(8.5*TT-5,6.5*TT-19,10,7,'#2d2a4a');F(8.5*TT-4,6.5*TT-18,8,5,'#7fd0ff');F(8.5*TT-6,6.5*TT-12,12,2,'#9aa3b5');F(8.5*TT+3,6.5*TT-13,3,2,'#ffe46b');});
+  S.hot({id:'study',x:8,y:6,w:1,d:1,h:1,label:'Estudar os resultados',stand:[7,6],use:studyWeekend});
   S.hot({id:'bedroom',x:0,y:1,w:.2,d:1.2,h:1.95,label:'Porta do quarto',stand:[0,1],use:bedroomDoor});
   S.hot({id:'front',x:7.6,y:0,w:1,d:.2,h:1.95,label:'Sair para a rua',stand:[8,0],use:()=>go('street',{x:3,y:4})});
   S.cat={x:7.5,y:4.5,tx:7.5,ty:4.5,state:'sleep',t:0,face:1};
@@ -524,8 +525,12 @@ const Town=(()=>{
  function waterPlant(){const L=life(),pl=L.plant||{water:0,last:''},key=R.week+R.day;if(pl.last===key){say('','A terra ainda está úmida. Amanhã ela agradece de novo.',null,{name:'Planta'});return;}
   const water=(pl.water||0)+1,stage=Math.floor(water/2),grew=stage>Math.floor((pl.water||0)/2);save({plant:{water,last:key}});advance(5);diary('🪴',grew?'Regou a planta. Ela cresceu!':'Regou a planta.');
   R.scene=BUILD.home(api.get(),life());R.scene.cat=R.cat||R.scene.cat;say('',grew?'Você rega a planta e repara: tem folha nova! Ela está crescendo.':'Você rega a planta. As folhas parecem mais felizes.',null,{name:'Planta'});}
+ // estudar os resultados da empresa: uma vez por fim de semana, sem dado
+ function studyWeekend(){let next;try{next=api.act({type:'weekendStudy'});}catch(e){say('',e.message);return;}advance(60);
+  const rec=next.learning?.attempts?.[next.learningWindow?.id],card=rec?.cards?.[0];diary('📚','Estudou os resultados da empresa.');
+  say('Estudo',card?'Você revisa as vendas e as avaliações com calma. Descoberta: '+card.title+' '+card.symbol+'. '+(card.text||''):'Você revisa os números com calma.',null,{name:'Estudo de fim de semana',col:'#7b5cd6'});}
  function petCat(){const c2=R.scene.cat;c2.state='happy';c2.t=0;Amb.purr();advance(5);R.petted=(R.petted||0)+1;if(R.petted===1)diary('🐈','Fez carinho no Biscoito.');R.particles.push(...[0,1,2].map(i=>({kind:'heart',x:c2.x,y:c2.y,z:.6,vz:.6+i*.15,life:1.6,dx:(i-1)*.15})));toast(['Biscoito ronrona alto.','Biscoito se espreguiça e pede mais.','Biscoito te olha com os olhos meio fechados.'][R.petted%3]);}
- function bedroomDoor(){if(R.day==='sat')menu('',[{t:'😴 Dormir (vai para domingo)',fn:()=>sleep(false)},{t:'💼 Dormir e trabalhar no domingo (+1 foco)',fn:()=>sleep(true)},{t:'Ainda não'}],'Hora de descansar?',{name:'Porta do quarto'});
+ function bedroomDoor(){if(R.day==='sat')menu('',[{t:'😴 Dormir (vai para domingo)',fn:()=>sleep(false)},{t:'Ainda não'}],'Hora de descansar?',{name:'Porta do quarto'});
   else menu('',[{t:'😴 Dormir (encerra o fim de semana)',fn:()=>sleep(false)},{t:'Ainda não'}],'Amanhã a semana recomeça.',{name:'Porta do quarto'});}
 
  /* ---------- celular: contatos, convites e loja online ---------- */
@@ -552,7 +557,7 @@ const Town=(()=>{
   else if(!R.plan.warned&&R.min>=R.plan.at-30){R.plan.warned=true;toast('📅 Daqui a pouco: '+R.plan.label+' com '+PEOPLE[R.plan.who].name+' às '+hhmm(R.plan.at)+'.');}}
  function callMom(){const L=life(),F=L.flags||{};advance(10);
   if(F.momMissed){dialog('','Oi, meu bem. Domingo passado eu fiz lasanha e fiquei te esperando... Tudo bem, eu sei que a empresa toma tempo. Só me avisa da próxima vez, tá?',[{t:'Desculpa, mãe. Vou avisar.',fn:()=>save({flags:{momMissed:false,momHurt:(F.momHurt||0)+1}})}],{name:'Mãe',col:'#e46d8c',k:MOM});return;}
-  if(R.day==='sat'&&!F.momLunch){dialog('','Oi, meu bem! Tá comendo direito? Amanhã vou fazer aquele almoço de domingo. Vem?',[{t:'Vou sim!',fn:()=>{save({flags:{momLunch:'yes'}});diary('📞','Combinou o almoço de domingo com a mãe.');toast('Almoço com a mãe marcado para domingo.');}},{t:'Esse domingo vou trabalhar.',fn:()=>{save({flags:{momLunch:'no'}});say('','Tudo bem, a gente remarca. Não esquece de descansar.',null,{name:'Mãe',col:'#e46d8c',k:MOM});}},{t:'Ainda não sei.'}],{name:'Mãe',col:'#e46d8c',k:MOM});return;}
+  if(R.day==='sat'&&!F.momLunch){dialog('','Oi, meu bem! Tá comendo direito? Amanhã vou fazer aquele almoço de domingo. Vem?',[{t:'Vou sim!',fn:()=>{save({flags:{momLunch:'yes'}});diary('📞','Combinou o almoço de domingo com a mãe.');toast('Almoço com a mãe marcado para domingo.');}},{t:'Esse domingo não vai dar.',fn:()=>{save({flags:{momLunch:'no'}});say('','Tudo bem, a gente remarca. Não esquece de descansar.',null,{name:'Mãe',col:'#e46d8c',k:MOM});}},{t:'Ainda não sei.'}],{name:'Mãe',col:'#e46d8c',k:MOM});return;}
   const lines=F.momLunch==='yes'?['Te espero amanhã, hein! Vou fazer lasanha.']:['Oi, meu bem! Só liguei pra ouvir sua voz. Se cuida.','Vi uma reportagem sobre empresas novas e lembrei de você. Tô orgulhosa, sabia?','Sua tia mandou beijo. Disse que viu seu produto na internet!'];
   dialog('',lines[Math.floor(Math.random()*lines.length)],[{t:'Beijo, mãe.',fn:()=>diary('📞','Ligou para a mãe.')}],{name:'Mãe',col:'#e46d8c',k:MOM});}
  const MOM={shirt:'#e46d8c',hair:'#7a5a4a',skin:'#d79a72',style:'bun',seed:20};

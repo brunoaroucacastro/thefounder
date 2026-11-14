@@ -737,3 +737,27 @@ body.town-open{overflow:hidden}
 #town .ph-av{border-radius:0!important;box-shadow:0 0 0 2px var(--px-ink)}
 #game canvas,#town canvas{image-rendering:pixelated}
 #workshop-info .tm-sign{align-self:start!important;border-radius:0!important;box-shadow:0 2px 0 var(--px-ink)}
+
+/* ===== 0.86 · panorama da semana e calendário de 7 dias ===== */
+.top-company .wk-strip{display:inline-flex;gap:2px;margin:0 6px;vertical-align:middle}
+.top-company .wk-strip i{font-style:normal;display:inline-grid;place-items:center;width:15px;height:17px;font-size:10px;line-height:1;background:var(--q-navy3);color:#9aa0c0;box-shadow:0 2px 0 #0006}
+.top-company .wk-strip i.fds{background:#262a42;color:#6b7096}
+.top-company .wk-strip i.fds.work{background:#5a3b26;color:#f6d9a8}
+.top-company .wk-strip i.on{background:var(--q-accent);color:var(--q-ink);transform:translateY(-1px)}
+.week-sheet .wk-hl{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.week-sheet .wk-hl>div{display:grid;grid-template-columns:28px 1fr;grid-template-rows:auto auto;column-gap:8px;align-items:center;background:#fff;padding:8px 10px;box-shadow:0 0 0 2px var(--px-ink,#2a2133),3px 3px 0 rgba(10,8,25,.25)}
+.week-sheet .wk-hl>div>span{grid-row:1/3;font-size:20px;text-align:center}
+.week-sheet .wk-hl small{font-family:Oficina,Consolas,monospace;font-size:11px;letter-spacing:.06em;color:var(--q-ink-soft)}
+.week-sheet .wk-hl b{font-size:15px;color:var(--q-ink);font-weight:900;line-height:1.25}
+.week-sheet .wk-hl em{font-style:normal;font-size:11px;font-weight:800}.week-sheet .wk-hl em.up{color:#2f8a5f}.week-sheet .wk-hl em.down{color:#c2453f}
+.week-sheet .wk-stars{color:#e0a020;letter-spacing:1px}
+.week-sheet .wk-marcos{background:#fff7d6;padding:8px 12px;margin:6px 0;box-shadow:0 0 0 2px #c9a64a}
+.week-sheet .wk-marcos h3{margin:0 0 4px;font-size:13px}.week-sheet .wk-marcos ul{margin:0;padding-left:18px;font-size:13px}
+.week-sheet .wk-contas{margin:8px 0;background:#fffdf6;padding:6px 10px;box-shadow:0 0 0 2px var(--q-line-strong)}
+.week-sheet .wk-contas summary{cursor:pointer;font-weight:900;font-size:13px;padding:4px 0}
+.week-sheet .wk-q{margin:14px 0 6px;font-size:16px}
+.week-sheet .weekend-choices.wk-two{grid-template-columns:1fr 1fr}
+.week-sheet .weekend-choices.wk-two button{padding:12px 14px!important;text-align:left}
+.week-sheet .weekend-choices.wk-two button b{display:block;font-size:15px;margin-bottom:4px}
+.week-sheet .weekend-choices.wk-two button small{font-family:var(--q-font)!important;letter-spacing:0;opacity:.85}
+@media (max-width:640px){.week-sheet .weekend-choices.wk-two{grid-template-columns:1fr}}

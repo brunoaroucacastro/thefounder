@@ -25,9 +25,16 @@ function scenario(speed){
  s=act(s,'readWeek');
  assert.throws(()=>act(s,'weekend',{choice:'study'}));
  s=act(s,'weekend',{choice:'work'});
- assert.equal(s.weekly.effect.workRate,.95);
+ // trabalhar no fim de semana: 2 dias sozinho, tudo bem mais devagar, sem contar como dia útil
+ assert.equal(s.weekly.effect.workRate,.35);
+ assert(s.weekly.effect.weekend);
  assert.throws(()=>act(s,'weekend',{choice:'work'}));
- s=step(s,2);
+ const before=s.job.elapsed,daysBefore=s.weekly.days;
+ while(s.weekly.effect)s=C.tick(s,.4/s.speed);
+ assert.equal(s.weekly.days,daysBefore);
+ assert(Math.abs(s.job.elapsed-before-2*60*.35)<1.5);
+ assert.equal(s.phase,'building');
+ s=step(s);
  assert.equal(s.phase,'building');
  s=step(s);
  assert.equal(s.phase,'testReady');
@@ -35,11 +42,11 @@ function scenario(speed){
  s=act(s,'testChoice',{choice:'continue'});
  assert.equal(s.job.daysRequired,5);
  for(let i=0;i<5;i++){
-  if(s.weekly.stage==='report')s=choose(s,'rest');
+  if(s.weekly.stage==='report')s=choose(s,'social');
   s=step(s);
  }
  assert.equal(s.phase,'batchPlanning');
- if(s.weekly.stage==='report')s=choose(s,'rest');
+ if(s.weekly.stage==='report')s=choose(s,'social');
  s=act(act(s,'confirmBatch'),'confirmPrice');
  s=act(s,'launchAndRoll');
  assert.equal(s.revenue,0);
@@ -48,15 +55,17 @@ function scenario(speed){
  assert.equal(s.phase,'selling');
  assert.equal(s.revenue,0);
  for(let i=0;i<12&&s.phase!=='recap';i++){
-  if(s.weekly.stage==='report')s=choose(s,'rest');
+  if(s.weekly.stage==='report')s=choose(s,'social');
   s=step(s);
  }
  assert.equal(s.phase,'recap');
  assert(s.revenue>0);
  while(s.weekly.stage==='work')s=step(s);
- s=choose(s,'study');
- assert.equal(s.weekly.insights.length,1);
- assert.equal(C.load(JSON.stringify(s)).weekly.insights.length,1);
+ s=act(s,'readWeek');
+ assert.throws(()=>act(s,'weekend',{choice:'study'}));
+ s=act(s,'weekend',{choice:'social'});
+ assert.equal(s.weekly.effect,null);
+ assert.equal(C.load(JSON.stringify(s)).weekly.choices.at(-1).choice,'social');
  for(const r of s.weekly.reports)assert(Math.abs(r.cashStart+r.inflow-r.outflow-r.cashEnd)<.011);
  assert.equal(s.weekly.reports.reduce((n,r)=>n+r.revenue,0).toFixed(2),s.revenue.toFixed(2));
  return {days:s.weekly.days,clock:s.clock,cash:s.cash,sold:s.sold,weekly:s.weekly.reports};

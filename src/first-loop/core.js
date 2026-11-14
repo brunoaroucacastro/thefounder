@@ -320,7 +320,7 @@ const FirstLoop=(()=>{
   if(s.operations){
    s.clock+=step;if(s.behavior&&Math.floor(s.clock/60)!==Math.floor(input.clock/60)){const expired=s.interestPool.filter(p=>p.expires<=s.clock).length;s.funnel.expired+=expired;s.interestPool=s.interestPool.filter(p=>p.expires>s.clock);}
    for(const p of s.portfolio){if(s.commercial)continue;p.elapsed+=step;if(p.elapsed>=4&&p.stock>0){p.elapsed-=4;p.credit+=p.rate;if(p.credit>=1){p.credit--;let archivedCogs=0;if(p.bulkDice){const cost=p.stock===1?p.inventoryBook:round(p.inventoryBook/p.stock);p.inventoryBook=round(p.inventoryBook-cost);archivedCogs=cost;}p.stock--;p.sold++;const received=round(p.price*(1-(p.fee||0)));s.cash=round(s.cash+received);s.legacyRevenue=round(s.legacyRevenue+received);if(s.accounting&&p.account){p.account.sold++;p.account.revenue=round(p.account.revenue+p.price);p.account.fees=round(p.account.fees+p.price-received);p.account.cogs=round(p.account.cogs+archivedCogs);}if(p.fourPs){p.reviewSold++;if(p.behaviorProduct){const old=p.behaviorProduct;old.clock=s.clock;const buyer=Audience.stamp(old,(p.account?.id||p.name)+'-organic-'+p.sold);old.purchaseWindow.push({buyer,price:p.price,sequence:p.reviewSold});if(p.reviewSold%10===0){const r=Audience.review(old,old.purchaseWindow,p.reviewSold);if(r){p.reviews.push(r);if(s.reach)Reach.recordReview(s,r,p.account?.lineage||p.name);}old.purchaseWindow=[];}}else if(p.reviewSold%10===0)p.reviews.push({id:p.name+'-'+p.reviewSold,sold:p.reviewSold,stars:clamp(Math.round(1+p.reviewFit*4),1,5),feedback:'Avaliação de '+p.name+': '+(p.reviewFit>.5?'continua atendendo minha rotina.':'ainda falta atender melhor minha necessidade.'),buyer:'Cliente do catálogo'});};log(s,p.name+' ainda vende! Uma unidade saiu da prateleira.','sale','Cliente recorrente');}}}
-   if(s.crew){s.crew.elapsed+=step;if(s.crew.elapsed>=s.crew.duration){if(s.crew.type==='produce'){s.stock+=s.crew.quantity;if(s.bulkDice)s.inventoryBook=round(s.inventoryBook+s.crew.cost);if(!s.crew.initial)s.produced+=s.crew.quantity;log(s,s.crew.quantity+' unidades prontas. Estoque: '+s.stock+'.','good');}else{s.research=1;s.prepared=true;log(s,'Próximo projeto preparado: o próximo desenvolvimento fica mais rápido.','good');}s.crew=null;if(s.commercial&&s.phase==='recap'){s.summary=result(s);if(s.history.at(-1)?.cycle===s.cycle)s.history[s.history.length-1]=copy(s.summary);}}}
+   if(s.crew){s.crew.elapsed+=step*(s.weekly?.effect?.weekend?s.weekly.effect.workRate:1);if(s.crew.elapsed>=s.crew.duration){if(s.crew.type==='produce'){s.stock+=s.crew.quantity;if(s.bulkDice)s.inventoryBook=round(s.inventoryBook+s.crew.cost);if(!s.crew.initial)s.produced+=s.crew.quantity;log(s,s.crew.quantity+' unidades prontas. Estoque: '+s.stock+'.','good');}else{s.research=1;s.prepared=true;log(s,'Próximo projeto preparado: o próximo desenvolvimento fica mais rápido.','good');}s.crew=null;if(s.commercial&&s.phase==='recap'){s.summary=result(s);if(s.history.at(-1)?.cycle===s.cycle)s.history[s.history.length-1]=copy(s.summary);}}}
   }
   if(s.job){s.job.elapsed=Math.min(s.job.duration,s.job.elapsed+step*(s.weekly?.effect?.workRate||1));if(s.job.elapsed>=s.job.duration){if(s.phase==='personaResearch')s.personaResearched=true;if(s.phase==='gadgetResearch')s.unlocked.push('speaker');const completed=s.phase;s.phase=s.job.next;s.job=null;if(s.commercial&&completed==='launching')openWindow(s);if(s.weekly)log(s,({building:'Desenvolvimento concluído',launching:'Lançamento aberto',campaignWork:'Campanha preparada',recampaignWork:'Campanha preparada',upgradeWork:'Evolução concluída'}[completed]||'Atividade concluída')+' · '+s.name,'milestone');if(s.accounting&&(completed==='campaignWork'||completed==='recampaignWork'&&s.recampaign?.forLaunch&&!s.priceConfirmed))s.phase='batchPlanning';if(s.bulkDice&&completed==='repairing')job(s,'campaignWork',8,'campaignReady');else if(s.fourPs&&!s.bulkDice&&completed==='building')job(s,'campaignWork',8,'campaignOutcome');else if(s.fourPs&&!s.bulkDice&&completed==='campaignWork'){s.leads=fourReach(s);s.marketing={total:null,grade:'planned'};log(s,s.leads+' visitantes previstos pelo seu plano de praça e promoção.');}}return s;}
   if(s.phase==='selling'){
@@ -450,26 +450,28 @@ const FirstLoop=(()=>{
   const p=a.patch&&typeof a.patch==='object'?JSON.parse(JSON.stringify(a.patch)):{};
   for(const [k,v] of Object.entries(p)){if(!['outfit','owned','collection','friends','flags','outing','history'].includes(k))continue;
    if(k==='friends'||k==='flags')L[k]={...(L[k]||{}),...v};else L[k]=v;}
-  if(a.endWeekend){L.outing=null;s.revision++;return s.weekly?.stage==='weekend'?weekend(s,a.endWeekend==='work'?'work':'rest'):s;}
+  if(a.endWeekend){L.outing=null;s.revision++;return s.weekly?.stage==='weekend'?weekend(s,'social'):s;}
   s.revision++;return s;
  }
+ // Fim de semana: ou você trabalha sozinho no sábado e no domingo (tudo anda bem mais devagar, sem a equipe),
+ // ou vive o bairro. A loja online vende nos dois casos.
+ const SOLO_RATE=.35;
  function weekend(s,choice){
   const w=s.weekly,number=w.reports.length;
-  if(w.stage!=='weekend'||!['rest','work','study'].includes(choice))throw Error('Escolha uma atividade do fim de semana.');
-  const target=choice==='study'?studyTarget(s):null;
-  if(choice==='study'&&!target)throw Error('Lance um produto antes de estudar seus resultados.');
-  const extraFocus=choice==='work'&&s.focus<5;
-  if(extraFocus)s.focus++;
-  if(target){
-   const average=target.reviews.length?target.reviews.reduce((sum,r)=>sum+r.stars,0)/target.reviews.length:null;
-   const insight=target.reviews.at(-1)?.feedback||(target.reasons?.price?'Houve recusas pelo preço. Teste outra faixa de preço.':'Compare o interesse e as vendas com o próximo lançamento.');
-   w.insights.push({week:number,product:target.name,sold:target.sold,average,insight});
-  }
-  w.effect=choice==='study'?null:{choice,workRate:choice==='rest'?1.05:.95,startWeek:number+1,endWeek:number+1,extraFocus};
+  if(w.stage!=='weekend'||!['work','social'].includes(choice))throw Error('Escolha entre trabalhar e viver o fim de semana.');
   w.choices.push({week:number,choice});
+  w.effect=choice==='work'?{choice:'work',workRate:SOLO_RATE,weekend:true,daysLeft:2,startWeek:number,endWeek:number}:null;
   w.stage='work';w.cashStart=s.cash;w.elapsed=0;s.paused=false;s.revision++;
   return s;
  }
+ // Estudar os resultados: uma vez por fim de semana, em casa, sem rolagem de dado
+ function weekendStudy(s){
+  const w=s.weekly;if(!w||w.stage!=='weekend')throw Error('Estudar é coisa de fim de semana.');
+  if(w.studied===w.reports.length)throw Error('Você já estudou neste fim de semana.');
+  const record=Learning.study(s);w.studied=w.reports.length;
+  log(s,'Estudo de fim de semana: '+record.cards.map(c=>c.title+' '+c.symbol).join(' · '),'good');s.revision++;return s;
+ }
+
  function dealDesign(s){const rand=()=>{let x=s.rng>>>0;x^=x<<13;x^=x>>>17;x^=x<<5;s.rng=x>>>0;return s.rng/4294967296;};s.designOffer=Array.from({length:teamMember(s,'product')?4:3},()=>G.U.gridDraw(s.level,rand));if(!s.designOffer.some(n=>G.U.gridShapes[n].t<=2)){const cfg=G.U.gridConfig(s.level),small=G.U.gridShapes.map((x,i)=>i).filter(i=>G.U.gridShapes[i].t<=2),fit=small.filter(i=>G.U.gridFitsAnywhere(cfg,s.designPieces||[],i)),pool=fit.length?fit:small;s.designOffer[Math.floor(rand()*s.designOffer.length)]=pool[Math.floor(rand()*pool.length)];}}
  function act(input,a,options){const next=act0(input,a,options);if(next.boardCampaign&&['design','upgradeAttributes'].includes(next.phase)&&!next.designOffer&&!next.designKeep)dealDesign(next);if(next.boardCampaign&&next.phase==='catalog'&&next.designPieces?.length){next.designPieces=[];next.designOffer=null;next.designResets=0;next.attributes=G.U.empty();}return next;}
  function act0(input,a,options){
@@ -492,6 +494,7 @@ const FirstLoop=(()=>{
    return next;
   }
   if(a.type==='weekend')return weekend(copy(input),a.choice);
+  if(a.type==='weekendStudy')return weekendStudy(copy(input));
   if(a.type==='readWeek'){
    if(input.weekly.stage!=='report')throw Error('O relatório já foi lido.');
    const s=copy(input);s.weekly.stage='weekend';s.revision++;return s;
@@ -524,15 +527,19 @@ const FirstLoop=(()=>{
    const before=s;
    s=advanceSimulation(before,1,1);
    if(s===before)break;
-   s=hrTick(s);
+   if(!s.weekly.effect?.weekend)s=hrTick(s);
    s.weekly.elapsed=Math.max(0,before.weekly.elapsed-secondsPerMinute);
    recordMovement(before,s,'dia útil');
    s.weekly.minute++;
    if(s.weekly.minute===60){
     s.weekly.minute=0;
+    // os dias de fim de semana trabalhados não contam como dias úteis: nem salário, nem fechamento de semana
+    if(s.weekly.effect?.weekend){const left=s.weekly.effect.daysLeft-1;s.weekly.effect=left>0?{...s.weekly.effect,daysLeft:left}:null;if(!left)log(s,'Fim de semana de trabalho encerrado. Segunda-feira, a equipe volta.');s.revision++;}
+    else{
     s.weekly.days++;
     if(s.weekly.days%5===0){settleWeeklyObligations(s);closeWeek(s);}
     else s.revision++;
+    }
    }
    if(s.phase==='opportunity')break;
   }

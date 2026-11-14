@@ -1,3 +1,13 @@
+# 0.85 · Fim de semana repensado e panorama da semana
+
+- O relatório e o fim de semana viraram uma tela só: "Panorama da semana", com os destaques (resultado, receita, clientes novos, melhor dia, público, vendas do fim de semana anterior, última avaliação e marcos). As contas detalhadas ficam em "Ver as contas da semana".
+- O fim de semana agora é uma escolha só: trabalhar ou viver. Descansar e Estudar saíram dos botões, e a opção de trabalhar só no domingo foi retirada.
+- Trabalhar é literal: sábado e domingo viram dias de trabalho, mas, sem a equipe, o desenvolvimento, a montagem e as campanhas andam a 35% da velocidade. Esses dias não contam como dias úteis (sem salário extra nem fechamento de semana).
+- Viver é ir para o bairro. A loja online continua vendendo e o estoque é descontado na hora.
+- Estudar virou uma atividade em casa, na mesa com o notebook: uma vez por fim de semana, sem dado, dá uma descoberta garantida a partir das evidências da última campanha.
+- Calendário no topo com os 7 dias da semana, mostrando SÁB e DOM e quando você está trabalhando sozinho.
+- A vitrine de cenários foi ajustada para o novo botão do fim de semana.
+
 # 0.85 · Visão SEA: sem Nina e aprendizado mais acessível
 
 - Nova visão do jogo pelo método SEA em docs/SEA-VISAO.md: promessa, sentimento, antissentimento, audiência e filtro para aprovar mecânicas.

@@ -37,11 +37,15 @@ const MarketLearning=(()=>{
  function select(s,id){const k=ensure(s);if(!k?.open||s.phase!=='recap'||k.attempts[s.learningWindow?.id]||!analysts(s).some(p=>p.id===id))throw Error('Responsável indisponível.');k.analyst=id;}
  function preflight(s){const k=ensure(s);if(!k?.open||s.phase!=='recap'||!status(s,k.domain).ready)throw Error('Essa campanha já foi investigada ou não tem evidência nova.');return k.domain;}
  function resolve(s,roll){const domain=preflight(s),k=ensure(s),w=s.learningWindow,items=candidates(s,domain),success=roll.natural!==1&&roll.total>=7;roll.difficulty=7;roll.success=success;roll.grade=roll.natural===1?'critical':success?(roll.natural===20?'exceptional':'normal'):'partial';const cards=success?items.slice(0,roll.natural===20?2:1):[];for(const f of cards)k.facts[f.key]={...f,learnedAt:w.id};const record={domain,roll:copy(roll),cards:copy(cards),analyst:leader(s,domain).name,windowId:w.id};k.attempts[w.id]=record;k.intuition[domain]=success?0:Math.min(2,k.intuition[domain]+1);return record;}
+ // estudo de fim de semana: uma descoberta garantida a partir das evidências já reunidas, sem D20
+ function study(s){const k=ensure(s),w=s.learningWindow;if(!k||!w||!w.closed)throw Error('Ainda não há resultados novos para estudar. Termine uma campanha primeiro.');if(k.attempts[w.id])throw Error('Esta campanha já foi estudada.');
+  const domain=domains.find(d=>status(s,d).ready);if(!domain)throw Error(status(s,'product').reason);const cards=candidates(s,domain).slice(0,1);for(const f of cards)k.facts[f.key]={...f,learnedAt:w.id};
+  const roll={natural:20,total:20,modifiers:[],difficulty:0,success:true,grade:'normal',study:true};const rec={domain,roll,cards:copy(cards),analyst:s.founder?.name||'Você',windowId:w.id,study:true};k.attempts[w.id]=rec;k.open=false;k.domain=null;return rec;}
  function record(s){return s.learning?.attempts[s.learningWindow?.id]||null;}
  function productHint(s,axis){return s.learning?.facts[productKey(s.productId,s.clientId,axis)]||null;}
  function minimumHint(s,axis){return s.learning?.facts[minimumKey(s.productId,s.clientId,axis)]||null;}
  function channelHints(s,channel){return Object.values(s.learning?.facts||{}).filter(f=>f.kind==='campaign'&&f.market==='gadgets'&&f.channel===channel).sort((a,b)=>a.age-b.age);}
  function venueHints(s,place){return Object.values(s.learning?.facts||{}).filter(f=>f.kind==='venue'&&f.placeId===place);}
- return{venueHints,blank,ensure,validate,inherit,start,visit,sale,finish,candidates,status,analysts,leader,modifiers,open,choose,select,preflight,resolve,record,productHint,minimumHint,channelHints,importance,affinity};
+ return{study,venueHints,blank,ensure,validate,inherit,start,visit,sale,finish,candidates,status,analysts,leader,modifiers,open,choose,select,preflight,resolve,record,productHint,minimumHint,channelHints,importance,affinity};
 })();
 if(typeof module!=='undefined')module.exports=MarketLearning;

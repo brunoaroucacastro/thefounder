@@ -30,7 +30,8 @@ Sinal observável de cada um, a medir no playtest: tempo sem nenhuma decisão no
 - **Nina:** saiu do jogo. As falas viraram ações e pensamentos do próprio fundador.
 - **Preço e lote:** não terão uma faixa de referência pronta, porque há jogadores que vão querer queimar produto de propósito. No futuro, os funcionários podem sugerir (ver backlog).
 - **Aprendizados:** o jogador vai registrando com o tempo o que deu certo e o que deu errado, e os funcionários serão uma das fontes.
-- **Tela do fim de semana:** deve virar um panorama útil da semana, com os destaques, como uma tela de subir de nível que pausa o jogo mas tem um fim.
+- **Panorama da semana:** relatório e fim de semana numa tela só, com os destaques, como uma tela de subir de nível que pausa o jogo mas tem um fim.
+- **Fim de semana:** ou trabalha (2 dias sozinho, tudo a 35% da velocidade) ou vive o bairro. Estudar é uma vez por fim de semana, em casa e sem dado. Referência futura: o calendário de Persona 3 (ver backlog).
 
 ## Filtro para aprovar uma mecânica
 1. Qual pilar ela sustenta?
