@@ -8,6 +8,8 @@
 - Quarto e escritório em pixel art 2D, vista de cima em 3/4: piso de tábuas ou de lajotas, parede do fundo com janela, mural de clientes, quadro de desempenho e TV da Nexus, mesas, estante de produtos, cama, gato, caixas do estoque e a equipe sentada nas mesas. O fundador aparece de fone, de costas para o monitor, e o monitor mostra a fase da empresa em pixels. Os pontos clicáveis acompanham o novo desenho e os marcadores e balões continuam nítidos por cima.
 - Minigames em pixel art: sinuca com mesa de madeira, caçapas, taco e bolas em pixel; vôlei com casario, varal de luzes, areia e os jogadores nos sprites do bairro; garrinha com gabinete, garra, vidro e prêmios desenhados em pixel. A física, as chances e as regras não mudaram.
 - Os prêmios da garrinha também aparecem em pixel na estante da casa, no balcão do Zé e na máquina da galeria.
+- Retrato das conversas em pixel: o mesmo boneco do bairro visto de perto, com coração quando a pessoa fica feliz.
+- Painéis, menus, celular, diário e janelas dos minigames com cara de pixel: cantos retos, borda escura, sombra dura e títulos e botões na fonte de pixel da casa. A fonte ganhou &, #, @, :, ~, ×, − e →.
 
 # 0.85 · Refino gráfico (só visual)
 

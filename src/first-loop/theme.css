@@ -714,3 +714,26 @@ body.town-open{overflow:hidden}
 #tw-mini-actions button:active{transform:translateY(2px);box-shadow:0 1px 0 #9c5f14}
 #tw-toast{border:2px solid #ffffff22;box-shadow:0 4px 0 #0004}
 @media (prefers-reduced-motion:reduce){.workshop-nav button,.time button,.top button,#workshop-info .info-close,#game button.primary,#work-order button,.week-sheet button,#town .tw-btn,#town .tw-opts button,#tw-mini-actions button{transition:none}}
+
+/* ===== 0.86 · interface com cara de pixel art (combina com as cenas em pixel) ===== */
+/* cantos retos, borda escura de 3px e sombra dura deslocada, sem desfoque */
+:root{--q-radius:0px;--px-ink:#2a2133;--q-shadow:0 0 0 3px #2a2133,6px 6px 0 rgba(10,8,25,.45)}
+#game .workshop-info-panel,#game #work-order,#game .speech,#game #notice,#game #toast,#game #tray>*,#game #weekly-modal>*,#game #board-modal>*,#game #dice-modal>*,#game #social-modal>*,#game #launch-results>*,#game #knowledge-book>*,#game #product-overview>*,
+#town .tw-say,#town .tw-mini-box,#town .ph,#town .dy,#town .tw-time,#town .tw-where,#town .tw-cash,#tw-toast{border-radius:0!important;box-shadow:0 0 0 3px var(--px-ink),6px 6px 0 rgba(10,8,25,.45)!important;border-color:var(--px-ink)!important}
+#game button,#town button,#game .ls-card,#game .tm-acard,#game .tm-desk,#game .cv-card,#game input,#game select,#town .ph-row,#town .ph-plan,#town .ph-tabs button,#town .tw-pic,#town .tw-name,#town .tw-mini-head span,#tw-mini-cv,#game .pill,#game .tag{border-radius:0!important}
+#game button:not(.help-btn):not(.attr-help):not(.tm-plus),#town button{box-shadow:0 3px 0 var(--px-ink)!important;border:2px solid var(--px-ink)!important}
+#game button:not(.help-btn):not(.attr-help):not(.tm-plus):active,#town button:active{transform:translateY(2px);box-shadow:0 1px 0 var(--px-ink)!important}
+.top,.workshop-nav{border-radius:0!important;box-shadow:0 3px 0 var(--px-ink)!important}
+.workshop-nav button.active{box-shadow:0 3px 0 var(--q-accent-dd)!important}
+/* títulos, botões e etiquetas na fonte de pixel da casa (Oficina); textos longos seguem na fonte normal */
+#game h1,#game h2,#game h3,#game button,#town button,#town .tw-name,#town .tw-time b,#town .tw-where,#town .tw-mini-head b,#town .dy h3,#town .dy small,#town .ph-top,#town .ph-shop small,#game .ls-lbl{font-family:Oficina,Consolas,monospace!important;font-weight:400!important;letter-spacing:.04em}
+#game button small,#town button small,#game button p,#town .tw-opts button{font-family:var(--q-font)!important;letter-spacing:0}
+#town .tw-opts button{font-weight:800!important}
+/* diário em papel pautado com cantos retos e retrato do diálogo sem suavizar */
+#town .dy{transform:none}
+#town .tw-pic{image-rendering:pixelated;border:3px solid var(--px-ink)!important}
+#town .ph{border-radius:0!important;box-shadow:0 0 0 4px #3a3d5c,0 0 0 7px var(--px-ink),8px 8px 0 rgba(0,0,0,.5)!important}
+#town .ph-tabs{border-radius:0!important}#town .ph-close{border-radius:0!important}
+#town .ph-av{border-radius:0!important;box-shadow:0 0 0 2px var(--px-ink)}
+#game canvas,#town canvas{image-rendering:pixelated}
+#workshop-info .tm-sign{align-self:start!important;border-radius:0!important;box-shadow:0 2px 0 var(--px-ink)}

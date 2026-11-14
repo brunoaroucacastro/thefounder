@@ -77,14 +77,11 @@ const Town=(()=>{
   c.fillStyle='rgba(240,120,120,.38)';c.beginPath();c.arc(1.2,-41,1.8,0,Math.PI*2);c.fill();c.beginPath();c.arc(7.2,-41,1.6,0,Math.PI*2);c.fill();
   c.strokeStyle='#7a3a3a';c.lineWidth=.9;c.lineCap='round';c.beginPath();c.arc(4.4,-41.3,1.6,.2,Math.PI-.2);c.stroke();c.lineCap='butt';
   c.restore();}
- // retrato grande para o diálogo (desenhado num canvas próprio)
- function portrait(cv2,k,mood){const x=cv2.getContext('2d'),W=cv2.width,H=cv2.height;const prev=c;c=x;x.setTransform(1,0,0,1,0,0);x.clearRect(0,0,W,H);
-  const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,lit(k.shirt||'#7b5cd6',.7));g.addColorStop(1,lit(k.shirt||'#7b5cd6',.35));x.fillStyle=g;x.fillRect(0,0,W,H);
-  x.fillStyle='rgba(255,255,255,.22)';for(let i=0;i<5;i++)for(let j=0;j<5;j++){x.beginPath();x.arc((i+(j%2)*.5)*W/4,j*H/4+H*.06,W*.035,0,Math.PI*2);x.fill();}
-  const hl=x.createRadialGradient(W/2,H*.42,W*.05,W/2,H*.42,W*.62);hl.addColorStop(0,'rgba(255,255,255,.5)');hl.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=hl;x.fillRect(0,0,W,H);
-  x.save();x.translate(W/2-W*.06,H*1.02);x.scale(W/34,W/34);person(0,0,k,mood==='happy'?3.1:0,{scale:1});x.restore();
-  if(mood==='happy'){x.font=Math.round(W*.2)+'px "Segoe UI Emoji",sans-serif';x.fillText('♥',W*.72,H*.28);}
-  c=prev;}
+ // retrato grande para o diálogo, em pixel art: o mesmo sprite do bairro visto de perto (20×20 pixels de arte ampliados)
+ function portrait(cv2,k,mood){const x=cv2.getContext('2d'),W=cv2.width,H=cv2.height,S2=Math.max(1,Math.floor(Math.min(W,H)/20)),[pc,pg]=mkc(20,20),bg=lit(k.shirt||'#7b5cd6',.62);
+  F(0,0,20,20,bg,pg);for(let y=0;y<20;y+=4)for(let xx=(y/4)%2*2;xx<20;xx+=4)F(xx,y,1,1,lit(bg,.35),pg);F(0,17,20,3,lit(k.shirt||'#7b5cd6',.35),pg);
+  pg.drawImage(charSprite(k,'down',0),1,2);if(mood==='happy')for(const [a2,b,w] of [[14,2,1],[16,2,1],[13,3,5],[14,4,3],[15,5,1]])F(a2,b,w,1,'#e46d8c',pg);
+  x.setTransform(1,0,0,1,0,0);x.clearRect(0,0,W,H);x.imageSmoothingEnabled=false;x.drawImage(pc,0,0,20*S2,20*S2);}
  // desenho dos prêmios (no tabuleiro 2D da garrinha e na prateleira de casa)
  function prize(x,y,id,r,ctx){const prev=c;if(ctx)c=ctx;const p=PRIZES.find(q=>q.id===id)||PRIZES[0];
   if(id==='chaveiro'){rrect(x-r,y-r,r*2,r*2,r*.35,'#fff7ea','#c47d1f',1.4);for(const [a,b] of [[-.45,-.45],[.45,.45],[0,0],[-.45,.45],[.45,-.45]])circle(x+a*r,y+b*r,r*.14,'#c2453f');circle(x,y-r*1.25,r*.35,null,'#9aa3b5',1.6);}
