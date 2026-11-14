@@ -21,3 +21,18 @@ Ideias guardadas para puxar depois. Não entram no jogo até o Bruno pedir.
 ## Céticos no tabuleiro de marketing (feedback de 07/11/2026)
 - A dinâmica atual (precisa de 2 alcances para contar) não está boa.
 - Repensar depois. Continua no jogo como está por enquanto.
+
+## Falência e recomeço (SEA, 14/11/2026)
+- A empresa pode quebrar, e o jogador recomeça. Faz parte do sentimento de fim de sessão: ou cresce rápido, ou quebra e começa de novo.
+- Em aberto: o que dispara a falência (caixa negativo por quanto tempo, dívidas do banco), o que o jogador leva para a próxima empresa (aprendizados, reputação, relações) e como fica a vida no bairro.
+
+## Funcionários que sugerem (SEA, 14/11/2026)
+- Na tela da semana, os colaboradores comentam o que poderia ter sido feito e dão feedback.
+- Podem sugerir preço e tamanho de lote (sem uma faixa fixa, porque tem gente que quer queimar produto de propósito).
+- São uma das fontes dos aprendizados registrados (o que deu mais certo e mais errado).
+- Em aberto: quanto a qualidade da sugestão depende do nível e da área do funcionário.
+
+## Destino do trabalho no bairro (SEA, 14/11/2026 · referência New Star Soccer)
+- O dinheiro da empresa compra coisas para a vida: casa melhor, móveis, roupas, carro, família.
+- Relações do bairro (amigos, família) pedem tempo, e o jogador às vezes escolhe entre o trabalho e a interação social.
+- Os minigames geram essa interação social e vão alimentar mecânicas futuras.

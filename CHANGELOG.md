@@ -1,3 +1,10 @@
+# 0.85 · Visão SEA: sem Nina e aprendizado mais acessível
+
+- Nova visão do jogo pelo método SEA em docs/SEA-VISAO.md: promessa, sentimento, antissentimento, audiência e filtro para aprovar mecânicas.
+- A Nina saiu do jogo. As falas viraram ações e pensamentos do próprio fundador ("Você pensa").
+- Investigar aprendizados ficou mais fácil: o alvo do D20 caiu de 11 para 7.
+- Backlog: falência e recomeço, funcionários que sugerem preço, lote e aprendizados, e metas de vida no bairro (referência New Star Soccer).
+
 # 0.85 · Bairro em pixel art 2D (só visual)
 
 - O bairro do fim de semana trocou o isométrico vetorial por pixel art 2D vista de cima em 3/4, com tiles de 16 pixels, no estilo da amostra da cidade.
