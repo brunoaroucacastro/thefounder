@@ -1,3 +1,11 @@
+# 0.85 · Bairro em pixel art 2D (só visual)
+
+- O bairro do fim de semana trocou o isométrico vetorial por pixel art 2D vista de cima em 3/4, com tiles de 16 pixels, no estilo da amostra da cidade.
+- Rua, praça, quadra, casa, bar, galeria, padaria e banca foram redesenhados em tiles, com telhados de telha, janelas, toldos e placas.
+- As pessoas viraram sprites de 16×24 com contorno, 4 direções e passo animado. Gato, pombos, carros, bola de vôlei e varal de luzinhas também ganharam versão em pixel.
+- A luz muda com o horário: filtro quente no fim de tarde e, à noite, postes, janelas e luminárias com poças de luz em degraus.
+- Rotas, portas, pontos clicáveis, pessoas e horários continuam iguais. Os minigames, o quarto e o escritório ainda estão no estilo antigo.
+
 # 0.85 · Refino gráfico (só visual)
 
 - Bairro: personagens com contorno e brilho no cabelo; prédios com telhado de beiral, janelas com moldura e porta com degrau; árvores, bancos, postes e canteiros redesenhados; sombras no chão que esticam no fim da tarde; sol, lua, estrelas e nuvens; gato, pombos e carros com contorno.
