@@ -2838,9 +2838,11 @@ const Town=(()=>{
     Vence quem tirar as 4 bolas da própria cor primeiro. O efeito escolhido na branca muda o que ela faz depois da batida. */
  // Níveis da sinuca. Fácil = o adversário de antes. Médio e difícil escolhem tacadas mais retas, jogam de segurança quando
  // não há tacada boa e miram melhor, mas o erro de mira nunca é zero: no difícil um corte longo ainda falha com frequência.
- const POOL_LEVELS={facil:{name:'Fácil',err:o=>(Math.random()-.5)*(o==='Téo'?.03:.05),bank:.09,cut:1.15,cw:180,safe:false},
-  medio:{name:'Médio',err:()=>gauss()*.0075,bank:.06,cut:.95,cw:260,safe:true},
-  dificil:{name:'Difícil',err:()=>gauss()*.0042,bank:.045,cut:.85,cw:340,safe:true}};
+ // Fácil: mira solta e escolhe mal. Médio: o adversário original (que já ganhava bastante). Difícil: escolhe bem, mira melhor, mas erra.
+ // Tabela (sair da sinuca): erro normal com desvio 'bank'; quanto maior, mais vezes ele não acerta a bola dele.
+ const POOL_LEVELS={facil:{name:'Fácil',err:()=>gauss()*.04,bank:.15,cut:1.3,cw:90,safe:false,loose:true},
+  medio:{name:'Médio',err:o=>(Math.random()-.5)*(o==='Téo'?.03:.05),bank:.085,cut:1.15,cw:180,safe:false,loose:true},
+  dificil:{name:'Difícil',err:()=>gauss()*.0042,bank:.04,cut:.85,cw:340,safe:true}};
  let poolLevel='facil';
  function gauss(){let u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
  function pool(opp){const {mc,ctx:x}=miniOpen('🎱 Sinuca mata-mata contra '+opp,'Mire com o mouse e segure para dar força. No disco à direita, escolha onde o taco bate na branca: em cima ela segue, no meio para, embaixo volta, dos lados faz curva. Encaçapou a sua cor, joga de novo. Errou a bola ou bateu primeiro na do adversário: ele escolhe uma bola dele para tirar da mesa.');
@@ -2915,10 +2917,10 @@ const Town=(()=>{
     for(const t of targets)for(const [ax2,L] of rails){const mx=ax2==='x'?2*L-t.x:t.x,my=ax2==='y'?2*L-t.y:t.y,k=ax2==='x'?(L-cue.x)/(mx-cue.x):(L-cue.y)/(my-cue.y);if(!(k>0&&k<1))continue;
      const rx=cue.x+(mx-cue.x)*k,ry=cue.y+(my-cue.y)*k;if(rx<T.x||rx>T.x+T.w||ry<T.y||ry>T.y+T.h||pockets.some(p=>Math.hypot(p[0]-rx,p[1]-ry)<PR+10))continue;
      if(!clear(cue.x,cue.y,rx,ry,null)||!clear(rx,ry,t.x,t.y,t))continue;const d=Math.hypot(mx-cue.x,my-cue.y);if(!bank||d<bank.dist)bank={ang:Math.atan2(my-cue.y,mx-cue.x),dist:d};}
-    if(bank){st.msg=opp+' está sinucado e tenta de tabela...';shoot(bank.ang+(Math.random()-.5)*(opp==='Téo'?lv.bank:lv.bank*1.3),Math.min(1,.4+bank.dist/560),{x:0,y:0});return;}}
+    if(bank){st.msg=opp+' está sinucado e tenta de tabela...';shoot(bank.ang+gauss()*lv.bank,Math.min(1,.4+bank.dist/560),{x:0,y:0});return;}}
    if(!best){const t=targets[0]||balls.find(b=>!b.out&&b!==cue);best={ang:Math.atan2(t.y-cue.y,t.x-cue.x),dist:200};}
    if(best.safety){shoot(best.ang+lv.err(opp),Math.min(.6,.18+best.dist/900),{x:0,y:0});return;} // segurança: só encosta na bola dele
-   shoot(best.ang+lv.err(opp),poolLevel==='facil'?Math.min(1,.32+best.dist/520):Math.min(1,(.4+best.dist/400)/Math.max(.55,Math.cos(best.cut||0))),poolLevel==='facil'?{x:0,y:(Math.random()-.4)*.5}:{x:0,y:-.1});}
+   shoot(best.ang+lv.err(opp),lv.loose?Math.min(1,.32+best.dist/520):Math.min(1,(.4+best.dist/400)/Math.max(.55,Math.cos(best.cut||0))),lv.loose?{x:0,y:(Math.random()-.4)*.5}:{x:0,y:-.1});}
   // nenhuma bola (além da ignorada e da branca) no caminho entre dois pontos
   function clear(ax,ay,bx,by,ignore){const dx=bx-ax,dy=by-ay,L2=dx*dx+dy*dy||1;for(const b of balls){if(b.out||b===ignore||b===balls[0])continue;const t=Math.max(0,Math.min(1,((b.x-ax)*dx+(b.y-ay)*dy)/L2));if(Math.hypot(ax+dx*t-b.x,ay+dy*t-b.y)<2*BR)return false;}return true;}
   const inSpin=(px,py)=>Math.hypot(px-SPIN.x,py-SPIN.y)<=SPIN.r+6;
