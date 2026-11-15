@@ -980,7 +980,7 @@ const Town=(()=>{
   const shout=(p,t)=>{st.bubbles=st.bubbles.filter(b=>b.p!==p);st.bubbles.push({p,t,life:75});};
   const tTo=h=>ball.y>=h?0:(-ball.vy+Math.sqrt(ball.vy*ball.vy+2*G*(h-ball.y)))/G;
   const contactX=()=>ball.x+ball.vx*tTo(FLOOR-56),landX=()=>ball.x+ball.vx*tTo(FLOOR);
-  function launch(fx,fy,tx,apex){const top=Math.min(apex,fy-10),vy=-Math.sqrt(2*G*(fy-top)),t=(-vy+Math.sqrt(vy*vy+2*G*(FLOOR-fy)))/G;ball.x=fx;ball.y=fy;ball.vx=(tx-fx)/t;ball.vy=vy;ball.live=true;ball.spiked=0;ball.netted=false;ball.serve=false;ball.forceNet=false;Amb.pop();}
+  function launch(fx,fy,tx,apex){const top=Math.min(apex,fy-10),vy=-Math.sqrt(2*G*(fy-top)),t=(-vy+Math.sqrt(vy*vy+2*G*(FLOOR-fy)))/G;ball.x=fx;ball.y=fy;ball.vx=(tx-fx)/t;ball.vy=vy;ball.live=true;ball.spiked=0;ball.netted=false;ball.serve=false;ball.forceNet=false;ball.shared=false;Amb.pop();}
   // bola nova no ar: a IA erra um pouco a posição; se vem para o seu lado, a Lia às vezes (1 em 5) diz de quem é
   function newBall(){for(const p of P){p.err=p.team?rnd(-15,15):rnd(-9,9);p.plan=null;}
    if(ball.team===0){st.call=null;return;}
@@ -996,15 +996,16 @@ const Town=(()=>{
   const kindFor=p=>{const rel=(ball.x-p.x)*dirOf(p);return Math.abs(rel)<=UNDER?'set':rel>0?'pass':'back';};
   function contacts(){if(!(ball.vy>0&&ball.y>=BTOP&&ball.y<=BBOT))return;
    const near=P.filter(p=>Math.abs(ball.x-p.x)<=REACH&&p.jump<=0&&!(ball.spiked&&ball.noDig&&p!==me&&p.team!==ball.team)&&!(p!==me&&p.team!==ball.team&&goingOut())&&!(ball.serve&&p.team===ball.team));if(!near.length)return; // corte forte: a IA às vezes não consegue defender
-   const side=sideOf(ball.x),fresh=near.filter(p=>p.id!==ball.last||ball.netted).sort((a,b)=>(b.team===side)-(a.team===side));
-   if(!fresh.length){const l=byId(ball.last);point(1-l.team,(l===me?'Você tocou':l.name+' tocou')+' duas vezes seguidas.');return;}
+   const side=sideOf(ball.x),fresh=near.filter(p=>p.id!==ball.last||ball.shared).sort((a,b)=>(b.team===side)-(a.team===side));
+   if(!fresh.length){if(st.msg!=='Não pode tocar novamente')msg('Não pode tocar novamente',80);return;} // quem tocou por último não toca de novo: a bola passa direto
    const same=fresh.filter(p=>p.team===fresh[0].team);
-   if(same.length>1){touch(same[Math.floor(Math.random()*2)],'wild');shout(same[0]===me?same[1]:same[0],'Opa!');msg('Os dois foram na mesma bola!',110);return;}
+   if(same.length>1){touch(same[Math.floor(Math.random()*2)],'wild');ball.shared=true; // dividida: os dois podem tocar de novo
+    shout(same[0]===me?same[1]:same[0],'Opa!');msg('Os dois foram na mesma bola!',110);return;}
    touch(fresh[0],kindFor(fresh[0]));}
   // corte
   const spikeable=p=>ball.live&&ball.set&&ball.team===p.team&&ball.last!==p.id&&sideOf(ball.x)===p.team&&Math.abs(ball.x-p.x)<68&&ball.y>FLOOR-205&&ball.y<FLOOR-104;
   function sim(a,f,pts){let xx=ball.x,yy=ball.y,vx=Math.cos(a)*SPK*f,vy=Math.sin(a)*SPK;for(let i=0;i<300;i++){const px=xx;xx+=vx;yy+=vy;vy+=G;if(pts)pts.push([xx,yy]);if((px-NET)*(xx-NET)<=0&&yy>NETTOP)return {net:true};if(yy>=FLOOR)return {land:xx};}return {};}
-  function spike(p,a){const f=dirOf(p);ball.vx=Math.cos(a)*SPK*f;ball.vy=Math.sin(a)*SPK;ball.last=p.id;ball.team=p.team;ball.set=false;ball.spiked=1;ball.noDig=Math.random()<.55;ball.netted=false;p.hit=1;hop(p,26);st.rally++;Amb.pop();newBall();const tNet=Math.abs((NET-ball.x)/(ball.vx||1e-3));for(const q of P)if(q.team!==p.team&&q!==me&&Math.abs(q.x-NET)<70&&Math.random()<.2)q.blockIn=Math.max(0,Math.round(tNet-13));}
+  function spike(p,a){const f=dirOf(p);ball.vx=Math.cos(a)*SPK*f;ball.vy=Math.sin(a)*SPK;ball.last=p.id;ball.team=p.team;ball.set=false;ball.spiked=1;ball.noDig=Math.random()<.55;ball.netted=false;ball.shared=false;p.hit=1;hop(p,26);st.rally++;Amb.pop();newBall();const tNet=Math.abs((NET-ball.x)/(ball.vx||1e-3));for(const q of P)if(q.team!==p.team&&q!==me&&Math.abs(q.x-NET)<70&&Math.random()<.2)q.blockIn=Math.max(0,Math.round(tNet-13));}
   function aiSpike(p){const f=dirOf(p),good=[];for(let a=-.7;a<=.5;a+=.03){const r=sim(a,f);if(r.land!=null&&sideOf(r.land)!==p.team&&r.land>CL+10&&r.land<CR-10)good.push(a);}
    spike(p,(good.length?good[Math.floor(Math.random()*good.length)]:.05)+rnd(-.06,.06));}
   function release(){const c=st.charge;if(!c)return;st.charge=null;hop(me,18);if(ball.live&&Math.abs(ball.x-me.x)<76&&ball.y<FLOOR-48){spike(me,c.a);msg('Corte!',80);}else msg('Errou o tempo do corte.',100);}
@@ -1038,7 +1039,7 @@ const Town=(()=>{
   const jhOf=p=>p===me&&st.charge?JUMP+6:p.jump>0?Math.sin(Math.PI*Math.min(1,p.jump/p.jmax))*JUMP:0;
   function block(){for(const p of P){if(p.team===ball.team||p.jump<=0||(p===me&&st.charge)||Math.abs(p.x-NET)>62||Math.abs(ball.x-NET)>28)continue;const top=FLOOR-80-jhOf(p)-72;
     if(ball.y>top&&ball.y<FLOOR-36){const back=ball.team===0?-1:1;ball.x=NET+back*16;ball.vx=back*Math.max(1.6,Math.abs(ball.vx)*.45);ball.vy=Math.abs(ball.vy)*.2+.5;ball.last=p.id;ball.team=p.team;ball.set=false;ball.spiked=0;p.hit=1;Amb.pop();newBall();msg(p===me?'Bloqueio!':p.name+' bloqueou!',90);return true;}}return false;}
-  function airHit(){for(const p of P){if(p.jump<=0||(p===me&&st.charge)||sideOf(ball.x)!==p.team||(ball.last===p.id&&!ball.netted)||Math.abs(ball.x-p.x)>REACH)continue;const hand=FLOOR-80-jhOf(p)-24;
+  function airHit(){for(const p of P){if(p.jump<=0||(p===me&&st.charge)||sideOf(ball.x)!==p.team||(ball.last===p.id&&!ball.shared)||Math.abs(ball.x-p.x)>REACH)continue;const hand=FLOOR-80-jhOf(p)-24;
     if(ball.y>hand-30&&ball.y<hand+26){const f=dirOf(p),good=[];for(let a=-.5;a<=.6;a+=.04){const r=sim(a,f);if(r.land!=null&&sideOf(r.land)!==p.team&&r.land>CL+10&&r.land<CR-10)good.push(a);}
      spike(p,(good.length?good[Math.floor(good.length/2)]:.1)+rnd(-.12,.12));ball.spiked=0;msg(p===me?'Bateu no ar!':'',70);return true;}}return false;}
   function step(){if(!ball.live)return;const px=ball.x;ball.x+=ball.vx;ball.y+=ball.vy;ball.vy+=G;ball.spin+=ball.vx*.05;if(block()||airHit())return;
