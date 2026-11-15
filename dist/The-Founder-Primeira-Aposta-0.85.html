@@ -2851,11 +2851,12 @@ const Town=(()=>{
   const balls=[{x:cx,y:cy,vx:0,vy:0,k:'cue'}];
   for(const [px,py,k] of [[cx-9,T.y+BR+1,'blue'],[cx+9,T.y+BR+1,'blue'],[T.x+BR+1,T.y+T.h*.21,'blue'],[T.x+T.w-BR-1,T.y+T.h*.21,'blue'],[cx-9,T.y+T.h-BR-1,'red'],[cx+9,T.y+T.h-BR-1,'red'],[T.x+BR+1,T.y+T.h*.79,'red'],[T.x+T.w-BR-1,T.y+T.h*.79,'red']])balls.push({x:px,y:py,hx:px,hy:py,vx:0,vy:0,k});
   R.poolSeries??={};const series=R.poolSeries[opp]??={me:0,op:0};
-  const st={turn:'me',color:{me:null,op:null},aim:[cx,T.y+40],power:0,charging:false,spinDrag:false,spin:{x:0,y:0},shot:null,over:false,think:0,msg:'Sua vez · a mesa está aberta',flash:0,choose:null};M={raf:0,balls,st};const tok=M;
+  const st={turn:'coin',coin:{pick:null,result:null,t:0},coinShow:0,color:{me:null,op:null},aim:[cx,T.y+40],power:0,charging:false,spinDrag:false,spin:{x:0,y:0},shot:null,over:false,think:0,msg:'Cara ou coroa? Quem ganhar começa',flash:0,choose:null};M={raf:0,balls,st};const tok=M;
   const other=p=>p==='me'?'op':'me',left=c=>balls.filter(b=>!b.out&&b.k===c).length,name=p=>p==='me'?'Você':opp,COL={blue:'#3d6fd0',red:'#d8453f'};
   const tally=p=>st.color[p]?4-left(st.color[p]):0;
   const sc=()=>score('Você '+tally('me')+' × '+tally('op')+' '+opp);sc();
-  const bar=()=>{if(st.over)return;miniEnd(document.getElementById('tw-mini-help').textContent,[...Object.entries(POOL_LEVELS).map(([k,l])=>({t:(poolLevel===k?'● ':'○ ')+l.name,fn:()=>{poolLevel=k;bar();}})),{t:'🏳 Desistir',fn:()=>{if(st.over)return;st.gaveUp=true;end(false);}}]);};bar();
+  function pickCoin(c){if(st.coin.pick)return;st.coin.pick=c;st.coin.result=Math.random()<.5?'cara':'coroa';st.coin.t=0;st.msg='Você pediu '+c+'. Girando a moeda...';Amb.pop();bar();}
+  const bar=()=>{if(st.over)return;miniEnd(document.getElementById('tw-mini-help').textContent,[...(st.turn==='coin'&&!st.coin.pick?[{t:'🪙 Cara',fn:()=>pickCoin('cara')},{t:'🪙 Coroa',fn:()=>pickCoin('coroa')}]:[]),...Object.entries(POOL_LEVELS).map(([k,l])=>({t:(poolLevel===k?'● ':'○ ')+l.name,fn:()=>{poolLevel=k;bar();}})),{t:'🏳 Desistir',fn:()=>{if(st.over)return;st.gaveUp=true;end(false);}}]);};bar();
   function shoot(ang,pw,spin){const cue=balls[0],v=(.045+.955*Math.pow(Math.max(0,Math.min(1,pw)),1.35))*15;cue.vx=Math.cos(ang)*v;cue.vy=Math.sin(ang)*v;cue.spin={x:spin.x,y:spin.y,hit:false};const mine=st.color[st.turn];st.shot={by:st.turn,first:null,potted:[],pottedBalls:[],leftAtStart:mine?left(mine):null};Amb.step();}
   // 0.86: a física anda em passos pequenos (no máximo 2,5 px por passo), para as batidas saírem no ângulo certo mesmo com tacada forte
   function physics(){let moving=false,vm=0;
@@ -2958,12 +2959,13 @@ const Town=(()=>{
   function aimHit(a){const cue=balls[0],dx=Math.cos(a),dy=Math.sin(a);let best=null;for(const b of balls){if(b===cue||b.out)continue;const fx=cue.x-b.x,fy=cue.y-b.y,B=fx*dx+fy*dy,C=fx*fx+fy*fy-4*BR*BR,D=B*B-C;if(D<0)continue;const t=-B-Math.sqrt(D);if(t>0&&(!best||t<best.t))best={t,b};}
    if(!best)return null;const gx=cue.x+dx*best.t,gy=cue.y+dy*best.t,nx=best.b.x-gx,ny=best.b.y-gy,nd=Math.hypot(nx,ny);return {gx,gy,b:best.b,ox:nx/nd,oy:ny/nd};}
   mc.onpointermove=e=>{const [px,py]=miniPos(e);if(st.spinDrag){setSpin(px,py);return;}st.aim=[px,py];};
-  mc.onpointerdown=e=>{const [px,py]=miniPos(e);if(st.over)return;
+  mc.onpointerdown=e=>{const [px,py]=miniPos(e);if(st.over||st.turn==='coin')return;
    if(inSpin(px,py)){st.spinDrag=true;setSpin(px,py);return;}
    if(st.choose==='me'){const pick=balls.filter(b=>!b.out&&b.k!=='cue'&&(!st.color.me||b.k===st.color.me)).sort((a,b)=>Math.hypot(a.x-px,a.y-py)-Math.hypot(b.x-px,b.y-py))[0];if(pick&&Math.hypot(pick.x-px,pick.y-py)<22)removeOne('me',pick);return;}
    st.aim=[px,py];if(st.turn==='me'&&!st.shot){st.charging=true;st.power=0;}};
   mc.onpointerup=()=>{if(st.spinDrag){st.spinDrag=false;return;}if(!st.charging)return;st.charging=false;const cue=balls[0];shoot(Math.atan2(st.aim[1]-cue.y,st.aim[0]-cue.x),st.power,st.spin);};
-  function tick(){if(st.shot){const m=physics()||physics();if(!m)settle();}else if(st.turn==='op'&&!st.over){if(--st.think<=0){if(st.choose==='op')aiRemove();else ai();}}}
+  function tick(){if(st.turn==='coin'){if(st.coin.pick&&++st.coin.t===80){const win=st.coin.pick===st.coin.result;st.msg='Deu '+st.coin.result+'! '+(win?'Você começa · a mesa está aberta':opp+' começa · a mesa está aberta');st.flash=1;st.coinShow=90;st.turn=win?'me':'op';if(!win)st.think=60;Amb.pop();}return;}
+   if(st.shot){const m=physics()||physics();if(!m)settle();}else if(st.turn==='op'&&!st.over){if(--st.think<=0){if(st.choose==='op')aiRemove();else ai();}}}
   M.tick=tick; // gancho de teste: avança a lógica sem desenhar
   function loop(){if(st.charging)st.power=Math.min(1,st.power+.018);if(st.flash>0)st.flash-=.02;
    tick();
@@ -3005,6 +3007,9 @@ const Town=(()=>{
    x.font='800 13px '+FONT;x.fillStyle=st.flash>0?'#ffe46b':'#fff';const words=st.msg.split(' ');let line='',ly=272;for(const w2 of words){if(x.measureText(line+w2).width>214){x.fillText(line,36,ly);line='';ly+=17;}line+=w2+' ';}x.fillText(line,36,ly);
    x.fillStyle='#f2efe2';x.font='800 12px '+FONT;x.textAlign='center';x.fillText('EFEITO NA BRANCA',SPIN.x,72);x.font='700 11px '+FONT;x.fillStyle='#e8dcc0';
    if(st.charging){x.fillText('FORÇA',SPIN.x,236);}x.textAlign='left';
+   if(st.coin.pick&&(st.turn==='coin'||st.coinShow>0)){if(st.coinShow>0)st.coinShow--;const t=st.coin.t,spin=st.turn==='coin',w=spin?Math.max(2,Math.abs(Math.cos(t*.32))*24):24,yy=cy-(spin?Math.sin(Math.min(1,t/80)*Math.PI)*70:0),face=spin?(Math.cos(t*.32)>0?'cara':'coroa'):st.coin.result;
+    x.save();x.globalAlpha=st.turn==='coin'?1:Math.min(1,st.coinShow/30);x.fillStyle='#8a6a1c';x.beginPath();x.ellipse(cx,yy+3,w,24,0,0,Math.PI*2);x.fill();x.fillStyle=face==='cara'?'#f2c94c':'#e0b13a';x.beginPath();x.ellipse(cx,yy,w,24,0,0,Math.PI*2);x.fill();
+    if(w>12){x.fillStyle='#8a6a1c';x.font='900 18px '+FONT;x.textAlign='center';x.fillText(face==='cara'?'☺':'♛',cx,yy+6);}if(!spin){x.font='900 16px '+FONT;x.fillStyle='#fff';x.strokeStyle='#241d33';x.lineWidth=4;x.textAlign='center';const tt=st.coin.result.toUpperCase();x.strokeText(tt,cx,yy+46);x.fillText(tt,cx,yy+46);}x.restore();x.textAlign='left';}
    if(M===tok)M.raf=requestAnimationFrame(loop);}
   M.raf=requestAnimationFrame(loop);}
 

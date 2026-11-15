@@ -34,6 +34,7 @@ Sinuca
 - Fácil com jeito de iniciante: quase sempre acerta a bola dele, mas bate fraco e com mira média, então nem toda bola que ele acerta entra (encaçapa cerca de 3 em 10). Raramente erra a bola por completo. Jogando sozinho, leva umas 13 tacadas para matar as 4 (o Médio, umas 8).
 - Níveis recalibrados: o antigo Fácil virou o Médio e entrou um Fácil de verdade. Nas tacadas para encaçapar, Fácil acerta cerca de 22%, Médio 40% e Difícil 67%. Sinucado, sai de tabela em cerca de 42% das vezes no Fácil, 61% no Médio e 82% no Difícil.
 - Botão de desistir.
+- Cara ou coroa no começo: você escolhe, a moeda gira no meio da mesa e quem ganhar começa (50% para cada lado).
 - A física anda em passos menores, então as batidas saem no ângulo certo mesmo com tacada forte. Isso também melhora um pouco o Fácil.
 
 # 0.85 · Sinuca: toque curto, regras de falta e mira mais difícil
