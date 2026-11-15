@@ -1065,7 +1065,10 @@ const Town=(()=>{
  function claw(){const {mc,ctx:x}=miniOpen('🕹 Garrinha','Use as setas (na tela ou no teclado) para mover a garra: para os lados, para o fundo e para a frente. Ela desliza um pouco e balança quando anda, então espere parar. Aperte PEGAR (ou espaço) para descer. Em 30 segundos ela desce sozinha.');
   const items=clawItems();
   const FX0=40,FW=348,SX0=446,SW=150,RAIL=48,BED=326,REST=44;
-  const gF=z=>BED-z*28,sF=z=>1-z*.22,gS=xx=>BED-(1-xx)*24,sS=xx=>1-(1-xx)*.2;
+  // eixos com origem na saída: X = largura (0 a 1), Y = profundidade (0 a 1; no código, Z).
+  // Frente: anda com X; Y só sobe o objeto até a linha auxiliar de piso e diminui o tamanho em até 20%.
+  // Lado (olhando pela direita): anda com Y; X só sobe o objeto até a linha de piso, e quanto menor o X, menor o objeto (até 20%).
+  const AUX=BED-26,BOTTOM=BED+28,gF=y=>BOTTOM-y*(BOTTOM-AUX),sF=y=>1-.2*y,gS=xx=>BOTTOM-(1-xx)*(BOTTOM-AUX),sS=xx=>.8+.2*xx;
   const st={phase:'move',X:.06,Z:.08,vx:0,vz:0,ax:0,az:0,wx:0,wz:0,drop:0,keys:{},t0:performance.now(),left:30,got:null,slipAt:null,startX:0,over:false,won:null,msg:'Mova a garra e aperte PEGAR',lights:0};
   M={raf:0,items,st};const tok=M;score('');
   const BT={l:[648,206],r:[732,206],u:[690,164],d:[690,248]},BS=40,GO=[690,336];
@@ -1103,7 +1106,8 @@ const Town=(()=>{
     f(x0,BED+38,w,30,'#c93f73');f(x0,BED+38,w,3,'#e86a98');f(x0+10,RAIL-7,w-20,7,'#9aa3b5');f(x0+10,RAIL-7,w-20,2,'#d6dae2');};
    cabinet(FX0-12,FW+24);cabinet(SX0-12,SW+24);
    // saída (canto da frente, à esquerda) nas duas vistas
-   f(FX0-2,BED-18,.15*FW+4,54,'#1d1934');f(FX0-2,BED-18,.15*FW+4,4,'#3a3560');f(SX0-2,gS(.1)-14,.3*SW+4,50,'#1d1934');f(SX0-2,gS(.1)-14,.3*SW+4,4,'#3a3560');
+   for(const [x0,w] of [[FX0,FW],[SX0,SW]])for(let xx=x0;xx<x0+w;xx+=12)f(xx,AUX,7,2,'#5a86ad'); // linha auxiliar de piso
+   f(FX0-2,AUX-16,.15*FW+4,BOTTOM-AUX+24,'#1d1934');f(FX0-2,AUX-16,.15*FW+4,4,'#3a3560');f(SX0-2,AUX-16,.3*SW+4,BOTTOM-AUX+24,'#1d1934');f(SX0-2,AUX-16,.3*SW+4,4,'#3a3560');
    const itemAt=(it,px,gy,s)=>{const y=gy-it.h*(gy-RAIL-40);o(px,gy+2,it.t.r*s,'rgba(0,0,0,.15)',4*s);prizePx(q,px/3,(y-it.t.r*s*.8)/3,it.t.id,Math.max(3,it.t.r*s*.8/3));};
    const clawAt=(cx,ang,rope,s,carry)=>{const hx=cx+Math.sin(ang)*rope,hy=RAIL+4+Math.cos(ang)*rope,open=['move','down','done'].includes(st.phase),sp=open?18:8;
     f(cx-14,RAIL-12,28,13,'#4b4f63');f(cx-3,RAIL-8,6,6,'#ffe46b');ln(cx,RAIL+1,hx,hy-8,'#6b6f7e',3);f(hx-12*s,hy-9,24*s,11,'#b9bfcd');f(hx-12*s,hy-9,24*s,3,'#e3e6ee');
@@ -1125,7 +1129,7 @@ const Town=(()=>{
    const ok=st.phase==='move';o(GO[0],GO[1]+4,33,'#120d24');o(GO[0],GO[1],33,ok?'#8c2a55':'#4a3f60');o(GO[0],GO[1]-2,28,ok?'#e46d6d':'#6b6080');
    x.font='800 14px '+FONT;const mw=x.measureText(st.msg).width;f(FX0-2,BED+44,mw+22,24,'#2d2350');f(FX0-2,BED+44,mw+22,3,'#4a3f80');
    show();x.textAlign='center';x.fillStyle='#5a4a8a';x.font='800 11px '+FONT;x.fillText('VISTA DE FRENTE',FX0+FW/2,58);x.fillText('VISTA DE LADO',SX0+SW/2,58);x.fillStyle='#fff';x.font='800 10px '+FONT;x.fillText('SAÍDA',FX0+.075*FW,BED+30);
-   x.font='800 9px '+FONT;x.fillStyle='#ffffffcc';x.fillText('← frente',SX0+28,BED+30);x.fillText('fundo →',SX0+SW-26,BED+30);
+   x.font='800 9px '+FONT;x.fillStyle='#ffffffcc';x.fillStyle='#5a4a8a';x.fillText('← frente',SX0+28,74);x.fillText('fundo →',SX0+SW-26,74);
    x.fillStyle=st.phase==='move'&&sec<=10?'#ff9a9a':'#fff';x.font='900 26px '+FONT;x.fillText(st.phase==='move'?String(sec):'—',690,92);
    x.fillStyle='#fff';x.font='900 13px '+FONT;x.fillText('PEGAR',GO[0],GO[1]+3);x.font='800 9px '+FONT;x.fillStyle='#c9b6e4';x.fillText('ESPAÇO',GO[0],GO[1]+46);x.fillText('SETAS',690,296);
    x.textAlign='left';x.fillStyle='#fff';x.font='800 14px '+FONT;x.fillText(st.msg,FX0+9,BED+61);

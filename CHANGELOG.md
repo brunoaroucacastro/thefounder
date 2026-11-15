@@ -5,6 +5,7 @@ Garrinha
 - Setas na tela (ou no teclado) para os lados e para frente e trás. A garra desliza um pouco depois de soltar a seta e balança quando anda, levando uns 2 a 3 segundos para parar.
 - Botão PEGAR (ou espaço). Um relógio de 30 segundos: se ninguém apertar, ela desce sozinha.
 - Os prêmios ficam na máquina, onde estão, até o fim de semana seguinte. Errar não troca nada; o que você pega sai da máquina.
+- Eixos com origem na saída: X é a largura e Y a profundidade. Uma linha auxiliar de piso tracejada marca o fundo, e nenhum prêmio passa dela. Na vista de frente, o prêmio anda com o X; o Y só o sobe até a linha de piso e o diminui em até 20%. Na vista de lado, o prêmio anda com o Y; quanto menor o X, mais alto e menor ele aparece (até 20%).
 
 Vôlei
 - Agora em duplas: você e a Lia contra o adversário e o Caio. A quadra é vista de mais longe e os personagens andam mais rápido.
