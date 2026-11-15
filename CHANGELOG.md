@@ -8,6 +8,9 @@ Garrinha
 - O painel de controle fica embaixo da vista de frente, como numa máquina de verdade: moedeiro, relógio, joystick com as setinhas e o botão PEGAR. A vista de lado ficou mais larga, com o letreiro de mensagens embaixo.
 - De lado, a saída aparece no fundo, logo acima da linha de piso, como um furo. O piso ficou mais alto, para os prêmios se espalharem da frente para o fundo.
 - No fim da jogada, espaço já tenta de novo.
+- A vista de lado ficou bem mais estreita que a de frente, para ler como a lateral da mesma máquina. Na lateral, cada prêmio aparece de perfil (são dois desenhos por prêmio).
+- Saíram os textos da garrinha; só o relógio continua.
+- A variação de tamanho com a profundidade subiu de 20% para 35%, nos prêmios e na garra.
 - A garra ficou "roubada" como as de verdade: desce aberta, fecha devagar lá embaixo e sobe. Mesmo bem posicionada, só leva o prêmio até a saída em cerca de 1 de cada 5 vezes. Nas outras, ele escorrega da garra na subida ou cai no caminho.
 - O desenho da máquina ficou com traço mais fino, para a escala de 20% aparecer: os prêmios mudam de tamanho de verdade conforme a posição, e a garra inteira (carrinho, cabo e pinças) também. Na vista de frente ela diminui indo para o fundo; na de lado, aumenta indo para a direita.
 - Eixos com origem na saída: X é a largura e Y a profundidade. Uma linha auxiliar de piso tracejada marca o fundo, e nenhum prêmio passa dela. Na vista de frente, o prêmio anda com o X; o Y só o sobe até a linha de piso e o diminui em até 20%. Na vista de lado, o prêmio anda com o Y; quanto menor o X, mais alto e menor ele aparece (até 20%).
@@ -17,7 +20,9 @@ Vôlei
 - O toque é automático: bem embaixo da bola você levanta, um pouco atrás você devolve, e à frente dela a bola vai para trás (e pode sair).
 - Corte: com a bola levantada pelo seu time, segure o pulo perto dela (dá para segurar antes de ela chegar). O tempo desacelera e aparece uma linha vermelha contínua mostrando para onde a bola vai; solte quando ela apontar para a quadra deles.
 - A rede ficou mais baixa, então o corte entra com mais facilidade: dá para soltar em qualquer momento dos primeiros 0,8 s de mira e a bola cai na quadra deles.
-- O pulo perto da rede também bloqueia.
+- O pulo perto da rede também bloqueia. O bloqueio agora tem braços para cima e alcança bem mais alto. A IA pula para bloquear em cerca de 1 de cada 5 cortes.
+- Pulo comum: se a bola passar na altura das suas mãos enquanto você está no ar, do seu lado, você bate nela para a quadra deles.
+- A mira do corte começa quase na horizontal e vai descendo enquanto você segura.
 - A IA (a Lia e a dupla adversária) também bloqueia. Quando o outro time levanta a bola, quem está na frente vai para a rede e, às vezes, pula no tempo certo. Cerca de 1 em cada 4 cortes é bloqueado. A dupla adversária às vezes bloqueia e nem sempre defende um corte.
 - Ninguém toca duas vezes seguidas, a não ser depois de a bola bater na rede. Dois do mesmo time embaixo da bola: ela sai para qualquer lado.
 - "Minha!" (seta para cima) e "Sua!" (seta para baixo). Em 1 de cada 5 bolas, a Lia diz de quem é a bola, pela distância.
@@ -35,6 +40,7 @@ Sinuca
 - Fácil com jeito de iniciante: quase sempre acerta a bola dele, mas bate fraco e com mira média, então nem toda bola que ele acerta entra (encaçapa cerca de 3 em 10). Raramente erra a bola por completo. Jogando sozinho, leva umas 13 tacadas para matar as 4 (o Médio, umas 8).
 - Níveis recalibrados: o antigo Fácil virou o Médio e entrou um Fácil de verdade. Nas tacadas para encaçapar, Fácil acerta cerca de 22%, Médio 40% e Difícil 67%. Sinucado, sai de tabela em cerca de 42% das vezes no Fácil, 61% no Médio e 82% no Difícil.
 - Botão de desistir.
+- Os textos do disco de efeito voltaram: segue, volta, curva e a explicação do que a branca vai fazer.
 - Cara ou coroa no começo: você escolhe, a moeda gira no meio da mesa e quem ganhar começa (50% para cada lado).
 - A física anda em passos menores, então as batidas saem no ângulo certo mesmo com tacada forte. Isso também melhora um pouco o Fácil.
 
