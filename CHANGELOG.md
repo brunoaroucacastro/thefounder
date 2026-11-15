@@ -16,6 +16,7 @@ Vôlei
 - Agora em duplas: você e a Lia contra o adversário e o Caio. A quadra é vista de mais longe e os personagens andam mais rápido.
 - O toque é automático: bem embaixo da bola você levanta, um pouco atrás você devolve, e à frente dela a bola vai para trás (e pode sair).
 - Corte: com a bola levantada pelo seu time, segure o pulo perto dela (dá para segurar antes de ela chegar). O tempo desacelera e aparece uma linha vermelha contínua mostrando para onde a bola vai; solte quando ela apontar para a quadra deles.
+- A rede ficou mais baixa, então o corte entra com mais facilidade: dá para soltar em qualquer momento dos primeiros 0,8 s de mira e a bola cai na quadra deles.
 - O pulo perto da rede também bloqueia. A dupla adversária às vezes bloqueia e nem sempre defende um corte.
 - Ninguém toca duas vezes seguidas, a não ser depois de a bola bater na rede. Dois do mesmo time embaixo da bola: ela sai para qualquer lado.
 - "Minha!" (seta para cima) e "Sua!" (seta para baixo). Em 1 de cada 5 bolas, a Lia diz de quem é a bola, pela distância.

@@ -3014,7 +3014,7 @@ const Town=(()=>{
     Bola levantada pelo seu time pode ser cortada: segure o pulo perto dela e solte quando a linha vermelha apontar para a quadra deles.
     Ninguém toca duas vezes seguidas. Dois do mesmo time embaixo da bola: ela sai para qualquer lado. "Minha!" e "Sua!" combinam quem vai. */
  function volley(opp){const {mc,ctx:x}=miniOpen('🏐 Vôlei em duplas contra '+opp,'Setas ← → andam. O toque é automático: bem embaixo da bola você levanta, um pouco atrás dela você devolve, e se estiver à frente dela ela vai para trás. Bola levantada pelo seu time: chegue perto, segure ESPAÇO (ou PULO) e solte quando a linha vermelha apontar para a quadra deles. Perto da rede, o pulo também bloqueia. Ninguém toca duas vezes seguidas. Seta ↑ grita "Minha!", seta ↓ grita "Sua!". No saque, aperte ESPAÇO para jogar a bola e de novo com a bolinha no azul (se ela voltar para a mão, errou). SHIFT troca quem fica na frente e quem fica atrás. Quem fizer 5 pontos vence.');
-  const G=.26,FLOOR=360,NET=380,NETTOP=FLOOR-118,CL=30,CR=730,BTOP=FLOOR-92,BBOT=FLOOR-24,REACH=50,UNDER=21,SPK=11,JUMP=80;
+  const G=.26,FLOOR=360,NET=380,NETTOP=FLOOR-96,CL=30,CR=730,BTOP=FLOOR-92,BBOT=FLOOR-24,REACH=50,UNDER=21,SPK=11,JUMP=80;
   const opK=opp==='Duda'?PEOPLE.duda.k:{shirt:'#6c8fd1',trim:'#4a6bb0',hair:'#5a3b26',skin:'#edbd97',pants:'#2d2a4a',style:'short'};
   const mk=(id,team,name,k,home,front,back)=>({id,team,name,k,x:home,home,front,back,hit:0,jump:0,jmax:1,err:0,plan:null,walk:0,moving:false});
   const me=mk('me',0,'Você',pal(),120,290,120),mate=mk('mate',0,'Lia',{shirt:'#4fbf8a',trim:'#2f8a5e',hair:'#2a1a12',skin:'#c98e6a',pants:'#2d2a4a',style:'long'},290,290,120),
