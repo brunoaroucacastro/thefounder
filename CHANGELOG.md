@@ -11,7 +11,7 @@ Garrinha
 - A vista de lado ficou bem mais estreita que a de frente, para ler como a lateral da mesma máquina. Na lateral, cada prêmio aparece de perfil (são dois desenhos por prêmio).
 - Saíram os textos da garrinha; só o relógio continua.
 - A variação de tamanho com a profundidade subiu de 20% para 35%, nos prêmios e na garra.
-- A garra ficou "roubada" como as de verdade: desce aberta, fecha devagar lá embaixo e sobe. Mesmo bem posicionada, só leva o prêmio até a saída em cerca de 1 de cada 5 vezes. Nas outras, ele escorrega da garra na subida ou cai no caminho.
+- A garra ficou "roubada" como as de verdade: desce aberta, fecha devagar lá embaixo e sobe. Mesmo bem posicionada, só leva o prêmio até a saída em cerca de 1 de cada 3 vezes (antes era 1 em 5, e ficava chato). Nas outras, ele escorrega da garra na subida ou cai no caminho.
 - O desenho da máquina ficou com traço mais fino, para a escala de 20% aparecer: os prêmios mudam de tamanho de verdade conforme a posição, e a garra inteira (carrinho, cabo e pinças) também. Na vista de frente ela diminui indo para o fundo; na de lado, aumenta indo para a direita.
 - Eixos com origem na saída: X é a largura e Y a profundidade. Uma linha auxiliar de piso tracejada marca o fundo, e nenhum prêmio passa dela. Na vista de frente, o prêmio anda com o X; o Y só o sobe até a linha de piso e o diminui em até 20%. Na vista de lado, o prêmio anda com o Y; quanto menor o X, mais alto e menor ele aparece (até 20%).
 

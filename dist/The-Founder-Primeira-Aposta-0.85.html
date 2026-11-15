@@ -3213,7 +3213,7 @@ const Town=(()=>{
    else if(st.phase==='down'){carriage(0,0);st.drop=Math.min(1,st.drop+.012);
     if(st.drop>=1){const [gx,gz]=grabPt();let best=null;for(const it of items){if(it.h>0)continue;const d=Math.hypot((it.x-gx)*520,(it.z-gz)*236);if(d<it.t.tol&&(!best||d<best.d))best={it,d};}
      st.slipUp=null;st.slipAt=null;
-     if(best){st.got=best.it;const edge=best.d/best.it.t.tol,ok=.16-.08*edge,r=Math.random();
+     if(best){st.got=best.it;const edge=best.d/best.it.t.tol,ok=.33-.09*edge,r=Math.random();
       if(r>=ok){if(Math.random()<.55)st.slipUp=.25+Math.random()*.55;else st.slipAt=.4+Math.random()*.55;}st.msg='Fechando...';}else st.msg='Fechando... nada.';st.phase='close';st.closeT=0;}}
    else if(st.phase==='close'){carriage(0,0);st.closeT++;st.open=Math.max(st.got?.35:0,1-st.closeT/26);if(st.closeT>=34){st.phase='up';if(st.got)st.msg='Subindo...';}}
    else if(st.phase==='up'){carriage(0,0);st.drop=Math.max(0,st.drop-.014);
