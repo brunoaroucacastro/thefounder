@@ -31,7 +31,7 @@ Sinuca
 - Bola rolando devagar perto da caçapa cai com mais facilidade: a boca "cresce" até 6 px para a bola quase parando. Uma bola que parava na beirada agora entra.
 - A branca, rápida, passa raspando pela boca da caçapa sem cair; devagar, ou entrando de frente, ela cai. As outras bolas caem como antes.
 - Correção: falta com a mesa aberta (errar todas as bolas ou matar a branca antes de ter cor) agora é punida. O adversário escolhe qualquer bola para tirar, e a cor dela vira a dele.
-- Fácil bem mais fraco. A mira é mais solta, ele escolhe tacadas ruins e varia a força. Em 3 de cada 10 vezes nem mira na caçapa: só bate numa bola dele. Jogando sozinho, leva umas 27 tacadas para matar as 4 (o Médio, umas 11).
+- Fácil com jeito de iniciante: quase sempre acerta a bola dele, mas bate fraco e com mira média, então nem toda bola que ele acerta entra (encaçapa cerca de 3 em 10). Raramente erra a bola por completo. Jogando sozinho, leva umas 13 tacadas para matar as 4 (o Médio, umas 8).
 - Níveis recalibrados: o antigo Fácil virou o Médio e entrou um Fácil de verdade. Nas tacadas para encaçapar, Fácil acerta cerca de 22%, Médio 40% e Difícil 67%. Sinucado, sai de tabela em cerca de 42% das vezes no Fácil, 61% no Médio e 82% no Difícil.
 - Botão de desistir.
 - A física anda em passos menores, então as batidas saem no ângulo certo mesmo com tacada forte. Isso também melhora um pouco o Fácil.

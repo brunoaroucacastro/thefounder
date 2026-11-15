@@ -2840,7 +2840,7 @@ const Town=(()=>{
  // não há tacada boa e miram melhor, mas o erro de mira nunca é zero: no difícil um corte longo ainda falha com frequência.
  // Fácil: mira solta e escolhe mal. Médio: o adversário original (que já ganhava bastante). Difícil: escolhe bem, mira melhor, mas erra.
  // Tabela (sair da sinuca): erro normal com desvio 'bank'; quanto maior, mais vezes ele não acerta a bola dele.
- const POOL_LEVELS={facil:{name:'Fácil',err:()=>gauss()*.065,bank:.25,cut:1.4,cw:60,safe:false,loose:true,pick:350,pwj:.3,dumb:.3},
+ const POOL_LEVELS={facil:{name:'Fácil',err:()=>gauss()*.03,bank:.2,cut:1.3,cw:90,safe:false,loose:true,pick:160,soft:true,dumb:.08},
   medio:{name:'Médio',err:o=>(Math.random()-.5)*(o==='Téo'?.03:.05),bank:.085,cut:1.15,cw:180,safe:false,loose:true},
   dificil:{name:'Difícil',err:()=>gauss()*.0042,bank:.04,cut:1.05,cw:260,safe:true,sim:true}};
  let poolLevel='facil';
@@ -2950,7 +2950,7 @@ const Town=(()=>{
     if(bank){st.msg=opp+' está sinucado e tenta de tabela...';shoot(bank.ang+gauss()*lv.bank,Math.min(1,.4+bank.dist/560),{x:0,y:0});return;}}
    if(!best){const t=targets[0]||balls.find(b=>!b.out&&b!==cue);best={ang:Math.atan2(t.y-cue.y,t.x-cue.x),dist:200};}
    if(best.safety){shoot(best.ang+lv.err(opp),Math.min(.6,.18+best.dist/900),{x:0,y:0});return;} // segurança: só encosta na bola dele
-   shoot(best.ang+lv.err(opp),lv.loose?Math.min(1,(.32+best.dist/520)*(1+(lv.pwj?gauss()*lv.pwj:0))):Math.min(1,(.4+best.dist/400)/Math.max(.55,Math.cos(best.cut||0))),lv.loose?{x:0,y:(Math.random()-.4)*.5}:{x:0,y:-.1});}
+   shoot(best.ang+lv.err(opp),lv.soft?Math.max(.15,Math.min(.55,(.2+best.dist/650)*(1+gauss()*.18))):lv.loose?Math.min(1,.32+best.dist/520):Math.min(1,(.4+best.dist/400)/Math.max(.55,Math.cos(best.cut||0))),lv.loose?{x:0,y:(Math.random()-.4)*.5}:{x:0,y:-.1});}
   // nenhuma bola (além da ignorada e da branca) no caminho entre dois pontos
   function clear(ax,ay,bx,by,ignore){const dx=bx-ax,dy=by-ay,L2=dx*dx+dy*dy||1;for(const b of balls){if(b.out||b===ignore||b===balls[0])continue;const t=Math.max(0,Math.min(1,((b.x-ax)*dx+(b.y-ay)*dy)/L2));if(Math.hypot(ax+dx*t-b.x,ay+dy*t-b.y)<2*BR)return false;}return true;}
   const inSpin=(px,py)=>Math.hypot(px-SPIN.x,py-SPIN.y)<=SPIN.r+6;
