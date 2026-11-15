@@ -28,7 +28,7 @@ Vôlei
 - Ninguém toca duas vezes seguidas: se a bola cair de novo em quem tocou por último, ela passa direto e aparece "Não pode tocar novamente". A única exceção é a dividida (dois do mesmo time na bola ao mesmo tempo), em que os dois podem tocar de novo. Dois do mesmo time embaixo da bola: ela sai para qualquer lado.
 - "Minha!" (seta para cima) e "Sua!" (seta para baixo). Em 1 de cada 5 bolas, a Lia diz de quem é a bola, pela distância.
 - Saque: ESPAÇO joga a bola para o alto e a bolinha da barra acompanha a altura dela. Aperte de novo para bater: azul (70% a 85% da subida) dá um saque forte, amarelo (o topo e o meio) um saque normal, vermelho erra, na rede ou fora. Se a bola voltar para a mão sem você bater, errou o saque.
-- Os botões MINHA e SUA mostram as setinhas que os acionam. O botão TROCA (SHIFT) troca quem fica na frente e quem fica atrás, com o grito "Troca!".
+- MINHA e SUA saíram da tela como botões; as setas ↑ e ↓ do teclado continuam gritando. O computador também fala: o adversário grita "Minha!" quando vai na bola, e quando dois do mesmo time se amontoam embaixo dela, quem está mais perto grita "Sai!". O botão TROCA (SHIFT) troca quem fica na frente e quem fica atrás, com o grito "Troca!".
 
 Sinuca
 - Níveis Fácil (o de antes), Médio e Difícil, para escolher durante a partida. O difícil escolhe tacadas melhores e mira melhor, mas erra cerca de 3 em 10 tacadas para encaçapar.

@@ -983,6 +983,7 @@ const Town=(()=>{
   function launch(fx,fy,tx,apex){const top=Math.min(apex,fy-10),vy=-Math.sqrt(2*G*(fy-top)),t=(-vy+Math.sqrt(vy*vy+2*G*(FLOOR-fy)))/G;ball.x=fx;ball.y=fy;ball.vx=(tx-fx)/t;ball.vy=vy;ball.live=true;ball.spiked=0;ball.netted=false;ball.serve=false;ball.forceNet=false;ball.shared=false;Amb.pop();}
   // bola nova no ar: a IA erra um pouco a posição; se vem para o seu lado, a Lia às vezes (1 em 5) diz de quem é
   function newBall(){for(const p of P){p.err=p.team?rnd(-15,15):rnd(-9,9);p.plan=null;}
+   if(ball.team===0&&sideOf(landX())===1&&Math.random()<.55){const cx=contactX(),g=Math.abs(cx-op.x)<=Math.abs(cx-op2.x)?op:op2;shout(g,'Minha!');}
    if(ball.team===0){st.call=null;return;}
    if(sideOf(landX())===0){st.call=null;if(Math.random()<.2){const cx=contactX(),mine=Math.abs(cx-mate.x)<Math.abs(cx-me.x);shout(mate,mine?'Minha!':'Sua!');st.call={who:mine?'mate':'me',by:'mate'};}}}
   function touch(p,kind){const f=dirOf(p),fy=Math.min(ball.y,FLOOR-40);
@@ -1056,14 +1057,15 @@ const Town=(()=>{
   const lift=k=>{st.keys[k]=false;if(k==='j'){st.wantSpike=false;release();}};
   const KEY={ArrowLeft:'l',ArrowRight:'r',ArrowUp:'u',ArrowDown:'d',Space:'j',ShiftLeft:'t',ShiftRight:'t'};
   window.onkeydown=e=>{const k=KEY[e.code];if(!k)return;e.preventDefault();if(!e.repeat)press(k);};window.onkeyup=e=>{const k=KEY[e.code];if(k)lift(k);};
-  const BTN=[{k:'l',x:14,y:372,w:46,h:38},{k:'r',x:66,y:372,w:46,h:38},{k:'u',x:126,y:372,w:104,h:38,t:'MINHA',a:'u'},{k:'d',x:236,y:372,w:84,h:38,t:'SUA',a:'d'},{k:'t',x:326,y:372,w:110,h:38,t:'TROCA',s:'SHIFT'},{k:'j',x:630,y:372,w:116,h:38,t:'PULO'}];
+  const BTN=[{k:'l',x:14,y:372,w:46,h:38},{k:'r',x:66,y:372,w:46,h:38},{k:'t',x:126,y:372,w:110,h:38,t:'TROCA',s:'SHIFT'},{k:'j',x:630,y:372,w:116,h:38,t:'PULO'}];
   let held=null;mc.onpointerdown=e=>{const [px,py]=miniPos(e),b=BTN.find(b=>px>=b.x&&px<=b.x+b.w&&py>=b.y&&py<=b.y+b.h);if(b){held=b.k;press(b.k);}};mc.onpointerup=()=>{if(held)lift(held);held=null;};
   function update(){if(!st.over){
     if(ball.live){st.acc+=st.charge?.25:1;while(st.acc>=1&&ball.live){st.acc--;step();}st.acc=Math.min(st.acc,1); // segurando o corte, o tempo desacelera
      if(!st.charge&&me.jump<=0){const d=((st.keys.r?1:0)-(st.keys.l?1:0))*3.7;me.x=Math.max(CL-40,Math.min(NET-16,me.x+d));me.moving=d!==0;me.walk+=Math.abs(d);}else me.moving=false;
      if(st.wantSpike&&st.keys.j&&!st.charge&&ball.vy>0&&spikeable(me)){st.wantSpike=false;st.charge={a:-.04};hop(me,1);}
      if(st.charge)st.charge.a=Math.min(.95,st.charge.a+.009);
-     for(const p of P)if(p!==me)ai(p);}
+     for(const p of P)if(p!==me)ai(p);
+     if(st.crowd>0)st.crowd--;else{const cx=contactX(),t=sideOf(cx);const pair=P.filter(q=>q.team===t);if(ball.vy>0&&Math.abs(pair[0].x-pair[1].x)<34&&Math.abs(pair[0].x-cx)<80){const near=Math.abs(pair[0].x-cx)<=Math.abs(pair[1].x-cx)?pair[0]:pair[1];shout(near,'Sai!');st.crowd=90;}}}
     else if(!st.over){for(const p of P){const srv=(st.serve===0&&p===me)||(st.serve===1&&p===op),tx=srv?(p.team?CR-4:CL+4):p.home,d=Math.max(-4,Math.min(4,tx-p.x));p.x+=d;p.moving=Math.abs(d)>.3;p.walk+=Math.abs(d);}if(st.wait>0){if(--st.wait<=0)serveStart();}
      else if(st.aim){if(++st.aim.t>360)tossUp();} // 6 s sem apertar: joga a bola sozinho
      else if(st.toss){const t=st.toss;t.y+=t.vy;t.vy+=t.g;
