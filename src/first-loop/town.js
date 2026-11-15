@@ -1149,9 +1149,10 @@ const Town=(()=>{
    if(st.phase==='move'){carriage((st.keys.r?1:0)-(st.keys.l?1:0),(st.keys.u?1:0)-(st.keys.d?1:0));st.left=Math.max(0,30-(performance.now()-st.t0)/1000);if(st.left<=0){grab();st.msg='Acabou o tempo! Descendo...';}}
    else if(st.phase==='down'){carriage(0,0);st.drop=Math.min(1,st.drop+.012);
     if(st.drop>=1){const [gx,gz]=grabPt();let best=null;for(const it of items){if(it.h>0)continue;const d=Math.hypot((it.x-gx)*520,(it.z-gz)*236);if(d<it.t.tol&&(!best||d<best.d))best={it,d};}
+     // quando falha, a garra ainda levanta o prêmio: ele escorrega lá em cima ou no caminho
      st.slipUp=null;st.slipAt=null;
-     if(best){st.got=best.it;const edge=best.d/best.it.t.tol,ok=.33-.09*edge,r=Math.random();
-      if(r>=ok){if(Math.random()<.55)st.slipUp=.25+Math.random()*.55;else st.slipAt=.4+Math.random()*.55;}st.msg='Fechando...';}else st.msg='Fechando... nada.';st.phase='close';st.closeT=0;}}
+     if(best){st.got=best.it;const edge=best.d/best.it.t.tol,ok=.27-.08*edge,r=Math.random();
+      if(r>=ok){if(Math.random()<.4)st.slipUp=.05+Math.random()*.3;else st.slipAt=.08+Math.random()*.87;}st.msg='Fechando...';}else st.msg='Fechando... nada.';st.phase='close';st.closeT=0;}}
    else if(st.phase==='close'){carriage(0,0);st.closeT++;st.open=Math.max(st.got?.35:0,1-st.closeT/26);if(st.closeT>=34){st.phase='up';if(st.got)st.msg='Subindo...';}}
    else if(st.phase==='up'){carriage(0,0);st.drop=Math.max(0,st.drop-.014);
     if(st.got&&st.slipUp!=null&&st.drop<st.slipUp){const [gx,gz]=grabPt(),it=st.got;it.x=Math.max(.02,Math.min(.98,gx));it.z=Math.max(.02,Math.min(.98,gz));it.h=Math.max(.05,1-st.drop)*.85;it.vh=0;st.got=null;st.msg='Escorregou da garra!';Amb.pop();}
@@ -1159,7 +1160,10 @@ const Town=(()=>{
    else if(st.phase==='back'){const pvx=st.vx,pvz=st.vz;st.vx=Math.max(-.006,Math.min(.006,(.06-st.X)*.06));st.vz=Math.max(-.009,Math.min(.009,(.06-st.Z)*.08));st.X+=st.vx;st.Z+=st.vz;sway(st.vx-pvx,st.vz-pvz);
     if(st.got&&st.slipAt!=null){const k=(st.X-.06)/Math.max(.001,st.startX-.06);if(k<st.slipAt){const [gx,gz]=grabPt(),it=st.got;it.x=Math.max(.02,Math.min(.98,gx));it.z=Math.max(.02,Math.min(.98,gz));it.h=.9;it.vh=0;st.got=null;st.msg='Ih, escapou!';Amb.pop();}}
     if(Math.abs(st.X-.06)<.004&&Math.abs(st.Z-.06)<.004){st.phase='done';st.open=1;if(st.got){const it=st.got;it.x=.07;it.z=.12;st.won=it;st.got=null;}setTimeout(finishClaw,350);}}
-   for(const it of items)if(it.h>0){it.vh=(it.vh||0)+.004;it.h=Math.max(0,it.h-it.vh);if(it.h===0&&inChute(it)&&!st.won&&st.phase!=='done'){st.won=it;st.msg='Caiu na saída!';}}
+   for(const it of items)if(it.h>0){it.vh=(it.vh||0)+.004;it.h=Math.max(0,it.h-it.vh);
+    // caiu perto da boca da saída: às vezes quica e entra, como na vida real
+    if(it.h===0&&!inChute(it)&&it.x<.26&&it.z<.42&&Math.random()<.5){it.x=.07;it.z=.12;}
+    if(it.h===0&&inChute(it)&&!st.won&&!st.over){st.won=it;st.msg='Caiu na saída!';}}
   }
   M.update=update; // gancho de teste: avança a lógica sem desenhar
   function loop(){update();
