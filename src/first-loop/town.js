@@ -777,8 +777,8 @@ const Town=(()=>{
  // não há tacada boa e miram melhor, mas o erro de mira nunca é zero: no difícil um corte longo ainda falha com frequência.
  // Fácil: mira solta e escolhe mal. Médio: o adversário original (que já ganhava bastante). Difícil: escolhe bem, mira melhor, mas erra.
  // Tabela (sair da sinuca): erro normal com desvio 'bank'; quanto maior, mais vezes ele não acerta a bola dele.
- const POOL_LEVELS={facil:{name:'Fácil',err:()=>gauss()*.03,bank:.2,cut:1.3,cw:90,safe:false,loose:true,pick:160,soft:true,dumb:.08},
-  medio:{name:'Médio',err:o=>(Math.random()-.5)*(o==='Téo'?.03:.05),bank:.085,cut:1.15,cw:180,safe:false,loose:true},
+ const POOL_LEVELS={facil:{name:'Fácil',err:()=>gauss()*.058,bank:.2,cut:1.3,cw:90,safe:false,loose:true,pick:220,soft:true,dumb:.08},
+  medio:{name:'Médio',err:()=>gauss()*.03,bank:.085,cut:1.15,cw:180,safe:false,loose:true},
   dificil:{name:'Difícil',err:()=>gauss()*.0042,bank:.04,cut:1.05,cw:260,safe:true,sim:true}};
  let poolLevel='facil';
  function gauss(){let u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
@@ -821,7 +821,9 @@ const Town=(()=>{
    return moving;}
   // caçapa: bola rolando devagar perto da boca cai com mais facilidade (a boca 'cresce' até 6 px quando ela está quase parando);
   // a branca, rápida, passa raspando pela beirada
-  function pocketed(b,p){const d=Math.hypot(b.x-p[0],b.y-p[1]),sp=Math.hypot(b.vx,b.vy),reach=PR+6*Math.max(0,Math.min(1,(2.6-sp)/2.6));if(d>=reach)return false;return !(b.k==='cue'&&d>PR*.55&&sp>3.5);}
+  // hitbox: o ponto da caçapa fica fora da área em que a bola rola, então o raio de captura é maior no canto (19) e no meio (16)
+  const MOUTH=[19,19,16,16,19,19];
+  function pocketed(b,p){const base=MOUTH[pockets.indexOf(p)]||PR,d=Math.hypot(b.x-p[0],b.y-p[1]),sp=Math.hypot(b.vx,b.vy),reach=base+6*Math.max(0,Math.min(1,(2.6-sp)/2.6));if(d>=reach)return false;return !(b.k==='cue'&&d>base*.6&&sp>3.5);}
   function respot(ball){ball.out=false;ball.vx=ball.vy=0;ball.x=ball.hx;ball.y=ball.hy;const free=()=>!balls.some(b=>b!==ball&&!b.out&&Math.hypot(b.x-ball.x,b.y-ball.y)<2*BR+1);
    for(let r=0;r<120&&!free();r+=4)for(let a=0;a<12&&!free();a++){ball.x=Math.max(T.x+BR,Math.min(T.x+T.w-BR,ball.hx+Math.cos(a/12*Math.PI*2)*r));ball.y=Math.max(T.y+BR,Math.min(T.y+T.h-BR,ball.hy+Math.sin(a/12*Math.PI*2)*r));}}
   function respotCue(){const cue=balls[0];cue.out=false;cue.x=cx;cue.y=cy;cue.vx=cue.vy=0;cue.spin=null;let n=0;while(balls.some(b=>b!==cue&&!b.out&&Math.hypot(b.x-cue.x,b.y-cue.y)<2*BR+1)&&n<40){cue.y+=(n%2?-1:1)*(2*BR+2)*(1+(n>>1));n++;}}
