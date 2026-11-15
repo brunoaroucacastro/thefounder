@@ -3165,7 +3165,7 @@ const Town=(()=>{
   // Frente: anda com X; Y só sobe o objeto até a linha auxiliar de piso e diminui o tamanho em até 20%.
   // Lado (olhando pela direita): anda com Y; X só sobe o objeto até a linha de piso, e quanto menor o X, menor o objeto (até 20%).
   const AUX=214,BOTTOM=294,gF=y=>BOTTOM-y*(BOTTOM-AUX),sF=y=>1-.2*y,gS=xx=>BOTTOM-(1-xx)*(BOTTOM-AUX),sS=xx=>.8+.2*xx;
-  const st={phase:'move',X:.06,Z:.08,vx:0,vz:0,ax:0,az:0,wx:0,wz:0,drop:0,keys:{},t0:performance.now(),left:30,got:null,slipAt:null,startX:0,over:false,won:null,msg:'Mova a garra e aperte PEGAR',lights:0};
+  const st={phase:'move',open:1,closeT:0,slipUp:null,X:.06,Z:.08,vx:0,vz:0,ax:0,az:0,wx:0,wz:0,drop:0,keys:{},t0:performance.now(),left:30,got:null,slipAt:null,startX:0,over:false,won:null,msg:'Mova a garra e aperte PEGAR',lights:0};
   M={raf:0,items,st};const tok=M;score('');
   const J=[262,364],BT={l:[226,364],r:[298,364],u:[262,330],d:[262,398]},BS=28,GO=[352,364];
   const hitBtn=(px,py)=>{for(const [k,[bx,by]] of Object.entries(BT))if(Math.abs(px-bx)<=BS/2&&Math.abs(py-by)<=BS/2)return k;return Math.hypot(px-GO[0],py-GO[1])<=28?'go':null;};
@@ -3182,18 +3182,26 @@ const Town=(()=>{
   const ropeF=()=>REST+st.drop*(gF(st.Z)-34-RAIL-REST),ropeS=()=>REST+st.drop*(gS(st.X)-34-RAIL-REST);
   const grabPt=()=>[st.X+Math.sin(st.ax)*ropeF()/FW,st.Z+Math.sin(st.az)*ropeS()/SW];
   const inChute=it=>it.x<.15&&it.z<.3;
-  function loop(){st.lights+=.08;
+  function update(){st.lights+=.08;
    if(st.phase==='move'){carriage((st.keys.r?1:0)-(st.keys.l?1:0),(st.keys.u?1:0)-(st.keys.d?1:0));st.left=Math.max(0,30-(performance.now()-st.t0)/1000);if(st.left<=0){grab();st.msg='Acabou o tempo! Descendo...';}}
    else if(st.phase==='down'){carriage(0,0);st.drop=Math.min(1,st.drop+.012);
     if(st.drop>=1){const [gx,gz]=grabPt();let best=null;for(const it of items){if(it.h>0)continue;const d=Math.hypot((it.x-gx)*520,(it.z-gz)*236);if(d<it.t.tol&&(!best||d<best.d))best={it,d};}
-     if(best){st.got=best.it;const slip=.18+best.d/best.it.t.tol*.45;st.slipAt=Math.random()<slip?.3+Math.random()*.6:null;st.msg='Pegou alguma coisa...';}else st.msg='Nada...';st.phase='up';}}
-   else if(st.phase==='up'){carriage(0,0);st.drop=Math.max(0,st.drop-.014);if(st.drop<=0){st.phase='back';st.startX=st.X;}}
+     st.slipUp=null;st.slipAt=null;
+     if(best){st.got=best.it;const edge=best.d/best.it.t.tol,ok=.16-.08*edge,r=Math.random();
+      if(r>=ok){if(Math.random()<.55)st.slipUp=.25+Math.random()*.55;else st.slipAt=.4+Math.random()*.55;}st.msg='Fechando...';}else st.msg='Fechando... nada.';st.phase='close';st.closeT=0;}}
+   else if(st.phase==='close'){carriage(0,0);st.closeT++;st.open=Math.max(st.got?.35:0,1-st.closeT/26);if(st.closeT>=34){st.phase='up';if(st.got)st.msg='Subindo...';}}
+   else if(st.phase==='up'){carriage(0,0);st.drop=Math.max(0,st.drop-.014);
+    if(st.got&&st.slipUp!=null&&st.drop<st.slipUp){const [gx,gz]=grabPt(),it=st.got;it.x=Math.max(.02,Math.min(.98,gx));it.z=Math.max(.02,Math.min(.98,gz));it.h=Math.max(.05,1-st.drop)*.85;it.vh=0;st.got=null;st.msg='Escorregou da garra!';Amb.pop();}
+    if(st.drop<=0){st.phase='back';st.startX=st.X;}}
    else if(st.phase==='back'){const pvx=st.vx,pvz=st.vz;st.vx=Math.max(-.006,Math.min(.006,(.06-st.X)*.06));st.vz=Math.max(-.009,Math.min(.009,(.06-st.Z)*.08));st.X+=st.vx;st.Z+=st.vz;sway(st.vx-pvx,st.vz-pvz);
     if(st.got&&st.slipAt!=null){const k=(st.X-.06)/Math.max(.001,st.startX-.06);if(k<st.slipAt){const [gx,gz]=grabPt(),it=st.got;it.x=Math.max(.02,Math.min(.98,gx));it.z=Math.max(.02,Math.min(.98,gz));it.h=.9;it.vh=0;st.got=null;st.msg='Ih, escapou!';Amb.pop();}}
-    if(Math.abs(st.X-.06)<.004&&Math.abs(st.Z-.06)<.004){st.phase='done';if(st.got){const it=st.got;it.x=.07;it.z=.12;st.won=it;st.got=null;}setTimeout(finishClaw,350);}}
+    if(Math.abs(st.X-.06)<.004&&Math.abs(st.Z-.06)<.004){st.phase='done';st.open=1;if(st.got){const it=st.got;it.x=.07;it.z=.12;st.won=it;st.got=null;}setTimeout(finishClaw,350);}}
    for(const it of items)if(it.h>0){it.vh=(it.vh||0)+.004;it.h=Math.max(0,it.h-it.vh);if(it.h===0&&inChute(it)&&!st.won&&st.phase!=='done'){st.won=it;st.msg='Caiu na saída!';}}
+  }
+  M.update=update; // gancho de teste: avança a lógica sem desenhar
+  function loop(){update();
    // desenho
-   const {f,o,ln,show,q}=mq(x),now=st.phase==='move'?st.keys:{};
+   const K=2,{f,o,ln,show,q}=mq(x,K),now=st.phase==='move'?st.keys:{};
    f(0,0,762,420,'#241c40');for(let i=0;i<60;i++)f(((i*.61803)%1)*760,((i*.754877)%1)*420,3,3,i%3?'#2f2654':'#3a2f66');
    // gabinete: letreiro com luzes, vidro, piso de pelúcia e o corpo de baixo
    const cabinet=(x0,w)=>{f(x0+6,12,w,404,'#1a1430');f(x0-6,4,w+12,412,'#e2508a');f(x0,8,w,404,'#ff6b9a');f(x0,8,6,404,'#ff86ae');f(x0+w-6,8,6,404,'#c93f73');
@@ -3207,11 +3215,11 @@ const Town=(()=>{
    // saída: na frente é a caixa no canto da frente à esquerda; de lado ela fica no fundo, logo acima da linha de piso (é um furo)
    f(FX0-2,gF(.3)-30,.15*FW+4,BOTTOM+12-gF(.3)+30,'#1d1934');f(FX0-2,gF(.3)-30,.15*FW+4,4,'#3a3560');
    f(SX0-2,AUX-16,.3*SW+4,16,'#1d1934');f(SX0-2,AUX-16,.3*SW+4,3,'#3a3560');
-   const itemAt=(it,px,gy,s)=>{const y=gy-it.h*(gy-RAIL-40);o(px,gy+2,it.t.r*s,'rgba(0,0,0,.15)',4*s);prizePx(q,px/3,(y-it.t.r*s*.8)/3,it.t.id,Math.max(3,it.t.r*s*.8/3));};
-   const clawAt=(cx,ang,rope,s,carry)=>{const hx=cx+Math.sin(ang)*rope,hy=RAIL+4+Math.cos(ang)*rope,open=['move','down','done'].includes(st.phase),sp=open?18:8;
-    f(cx-14,RAIL-12,28,13,'#4b4f63');f(cx-3,RAIL-8,6,6,'#ffe46b');ln(cx,RAIL+1,hx,hy-8,'#6b6f7e',3);f(hx-12*s,hy-9,24*s,11,'#b9bfcd');f(hx-12*s,hy-9,24*s,3,'#e3e6ee');
-    for(const dir of [-1,1]){ln(hx+dir*8*s,hy+2,hx+dir*(sp+4)*s,hy+11*s,'#5d6272',5);ln(hx+dir*(sp+4)*s,hy+11*s,hx+dir*sp*s,hy+21*s,'#5d6272',5);ln(hx+dir*sp*s,hy+21*s,hx+dir*(sp-6)*s,hy+24*s,'#c9ccd6',4);}
-    if(carry)prizePx(q,hx/3,(hy+17*s+carry.t.r*s*.5)/3,carry.t.id,Math.max(3,carry.t.r*s*.8/3));};
+   const PR2=r=>r*1.15,itemAt=(it,px,gy,s)=>{const R2=PR2(it.t.r)*s,y=gy-it.h*(gy-RAIL-40);o(px,gy+2,R2,'rgba(0,0,0,.15)',4*s);prizePx(q,px/K,(y-R2)/K,it.t.id,R2/K);};
+   const clawAt=(cx,ang,rope,s0,carry)=>{const s=s0*1.15,hx=cx+Math.sin(ang)*rope,hy=RAIL+4+Math.cos(ang)*rope,sp=8+10*st.open;
+    f(cx-14*s,RAIL-12,28*s,13,'#4b4f63');f(cx-3*s,RAIL-8,6*s,6,'#ffe46b');ln(cx,RAIL+1,hx,hy-8,'#6b6f7e',3*s);f(hx-12*s,hy-9*s,24*s,11*s,'#b9bfcd');f(hx-12*s,hy-9*s,24*s,3*s,'#e3e6ee');
+    for(const dir of [-1,1]){ln(hx+dir*8*s,hy+2*s,hx+dir*(sp+4)*s,hy+11*s,'#5d6272',5*s);ln(hx+dir*(sp+4)*s,hy+11*s,hx+dir*sp*s,hy+21*s,'#5d6272',5*s);ln(hx+dir*sp*s,hy+21*s,hx+dir*(sp-6)*s,hy+24*s,'#c9ccd6',4*s);}
+    if(carry){const R2=PR2(carry.t.r)*s0;prizePx(q,hx/K,(hy+18*s+R2*.4)/K,carry.t.id,R2/K);}};
    // vista de frente: os do fundo (Y maior) primeiro
    for(const it of [...items].sort((a,b)=>b.z-a.z))if(it!==st.got&&it!==st.won)itemAt(it,FX0+it.x*FW,gF(it.z),sF(it.z));
    clawAt(FX0+st.X*FW,st.ax,ropeF(),sF(st.Z),st.got);
