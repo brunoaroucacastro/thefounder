@@ -3016,7 +3016,7 @@ const Town=(()=>{
  function volley(opp){const {mc,ctx:x}=miniOpen('🏐 Vôlei em duplas contra '+opp,'Setas ← → andam. O toque é automático: bem embaixo da bola você levanta, um pouco atrás dela você devolve, e se estiver à frente dela ela vai para trás. Bola levantada pelo seu time: chegue perto, segure ESPAÇO (ou PULO) e solte quando a linha vermelha apontar para a quadra deles. Perto da rede, o pulo também bloqueia. Ninguém toca duas vezes seguidas. Seta ↑ grita "Minha!", seta ↓ grita "Sua!". No saque, aperte ESPAÇO para jogar a bola e de novo com a bolinha no azul (se ela voltar para a mão, errou). SHIFT troca quem fica na frente e quem fica atrás. Quem fizer 5 pontos vence.');
   const G=.26,FLOOR=360,NET=380,NETTOP=FLOOR-96,CL=30,CR=730,BTOP=FLOOR-92,BBOT=FLOOR-24,REACH=50,UNDER=21,SPK=11,JUMP=80;
   const opK=opp==='Duda'?PEOPLE.duda.k:{shirt:'#6c8fd1',trim:'#4a6bb0',hair:'#5a3b26',skin:'#edbd97',pants:'#2d2a4a',style:'short'};
-  const mk=(id,team,name,k,home,front,back)=>({id,team,name,k,x:home,home,front,back,hit:0,jump:0,jmax:1,err:0,plan:null,walk:0,moving:false});
+  const mk=(id,team,name,k,home,front,back)=>({id,team,name,k,x:home,home,front,back,hit:0,jump:0,jmax:1,blockIn:-1,err:0,plan:null,walk:0,moving:false});
   const me=mk('me',0,'Você',pal(),120,290,120),mate=mk('mate',0,'Lia',{shirt:'#4fbf8a',trim:'#2f8a5e',hair:'#2a1a12',skin:'#c98e6a',pants:'#2d2a4a',style:'long'},290,290,120),
    op=mk('op',1,opp,opK,640,470,640),op2=mk('op2',1,'Caio',{shirt:'#f2a93b',trim:'#b8761f',hair:'#3b2a2a',skin:'#a86b4a',pants:'#3a3560',style:'curly'},470,470,640),P=[me,mate,op,op2];
   const ball={x:0,y:0,vx:0,vy:0,live:false,last:null,team:0,set:false,spin:0,spiked:0};
@@ -3052,7 +3052,7 @@ const Town=(()=>{
   // corte
   const spikeable=p=>ball.live&&ball.set&&ball.team===p.team&&ball.last!==p.id&&sideOf(ball.x)===p.team&&Math.abs(ball.x-p.x)<68&&ball.y>FLOOR-205&&ball.y<FLOOR-104;
   function sim(a,f,pts){let xx=ball.x,yy=ball.y,vx=Math.cos(a)*SPK*f,vy=Math.sin(a)*SPK;for(let i=0;i<300;i++){const px=xx;xx+=vx;yy+=vy;vy+=G;if(pts)pts.push([xx,yy]);if((px-NET)*(xx-NET)<=0&&yy>NETTOP)return {net:true};if(yy>=FLOOR)return {land:xx};}return {};}
-  function spike(p,a){const f=dirOf(p);ball.vx=Math.cos(a)*SPK*f;ball.vy=Math.sin(a)*SPK;ball.last=p.id;ball.team=p.team;ball.set=false;ball.spiked=1;ball.noDig=Math.random()<.55;ball.netted=false;p.hit=1;hop(p,26);st.rally++;Amb.pop();newBall();for(const q of P)if(q.team!==p.team&&q!==me&&Math.abs(q.x-NET)<90&&Math.random()<.25)hop(q,30);}
+  function spike(p,a){const f=dirOf(p);ball.vx=Math.cos(a)*SPK*f;ball.vy=Math.sin(a)*SPK;ball.last=p.id;ball.team=p.team;ball.set=false;ball.spiked=1;ball.noDig=Math.random()<.55;ball.netted=false;p.hit=1;hop(p,26);st.rally++;Amb.pop();newBall();const tNet=Math.abs((NET-ball.x)/(ball.vx||1e-3));for(const q of P)if(q.team!==p.team&&q!==me&&Math.abs(q.x-NET)<70&&Math.random()<.27)q.blockIn=Math.max(0,Math.round(tNet-13));}
   function aiSpike(p){const f=dirOf(p),good=[];for(let a=-.7;a<=.5;a+=.03){const r=sim(a,f);if(r.land!=null&&sideOf(r.land)!==p.team&&r.land>CL+10&&r.land<CR-10)good.push(a);}
    spike(p,(good.length?good[Math.floor(Math.random()*good.length)]:.05)+rnd(-.06,.06));}
   function release(){const c=st.charge;if(!c)return;st.charge=null;hop(me,18);if(ball.live&&Math.abs(ball.x-me.x)<76&&ball.y<FLOOR-48){spike(me,c.a);msg('Corte!',80);}else msg('Errou o tempo do corte.',100);}
@@ -3081,6 +3081,7 @@ const Town=(()=>{
       tx=cx-(up?(p.plan==='spike'?14:28):0)*f+p.err;
       if(up&&p.plan==='spike'&&spikeable(p)&&ball.vy>0&&ball.y>FLOOR-200){aiSpike(p);return;}}
      else{tx=Math.abs(cx-p.front)>Math.abs(cx-p.back)?p.front:p.back;if(Math.abs(tx-cx)<REACH+26)tx=cx+(tx>=cx?1:-1)*(REACH+26);}}}
+   if(ball.live&&ball.set&&ball.team!==p.team&&sideOf(ball.x)!==p.team){const mates=P.filter(q=>q.team===p.team),front=mates.sort((a,b)=>Math.abs(a.home-NET)-Math.abs(b.home-NET))[0];if(front===p)tx=NET-dirOf(p)*30;} // vai para a rede bloquear
    const [lo,hi]=p.team?[NET+16,CR+40]:[CL-40,NET-16];tx=Math.max(lo,Math.min(hi,tx));const d=Math.max(-3.1,Math.min(3.1,tx-p.x));p.x+=d;p.moving=Math.abs(d)>.3;p.walk+=Math.abs(d);}
   const jhOf=p=>p===me&&st.charge?JUMP+6:p.jump>0?Math.sin(Math.PI*Math.min(1,p.jump/p.jmax))*JUMP:0;
   function block(){for(const p of P){if(p.team===ball.team||p.jump<=0||(p===me&&st.charge)||Math.abs(p.x-NET)>62||Math.abs(ball.x-NET)>28)continue;const top=FLOOR-80-jhOf(p)-40;
@@ -3112,7 +3113,7 @@ const Town=(()=>{
      else if(st.toss){const t=st.toss;t.y+=t.vy;t.vy+=t.g;
       if(t.s!==me){if(t.vy>=0)serve();}
       else if(t.vy>0&&t.y>=HAND){st.toss=null;ball.live=true;ball.team=0;point(1,'A bola voltou para a mão: errou o saque.');}}}
-    for(const p of P){p.hit=Math.max(0,p.hit-.05);if(p.jump>0&&!(p===me&&st.charge))p.jump--;}
+    for(const p of P){if(p.blockIn>=0&&p.blockIn--===0)hop(p,30);p.hit=Math.max(0,p.hit-.05);if(p.jump>0&&!(p===me&&st.charge))p.jump--;}
     st.pop=Math.max(0,st.pop-.02);if(st.msgT>0&&--st.msgT<=0)st.msg='';for(const b of st.bubbles)b.life--;st.bubbles=st.bubbles.filter(b=>b.life>0);}}
   M.update=update; // gancho de teste: avança a lógica sem desenhar
   function loop(){update();
