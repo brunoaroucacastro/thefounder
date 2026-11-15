@@ -3132,15 +3132,15 @@ const Town=(()=>{
   save({flags:{claw:{week:R.week,items}}});return items.map(it=>({...it,t:prizeOf(it.id),h:0}));}
  function claw(){const {mc,ctx:x}=miniOpen('🕹 Garrinha','Use as setas (na tela ou no teclado) para mover a garra: para os lados, para o fundo e para a frente. Ela desliza um pouco e balança quando anda, então espere parar. Aperte PEGAR (ou espaço) para descer. Em 30 segundos ela desce sozinha.');
   const items=clawItems();
-  const FX0=40,FW=348,SX0=446,SW=150,RAIL=48,BED=326,REST=44;
+  const FX0=40,FW=348,SX0=440,SW=296,RAIL=48,REST=44;
   // eixos com origem na saída: X = largura (0 a 1), Y = profundidade (0 a 1; no código, Z).
   // Frente: anda com X; Y só sobe o objeto até a linha auxiliar de piso e diminui o tamanho em até 20%.
   // Lado (olhando pela direita): anda com Y; X só sobe o objeto até a linha de piso, e quanto menor o X, menor o objeto (até 20%).
-  const AUX=BED-26,BOTTOM=BED+28,gF=y=>BOTTOM-y*(BOTTOM-AUX),sF=y=>1-.2*y,gS=xx=>BOTTOM-(1-xx)*(BOTTOM-AUX),sS=xx=>.8+.2*xx;
+  const AUX=214,BOTTOM=294,gF=y=>BOTTOM-y*(BOTTOM-AUX),sF=y=>1-.2*y,gS=xx=>BOTTOM-(1-xx)*(BOTTOM-AUX),sS=xx=>.8+.2*xx;
   const st={phase:'move',X:.06,Z:.08,vx:0,vz:0,ax:0,az:0,wx:0,wz:0,drop:0,keys:{},t0:performance.now(),left:30,got:null,slipAt:null,startX:0,over:false,won:null,msg:'Mova a garra e aperte PEGAR',lights:0};
   M={raf:0,items,st};const tok=M;score('');
-  const BT={l:[648,206],r:[732,206],u:[690,164],d:[690,248]},BS=40,GO=[690,336];
-  const hitBtn=(px,py)=>{for(const [k,[bx,by]] of Object.entries(BT))if(Math.abs(px-bx)<=BS/2&&Math.abs(py-by)<=BS/2)return k;return Math.hypot(px-GO[0],py-GO[1])<=34?'go':null;};
+  const J=[262,364],BT={l:[226,364],r:[298,364],u:[262,330],d:[262,398]},BS=28,GO=[352,364];
+  const hitBtn=(px,py)=>{for(const [k,[bx,by]] of Object.entries(BT))if(Math.abs(px-bx)<=BS/2&&Math.abs(py-by)<=BS/2)return k;return Math.hypot(px-GO[0],py-GO[1])<=28?'go':null;};
   function grab(){if(st.phase!=='move'||st.over)return;st.phase='down';st.keys={};st.msg='Descendo...';}
   mc.onpointerdown=e=>{const [px,py]=miniPos(e),b=hitBtn(px,py);if(b==='go')grab();else if(b)st.keys[b]=true;};mc.onpointerup=()=>{st.keys={};};
   const KEY={ArrowLeft:'l',ArrowRight:'r',ArrowUp:'u',ArrowDown:'d'};
@@ -3167,46 +3167,54 @@ const Town=(()=>{
    // desenho
    const {f,o,ln,show,q}=mq(x),now=st.phase==='move'?st.keys:{};
    f(0,0,762,420,'#241c40');for(let i=0;i<60;i++)f(((i*.61803)%1)*760,((i*.754877)%1)*420,3,3,i%3?'#2f2654':'#3a2f66');
-   const cabinet=(x0,w,lab)=>{f(x0+6,12,w,404,'#1a1430');f(x0-6,4,w+12,410,'#e2508a');f(x0,8,w,402,'#ff6b9a');f(x0,8,6,402,'#ff86ae');f(x0+w-6,8,6,402,'#c93f73');
+   // gabinete: letreiro com luzes, vidro, piso de pelúcia e o corpo de baixo
+   const cabinet=(x0,w)=>{f(x0+6,12,w,404,'#1a1430');f(x0-6,4,w+12,412,'#e2508a');f(x0,8,w,404,'#ff6b9a');f(x0,8,6,404,'#ff86ae');f(x0+w-6,8,6,404,'#c93f73');
     f(x0,8,w,26,'#d84a7c');const n=Math.floor(w/26);for(let i=0;i<n;i++){const on=Math.floor(st.lights+i)%2,bx=x0+14+i*26;if(on)f(bx-6,15,12,12,'#ffe8a8aa');f(bx-3,18,6,6,on?'#fff7a8':'#b03a68');}
-    f(x0+10,40,w-20,BED+36-40,'#dff3fc');for(let i=0;i<10;i++)f(x0+10,40+i*30,w-20,30,mix('#eaf8ff','#c4e6f6',i/9));
-    f(x0+10,BED-30,w-20,66,'#a9d3ea');f(x0+10,BED-30,w-20,3,'#d6f0fb');for(let i=0;i<Math.floor(w/12);i++)f(x0+16+((i*.61803)%1)*(w-36),BED-22+((i*.754877)%1)*52,4,4,['#ffb3c7','#fff2a8','#b6f0c2','#c9b6e4'][i%4]);
-    f(x0,BED+38,w,30,'#c93f73');f(x0,BED+38,w,3,'#e86a98');f(x0+10,RAIL-7,w-20,7,'#9aa3b5');f(x0+10,RAIL-7,w-20,2,'#d6dae2');};
+    f(x0+10,40,w-20,BOTTOM+12-40,'#dff3fc');for(let i=0;i<9;i++)f(x0+10,40+i*30,w-20,30,mix('#eaf8ff','#c4e6f6',i/8));
+    f(x0+10,AUX-6,w-20,BOTTOM+18-AUX,'#a9d3ea');for(let i=0;i<Math.floor(w/10);i++)f(x0+16+((i*.61803)%1)*(w-36),AUX+4+((i*.754877)%1)*(BOTTOM-AUX),4,4,['#ffb3c7','#fff2a8','#b6f0c2','#c9b6e4'][i%4]);
+    f(x0+10,RAIL-7,w-20,7,'#9aa3b5');f(x0+10,RAIL-7,w-20,2,'#d6dae2');
+    f(x0,BOTTOM+14,w,402-BOTTOM,'#c93f73');f(x0,BOTTOM+14,w,5,'#e86a98');};
    cabinet(FX0-12,FW+24);cabinet(SX0-12,SW+24);
-   // saída (canto da frente, à esquerda) nas duas vistas
    for(const [x0,w] of [[FX0,FW],[SX0,SW]])for(let xx=x0;xx<x0+w;xx+=12)f(xx,AUX,7,2,'#5a86ad'); // linha auxiliar de piso
-   f(FX0-2,AUX-16,.15*FW+4,BOTTOM-AUX+24,'#1d1934');f(FX0-2,AUX-16,.15*FW+4,4,'#3a3560');f(SX0-2,AUX-16,.3*SW+4,BOTTOM-AUX+24,'#1d1934');f(SX0-2,AUX-16,.3*SW+4,4,'#3a3560');
+   // saída: na frente é a caixa no canto da frente à esquerda; de lado ela fica no fundo, logo acima da linha de piso (é um furo)
+   f(FX0-2,gF(.3)-30,.15*FW+4,BOTTOM+12-gF(.3)+30,'#1d1934');f(FX0-2,gF(.3)-30,.15*FW+4,4,'#3a3560');
+   f(SX0-2,AUX-16,.3*SW+4,16,'#1d1934');f(SX0-2,AUX-16,.3*SW+4,3,'#3a3560');
    const itemAt=(it,px,gy,s)=>{const y=gy-it.h*(gy-RAIL-40);o(px,gy+2,it.t.r*s,'rgba(0,0,0,.15)',4*s);prizePx(q,px/3,(y-it.t.r*s*.8)/3,it.t.id,Math.max(3,it.t.r*s*.8/3));};
    const clawAt=(cx,ang,rope,s,carry)=>{const hx=cx+Math.sin(ang)*rope,hy=RAIL+4+Math.cos(ang)*rope,open=['move','down','done'].includes(st.phase),sp=open?18:8;
     f(cx-14,RAIL-12,28,13,'#4b4f63');f(cx-3,RAIL-8,6,6,'#ffe46b');ln(cx,RAIL+1,hx,hy-8,'#6b6f7e',3);f(hx-12*s,hy-9,24*s,11,'#b9bfcd');f(hx-12*s,hy-9,24*s,3,'#e3e6ee');
     for(const dir of [-1,1]){ln(hx+dir*8*s,hy+2,hx+dir*(sp+4)*s,hy+11*s,'#5d6272',5);ln(hx+dir*(sp+4)*s,hy+11*s,hx+dir*sp*s,hy+21*s,'#5d6272',5);ln(hx+dir*sp*s,hy+21*s,hx+dir*(sp-6)*s,hy+24*s,'#c9ccd6',4);}
     if(carry)prizePx(q,hx/3,(hy+17*s+carry.t.r*s*.5)/3,carry.t.id,Math.max(3,carry.t.r*s*.8/3));};
-   // vista de frente: os de trás primeiro
+   // vista de frente: os do fundo (Y maior) primeiro
    for(const it of [...items].sort((a,b)=>b.z-a.z))if(it!==st.got&&it!==st.won)itemAt(it,FX0+it.x*FW,gF(it.z),sF(it.z));
    clawAt(FX0+st.X*FW,st.ax,ropeF(),sF(st.Z),st.got);
-   // vista de lado: a frente da máquina fica à esquerda
+   // vista de lado (olhando pela direita): os de X menor ficam mais longe, então vêm primeiro
    for(const it of [...items].sort((a,b)=>a.x-b.x))if(it!==st.got&&it!==st.won)itemAt(it,SX0+it.z*SW,gS(it.x),sS(it.x));
    clawAt(SX0+st.Z*SW,st.az,ropeS(),sS(st.X),st.got);
-   for(const x0 of [FX0-2,SX0-2])for(let y=44;y<BED-30;y+=3){const k=(y-44)/(BED-74);f(x0+14-k*10,y,24-k*8,3,'#ffffff33');}
-   // painel: relógio, setas e botão
-   f(632,14,118,396,'#2d2350');f(632,14,118,4,'#4a3f80');
-   const sec=Math.ceil(st.left);for(let i=0;i<30;i++){const a=-Math.PI/2+i/30*Math.PI*2,lit2=i<sec&&st.phase==='move';f(690+Math.cos(a)*38-3,82+Math.sin(a)*38-3,6,6,lit2?(sec<=10?'#e46d6d':'#ffe46b'):'#463b72');}
-   o(690,82,30,'#1a1430');
-   const tri=(cx,cy,d,col)=>{for(let i=0;i<=12;i+=3){const w=i*2+3;if(d==='u')f(cx-w/2,cy-7+i,w,3,col);else if(d==='d')f(cx-w/2,cy+7-i,w,3,col);else if(d==='l')f(cx-7+i,cy-w/2,3,w,col);else f(cx+7-i,cy-w/2,3,w,col);}};
+   for(const x0 of [FX0-2,SX0-2])for(let y=44;y<AUX-8;y+=3){const k=(y-44)/(AUX-52);f(x0+14-k*10,y,24-k*8,3,'#ffffff33');}
+   // painel de controle da máquina (só na frente): moedeiro, relógio, joystick com as setinhas e o botão
+   f(FX0-2,BOTTOM+26,FW+4,402-BOTTOM-26,'#8c2a55');f(FX0-2,BOTTOM+26,FW+4,3,'#a8406c');
+   f(56,330,22,32,'#2d2a4a');f(65,334,4,24,'#ffe46b');
+   const sec=Math.ceil(st.left);f(112,330,74,36,'#120d24');f(112,330,74,3,'#2d2350');
+   const tri=(cx,cy,d,col)=>{for(let i=0;i<=9;i+=3){const w=i*2+3;if(d==='u')f(cx-w/2,cy-5+i,w,3,col);else if(d==='d')f(cx-w/2,cy+5-i,w,3,col);else if(d==='l')f(cx-5+i,cy-w/2,3,w,col);else f(cx+5-i,cy-w/2,3,w,col);}};
    for(const [k,[bx,by]] of Object.entries(BT)){const on=!!now[k];f(bx-BS/2,by-BS/2+3,BS,BS,'#120d24');f(bx-BS/2,by-BS/2+(on?3:0),BS,BS,on?'#c9b6e4':'#efe8ff');tri(bx,by+(on?3:0),k,'#2d2350');}
-   const ok=st.phase==='move';o(GO[0],GO[1]+4,33,'#120d24');o(GO[0],GO[1],33,ok?'#8c2a55':'#4a3f60');o(GO[0],GO[1]-2,28,ok?'#e46d6d':'#6b6080');
-   x.font='800 14px '+FONT;const mw=x.measureText(st.msg).width;f(FX0-2,BED+44,mw+22,24,'#2d2350');f(FX0-2,BED+44,mw+22,3,'#4a3f80');
-   show();x.textAlign='center';x.fillStyle='#5a4a8a';x.font='800 11px '+FONT;x.fillText('VISTA DE FRENTE',FX0+FW/2,58);x.fillText('VISTA DE LADO',SX0+SW/2,58);x.fillStyle='#fff';x.font='800 10px '+FONT;x.fillText('SAÍDA',FX0+.075*FW,BED+30);
-   x.font='800 9px '+FONT;x.fillStyle='#ffffffcc';x.fillStyle='#5a4a8a';x.fillText('← frente',SX0+28,74);x.fillText('fundo →',SX0+SW-26,74);
-   x.fillStyle=st.phase==='move'&&sec<=10?'#ff9a9a':'#fff';x.font='900 26px '+FONT;x.fillText(st.phase==='move'?String(sec):'—',690,92);
-   x.fillStyle='#fff';x.font='900 13px '+FONT;x.fillText('PEGAR',GO[0],GO[1]+3);x.font='800 9px '+FONT;x.fillStyle='#c9b6e4';x.fillText('ESPAÇO',GO[0],GO[1]+46);x.fillText('SETAS',690,296);
-   x.textAlign='left';x.fillStyle='#fff';x.font='800 14px '+FONT;x.fillText(st.msg,FX0+9,BED+61);
+   const jx=((now.r?1:0)-(now.l?1:0))*7,jy=((now.d?1:0)-(now.u?1:0))*7;o(J[0],J[1]+2,15,'#120d24');o(J[0],J[1],14,'#2d2a4a');ln(J[0],J[1],J[0]+jx,J[1]+jy-5,'#9aa3b5',5);o(J[0]+jx,J[1]+jy-6,8,'#e46d6d');f(J[0]+jx-4,J[1]+jy-10,3,3,'#ffffff');
+   const ok=st.phase==='move';o(GO[0],GO[1]+4,28,'#120d24');o(GO[0],GO[1],28,ok?'#b03a68':'#4a3f60');o(GO[0],GO[1]-3,23,ok?'#ffd84a':'#6b6080');
+   // corpo da vista de lado: letreiro com a mensagem
+   f(SX0,334,SW,40,'#2d2350');f(SX0,334,SW,3,'#4a3f80');
+   show();x.textAlign='center';x.fillStyle='#5a4a8a';x.font='800 11px '+FONT;x.fillText('VISTA DE FRENTE',FX0+FW/2,58);x.fillText('VISTA DE LADO',SX0+SW/2,58);
+   x.font='800 9px '+FONT;x.fillText('← frente',SX0+28,74);x.fillText('fundo →',SX0+SW-26,74);
+   x.fillStyle='#fff';x.font='800 10px '+FONT;x.fillText('SAÍDA',FX0+.075*FW,BOTTOM+4);x.font='800 9px '+FONT;x.fillText('R$ 5',67,378);x.fillText('TEMPO',149,380);
+   x.fillStyle=ok&&sec<=10?'#ff6b6b':'#ffe46b';x.font='900 24px '+FONT;x.fillText(ok?String(sec):'—',149,357);
+   x.fillStyle='#2d2350';x.font='900 11px '+FONT;x.fillText('PEGAR',GO[0],GO[1]+1);x.fillStyle='#ffd9e6';x.font='800 9px '+FONT;x.fillText('ESPAÇO',GO[0],GO[1]+42);
+   x.textAlign='left';x.fillStyle='#fff';x.font='800 13px '+FONT;x.fillText(st.msg,SX0+12,358);
    if(M===tok)M.raf=requestAnimationFrame(loop);}
   function finishClaw(){if(st.over)return;st.over=true;const won=st.won;if(won)items.splice(items.indexOf(won),1);st.msg=won?'Pegou! Caiu na saída.':'Não foi desta vez.';
    const keep={claw:{week:R.week,items:items.map(it=>({id:it.id,x:+it.x.toFixed(3),z:+it.z.toFixed(3)}))}};let text;
    if(won){const L=life(),dup=(L.collection||[]).includes(won.t.id);save({collection:[...(L.collection||[]),won.t.id],flags:keep});diary('🧸','Ganhou '+won.t.name+' na garrinha'+(dup?' (repetido)':'')+'!');Amb.heart();text='Você pegou: '+won.t.name+'!'+(dup?' (repetido)':' Vai para a estante da sala.');}
    else{save({flags:keep});text='Não foi desta vez. Os prêmios ficam onde estão até o próximo fim de semana.';}
-   miniEnd(text,[...(items.length?[{t:'🕹 Tentar de novo · R$ 5',fn:()=>{if(api.get().cash<5){toast('Dinheiro insuficiente.');return;}miniClose();if(spend(5)){advance(5);claw();}}}]:[]),{t:'Sair',fn:miniClose}]);}
+   const again=()=>{if(api.get().cash<5){toast('Dinheiro insuficiente.');return;}miniClose();if(spend(5)){advance(5);claw();}};
+   miniEnd(text,[...(items.length?[{t:'🕹 Tentar de novo · R$ 5 (espaço)',fn:again}]:[]),{t:'Sair',fn:miniClose}]);
+   if(items.length)window.onkeydown=e=>{if(e.code==='Space'||e.code==='Enter'){e.preventDefault();again();}};}
   M.raf=requestAnimationFrame(loop);}
 
  /* gancho de teste: avança a visita sem depender do requestAnimationFrame */
