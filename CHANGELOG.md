@@ -26,6 +26,7 @@ Sinuca
 - Níveis Fácil (o de antes), Médio e Difícil, para escolher durante a partida. O difícil escolhe tacadas melhores e mira melhor, mas erra cerca de 3 em 10 tacadas para encaçapar.
 - Sinucado, o adversário tenta de tabela. Às vezes acerta, às vezes erra.
 - O Difícil simula a tacada antes de jogar, então só tenta bolas que entram de verdade (acerta cerca de 8 em 10, com um erro de mira pequeno que nunca some). Quando a tacada é ruim ou arriscada, às vezes joga de segurança para deixar você sinucado.
+- Bola rolando devagar perto da caçapa cai com mais facilidade: a boca "cresce" até 6 px para a bola quase parando. Uma bola que parava na beirada agora entra.
 - A branca, rápida, passa raspando pela boca da caçapa sem cair; devagar, ou entrando de frente, ela cai. As outras bolas caem como antes.
 - Correção: falta com a mesa aberta (errar todas as bolas ou matar a branca antes de ter cor) agora é punida. O adversário escolhe qualquer bola para tirar, e a cor dela vira a dele.
 - Fácil bem mais fraco. A mira é mais solta, ele escolhe tacadas ruins e varia a força. Em 3 de cada 10 vezes nem mira na caçapa: só bate numa bola dele. Jogando sozinho, leva umas 27 tacadas para matar as 4 (o Médio, umas 11).
