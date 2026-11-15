@@ -14,7 +14,8 @@ Vôlei
 - O pulo perto da rede também bloqueia. A dupla adversária às vezes bloqueia e nem sempre defende um corte.
 - Ninguém toca duas vezes seguidas, a não ser depois de a bola bater na rede. Dois do mesmo time embaixo da bola: ela sai para qualquer lado.
 - "Minha!" (seta para cima) e "Sua!" (seta para baixo). Em 1 de cada 5 bolas, a Lia diz de quem é a bola, pela distância.
-- Saque com barrinha: verde dá um saque forte, amarelo um saque normal, vermelho erra (na rede ou fora). O jogador joga a bola para o alto e bate.
+- Saque: ESPAÇO joga a bola para o alto e a bolinha da barra acompanha a altura dela. Aperte de novo para bater: azul (70% a 85% da subida) dá um saque forte, amarelo (o topo e o meio) um saque normal, vermelho erra, na rede ou fora. Se a bola voltar para a mão sem você bater, errou o saque.
+- Os botões MINHA e SUA mostram as setinhas que os acionam. O botão TROCA (SHIFT) troca quem fica na frente e quem fica atrás, com o grito "Troca!".
 
 Sinuca
 - Níveis Fácil (o de antes), Médio e Difícil, para escolher durante a partida. O difícil escolhe tacadas melhores e mira melhor, mas erra cerca de 3 em 10 tacadas para encaçapar.
