@@ -965,7 +965,7 @@ const Town=(()=>{
     bem embaixo dela você levanta, um pouco atrás você devolve para o outro lado, à frente dela a bola vai para trás.
     Bola levantada pelo seu time pode ser cortada: segure o pulo perto dela e solte quando a linha vermelha apontar para a quadra deles.
     Ninguém toca duas vezes seguidas. Dois do mesmo time embaixo da bola: ela sai para qualquer lado. "Minha!" e "Sua!" combinam quem vai. */
- function volley(opp){const {mc,ctx:x}=miniOpen('🏐 Vôlei em duplas contra '+opp,'Setas ← → andam. O toque é automático: bem embaixo da bola você levanta, um pouco atrás dela você devolve, e se estiver à frente dela ela vai para trás. Bola levantada pelo seu time: chegue perto, segure ESPAÇO (ou PULO) e solte quando a linha vermelha apontar para a quadra deles. Perto da rede, o pulo também bloqueia. Ninguém toca duas vezes seguidas. Seta ↑ grita "Minha!", seta ↓ grita "Sua!". No saque, aperte ESPAÇO para jogar a bola e de novo com a bolinha no azul (se ela voltar para a mão, errou). SHIFT troca quem fica na frente e quem fica atrás. Quem fizer 5 pontos vence.');
+ function volley(opp){const {mc,ctx:x}=miniOpen('🏐 Vôlei em duplas contra '+opp,'Setas ← → andam. O toque é automático: bem embaixo da bola você levanta, um pouco atrás dela você devolve, e se estiver à frente dela ela vai para trás. Bola levantada pelo seu time: chegue perto, segure ESPAÇO (ou PULO) e solte quando a linha vermelha apontar para a quadra deles. Colado na rede, o pulo levanta os braços e bloqueia. Ninguém toca duas vezes seguidas. Seta ↑ grita "Minha!", seta ↓ grita "Sua!". No saque, aperte ESPAÇO para jogar a bola e de novo com a bolinha no azul (se ela voltar para a mão, errou). SHIFT troca quem fica na frente e quem fica atrás. Quem fizer 5 pontos vence.');
   const G=.26,FLOOR=360,NET=380,NETTOP=FLOOR-96,CL=30,CR=730,BTOP=FLOOR-92,BBOT=FLOOR-24,REACH=50,UNDER=21,SPK=11,JUMP=80;
   const opK=opp==='Duda'?PEOPLE.duda.k:{shirt:'#6c8fd1',trim:'#4a6bb0',hair:'#5a3b26',skin:'#edbd97',pants:'#2d2a4a',style:'short'};
   const mk=(id,team,name,k,home,front,back)=>({id,team,name,k,x:home,home,front,back,hit:0,jump:0,jmax:1,blockIn:-1,err:0,plan:null,walk:0,moving:false});
@@ -976,7 +976,7 @@ const Town=(()=>{
   M={raf:0,st,ball,P};const tok=M;const sc=()=>score('Você e Lia '+st.pts[0]+' × '+st.pts[1]+' '+opp+' e Caio');sc();const L=light(R.min);
   const rnd=(a,b)=>a+Math.random()*(b-a),dirOf=p=>p.team?-1:1,sideOf=xx=>xx<NET?0:1,byId=id=>P.find(p=>p.id===id);
   const own=t=>t?[NET+34,CR-24]:[CL+24,NET-34],theirs=t=>own(1-t);
-  const msg=(t,d=120)=>{st.msg=t;st.msgT=d;},hop=(p,n)=>{p.jump=n;p.jmax=n;};
+  const msg=(t,d=120)=>{st.msg=t;st.msgT=d;},hop=(p,n,arms)=>{p.jump=n;p.jmax=n;p.arms=!!arms;};
   const shout=(p,t)=>{st.bubbles=st.bubbles.filter(b=>b.p!==p);st.bubbles.push({p,t,life:75});};
   const tTo=h=>ball.y>=h?0:(-ball.vy+Math.sqrt(ball.vy*ball.vy+2*G*(h-ball.y)))/G;
   const contactX=()=>ball.x+ball.vx*tTo(FLOOR-56),landX=()=>ball.x+ball.vx*tTo(FLOOR);
@@ -1034,10 +1034,10 @@ const Town=(()=>{
       tx=cx-(up?(p.plan==='spike'?14:28):0)*f+p.err;
       if(up&&p.plan==='spike'&&spikeable(p)&&ball.vy>0&&ball.y>FLOOR-200){aiSpike(p);return;}}
      else{tx=Math.abs(cx-p.front)>Math.abs(cx-p.back)?p.front:p.back;if(Math.abs(tx-cx)<REACH+26)tx=cx+(tx>=cx?1:-1)*(REACH+26);}}}
-   if(ball.live&&ball.set&&ball.team!==p.team&&sideOf(ball.x)!==p.team){const mates=P.filter(q=>q.team===p.team),front=mates.sort((a,b)=>Math.abs(a.home-NET)-Math.abs(b.home-NET))[0];if(front===p)tx=NET-dirOf(p)*30;} // vai para a rede bloquear
+   if(ball.live&&ball.set&&ball.team!==p.team&&sideOf(ball.x)!==p.team){const mates=P.filter(q=>q.team===p.team),front=p.team===0?(Math.abs(me.x-NET)<70?null:mate):mates.sort((a,b)=>Math.abs(a.home-NET)-Math.abs(b.home-NET))[0];if(front===p)tx=NET-dirOf(p)*30;} // vai para a rede bloquear
    const [lo,hi]=p.team?[NET+16,CR+40]:[CL-40,NET-16];tx=Math.max(lo,Math.min(hi,tx));const d=Math.max(-3.1,Math.min(3.1,tx-p.x));p.x+=d;p.moving=Math.abs(d)>.3;p.walk+=Math.abs(d);}
   const jhOf=p=>p===me&&st.charge?JUMP+6:p.jump>0?Math.sin(Math.PI*Math.min(1,p.jump/p.jmax))*JUMP:0;
-  function block(){for(const p of P){if(p.team===ball.team||p.jump<=0||(p===me&&st.charge)||Math.abs(p.x-NET)>62||Math.abs(ball.x-NET)>28)continue;const top=FLOOR-80-jhOf(p)-72;
+  function block(){for(const p of P){if(p.team===ball.team||p.jump<=0||!p.arms||jhOf(p)<JUMP*.45||(p===me&&st.charge)||Math.abs(p.x-NET)>62||Math.abs(ball.x-NET)>28)continue;const top=FLOOR-80-jhOf(p)-56;
     if(ball.y>top&&ball.y<FLOOR-36){const back=ball.team===0?-1:1;ball.x=NET+back*16;ball.vx=back*Math.max(1.6,Math.abs(ball.vx)*.45);ball.vy=Math.abs(ball.vy)*.2+.5;ball.last=p.id;ball.team=p.team;ball.set=false;ball.spiked=0;p.hit=1;Amb.pop();newBall();msg(p===me?'Bloqueio!':p.name+' bloqueou!',90);return true;}}return false;}
   function airHit(){for(const p of P){if(p.jump<=0||(p===me&&st.charge)||sideOf(ball.x)!==p.team||(ball.last===p.id&&!ball.shared)||Math.abs(ball.x-p.x)>REACH)continue;const hand=FLOOR-80-jhOf(p)-24;
     if(ball.y>hand-30&&ball.y<hand+26){const f=dirOf(p),good=[];for(let a=-.5;a<=.6;a+=.04){const r=sim(a,f);if(r.land!=null&&sideOf(r.land)!==p.team&&r.land>CL+10&&r.land<CR-10)good.push(a);}
@@ -1052,7 +1052,7 @@ const Town=(()=>{
    else if(k==='j'){st.keys.j=true;if(st.aim){tossUp();return;}if(st.toss&&st.toss.s===me){serveHit();return;}if(st.charge||me.jump>0||!ball.live)return;
     if(spikeable(me)){st.charge={a:-.04};hop(me,1);}
     else if(ball.set&&ball.team===0&&ball.last!==me.id&&sideOf(ball.x)===0)st.wantSpike=true; // segurou cedo: o corte começa quando a bola chegar
-    else hop(me,32);}};
+    else{if(me.cool>0)return;hop(me,32,Math.abs(me.x-NET)<46);me.cool=58;}}};
   const lift=k=>{st.keys[k]=false;if(k==='j'){st.wantSpike=false;release();}};
   const KEY={ArrowLeft:'l',ArrowRight:'r',ArrowUp:'u',ArrowDown:'d',Space:'j',ShiftLeft:'t',ShiftRight:'t'};
   window.onkeydown=e=>{const k=KEY[e.code];if(!k)return;e.preventDefault();if(!e.repeat)press(k);};window.onkeyup=e=>{const k=KEY[e.code];if(k)lift(k);};
@@ -1069,7 +1069,7 @@ const Town=(()=>{
      else if(st.toss){const t=st.toss;t.y+=t.vy;t.vy+=t.g;
       if(t.s!==me){if(t.vy>=0)serve();}
       else if(t.vy>0&&t.y>=HAND){st.toss=null;ball.live=true;ball.team=0;point(1,'A bola voltou para a mão: errou o saque.');}}}
-    for(const p of P){if(p.blockIn>=0&&p.blockIn--===0)hop(p,30);p.hit=Math.max(0,p.hit-.05);if(p.jump>0&&!(p===me&&st.charge))p.jump--;}
+    for(const p of P){if(p.cool>0)p.cool--;if(p.blockIn>=0&&p.blockIn--===0)hop(p,30,true);p.hit=Math.max(0,p.hit-.05);if(p.jump>0&&!(p===me&&st.charge))p.jump--;}
     st.pop=Math.max(0,st.pop-.02);if(st.msgT>0&&--st.msgT<=0)st.msg='';for(const b of st.bubbles)b.life--;st.bubbles=st.bubbles.filter(b=>b.life>0);}}
   M.update=update; // gancho de teste: avança a lógica sem desenhar
   function loop(){update();
@@ -1094,7 +1094,7 @@ const Town=(()=>{
    if(st.charge){const pts=[[ball.x,ball.y]];sim(st.charge.a,1,pts);for(let i=1;i<pts.length;i++)ln(pts[i-1][0],pts[i-1][1],pts[i][0],pts[i][1],'#e43b3b',4);}
    for(const p of P){const jh=jhOf(p);o(p.x,FLOOR+4,22,'rgba(30,20,40,.25)',6);
     const fr=p.hit>0||jh>0?1:p.moving?1+Math.floor(p.walk/14)%2:0;q.drawImage(charSprite(p.k,p.team?'left':'right',fr),Math.round(p.x/3)-9,Math.round((FLOOR-jh)/3)-26);
-    if(jh>4){const sk=p.k.skin||'#edbd97',top2=FLOOR-jh-72;f(p.x-11,top2-24,5,26,'#2a2133');f(p.x+6,top2-24,5,26,'#2a2133');f(p.x-10,top2-23,3,24,sk);f(p.x+7,top2-23,3,24,sk);}}
+    if(jh>4&&p.arms){const sk=p.k.skin||'#edbd97',top2=FLOOR-jh-72;f(p.x-11,top2-24,5,26,'#2a2133');f(p.x+6,top2-24,5,26,'#2a2133');f(p.x-10,top2-23,3,24,sk);f(p.x+7,top2-23,3,24,sk);}}
    const srv=st.serve?op:me,bx=ball.live?ball.x:srv.x+dirOf(srv)*14,by=ball.live?ball.y:st.toss?st.toss.y:FLOOR-96;
    if(st.aim||(st.toss&&st.toss.s===me)){const X0=me.x+34,Y0=FLOOR-178,H=110,v=tossV();f(X0-4,Y0-4,20,H+8,'#241d33');f(X0,Y0+H*.5,12,H*.5,'#e46d6d');f(X0,Y0+H*.3,12,H*.2,'#ffd84a');f(X0,Y0+H*.15,12,H*.15,'#3d8bf5');f(X0,Y0,12,H*.15,'#ffd84a');o(X0+6,Y0+H*(1-v),9,'#241d33');o(X0+6,Y0+H*(1-v),7,'#fffdf5');}
    if(ball.live||st.wait>0||st.aim||st.toss){if(ball.spiked&&ball.live)for(let i=1;i<4;i++)o(bx-ball.vx*i*1.6,by-ball.vy*i*1.6,10-i*2,'#ffffff66');

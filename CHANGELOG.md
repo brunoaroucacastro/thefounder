@@ -20,7 +20,8 @@ Vôlei
 - O toque é automático: bem embaixo da bola você levanta, um pouco atrás você devolve, e à frente dela a bola vai para trás (e pode sair).
 - Corte: com a bola levantada pelo seu time, segure o pulo perto dela (dá para segurar antes de ela chegar). O tempo desacelera e aparece uma linha vermelha contínua mostrando para onde a bola vai; solte quando ela apontar para a quadra deles.
 - A rede ficou mais baixa, então o corte entra com mais facilidade: dá para soltar em qualquer momento dos primeiros 0,8 s de mira e a bola cai na quadra deles.
-- O pulo perto da rede também bloqueia. O bloqueio agora tem braços para cima e alcança bem mais alto. A IA pula para bloquear em cerca de 1 de cada 5 cortes.
+- Bloqueio: os braços só sobem se você apertar o pulo colado na rede; longe dela é só um pulo. Depois de pular, há um tempinho até poder pular de novo, então ficar apertando sem parar não bloqueia. Pulando no tempo certo, colado na rede, o bloqueio pega bem.
+- A Lia sai da posição para bloquear quando o outro time levanta a bola (a não ser que você já esteja na rede). A IA pula para bloquear em cerca de 1 de cada 5 cortes.
 - Pulo comum: se a bola passar na altura das suas mãos enquanto você está no ar, do seu lado, você bate nela para a quadra deles.
 - A mira do corte começa quase na horizontal e vai descendo enquanto você segura.
 - A IA (a Lia e a dupla adversária) também bloqueia. Quando o outro time levanta a bola, quem está na frente vai para a rede e, às vezes, pula no tempo certo. Cerca de 1 em cada 4 cortes é bloqueado. A dupla adversária às vezes bloqueia e nem sempre defende um corte.
