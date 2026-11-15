@@ -1,3 +1,11 @@
+# 0.85 · Sinuca: toque curto, regras de falta e mira mais difícil
+
+- Um clique sem carregar força dá só um toque: a branca anda devagar e a bola atingida quase não se mexe. Serve para encurralar o adversário.
+- Bater primeiro na bola do adversário invalida a jogada: se a sua bola caiu, ela volta para a mesa (inclusive a última) e a vez passa.
+- Suicídio: matar a branca quando só falta a sua última bola é derrota na hora.
+- A mira mostra só 6 pontinhos. O círculo de contato só aparece se a bola estiver dentro desse alcance, e não há mais a linha de para onde a bola atingida vai. Bolas longe ficam mais difíceis. A IA do adversário não mudou.
+- O disco de efeito ficou só com o título "Efeito na branca", sem as explicações.
+
 # 0.85 · Sinuca mata-mata
 
 - A sinuca do bar virou mata-mata: mesa em pé, 4 bolas azuis em cima e 4 vermelhas embaixo encostadas nas tabelas, e a branca no centro.
