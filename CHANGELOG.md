@@ -1,3 +1,26 @@
+# 0.85 · Garrinha nova, vôlei em duplas e níveis da sinuca
+
+Garrinha
+- Duas vistas da máquina, de frente e de lado; saiu o mapinha visto de cima.
+- Setas na tela (ou no teclado) para os lados e para frente e trás. A garra desliza um pouco depois de soltar a seta e balança quando anda, levando uns 2 a 3 segundos para parar.
+- Botão PEGAR (ou espaço). Um relógio de 30 segundos: se ninguém apertar, ela desce sozinha.
+- Os prêmios ficam na máquina, onde estão, até o fim de semana seguinte. Errar não troca nada; o que você pega sai da máquina.
+
+Vôlei
+- Agora em duplas: você e a Lia contra o adversário e o Caio. A quadra é vista de mais longe e os personagens andam mais rápido.
+- O toque é automático: bem embaixo da bola você levanta, um pouco atrás você devolve, e à frente dela a bola vai para trás (e pode sair).
+- Corte: com a bola levantada pelo seu time, segure o pulo perto dela (dá para segurar antes de ela chegar). O tempo desacelera e aparece uma linha vermelha contínua mostrando para onde a bola vai; solte quando ela apontar para a quadra deles.
+- O pulo perto da rede também bloqueia. A dupla adversária às vezes bloqueia e nem sempre defende um corte.
+- Ninguém toca duas vezes seguidas, a não ser depois de a bola bater na rede. Dois do mesmo time embaixo da bola: ela sai para qualquer lado.
+- "Minha!" (seta para cima) e "Sua!" (seta para baixo). Em 1 de cada 5 bolas, a Lia diz de quem é a bola, pela distância.
+- Saque com barrinha: verde dá um saque forte, amarelo um saque normal, vermelho erra (na rede ou fora). O jogador joga a bola para o alto e bate.
+
+Sinuca
+- Níveis Fácil (o de antes), Médio e Difícil, para escolher durante a partida. O difícil escolhe tacadas melhores e mira melhor, mas erra cerca de 3 em 10 tacadas para encaçapar.
+- Sinucado, o adversário tenta de tabela. Às vezes acerta, às vezes erra.
+- Botão de desistir.
+- A física anda em passos menores, então as batidas saem no ângulo certo mesmo com tacada forte. Isso também melhora um pouco o Fácil.
+
 # 0.85 · Sinuca: toque curto, regras de falta e mira mais difícil
 
 - Um clique sem carregar força dá só um toque: a branca anda devagar e a bola atingida quase não se mexe. Serve para encurralar o adversário.
