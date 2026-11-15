@@ -36,7 +36,7 @@ const scenes=[
  {file:'volei',title:'Minigame: vôlei',icon:'🏐',desc:'Contra a Duda na quadra da praça.',state:weekend('street',16*60,14,17),auto:'mini:volley:Duda'},
  {file:'garrinha',title:'Minigame: garrinha',icon:'🕹',desc:'A máquina de prêmios da galeria.',state:weekend('gallery',15*60,9,3),auto:'mini:claw'}];
 
-function panel(KEY){return `<div id="tst" style="position:fixed;left:8px;top:58px;z-index:99999;display:grid;gap:4px;font:800 11px Consolas,monospace;background:#fffdf8;padding:6px;box-shadow:0 0 0 3px #2a2133,4px 4px 0 #0006">
+function panel(KEY){return `<div id="tst" style="position:fixed;left:8px;bottom:8px;z-index:99999;display:grid;gap:4px;font:800 11px Consolas,monospace;background:#fffdf8;padding:6px;box-shadow:0 0 0 3px #2a2133,4px 4px 0 #0006">
 <b style="letter-spacing:.08em">ATALHOS DE TESTE</b>
 <button data-t="cash">+ R$ 100 mil</button><button data-t="cash5">Caixa = R$ 500 mil</button><button data-t="fds">Ir para o fim da semana</button><button data-t="reset">Recomeçar o cenário</button><button data-t="hide" style="opacity:.6">esconder</button></div>
 <script>(function(){const K=${JSON.stringify(KEY)},p=document.getElementById('tst');

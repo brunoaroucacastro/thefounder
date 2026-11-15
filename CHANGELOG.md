@@ -1,3 +1,12 @@
+# 0.85 · Sinuca mata-mata
+
+- A sinuca do bar virou mata-mata: mesa em pé, 4 bolas azuis em cima e 4 vermelhas embaixo encostadas nas tabelas, e a branca no centro.
+- A cor de cada jogador sai da primeira bola que ele encaçapar. Encaçapou a sua, joga de novo. Vence quem tirar as 4 da própria cor primeiro.
+- Falta (não acertar nada, bater primeiro na bola do adversário ou matar a branca): o adversário escolhe uma bola dele para tirar da mesa. Quando é você, as suas bolas piscam para você escolher.
+- Efeito na branca: no disco ao lado da mesa você escolhe onde o taco bate. Em cima a branca segue depois da batida, no centro ela para, embaixo ela volta, e dos lados faz curva e muda a saída da tabela.
+- Placar riscado de giz num quadro-negro: bolas de cada um e partidas ganhas na visita.
+- Atalhos de teste da vitrine foram para o canto de baixo.
+
 # 0.85 · Fim de semana repensado e panorama da semana
 
 - O relatório e o fim de semana viraram uma tela só: "Panorama da semana", com os destaques (resultado, receita, clientes novos, melhor dia, público, vendas do fim de semana anterior, última avaliação e marcos). As contas detalhadas ficam em "Ver as contas da semana".

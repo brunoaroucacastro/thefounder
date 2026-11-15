@@ -2809,11 +2809,11 @@ const Town=(()=>{
 
  /* ---------- minigames: base comum ---------- */
  let M=null;
- let MQ=null;
- function mq(x){if(!MQ)MQ=mkc(254,140);const q=MQ[1];q.setTransform(1,0,0,1,0,0);q.globalAlpha=1;q.globalCompositeOperation='source-over';
-  const f=(a,b,w,h,col)=>F(a/3,b/3,w/3,h/3,col,q),o=(a,b,r,col,ry)=>O(a/3,b/3,Math.max(1,r/3),Math.max(1,(ry??r)/3),col,q),
+ const MQS={};
+ function mq(x,k=3){const W2=Math.ceil(760/k),H2=Math.ceil(420/k),MQ=MQS[k]||(MQS[k]=mkc(W2,H2)),q=MQ[1];q.setTransform(1,0,0,1,0,0);q.globalAlpha=1;q.globalCompositeOperation='source-over';
+  const f=(a,b,w,h,col)=>F(a/k,b/k,w/k,h/k,col,q),o=(a,b,r,col,ry)=>O(a/k,b/k,Math.max(1,r/k),Math.max(1,(ry??r)/k),col,q),
    ln=(a,b,c2,d,col,th=3)=>{const n=Math.max(1,Math.ceil(Math.hypot(c2-a,d-b)/2));for(let i=0;i<=n;i++)f(a+(c2-a)*i/n-th/2,b+(d-b)*i/n-th/2,th,th,col);},
-   show=()=>{x.setTransform(1,0,0,1,0,0);x.imageSmoothingEnabled=false;x.clearRect(0,0,760,420);x.drawImage(MQ[0],0,0,762,420);};
+   show=()=>{x.setTransform(1,0,0,1,0,0);x.imageSmoothingEnabled=false;x.clearRect(0,0,760,420);x.drawImage(MQ[0],0,0,W2*k,H2*k);};
   return {f,o,ln,show,q};}
  function prizePx(q,cx,cy,id,r){cx=Math.round(cx);cy=Math.round(cy);r=Math.max(2,Math.round(r));const p=PRIZES.find(z=>z.id===id)||PRIZES[0],R2=(a,b,w,h,col)=>F(a,b,w,h,col,q);
   if(id==='chaveiro'){R2(cx-r,cy-r,2*r,2*r,'#c47d1f');R2(cx-r+1,cy-r+1,2*r-2,2*r-2,'#fff7ea');R2(cx-1,cy-1,2,2,'#c2453f');R2(cx-r+2,cy-r+2,1,1,'#c2453f');R2(cx+r-3,cy+r-3,1,1,'#c2453f');R2(cx-1,cy-r-2,2,2,'#9aa3b5');}
@@ -2830,62 +2830,114 @@ const Town=(()=>{
  function score(t){document.getElementById('tw-mini-score').textContent=t;}
  function results(game,opp,win){const who=opp==='Duda'?'duda':opp==='Téo'?'teo':null;diary(game==='pool'?'🎱':'🏐',(win?'Ganhou ':'Perdeu ')+(game==='pool'?'na sinuca':'no vôlei')+' contra '+opp+'.');if(who&&win)save({friends:{[who]:friend(who)+1}});else save();}
 
- /* ---------- sinuca ---------- */
- function pool(opp){const {mc,ctx:x}=miniOpen('🎱 Sinuca contra '+opp,'Mire com o mouse: a bola fantasma mostra onde a branca vai bater e a linha mostra para onde a bola vai. Segure para dosar a força e solte para tacar. Você joga com as laranjas.');
-  const T={x:40,y:40,w:680,h:340},BR=10,pockets=[[T.x,T.y],[T.x+T.w/2,T.y-4],[T.x+T.w,T.y],[T.x,T.y+T.h],[T.x+T.w/2,T.y+T.h+4],[T.x+T.w,T.y+T.h]];
-  const balls=[{x:200,y:210,vx:0,vy:0,k:'cue'}];[[0,0,'me'],[1,-.5,'op'],[1,.5,'me'],[2,-1,'op'],[2,0,'me'],[2,1,'op']].forEach(([i,j,k])=>balls.push({x:500+i*BR*1.8,y:210+j*BR*2.1,vx:0,vy:0,k}));
-  const st={turn:'me',pot:{me:0,op:0},aim:[480,210],power:0,charging:false,shot:null,over:false,think:0,msg:'Sua vez',flash:0};M={raf:0,balls,st};const tok=M;
-  const sc=()=>score('Você '+st.pot.me+' × '+st.pot.op+' '+opp);sc();
-  function shoot(ang,pw){const cue=balls[0];cue.vx=Math.cos(ang)*pw*17;cue.vy=Math.sin(ang)*pw*17;st.shot={by:st.turn,potted:[]};Amb.step();}
-  function physics(){let moving=false;for(const b of balls){if(b.out)continue;b.x+=b.vx;b.y+=b.vy;b.vx*=.988;b.vy*=.988;if(Math.hypot(b.vx,b.vy)<.04)b.vx=b.vy=0;else moving=true;
-    if(b.x<T.x+BR){b.x=T.x+BR;b.vx=-b.vx*.85;}if(b.x>T.x+T.w-BR){b.x=T.x+T.w-BR;b.vx=-b.vx*.85;}if(b.y<T.y+BR){b.y=T.y+BR;b.vy=-b.vy*.85;}if(b.y>T.y+T.h-BR){b.y=T.y+T.h-BR;b.vy=-b.vy*.85;}
-    for(const p of pockets)if(Math.hypot(b.x-p[0],b.y-p[1])<21){b.out=true;b.vx=b.vy=0;st.shot&&st.shot.potted.push(b.k);Amb.pop();break;}}
+ /* ---------- sinuca mata-mata ----------
+    Mesa em pé com 4 bolas azuis em cima e 4 vermelhas embaixo, encostadas nas tabelas, e a branca no centro.
+    A cor de cada jogador sai da primeira bola que ele encaçapar. Encaçapou a sua, joga de novo.
+    Falta (não acertar nada, bater primeiro na do adversário ou matar a branca): o adversário tira uma bola dele da mesa.
+    Vence quem tirar as 4 bolas da própria cor primeiro. O efeito escolhido na branca muda o que ela faz depois da batida. */
+ function pool(opp){const {mc,ctx:x}=miniOpen('🎱 Sinuca mata-mata contra '+opp,'Mire com o mouse e segure para dar força. No disco à direita, escolha onde o taco bate na branca: em cima ela segue, no meio para, embaixo volta, dos lados faz curva. Encaçapou a sua cor, joga de novo. Errou a bola ou bateu primeiro na do adversário: ele escolhe uma bola dele para tirar da mesa.');
+  const T={x:300,y:36,w:170,h:340},BR=8,PR=13,cx=T.x+T.w/2,cy=T.y+T.h/2,SPIN={x:632,y:150,r:58};
+  const pockets=[[T.x,T.y],[T.x+T.w,T.y],[T.x-2,cy],[T.x+T.w+2,cy],[T.x,T.y+T.h],[T.x+T.w,T.y+T.h]];
+  const balls=[{x:cx,y:cy,vx:0,vy:0,k:'cue'}];
+  for(const [px,py,k] of [[cx-9,T.y+BR+1,'blue'],[cx+9,T.y+BR+1,'blue'],[T.x+BR+1,T.y+T.h*.21,'blue'],[T.x+T.w-BR-1,T.y+T.h*.21,'blue'],[cx-9,T.y+T.h-BR-1,'red'],[cx+9,T.y+T.h-BR-1,'red'],[T.x+BR+1,T.y+T.h*.79,'red'],[T.x+T.w-BR-1,T.y+T.h*.79,'red']])balls.push({x:px,y:py,vx:0,vy:0,k});
+  R.poolSeries??={};const series=R.poolSeries[opp]??={me:0,op:0};
+  const st={turn:'me',color:{me:null,op:null},aim:[cx,T.y+40],power:0,charging:false,spinDrag:false,spin:{x:0,y:0},shot:null,over:false,think:0,msg:'Sua vez · a mesa está aberta',flash:0,choose:null};M={raf:0,balls,st};const tok=M;
+  const other=p=>p==='me'?'op':'me',left=c=>balls.filter(b=>!b.out&&b.k===c).length,name=p=>p==='me'?'Você':opp,COL={blue:'#3d6fd0',red:'#d8453f'};
+  const tally=p=>st.color[p]?4-left(st.color[p]):0;
+  const sc=()=>score('Você '+tally('me')+' × '+tally('op')+' '+opp);sc();
+  function shoot(ang,pw,spin){const cue=balls[0];cue.vx=Math.cos(ang)*pw*15;cue.vy=Math.sin(ang)*pw*15;cue.spin={x:spin.x,y:spin.y,hit:false};st.shot={by:st.turn,first:null,potted:[]};Amb.step();}
+  function physics(){let moving=false;
+   for(const b of balls){if(b.out)continue;
+    // efeito lateral: a branca faz curva enquanto rola
+    if(b.spin&&b.spin.x){const sp=Math.hypot(b.vx,b.vy);if(sp>.3){const c=b.spin.x*.03*Math.min(1,sp/5),nx=-b.vy/sp,ny=b.vx/sp;b.vx+=nx*c;b.vy+=ny*c;}b.spin.x*=.992;}
+    b.x+=b.vx;b.y+=b.vy;b.vx*=.987;b.vy*=.987;if(Math.hypot(b.vx,b.vy)<.04){b.vx=b.vy=0;if(b.spin)b.spin.x=0;}else moving=true;
+    const side=b.spin?.x||0;
+    if(b.x<T.x+BR){b.x=T.x+BR;b.vx=-b.vx*.85;b.vy+=side*1.4;}if(b.x>T.x+T.w-BR){b.x=T.x+T.w-BR;b.vx=-b.vx*.85;b.vy-=side*1.4;}
+    if(b.y<T.y+BR){b.y=T.y+BR;b.vy=-b.vy*.85;b.vx-=side*1.4;}if(b.y>T.y+T.h-BR){b.y=T.y+T.h-BR;b.vy=-b.vy*.85;b.vx+=side*1.4;}
+    if(side&&(b.x===T.x+BR||b.x===T.x+T.w-BR||b.y===T.y+BR||b.y===T.y+T.h-BR))b.spin.x*=.5;
+    for(const p of pockets)if(Math.hypot(b.x-p[0],b.y-p[1])<PR){b.out=true;b.vx=b.vy=0;st.shot&&st.shot.potted.push(b.k);Amb.pop();break;}}
    for(let i=0;i<balls.length;i++)for(let j=i+1;j<balls.length;j++){const a=balls[i],b=balls[j];if(a.out||b.out)continue;const dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy);
-    if(d>0&&d<2*BR){const nx=dx/d,ny=dy/d,o=(2*BR-d)/2;a.x-=nx*o;a.y-=ny*o;b.x+=nx*o;b.y+=ny*o;const rel=(a.vx-b.vx)*nx+(a.vy-b.vy)*ny;if(rel>0){a.vx-=rel*nx;a.vy-=rel*ny;b.vx+=rel*nx;b.vy+=rel*ny;if(rel>2)Amb.step();}}}
+    if(d>0&&d<2*BR){const nx=dx/d,ny=dy/d,o=(2*BR-d)/2;a.x-=nx*o;a.y-=ny*o;b.x+=nx*o;b.y+=ny*o;const rel=(a.vx-b.vx)*nx+(a.vy-b.vy)*ny;
+     if(rel>0){const cue=a.k==='cue'?a:b.k==='cue'?b:null,sp=cue?Math.hypot(cue.vx,cue.vy):0,dir=cue&&sp?[cue.vx/sp,cue.vy/sp]:null;
+      a.vx-=rel*nx;a.vy-=rel*ny;b.vx+=rel*nx;b.vy+=rel*ny;if(rel>2)Amb.step();
+      if(cue&&st.shot&&!st.shot.first)st.shot.first=(cue===a?b:a).k;
+      // efeito alto/baixo: na primeira batida a branca segue (em cima), para (centro) ou volta (embaixo)
+      if(cue&&dir&&cue.spin&&!cue.spin.hit){cue.spin.hit=true;const k=cue.spin.y*rel*.75;cue.vx+=dir[0]*k;cue.vy+=dir[1]*k;}}}}
    return moving;}
-  function settle(){const s=st.shot;st.shot=null;for(const k of s.potted)if(k==='me'||k==='op')st.pot[k]++;sc();
-   if(st.pot.me>=3||st.pot.op>=3){st.over=true;const win=st.pot.me>=3;advance(40);results('pool',opp,win);miniEnd(win?'Você venceu! '+opp+' pede revanche com os olhos.':opp+' venceu desta vez. Na próxima a mesa é sua.',[{t:'🔁 Revanche',fn:()=>{miniClose();pool(opp);}},{t:'Sair',fn:miniClose}]);return;}
-   const cue=balls[0],keep=s.potted.includes(s.by)&&!s.potted.includes('cue');
-   if(s.potted.includes('cue')){cue.out=false;cue.x=200;cue.y=210;cue.vx=cue.vy=0;while(balls.some(b=>b!==cue&&!b.out&&Math.hypot(b.x-cue.x,b.y-cue.y)<2*BR+1))cue.y+=2*BR+2;}
-   if(!keep)st.turn=st.turn==='me'?'op':'me';st.flash=1;
-   st.msg=st.turn==='me'?(keep?'Boa! Jogue de novo':s.potted.includes('cue')?opp+' encaçapou a branca. Sua vez':'Sua vez'):(s.potted.includes('cue')?'Você encaçapou a branca. Vez de '+opp:'Vez de '+opp);if(st.turn==='op')st.think=55;}
-  function ai(){const cue=balls[0];let best=null;const norm=a=>{a=Math.abs(a)%(Math.PI*2);return a>Math.PI?Math.PI*2-a:a;};
-   for(const b of balls)if(!b.out&&b.k==='op')for(const p of pockets){const dx=p[0]-b.x,dy=p[1]-b.y,d=Math.hypot(dx,dy),gx=b.x-dx/d*2*BR,gy=b.y-dy/d*2*BR,ax=gx-cue.x,ay=gy-cue.y,ad=Math.hypot(ax,ay),cut=norm(Math.atan2(ay,ax)-Math.atan2(dy,dx));
-    if(cut>1.15)continue;const s=d+ad+cut*220;if(!best||s<best.s)best={s,ang:Math.atan2(ay,ax),dist:d+ad};}
-   if(!best){const t=balls.find(b=>!b.out&&b.k==='op')||balls.find(b=>!b.out&&b!==cue);best={ang:Math.atan2(t.y-cue.y,t.x-cue.x),dist:300};}
-   shoot(best.ang+(Math.random()-.5)*(opp==='Téo'?.025:.045),Math.min(1,.38+best.dist/750));}
-  // mira: primeira bola atingida pela trajetória da branca
+  function respotCue(){const cue=balls[0];cue.out=false;cue.x=cx;cue.y=cy;cue.vx=cue.vy=0;cue.spin=null;let n=0;while(balls.some(b=>b!==cue&&!b.out&&Math.hypot(b.x-cue.x,b.y-cue.y)<2*BR+1)&&n<40){cue.y+=(n%2?-1:1)*(2*BR+2)*(1+(n>>1));n++;}}
+  function end(win){st.over=true;st.choose=null;if(win)series.me++;else series.op++;advance(40);results('pool',opp,win);
+   miniEnd(win?'Você matou as quatro! '+opp+' pede revanche.':opp+' matou as dele primeiro. Na próxima a mesa é sua.',[{t:'🔁 Revanche',fn:()=>{miniClose();pool(opp);}},{t:'Sair',fn:miniClose}]);}
+  function checkWin(){for(const p of ['me','op'])if(st.color[p]&&!left(st.color[p])){end(p==='me');return true;}return false;}
+  function removeOne(p,ball){ball.out=true;sc();st.flash=1;Amb.pop();st.choose=null;if(checkWin())return;st.msg=p==='me'?'Você tirou uma bola sua. Sua vez':opp+' tirou uma bola dele. Vez de '+opp;if(st.turn==='op')st.think=55;}
+  function aiRemove(){const mine=balls.filter(b=>!b.out&&b.k===st.color.op);if(!mine.length)return;
+   // tira a bola mais difícil de matar: a mais longe de qualquer caçapa
+   const hard=mine.map(b=>({b,d:Math.min(...pockets.map(p=>Math.hypot(p[0]-b.x,p[1]-b.y)))})).sort((a,c)=>c.d-a.d)[0].b;removeOne('op',hard);}
+  function settle(){const s=st.shot;st.shot=null;const me=s.by,them=other(me),colored=s.potted.filter(k=>k!=='cue');
+   let foul=s.potted.includes('cue')?'matou a branca':!s.first?'não acertou nenhuma bola':st.color[me]&&s.first!==st.color[me]?'bateu primeiro na bola do adversário':null;
+   if(!foul&&!st.color[me]&&colored.length){st.color[me]=colored[0];st.color[them]=colored[0]==='blue'?'red':'blue';}
+   if(s.potted.includes('cue'))respotCue();sc();
+   if(checkWin())return;
+   const keep=!foul&&st.color[me]&&colored.includes(st.color[me]);
+   st.turn=keep?me:them;st.flash=1;
+   if(foul){st.msg=name(me)+' '+foul+'. ';if(st.color[them]&&left(st.color[them])){if(them==='me'){st.choose='me';st.msg+='Escolha uma bola sua para tirar da mesa';}else{st.msg+=opp+' escolhe uma bola dele para tirar';st.think=40;st.choose='op';}}else st.msg+=them==='me'?'Sua vez':'Vez de '+opp;}
+   else st.msg=keep?(me==='me'?'Boa! Joga de novo':opp+' matou e joga de novo'):(st.turn==='me'?'Sua vez':'Vez de '+opp);
+   if(st.turn==='op'&&!st.choose)st.think=55;}
+  function ai(){const cue=balls[0],want=st.color.op;let best=null;const norm=a=>{a=Math.abs(a)%(Math.PI*2);return a>Math.PI?Math.PI*2-a:a;};
+   for(const b of balls)if(!b.out&&b.k!=='cue'&&(!want||b.k===want))for(const p of pockets){const dx=p[0]-b.x,dy=p[1]-b.y,d=Math.hypot(dx,dy),gx=b.x-dx/d*2*BR,gy=b.y-dy/d*2*BR,ax=gx-cue.x,ay=gy-cue.y,ad=Math.hypot(ax,ay),cut=norm(Math.atan2(ay,ax)-Math.atan2(dy,dx));
+    if(cut>1.15)continue;const sc2=d+ad+cut*180;if(!best||sc2<best.s)best={s:sc2,ang:Math.atan2(ay,ax),dist:d+ad};}
+   if(!best){const t=balls.find(b=>!b.out&&b.k!=='cue'&&(!want||b.k===want))||balls.find(b=>!b.out&&b!==cue);best={ang:Math.atan2(t.y-cue.y,t.x-cue.x),dist:200};}
+   shoot(best.ang+(Math.random()-.5)*(opp==='Téo'?.03:.05),Math.min(1,.32+best.dist/520),{x:0,y:(Math.random()-.4)*.5});}
+  const inSpin=(px,py)=>Math.hypot(px-SPIN.x,py-SPIN.y)<=SPIN.r+6;
+  function setSpin(px,py){let sx=(px-SPIN.x)/SPIN.r,sy=(py-SPIN.y)/SPIN.r;const m=Math.hypot(sx,sy);if(m>.85){sx*=.85/m;sy*=.85/m;}st.spin={x:Math.round(sx*20)/20,y:Math.round(-sy*20)/20};}
   function aimHit(a){const cue=balls[0],dx=Math.cos(a),dy=Math.sin(a);let best=null;for(const b of balls){if(b===cue||b.out)continue;const fx=cue.x-b.x,fy=cue.y-b.y,B=fx*dx+fy*dy,C=fx*fx+fy*fy-4*BR*BR,D=B*B-C;if(D<0)continue;const t=-B-Math.sqrt(D);if(t>0&&(!best||t<best.t))best={t,b};}
    if(!best)return null;const gx=cue.x+dx*best.t,gy=cue.y+dy*best.t,nx=best.b.x-gx,ny=best.b.y-gy,nd=Math.hypot(nx,ny);return {gx,gy,b:best.b,ox:nx/nd,oy:ny/nd};}
-  mc.onpointermove=e=>{st.aim=miniPos(e);};mc.onpointerdown=e=>{st.aim=miniPos(e);if(st.turn==='me'&&!st.shot&&!st.over){st.charging=true;st.power=0;}};
-  mc.onpointerup=()=>{if(!st.charging)return;st.charging=false;const cue=balls[0];shoot(Math.atan2(st.aim[1]-cue.y,st.aim[0]-cue.x),Math.max(.08,st.power));};
+  mc.onpointermove=e=>{const [px,py]=miniPos(e);if(st.spinDrag){setSpin(px,py);return;}st.aim=[px,py];};
+  mc.onpointerdown=e=>{const [px,py]=miniPos(e);if(st.over)return;
+   if(inSpin(px,py)){st.spinDrag=true;setSpin(px,py);return;}
+   if(st.choose==='me'){const pick=balls.filter(b=>!b.out&&b.k===st.color.me).sort((a,b)=>Math.hypot(a.x-px,a.y-py)-Math.hypot(b.x-px,b.y-py))[0];if(pick&&Math.hypot(pick.x-px,pick.y-py)<22)removeOne('me',pick);return;}
+   st.aim=[px,py];if(st.turn==='me'&&!st.shot){st.charging=true;st.power=0;}};
+  mc.onpointerup=()=>{if(st.spinDrag){st.spinDrag=false;return;}if(!st.charging)return;st.charging=false;const cue=balls[0];shoot(Math.atan2(st.aim[1]-cue.y,st.aim[0]-cue.x),Math.max(.08,st.power),st.spin);};
   function loop(){if(st.charging)st.power=Math.min(1,st.power+.018);if(st.flash>0)st.flash-=.02;
-   if(st.shot){const m=physics()||physics();if(!m)settle();}else if(st.turn==='op'&&!st.over){if(--st.think<=0)ai();}
-   const rr=(a,b,w,h,r)=>{x.beginPath();x.roundRect?x.roundRect(a,b,w,h,r):x.rect(a,b,w,h);};
-   // 0.86: desenho em pixel art (1 pixel de arte = 3 do tabuleiro); a física e as regras acima não mudaram
-   const {f,o,ln,show}=mq(x),felt='#2f8651';
-   f(0,0,762,420,'#3a2116');for(let y=0;y<420;y+=24){f(0,y,762,3,'#2c180f');for(let k=0;k<762;k+=96)f(k+((y/24)%2)*48,y,3,24,'#2c180f');}
-   f(20,24,732,392,'#170c07');f(14,14,732,392,'#8a5530');f(14,14,732,6,'#a8703f');f(14,400,732,6,'#5c3520');f(14,14,6,392,'#a8703f');f(740,14,6,392,'#5c3520');
-   for(let k=30;k<730;k+=42){f(k,21,15,3,'#9a6236');f(k+18,396,15,3,'#7a4a2a');}
-   for(const dx of [85,170,255,425,510,595]){f(T.x+dx-3,24,6,6,'#f4e6b0');f(T.x+dx-3,391,6,6,'#f4e6b0');}for(const dy of [85,170,255]){f(24,T.y+dy-3,6,6,'#f4e6b0');f(731,T.y+dy-3,6,6,'#f4e6b0');}
-   f(T.x-9,T.y-9,T.w+18,T.h+18,'#1d5632');f(T.x-9,T.y-9,T.w+18,3,'#2a7a48');
-   f(T.x,T.y,T.w,T.h,felt);f(T.x+45,T.y+30,T.w-90,T.h-60,'#33905a');f(T.x+150,T.y+75,T.w-300,T.h-150,'#389a60');
-   for(let i=0;i<70;i++)f(T.x+((i*131)%T.w),T.y+((i*71)%T.h),3,3,i%2?'#2a7a4a':'#3c9e64');
-   f(T.x,T.y,T.w,6,'#25703f');f(T.x,T.y,6,T.h,'#25703f');
-   f(T.x+159,T.y,3,T.h,'#55b47a');for(let a=Math.PI/2;a<=Math.PI*1.5;a+=.12)f(T.x+160+Math.cos(a)*50-1,T.y+T.h/2+Math.sin(a)*50-1,3,3,'#55b47a');for(const a of [T.x+160,500])f(a-2,T.y+T.h/2-2,6,6,'#7fcf9a');
-   for(const p of pockets){o(p[0],p[1],21,'#c79a56');o(p[0],p[1],18,'#5a3b1c');o(p[0],p[1],15,'#0e0805');f(p[0]-12,p[1]-15,9,3,'#e2bf7e');}
-   const cue=balls[0],my=st.turn==='me'&&!st.shot&&!st.over&&!cue.out;
-   if(my){const a=Math.atan2(st.aim[1]-cue.y,st.aim[0]-cue.x),h=aimHit(a),len=h?Math.hypot(h.gx-cue.x,h.gy-cue.y):400;
-    for(let t=18;t<len;t+=15)f(cue.x+Math.cos(a)*t-1,cue.y+Math.sin(a)*t-1,3,3,'#e9fff0');
-    if(h){for(let k=0;k<20;k++){const b=k/20*Math.PI*2;f(h.gx+Math.cos(b)*BR-1,h.gy+Math.sin(b)*BR-1,3,3,'#ffffff');}const tc=h.b.k==='me'?'#ffcf8a':'#9fc3ff';for(let t=12;t<90;t+=9)f(h.b.x+h.ox*t-2,h.b.y+h.oy*t-2,4,4,tc);}
-    const back=24+st.power*55,dx=-Math.cos(a),dy=-Math.sin(a);
-    for(let t=0;t<215;t+=3){const px=cue.x+dx*(back+t),py=cue.y+dy*(back+t),col=t<4?'#3d8bd0':t<10?'#fbfbf5':t<120?'#e3c08a':t<124?'#e2c26a':'#4a2618';f(px+5,py+7,4,4,'rgba(0,0,0,.25)');f(px-2,py-2,t>124?5:4,t>124?5:4,col);}}
-   for(const b of balls){if(b.out)continue;const col=b.k==='cue'?'#fbfbf5':b.k==='me'?'#ef8a3c':'#3d6fa8';o(b.x+3,b.y+4,BR,'rgba(0,0,0,.4)');o(b.x,b.y,BR,dk(col,.45));o(b.x-1,b.y-1,BR-3,col);
-    if(b.k==='op')f(b.x-BR+3,b.y-3,2*BR-6,6,'#f6f2ea');if(b.k!=='cue')o(b.x,b.y,3,'#fffdf5');f(b.x-5,b.y-6,3,3,'#ffffff');}
-   for(let i=0;i<3;i++)for(const [bx,kind,n] of [[60+i*24,'#ef8a3c',st.pot.me],[700-i*24,'#3d6fa8',st.pot.op]]){o(bx,401,9,'#120a06');if(i<n){o(bx,401,7,dk(kind,.4));o(bx-1,400,5,kind);f(bx-3,397,2,2,'#fff');}}
-   x.font='800 15px '+FONT;const mw=x.measureText(st.msg).width;f(22,15,mw+24,24,'#1a0e08');f(22,15,mw+24,3,'#3a2416');
-   if(st.charging){f(558,16,174,16,'#1a0e08');for(let k=0;k<Math.floor(170*st.power/6);k++)f(560+k*6,18,5,12,k<12?'#4fbf8a':k<20?'#f2a93b':'#e46d6d');}
-   show();x.fillStyle=st.flash>0?'#ffe46b':'#fff';x.fillText(st.msg,34,32);
+   if(st.shot){const m=physics()||physics();if(!m)settle();}else if(st.turn==='op'&&!st.over){if(--st.think<=0){if(st.choose==='op')aiRemove();else ai();}}
+   // desenho em pixel art (1 pixel de arte = 2 da mesa)
+   const {f,o,ln,show}=mq(x,2),felt='#2f8651',t=R.t;
+   f(0,0,760,420,'#3a2116');for(let y=0;y<420;y+=24){f(0,y,760,2,'#2c180f');for(let k=0;k<760;k+=96)f(k+((y/24)%2)*48,y,2,24,'#2c180f');}
+   // quadro de giz com o placar riscado
+   f(24,30,236,206,'#7a4a2a');f(30,36,224,194,'#2c4a3a');for(let i=0;i<40;i++)f(36+((i*97)%210),42+((i*61)%180),2,2,'#35574a');
+   const chalk='#f2efe2';
+   [['me',78],['op',150]].forEach(([p,yy])=>{if(st.color[p])o(48,yy-4,7,COL[st.color[p]]);for(let i=0;i<tally(p);i++){ln(150+i*14,yy-16,152+i*14,yy+6,chalk,3);}
+    for(let i=0;i<Math.min(9,series[p]);i++){ln(150+i*10,yy+22,151+i*10,yy+34,'#d9d4c2',2);}});
+   f(40,110,204,2,'#7f9c8c');f(30,226,224,4,'#5a3b26');f(70,222,18,4,'#f2efe2');f(96,223,10,3,'#e8b4c0');
+   // mensagem
+   if(st.msg){f(24,252,236,52,st.flash>0?'#5a3b26':'#2a1a10');f(24,252,236,2,'#7a4a2a');}
+   // mesa em pé
+   f(T.x-24,T.y-24,T.w+48,T.h+48,'#150b06');f(T.x-22,T.y-22,T.w+44,T.h+44,'#8a5530');f(T.x-22,T.y-22,T.w+44,4,'#a8703f');f(T.x-22,T.y+T.h+18,T.w+44,4,'#5c3520');
+   for(const p of [.25,.5,.75]){f(T.x+T.w*p-2,T.y-16,4,4,'#f4e6b0');f(T.x+T.w*p-2,T.y+T.h+12,4,4,'#f4e6b0');}for(const p of [.125,.375,.625,.875]){f(T.x-16,T.y+T.h*p-2,4,4,'#f4e6b0');f(T.x+T.w+12,T.y+T.h*p-2,4,4,'#f4e6b0');}
+   f(T.x-8,T.y-8,T.w+16,T.h+16,'#1d5632');f(T.x,T.y,T.w,T.h,felt);f(T.x+20,T.y+30,T.w-40,T.h-60,'#33905a');f(T.x+50,T.y+90,T.w-100,T.h-180,'#389a60');
+   for(let i=0;i<50;i++)f(T.x+((i*131)%T.w),T.y+((i*71)%T.h),2,2,i%2?'#2a7a4a':'#3c9e64');f(T.x,T.y,T.w,4,'#25703f');f(T.x,T.y,4,T.h,'#25703f');
+   f(T.x,cy-1,T.w,2,'#55b47a');
+   for(const p of pockets){o(p[0],p[1],PR+5,'#c79a56');o(p[0],p[1],PR+2,'#5a3b1c');o(p[0],p[1],PR,'#0e0805');}
+   const cue=balls[0],my=st.turn==='me'&&!st.shot&&!st.over&&!st.choose&&!cue.out;
+   if(my){const a=Math.atan2(st.aim[1]-cue.y,st.aim[0]-cue.x),h=aimHit(a),len=h?Math.hypot(h.gx-cue.x,h.gy-cue.y):300;
+    for(let k=14;k<len;k+=10)f(cue.x+Math.cos(a)*k-1,cue.y+Math.sin(a)*k-1,2,2,'#e9fff0');
+    if(h){for(let k=0;k<16;k++){const b=k/16*Math.PI*2;f(h.gx+Math.cos(b)*BR-1,h.gy+Math.sin(b)*BR-1,2,2,'#ffffff');}for(let k=10;k<70;k+=8)f(h.b.x+h.ox*k-2,h.b.y+h.oy*k-2,4,4,h.b.k==='blue'?'#9fc3ff':'#ffb0a0');}
+    const back=20+st.power*45,dx=-Math.cos(a),dy=-Math.sin(a);
+    for(let k=0;k<170;k+=2){const px=cue.x+dx*(back+k),py=cue.y+dy*(back+k),col=k<3?'#3d8bd0':k<8?'#fbfbf5':k<95?'#e3c08a':k<98?'#e2c26a':'#4a2618';f(px+3,py+5,3,3,'rgba(0,0,0,.25)');f(px-1,py-1,k>98?4:3,k>98?4:3,col);}}
+   for(const b of balls){if(b.out)continue;const col=b.k==='cue'?'#fbfbf5':COL[b.k];o(b.x+2,b.y+3,BR,'rgba(0,0,0,.4)');o(b.x,b.y,BR,dk(col,.45));o(b.x-1,b.y-1,BR-2,col);f(b.x-4,b.y-5,2,2,'#ffffff');
+    if(st.choose==='me'&&b.k===st.color.me){const pulse=Math.floor(t*6)%2;for(let k=0;k<16;k++){const a=k/16*Math.PI*2;f(b.x+Math.cos(a)*(BR+4+pulse)-1,b.y+Math.sin(a)*(BR+4+pulse)-1,2,2,'#ffe46b');}}}
+   // disco de efeito: onde o taco bate na branca
+   o(SPIN.x,SPIN.y,SPIN.r+6,'#1a0e08');o(SPIN.x,SPIN.y,SPIN.r+3,'#5a3b26');o(SPIN.x,SPIN.y,SPIN.r,'#f6f2e8');o(SPIN.x-14,SPIN.y-16,SPIN.r*.55,'#fffdf8');
+   f(SPIN.x-SPIN.r,SPIN.y-1,SPIN.r*2,2,'#d8d2c4');f(SPIN.x-1,SPIN.y-SPIN.r,2,SPIN.r*2,'#d8d2c4');
+   const dxs=SPIN.x+st.spin.x*SPIN.r,dys=SPIN.y-st.spin.y*SPIN.r;o(dxs,dys,8,'#7a1f1a');o(dxs,dys,6,'#e2453f');f(dxs-3,dys-4,2,2,'#ffb0a0');
+   if(st.charging){f(560,240,144,16,'#1a0e08');for(let k=0;k<Math.floor(140*st.power/6);k++)f(562+k*6,242,5,12,k<10?'#4fbf8a':k<17?'#f2a93b':'#e46d6d');}
+   show();
+   // textos nítidos por cima
+   x.fillStyle='#f2efe2';x.font='800 15px '+FONT;x.fillText('VOCÊ',62,80);x.fillText(opp.toUpperCase(),62,152);x.font='700 10px '+FONT;x.fillStyle='#b9c9bc';x.fillText('bolas',62,94);x.fillText('bolas',62,166);x.fillText('partidas',62,108);x.fillText('partidas',62,180);
+   x.font='800 13px '+FONT;x.fillStyle=st.flash>0?'#ffe46b':'#fff';const words=st.msg.split(' ');let line='',ly=272;for(const w2 of words){if(x.measureText(line+w2).width>214){x.fillText(line,36,ly);line='';ly+=17;}line+=w2+' ';}x.fillText(line,36,ly);
+   x.fillStyle='#f2efe2';x.font='800 12px '+FONT;x.textAlign='center';x.fillText('EFEITO NA BRANCA',SPIN.x,72);x.font='700 11px '+FONT;x.fillStyle='#e8dcc0';
+   x.fillText('segue ▲',SPIN.x,SPIN.y-SPIN.r-12+4);x.fillText('volta ▼',SPIN.x,SPIN.y+SPIN.r+22);x.fillText('◀ curva',SPIN.x-SPIN.r-38,SPIN.y+4);x.fillText('curva ▶',SPIN.x+SPIN.r+38,SPIN.y+4);
+   const sy2=st.spin.y,sx2=st.spin.x;x.fillStyle='#fff';x.font='800 12px '+FONT;x.fillText(Math.abs(sy2)<.15&&Math.abs(sx2)<.15?'centro: a branca para':sy2>=.15?'em cima: a branca segue':sy2<=-.15?'embaixo: a branca volta':'',SPIN.x,SPIN.y+SPIN.r+42);if(Math.abs(sx2)>=.15)x.fillText(sx2>0?'com curva para a direita':'com curva para a esquerda',SPIN.x,SPIN.y+SPIN.r+58);
+   if(st.charging){x.fillText('FORÇA',SPIN.x,236);}x.textAlign='left';
    if(M===tok)M.raf=requestAnimationFrame(loop);}
   M.raf=requestAnimationFrame(loop);}
 
