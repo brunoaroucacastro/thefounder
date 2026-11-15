@@ -23,6 +23,9 @@ Vôlei
 Sinuca
 - Níveis Fácil (o de antes), Médio e Difícil, para escolher durante a partida. O difícil escolhe tacadas melhores e mira melhor, mas erra cerca de 3 em 10 tacadas para encaçapar.
 - Sinucado, o adversário tenta de tabela. Às vezes acerta, às vezes erra.
+- O Difícil simula a tacada antes de jogar, então só tenta bolas que entram de verdade (acerta cerca de 8 em 10, com um erro de mira pequeno que nunca some). Quando a tacada é ruim ou arriscada, às vezes joga de segurança para deixar você sinucado.
+- A branca, rápida, passa raspando pela boca da caçapa sem cair; devagar, ou entrando de frente, ela cai. As outras bolas caem como antes.
+- Correção: falta com a mesa aberta (errar todas as bolas ou matar a branca antes de ter cor) agora é punida. O adversário escolhe qualquer bola para tirar, e a cor dela vira a dele.
 - Níveis recalibrados: o antigo Fácil virou o Médio e entrou um Fácil de verdade. Nas tacadas para encaçapar, Fácil acerta cerca de 22%, Médio 40% e Difícil 67%. Sinucado, sai de tabela em cerca de 42% das vezes no Fácil, 61% no Médio e 82% no Difícil.
 - Botão de desistir.
 - A física anda em passos menores, então as batidas saem no ângulo certo mesmo com tacada forte. Isso também melhora um pouco o Fácil.

@@ -779,7 +779,7 @@ const Town=(()=>{
  // Tabela (sair da sinuca): erro normal com desvio 'bank'; quanto maior, mais vezes ele não acerta a bola dele.
  const POOL_LEVELS={facil:{name:'Fácil',err:()=>gauss()*.04,bank:.15,cut:1.3,cw:90,safe:false,loose:true},
   medio:{name:'Médio',err:o=>(Math.random()-.5)*(o==='Téo'?.03:.05),bank:.085,cut:1.15,cw:180,safe:false,loose:true},
-  dificil:{name:'Difícil',err:()=>gauss()*.0042,bank:.04,cut:.85,cw:340,safe:true}};
+  dificil:{name:'Difícil',err:()=>gauss()*.0042,bank:.04,cut:1.05,cw:260,safe:true,sim:true}};
  let poolLevel='facil';
  function gauss(){let u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
  function pool(opp){const {mc,ctx:x}=miniOpen('🎱 Sinuca mata-mata contra '+opp,'Mire com o mouse e segure para dar força. No disco à direita, escolha onde o taco bate na branca: em cima ela segue, no meio para, embaixo volta, dos lados faz curva. Encaçapou a sua cor, joga de novo. Errou a bola ou bateu primeiro na do adversário: ele escolhe uma bola dele para tirar da mesa.');
@@ -807,7 +807,7 @@ const Town=(()=>{
     if(b.x<T.x+BR){b.x=T.x+BR;b.vx=-b.vx*.85;b.vy+=side*1.4;}if(b.x>T.x+T.w-BR){b.x=T.x+T.w-BR;b.vx=-b.vx*.85;b.vy-=side*1.4;}
     if(b.y<T.y+BR){b.y=T.y+BR;b.vy=-b.vy*.85;b.vx-=side*1.4;}if(b.y>T.y+T.h-BR){b.y=T.y+T.h-BR;b.vy=-b.vy*.85;b.vx+=side*1.4;}
     if(side&&(b.x===T.x+BR||b.x===T.x+T.w-BR||b.y===T.y+BR||b.y===T.y+T.h-BR))b.spin.x*=.5;
-    for(const p of pockets)if(Math.hypot(b.x-p[0],b.y-p[1])<PR){b.out=true;b.vx=b.vy=0;if(st.shot){st.shot.potted.push(b.k);st.shot.pottedBalls.push(b);}Amb.pop();break;}}
+    for(const p of pockets)if(pocketed(b,p)){b.out=true;b.vx=b.vy=0;if(st.shot){st.shot.potted.push(b.k);st.shot.pottedBalls.push(b);}Amb.pop();break;}}
    for(let i=0;i<balls.length;i++)for(let j=i+1;j<balls.length;j++){const a=balls[i],b=balls[j];if(a.out||b.out)continue;const dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy);
     if(d>0&&d<2*BR){const nx=dx/d,ny=dy/d,o=(2*BR-d)/2;a.x-=nx*o;a.y-=ny*o;b.x+=nx*o;b.y+=ny*o;const rel=(a.vx-b.vx)*nx+(a.vy-b.vy)*ny;
      if(rel>0){const cue=a.k==='cue'?a:b.k==='cue'?b:null,sp=cue?Math.hypot(cue.vx,cue.vy):0,dir=cue&&sp?[cue.vx/sp,cue.vy/sp]:null;
@@ -818,14 +818,19 @@ const Town=(()=>{
    }
    for(const b of balls){if(b.out)continue;b.vx*=.987;b.vy*=.987;{const sp=Math.hypot(b.vx,b.vy);if(sp>0){const k=Math.max(0,sp-.011)/sp;b.vx*=k;b.vy*=k;}}if(Math.hypot(b.vx,b.vy)<.04){b.vx=b.vy=0;if(b.spin)b.spin.x=0;}else moving=true;}
    return moving;}
+  function pocketed(b,p){const d=Math.hypot(b.x-p[0],b.y-p[1]);if(d>=PR)return false;return !(b.k==='cue'&&d>PR*.55&&Math.hypot(b.vx,b.vy)>3.5);}
   function respot(ball){ball.out=false;ball.vx=ball.vy=0;ball.x=ball.hx;ball.y=ball.hy;const free=()=>!balls.some(b=>b!==ball&&!b.out&&Math.hypot(b.x-ball.x,b.y-ball.y)<2*BR+1);
    for(let r=0;r<120&&!free();r+=4)for(let a=0;a<12&&!free();a++){ball.x=Math.max(T.x+BR,Math.min(T.x+T.w-BR,ball.hx+Math.cos(a/12*Math.PI*2)*r));ball.y=Math.max(T.y+BR,Math.min(T.y+T.h-BR,ball.hy+Math.sin(a/12*Math.PI*2)*r));}}
   function respotCue(){const cue=balls[0];cue.out=false;cue.x=cx;cue.y=cy;cue.vx=cue.vy=0;cue.spin=null;let n=0;while(balls.some(b=>b!==cue&&!b.out&&Math.hypot(b.x-cue.x,b.y-cue.y)<2*BR+1)&&n<40){cue.y+=(n%2?-1:1)*(2*BR+2)*(1+(n>>1));n++;}}
   function end(win){st.over=true;st.choose=null;if(win)series.me++;else series.op++;advance(40);results('pool',opp,win);const sui=/matou a branca na última/.test(st.msg);
    miniEnd(st.gaveUp?'Você desistiu. '+opp+' leva essa.':sui?(win?opp+' matou a branca na última bola e perdeu. Vitória sua!':'Você matou a branca na última bola e perdeu a partida.'):win?'Você matou as quatro! '+opp+' pede revanche.':opp+' matou as dele primeiro. Na próxima a mesa é sua.',[{t:'🔁 Revanche',fn:()=>{miniClose();pool(opp);}},{t:'Sair',fn:miniClose}]);}
   function checkWin(){for(const p of ['me','op'])if(st.color[p]&&!left(st.color[p])){end(p==='me');return true;}return false;}
-  function removeOne(p,ball){ball.out=true;sc();st.flash=1;Amb.pop();st.choose=null;if(checkWin())return;st.msg=p==='me'?'Você tirou uma bola sua. Sua vez':opp+' tirou uma bola dele. Vez de '+opp;if(st.turn==='op')st.think=55;}
-  function aiRemove(){const mine=balls.filter(b=>!b.out&&b.k===st.color.op);if(!mine.length)return;
+  function removeOne(p,ball){const open=!st.color[p];if(open){st.color[p]=ball.k;st.color[other(p)]=ball.k==='blue'?'red':'blue';}ball.out=true;sc();st.flash=1;Amb.pop();st.choose=null;if(checkWin())return;
+   const cor=ball.k==='blue'?'azul':'vermelha';st.msg=open?(p==='me'?'Você tirou uma '+cor+': sua cor é '+cor+'. Sua vez':opp+' tirou uma '+cor+' e ficou com essa cor. Vez de '+opp):p==='me'?'Você tirou uma bola sua. Sua vez':opp+' tirou uma bola dele. Vez de '+opp;if(st.turn==='op')st.think=55;}
+  function aiRemove(){const pd=b=>Math.min(...pockets.map(p=>Math.hypot(p[0]-b.x,p[1]-b.y)));
+   // mesa aberta: fica com a cor cujas bolas estão mais perto das caçapas
+   let col=st.color.op;if(!col){const avg=c=>{const l=balls.filter(b=>!b.out&&b.k===c);return l.length?l.reduce((a,b)=>a+pd(b),0)/l.length:1e9;};col=avg('blue')<=avg('red')?'blue':'red';}
+   const mine=balls.filter(b=>!b.out&&b.k===col);if(!mine.length)return;
    // tira a bola mais difícil de matar: a mais longe de qualquer caçapa
    const hard=mine.map(b=>({b,d:Math.min(...pockets.map(p=>Math.hypot(p[0]-b.x,p[1]-b.y)))})).sort((a,c)=>c.d-a.d)[0].b;removeOne('op',hard);}
   function settle(){const s=st.shot;st.shot=null;const me=s.by,them=other(me),colored=s.potted.filter(k=>k!=='cue');
@@ -839,10 +844,31 @@ const Town=(()=>{
    if(checkWin())return;
    const keep=!foul&&st.color[me]&&colored.includes(st.color[me]);
    st.turn=keep?me:them;st.flash=1;
-   if(foul){st.msg=name(me)+' '+foul+'. '+(back?(back>1?'As bolas voltam para a mesa. ':'A bola volta para a mesa. '):'');if(st.color[them]&&left(st.color[them])){if(them==='me'){st.choose='me';st.msg+='Escolha uma bola sua para tirar da mesa';}else{st.msg+=opp+' escolhe uma bola dele para tirar';st.think=40;st.choose='op';}}else st.msg+=them==='me'?'Sua vez':'Vez de '+opp;}
+   if(foul){st.msg=name(me)+' '+foul+'. '+(back?(back>1?'As bolas voltam para a mesa. ':'A bola volta para a mesa. '):'');if(!st.color[them]){if(them==='me'){st.choose='me';st.msg+='Mesa aberta: escolha qualquer bola para tirar. A cor dela vira a sua';}else{st.msg+=opp+' escolhe uma bola para tirar (e a cor dele)';st.think=40;st.choose='op';}}
+    else if(left(st.color[them])){if(them==='me'){st.choose='me';st.msg+='Escolha uma bola sua para tirar da mesa';}else{st.msg+=opp+' escolhe uma bola dele para tirar';st.think=40;st.choose='op';}}else st.msg+=them==='me'?'Sua vez':'Vez de '+opp;}
    else st.msg=keep?(me==='me'?'Boa! Joga de novo':opp+' matou e joga de novo'):(st.turn==='me'?'Sua vez':'Vez de '+opp);
    if(st.turn==='op'&&!st.choose)st.think=55;}
-  function ai(){const cue=balls[0],want=st.color.op,lv=POOL_LEVELS[poolLevel];let best=null;const norm=a=>{a=Math.abs(a)%(Math.PI*2);return a>Math.PI?Math.PI*2-a:a;};
+  // simulação de uma tacada numa cópia da mesa (sem som); devolve o que caiu, a primeira bola tocada e quantas bolas suas ficam à vista da branca
+  function trial(ang,pw,spin){const snap=balls.map(b=>({x:b.x,y:b.y,vx:b.vx,vy:b.vy,out:b.out,spin:b.spin?{...b.spin}:null})),shot=st.shot,pop=Amb.pop,stp=Amb.step;Amb.pop=Amb.step=()=>{};
+   const cue=balls[0],v=(.045+.955*Math.pow(Math.max(0,Math.min(1,pw)),1.35))*15;cue.vx=Math.cos(ang)*v;cue.vy=Math.sin(ang)*v;cue.spin={x:spin.x,y:spin.y,hit:false};st.shot={by:'op',first:null,potted:[],pottedBalls:[]};
+   for(let i=0;i<3000&&physics();i++);
+   const mine=st.color.me,r={first:st.shot.first,potted:st.shot.potted.slice(),open:0};
+   if(!cue.out)for(const b of balls)if(!b.out&&b!==cue&&(!mine||b.k===mine)){const h=aimHit(Math.atan2(b.y-cue.y,b.x-cue.x));if(h&&h.b===b)r.open++;}
+   balls.forEach((b,i)=>Object.assign(b,snap[i]));st.shot=shot;Amb.pop=pop;Amb.step=stp;return r;}
+  function aiSim(lv){const cue=balls[0],want=st.color.op,norm=a=>{a=Math.abs(a)%(Math.PI*2);return a>Math.PI?Math.PI*2-a:a;},own=k=>k!=='cue'&&(!want||k===want),pots=[];
+   for(const b of balls)if(!b.out&&own(b.k))for(const p0 of pockets){const p=[Math.max(T.x+BR,Math.min(T.x+T.w-BR,p0[0])),Math.max(T.y+BR,Math.min(T.y+T.h-BR,p0[1]))],dx=p[0]-b.x,dy=p[1]-b.y,d=Math.hypot(dx,dy),gx=b.x-dx/d*2*BR,gy=b.y-dy/d*2*BR,ax=gx-cue.x,ay=gy-cue.y,ad=Math.hypot(ax,ay),cut=norm(Math.atan2(ay,ax)-Math.atan2(dy,dx));
+    if(cut>lv.cut)continue;pots.push({s:d+ad+cut*lv.cw,ang:Math.atan2(ay,ax),pw:Math.min(1,(.4+(d+ad)/400)/Math.max(.55,Math.cos(cut))),cut});}
+   pots.sort((a,b)=>a.s-b.s);let pot=null;
+   for(const c of pots.slice(0,7)){const r=trial(c.ang,c.pw,{x:0,y:-.1});if(r.potted.includes('cue')||!r.first||!own(r.first))continue;if(r.potted.some(k=>own(k))){pot=c;break;}}
+   // segurança que encurrala: encosta numa bola dele de um jeito que deixe as suas escondidas da branca
+   const wantSafety=!pot||(pot.cut>.55&&Math.random()<.4);let safe=null;
+   if(wantSafety){for(const t of balls){if(t.out||!own(t.k))continue;const base=Math.atan2(t.y-cue.y,t.x-cue.x);
+     for(const off of [-.22,-.12,-.05,0,.05,.12,.22])for(const pw of [.22,.38]){const r=trial(base+off,pw,{x:0,y:0});if(r.potted.includes('cue')||!r.first||!own(r.first))continue;
+      const sc3=r.open*100-(r.potted.some(k=>own(k))?60:0)+Math.random()*10;if(!safe||sc3<safe.s)safe={s:sc3,ang:base+off,pw,open:r.open};}}}
+   if(safe&&(!pot||safe.open===0)){st.msg=safe.open===0?opp+' joga para te deixar sinucado...':opp+' joga de segurança';shoot(safe.ang+lv.err(opp),safe.pw,{x:0,y:0});return true;}
+   if(pot){shoot(pot.ang+lv.err(opp),pot.pw,{x:0,y:-.1});return true;}
+   return false;}
+  function ai(){const cue=balls[0],want=st.color.op,lv=POOL_LEVELS[poolLevel];let best=null;if(lv.sim&&aiSim(lv))return;const norm=a=>{a=Math.abs(a)%(Math.PI*2);return a>Math.PI?Math.PI*2-a:a;};
    for(const b of balls)if(!b.out&&b.k!=='cue'&&(!want||b.k===want))for(const p0 of pockets){const p=[Math.max(T.x+BR,Math.min(T.x+T.w-BR,p0[0])),Math.max(T.y+BR,Math.min(T.y+T.h-BR,p0[1]))],dx=p[0]-b.x,dy=p[1]-b.y,d=Math.hypot(dx,dy),gx=b.x-dx/d*2*BR,gy=b.y-dy/d*2*BR,ax=gx-cue.x,ay=gy-cue.y,ad=Math.hypot(ax,ay),cut=norm(Math.atan2(ay,ax)-Math.atan2(dy,dx));
     if(cut>lv.cut)continue;const h=aimHit(Math.atan2(ay,ax));if(!h||h.b!==b||!clear(b.x,b.y,p[0],p[1],b))continue; // caminho livre até a bola e até a caçapa
     const sc2=d+ad+cut*lv.cw;if(!best||sc2<best.s)best={s:sc2,ang:Math.atan2(ay,ax),dist:d+ad,cut};}
@@ -867,7 +893,7 @@ const Town=(()=>{
   mc.onpointermove=e=>{const [px,py]=miniPos(e);if(st.spinDrag){setSpin(px,py);return;}st.aim=[px,py];};
   mc.onpointerdown=e=>{const [px,py]=miniPos(e);if(st.over)return;
    if(inSpin(px,py)){st.spinDrag=true;setSpin(px,py);return;}
-   if(st.choose==='me'){const pick=balls.filter(b=>!b.out&&b.k===st.color.me).sort((a,b)=>Math.hypot(a.x-px,a.y-py)-Math.hypot(b.x-px,b.y-py))[0];if(pick&&Math.hypot(pick.x-px,pick.y-py)<22)removeOne('me',pick);return;}
+   if(st.choose==='me'){const pick=balls.filter(b=>!b.out&&b.k!=='cue'&&(!st.color.me||b.k===st.color.me)).sort((a,b)=>Math.hypot(a.x-px,a.y-py)-Math.hypot(b.x-px,b.y-py))[0];if(pick&&Math.hypot(pick.x-px,pick.y-py)<22)removeOne('me',pick);return;}
    st.aim=[px,py];if(st.turn==='me'&&!st.shot){st.charging=true;st.power=0;}};
   mc.onpointerup=()=>{if(st.spinDrag){st.spinDrag=false;return;}if(!st.charging)return;st.charging=false;const cue=balls[0];shoot(Math.atan2(st.aim[1]-cue.y,st.aim[0]-cue.x),st.power,st.spin);};
   function tick(){if(st.shot){const m=physics()||physics();if(!m)settle();}else if(st.turn==='op'&&!st.over){if(--st.think<=0){if(st.choose==='op')aiRemove();else ai();}}}
@@ -900,7 +926,7 @@ const Town=(()=>{
     const back=20+st.power*45,dx=-Math.cos(a),dy=-Math.sin(a);
     for(let k=0;k<170;k+=2){const px=cue.x+dx*(back+k),py=cue.y+dy*(back+k),col=k<3?'#3d8bd0':k<8?'#fbfbf5':k<95?'#e3c08a':k<98?'#e2c26a':'#4a2618';f(px+3,py+5,3,3,'rgba(0,0,0,.25)');f(px-1,py-1,k>98?4:3,k>98?4:3,col);}}
    for(const b of balls){if(b.out)continue;const col=b.k==='cue'?'#fbfbf5':COL[b.k];o(b.x+2,b.y+3,BR,'rgba(0,0,0,.4)');o(b.x,b.y,BR,dk(col,.45));o(b.x-1,b.y-1,BR-2,col);f(b.x-4,b.y-5,2,2,'#ffffff');
-    if(st.choose==='me'&&b.k===st.color.me){const pulse=Math.floor(t*6)%2;for(let k=0;k<16;k++){const a=k/16*Math.PI*2;f(b.x+Math.cos(a)*(BR+4+pulse)-1,b.y+Math.sin(a)*(BR+4+pulse)-1,2,2,'#ffe46b');}}}
+    if(st.choose==='me'&&b.k!=='cue'&&(!st.color.me||b.k===st.color.me)){const pulse=Math.floor(t*6)%2;for(let k=0;k<16;k++){const a=k/16*Math.PI*2;f(b.x+Math.cos(a)*(BR+4+pulse)-1,b.y+Math.sin(a)*(BR+4+pulse)-1,2,2,'#ffe46b');}}}
    // disco de efeito: onde o taco bate na branca
    o(SPIN.x,SPIN.y,SPIN.r+6,'#1a0e08');o(SPIN.x,SPIN.y,SPIN.r+3,'#5a3b26');o(SPIN.x,SPIN.y,SPIN.r,'#f6f2e8');o(SPIN.x-14,SPIN.y-16,SPIN.r*.55,'#fffdf8');
    f(SPIN.x-SPIN.r,SPIN.y-1,SPIN.r*2,2,'#d8d2c4');f(SPIN.x-1,SPIN.y-SPIN.r,2,SPIN.r*2,'#d8d2c4');
