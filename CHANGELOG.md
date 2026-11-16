@@ -1,5 +1,7 @@
 # Protótipo · Negociação de empréstimo estilo blackjack
 
+- Antes de começar, a chance de aprovar o pedido aparece grande abaixo das cartas, com barra e cor (verde, amarelo, vermelho).
+
 - A contraproposta agora surge no meio da negociação, sem aviso: ao puxar uma carta que deixa a soma entre 14 e a exigência, o gerente pode interromper (por enquanto 50%, uma vez por negociação). Recusar ou deixar o tempo acabar devolve à mesa. O tempo para decidir subiu para 15 segundos. Encerrar abaixo da exigência agora é pedido recusado; a régua junta tudo abaixo da exigência numa faixa só.
 
 - Sem atalho: a oferta recebida e o botão Aceitar oferta saíram. Todo empréstimo passa pelas cartas, mesmo o pedido mínimo (97% de chance). Falhou, só na semana seguinte.

@@ -151,6 +151,13 @@ button{font-family:inherit;cursor:pointer}button:disabled{cursor:default;opacity
 .acts small{display:block;font-size:12px;color:#cfe0db;margin-top:6px;min-height:30px}
 .acts small b{color:var(--yellow)}
 .idle{color:#cfe0db;font-size:13.5px;margin:0}
+.bigch{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;align-items:center;background:var(--petrol2);border:2px solid #0006;padding:12px 14px}
+.bigch small{display:block;font-size:11px;font-weight:900;letter-spacing:.12em;color:#a9c4bd}
+.bigch b{display:block;font:400 54px var(--pix);line-height:1.05}
+.bigch .bigbar{height:22px;border:2px solid var(--ink);background:#0b2522}
+.bigch .bigbar i{display:block;height:100%}
+.bigch span{grid-column:1/-1;font-weight:800;font-size:14px;color:#f3ead2}
+.bigch.hi b{color:#7ccf9c}.bigch.hi i{background:#7ccf9c}.bigch.mid b{color:var(--yellow)}.bigch.mid i{background:var(--yellow)}.bigch.lo b{color:#ff9b7d}.bigch.lo i{background:#ff9b7d}.bigch.zero b{color:#ff8b7d}
 .stamp{display:inline-block;border:3px solid;font:400 14px var(--pix);letter-spacing:.12em;padding:6px 10px;transform:rotate(-6deg);background:var(--paper)}
 .stamp.ok{color:var(--good)}.stamp.bad{color:var(--bad)}.stamp.gold{color:var(--yellow2);border-style:double;border-width:5px}
 .result{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--paper);color:var(--ink);border:2px solid var(--ink);padding:12px}
@@ -343,9 +350,12 @@ function board(){
  const guarChip=(G?G.guar:guarOn())?'<span class="chip">−2 garantia</span>':'';
  let h=`<div class="call ${live&&phase!=='done'?'live':''}"><div class="face">${GERENTE}</div><div class="who"><small><span class="dot"></span>${status}</small><b>Gerente do Banco do Bairro</b><span class="say">“${say}”</span></div></div><div class="bd">`;
  if(!live){
-  h+=`<div class="scores"><div class="sc ${tg>21?'imp':'t'}">${guarChip}<small>EXIGÊNCIA DO BANCO</small><b>${tg}</b><span class="sub">${tg>21?'acima do limite':chance(tg)+'% de chance de aprovar inteiro'}</span></div><div class="sc"><small>LIMITE DAS CARTAS</small><b>21</b><span class="sub">passou disso, estourou</span></div></div>`;
+  h+=`<div class="scores"><div class="sc ${tg>21?'imp':'t'}">${guarChip}<small>EXIGÊNCIA DO BANCO</small><b>${tg}</b><span class="sub">${tg>21?'acima do limite':'soma mínima para aprovar'}</span></div><div class="sc"><small>LIMITE DAS CARTAS</small><b>21</b><span class="sub">passou disso, estourou</span></div></div>`;
   if(tg>21)h+=`<div class="guide">Reduza as condições para a exigência caber no limite de 21.</div>`;
   h+=ruler(null,tg)+`<div class="table"><p class="idle">Apresente o pedido para o gerente virar a primeira carta.<br>Cada carta é um argumento: some até a exigência sem passar de 21.</p><div class="deck"><div class="card back stack"></div>52 cartas</div></div>`;
+  // chance de aprovação em destaque, antes de começar
+  const ch=chance(tg),cls=ch>=80?'hi':ch>=50?'mid':ch>0?'lo':'zero';
+  h+=`<div class="bigch ${cls}"><div><small>CHANCE DE APROVAR O PEDIDO</small><b>${ch}%</b></div><div class="bigbar"><i style="width:${ch}%"></i></div><span>${ch===0?'Impossível com essas condições.':ch>=80?'O gerente deve aprovar sem muito esforço.':ch>=50?'Dá para conseguir, mas vai depender das cartas.':'Pedido ousado: a chance é baixa.'}</span></div>`;
   b.innerHTML=h+'</div>';return;}
  h+=`<div class="scores"><div class="sc ${busted?'bust':''}"><small>SUA SOMA</small><b>${t}</b></div><div class="sc t">${guarChip}<small>EXIGÊNCIA</small><b>${tg}</b></div></div>${ruler(t,tg)}`;
  h+=`<div class="table"><div><div class="hand">${handHtml()}</div>${G.plan&&phase==='play'?`<span class="protect">${ART.plan}Plano de negócios protege 1 estouro</span>`:''}</div><div class="deck">${G.peeked?cardHtml(G.peeked,'','ghost'):'<div class="card back stack"></div>'}${G.peeked?'próxima carta':G.dk.length+' cartas'}</div></div>`;
