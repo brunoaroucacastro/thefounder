@@ -1,5 +1,7 @@
 # Protótipo · Negociação de empréstimo estilo blackjack
 
+- Contraproposta: cada carta puxada que deixa a soma abaixo da exigência tem 25% de chance de o gerente interromper com uma proposta para a soma atual (sem limite por negociação).
+
 - Antes de começar, a chance de aprovar o pedido aparece grande abaixo das cartas, com barra e cor (verde, amarelo, vermelho).
 
 - A contraproposta agora surge no meio da negociação, sem aviso: ao puxar uma carta que deixa a soma entre 14 e a exigência, o gerente pode interromper (por enquanto 50%, uma vez por negociação). Recusar ou deixar o tempo acabar devolve à mesa. O tempo para decidir subiu para 15 segundos. Encerrar abaixo da exigência agora é pedido recusado; a régua junta tudo abaixo da exigência numa faixa só.

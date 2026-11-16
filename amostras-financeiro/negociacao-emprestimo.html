@@ -272,7 +272,7 @@ let req={...EASY}, rel=0, phase='setup', G=null, log=[], guarSel=false, result=n
 let week={n:1,negotiated:false,signed:false};
 const $=id=>document.getElementById(id);
 const money=v=>'R$ '+Math.round(v).toLocaleString('pt-BR');
-const MIN=13,MAX=24,SPAN=MAX-MIN,COUNTER_MIN=14,COUNTER_CHANCE=.5,COUNTER_SECONDS=15;
+const MIN=13,MAX=24,SPAN=MAX-MIN,COUNTER_MIN=14,COUNTER_CHANCE=.25,COUNTER_SECONDS=15;
 const norm=(s,v)=>Math.abs(v-s.easy)/(s.max-s.min);
 const pts=(s,v)=>SPAN*s.w*norm(s,v);
 const valAt=(s,i)=>+(s.easy+(s.easy===s.min?1:-1)*i*s.step).toFixed(1);   // i-ésimo quadradinho a partir da oferta do banco
@@ -391,8 +391,8 @@ function team(){const f=fin(),live=phase==='play';
 function paint(){topBar();left();board();}
 function start(){week.negotiated=true;G={req:{...req},dk:deck(),hand:[],plan:fin(),peek:fin(),guar:guarSel&&hasStock(),peeked:null};phase='play';result=null;G.hand.push(G.dk.pop());paint();}
 function hit(){G.hand.push(G.dk.pop());G.peeked=null;const t=total(G.hand);if(t>21){if(G.plan){phase='rescue';paint();return;}bust();return;}paint();
- // o gerente pode interromper com uma contraproposta quando a soma chega perto da exigência (uma vez por negociação)
- const tg=target(G.req,G.guar);if(!G.offered&&t>=COUNTER_MIN&&t<tg&&Math.random()<COUNTER_CHANCE){G.offered=true;offerPopup(counterFor(G.req,t),t);}}
+ // a cada carta puxada abaixo da exigência, o gerente tem 25% de chance de interromper com uma contraproposta para a soma atual
+ const tg=target(G.req,G.guar);if(t<tg&&Math.random()<COUNTER_CHANCE)offerPopup(counterFor(G.req,t),t);}
 function finish(cls,stamp,text){phase='done';result={cls,stamp,text};paint();}
 const rest=' Tente de novo na semana que vem.';
 function bust(){const t=total(G.hand);G.tgFinal=target(G.req,G.guar);addLog('Estourou com '+t+'. Pedido negado; relacionamento −1.');relChange(-1);finish('bad','NEGADO','Estourou com '+t+'. O gerente achou o pedido fora da realidade.'+rest);}
