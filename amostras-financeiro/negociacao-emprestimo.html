@@ -7,197 +7,216 @@
 <link rel="stylesheet" href="../src/first-loop/pixel-font.css">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
 <style>
-/* mesma linguagem das telas de Equipe e Campanha: janela creme, contorno escuro, cantos retos, faixas escuras de título, fonte Oficina */
+/* linguagem das telas do jogo (janela creme, contorno escuro, cantos retos, fonte Oficina) com identidade de contabilidade:
+   verde-petróleo e creme no financeiro; roxo só nas habilidades da equipe */
 :root{--ink:#2a2133;--ink2:#2b2f3a;--soft:#5b5470;--paper:#fff7ea;--paper2:#f6efdc;--card:#fffdf8;--line:#d8cdb0;--line2:#eadbc4;
- --navy:#1b1d31;--navy2:#24273f;--navy3:#2f3352;--yellow:#f0c33c;--yellow2:#c99a1c;--good:#2f8a5f;--bad:#c2453f;--teal:#1f7a74;--pur:#6b4fd8;--amber:#e39a2d;
+ --fin:#1f6b55;--fin2:#174f40;--petrol:#1e4a46;--petrol2:#173b38;--cream:#f3ead2;
+ --yellow:#f0c33c;--yellow2:#c99a1c;--good:#2f8a5f;--bad:#c2453f;--pur:#6b4fd8;--amber:#e39a2d;
  --pix:Oficina,"Nunito",monospace}
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;background:#15172a;background-image:radial-gradient(#ffffff08 1px,transparent 1px);background-size:18px 18px;font:14px/1.4 Nunito,"Segoe UI",system-ui,sans-serif;color:var(--ink);padding:24px 16px}
+body{margin:0;min-height:100vh;background:#15172a;background-image:radial-gradient(#ffffff08 1px,transparent 1px);background-size:18px 18px;font:14px/1.4 Nunito,"Segoe UI",system-ui,sans-serif;color:var(--ink);padding:20px 16px}
 button{font-family:inherit;cursor:pointer}button:disabled{cursor:default;opacity:.45}
-.win{max-width:1200px;margin:0 auto;background:var(--paper);box-shadow:0 0 0 3px var(--ink),8px 8px 0 #0008;padding:18px 20px 22px;position:relative}
-.win-h{display:flex;justify-content:space-between;align-items:center;font:400 11px var(--pix);letter-spacing:.14em;color:var(--soft);margin-bottom:12px}
+.win{max-width:1200px;margin:0 auto;background:var(--paper);box-shadow:0 0 0 3px var(--ink),8px 8px 0 #0008;padding:14px 18px 18px;position:relative}
+
+/* cabeçalho compacto */
+.top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;border-bottom:2px dashed var(--line);padding-bottom:10px;margin-bottom:14px}
+.tag{display:inline-block;background:var(--fin);color:#fff;font-weight:900;font-size:10px;letter-spacing:.14em;padding:2px 8px;transform:rotate(-1.5deg)}
+.top h1{margin:2px 0 0;font-size:22px;font-weight:900;line-height:1.1}
+.help{width:24px;height:24px;border:2px solid var(--ink2);background:var(--card);font-weight:900;position:relative}
+.help-tip{display:none;position:absolute;left:0;top:30px;width:300px;z-index:5;background:var(--card);border:2px solid var(--ink2);box-shadow:4px 4px 0 var(--ink2);padding:10px 12px;font-weight:600;text-align:left;font-size:13px}
+.help.open .help-tip{display:block}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto;align-items:center}
+.pill{border:2px solid var(--ink);background:var(--card);padding:3px 9px;box-shadow:3px 3px 0 var(--ink)}
+.pill small{display:block;font-size:9.5px;font-weight:900;letter-spacing:.08em;color:var(--soft);text-transform:uppercase}
+.pill b{font-size:14px;font-weight:900}
+.pill.on b{color:var(--good)}.pill.off b{color:var(--bad)}
+.pill.pulse{animation:pulse .6s}@keyframes pulse{50%{transform:scale(1.07)}}
 .x{width:26px;height:26px;border:2px solid var(--ink);background:var(--card);font-weight:900}
 
-/* topo: etiqueta, título e indicadores */
-.top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-end;border-bottom:2px dashed var(--line);padding-bottom:12px;margin-bottom:16px}
-.tag{display:inline-block;background:var(--teal);color:#fff;font-weight:900;font-size:10.5px;letter-spacing:.14em;padding:3px 9px;transform:rotate(-1.5deg);text-transform:uppercase}
-.top h1{margin:6px 0 2px;font-size:26px;font-weight:900}
-.top p{margin:0;color:var(--soft)}
-.pills{display:flex;gap:8px;flex-wrap:wrap}
-.pill{border:2px solid var(--ink);background:var(--card);padding:5px 10px;min-width:120px;box-shadow:3px 3px 0 var(--ink)}
-.pill small{display:block;font-size:10px;font-weight:900;letter-spacing:.08em;color:var(--soft);text-transform:uppercase}
-.pill b{font-size:15px;font-weight:900}
-.pill.on b{color:var(--good)}.pill.off b{color:var(--bad)}
-.pill.pulse{animation:pulse .6s}
-@keyframes pulse{50%{transform:scale(1.07)}}
-
-.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:18px}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:18px;align-items:start}
 .box{border:2px solid var(--ink2);background:var(--card)}
-.bh{background:var(--ink2);color:#f6efdc;font-weight:900;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px}
-.bh span{opacity:.75;letter-spacing:.04em;text-transform:none;font-weight:700}
+.bh{background:var(--fin);color:#f6efdc;font-weight:900;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.bh span{opacity:.8;letter-spacing:.04em;text-transform:none;font-weight:700}
+.bh.team{background:var(--ink2)}
 
-/* oferta recebida */
-.offer{display:flex;align-items:center;gap:12px;padding:10px 12px;border:2px solid var(--ink2);background:#eef7f1;margin-bottom:12px;position:relative}
-.offer .band{position:absolute;left:-2px;top:-11px;background:var(--good);color:#fff;font-size:9.5px;font-weight:900;letter-spacing:.12em;padding:2px 8px}
-.offer div{flex:1;font-size:13px}.offer b{font-size:15px}
-.btn2{border:2px dashed var(--ink2);background:var(--card);font:400 11px var(--pix);letter-spacing:.1em;padding:8px 10px;color:var(--ink)}
+/* oferta recebida, compacta */
+.offer{display:flex;align-items:center;gap:12px;padding:8px 12px;border:2px solid var(--ink2);background:var(--cream);margin-bottom:12px;position:relative}
+.offer .band{position:absolute;left:-2px;top:-10px;background:var(--fin);color:#fff;font-size:9.5px;font-weight:900;letter-spacing:.12em;padding:1px 8px}
+.offer div{flex:1;font-size:13px}.offer b{font-size:14px}
+.btn2{border:2px dashed var(--ink2);background:var(--card);font:400 11px var(--pix);letter-spacing:.1em;padding:7px 10px;color:var(--ink);white-space:nowrap}
+.btn2.solid{border-style:solid;background:var(--fin);color:#fff}
 
-/* linhas do pedido: mesmo desenho das linhas de atributo da ficha */
-.row{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:9px 10px;border-bottom:1px solid var(--line2)}
+/* comprovante do pedido em preparação */
+.receipt{background:#fff;border:2px solid var(--ink2);padding:10px 12px 14px;margin-bottom:12px;position:relative;font-family:ui-monospace,Consolas,monospace}
+.receipt:after{content:'';position:absolute;left:-2px;right:-2px;bottom:-8px;height:8px;background:linear-gradient(-45deg,transparent 5px,#fff 0) 0 0/10px 8px,linear-gradient(45deg,transparent 5px,#fff 0) 0 0/10px 8px;filter:drop-shadow(0 2px 0 var(--ink2))}
+.receipt .rh{font:400 10px var(--pix);letter-spacing:.14em;color:var(--fin);display:flex;justify-content:space-between}
+.rgrid{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:8px;margin-top:6px;text-align:center}
+.rgrid div{border-right:1px dashed var(--line)}.rgrid div:last-child{border:0}
+.rgrid small{display:block;font-family:Nunito,sans-serif;font-size:10.5px;font-weight:900;letter-spacing:.06em;color:var(--soft);text-transform:uppercase}
+.rgrid b{font-size:17px}
+.rgrid .main b{font-size:24px;color:var(--fin2)}
+.receipt .first{font-family:Nunito,sans-serif;font-size:12px;color:var(--soft);margin-top:6px;text-align:center}
+
+/* linhas do pedido: valor em campo claro, impacto em coluna própria */
+.row{display:grid;grid-template-columns:34px minmax(0,1fr) 64px auto;gap:10px;align-items:center;padding:9px 10px;border-bottom:1px solid var(--line2)}
 .ico{width:30px;height:30px;display:grid;place-items:center;background:var(--paper2);border:2px solid var(--ink2)}
 .ico svg{width:22px;height:22px;image-rendering:pixelated}
 .rn b{font-weight:900;font-size:14px;display:block}
 .rn small{color:var(--soft);font-size:12px}
-.rn em{font-style:normal;color:var(--pur);font-weight:800;font-size:11.5px;margin-left:4px}
-.ctl{display:flex;align-items:center;gap:6px}
-.pm{width:28px;height:30px;border:2px solid var(--ink2);background:var(--paper2);font-weight:900;font-size:16px;color:var(--ink)}
-.val{min-width:118px;text-align:center;background:var(--ink2);color:#fff;font-weight:900;font-size:15px;padding:5px 8px}
-.val.changed{background:var(--pur)}
-.row.guar{background:#fbf3df}
-.row.guar.on{background:#f3e3b8}
+.imp{font-size:11.5px;color:var(--soft);font-weight:800;text-align:right;line-height:1.15}
+.imp b{display:block;font-size:13px;color:var(--ink)}
+.ctl{display:flex;align-items:stretch}
+.pm{width:30px;border:2px solid var(--ink2);background:var(--ink2);color:#fff;font-weight:900;font-size:16px}
+.val{min-width:122px;text-align:center;background:#fff;border:2px solid var(--ink2);border-left:0;border-right:0;color:var(--ink);font:400 14px var(--pix);padding:7px 8px;font-variant-numeric:tabular-nums}
+.ctl.lock .val{border:2px solid var(--ink2)}
+.val.changed{background:#eef7f1}
+.row{grid-template-columns:34px minmax(0,1fr) 70px}
+.rn b{display:inline}
+.rn .v{font-weight:900;font-size:17px;margin-left:10px;color:var(--fin2)}
+.rn small{display:block}
+.lvl{grid-column:2/-1;display:flex;align-items:flex-start;gap:6px}
+.lvl .pm{height:26px;flex:none}
+.sqw{flex:1;min-width:0}
+.sq{display:flex;gap:3px;height:26px}
+.q{flex:1;min-width:0;border:2px solid var(--ink2);background:#fff;padding:0}
+.q.on.base{background:#9fb5ad}.q.on.lo{background:#7ccf9c}.q.on.mid{background:#f0c33c}.q.on.hi{background:#e0705f}
+.q.cur{box-shadow:inset 0 0 0 2px #fff;outline:2px solid var(--ink2)}
+.q:not(:disabled):hover{transform:translateY(-2px)}
+.sql{display:flex;justify-content:space-between;font-size:10.5px;color:var(--soft);font-weight:800;margin-top:2px}
+.sql b{color:var(--bad)}
+.row.guar{background:#fbf3df}.row.guar.on{background:#e6f1ea}
 .row.guar .risk{color:var(--bad);font-size:12px;font-weight:700}
-.tg{min-width:118px}
-
-/* exigência do banco */
-.req{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;padding:12px;border-top:2px solid var(--ink2)}
-.req .n{font:400 40px var(--pix);line-height:1;color:var(--ink);min-width:62px;text-align:center}
-.req .n.bad{color:var(--bad)}
-.req small{font-size:11px;font-weight:900;letter-spacing:.08em;color:var(--soft);text-transform:uppercase}
-.bar{height:12px;border:2px solid var(--ink2);background:#e7dfcb;margin:4px 0}
-.bar i{display:block;height:100%;background:var(--good)}
-.comp{font-size:12px;color:var(--soft)}
-.warn{margin:0 12px 12px;padding:8px 10px;background:#f6dcd5;border-left:5px solid var(--bad);color:var(--bad);font-weight:800;font-size:13px;display:none}
-.warn.show{display:block}
-
-/* resumo como escrituras do Caixa */
-.deeds{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
-.deed{border:2.5px solid #26213a;background:#fff;text-align:center;padding:0 8px 8px}
-.deed i{display:block;font-style:normal;color:#fff;font-weight:900;font-size:10.5px;letter-spacing:.12em;padding:5px 2px;margin:0 -8px 6px;border-bottom:2.5px solid #26213a}
-.deed b{font-size:18px;font-weight:900}
-.deed small{display:block;font-size:11px;color:var(--soft)}
-.first{font-size:12.5px;color:var(--soft);margin-top:8px}
-
-.go{width:100%;margin-top:12px;background:var(--yellow);border:2px solid var(--ink2);box-shadow:0 4px 0 var(--yellow2);font:400 14px var(--pix);letter-spacing:.14em;padding:13px;color:var(--ink)}
-.go:active{transform:translateY(2px);box-shadow:0 2px 0 var(--yellow2)}
+.go{width:100%;margin-top:12px;background:var(--yellow);border:2px solid var(--ink2);box-shadow:0 4px 0 var(--yellow2);font:400 14px var(--pix);letter-spacing:.14em;padding:12px;color:var(--ink)}
 .note{margin-top:10px;padding:8px 10px;background:#efe6cf;border-left:5px solid var(--yellow2);font-size:13px;display:none}
 .note.show{display:block}
 
-/* negociação: mesmo painel azul do tabuleiro da campanha */
-.board{background:var(--navy3);background-image:linear-gradient(#ffffff0a 1px,transparent 1px),linear-gradient(90deg,#ffffff0a 1px,transparent 1px);background-size:24px 24px;border:3px solid var(--ink);color:#f6efdc;padding:14px;position:relative;min-height:420px}
-.call{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#c9cde0}
-.call .dot{width:8px;height:8px;background:#5fd38a;box-shadow:0 0 0 3px #5fd38a33}
-.call.idle .dot{background:#8b8fa6;box-shadow:none}
-.scores{display:flex;gap:10px;margin:10px 0}
-.sc{flex:1;background:var(--navy);border:2px solid #0006;padding:8px 10px;text-align:center}
-.sc small{font-size:10px;font-weight:900;letter-spacing:.12em;color:#9aa0b8}
-.sc b{display:block;font:400 42px var(--pix);line-height:1.1}
-.sc.t b{color:var(--yellow)}.sc.bust b{color:#ff8b7d}
-.talk{display:flex;gap:10px;align-items:flex-start;margin:8px 0 12px}
-.face{flex:none;width:44px;height:44px;border:2px solid var(--ink);background:#e7dfcb}
+/* painel de negociação: verde-petróleo liso, moldura simples */
+.board{background:var(--petrol);border:3px solid var(--ink);color:#f3ead2;position:relative}
+.call{display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--petrol2);border-bottom:2px solid #0005}
+.face{flex:none;width:52px;height:52px;border:2px solid var(--ink);background:var(--cream)}
 .face svg{width:100%;height:100%;image-rendering:pixelated;display:block}
-.bubble{background:var(--card);color:var(--ink);border:2px solid var(--ink);padding:7px 10px;font-weight:800;position:relative;flex:1}
-.bubble small{display:block;color:var(--soft);font-weight:700;font-size:11px}
-.bubble:before{content:'';position:absolute;left:-8px;top:12px;border:6px solid transparent;border-right-color:var(--ink)}
-.lanes{display:flex;height:22px;border:2px solid var(--ink);position:relative}
-.lanes span{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#1d1b26;overflow:hidden;white-space:nowrap}
-.l0{background:#8b8fa6}.l1{background:#f0c33c}.l2{background:#6fcf97}.l3{background:#e0705f}
-.mark{position:absolute;top:-6px;width:4px;height:30px;background:#fff;box-shadow:0 0 0 2px var(--ink);transition:left .2s}
-.leg{display:flex;font-size:10.5px;color:#9aa0b8;margin-top:3px}.leg span{text-align:center}
-.hand{display:flex;align-items:flex-end;gap:8px;min-height:150px;padding:16px 0 22px}
-.card{width:80px;height:112px;flex:none;background:var(--card);border:3px solid #1d1b26;box-shadow:4px 4px 0 #0007;color:#1d1b26;position:relative;animation:deal .15s ease-out}
+.call .who{flex:1;min-width:0}
+.call .who small{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#a9c4bd}
+.call .dot{width:8px;height:8px;background:#8b9a96}.call.live .dot{background:#5fd38a;box-shadow:0 0 0 3px #5fd38a33}
+.call .who b{display:block;font-size:15px;font-weight:900}
+.call .say{display:block;color:#f3ead2;font-weight:700;font-size:13.5px;margin-top:2px}
+.bd{padding:12px 14px 14px}
+.scores{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sc{background:var(--petrol2);border:2px solid #0006;padding:6px 10px;text-align:center;position:relative}
+.sc small{font-size:10px;font-weight:900;letter-spacing:.12em;color:#a9c4bd}
+.sc b{display:block;font:400 40px var(--pix);line-height:1.1}
+.sc.t b{color:var(--yellow)}.sc.bust b{color:#ff8b7d}.sc.imp b{color:#ff8b7d}
+.sc .chip{position:absolute;top:6px;right:6px;font-size:10.5px;font-weight:900;padding:1px 6px;background:var(--cream);color:var(--fin2)}
+.sc .sub{display:block;font-size:11.5px;color:#a9c4bd;font-weight:700}
+.guide{margin:10px 0 0;padding:7px 10px;background:#f6dcd5;color:var(--bad);font-weight:800;font-size:13px;border-left:5px solid var(--bad)}
+/* régua: alvo e limite 21 */
+.ruler{margin-top:14px;position:relative}
+.rl{display:flex;height:20px;border:2px solid var(--ink)}
+.rl span{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#1d1b26;overflow:hidden;white-space:nowrap}
+.l0{background:#8b9a96}.l1{background:#e6c869}.l2{background:#7ccf9c}.l3{background:#e0705f}
+.tick{position:absolute;top:-4px;height:28px;width:2px;background:var(--cream)}
+.tick em{position:absolute;top:-15px;left:50%;transform:translateX(-50%);font-style:normal;font-size:10px;font-weight:900;white-space:nowrap;color:#f3ead2}
+.tick.lim{background:#ff8b7d}.tick.lim em{color:#ff8b7d}
+.mark{position:absolute;top:-6px;width:4px;height:32px;background:#fff;box-shadow:0 0 0 2px var(--ink);transition:left .2s}
+.leg{display:flex;font-size:10.5px;color:#a9c4bd;margin-top:3px}.leg span{text-align:center}
+.table{display:flex;align-items:flex-end;gap:14px;min-height:150px;padding:18px 0 22px}
+.hand{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}
+.deck{position:relative;margin-left:auto;text-align:center;font-size:10.5px;color:#a9c4bd;font-weight:800}
+.card{width:78px;height:110px;flex:none;background:var(--card);border:3px solid #1d1b26;box-shadow:4px 4px 0 #0007;color:#1d1b26;position:relative;animation:deal .15s ease-out}
 .card.red{color:var(--bad)}
 .card .r{position:absolute;top:5px;left:6px;font:400 18px var(--pix);line-height:1}
 .card .s{position:absolute;inset:0;display:grid;place-items:center;font-size:34px}
 .card .r2{position:absolute;bottom:5px;right:6px;font:400 18px var(--pix);line-height:1;transform:rotate(180deg)}
-.card .ace{position:absolute;bottom:-21px;left:50%;transform:translateX(-50%);background:var(--navy);border:2px solid #0008;color:#8b8fa6;font-size:10.5px;font-weight:900;padding:0 6px;white-space:nowrap}
+.card .ace{position:absolute;bottom:-21px;left:50%;transform:translateX(-50%);background:var(--petrol2);border:2px solid #0008;color:#8b9a96;font-size:10.5px;font-weight:900;padding:0 6px;white-space:nowrap}
 .card .ace .on{color:var(--yellow)}
-.card.ghost{opacity:.55;border-style:dashed}
-.card.back{background:var(--pur);background-image:repeating-linear-gradient(45deg,#ffffff22 0 4px,transparent 4px 9px)}
+.card.ghost{opacity:.6;border-style:dashed}
+/* verso: verde e creme com a moeda da empresa */
+.card.back{background:var(--fin);background-image:repeating-linear-gradient(45deg,#ffffff1c 0 3px,transparent 3px 8px);border-color:var(--cream);animation:none}
+.card.back:after{content:'$';position:absolute;inset:0;margin:auto;width:30px;height:30px;border-radius:50%;background:var(--cream);color:var(--fin2);font:400 16px var(--pix);display:grid;place-items:center;border:2px solid var(--ink)}
+.card.back.stack{box-shadow:4px 4px 0 #0007,8px 8px 0 #0005}
 @keyframes deal{from{translate:0 -24px;opacity:0}}
+.protect{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:900;background:var(--cream);color:var(--fin2);padding:2px 8px;margin-top:6px}
+.protect svg{width:14px;height:14px}
 .acts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .acts button{width:100%;padding:11px;font:400 13px var(--pix);letter-spacing:.12em}
 .hit{background:var(--yellow);border:2px solid var(--ink);box-shadow:0 4px 0 var(--yellow2);color:var(--ink)}
 .stand{background:var(--card);border:2px dashed var(--ink);color:var(--ink)}
-.acts small{display:block;font-size:12px;color:#c9cde0;margin-top:6px;min-height:32px}
-.idlebox{display:grid;place-items:center;text-align:center;gap:10px;min-height:300px;color:#c9cde0}
-.stamp{display:inline-block;border:3px solid;font:400 15px var(--pix);letter-spacing:.12em;padding:6px 10px;transform:rotate(-6deg);background:#fff7ea}
+.acts small{display:block;font-size:12px;color:#cfe0db;margin-top:6px;min-height:30px}
+.acts small b{color:var(--yellow)}
+.idle{color:#cfe0db;font-size:13.5px;margin:0}
+.stamp{display:inline-block;border:3px solid;font:400 14px var(--pix);letter-spacing:.12em;padding:6px 10px;transform:rotate(-6deg);background:var(--paper)}
 .stamp.ok{color:var(--good)}.stamp.bad{color:var(--bad)}.stamp.gold{color:var(--yellow2);border-style:double;border-width:5px}
-.result{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--card);color:var(--ink);border:2px solid var(--ink);padding:12px}
+.result{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--paper);color:var(--ink);border:2px solid var(--ink);padding:12px}
 .result p{flex:1;margin:0;min-width:200px;font-weight:700}
 .rescue{background:#f6dcd5;color:var(--bad);border:2px solid var(--bad);padding:10px 12px;font-weight:800}
 .rescue div{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
 .rescue button{border:2px solid var(--ink);background:var(--yellow);font-weight:900;padding:6px 10px}
 .rescue button.n{background:var(--card)}
 
-/* apoio da equipe: mesmo desenho das habilidades da ficha */
+/* apoio da equipe: habilidades (roxo reservado a elas) */
 .team{margin-top:12px}
-.sk{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:8px 10px;border-bottom:1px solid var(--line2)}
-.sk:last-child{border-bottom:0}
-.sk .ico{border-radius:50%}
+.sk{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:7px 10px;border-bottom:1px solid var(--line2)}
+.sk .ico{border-radius:50%;border-color:var(--pur);background:#f0ecfb}
 .sk b{font-weight:900}.sk small{display:block;color:var(--soft);font-size:12px}
 .st{font-size:10px;font-weight:900;letter-spacing:.08em;padding:2px 7px;text-transform:uppercase}
-.st.av{background:#e6f6ec;color:var(--good);border:1.5px solid var(--good)}
+.st.av{background:#efe9fd;color:var(--pur);border:1.5px solid var(--pur)}
 .st.us{background:#eee;color:#888;border:1.5px solid #bbb}
-.st.an{background:#fff0d6;color:var(--yellow2);border:1.5px solid var(--yellow2)}
+.st.an{background:#e6f1ea;color:var(--fin);border:1.5px solid var(--fin)}
 .sk.off{opacity:.45}
-.sk button{border:2px solid var(--ink2);background:var(--paper2);font-weight:900;font-size:12px;padding:3px 8px}
-.voice{display:flex;gap:10px;align-items:center;padding:10px;border-top:2px dashed var(--line)}
-.voice .face{width:36px;height:36px}
+.sk button{border:2px solid var(--pur);background:#efe9fd;color:var(--pur);font-weight:900;font-size:12px;padding:3px 8px}
+.voice{display:flex;gap:10px;align-items:center;padding:9px 10px;background:#f7f2e4}
+.voice .face{width:34px;height:34px}
 .voice p{margin:0;font-size:13px}.voice p b{font-weight:900}
+.bh .mini{width:20px;height:20px;border:2px solid #0006;background:var(--cream);display:inline-block;vertical-align:middle;margin-right:6px}
+.bh .mini svg{width:100%;height:100%;display:block}
 
-/* contraproposta: segunda janela por cima */
+/* contraproposta: segunda janela */
 #offer{position:fixed;inset:0;background:#0b0c18cc;display:grid;place-items:center;padding:16px;z-index:9}
 .sheet{width:min(540px,100%);background:var(--paper);box-shadow:0 0 0 3px var(--ink),8px 8px 0 #000a;padding:16px 18px;position:relative;animation:sl .12s ease-out}
 @keyframes sl{from{transform:translateY(16px);opacity:.4}}
 .sheet .stamp{position:absolute;top:14px;right:16px;font-size:11px;color:var(--amber)}
 .sheet h2{margin:4px 0;font-size:20px;font-weight:900}
 .cmp{width:100%;border-collapse:collapse;margin:10px 0;border:2px solid var(--ink2)}
-.cmp th{background:var(--ink2);color:#f6efdc;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:5px 8px}
+.cmp th{background:var(--fin);color:#f6efdc;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:5px 8px}
 .cmp td{padding:6px 8px;border-bottom:1px solid var(--line2);background:var(--card)}
 .cmp tr.ch td:last-child{background:#f3e3b8;font-weight:900}
 .cmp tr.pay td{font-weight:900}
 .timer{display:flex;align-items:center;gap:10px}
 .timer b{font:400 28px var(--pix);color:var(--bad);min-width:40px;text-align:center}
-.timer .bar{flex:1;height:14px}
-.timer .bar i{background:var(--bad)}
-.sheet .go{margin-top:10px}
+.tbar{flex:1;height:14px;border:2px solid var(--ink2);background:#e7dfcb}.tbar i{display:block;height:100%;background:var(--bad)}
 
 .foot{max-width:1200px;margin:18px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.foot .box{background:var(--paper)}
+.foot .box{background:var(--paper)}.foot .bh{background:var(--ink2)}
 .foot label{display:flex;gap:8px;align-items:center;padding:4px 10px;font-size:13px}
 .foot .lg{font-size:12.5px;max-height:200px;overflow:auto;padding:4px 10px}
 .foot .lg div{padding:4px 0;border-bottom:1px dashed var(--line)}
 .foot .row2{display:flex;gap:8px;align-items:center;padding:8px 10px;font-size:13px}
 .foot input[type=number]{width:110px;border:2px solid var(--ink2);padding:3px 6px;font-weight:800}
-@media (max-width:980px){.cols,.foot{grid-template-columns:1fr}.deeds{grid-template-columns:1fr}.val{min-width:96px}}
+@media (max-width:980px){.cols,.foot{grid-template-columns:1fr}.row{grid-template-columns:34px 1fr auto}.imp{display:none}.val{min-width:100px}}
 </style>
 </head>
 <body>
 <div class="win">
-  <div class="win-h"><span>FINANCEIRO</span><button class="x" title="Fechar">×</button></div>
   <div class="top">
-    <div><span class="tag">Financeiro · banco</span><h1>Negociar empréstimo</h1><p>Monte o pedido e apresente ao gerente. Quanto melhor para você, mais difícil convencer o banco.</p></div>
-    <div class="pills"><div class="pill"><small>Faturamento 30 dias</small><b id="p-rev"></b></div><div class="pill" id="p-rel"><small>Relacionamento</small><b></b></div><div class="pill" id="p-wk"><small id="p-wk-l"></small><b></b></div></div>
+    <div><span class="tag">FINANCEIRO / CRÉDITO</span><h1>Negociar empréstimo</h1></div>
+    <button class="help" id="help">?<span class="help-tip">Ajuste valor, prazo, juros e carência. Cada condição melhor para a empresa sobe a <b>exigência do banco</b>. Ao apresentar o pedido, puxe cartas: chegue à exigência sem passar de 21 para aprovar. Parar no meio pode render uma contraproposta.</span></button>
+    <div class="pills"><div class="pill"><small>Faturamento 30 dias</small><b id="p-rev"></b></div><div class="pill" id="p-rel"><small>Relacionamento</small><b></b></div><div class="pill" id="p-wk"><small id="p-wk-l"></small><b></b></div><button class="x" title="Fechar">×</button></div>
   </div>
 
   <div class="cols">
     <section>
-      <div class="offer"><span class="band">OFERTA RECEBIDA</span><div id="base"></div><button class="btn2" id="take">ASSINAR</button></div>
+      <div class="offer"><span class="band">OFERTA RECEBIDA</span><div id="base"></div><button class="btn2 solid" id="take">ACEITAR OFERTA</button></div>
+      <div class="receipt"><div class="rh"><span>SIMULAÇÃO DO PEDIDO</span><span id="r-state">em preparação</span></div><div class="rgrid" id="rgrid"></div><div class="first" id="first"></div></div>
       <div class="box">
-        <div class="bh">Seu pedido de crédito<span id="state">em preparação</span></div>
+        <div class="bh">Seu pedido de crédito<span>impacto na exigência</span></div>
         <div id="rows"></div>
-        <div class="req"><div class="n" id="tg">13</div><div><small>Exigência do banco</small><div class="bar"><i id="chb"></i></div><div class="comp"><b id="ch">97%</b> de chance de aprovar inteiro · <span id="comp"></span></div></div></div>
-        <div class="warn" id="warn">Exigência acima de 21: o pedido inteiro é impossível. Reduza o pedido ou ofereça garantia.</div>
       </div>
-      <div class="deeds" id="deeds"></div>
-      <div class="first" id="first"></div>
       <div class="note" id="note"></div>
       <button class="go" id="go">APRESENTAR PEDIDO</button>
     </section>
 
     <section>
       <div class="board" id="board"></div>
-      <div class="box team"><div class="bh">Apoio da equipe<span id="fin-name"></span></div><div id="skills"></div><div class="voice" id="voice"></div></div>
     </section>
   </div>
 </div>
@@ -205,27 +224,24 @@ button{font-family:inherit;cursor:pointer}button:disabled{cursor:default;opacity
 <div class="foot">
   <div class="box"><div class="bh">Bastidores do protótipo</div>
     <div class="row2">Faturamento dos últimos 30 dias: R$ <input id="rev" type="number" value="40000" step="1000"></div>
-    <label><input type="checkbox" id="fin" checked> Tenho alguém do financeiro na equipe (Helena)</label>
-    <label><input type="checkbox" id="stock" checked> Tenho estoque para dar em garantia</label>
     <div class="row2"><button class="btn2" id="next">AVANÇAR SEMANA →</button></div>
   </div>
   <div class="box"><div class="bh">Histórico</div><div class="lg" id="log"><div>Nada ainda.</div></div></div>
 </div>
 
 <script>
-/* ===== arte em pixel (8x8) ===== */
-const PAL={k:'#1d1b26',y:'#f0c33c',w:'#fffdf8',r:'#c2453f',g:'#6fcf97',b:'#6b4fd8',l:'#8b8fa6',s:'#f0c39a',h:'#4a3020',t:'#c2453f',n:'#2f3352',m:'#b5524a',a:'#e39a2d',o:'#1f7a74'};
+/* ===== arte em pixel ===== */
+const PAL={k:'#1d1b26',y:'#f0c33c',w:'#fffdf8',r:'#c2453f',g:'#7ccf9c',b:'#6b4fd8',l:'#8b8fa6',s:'#f0c39a',h:'#4a3020',t:'#c2453f',n:'#2f3352',m:'#b5524a',a:'#e39a2d',o:'#1f6b55',c:'#f3ead2'};
 function px(rows){const w=rows[0].length,h=rows.length;let r='';rows.forEach((row,y)=>[...row].forEach((c,x)=>{if(c!=='.')r+=`<rect x="${x}" y="${y}" width="1" height="1" fill="${PAL[c]}"/>`;}));return `<svg viewBox="0 0 ${w} ${h}" shape-rendering="crispEdges">${r}</svg>`;}
 const ART={
  pct:px(["...kk...","..kyyk..","...kk...","..kyyk..",".kyyyyk.","kyykkyyk","kyyyyyyk",".kkkkkk."]),
- prazo:px(["k.k..k.k","kkkkkkkk","krrrrrrk","kwwwwwwk","kwkwkwwk","kwwwwwwk","kwkwkwwk","kkkkkkkk"]),
+ prazo:px(["k.k..k.k","kkkkkkkk","koooooook".slice(0,8),"kwwwwwwk","kwkwkwwk","kwwwwwwk","kwkwkwwk","kkkkkkkk"]),
  juros:px(["kk....k.","kk...k..","....k...","...k....","..k.....",".k...kk.","k....kk.","........"]),
  car:px(["kkkkkkkk",".kyyyyk.","..kyyk..","...kk...","...kk...","..kwwk..",".kyyyyk.","kkkkkkkk"]),
- guar:px(["........",".kkkkkk.","kaaaaaak","kkkkkkkk","kaarraak","kaarraak","kaaaaaak","kkkkkkkk"]),
+ guar:px(["........",".kkkkkk.","kaaaaaak","kkkkkkkk","kaaooaak","kaaooaak","kaaaaaak","kkkkkkkk"]),
  calc:px([".kkkkkk.",".kggggk.",".kkkkkk.",".kwkwkk.",".kkkkkk.",".kwkwkk.",".kkkkkk.","........"]),
  card:px(["kkkkkkkk","kwwwwwwk","kwkkwllk","kwkkwwwk","kwwwwllk","kwkkkwwk","kwwwwwwk","kkkkkkkk"]),
  plan:px([".kkkkkk.",".kbbbbk.",".kbwwbk.",".kbbbbk.",".kbwwbk.",".kbbbbk.",".kbbbbk.",".kkkkkk."]),
- phone:px(["........",".kkkkkk.","kllllllk","kk.kk.kk","...kk...","..kllk..",".kllllk.",".kkkkkk."]),
 };
 const GERENTE=px(["..hhhhhh..",".hhhhhhhh.",".hssssssh.",".skssssks.",".ssssssss.","..ssmmss..","...ssss...",".nnnttnnn.","nnnnttnnnn","nnnnttnnnn"]);
 const HELENA=px(["..aaaaaa..",".aaaaaaaa.","aassssssaa","aksskssksa","asssssssa.","a.ssmmss.a","...ssss...",".oooooooo.","oooowwoooo","oooowwoooo"]);
@@ -235,17 +251,18 @@ const VOCE=px(["..hhhhhh..",".hhhhhhhh.",".hssssssh.",".skssssks.",".ssssssss.",
 const SL=[
  {k:'pct', name:'Valor solicitado',min:100,max:200,step:10,easy:100,w:.30},
  {k:'prazo',name:'Prazo',min:3,max:12,step:1,easy:3,w:.20},
- {k:'juros',name:'Juros',min:3,max:12,step:.5,easy:12,w:.35},
+ {k:'juros',name:'Juros',min:3,max:12,step:1,easy:12,w:.35},
  {k:'car', name:'Carência',min:0,max:3,step:1,easy:0,w:.15},
 ];
 const EASY=Object.fromEntries(SL.map(s=>[s.k,s.easy]));
-let req={...EASY}, rel=0, phase='setup', G=null, log=[], guarSel=false, result=null, line='';
+let req={...EASY}, rel=0, phase='setup', G=null, log=[], guarSel=false, result=null;
 let week={n:1,negotiated:false,signed:false};
 const $=id=>document.getElementById(id);
 const money=v=>'R$ '+Math.round(v).toLocaleString('pt-BR');
 const MIN=13,MAX=24,SPAN=MAX-MIN,COUNTER_MIN=14,COUNTER_CHANCE=.5,COUNTER_SECONDS=7;
 const norm=(s,v)=>Math.abs(v-s.easy)/(s.max-s.min);
 const pts=(s,v)=>SPAN*s.w*norm(s,v);
+const valAt=(s,i)=>+(s.easy+(s.easy===s.min?1:-1)*i*s.step).toFixed(1);   // i-ésimo quadradinho a partir da oferta do banco
 const condPts=c=>SL.reduce((a,s)=>a+pts(s,c[s.k]),0);
 function target(c,guar=false){return Math.max(MIN,Math.min(MAX,Math.round(MIN+condPts(c))-rel-(guar?2:0)));}
 const CHANCE={13:97,14:92,15:87,16:80,17:71,18:62,19:51,20:38,21:18};
@@ -253,12 +270,14 @@ const chance=tg=>tg>21?0:CHANCE[tg]??100;
 function loan(c){const R=+$('rev').value||0,V=R*c.pct/100,i=c.juros/100,saldo=V*Math.pow(1+i,c.car),pmt=saldo*i/(1-Math.pow(1+i,-c.prazo));return{V,pmt,total:pmt*c.prazo,juros:pmt*c.prazo-V};}
 const firstWeek=c=>week.n+4*(c.car+1);
 const REL={'-2':'Desconfiado','-1':'Reservado','0':'Neutro','1':'Bom','2':'Excelente'};
-const fmtJ=v=>(Number.isInteger(v)?v:v.toFixed(1).replace('.',','))+'% ao mês';
+const fmtJ=v=>(Number.isInteger(v)?v:v.toFixed(1).replace('.',','))+'% a.m.';
 const carTxt=v=>v?v+(v>1?' meses':' mês'):'Sem carência';
 function cval(k,c){return k==='pct'?money(loan(c).V):k==='prazo'?c.prazo+' meses':k==='juros'?fmtJ(c.juros):carTxt(c.car);}
-function csub(k,c){return k==='pct'?c.pct+'% do faturamento':k==='prazo'?c.prazo+' parcelas':k==='juros'?'taxa pedida':'1ª parcela na semana '+firstWeek(c);}
-const fin=()=>$('fin').checked,hasStock=()=>$('stock').checked;
+function cref(k,c){return k==='pct'?c.pct+'% do faturamento':k==='prazo'?c.prazo+' parcelas mensais':k==='juros'?'oferta do banco: '+fmtJ(EASY.juros):'1ª parcela na semana '+firstWeek(c);}
+// por enquanto sem vantagens da equipe e sem garantia
+const fin=()=>false,hasStock=()=>false;
 const guarOn=()=>G?G.guar:guarSel&&hasStock();
+const tgNow=()=>G?(G.tgFinal??target(G.req,G.guar)):target(req,guarOn());
 
 /* ===== baralho ===== */
 const SUITS=['♠','♥','♦','♣'],RANKS=['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
@@ -272,80 +291,86 @@ const bustNext=(h,d)=>d.filter(c=>total([...h,c])>21).length/d.length;
 /* ===== topo ===== */
 function topBar(){
  $('p-rev').textContent=money(+$('rev').value||0);
- const r=$('p-rel');r.className='pill'+(rel>0?' on':rel<0?' off':'');r.querySelector('b').textContent=REL[rel]+(rel?' · alvo '+(rel>0?'−':'+')+Math.abs(rel):'');
+ const r=$('p-rel');r.className='pill'+(rel>0?' on':rel<0?' off':'');r.querySelector('b').textContent=REL[rel]+(rel?' · '+(rel>0?'−':'+')+Math.abs(rel):'');
  const w=$('p-wk');w.className='pill'+(week.negotiated||week.signed?' off':' on');$('p-wk-l').textContent='Semana '+week.n;
- w.querySelector('b').textContent=week.signed?'Contrato assinado':week.negotiated?'Negociação usada':'Pode negociar';
+ w.querySelector('b').textContent=week.signed?'Contrato assinado':week.negotiated?'Próxima semana':'Pode negociar';
 }
 function relChange(d){const o=rel;rel=Math.max(-2,Math.min(2,rel+d));if(rel===o)return;topBar();const p=$('p-rel');p.classList.remove('pulse');void p.offsetWidth;p.classList.add('pulse');}
 
-/* ===== pedido ===== */
-function rows(){const c=G?G.req:req,lock=phase!=='setup';
- $('rows').innerHTML=SL.map(s=>{const p=pts(s,c[s.k]),changed=c[s.k]!==s.easy;return `<div class="row"><div class="ico">${ART[s.k]}</div><div class="rn"><b>${s.name}${changed&&p>=.05?`<em>+${p.toFixed(1).replace('.',',')} na exigência</em>`:''}</b><small>${csub(s.k,c)}${changed?' · banco ofereceu '+cval(s.k,EASY):''}</small></div>
- <div class="ctl">${lock?'':`<button class="pm" data-k="${s.k}" data-d="-1">−</button>`}<span class="val ${changed?'changed':''}">${cval(s.k,c)}</span>${lock?'':`<button class="pm" data-k="${s.k}" data-d="1">+</button>`}</div></div>`;}).join('')
- +(hasStock()?`<div class="row guar ${guarOn()?'on':''}"><div class="ico">${ART.guar}</div><div class="rn"><b>Garantia em estoque${guarOn()?'<em>−2 na exigência</em>':''}</b><small class="risk">Se atrasar uma parcela, o banco fica com o estoque.</small></div><div class="ctl">${lock?`<span class="val ${guarOn()?'changed':''}">${guarOn()?'Oferecida':'Não'}</span>`:`<button class="btn2" id="guar">${guarSel?'RETIRAR':'OFERECER'}</button>`}</div></div>`:'');
+/* ===== lado esquerdo: oferta, simulação e pedido ===== */
+function left(){const c=G?G.req:req,lock=phase!=='setup',L=loan(c),Lb=loan(EASY);
+ $('base').innerHTML=`<b>${money(Lb.V)}</b> · ${EASY.prazo} meses · ${fmtJ(EASY.juros)} · sem carência · parcela ${money(Lb.pmt)}`;
+ $('take').disabled=week.signed||phase!=='setup';
+ $('r-state').textContent=lock?'apresentado':'em preparação';
+ $('rgrid').innerHTML=`<div><small>Você recebe</small><b>${money(L.V)}</b></div><div class="main"><small>Parcela mensal</small><b>${money(L.pmt)}</b></div><div><small>Total a pagar</small><b>${money(L.total)}</b></div>`;
+ $('first').textContent='Pagamentos começam na semana '+firstWeek(c)+' · '+c.prazo+' parcelas'+(c.car?' · '+carTxt(c.car).toLowerCase()+' de carência':'');
+ // cada condição vira uma fileira de quadradinhos: o primeiro é a oferta do banco, o último é o máximo que dá para pedir
+ $('rows').innerHTML=SL.map(s=>{const p=pts(s,c[s.k]),n=Math.round((s.max-s.min)/s.step)+1,lv=Math.round(norm(s,c[s.k])*(n-1));
+  const sq=Array.from({length:n},(_,i)=>{const r=i/(n-1),col=i===0?'base':r<.4?'lo':r<.75?'mid':'hi';return `<button class="q ${i<=lv?'on '+col:''} ${i===lv?'cur':''}" data-k="${s.k}" data-i="${i}" ${lock?'disabled':''} title="${cval(s.k,{...c,[s.k]:valAt(s,i)})}"></button>`;}).join('');
+  return `<div class="row"><div class="ico">${ART[s.k]}</div><div class="rn"><b>${s.name}</b><span class="v">${cval(s.k,c)}</span><small>${cref(s.k,c)}</small></div>
+ <div class="imp">${p>=.05?'<b>+'+p.toFixed(1).replace('.',',')+'</b>exigência':'oferta do banco'}</div>
+ <div class="lvl">${lock?'':`<button class="pm" data-k="${s.k}" data-d="-1">−</button>`}<div class="sqw"><div class="sq">${sq}</div><div class="sql"><span>oferta do banco</span><span>${lv===n-1?'<b>no máximo</b>':'máximo'}</span></div></div>${lock?'':`<button class="pm" data-k="${s.k}" data-d="1">+</button>`}</div></div>`;}).join('')
+ +(hasStock()?`<div class="row guar ${guarOn()?'on':''}"><div class="ico">${ART.guar}</div><div class="rn"><b>Garantia em estoque</b><small class="risk">Se atrasar uma parcela, o banco fica com o estoque.</small></div><div class="imp">${guarOn()?'<b>−2</b>exigência':''}</div><div class="ctl">${lock?`<span class="val" style="border:2px solid var(--ink2)">${guarOn()?'Anexada':'Não'}</span>`:`<button class="btn2" id="guar">${guarSel?'RETIRAR':'ANEXAR'}</button>`}</div></div>`:'');
+ document.querySelectorAll('.q').forEach(b=>b.onclick=()=>{const s=SL.find(x=>x.k===b.dataset.k);req[s.k]=valAt(s,+b.dataset.i);paint();});
  document.querySelectorAll('.pm').forEach(b=>b.onclick=()=>{const s=SL.find(x=>x.k===b.dataset.k);req[s.k]=+Math.min(s.max,Math.max(s.min,req[s.k]+s.step*b.dataset.d)).toFixed(1);paint();});
  const gb=$('guar');if(gb)gb.onclick=()=>{guarSel=!guarSel;paint();};
-}
-function pedido(){const c=G?G.req:req,tg=G?.tgFinal??target(c,guarOn());
- rows();$('state').textContent=phase==='setup'?'em preparação':'apresentado ao gerente';
- $('tg').textContent=tg;$('tg').className='n'+(tg>21?' bad':'');$('ch').textContent=chance(tg)+'%';$('chb').style.width=chance(tg)+'%';
- const cp=Math.round(condPts(c));$('comp').textContent='condições +'+cp+(rel?' · relacionamento '+(rel>0?'−':'+')+Math.abs(rel):'')+(guarOn()?' · garantia −2':'');
- $('warn').classList.toggle('show',tg>21);
- const L=loan(c),deed=(col,t,v,s)=>`<div class="deed"><i style="background:${col}">${t}</i><b>${v}</b><small>${s}</small></div>`;
- $('deeds').innerHTML=deed('#2f9a6a','VOCÊ RECEBE',money(L.V),'entra no cofre')+deed('#ef8a3c','PARCELA',money(L.pmt),c.prazo+'× por mês')+deed('#7b5cd6','TOTAL A PAGAR',money(L.total),money(L.juros)+' de juros');
- $('first').textContent='📅 Primeira parcela na semana '+firstWeek(c)+(c.car?' · '+carTxt(c.car).toLowerCase()+' de carência':'');
- const Lb=loan(EASY);$('base').innerHTML=`<b>${money(Lb.V)}</b> · ${EASY.prazo} meses · ${fmtJ(EASY.juros)} · sem carência<br>Parcela de ${money(Lb.pmt)}. Pode assinar sem negociar.`;
- $('take').disabled=week.signed||phase!=='setup';
  const n=$('note');n.classList.toggle('show',phase==='setup'&&(week.negotiated||week.signed));n.innerHTML=week.signed?'O contrato desta semana já foi assinado. Avance a semana para negociar de novo.':'A negociação desta semana já foi usada. A <b>oferta recebida</b> continua valendo.';
  $('go').disabled=phase!=='setup'||week.negotiated||week.signed;$('go').style.display=phase==='setup'?'':'none';
 }
 
-/* ===== mesa de negociação ===== */
+/* ===== lado direito: ligação, exigência, cartas ===== */
 const cardHtml=(c,extra='',cls='')=>`<div class="card ${['♥','♦'].includes(c.s)?'red':''} ${cls}"><div class="r">${c.r}</div><div class="s">${c.s}</div><div class="r2">${c.r}</div>${extra}</div>`;
-function hand(){const sf=soft(G.hand);let first=true;return G.hand.map(c=>{let a='';if(c.r==='A'){const e=sf&&first;first=false;a=`<span class="ace"><span class="${e?'':'on'}">1</span> ou <span class="${e?'on':''}">11</span></span>`;}return cardHtml(c,a);}).join('')+(G.peeked?cardHtml(G.peeked,'','ghost'):'');}
-function lanes(t,tg){const lo=8,hi=25,u=v=>Math.max(0,v);
+function handHtml(){const sf=soft(G.hand);let first=true;return G.hand.map(c=>{let a='';if(c.r==='A'){const e=sf&&first;first=false;a=`<span class="ace"><span class="${e?'':'on'}">1</span> ou <span class="${e?'on':''}">11</span></span>`;}return cardHtml(c,a);}).join('');}
+function ruler(t,tg){const lo=8,hi=25,u=v=>Math.max(0,v),pos=v=>(Math.max(lo,Math.min(hi,v))-lo)/(hi-lo)*100;
  const w=[['l0',COUNTER_MIN-lo,'Sem oferta','até '+(COUNTER_MIN-1)],['l1',u(Math.min(tg,22)-COUNTER_MIN),'Contraproposta',COUNTER_MIN+'–'+(Math.min(tg,22)-1)],['l2',u(22-Math.max(tg,COUNTER_MIN)),'Aprovado',tg+'–21'],['l3',hi-22,'Estouro','22+']].filter(x=>x[1]>0);
- const left=(Math.max(lo,Math.min(hi,t))-lo)/(hi-lo)*100;
- return `<div class="lanes">${w.map(x=>`<span class="${x[0]}" style="flex:${x[1]}">${x[1]>=4?x[2]:x[1]>=2?x[2].slice(0,6)+'.':''}</span>`).join('')}<i class="mark" style="left:calc(${left}% - 2px)"></i></div><div class="leg">${w.map(x=>`<span style="flex:${x[1]}">${x[3]}</span>`).join('')}</div>`;}
+ return `<div class="ruler"><div class="rl">${w.map(x=>`<span class="${x[0]}" style="flex:${x[1]}">${x[1]>=4?x[2]:x[1]>=2?x[2].slice(0,6)+'.':''}</span>`).join('')}</div>
+ ${tg<=21?`<i class="tick" style="left:calc(${pos(tg)}% - 1px)"><em>alvo ${tg}</em></i>`:''}<i class="tick lim" style="left:calc(${pos(22)}% - 1px)"><em>limite 21</em></i>
+ ${t!=null?`<i class="mark" style="left:calc(${pos(t)}% - 2px)"></i>`:''}</div><div class="leg">${w.map(x=>`<span style="flex:${x[1]}">${x[3]}</span>`).join('')}</div>`;}
 function managerLine(t,tg){if(t>21)return 'Aí não dá. Pedido negado.';if(t===21&&tg<=21)return 'Excelente! Consigo até uma condição especial.';if(t>=tg)return 'Isso eu consigo aprovar.';if(t>=COUNTER_MIN)return 'Hum… está chegando perto do que preciso.';return G.hand.length===1?'Vamos ver esse pedido…':'Ainda não me convenceu.';}
 function board(){
- const b=$('board');
- if(!G){b.innerHTML=`<div class="call idle"><span class="dot"></span>${ART.phone.replace('<svg','<svg width="18" height="18"')}Gerente do Banco do Bairro · aguardando</div><div class="idlebox"><div class="face" style="width:64px;height:64px">${GERENTE}</div><div>Monte o pedido ao lado e clique em <b>Apresentar pedido</b>.<br>A cada carta, o gerente pesa os seus argumentos.</div><div style="display:flex;gap:6px"><div class="card back" style="animation:none"></div><div class="card back" style="animation:none;margin-left:-62px;translate:6px 4px"></div></div></div>`;return;}
- const t=total(G.hand),tg=G.tgFinal??target(G.req,G.guar),busted=t>21;
- let standTxt;if(t>=tg)standTxt=t===21?'Aprovado com condição especial: juros −1 p.p.':'Seu pedido será aprovado.';else if(t<COUNTER_MIN)standTxt='Sem oferta: abaixo de '+COUNTER_MIN+' o banco não negocia.';else standTxt=Math.round(COUNTER_CHANCE*100)+'% de chance de contraproposta.';
- const hitTxt=fin()?'Risco de estourar: '+Math.round(bustNext(G.hand,G.dk)*100)+'%':t>=tg&&t<21?'Arriscar pelo 21 cravado.':'A soma sobe… ou estoura.';
- let h=`<div class="call"><span class="dot"></span>${ART.phone.replace('<svg','<svg width="18" height="18"')}Em ligação com o gerente</div>
- <div class="scores"><div class="sc ${busted?'bust':''}"><small>SUA SOMA</small><b>${t}</b></div><div class="sc t"><small>EXIGÊNCIA</small><b>${tg}</b></div></div>
- <div class="talk"><div class="face">${GERENTE}</div><div class="bubble"><small>Gerente</small>${managerLine(t,tg)}</div></div>
- ${lanes(t,tg)}<div class="hand">${hand()}</div>`;
- if(phase==='play')h+=`<div class="acts"><div><button class="hit" id="hit">PEDIR CARTA</button><small>${hitTxt}</small></div><div><button class="stand" id="stand">ENCERRAR COM ${t}</button><small>${standTxt}</small></div></div>`;
+ const b=$('board'),tg=tgNow(),live=!!G;
+ const t=live?total(G.hand):null,busted=live&&t>21;
+ const status=!live?'Ligação pronta para iniciar':phase==='play'||phase==='rescue'?'Analisando seu pedido':'Ligação encerrada';
+ const say=!live?(tg>21?'Com essas condições eu não consigo aprovar inteiro.':'Quando quiser, me apresente o pedido.'):managerLine(t,tg);
+ const guarChip=(G?G.guar:guarOn())?'<span class="chip">−2 garantia</span>':'';
+ let h=`<div class="call ${live&&phase!=='done'?'live':''}"><div class="face">${GERENTE}</div><div class="who"><small><span class="dot"></span>${status}</small><b>Gerente do Banco do Bairro</b><span class="say">“${say}”</span></div></div><div class="bd">`;
+ if(!live){
+  h+=`<div class="scores"><div class="sc ${tg>21?'imp':'t'}">${guarChip}<small>EXIGÊNCIA DO BANCO</small><b>${tg}</b><span class="sub">${tg>21?'acima do limite':chance(tg)+'% de chance de aprovar inteiro'}</span></div><div class="sc"><small>LIMITE DAS CARTAS</small><b>21</b><span class="sub">passou disso, estourou</span></div></div>`;
+  if(tg>21)h+=`<div class="guide">Reduza as condições para a exigência caber no limite de 21.</div>`;
+  h+=ruler(null,tg)+`<div class="table"><p class="idle">Apresente o pedido para o gerente virar a primeira carta.<br>Cada carta é um argumento: some até a exigência sem passar de 21.</p><div class="deck"><div class="card back stack"></div>52 cartas</div></div>`;
+  b.innerHTML=h+'</div>';return;}
+ h+=`<div class="scores"><div class="sc ${busted?'bust':''}"><small>SUA SOMA</small><b>${t}</b></div><div class="sc t">${guarChip}<small>EXIGÊNCIA</small><b>${tg}</b></div></div>${ruler(t,tg)}`;
+ h+=`<div class="table"><div><div class="hand">${handHtml()}</div>${G.plan&&phase==='play'?`<span class="protect">${ART.plan}Plano de negócios protege 1 estouro</span>`:''}</div><div class="deck">${G.peeked?cardHtml(G.peeked,'','ghost'):'<div class="card back stack"></div>'}${G.peeked?'próxima carta':G.dk.length+' cartas'}</div></div>`;
+ if(phase==='play'){const risk=Math.round(bustNext(G.hand,G.dk)*100);
+  const standTxt=t>=tg?(t===21?'Aprovado com <b>condição especial</b>: juros −1 p.p.':'Seu pedido será <b>aprovado</b>.'):t<COUNTER_MIN?'Sem oferta: abaixo de '+COUNTER_MIN+' o banco não negocia.':'<b>'+Math.round(COUNTER_CHANCE*100)+'%</b> de chance de contraproposta.';
+  const hitTxt=fin()?'Risco de estourar: <b>'+risk+'%</b> (analista)':t>=tg&&t<21?'Arriscar pelo 21 cravado.':'A soma sobe… ou estoura.';
+  h+=`<div class="acts"><div><button class="hit" id="hit">PEDIR CARTA</button><small>${hitTxt}</small></div><div><button class="stand" id="stand">ENCERRAR COM ${t}</button><small>${standTxt}</small></div></div>`;}
  if(phase==='rescue'){const c=G.hand[G.hand.length-1];h+=`<div class="rescue">Estourou com ${t}… mas o Plano de negócios ainda está com você.<div><button id="use-plan">Usar o plano: o ${c.r}${c.s} volta para o baralho</button><button class="n" id="give-up">Aceitar o estouro</button></div></div>`;}
  if(phase==='done'&&result)h+=`<div class="result"><span class="stamp ${result.cls}">${result.stamp}</span><p>${result.text}</p><button class="btn2" id="back">VOLTAR AO PEDIDO</button></div>`;
- b.innerHTML=h;
+ b.innerHTML=h+'</div>';
  const on=(id,fn)=>{const e=$(id);if(e)e.onclick=fn;};
  on('hit',hit);on('stand',stand);on('give-up',bust);on('back',reset);
  on('use-plan',()=>{const c=G.hand.pop();G.dk.push(c);shuffle(G.dk);G.plan=false;phase='play';addLog('📑 O plano de negócios desfez um estouro (o '+c.r+c.s+' voltou para o baralho).');paint();});
 }
-function skills(){const f=fin(),live=phase==='play';
- $('fin-name').textContent=f?'Helena · Administrativo-financeiro':'sem ninguém do financeiro';
+function team(){const f=fin(),live=phase==='play';
+ $('team-h').innerHTML=`<span style="opacity:1;letter-spacing:.12em;text-transform:uppercase;font-weight:900"><span class="mini">${f?HELENA:VOCE}</span>Apoio da equipe</span><span>${f?'Helena · Administrativo-financeiro':'ninguém do financeiro na equipe'}</span>`;
  const st=(cls,t)=>`<span class="st ${cls}">${t}</span>`;
- const rowS=(ico,name,desc,status,off,btn='')=>`<div class="sk ${off?'off':''}"><div class="ico">${ico}</div><div><b>${name}</b><small>${desc}</small></div><div>${btn||status}</div></div>`;
- let h=rowS(ART.calc,'Analista','Mostra o risco de estourar a cada carta.',f?st('av','Ativo'):'',!f);
- h+=rowS(ART.card,'Avalista',G?.peeked?'Próxima carta: <b>'+G.peeked.r+G.peeked.s+'</b>':'Espia a próxima carta uma vez.',!f?'':(!G||G.peek)?st('av','Disponível'):st('us','Utilizado'),!f,f&&live&&G.peek?'<button id="peek">ESPIAR</button>':'');
- h+=rowS(ART.plan,'Plano de negócios','Desfaz um estouro: a carta volta para o baralho.',!f?'':(!G||G.plan)?st('av','Disponível'):st('us','Utilizado'),!f);
- h+=rowS(ART.guar,'Garantia em estoque','−2 na exigência; o estoque fica comprometido.',!hasStock()?'':guarOn()?st('an','Anexada'):st('us','Não anexada'),!hasStock());
+ const row=(ico,name,desc,status,off,btn='')=>`<div class="sk ${off?'off':''}"><div class="ico">${ico}</div><div><b>${name}</b><small>${desc}</small></div><div>${btn||status}</div></div>`;
+ let h=row(ART.calc,'Analista · relatório de risco','Mostra o risco de estourar junto de “Pedir carta”.',f?st('av','Ativo'):'',!f);
+ h+=row(ART.card,'Avalista · ficha de contato',G?.peeked?'A próxima carta está virada ao lado do baralho.':'Espia a próxima carta uma vez.',!f?'':(!G||G.peek)?st('av','Disponível'):st('us','Utilizado'),!f,f&&live&&G.peek?'<button id="peek">ESPIAR</button>':'');
+ h+=row(ART.plan,'Plano de negócios · pasta','Desfaz um estouro: a carta volta para o baralho.',!f?'':(!G||G.plan)?st('av','Disponível'):st('us','Utilizado'),!f);
+ h+=row(ART.guar,'Garantia em estoque · inventário','−2 na exigência; o estoque fica comprometido.',!hasStock()?'':guarOn()?st('an','Anexada'):st('us','Não anexada'),!hasStock());
  $('skills').innerHTML=h;const p=$('peek');if(p)p.onclick=()=>{G.peeked=G.dk[G.dk.length-1];G.peek=false;paint();};
- // voz de quem cuida do financeiro
- const c=G?G.req:req,tg=target(c,guarOn());let say;
+ const tg=tgNow();let say;
  if(G&&phase==='play'){const r=bustNext(G.hand,G.dk),t=total(G.hand);say=t>=tg?'Já temos o que o gerente pediu. Eu encerraria.':r>.5?'Mais uma carta é arriscado: '+Math.round(r*100)+'% de estourar.':'Ainda dá para pedir mais uma.';}
  else if(G&&phase==='rescue')say='Calma, eu preparei um plano para isso.';
  else if(G)say=result?.cls==='bad'?'Não foi dessa vez. Semana que vem tentamos de novo.':'Fechado! Já coloquei no planejamento de caixa.';
- else say=tg>21?'Assim o banco não aprova inteiro. No máximo uma contraproposta.':tg>=19?'Pedido ousado. Eu pensaria em dar o estoque como garantia.':tg>=16?'Dá para conseguir, mas vai depender das cartas.':'Esse pedido o gerente aprova fácil.';
- $('voice').innerHTML=`<div class="face">${f?HELENA:VOCE}</div><p><b>${f?'Helena, do financeiro':'Você'}:</b> “${say}”</p>`;
+ else say=tg>21?'Assim o banco não aprova inteiro. No máximo uma contraproposta.':tg>=19?'Pedido ousado. Eu pensaria em anexar o estoque como garantia.':tg>=16?'Dá para conseguir, mas vai depender das cartas.':'Esse pedido o gerente aprova fácil.';
+ $('voice').innerHTML=`<div class="face">${f?HELENA:VOCE}</div><p><b>${f?'Helena':'Você'}:</b> “${say}”</p>`;
 }
 
 /* ===== fluxo ===== */
-function paint(){topBar();pedido();board();skills();}
+function paint(){topBar();left();board();}
 function start(){week.negotiated=true;G={req:{...req},dk:deck(),hand:[],plan:fin(),peek:fin(),guar:guarSel&&hasStock(),peeked:null};phase='play';result=null;G.hand.push(G.dk.pop());paint();}
 function hit(){G.hand.push(G.dk.pop());G.peeked=null;if(total(G.hand)>21){if(G.plan){phase='rescue';paint();return;}bust();}else paint();}
 function finish(cls,stamp,text){phase='done';result={cls,stamp,text};paint();}
@@ -358,9 +383,9 @@ function stand(){const t=total(G.hand),tg=target(G.req,G.guar);G.tgFinal=tg;
  phase='done';result=null;paint();offerPopup(counterFor(G.req,t),t);}
 function offerPopup(c,t){const r=G.req,Lr=loan(r),L=loan(c),ov=document.createElement('div');ov.id='offer';
  const row=(k,n)=>`<tr class="${c[k]!==r[k]?'ch':''}"><td>${n}</td><td>${cval(k,r)}</td><td>${cval(k,c)}</td></tr>`;
- ov.innerHTML=`<div class="sheet"><span class="stamp">CONTRAPROPOSTA</span><span class="tag">Banco do Bairro</span><h2>O gerente fez uma contraproposta</h2><div style="color:var(--soft)">Você chegou em ${t}; o pedido precisava de ${target(r,G.guar)}.</div>
+ ov.innerHTML=`<div class="sheet"><span class="stamp">CONTRAPROPOSTA</span><span class="tag">BANCO DO BAIRRO</span><h2>O gerente fez uma contraproposta</h2><div style="color:var(--soft)">Você chegou em ${t}; o pedido precisava de ${G.tgFinal}.</div>
  <table class="cmp"><tr><th>Condição</th><th>Seu pedido</th><th>Oferta do banco</th></tr>${row('pct','Valor')}${row('prazo','Prazo')}${row('juros','Juros')}${row('car','Carência')}<tr class="pay"><td>Parcela</td><td>${money(Lr.pmt)}</td><td>${money(L.pmt)}</td></tr><tr class="pay"><td>Total a pagar</td><td>${money(Lr.total)}</td><td>${money(L.total)}</td></tr></table>
- <div class="timer"><b id="sec">${COUNTER_SECONDS}</b><div class="bar"><i id="tbar" style="width:100%"></i></div></div>
+ <div class="timer"><b id="sec">${COUNTER_SECONDS}</b><div class="tbar"><i id="tbar" style="width:100%"></i></div></div>
  <button class="go" id="pop-ok">ACEITAR OFERTA</button><div style="text-align:center;margin-top:8px"><button class="btn2" id="pop-no">RECUSAR</button></div></div>`;
  document.body.appendChild(ov);const bar=$('tbar');requestAnimationFrame(()=>requestAnimationFrame(()=>{bar.style.transition='width '+COUNTER_SECONDS+'s linear';bar.style.width='0%';}));
  let left=COUNTER_SECONDS;const tick=setInterval(()=>{left--;const e=$('sec');if(e)e.textContent=Math.max(0,left);},1000);
@@ -374,8 +399,9 @@ function addLog(t){log.unshift(t);$('log').innerHTML=log.map(x=>'<div>'+x+'</div
 function reset(){phase='setup';G=null;result=null;paint();}
 $('take').onclick=()=>{sign({...EASY},'oferta recebida');paint();};
 $('go').onclick=start;
+$('help').onclick=e=>{e.currentTarget.classList.toggle('open');};
 $('next').onclick=()=>{if($('offer'))return;week={n:week.n+1,negotiated:false,signed:false};addLog('📅 Começou a semana '+week.n+'.');reset();};
-['rev','fin','stock'].forEach(id=>$(id).oninput=paint);
+$('rev').oninput=paint;
 paint();
 </script>
 </body>
