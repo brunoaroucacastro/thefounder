@@ -51,6 +51,11 @@ button:disabled{opacity:.4;cursor:default}
 .rel{display:flex;gap:4px}.rel span{width:22px;height:10px;border-radius:3px;background:#e5dccb}.rel span.on{background:var(--accent)}
 .muted{color:var(--muted);font-size:13px}
 .full{grid-column:1/-1}
+#offer{position:fixed;inset:0;background:#0007;display:flex;align-items:center;justify-content:center;padding:16px;z-index:9}
+#offer .pop{background:var(--card);border-radius:12px;padding:18px 20px;max-width:520px;width:100%;box-shadow:0 10px 40px #0005}
+#offer h2{margin:0 0 4px}
+.clock{height:12px;border-radius:6px;background:#eadfca;overflow:hidden;margin-top:10px}
+.clock i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#b23a3a,#e0a33a)}
 label.chk{font-size:13px;display:flex;gap:6px;align-items:center}
 @media (max-width:860px){main{grid-template-columns:1fr}.sl{grid-template-columns:110px 1fr 90px}.sl .pts{display:none}.terms{grid-template-columns:1fr 1fr}}
 </style>
@@ -156,9 +161,9 @@ function table(msg=''){
  <div class="hand">${G.hand.map(c=>card(c)).join('')}${G.gone.map(c=>card(c,'gone')).join('')}${G.peeked?card(G.peeked,'ghost'):''}</div>`;
  if(phase==='play'){
   // mostra o que o banco faria se você parasse agora, para o meio do caminho virar uma decisão
-  let now;if(t>=tg)now='<b>aprovado do jeito que você pediu.</b>';else if(t<MIN)now='o banco não faz oferta (precisa de '+MIN+' ou mais).';else{const c=counterFor(G.req,t),L=loan(c);now='<b>contraproposta</b> de '+money(L.V)+' · '+SL[1].fmt(c.prazo)+' · '+SL[2].fmt(c.juros)+' a.m. · carência '+SL[3].fmt(c.car)+' → parcela '+money(L.pmt);}
+  let now;if(t>=tg)now='<b>aprovado do jeito que você pediu.</b>';else if(t<MIN)now='o banco não faz oferta (precisa de '+MIN+' ou mais).';else{const c=counterFor(G.req,t),L=loan(c);now='<b>'+Math.round(COUNTER_CHANCE*100)+'% de chance de contraproposta</b>, algo como '+money(L.V)+' · '+SL[1].fmt(c.prazo)+' · '+SL[2].fmt(c.juros)+' a.m. · carência '+SL[3].fmt(c.car)+' → parcela '+money(L.pmt);}
   h+=`<div class="res ${t>=tg?'ok':t<MIN?'bad':'cnt'}" style="margin:0 0 10px">Se parar agora com ${t}: ${now}</div>`;
-  h+=`<div class="row"><button class="primary" id="hit">Pedir carta</button><button id="stand">${t>=tg?'Parar e fechar o pedido':t<MIN?'Parar com '+t:'Parar e ouvir a contraproposta'}</button></div>`;
+  h+=`<div class="row"><button class="primary" id="hit">Pedir carta</button><button id="stand">${t>=tg?'Parar e fechar o pedido':t<MIN?'Parar com '+t:'Parar e tentar a contraproposta'}</button></div>`;
   if($('sk-odds').checked)h+=`<div class="odds">Chance de estourar na próxima carta: ${Math.round(bustNext(G.hand,G.dk)*100)}%</div>`;
   h+=`<div class="trunfos">${G.plan?`<button id="t-plan" ${G.hand.length<2?'disabled':''}>📑 Plano de negócios: descartar a última carta</button>`:''}${G.peek&&!G.peeked?`<button id="t-peek">🤝 Avalista: espiar a próxima carta</button>`:''}${G.guarOk&&!G.guar?`<button id="t-guar">📦 Dar estoque em garantia: alvo ${tg} → ${target(G.req,true)}</button>`:''}</div>`;
  }
@@ -177,8 +182,24 @@ function stand(){const t=total(G.hand),tg=target(G.req,G.guar);G.t=t;
  if(t>=tg){let c={...G.req},bonus='';if(t===21){rel=Math.min(2,rel+1);if(c.juros>3){c.juros=Math.max(3,c.juros-1);bonus=' 21 cravado: o gerente ainda tira 1 ponto dos juros e o relacionamento sobe +1.';}else bonus=' 21 cravado: relacionamento +1.';}
   phase='done';table(`<div class="res ok"><b>Aprovado do jeito que você pediu.</b>${bonus}</div>`);sign(c,t===21?'21 cravado':'pedido aprovado',true);return;}
  if(t<MIN){phase='done';addLog('Parou com '+t+'. Abaixo de '+MIN+': nada feito.');table(`<div class="res bad"><b>${t} não convence.</b> O banco nem faz contraproposta. Fica valendo só a proposta inicial.<br><br><button id="again">Nova negociação</button></div>`);paint();return;}
- G.counter=counterFor(G.req,t);phase='counter';
- table(`<div class="res cnt"><b>Contraproposta para quem tem ${t}.</b> O banco cortou um pouco de cada condição. Você pode redistribuir nos controles ao lado, desde que o alvo fique em até ${t}.<br><br><div class="row"><button class="primary" id="ok-counter">Fechar contraproposta</button><button id="no">Recusar</button></div></div>`);paint();}
+ // no meio do caminho a contraproposta não é garantida: o gerente decide (por enquanto, 50%)
+ phase='done';
+ if(Math.random()>=COUNTER_CHANCE){addLog('Parou com '+t+'. O gerente não quis contrapropor.');table(`<div class="res bad"><b>O gerente balançou a cabeça.</b> Com ${t} ele não quis fazer contraproposta desta vez.<br><br><button id="again">Nova negociação</button></div>`);paint();return;}
+ G.counter=counterFor(G.req,t);table(`<div class="res cnt"><b>O gerente está fazendo uma contraproposta…</b></div>`);paint();offerPopup(G.counter,t);}
+// popup com relógio: se não aceitar a tempo, o banco retira a oferta
+const COUNTER_CHANCE=.5,COUNTER_SECONDS=7;
+function offerPopup(c,t){const L=loan(c),ov=document.createElement('div');ov.id='offer';
+ ov.innerHTML=`<div class="pop"><h2>📄 Contraproposta do banco</h2><p class="muted">Para quem chegou em ${t}, o gerente oferece:</p>
+ <div class="terms"><div>Valor<b>${money(L.V)}</b></div><div>Prazo<b>${SL[1].fmt(c.prazo)}</b></div><div>Juros<b>${SL[2].fmt(c.juros)} a.m.</b></div><div>Carência<b>${SL[3].fmt(c.car)}</b></div></div>
+ <p>Parcela de <b>${money(L.pmt)}</b> · total pago ${money(L.total)}</p>
+ <div class="clock"><i></i></div><p class="muted" id="clk">${COUNTER_SECONDS}s para decidir</p>
+ <div class="row"><button class="primary" id="pop-ok">Aceitar</button><button id="pop-no">Recusar</button></div></div>`;
+ document.body.appendChild(ov);const bar=ov.querySelector('.clock i');requestAnimationFrame(()=>requestAnimationFrame(()=>{bar.style.transition='width '+COUNTER_SECONDS+'s linear';bar.style.width='0%';}));
+ let left=COUNTER_SECONDS;const tick=setInterval(()=>{left--;const e=document.getElementById('clk');if(e)e.textContent=left+'s para decidir';},1000);
+ const close=()=>{clearInterval(tick);clearTimeout(timer);ov.remove();};
+ const lose=why=>{close();addLog('Contraproposta de '+t+' '+why+'.');table(`<div class="res bad"><b>${why==='expirou'?'Tempo esgotado.':'Você recusou.'}</b> O banco retirou a contraproposta.<br><br><button id="again">Nova negociação</button></div>`);paint();};
+ const timer=setTimeout(()=>lose('expirou'),COUNTER_SECONDS*1000);
+ ov.querySelector('#pop-ok').onclick=()=>{close();sign(c,'contraproposta');};ov.querySelector('#pop-no').onclick=()=>lose('recusada');}
 // recua todas as condições na mesma proporção até o alvo caber no número tirado
 function counterFor(r,t){for(let f=1;f>=0;f-=.01){const c={};SL.forEach(s=>{const raw=s.easy+(r[s.k]-s.easy)*f,steps=(raw-s.easy)/s.step;c[s.k]=+(s.easy+Math.trunc(steps)*s.step).toFixed(1);});if(target(c,G.guar)<=t)return c;}return{...EASY};}
 function sign(c,how,skip){const L=loan(c);addLog(`✍️ <b>${how}</b>: ${money(L.V)} · ${SL[1].fmt(c.prazo)} · ${SL[2].fmt(c.juros)} a.m. · carência ${SL[3].fmt(c.car)}${G?.guar?' · estoque em garantia':''} → parcela ${money(L.pmt)}, total ${money(L.total)}`);
