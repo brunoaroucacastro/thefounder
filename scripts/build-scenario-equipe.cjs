@@ -20,6 +20,4 @@ html=html.replace('memory=new Map()',()=>'memory=new Map([["the-founder-contract
 // abre a Equipe e seleciona a primeira mesa vaga assim que o jogo carrega
 html=html.replace('</body>',()=>'<script>addEventListener("load",()=>setTimeout(()=>{document.getElementById("team-nav")?.click();setTimeout(()=>document.querySelector(\'#workshop-info [data-action=teamDesk][data-id="1"]\')?.click(),300);},1200));</script></body>');
 const out='dist/The-Founder-Cenario-Equipe-'+version+'.html';fs.writeFileSync(out,html);
-// versão B: fichário de talentos
-const outB='dist/The-Founder-Cenario-Equipe-B-'+version+'.html';fs.writeFileSync(outB,html.replace('<script>',()=>'<script>window.TEAM_UI="b";</script><script>'));
-console.log('PASS:',out,'e',outB,'· equipe',s.team.staff.map(p=>p.name).join(','),'· candidatos',s.team.candidates.map(c=>c.name+' ('+C.seniority(c.level)+' '+c.level+', '+C.SKILLS[c.profile]?.name+', '+c.trait+')').join(' e '));
+console.log('PASS:',out,'· equipe',s.team.staff.map(p=>p.name).join(','),'· candidatos',s.team.candidates.map(c=>c.name+' ('+C.seniority(c.level)+' '+c.level+', '+C.SKILLS[c.profile]?.name+', '+c.trait+')').join(' e '));

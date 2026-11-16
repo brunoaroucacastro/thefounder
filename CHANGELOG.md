@@ -1,3 +1,10 @@
+# 0.89 · Equipe como dossiê de funcionário
+
+- Crachás pendurados no lugar das mesas; a vaga é um porta-crachá vazio.
+- Ficha funcional presa na prancheta: EXP, motivação, atributos de RPG com a composição de cada valor e as três habilidades reais dos níveis 4, 7 e 10 (sorteadas na contratação).
+- Especialidade e parecer comportamental como anotações do dossiê.
+- Treinamento numa aba própria, aberta pelo botão Treinar funcionário.
+
 # 0.88 · Contratar no bairro
 
 - Cinco moradores têm profissão escondida: Marina (designer de produto), Seu Antônio (engenheiro aposentado), Kaique (criador de conteúdo) e os frequentadores do bar Davi (publicitário) e Helena (prototipista).
