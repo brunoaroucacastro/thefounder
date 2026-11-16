@@ -9,6 +9,9 @@ let s=C.load(JSON.parse(m[1]));
 s=act(s,'hrSearch',{id:'product'});
 for(let i=0;i<60000&&!s.team.candidates;i++){if(s.weekly?.stage==='report'){s=act(s,'readWeek');continue;}if(s.weekly?.stage==='weekend'){s=act(s,'weekend',{choice:'work'});continue;}if(s.phase==='opportunity'){s=act(s,'offer',{choice:'decline'});continue;}s=C.tick(s,.2);}
 if(!s.team.candidates)throw Error('candidatos não chegaram');
+// contrata o primeiro e abre outra busca, para ter uma ficha e uma vaga com envelopes
+s=act(s,'hrHire',{id:s.team.candidates[0].id});s=act(s,'hrSearch',{id:'marketing'});
+for(let i=0;i<60000&&!s.team.candidates;i++){if(s.weekly?.stage==='report'){s=act(s,'readWeek');continue;}if(s.weekly?.stage==='weekend'){s=act(s,'weekend',{choice:'work'});continue;}if(s.phase==='opportunity'){s=act(s,'offer',{choice:'decline'});continue;}s=C.tick(s,.2);}
 s.paused=true;const state=JSON.stringify(s);
 let html=fs.readFileSync('dist/The-Founder-Primeira-Aposta-'+version+'.html','utf8');
 if(!html.includes('memory=new Map()'))throw Error('memória do save não encontrada');
@@ -17,4 +20,6 @@ html=html.replace('memory=new Map()',()=>'memory=new Map([["the-founder-contract
 // abre a Equipe e seleciona a primeira mesa vaga assim que o jogo carrega
 html=html.replace('</body>',()=>'<script>addEventListener("load",()=>setTimeout(()=>{document.getElementById("team-nav")?.click();setTimeout(()=>document.querySelector(\'#workshop-info [data-action=teamDesk][data-id="1"]\')?.click(),200);},600));</script></body>');
 const out='dist/The-Founder-Cenario-Equipe-'+version+'.html';fs.writeFileSync(out,html);
-console.log('PASS:',out,'· candidatos',s.team.candidates.map(c=>c.name+' ('+C.seniority(c.level)+' '+c.level+', '+C.SKILLS[c.profile]?.name+', '+c.trait+')').join(' e '));
+// versão B: fichário de talentos
+const outB='dist/The-Founder-Cenario-Equipe-B-'+version+'.html';fs.writeFileSync(outB,html.replace('<script>',()=>'<script>window.TEAM_UI="b";</script><script>'));
+console.log('PASS:',out,'e',outB,'· equipe',s.team.staff.map(p=>p.name).join(','),'· candidatos',s.team.candidates.map(c=>c.name+' ('+C.seniority(c.level)+' '+c.level+', '+C.SKILLS[c.profile]?.name+', '+c.trait+')').join(' e '));
