@@ -1,6 +1,6 @@
 # Protótipo · Negociação de empréstimo estilo blackjack
 
-- Visual de mesa de negociação: pasta do banco com a proposta inicial, contrato com as quatro condições (− / + e marca da proposta do banco), simulação impressa e primeira parcela pela semana do jogo, mesa de feltro verde com soma e alvo grandes, faixas (sem oferta, contraproposta, aprovado, estouro), cartas maiores com Ás 1 ou 11, consequência escrita sob cada botão, vantagens da equipe como fichas com selo Disponível/Utilizado, carimbos de resultado (21 cravado ganha Condição especial), contraproposta como folha com comparação e cronômetro, ficha de relacionamento e disponibilidade semanal no cabeçalho.
+- Visual refeito na linguagem do jogo (janela creme, contornos escuros, faixas de título, fonte Oficina, etiquetas e carimbos), como tela do financeiro: oferta recebida, pedido em linhas de ficha com ícones em pixel art, exigência do banco com a composição, resumo em escrituras do Caixa, ligação com o gerente (fala a cada carta) sobre o painel azul da campanha, apoio da equipe no formato das habilidades e comentário de quem cuida do financeiro.
 
 - Correções do playtest: uma negociação por semana (falhou, só resta a proposta inicial até avançar a semana); contrato negociado sem estourar sobe o relacionamento +1; contraproposta só a partir de 14; o Plano de negócios agora anula um estouro (a carta volta para o baralho); a garantia é escolhida ao montar o pedido; o popup compara o pedido com a oferta.
 
