@@ -206,7 +206,7 @@ button{font-family:inherit;cursor:pointer}button:disabled{cursor:default;opacity
 <div class="win">
   <div class="top">
     <div><span class="tag">FINANCEIRO / CRÉDITO</span><h1>Negociar empréstimo</h1></div>
-    <button class="help" id="help">?<span class="help-tip">Ajuste valor, prazo, juros e carência. Cada condição melhor para a empresa sobe a <b>exigência do banco</b>. Ao apresentar o pedido, puxe cartas: chegue à exigência sem passar de 21 para aprovar. Parar no meio pode render uma contraproposta.</span></button>
+    <button class="help" id="help">?<span class="help-tip">Ajuste valor, prazo, juros e carência. Cada condição melhor para a empresa sobe a <b>exigência do banco</b>. Ao apresentar o pedido, puxe cartas: chegue à exigência sem passar de 21 para aprovar.</span></button>
     <div class="pills"><div class="pill" id="p-rel"><small>Confiança do banco</small><div class="trust" id="trust"></div><b></b></div><div class="pill" id="p-wk"><small id="p-wk-l"></small><b></b></div><button class="x" title="Fechar">×</button></div>
   </div>
 
@@ -265,7 +265,7 @@ let req={...EASY}, rel=0, phase='setup', G=null, log=[], guarSel=false, result=n
 let week={n:1,negotiated:false,signed:false};
 const $=id=>document.getElementById(id);
 const money=v=>'R$ '+Math.round(v).toLocaleString('pt-BR');
-const MIN=13,MAX=24,SPAN=MAX-MIN,COUNTER_MIN=14,COUNTER_CHANCE=.5,COUNTER_SECONDS=7;
+const MIN=13,MAX=24,SPAN=MAX-MIN,COUNTER_MIN=14,COUNTER_CHANCE=.5,COUNTER_SECONDS=15;
 const norm=(s,v)=>Math.abs(v-s.easy)/(s.max-s.min);
 const pts=(s,v)=>SPAN*s.w*norm(s,v);
 const valAt=(s,i)=>+(s.easy+(s.easy===s.min?1:-1)*i*s.step).toFixed(1);   // i-ésimo quadradinho a partir da oferta do banco
@@ -330,7 +330,7 @@ function left(){const c=G?G.req:req,lock=phase!=='setup',L=loan(c),Lb=loan(EASY)
 const cardHtml=(c,extra='',cls='')=>`<div class="card ${['♥','♦'].includes(c.s)?'red':''} ${cls}"><div class="r">${c.r}</div><div class="s">${c.s}</div><div class="r2">${c.r}</div>${extra}</div>`;
 function handHtml(){const sf=soft(G.hand);let first=true;return G.hand.map(c=>{let a='';if(c.r==='A'){const e=sf&&first;first=false;a=`<span class="ace"><span class="${e?'':'on'}">1</span> ou <span class="${e?'on':''}">11</span></span>`;}return cardHtml(c,a);}).join('');}
 function ruler(t,tg){const lo=8,hi=25,u=v=>Math.max(0,v),pos=v=>(Math.max(lo,Math.min(hi,v))-lo)/(hi-lo)*100;
- const w=[['l0',COUNTER_MIN-lo,'Sem oferta','até '+(COUNTER_MIN-1)],['l1',u(Math.min(tg,22)-COUNTER_MIN),'Contraproposta',COUNTER_MIN+'–'+(Math.min(tg,22)-1)],['l2',u(22-Math.max(tg,COUNTER_MIN)),'Aprovado',tg+'–21'],['l3',hi-22,'Estouro','22+']].filter(x=>x[1]>0);
+ const w=[['l0',u(Math.min(tg,22)-lo),'Abaixo da exigência','até '+(Math.min(tg,22)-1)],['l2',u(22-Math.max(tg,COUNTER_MIN)),'Aprovado',tg+'–21'],['l3',hi-22,'Estouro','22+']].filter(x=>x[1]>0);
  return `<div class="ruler"><div class="rl">${w.map(x=>`<span class="${x[0]}" style="flex:${x[1]}">${x[1]>=4?x[2]:x[1]>=2?x[2].slice(0,6)+'.':''}</span>`).join('')}</div>
  ${tg<=21?`<i class="tick" style="left:calc(${pos(tg)}% - 1px)"><em>alvo ${tg}</em></i>`:''}<i class="tick lim" style="left:calc(${pos(22)}% - 1px)"><em>limite 21</em></i>
  ${t!=null?`<i class="mark" style="left:calc(${pos(t)}% - 2px)"></i>`:''}</div><div class="leg">${w.map(x=>`<span style="flex:${x[1]}">${x[3]}</span>`).join('')}</div>`;}
@@ -350,7 +350,7 @@ function board(){
  h+=`<div class="scores"><div class="sc ${busted?'bust':''}"><small>SUA SOMA</small><b>${t}</b></div><div class="sc t">${guarChip}<small>EXIGÊNCIA</small><b>${tg}</b></div></div>${ruler(t,tg)}`;
  h+=`<div class="table"><div><div class="hand">${handHtml()}</div>${G.plan&&phase==='play'?`<span class="protect">${ART.plan}Plano de negócios protege 1 estouro</span>`:''}</div><div class="deck">${G.peeked?cardHtml(G.peeked,'','ghost'):'<div class="card back stack"></div>'}${G.peeked?'próxima carta':G.dk.length+' cartas'}</div></div>`;
  if(phase==='play'){const risk=Math.round(bustNext(G.hand,G.dk)*100);
-  const standTxt=t>=tg?(t===21?'Aprovado com <b>condição especial</b>: juros −1 p.p.':'Seu pedido será <b>aprovado</b>.'):t<COUNTER_MIN?'Sem oferta: abaixo de '+COUNTER_MIN+' o banco não negocia.':'<b>'+Math.round(COUNTER_CHANCE*100)+'%</b> de chance de contraproposta.';
+  const standTxt=t>=tg?(t===21?'Aprovado com <b>condição especial</b>: juros −1 p.p.':'Seu pedido será <b>aprovado</b>.'):t<COUNTER_MIN?'Abaixo da exigência: o gerente recusa o pedido.':'Abaixo da exigência: o gerente recusa o pedido.';
   const hitTxt=fin()?'Risco de estourar: <b>'+risk+'%</b> (analista)':t>=tg&&t<21?'Arriscar pelo 21 cravado.':'A soma sobe… ou estoura.';
   h+=`<div class="acts"><div><button class="hit" id="hit">PEDIR CARTA</button><small>${hitTxt}</small></div><div><button class="stand" id="stand">ENCERRAR COM ${t}</button><small>${standTxt}</small></div></div>`;}
  if(phase==='rescue'){const c=G.hand[G.hand.length-1];h+=`<div class="rescue">Estourou com ${t}… mas o Plano de negócios ainda está com você.<div><button id="use-plan">Usar o plano: o ${c.r}${c.s} volta para o baralho</button><button class="n" id="give-up">Aceitar o estouro</button></div></div>`;}
@@ -380,27 +380,27 @@ function team(){const f=fin(),live=phase==='play';
 /* ===== fluxo ===== */
 function paint(){topBar();left();board();}
 function start(){week.negotiated=true;G={req:{...req},dk:deck(),hand:[],plan:fin(),peek:fin(),guar:guarSel&&hasStock(),peeked:null};phase='play';result=null;G.hand.push(G.dk.pop());paint();}
-function hit(){G.hand.push(G.dk.pop());G.peeked=null;if(total(G.hand)>21){if(G.plan){phase='rescue';paint();return;}bust();}else paint();}
+function hit(){G.hand.push(G.dk.pop());G.peeked=null;const t=total(G.hand);if(t>21){if(G.plan){phase='rescue';paint();return;}bust();return;}paint();
+ // o gerente pode interromper com uma contraproposta quando a soma chega perto da exigência (uma vez por negociação)
+ const tg=target(G.req,G.guar);if(!G.offered&&t>=COUNTER_MIN&&t<tg&&Math.random()<COUNTER_CHANCE){G.offered=true;offerPopup(counterFor(G.req,t),t);}}
 function finish(cls,stamp,text){phase='done';result={cls,stamp,text};paint();}
 const rest=' Tente de novo na semana que vem.';
 function bust(){const t=total(G.hand);G.tgFinal=target(G.req,G.guar);addLog('Estourou com '+t+'. Pedido negado; relacionamento −1.');relChange(-1);finish('bad','NEGADO','Estourou com '+t+'. O gerente achou o pedido fora da realidade.'+rest);}
 function stand(){const t=total(G.hand),tg=target(G.req,G.guar);G.tgFinal=tg;
  if(t>=tg){const c={...G.req},sp=t===21&&c.juros>3;if(sp)c.juros=Math.max(3,c.juros-1);sign(c,sp?'21 cravado':'pedido aprovado');relChange(1);finish(sp?'gold':'ok',sp?'CONDIÇÃO ESPECIAL':'APROVADO',sp?'21 cravado: aprovado e com juros de '+fmtJ(c.juros)+'.':'O gerente aprovou do jeito que você pediu.');return;}
- if(t<COUNTER_MIN){addLog('Encerrou com '+t+': sem oferta.');finish('bad','SEM OFERTA','Com '+t+' o gerente nem faz contraproposta.'+rest);return;}
- if(Math.random()>=COUNTER_CHANCE){addLog('Encerrou com '+t+': o gerente não quis contrapropor.');finish('bad','SEM OFERTA','O gerente pensou e não quis contrapropor desta vez.'+rest);return;}
- phase='done';result=null;paint();offerPopup(counterFor(G.req,t),t);}
+ addLog('Encerrou com '+t+', abaixo da exigência '+tg+'. Pedido recusado.');finish('bad','RECUSADO','Com '+t+' o gerente não aprova um pedido que exige '+tg+'.'+rest);}
 function offerPopup(c,t){const r=G.req,Lr=loan(r),L=loan(c),ov=document.createElement('div');ov.id='offer';
  const row=(k,n)=>`<tr class="${c[k]!==r[k]?'ch':''}"><td>${n}</td><td>${cval(k,r)}</td><td>${cval(k,c)}</td></tr>`;
- ov.innerHTML=`<div class="sheet"><span class="stamp">CONTRAPROPOSTA</span><span class="tag">BANCO DO BAIRRO</span><h2>O gerente fez uma contraproposta</h2><div style="color:var(--soft)">Você chegou em ${t}; o pedido precisava de ${G.tgFinal}.</div>
+ ov.innerHTML=`<div class="sheet"><span class="stamp">CONTRAPROPOSTA</span><span class="tag">BANCO DO BAIRRO</span><h2>O gerente interrompeu com uma proposta</h2><div style="color:var(--soft)">Você está em ${t}; o pedido exige ${target(r,G.guar)}. Se recusar, a negociação continua.</div>
  <table class="cmp"><tr><th>Condição</th><th>Seu pedido</th><th>Oferta do banco</th></tr>${row('pct','Valor')}${row('prazo','Prazo')}${row('juros','Juros')}${row('car','Carência')}<tr class="pay"><td>Parcela</td><td>${money(Lr.pmt)}</td><td>${money(L.pmt)}</td></tr><tr class="pay"><td>Total a pagar</td><td>${money(Lr.total)}</td><td>${money(L.total)}</td></tr></table>
  <div class="timer"><b id="sec">${COUNTER_SECONDS}</b><div class="tbar"><i id="tbar" style="width:100%"></i></div></div>
- <button class="go" id="pop-ok">ACEITAR OFERTA</button><div style="text-align:center;margin-top:8px"><button class="btn2" id="pop-no">RECUSAR</button></div></div>`;
+ <button class="go" id="pop-ok">ACEITAR PROPOSTA</button><div style="text-align:center;margin-top:8px"><button class="btn2" id="pop-no">RECUSAR E CONTINUAR</button></div></div>`;
  document.body.appendChild(ov);const bar=$('tbar');requestAnimationFrame(()=>requestAnimationFrame(()=>{bar.style.transition='width '+COUNTER_SECONDS+'s linear';bar.style.width='0%';}));
  let left=COUNTER_SECONDS;const tick=setInterval(()=>{left--;const e=$('sec');if(e)e.textContent=Math.max(0,left);},1000);
  const close=()=>{clearInterval(tick);clearTimeout(timer);ov.remove();};
- const lose=why=>{close();addLog('Contraproposta de '+t+' '+why+'.');finish('bad',why==='expirou'?'EXPIROU':'RECUSADA','O banco retirou a contraproposta.'+rest);};
+ const lose=why=>{close();addLog('Contraproposta com '+t+' '+why+'. A negociação seguiu.');paint();};
  const timer=setTimeout(()=>lose('expirou'),COUNTER_SECONDS*1000);
- $('pop-ok').onclick=()=>{close();sign(c,'contraproposta');relChange(1);finish('ok','ASSINADO','Contraproposta assinada.');};$('pop-no').onclick=()=>lose('recusada');}
+ $('pop-ok').onclick=()=>{close();G.tgFinal=target(G.req,G.guar);sign(c,'contraproposta');relChange(1);finish('ok','ASSINADO','Contraproposta assinada.');};$('pop-no').onclick=()=>lose('recusada');}
 function counterFor(r,t){for(let f=1;f>=0;f-=.01){const c={};SL.forEach(s=>{const raw=s.easy+(r[s.k]-s.easy)*f,steps=(raw-s.easy)/s.step;c[s.k]=+(s.easy+Math.trunc(steps)*s.step).toFixed(1);});if(target(c,G.guar)<=t)return c;}return{...EASY};}
 function sign(c,how){const neg=how!=='oferta recebida',L=loan(c);week.signed=true;addLog(`✍️ Semana ${week.n} · <b>${how}</b>: ${money(L.V)} · ${c.prazo} meses · ${fmtJ(c.juros)} · ${carTxt(c.car).toLowerCase()}${neg&&G?.guar?' · estoque em garantia':''} → parcela ${money(L.pmt)}${neg?' · relacionamento +1':''}`);}
 function addLog(t){log.unshift(t);$('log').innerHTML=log.map(x=>'<div>'+x+'</div>').join('');}
