@@ -18,7 +18,7 @@ if(!html.includes('memory=new Map()'))throw Error('memória do save não encontr
 const literal=JSON.stringify(state).replace(/<\//g,'<\\/');
 html=html.replace('memory=new Map()',()=>'memory=new Map([["the-founder-contract-v1",'+literal+']])');
 // abre a Equipe e seleciona a primeira mesa vaga assim que o jogo carrega
-html=html.replace('</body>',()=>'<script>addEventListener("load",()=>setTimeout(()=>{document.getElementById("team-nav")?.click();setTimeout(()=>document.querySelector(\'#workshop-info [data-action=teamDesk][data-id="1"]\')?.click(),200);},600));</script></body>');
+html=html.replace('</body>',()=>'<script>addEventListener("load",()=>setTimeout(()=>{document.getElementById("team-nav")?.click();setTimeout(()=>document.querySelector(\'#workshop-info [data-action=teamDesk][data-id="1"]\')?.click(),300);},1200));</script></body>');
 const out='dist/The-Founder-Cenario-Equipe-'+version+'.html';fs.writeFileSync(out,html);
 // versão B: fichário de talentos
 const outB='dist/The-Founder-Cenario-Equipe-B-'+version+'.html';fs.writeFileSync(outB,html.replace('<script>',()=>'<script>window.TEAM_UI="b";</script><script>'));
