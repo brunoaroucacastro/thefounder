@@ -237,9 +237,9 @@ const PilotWorld=(()=>{
   if(o.border){c.strokeStyle=o.border;c.lineWidth=1.5;c.stroke();}
   if(o.progress!=null){rrect(c,x-w/2+8,y+h/2-6,w-16,3,1.5);c.fillStyle='rgba(36,29,51,.15)';c.fill();rrect(c,x-w/2+8,y+h/2-6,(w-16)*Math.max(0,Math.min(1,o.progress)),3,1.5);c.fillStyle='#f2a93b';c.fill();}
   c.fillStyle=o.color||'#241d33';c.textAlign='center';c.textBaseline='middle';c.fillText(text,x,y-(o.progress!=null?2:0)+.5);c.textAlign='left';c.textBaseline='alphabetic';c.restore();}
- const SPOTS={bench:{at:[4.8,.5,1.55],w:66,h:56,label:'COMPUTADOR',icon:'💻',tag:[4.8,.5,3.0]},products:{at:[7.35,.3,1.05],w:54,h:70,label:'PRODUTOS',icon:'🏆',tag:[7.35,.3,2.45]},cash:{at:[.36,4.26,.85],w:40,h:40,label:'CAIXA',icon:'🐷',tag:[.36,4.26,1.75]},clients:{at:[4.75,0,2.62],w:110,h:44,label:'CLIENTES',icon:'👥',tag:[4.75,0,3.6]}};
+ const SPOTS={bench:{at:[4.8,.5,1.55],w:66,h:56,label:'COMPUTADOR',icon:'💻',tag:[4.8,.5,3.0]},products:{at:[7.35,.3,1.05],w:54,h:70,label:'PRODUTOS',icon:'🏆',tag:[7.35,.3,2.45]},cash:{at:[.36,4.26,.85],w:40,h:40,label:'FINANÇAS',icon:'🐷',tag:[.36,4.26,1.75]},clients:{at:[4.75,0,2.62],w:110,h:44,label:'CLIENTES',icon:'👥',tag:[4.75,0,3.6]}};
  const OFFICE_SPOTS={bench:SPOTS.bench,products:SPOTS.products,
-  cash:{at:[.4,1.5,.32],w:44,h:46,label:'CAIXA E BANCO',icon:'💰',tag:[.4,1.5,1.3]},
+  cash:{at:[.4,1.5,.32],w:44,h:46,label:'FINANÇAS',icon:'💰',tag:[.4,1.5,1.3]},
   history:{at:[3.3,0,2.45],w:66,h:54,label:'DESEMPENHO',icon:'📈',tag:[3.3,0,3.6]},
   nexus:{at:[6.3,0,2.5],w:54,h:42,label:'NEXUS',icon:'📱',tag:[6.3,0,3.55]},
   clients:{at:[4.9,0,2.62],w:70,h:48,label:'CLIENTES',icon:'👥',tag:[4.9,0,3.6]},

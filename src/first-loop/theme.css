@@ -1232,3 +1232,38 @@ body.town-open{overflow:hidden}
 #town .tw-cash{color:#7ccf9c!important}
 #town .tw-btn{border-radius:0!important;font:400 11px Oficina,var(--q-font)!important;letter-spacing:.08em}
 #town .tw-end{background:#f2c230!important;border:2px solid #1d1b26!important;box-shadow:0 3px 0 #9c7a14!important;color:#1d1b26!important;margin-left:0!important}
+
+/* ===== FINANÇAS ===== */
+#workshop-info .fi .cr-cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+#workshop-info .fi-vault b{font:400 16px Oficina,var(--q-font)!important;color:var(--fin2)!important}
+#workshop-info .fi-in{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#e6f1ea;border-bottom:2px solid var(--ink2);font-weight:900}
+#workshop-info .fi-in b{font:400 20px Oficina,var(--q-font);color:var(--good)}
+#workshop-info .fi-row{display:grid;grid-template-columns:28px 130px 1fr 96px;gap:8px;align-items:center;padding:7px 12px;border-bottom:1px solid var(--line2)}
+#workshop-info .fi-row.zero{opacity:.45}
+#workshop-info .fi-ic{font-size:18px;text-align:center}
+#workshop-info .fi-n{font-weight:800;font-size:13px}
+#workshop-info .fi-bar{height:14px;background:#efe6cf;border:1.5px solid var(--ink2)}#workshop-info .fi-bar i{display:block;height:100%}
+#workshop-info .fi-row b{text-align:right;font-weight:900;color:var(--bad)}
+#workshop-info .fi-tot,#workshop-info .fi-res{display:flex;justify-content:space-between;padding:8px 12px;font-weight:900}
+#workshop-info .fi-tot b{color:var(--bad)}
+#workshop-info .fi-res{background:var(--ink2);color:#f6efdc}#workshop-info .fi-res b{font:400 18px Oficina,var(--q-font)}#workshop-info .fi-res.pos b{color:#7ccf9c}#workshop-info .fi-res.neg b{color:#ff8b7d}
+#workshop-info .fi-note{padding:7px 12px;font-size:12.5px;color:var(--soft);border-top:1px dashed #d8cdb0}
+#workshop-info .fi-right{display:grid;gap:12px;align-content:start}
+#workshop-info .fi-chart{display:flex;align-items:flex-end;gap:8px;height:170px;padding:12px 12px 4px;background:#fffdf8;border-bottom:1px solid var(--line2)}
+#workshop-info .fi-col{flex:1;display:grid;justify-items:center;gap:2px;height:100%;grid-template-rows:1fr auto auto;cursor:help}
+#workshop-info .fi-bars{display:flex;align-items:flex-end;gap:3px;height:100%;width:100%;justify-content:center;border-bottom:2px solid var(--ink2)}
+#workshop-info .fi-bars i{display:block;width:40%;min-height:2px;border:1.5px solid var(--ink2);border-bottom:0}
+#workshop-info .fi-bars i.in,#workshop-info .fi-leg i.in{background:#7ccf9c}#workshop-info .fi-bars i.out,#workshop-info .fi-leg i.out{background:#e0705f}
+#workshop-info .fi-col b{font-size:12px;font-weight:900}#workshop-info .fi-col b.pos{color:var(--good)}#workshop-info .fi-col b.neg{color:var(--bad)}
+#workshop-info .fi-col small{font:400 9px Oficina,var(--q-font)!important;color:var(--soft)}
+#workshop-info .fi-leg{display:flex;gap:14px;padding:6px 12px;font-size:12px;font-weight:800;color:var(--soft)}
+#workshop-info .fi-leg span{display:flex;align-items:center;gap:5px}#workshop-info .fi-leg i{width:12px;height:12px;border:1.5px solid var(--ink2)}
+#workshop-info .fi-leg span:last-child{margin-left:auto;font-weight:700}
+#workshop-info .fi-empty{padding:30px 12px;text-align:center;color:var(--soft)}
+#workshop-info .fi-loan{border:2.5px solid #26213a;background:#fff;overflow:hidden}
+#workshop-info .fi-loan>i{display:block;font-style:normal;background:var(--fin);color:#fff;font-weight:900;font-size:10.5px;letter-spacing:.12em;padding:5px 10px;border-bottom:2.5px solid #26213a}
+#workshop-info .fi-loan>div{display:grid;gap:4px;padding:10px 12px}
+#workshop-info .fi-loan b{font:400 22px Oficina,var(--q-font)}
+#workshop-info .fi-loan .cr-go{margin-top:6px}
+#workshop-info .fi-actions{display:flex;gap:8px;flex-wrap:wrap}
+@media (max-width:980px){#workshop-info .fi .cr-cols{grid-template-columns:1fr}#workshop-info .fi-row{grid-template-columns:24px 1fr 80px}#workshop-info .fi-bar{display:none}}

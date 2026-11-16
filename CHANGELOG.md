@@ -1,3 +1,10 @@
+# 0.94 · Finanças (pacote C)
+
+- A aba Caixa virou FINANÇAS, com a identidade da negociação de crédito: cofre, resultado dos últimos 30 dias e confiança do banco no topo.
+- Demonstrativo dos últimos 30 dias: faturamento e gastos agrupados com ícone e barra (custo de produto, desenvolvimento, marketing, aluguel, salários, juros e taxas, treinos e outros), total e resultado.
+- Gráfico de entradas e saídas das últimas 8 semanas, com o resultado de cada semana e os valores ao passar o mouse.
+- O banco aparece como cartão do empréstimo ativo ou como entrada para negociar; as ofertas antigas de empréstimo saíram de vez.
+
 # 0.93 · Tempo, calendário e fim de semana (pacote B)
 
 - Calendário: o jogo começa na segunda-feira 02/03/2026 (01/03/2026 cai num domingo) e a barra mostra o dia, a data e um relógio digital (dia útil das 8h às 18h).
