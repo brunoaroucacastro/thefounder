@@ -1,3 +1,10 @@
+# 0.95 · Protótipo, lote e preço (pacote D)
+
+- Teste do protótipo: frases por resultado ("Na ideia foi melhor que na prática.", "Imprevistos acontecem."…), o efeito aparece em palavras (vendas −20%, nenhum efeito, +8% ou +16%) e vira buff ou debuff na barra com o nome do produto. Corrigir custa 20% do investimento no protótipo (30% na falha crítica).
+- Lote de produção como ordem de produção: caixas que crescem com a quantidade, estoque antes e depois, contador grande com passo que acompanha a escala, atalhos (próxima faixa e máximo que o caixa paga), régua de descontos do fornecedor com a próxima faixa em destaque, custo por unidade com o valor original riscado, total do lote e caixa depois da produção com alerta.
+- Preço como etiqueta: custo unitário explícito, preço com − e +, barra da composição de cada venda (custo, aquisição, taxas e sobra), sobra ou prejuízo por venda e simulação de margem de 0% a 60% com o preço resultante; a margem é livre.
+- Tutoriais: novo tutorial de Produção (com Taiichi Ohno) e o de Preço explica conversão e o ponto ótimo de preço no lugar da página sobre lotes.
+
 # 0.94 · Finanças (pacote C)
 
 - A aba Caixa virou FINANÇAS, com a identidade da negociação de crédito: cofre, resultado dos últimos 30 dias e confiança do banco no topo.
