@@ -1,5 +1,7 @@
 # Protótipo · Negociação de empréstimo estilo blackjack
 
+- O relacionamento virou "Confiança do banco", em barrinha de 5 casas. O faturamento dos últimos 30 dias saiu do topo e virou explicação no ? do valor solicitado.
+
 - Identidade de financeiro: painel verde-petróleo liso no lugar do quadriculado de produto, faixas verdes, cabeçalho compacto com ajuda no ?, comprovante com a parcela em destaque, exigência e limite 21 no topo da negociação com régua de alvo, faixa da ligação com o gerente e verso das cartas verde e creme com moeda. Cada condição do pedido virou uma fileira de quadradinhos da oferta do banco até o máximo (juros agora de 1 em 1 ponto). Garantia em estoque e apoio da equipe saíram por enquanto.
 
 - Visual refeito na linguagem do jogo (janela creme, contornos escuros, faixas de título, fonte Oficina, etiquetas e carimbos), como tela do financeiro: oferta recebida, pedido em linhas de ficha com ícones em pixel art, exigência do banco com a composição, resumo em escrituras do Caixa, ligação com o gerente (fala a cada carta) sobre o painel azul da campanha, apoio da equipe no formato das habilidades e comentário de quem cuida do financeiro.

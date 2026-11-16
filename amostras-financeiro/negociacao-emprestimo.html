@@ -30,6 +30,13 @@ button{font-family:inherit;cursor:pointer}button:disabled{cursor:default;opacity
 .pill small{display:block;font-size:9.5px;font-weight:900;letter-spacing:.08em;color:var(--soft);text-transform:uppercase}
 .pill b{font-size:14px;font-weight:900}
 .pill.on b{color:var(--good)}.pill.off b{color:var(--bad)}
+.pill b{font-size:12px}
+.trust{display:flex;gap:2px;margin:3px 0 1px}
+.trust i{width:22px;height:9px;border:1.5px solid var(--ink2);background:#fff}
+.trust i.on{background:#9fb5ad}.trust i.on.high{background:var(--good)}.trust i.on.low{background:var(--bad)}
+.hq{display:inline-grid;place-items:center;width:17px;height:17px;margin-left:6px;border:1.5px solid var(--ink2);background:var(--paper2);font-size:11px;font-weight:900;cursor:help;position:relative;vertical-align:2px}
+.hq .tip{display:none;position:absolute;left:-6px;top:22px;width:250px;z-index:5;background:var(--card);border:2px solid var(--ink2);box-shadow:4px 4px 0 var(--ink2);padding:8px 10px;font-weight:600;font-size:12.5px;line-height:1.35;color:var(--ink);text-align:left}
+.hq:hover .tip,.hq:focus .tip{display:block}
 .pill.pulse{animation:pulse .6s}@keyframes pulse{50%{transform:scale(1.07)}}
 .x{width:26px;height:26px;border:2px solid var(--ink);background:var(--card);font-weight:900}
 
@@ -200,7 +207,7 @@ button{font-family:inherit;cursor:pointer}button:disabled{cursor:default;opacity
   <div class="top">
     <div><span class="tag">FINANCEIRO / CRÉDITO</span><h1>Negociar empréstimo</h1></div>
     <button class="help" id="help">?<span class="help-tip">Ajuste valor, prazo, juros e carência. Cada condição melhor para a empresa sobe a <b>exigência do banco</b>. Ao apresentar o pedido, puxe cartas: chegue à exigência sem passar de 21 para aprovar. Parar no meio pode render uma contraproposta.</span></button>
-    <div class="pills"><div class="pill"><small>Faturamento 30 dias</small><b id="p-rev"></b></div><div class="pill" id="p-rel"><small>Relacionamento</small><b></b></div><div class="pill" id="p-wk"><small id="p-wk-l"></small><b></b></div><button class="x" title="Fechar">×</button></div>
+    <div class="pills"><div class="pill" id="p-rel"><small>Confiança do banco</small><div class="trust" id="trust"></div><b></b></div><div class="pill" id="p-wk"><small id="p-wk-l"></small><b></b></div><button class="x" title="Fechar">×</button></div>
   </div>
 
   <div class="cols">
@@ -290,8 +297,10 @@ const bustNext=(h,d)=>d.filter(c=>total([...h,c])>21).length/d.length;
 
 /* ===== topo ===== */
 function topBar(){
- $('p-rev').textContent=money(+$('rev').value||0);
- const r=$('p-rel');r.className='pill'+(rel>0?' on':rel<0?' off':'');r.querySelector('b').textContent=REL[rel]+(rel?' · '+(rel>0?'−':'+')+Math.abs(rel):'');
+ // confiança do banco em barrinha: 5 casas, do desconfiado ao excelente
+ const r=$('p-rel');r.className='pill'+(rel>0?' on':rel<0?' off':'');
+ $('trust').innerHTML=[-2,-1,0,1,2].map(v=>`<i class="${v<=rel?'on':''} ${rel<0?'low':rel>0?'high':''}"></i>`).join('');
+ r.querySelector('b').textContent=REL[rel]+(rel?' · exigência '+(rel>0?'−':'+')+Math.abs(rel):'');
  const w=$('p-wk');w.className='pill'+(week.negotiated||week.signed?' off':' on');$('p-wk-l').textContent='Semana '+week.n;
  w.querySelector('b').textContent=week.signed?'Contrato assinado':week.negotiated?'Próxima semana':'Pode negociar';
 }
@@ -307,7 +316,8 @@ function left(){const c=G?G.req:req,lock=phase!=='setup',L=loan(c),Lb=loan(EASY)
  // cada condição vira uma fileira de quadradinhos: o primeiro é a oferta do banco, o último é o máximo que dá para pedir
  $('rows').innerHTML=SL.map(s=>{const p=pts(s,c[s.k]),n=Math.round((s.max-s.min)/s.step)+1,lv=Math.round(norm(s,c[s.k])*(n-1));
   const sq=Array.from({length:n},(_,i)=>{const r=i/(n-1),col=i===0?'base':r<.4?'lo':r<.75?'mid':'hi';return `<button class="q ${i<=lv?'on '+col:''} ${i===lv?'cur':''}" data-k="${s.k}" data-i="${i}" ${lock?'disabled':''} title="${cval(s.k,{...c,[s.k]:valAt(s,i)})}"></button>`;}).join('');
-  return `<div class="row"><div class="ico">${ART[s.k]}</div><div class="rn"><b>${s.name}</b><span class="v">${cval(s.k,c)}</span><small>${cref(s.k,c)}</small></div>
+  const help=s.k==='pct'?`<span class="hq" tabindex="0">?<span class="tip">O valor é calculado sobre o <b>faturamento dos últimos 30 dias</b> (${money(+$('rev').value||0)}). A oferta do banco é 100% dele; você pode pedir até 200%.</span></span>`:'';
+  return `<div class="row"><div class="ico">${ART[s.k]}</div><div class="rn"><b>${s.name}</b>${help}<span class="v">${cval(s.k,c)}</span><small>${cref(s.k,c)}</small></div>
  <div class="imp">${p>=.05?'<b>+'+p.toFixed(1).replace('.',',')+'</b>exigência':'oferta do banco'}</div>
  <div class="lvl">${lock?'':`<button class="pm" data-k="${s.k}" data-d="-1">−</button>`}<div class="sqw"><div class="sq">${sq}</div><div class="sql"><span>oferta do banco</span><span>${lv===n-1?'<b>no máximo</b>':'máximo'}</span></div></div>${lock?'':`<button class="pm" data-k="${s.k}" data-d="1">+</button>`}</div></div>`;}).join('')
  +(hasStock()?`<div class="row guar ${guarOn()?'on':''}"><div class="ico">${ART.guar}</div><div class="rn"><b>Garantia em estoque</b><small class="risk">Se atrasar uma parcela, o banco fica com o estoque.</small></div><div class="imp">${guarOn()?'<b>−2</b>exigência':''}</div><div class="ctl">${lock?`<span class="val" style="border:2px solid var(--ink2)">${guarOn()?'Anexada':'Não'}</span>`:`<button class="btn2" id="guar">${guarSel?'RETIRAR':'ANEXAR'}</button>`}</div></div>`:'');
