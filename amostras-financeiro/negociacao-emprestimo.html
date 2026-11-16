@@ -4,230 +4,390 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Negociação de empréstimo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f4efe4;--card:#fffdf7;--ink:#2b2620;--muted:#7a7064;--line:#d9cfbd;--ok:#2f7d4f;--warn:#b7791f;--bad:#b23a3a;--accent:#2d5b8a}
+:root{
+ --wood:#3b2a1e;
+ --ivory:#f6efdc;--ivory2:#ece2c8;--line:#d6c8a6;
+ --ink:#1f2a44;--muted:#6b6a72;
+ --brass:#b08d3c;--brass2:#d9b866;
+ --felt:#1d4b45;--felt2:#235a53;--felt3:#163a35;
+ --ok:#2f7d4f;--bad:#a8322d;
+ --pix:"Press Start 2P",ui-monospace,monospace;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 "Segoe UI",system-ui,sans-serif}
-main{max-width:1180px;margin:0 auto;padding:18px 16px 40px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
-h1{grid-column:1/-1;margin:0;font-size:22px}
-h1 small{font-weight:400;color:var(--muted);font-size:14px}
-.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
-.box h2{margin:0 0 10px;font-size:16px}
-.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.sl{display:grid;grid-template-columns:150px 1fr 120px 64px;gap:10px;align-items:center;margin:8px 0}
-.sl input{width:100%}
-.sl .v{font-weight:600;text-align:right}
-.sl .pts{font-size:12px;color:var(--muted);text-align:right}
-.target{display:flex;align-items:baseline;gap:10px;margin:12px 0 4px;padding:10px 12px;border-radius:8px;background:#efe6d3}
-.target b{font-size:32px}
-.meter{height:10px;border-radius:5px;background:linear-gradient(90deg,#9cc8a9,#e9cf7c,#e09a8b);position:relative;margin:6px 0 2px}
-.meter i{position:absolute;top:-4px;width:4px;height:18px;background:var(--ink);border-radius:2px}
-.scale{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
-.terms{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
-.terms div{background:#f7f1e4;border-radius:6px;padding:6px 8px;font-size:12px;color:var(--muted)}
-.terms div b{display:block;color:var(--ink);font-size:15px}
-button{font:inherit;border:1px solid var(--ink);background:var(--card);border-radius:8px;padding:8px 14px;cursor:pointer}
-button.primary{background:var(--ink);color:#fff}
-button:disabled{opacity:.4;cursor:default}
-.hand{display:flex;gap:8px;flex-wrap:wrap;min-height:96px;margin:10px 0}
-.c{width:62px;height:88px;border:1px solid var(--ink);border-radius:7px;background:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:5px 7px;font-weight:700;font-size:20px}
-.c.red{color:#b23a3a}
-.c small{align-self:flex-end;font-size:14px}
-.c.ghost{border-style:dashed;opacity:.55}
-.c.gone{opacity:.25;text-decoration:line-through}
-.total{font-size:40px;font-weight:700}
-.zones{display:grid;grid-template-columns:repeat(22,1fr);gap:2px;margin:8px 0}
-.zones span{height:22px;font-size:10px;display:flex;align-items:center;justify-content:center;border-radius:3px;background:#e5dccb;color:var(--muted)}
-.zones span.cnt{background:#ecd9a5;color:var(--ink)}
-.zones span.win{background:#a9d3b5;color:var(--ink)}
-.zones span.me{outline:2px solid var(--ink);font-weight:700}
-.odds{font-size:13px;color:var(--muted);margin-top:6px}
-.trunfos{display:grid;gap:6px;margin-top:10px}
-.trunfos button{text-align:left;font-size:13px}
-.res{padding:12px;border-radius:8px;margin-top:10px}
-.res.ok{background:#dff0e4}.res.cnt{background:#f6ebcc}.res.bad{background:#f4dcd8}
-.log{font-size:13px;max-height:260px;overflow:auto}
+body{margin:0;background:var(--wood);background-image:repeating-linear-gradient(90deg,#3b2a1e 0 22px,#3f2d20 22px 44px);color:var(--ink);font:15px/1.45 Nunito,"Segoe UI",system-ui,sans-serif;min-height:100vh}
+button{font:inherit;cursor:pointer}
+button:disabled{cursor:default;opacity:.45}
+
+/* ===== cabeçalho ===== */
+.top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:12px 20px;background:#2a1d14;border-bottom:3px solid var(--brass);color:var(--ivory)}
+.brand{display:flex;align-items:center;gap:10px}
+.brand .logo{width:38px;height:38px;border:3px solid var(--brass);background:var(--ink);display:grid;place-items:center;font-family:var(--pix);font-size:12px;color:var(--brass2)}
+.brand b{display:block;font-size:16px}.brand small{opacity:.7}
+.wk{display:flex;align-items:center;gap:10px;margin-left:auto;flex-wrap:wrap}
+.wk #wk{font-family:var(--pix);font-size:11px;color:var(--brass2)}
+.badge{padding:4px 10px;border-radius:20px;font-size:13px;font-weight:700}
+.badge.on{background:#2f7d4f;color:#fff}.badge.off{background:#5b4636;color:#f1e3c4}
+.btn-ghost{background:transparent;border:2px solid var(--brass);color:var(--ivory);padding:6px 12px;border-radius:6px}
+.ficha{background:var(--ivory);color:var(--ink);border:2px solid var(--brass);border-radius:6px;padding:6px 12px;min-width:220px;position:relative}
+.ficha .lbl{font-family:var(--pix);font-size:9px;letter-spacing:.5px}
+.ficha .lbl b{color:var(--brass)}
+.ficha small{display:block;color:var(--muted)}
+.pips{display:flex;gap:3px;margin-top:4px}.pips i{width:18px;height:6px;background:#d8ccb0}.pips i.on{background:var(--ink)}
+.ficha.pulse{animation:pulse .7s}
+@keyframes pulse{0%{transform:scale(1)}40%{transform:scale(1.06);box-shadow:0 0 0 4px var(--brass2)}100%{transform:scale(1)}}
+.float{position:absolute;right:10px;top:-6px;font-family:var(--pix);font-size:12px;animation:up 1.2s forwards}
+.float.p{color:var(--ok)}.float.m{color:var(--bad)}
+@keyframes up{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-24px)}}
+
+/* ===== mesa principal ===== */
+#board{display:grid;gap:18px;padding:20px;max-width:1320px;margin:0 auto}
+#board.setup{grid-template-columns:270px minmax(0,1fr) 300px}
+#board.play{grid-template-columns:330px minmax(0,1fr)}
+#board.play #pasta{display:none}
+.paper{background:var(--ivory);border-radius:4px;box-shadow:0 6px 0 #0003,0 14px 30px #0004;padding:18px 20px;position:relative}
+h2{margin:0 0 4px;font-size:18px}
+.kicker{font-family:var(--pix);font-size:9px;color:var(--brass);letter-spacing:.5px;margin-bottom:6px}
+
+/* pasta do banco */
+#pasta{background:#c9a86a;border-radius:4px 14px 4px 4px;padding:26px 14px 14px;position:relative;box-shadow:0 6px 0 #0003;align-self:start}
+#pasta:before{content:"BANCO DO BAIRRO";position:absolute;top:-14px;left:14px;background:#c9a86a;padding:4px 12px;border-radius:6px 6px 0 0;font-family:var(--pix);font-size:8px;color:var(--ink)}
+#pasta .paper{padding:14px}
+.plist{margin:8px 0 12px;padding:0;list-style:none}
+.plist li{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:5px 0;font-size:14px}
+.plist li b{font-weight:800}
+.rev{font-size:13px;color:var(--muted);margin-top:12px}
+.rev input{width:100%;font:inherit;font-weight:800;border:2px solid var(--line);border-radius:4px;padding:4px 6px;background:#fffaf0;color:var(--ink)}
+.btn{border:2px solid var(--ink);background:var(--ivory);color:var(--ink);padding:9px 14px;border-radius:6px;font-weight:800}
+.btn.primary{background:var(--ink);color:var(--ivory)}
+.btn.brass{background:var(--brass);border-color:#7d6224;color:#1d160a}
+.btn.wide{width:100%}
+
+/* contrato */
+#contrato{min-width:0;align-self:start}
+.stamp-neg{display:none;position:absolute;top:14px;right:16px;border:3px solid var(--bad);color:var(--bad);font-family:var(--pix);font-size:9px;padding:6px 8px;transform:rotate(6deg);opacity:.85}
+.clip{display:none;position:absolute;top:-12px;left:calc(50% - 8px);width:16px;height:42px;border:4px solid #9aa0a6;border-radius:8px}
+#board.play .stamp-neg,#board.play .clip{display:block}
+.cond{padding:12px 0;border-bottom:1px solid var(--line)}
+.cond-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.cname{font-weight:700;color:var(--muted);min-width:150px}
+.cval{font-size:22px;font-weight:800}
+.csub{color:var(--muted);font-size:13px}
+.cond-c{display:flex;align-items:center;gap:8px;margin-top:6px}
+.pm{width:32px;height:32px;border:2px solid var(--ink);background:var(--ivory2);border-radius:4px;font-weight:800;font-size:18px;line-height:1;color:var(--ink)}
+.track{position:relative;flex:1;height:34px;display:flex;align-items:center}
+.track input{width:100%;accent-color:var(--ink);margin:0}
+.track .ref{position:absolute;top:4px;width:3px;height:26px;background:var(--brass);pointer-events:none}
+.track .ref:after{content:"banco";position:absolute;top:-11px;left:-12px;font-size:9px;color:var(--brass);font-weight:800}
+.imp{min-width:96px;text-align:right;font-size:13px;color:var(--muted);font-weight:700}
+#board.play .cond-c,#board.play .guar-btn,#board.play #go,#board.play .alvo-chance{display:none}
+#board.play .cond{padding:7px 0}
+#board.play .cval{font-size:16px}
+#board.play .cname{min-width:0;width:100%;font-size:12px}
+.guar{margin-top:12px;border:2px dashed var(--brass);border-radius:6px;padding:10px 12px;background:#fbf3df;display:flex;gap:12px;align-items:center}
+.guar.on{border-style:solid;background:#f3e3b8}
+.guar .risk{font-size:13px;color:var(--bad)}
+.guar-btn{margin-left:auto;white-space:nowrap}
+.alvo{display:flex;align-items:center;gap:14px;margin-top:14px;padding:10px 12px;background:var(--ink);color:var(--ivory);border-radius:6px;position:relative}
+.alvo .n{font-family:var(--pix);font-size:22px;color:var(--brass2)}
+.alvo .ch{margin-left:auto;text-align:right}
+.alvo .ch b{font-family:var(--pix);font-size:14px}
+#delta{position:absolute;left:110px;top:-10px;background:var(--brass2);color:var(--ink);font-weight:800;font-size:12px;padding:2px 8px;border-radius:10px;opacity:0;transition:opacity .15s}
+#delta.show{opacity:1}
+.warn{display:none;margin-top:8px;border-left:4px solid var(--bad);background:#f6dcd5;padding:8px 10px;font-weight:700;color:var(--bad)}
+.warn.show{display:block}
+.demo{margin-top:14px;border:1px solid var(--line);background:#fffaf0;padding:10px 12px;font-family:ui-monospace,Consolas,monospace}
+.demo .t{font-family:var(--pix);font-size:8px;color:var(--muted);margin-bottom:8px}
+.demo-g{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px}
+.demo-g div{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dotted var(--line);padding:3px 0;font-size:14px}
+.demo-g .big b{font-size:19px}
+.demo .first{margin-top:8px;font-size:13px}
+#board.play .demo-g{grid-template-columns:1fr}
+.used{display:none;margin-top:12px;padding:10px 12px;background:#efe4c8;border-left:4px solid var(--brass);font-size:14px}
+.used.show{display:block}
+#go{margin-top:14px;width:100%;font-size:16px;padding:12px}
+
+/* mesa de cartas */
+#mesa{background:var(--felt);background-image:radial-gradient(circle at 50% 40%,var(--felt2),var(--felt) 70%);border:10px solid #5a3b26;border-radius:18px;box-shadow:inset 0 0 40px #0006,0 8px 0 #0004;color:#e8f1ec;padding:18px;position:relative;min-height:520px;min-width:0}
+.idle{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:460px;gap:16px;text-align:center;opacity:.9}
+.deck{width:84px;height:118px;border:3px solid #f6efdc;border-radius:6px;background:repeating-linear-gradient(45deg,#7a2a2a 0 6px,#8d3333 6px 12px);box-shadow:4px 4px 0 #0005,8px 8px 0 #0003}
+.mgrid{display:grid;grid-template-columns:minmax(0,1fr) 210px;gap:16px}
+.score{display:flex;gap:14px}
+.mk{flex:1;background:var(--felt3);border:2px solid #ffffff22;border-radius:8px;padding:10px 12px;text-align:center}
+.mk small{font-family:var(--pix);font-size:9px;opacity:.75;letter-spacing:.5px}
+.mk b{display:block;font-family:var(--pix);font-size:44px;line-height:1.25;margin-top:6px}
+.mk.tgt b{color:var(--brass2)}
+.mk.bust b{color:#ff8b7d}
+.say{font-size:17px;font-weight:700;margin:12px 0 10px;min-height:24px}
+.faixas{position:relative;display:flex;height:30px;border-radius:5px;border:2px solid #0004}
+.faixas span{display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#13201d;white-space:nowrap;overflow:hidden}
+.faixas span:first-child{border-radius:3px 0 0 3px}.faixas span:last-of-type{border-radius:0 3px 3px 0}
+.f-none{background:#9aa8a3}.f-cnt{background:#e2c56b}.f-ok{background:#7fc79a}.f-bust{background:#d7826f}
+.marker{position:absolute;top:-7px;width:4px;height:40px;background:#fff;box-shadow:0 0 0 2px var(--ink);transition:left .2s}
+.flegend{display:flex;font-size:11px;opacity:.75;margin-top:3px}
+.flegend span{text-align:center}
+.hand{display:flex;align-items:flex-end;min-height:180px;padding:18px 0 26px 10px}
+.card{width:96px;height:136px;flex:none;background:#fffdf6;border:3px solid var(--ink);border-radius:7px;color:var(--ink);position:relative;box-shadow:3px 4px 0 #0005;margin-left:-26px;animation:deal .16s ease-out}
+.card:first-child{margin-left:0}
+.card:nth-child(odd){transform:rotate(-2deg)}.card:nth-child(even){transform:rotate(2deg)}
+.card.red{color:#b2262b}
+.card .r{position:absolute;top:6px;left:7px;font-family:var(--pix);font-size:14px;text-align:center;line-height:1.25}
+.card .r2{position:absolute;bottom:6px;right:7px;font-family:var(--pix);font-size:14px;transform:rotate(180deg);text-align:center;line-height:1.25}
+.card .mid{position:absolute;inset:0;display:grid;place-items:center;font-size:40px}
+.card .ace{position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);background:var(--ink);color:#8d97ab;font-size:11px;padding:2px 7px;border-radius:10px;white-space:nowrap;font-weight:800}
+.card .ace .on{color:var(--brass2)}
+.card.ghost{opacity:.6;border-style:dashed}
+@keyframes deal{from{translate:0 -30px;opacity:0}to{translate:0 0;opacity:1}}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+.act button{width:100%;padding:13px;font-size:17px;font-weight:800;border-radius:8px;border:3px solid #0006}
+#hit{background:var(--brass2);color:#1d160a}
+#stand{background:var(--ivory);color:var(--ink)}
+.act small{display:block;margin-top:6px;font-size:13px;opacity:.92;min-height:36px}
+.vant{display:flex;flex-direction:column;gap:12px}
+.vant .vt{font-family:var(--pix);font-size:9px;opacity:.8}
+.tile{background:#f6efdc;color:var(--ink);border-radius:6px;padding:8px 10px;border:2px solid var(--brass);position:relative}
+.tile.off{background:#ffffff14;border-color:#ffffff22;color:#e8f1ec99}
+.tile .ic{display:inline-grid;place-items:center;width:28px;height:28px;background:var(--ink);color:var(--brass2);border-radius:4px;margin-right:6px;vertical-align:middle;font-size:15px}
+.tile b{font-size:14px}
+.tile p{margin:5px 0 0;font-size:12.5px}
+.selo{position:absolute;top:-9px;right:6px;font-size:10px;font-weight:800;padding:1px 6px;border-radius:8px;background:var(--ok);color:#fff}
+.selo.u{background:#8b8b8b}
+.tile button{margin-top:6px;width:100%;padding:5px;border:2px solid var(--ink);background:var(--ivory2);border-radius:4px;font-weight:800;color:var(--ink)}
+.result{margin-top:8px;background:var(--ivory);color:var(--ink);border-radius:6px;padding:16px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.stamp{font-family:var(--pix);font-size:13px;padding:10px 12px;border:4px solid;transform:rotate(-5deg);white-space:nowrap}
+.stamp.ok{color:var(--ok)}.stamp.bad{color:var(--bad)}.stamp.special{color:var(--brass);border-style:double;border-width:6px}
+.result .txt{flex:1;min-width:200px}
+.rescue{margin-top:8px;background:#f6dcd5;color:var(--bad);border-radius:6px;padding:14px;font-weight:700}
+.rescue .row{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+
+/* contraproposta */
+#offer{position:fixed;inset:0;background:#0009;display:flex;align-items:center;justify-content:center;padding:16px;z-index:20}
+.sheet{background:var(--ivory);width:min(560px,100%);border-radius:4px;padding:22px 24px;box-shadow:0 20px 50px #000a;position:relative;animation:slide .12s ease-out}
+@keyframes slide{from{transform:translateX(60px);opacity:.3}to{transform:none;opacity:1}}
+.sheet .stamp{position:absolute;top:16px;right:18px;color:var(--bad);font-size:10px}
+.cmp{width:100%;border-collapse:collapse;margin:14px 0 8px}
+.cmp th{font-size:12px;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:2px solid var(--ink)}
+.cmp td{padding:7px 8px;border-bottom:1px solid var(--line)}
+.cmp tr.ch td:last-child{background:#f3e3b8;font-weight:800}
+.cmp tr.pay td{font-weight:800;border-bottom:none}
+.timer{display:flex;align-items:center;gap:14px}
+.timer .sec{font-family:var(--pix);font-size:30px;color:var(--bad);min-width:52px;text-align:center}
+.timer .bar{height:12px;flex:1;background:#e2d6b8;border-radius:6px;overflow:hidden}
+.timer .bar i{display:block;height:100%;width:100%;background:var(--bad)}
+.sheet .row{display:flex;gap:10px;margin-top:12px}
+.sheet .row .btn.primary{flex:1;font-size:17px}
+
+/* bastidores */
+.backstage{max-width:1320px;margin:0 auto 30px;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.backstage .paper{padding:14px 16px}
+label.chk{display:flex;gap:8px;align-items:center;font-size:14px;margin:4px 0}
+.log{font-size:13px;max-height:220px;overflow:auto}
 .log div{padding:5px 0;border-top:1px dashed var(--line)}
-.rel{display:flex;gap:4px}.rel span{width:22px;height:10px;border-radius:3px;background:#e5dccb}.rel span.on{background:var(--accent)}
-.muted{color:var(--muted);font-size:13px}
-.full{grid-column:1/-1}
-.cmp{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
-.cmp th,.cmp td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left}
-.cmp th{font-size:12px;color:var(--muted);font-weight:600}
-.cmp td.down{color:var(--bad);font-weight:600}
-.cmp td.same{color:var(--ok)}
-#offer{position:fixed;inset:0;background:#0007;display:flex;align-items:center;justify-content:center;padding:16px;z-index:9}
-#offer .pop{background:var(--card);border-radius:12px;padding:18px 20px;max-width:520px;width:100%;box-shadow:0 10px 40px #0005}
-#offer h2{margin:0 0 4px}
-.clock{height:12px;border-radius:6px;background:#eadfca;overflow:hidden;margin-top:10px}
-.clock i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#b23a3a,#e0a33a)}
-label.chk{font-size:13px;display:flex;gap:6px;align-items:center}
-@media (max-width:860px){main{grid-template-columns:1fr}.sl{grid-template-columns:110px 1fr 90px}.sl .pts{display:none}.terms{grid-template-columns:1fr 1fr}}
+.muted{color:var(--muted)}
+@media (max-width:1050px){#board.setup,#board.play{grid-template-columns:1fr}.mgrid{grid-template-columns:1fr}.vant{flex-direction:row;flex-wrap:wrap}.tile{flex:1;min-width:160px}.backstage{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<main>
-<h1>🏦 Negociação de empréstimo <small>protótipo de mecânica · sem arte</small></h1>
+<header class="top">
+  <div class="brand"><div class="logo">BB</div><div><b>Banco do Bairro</b><small>Mesa de crédito empresarial</small></div></div>
+  <div class="wk"><span id="wk">SEMANA 1</span><span id="avail" class="badge on"></span><button class="btn-ghost" id="next">Avançar semana →</button></div>
+  <div class="ficha" id="rel"></div>
+</header>
 
-<section class="box">
-  <h2>1. Monte o pedido</h2>
-  <div class="row muted" style="margin-bottom:6px">📅 Semana <b id="wk">1</b> · <span id="wkst"></span><button id="next" style="margin-left:auto">Avançar semana →</button></div>
-  <div class="row muted">
-    Faturamento dos últimos 30 dias: R$ <input id="rev" type="number" value="40000" step="1000" style="width:110px">
-    · Relacionamento com o banco <div class="rel" id="rel"></div>
-  </div>
-  <div id="sliders"></div>
-  <div class="target">Precisa tirar <b id="tg">13</b> <span class="muted" id="tgtxt"></span><span style="margin-left:auto">Chance de sucesso <b id="ch">97%</b></span></div>
-  <div class="meter"><b style="position:absolute;left:72.7%;top:-3px;bottom:-3px;width:2px;background:#b23a3a"></b><i id="tgm"></i></div>
-  <div class="scale"><span>13 · proposta do banco</span><span style="margin-left:auto;margin-right:27%">21</span><span>24 · impossível</span></div>
-  <div class="terms" id="terms"></div>
-  <label class="chk" id="guar-row" style="margin-top:10px"><input type="checkbox" id="guar"> 📦 Dar estoque em garantia: alvo −2 (se atrasar a parcela, o banco fica com o estoque)</label>
-  <div class="odds" id="odds"></div>
-  <div class="row" style="margin-top:12px">
-    <button id="take">Aceitar a proposta inicial</button>
-    <button id="go" class="primary">Negociar este pedido →</button>
-  </div>
-</section>
+<main id="board" class="setup">
+  <aside id="pasta">
+    <div class="paper">
+      <div class="kicker">PROPOSTA INICIAL</div>
+      <ul class="plist" id="plist"></ul>
+      <button class="btn brass wide" id="take">Assinar proposta inicial</button>
+      <div class="rev">Faturamento dos últimos 30 dias<br><input id="rev" type="number" value="40000" step="1000"></div>
+    </div>
+  </aside>
 
-<section class="box">
-  <h2>2. Mesa do gerente</h2>
-  <div id="table" class="muted">Ajuste os controles e clique em <b>Negociar</b>. O banco começa virando uma carta.</div>
-</section>
+  <section id="contrato" class="paper">
+    <div class="clip"></div><div class="stamp-neg">EM NEGOCIAÇÃO</div>
+    <div class="kicker" id="ck">CONTRATO EM PREPARAÇÃO</div>
+    <h2>Pedido de crédito</h2>
+    <div id="rows"></div>
+    <div class="guar" id="guarbox"></div>
+    <div class="alvo"><span id="delta"></span><div><div class="kicker" style="color:#cfd6e4;margin:0">ALVO DO BANCO</div><span class="n" id="tg">13</span></div><div class="ch alvo-chance"><small>chance de aprovar inteiro</small><br><b id="ch">97%</b></div></div>
+    <div class="warn" id="warn">Alvo inalcançável — reduza o pedido ou aplique uma vantagem.</div>
+    <div class="demo"><div class="t">SIMULAÇÃO DO CONTRATO</div><div class="demo-g" id="demo"></div><div class="first" id="first"></div></div>
+    <div class="used" id="used"></div>
+    <button class="btn primary" id="go">Iniciar negociação →</button>
+  </section>
 
-<section class="box">
-  <h2>Equipe financeira <span class="muted">(simula habilidades do financeiro)</span></h2>
-  <label class="chk"><input type="checkbox" id="sk-odds"> Analista: mostra as chances do pedido e de estourar na próxima carta</label>
-  <label class="chk"><input type="checkbox" id="sk-plan" checked> 📑 Plano de negócios: se estourar, a carta volta para o baralho (1× por negociação)</label>
-  <label class="chk"><input type="checkbox" id="sk-peek" checked> 🤝 Avalista: espia a próxima carta (1× por negociação)</label>
-  <label class="chk"><input type="checkbox" id="sk-guar" checked> 📦 Garantia em estoque: libera a opção de dar estoque em garantia ao montar o pedido</label>
-  <p class="muted" style="margin-bottom:0">Ás vale 11 ou 1, figuras valem 10, baralho de 52 cartas embaralhado a cada negociação.</p>
-</section>
-
-<section class="box">
-  <h2>Contratos e histórico</h2>
-  <div class="log" id="log"><div class="muted">Nada ainda.</div></div>
-</section>
+  <section id="mesa"></section>
 </main>
+
+<section class="backstage">
+  <div class="paper">
+    <div class="kicker">BASTIDORES DO PROTÓTIPO · EQUIPE FINANCEIRA</div>
+    <label class="chk"><input type="checkbox" id="sk-odds"> 🧮 Analista: mostra o risco de estourar na próxima carta</label>
+    <label class="chk"><input type="checkbox" id="sk-peek" checked> 🂠 Avalista: espia a próxima carta (1× por negociação)</label>
+    <label class="chk"><input type="checkbox" id="sk-plan" checked> 📁 Plano de negócios: desfaz 1 estouro (a carta volta para o baralho)</label>
+    <label class="chk"><input type="checkbox" id="sk-guar" checked> 📜 Garantia em estoque: libera oferecer o estoque como garantia</label>
+    <p class="muted" style="margin:6px 0 0;font-size:13px">Ás vale 1 ou 11, figuras valem 10. Baralho de 52 cartas embaralhado a cada negociação.</p>
+  </div>
+  <div class="paper"><div class="kicker">HISTÓRICO</div><div class="log" id="log"><div class="muted">Nada ainda.</div></div></div>
+</section>
 
 <script>
 /* ===== regras ===== */
 const SL=[
- {k:'pct', name:'Valor', min:100,max:200,step:10, easy:100, w:.30, fmt:v=>v+'% do fat.'},
- {k:'prazo',name:'Prazo', min:3,  max:12, step:1,  easy:3,   w:.20, fmt:v=>v+' meses'},
- {k:'juros',name:'Juros ao mês',min:3,max:12,step:.5,easy:12, w:.35, fmt:v=>v.toFixed(1).replace('.',',')+'%'},
- {k:'car', name:'Carência', min:0,  max:3,  step:1,  easy:0,   w:.15, fmt:v=>v?v+(v>1?' meses':' mês'):'sem'},
+ {k:'pct', name:'Crédito solicitado',min:100,max:200,step:10,easy:100,w:.30},
+ {k:'prazo',name:'Prazo',min:3,max:12,step:1,easy:3,w:.20},
+ {k:'juros',name:'Juros',min:3,max:12,step:.5,easy:12,w:.35},
+ {k:'car', name:'Carência',min:0,max:3,step:1,easy:0,w:.15},
 ];
 const EASY=Object.fromEntries(SL.map(s=>[s.k,s.easy]));
-let req={...EASY}, rel=0, phase='setup', G=null, log=[];
-// uma negociação por semana; um contrato por semana
-let week={n:1,negotiated:false,signed:false};
+let req={...EASY}, rel=0, phase='setup', G=null, log=[], guarSel=false, result=null;
+let week={n:1,negotiated:false,signed:false};           // uma negociação e um contrato por semana
 const $=id=>document.getElementById(id);
 const money=v=>'R$ '+Math.round(v).toLocaleString('pt-BR');
-const norm=(s,v)=>Math.abs(v-s.easy)/(s.max-s.min);            // 0 = fácil, 1 = difícil
-const MIN=13,MAX=24,SPAN=MAX-MIN; // acima de 21 o pedido inteiro é impossível; habilidades futuras baixam o alvo
-const COUNTER_MIN=14;             // contraproposta só a partir de 14, para ser sempre melhor que a proposta inicial
-const COUNTER_CHANCE=.5,COUNTER_SECONDS=7;
+const MIN=13,MAX=24,SPAN=MAX-MIN;   // acima de 21 o pedido inteiro é impossível
+const COUNTER_MIN=14,COUNTER_CHANCE=.5,COUNTER_SECONDS=7;
+const norm=(s,v)=>Math.abs(v-s.easy)/(s.max-s.min);
 const pts=(s,v)=>SPAN*s.w*norm(s,v);
-// alvo: 13 no pedido mínimo, 24 no pedido máximo; relacionamento ruim endurece, garantia alivia
 function target(c,guar=false){const d=SL.reduce((a,s)=>a+pts(s,c[s.k]),0);return Math.max(MIN,Math.min(MAX,Math.round(MIN+d)-rel-(guar?2:0)));}
-// chance de aprovar o pedido inteiro puxando até o alvo (20 mil simulações, 1 baralho)
-const CHANCE={13:97,14:92,15:87,16:80,17:71,18:62,19:51,20:38,21:18};
+const CHANCE={13:97,14:92,15:87,16:80,17:71,18:62,19:51,20:38,21:18};   // 20 mil simulações puxando até o alvo
 const chance=tg=>tg>21?0:CHANCE[tg]??100;
 function loan(c){const R=+$('rev').value||0,V=R*c.pct/100,i=c.juros/100,saldo=V*Math.pow(1+i,c.car),pmt=saldo*i/(1-Math.pow(1+i,-c.prazo));return{V,pmt,total:pmt*c.prazo,juros:pmt*c.prazo-V};}
-const relUp=()=>{rel=Math.min(2,rel+1);},relDown=()=>{rel=Math.max(-2,rel-1);};
+const firstWeek=c=>week.n+4*(c.car+1);   // 1 mês = 4 semanas do jogo
+const REL={'-2':['DESCONFIADO','+2 no alvo'],'-1':['RESERVADO','+1 no alvo'],'0':['NEUTRO','nenhum'],'1':['BOM','−1 no alvo'],'2':['EXCELENTE','−2 no alvo']};
+const fmtJ=v=>(Number.isInteger(v)?v:v.toFixed(1).replace('.',','))+'% ao mês';
+const carTxt=v=>v?v+(v>1?' meses':' mês'):'Sem carência';
+function cval(k,c){return k==='pct'?money(loan(c).V):k==='prazo'?c.prazo+' meses':k==='juros'?fmtJ(c.juros):carTxt(c.car);}
+function csub(k,c){return k==='pct'?c.pct+'% do faturamento':k==='prazo'?c.prazo+' parcelas mensais':k==='juros'?'taxa solicitada':'1ª parcela na semana '+firstWeek(c);}
 
 /* ===== baralho ===== */
 const SUITS=['♠','♥','♦','♣'],RANKS=['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
 function shuffle(d){for(let i=d.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[d[i],d[j]]=[d[j],d[i]];}return d;}
 function deck(){const d=[];for(const s of SUITS)for(const r of RANKS)d.push({r,s});return shuffle(d);}
 const val=c=>c.r==='A'?1:['J','Q','K'].includes(c.r)?10:+c.r;
-function total(h){let t=0,a=0;for(const c of h){t+=val(c);if(c.r==='A')a++;}return a&&t+10<=21?t+10:t;}
-function odds(tg,n=3000){let win=0,bust=0;for(let k=0;k<n;k++){const d=deck(),h=[d.pop()];while(total(h)<tg)h.push(d.pop());total(h)>21?bust++:win++;}return{win:win/n,bust:bust/n};}
-function bustNext(h,d){return d.filter(c=>total([...h,c])>21).length/d.length;}
+function soft(h){let t=0,a=0;for(const c of h){t+=val(c);if(c.r==='A')a++;}return a>0&&t+10<=21;}
+function total(h){const t=h.reduce((a,c)=>a+val(c),0);return soft(h)?t+10:t;}
+const bustNext=(h,d)=>d.filter(c=>total([...h,c])>21).length/d.length;
 
-/* ===== tela do pedido ===== */
-function buildSliders(){$('sliders').innerHTML=SL.map(s=>`<div class="sl"><span>${s.name}</span><input type="range" id="s-${s.k}" min="${s.min}" max="${s.max}" step="${s.step}"><span class="v" id="v-${s.k}"></span><span class="pts" id="p-${s.k}"></span></div>`).join('');
- SL.forEach(s=>{$('s-'+s.k).oninput=e=>{req[s.k]=+e.target.value;paint();};});}
-const guarNow=()=>phase==='setup'?($('sk-guar').checked&&$('guar').checked):!!G?.guar;
-function paint(){
- const c=G?G.req:req,guar=guarNow();
- SL.forEach(s=>{const el=$('s-'+s.k);el.value=c[s.k];el.disabled=phase!=='setup';$('v-'+s.k).textContent=s.fmt(c[s.k]);$('p-'+s.k).textContent='+'+pts(s,c[s.k]).toFixed(1)+' pts';});
- const tg=target(c,guar);$('tg').textContent=tg;$('ch').textContent=chance(tg)+'%';$('tgm').style.left=((tg-MIN)/SPAN*100)+'%';
- $('tgtxt').textContent=tg===MIN?'· igual à proposta do banco':tg===21?'· só com 21 cravado':tg>21?'· passa de 21: impossível aprovar inteiro, só contraproposta':'';
- const L=loan(c);$('terms').innerHTML=`<div>Você recebe<b>${money(L.V)}</b></div><div>Parcela mensal<b>${money(L.pmt)}</b></div><div>Total pago<b>${money(L.total)}</b></div><div>Juros totais<b>${money(L.juros)}</b></div>`;
- if($('sk-odds').checked&&phase==='setup'){const o=odds(tg);$('odds').textContent=`Puxando até chegar em ${tg}: ${Math.round(o.win*100)}% de aprovar o pedido inteiro · ${Math.round(o.bust*100)}% de estourar. Parar antes (com ${COUNTER_MIN} ou mais) pode render contraproposta.`;}else $('odds').textContent='';
- $('rel').innerHTML=[-2,-1,0,1,2].map(v=>`<span class="${v<=rel?'on':''}" title="${v}"></span>`).join('')+`<small class="muted">&nbsp;${rel>0?'+'+rel:rel}</small>`;
- $('guar-row').style.display=$('sk-guar').checked?'':'none';$('guar').disabled=phase!=='setup';
- $('wk').textContent=week.n;
- $('wkst').textContent=week.signed?'contrato desta semana já assinado':week.negotiated?'negociação da semana usada: só a proposta inicial está disponível':'1 negociação disponível nesta semana';
- $('take').disabled=phase!=='setup'||week.signed;$('go').disabled=phase!=='setup'||week.negotiated||week.signed;
+/* ===== cabeçalho ===== */
+function header(){
+ $('wk').textContent='SEMANA '+week.n;
+ const a=$('avail');a.className='badge '+(week.negotiated||week.signed?'off':'on');
+ a.textContent=week.signed?'Contrato da semana assinado':week.negotiated?'Nova negociação na próxima semana':'Negociação disponível';
+ const [n,e]=REL[rel];$('rel').innerHTML=`<div class="lbl">RELACIONAMENTO: <b>${n}</b></div><small>Efeito no alvo: ${e}</small><div class="pips">${[-2,-1,0,1,2].map(v=>`<i class="${v<=rel?'on':''}"></i>`).join('')}</div>`;
+}
+function relChange(d){const old=rel;rel=Math.max(-2,Math.min(2,rel+d));if(rel===old)return;header();const f=$('rel');f.classList.remove('pulse');void f.offsetWidth;f.classList.add('pulse');f.insertAdjacentHTML('beforeend',`<span class="float ${d>0?'p':'m'}">${d>0?'+1':'−1'}</span>`);}
+
+/* ===== pasta ===== */
+function pasta(){const L=loan(EASY);
+ $('plist').innerHTML=`<li><span>Crédito</span><b>${money(L.V)}</b></li><li><span>Prazo</span><b>${EASY.prazo} meses</b></li><li><span>Juros</span><b>${fmtJ(EASY.juros)}</b></li><li><span>Carência</span><b>Sem</b></li><li><span>Parcela</span><b>${money(L.pmt)}</b></li>`;
+ $('take').disabled=week.signed||phase!=='setup';$('take').textContent=week.signed?'Contrato da semana assinado':'Assinar proposta inicial';}
+
+/* ===== contrato ===== */
+function buildRows(){
+ $('rows').innerHTML=SL.map(s=>{const ref=(s.easy-s.min)/(s.max-s.min)*100;return `<div class="cond"><div class="cond-h"><span class="cname">${s.name}</span><span class="cval" id="v-${s.k}"></span><span class="csub" id="sub-${s.k}"></span></div>
+ <div class="cond-c"><button class="pm" data-k="${s.k}" data-d="-1">−</button><div class="track"><input type="range" id="s-${s.k}" min="${s.min}" max="${s.max}" step="${s.step}"><i class="ref" style="left:calc(${ref}% + ${(8-ref*.16).toFixed(1)}px - 1px)" title="proposta do banco"></i></div><button class="pm" data-k="${s.k}" data-d="1">+</button><span class="imp" id="imp-${s.k}"></span></div></div>`;}).join('');
+ SL.forEach(s=>{$('s-'+s.k).oninput=e=>{req[s.k]=+e.target.value;contract(true);};});
+ document.querySelectorAll('.pm').forEach(b=>b.onclick=()=>{const s=SL.find(x=>x.k===b.dataset.k);req[s.k]=+Math.min(s.max,Math.max(s.min,req[s.k]+s.step*b.dataset.d)).toFixed(1);contract(true);});
+}
+let lastTg=null,deltaT=null;
+function contract(changed){
+ const c=G?G.req:req,guar=G?G.guar:guarSel&&$('sk-guar').checked;
+ SL.forEach(s=>{$('s-'+s.k).value=c[s.k];$('v-'+s.k).textContent=cval(s.k,c);$('sub-'+s.k).textContent=csub(s.k,c);const p=pts(s,c[s.k]);$('imp-'+s.k).textContent=p<.05?'base do banco':'+'+p.toFixed(1).replace('.',',')+' no alvo';});
+ const tg=target(c,guar);$('tg').textContent=tg;$('ch').textContent=chance(tg)+'%';
+ if(changed&&lastTg!==null&&tg!==lastTg){const d=$('delta');d.textContent='Alvo '+(tg>lastTg?'+':'−')+Math.abs(tg-lastTg);d.classList.add('show');clearTimeout(deltaT);deltaT=setTimeout(()=>d.classList.remove('show'),1100);}
+ lastTg=tg;
+ $('warn').classList.toggle('show',tg>21);
+ const L=loan(c);$('demo').innerHTML=`<div class="big"><span>Você recebe</span><b>${money(L.V)}</b></div><div class="big"><span>Parcela mensal</span><b>${money(L.pmt)}</b></div><div><span>Total a pagar</span><b>${money(L.total)}</b></div><div><span>Juros totais</span><b>${money(L.juros)}</b></div>`;
+ $('first').textContent='📅 Primeira parcela na semana '+firstWeek(c)+(c.car?' (depois de '+carTxt(c.car).toLowerCase()+' de carência)':'');
+ const gb=$('guarbox');gb.style.display=$('sk-guar').checked?'flex':'none';gb.className='guar'+(guar?' on':'');
+ gb.innerHTML=`<div style="font-size:26px">📜</div><div><b>Garantia em estoque${guar?' · oferecida':''}</b><div>Alvo −2.</div><div class="risk">Risco: se atrasar uma parcela, o banco fica com o seu estoque.</div></div><button class="btn guar-btn" id="guar-btn">${guarSel?'Retirar garantia':'Oferecer estoque'}</button>`;
+ $('guar-btn').onclick=()=>{guarSel=!guarSel;contract(true);};
+ $('ck').textContent=phase==='setup'?'CONTRATO EM PREPARAÇÃO':'PEDIDO FECHADO';
+ const u=$('used');u.classList.toggle('show',phase==='setup'&&(week.negotiated||week.signed));
+ u.innerHTML=week.signed?'O contrato desta semana já foi assinado. Avance a semana para negociar de novo.':'A negociação desta semana já foi usada. A <b>proposta inicial</b> continua na pasta ao lado.';
+ $('go').disabled=phase!=='setup'||week.negotiated||week.signed;
 }
 
 /* ===== mesa ===== */
-function start(){const guar=guarNow();week.negotiated=true;phase='play';G={req:{...req},dk:deck(),hand:[],plan:$('sk-plan').checked,peek:$('sk-peek').checked,guar,peeked:null,saved:null};G.hand.push(G.dk.pop());table();paint();}
-const card=(c,cls='')=>`<div class="c ${['♥','♦'].includes(c.s)?'red':''} ${cls}">${c.r}<small>${c.s}</small></div>`;
-function zones(t,tg){let h='';for(let n=0;n<=21;n++)h+=`<span class="${n>=tg?'win':n>=COUNTER_MIN?'cnt':''} ${n===t?'me':''}">${n}</span>`;return h;}
-const again='<br><br><button id="again">Voltar ao pedido</button>';
-function table(msg=''){
- const t=total(G.hand),tg=target(G.req,G.guar);
- let h=`<div class="row"><span class="total">${t}</span><span class="muted">alvo do seu pedido: <b>${tg}</b> · chance de sucesso ${chance(tg)}%${tg>21?' (impossível inteiro)':''} · contraproposta a partir de ${COUNTER_MIN}${G.guar?' · 📦 estoque em garantia':''}</span></div>
- <div class="zones">${zones(Math.min(t,21),tg)}</div>
- <div class="hand">${G.hand.map(c=>card(c)).join('')}${G.saved?card(G.saved,'gone'):''}${G.peeked?card(G.peeked,'ghost'):''}</div>`;
- if(phase==='play'){
-  // mostra o que o banco faria se você parasse agora, para o meio do caminho virar uma decisão
-  let now;if(t>=tg)now='<b>aprovado do jeito que você pediu.</b>';else if(t<COUNTER_MIN)now='o banco não faz oferta (precisa de '+COUNTER_MIN+' ou mais).';else{const c=counterFor(G.req,t),L=loan(c);now='<b>'+Math.round(COUNTER_CHANCE*100)+'% de chance de contraproposta</b>, algo como '+money(L.V)+' · '+SL[1].fmt(c.prazo)+' · '+SL[2].fmt(c.juros)+' a.m. · carência '+SL[3].fmt(c.car)+' → parcela '+money(L.pmt);}
-  h+=`<div class="res ${t>=tg?'ok':t<COUNTER_MIN?'bad':'cnt'}" style="margin:0 0 10px">Se parar agora com ${t}: ${now}</div>`;
-  h+=`<div class="row"><button class="primary" id="hit">Pedir carta</button><button id="stand">${t>=tg?'Parar e fechar o pedido':t<COUNTER_MIN?'Parar com '+t:'Parar e tentar a contraproposta'}</button></div>`;
-  if($('sk-odds').checked)h+=`<div class="odds">Chance de estourar na próxima carta: ${Math.round(bustNext(G.hand,G.dk)*100)}%</div>`;
-  h+=`<div class="trunfos">${G.peek&&!G.peeked?`<button id="t-peek">🤝 Avalista: espiar a próxima carta</button>`:''}${G.plan?`<div class="muted">📑 Plano de negócios pronto: se estourar, você pode devolver a carta.</div>`:''}</div>`;
- }
- if(phase==='rescue'){const b=G.hand[G.hand.length-1];h+=`<div class="res cnt"><b>Estourou com ${t}…</b> mas o seu Plano de negócios ainda está na mesa.<br><br><div class="row"><button class="primary" id="t-plan">📑 Usar o Plano: o ${b.r}${b.s} volta para o baralho</button><button id="give-up">Aceitar o estouro</button></div></div>`;}
- h+=msg;$('table').innerHTML=h;
+const cardHtml=(c,extra='',cls='')=>`<div class="card ${['♥','♦'].includes(c.s)?'red':''} ${cls}"><div class="r">${c.r}<br>${c.s}</div><div class="mid">${c.s}</div><div class="r2">${c.r}<br>${c.s}</div>${extra}</div>`;
+function handHtml(){const sf=soft(G.hand);let firstAce=true;
+ return G.hand.map(c=>{let ace='';if(c.r==='A'){const eleven=sf&&firstAce;firstAce=false;ace=`<span class="ace"><span class="${eleven?'':'on'}">1</span> ou <span class="${eleven?'on':''}">11</span></span>`;}return cardHtml(c,ace);}).join('')+(G.peeked?cardHtml(G.peeked,'','ghost'):'');}
+function faixas(t,tg){const lo=8,hi=25,u=v=>Math.max(0,v);
+ const w=[['f-none',COUNTER_MIN-lo,'Sem oferta','abaixo de '+COUNTER_MIN],['f-cnt',u(Math.min(tg,22)-COUNTER_MIN),'Contraproposta',tg>21?COUNTER_MIN+' a 21':COUNTER_MIN+' a '+(tg-1)],['f-ok',u(22-Math.max(tg,COUNTER_MIN)),'Aprovado',tg+' a 21'],['f-bust',hi-22,'Estouro','22+']].filter(x=>x[1]>0);
+ const left=(Math.max(lo,Math.min(hi,t))-lo)/(hi-lo)*100;
+ return `<div class="faixas">${w.map(x=>`<span class="${x[0]}" style="flex:${x[1]}">${x[1]>=2?x[2]:''}</span>`).join('')}<i class="marker" style="left:calc(${left}% - 2px)"></i></div>
+ <div class="flegend">${w.map(x=>`<span style="flex:${x[1]}">${x[3]}</span>`).join('')}</div>`;}
+function tiles(){const ana=$('sk-odds').checked,av=$('sk-peek').checked,pl=$('sk-plan').checked,live=phase==='play';
+ const selo=on=>`<span class="selo ${on?'':'u'}">${on?'Disponível':'Utilizado'}</span>`;
+ return `<div class="vant"><div class="vt">VANTAGENS DA EQUIPE</div>
+ <div class="tile ${ana?'':'off'}"><span class="ic">🧮</span><b>Analista</b><p>${ana?(live?'Risco de estourar na próxima: <b>'+Math.round(bustNext(G.hand,G.dk)*100)+'%</b>':'Calcula o risco a cada carta.'):'Sem analista na equipe.'}</p></div>
+ <div class="tile ${av?'':'off'}">${av?selo(G.peek):''}<span class="ic">🂠</span><b>Avalista</b><p>${!av?'Sem avalista.':G.peeked?'Próxima carta: <b>'+G.peeked.r+G.peeked.s+'</b>':G.peek?'Espia a próxima carta uma vez.':'Já espiou nesta negociação.'}</p>${av&&G.peek&&live?'<button id="t-peek">Espiar próxima carta</button>':''}</div>
+ <div class="tile ${pl?'':'off'}">${pl?selo(G.plan):''}<span class="ic">📁</span><b>Plano de negócios</b><p>${!pl?'Sem plano preparado.':G.plan?'Protege contra 1 estouro.':'Proteção usada.'}</p></div>
+ <div class="tile ${G.guar?'':'off'}"><span class="ic">📜</span><b>Garantia em estoque</b><p>${G.guar?'Alvo −2 · <b>estoque comprometido</b>':'Não oferecida neste pedido.'}</p></div></div>`;}
+function mesa(){
+ const m=$('mesa');
+ if(!G){m.innerHTML=`<div class="idle"><div class="deck"></div><div style="font-family:var(--pix);font-size:10px">MESA DO GERENTE</div><div>Monte o pedido no contrato e clique em <b>Iniciar negociação</b>.<br>O banco vira a primeira carta.</div></div>`;return;}
+ const t=total(G.hand),tg=target(G.req,G.guar),busted=t>21;
+ let say;if(busted)say='Estourou com '+t+'.';else if(tg>21)say='Alvo inalcançável: o melhor possível é uma contraproposta.';else if(t>=tg)say=t===21?'21 cravado!':'Pedido no alvo. Encerre para aprovar ou arrisque o 21 cravado.';else say='Faltam '+(tg-t)+' ponto'+(tg-t>1?'s':'')+' para aprovar seu pedido.';
+ let standTxt;if(t>=tg)standTxt=t===21?'Seu pedido será aprovado <b>com condição especial: juros −1 p.p.</b>':'Seu pedido será aprovado.';else if(t<COUNTER_MIN)standTxt='Sem oferta: abaixo de '+COUNTER_MIN+' o banco não negocia.';else standTxt=Math.round(COUNTER_CHANCE*100)+'% de chance de receber uma contraproposta.';
+ const hitTxt=$('sk-odds').checked?'Risco de estourar: '+Math.round(bustNext(G.hand,G.dk)*100)+'%':t>=tg&&t<21?'Arriscar pelo 21 cravado (juros −1 p.p.).':'A soma sobe… ou estoura.';
+ let h=`<div class="mgrid"><div><div class="score"><div class="mk ${busted?'bust':''}"><small>SUA SOMA</small><b>${t}</b></div><div class="mk tgt"><small>ALVO DO BANCO</small><b>${tg}</b></div></div>
+ <div class="say">${say}</div>${faixas(t,tg)}
+ <div class="hand">${handHtml()}</div>`;
+ if(phase==='play')h+=`<div class="acts"><div class="act"><button id="hit">Pedir carta</button><small>${hitTxt}</small></div><div class="act"><button id="stand">Encerrar com ${t}</button><small>${standTxt}</small></div></div>`;
+ if(phase==='rescue'){const b=G.hand[G.hand.length-1];h+=`<div class="rescue">Estourou com ${t}… mas o seu Plano de negócios ainda está na mesa.<div class="row"><button class="btn brass" id="t-plan">📁 Usar o plano: o ${b.r}${b.s} volta para o baralho</button><button class="btn" id="give-up">Aceitar o estouro</button></div></div>`;}
+ if(phase==='done'&&result)h+=`<div class="result"><div class="stamp ${result.cls}">${result.stamp}</div><div class="txt">${result.text}</div><button class="btn primary" id="back">Voltar ao contrato</button></div>`;
+ h+=`</div>${tiles()}</div>`;
+ m.innerHTML=h;
  const on=(id,fn)=>{const e=$(id);if(e)e.onclick=fn;};
- on('hit',hit);on('stand',stand);
- on('t-peek',()=>{G.peeked=G.dk[G.dk.length-1];G.peek=false;table();});
- on('t-plan',()=>{const c=G.hand.pop();G.dk.push(c);shuffle(G.dk);G.plan=false;phase='play';addLog('📑 Plano de negócios salvou um estouro (o '+c.r+c.s+' voltou para o baralho).');table();});
- on('give-up',bust);
- on('again',reset);
+ on('hit',hit);on('stand',stand);on('give-up',bust);on('back',reset);
+ on('t-peek',()=>{G.peeked=G.dk[G.dk.length-1];G.peek=false;mesa();});
+ on('t-plan',()=>{const c=G.hand.pop();G.dk.push(c);shuffle(G.dk);G.plan=false;phase='play';addLog('📁 Plano de negócios desfez um estouro (o '+c.r+c.s+' voltou para o baralho).');mesa();});
 }
-function hit(){G.hand.push(G.dk.pop());G.peeked=null;if(total(G.hand)>21){if(G.plan){phase='rescue';table();return;}bust();}else table();}
-function bust(){const t=total(G.hand);relDown();addLog('Estourou com '+t+'. Pedido negado; relacionamento −1.');phase='done';table(`<div class="res bad"><b>Estourou (${t}).</b> O gerente achou o pedido fora da realidade e negou. Relacionamento −1: o próximo alvo fica 1 ponto mais alto. Nesta semana só resta a proposta inicial.${again}</div>`);paint();}
-function stand(){const t=total(G.hand),tg=target(G.req,G.guar);G.t=t;phase='done';
- if(t>=tg){let c={...G.req},bonus='';if(t===21&&c.juros>3){c.juros=Math.max(3,c.juros-1);bonus=' 21 cravado: o gerente ainda tira 1 ponto dos juros.';}
-  table(`<div class="res ok"><b>Aprovado do jeito que você pediu.</b>${bonus}</div>`);sign(c,t===21?'21 cravado':'pedido aprovado');return;}
- if(t<COUNTER_MIN){addLog('Parou com '+t+'. Abaixo de '+COUNTER_MIN+': nada feito.');table(`<div class="res bad"><b>${t} não convence.</b> O banco nem faz contraproposta. Nesta semana só resta a proposta inicial.${again}</div>`);paint();return;}
- // no meio do caminho a contraproposta não é garantida: o gerente decide (por enquanto, 50%)
- if(Math.random()>=COUNTER_CHANCE){addLog('Parou com '+t+'. O gerente não quis contrapropor.');table(`<div class="res bad"><b>O gerente balançou a cabeça.</b> Com ${t} ele não quis fazer contraproposta desta vez. Nesta semana só resta a proposta inicial.${again}</div>`);paint();return;}
- G.counter=counterFor(G.req,t);table(`<div class="res cnt"><b>O gerente está fazendo uma contraproposta…</b></div>`);paint();offerPopup(G.counter,t);}
-// popup com relógio: compara o pedido com a oferta; se não aceitar a tempo, o banco retira a oferta
+
+/* ===== fluxo ===== */
+function layout(){$('board').className=phase==='setup'?'setup':'play';}
+function renderAll(){layout();header();pasta();contract();mesa();}
+function start(){week.negotiated=true;G={req:{...req},dk:deck(),hand:[],plan:$('sk-plan').checked,peek:$('sk-peek').checked,guar:guarSel&&$('sk-guar').checked,peeked:null};phase='play';result=null;G.hand.push(G.dk.pop());renderAll();}
+function hit(){G.hand.push(G.dk.pop());G.peeked=null;if(total(G.hand)>21){if(G.plan){phase='rescue';mesa();return;}bust();}else mesa();}
+function finish(cls,stamp,text){phase='done';result={cls,stamp,text};renderAll();}
+const rest=' Nesta semana só resta a proposta inicial.';
+function bust(){const t=total(G.hand);addLog('Estourou com '+t+'. Pedido negado; relacionamento −1.');finish('bad','ESTOUROU','O gerente achou o pedido fora da realidade e negou. O relacionamento caiu: o próximo alvo fica 1 ponto mais alto.'+rest);relChange(-1);}
+function stand(){const t=total(G.hand),tg=target(G.req,G.guar);
+ if(t>=tg){const c={...G.req};const special=t===21&&c.juros>3;if(special)c.juros=Math.max(3,c.juros-1);
+  sign(c,special?'21 cravado':'pedido aprovado');finish(special?'special':'ok',special?'CONDIÇÃO ESPECIAL':'APROVADO',special?'21 cravado! Pedido aprovado e o gerente ainda tira <b>1 ponto percentual dos juros</b> ('+fmtJ(c.juros)+').':'Pedido aprovado do jeito que você pediu.');relChange(1);return;}
+ if(t<COUNTER_MIN){addLog('Encerrou com '+t+'. Abaixo de '+COUNTER_MIN+': nada feito.');finish('bad','SEM OFERTA',t+' não convence: o banco nem faz contraproposta.'+rest);return;}
+ // no meio do caminho a contraproposta não é garantida (por enquanto, 50%)
+ if(Math.random()>=COUNTER_CHANCE){addLog('Encerrou com '+t+'. O gerente não quis contrapropor.');finish('bad','SEM OFERTA','O gerente balançou a cabeça: com '+t+' ele não quis contrapropor desta vez.'+rest);return;}
+ phase='done';result=null;mesa();offerPopup(counterFor(G.req,t),t);}
 function offerPopup(c,t){const r=G.req,Lr=loan(r),L=loan(c),ov=document.createElement('div');ov.id='offer';
- const row=(name,a,b,same)=>`<tr><td>${name}</td><td>${a}</td><td class="${same?'same':'down'}">${b}${same?' ✔':''}</td></tr>`;
- ov.innerHTML=`<div class="pop"><h2>📄 Contraproposta do banco</h2><p class="muted">Você chegou em ${t}; o pedido precisava de ${target(r,G.guar)}.</p>
- <table class="cmp"><tr><th></th><th>Você pediu</th><th>O banco oferece</th></tr>
- ${row('Valor',money(Lr.V),money(L.V),c.pct===r.pct)}${row('Prazo',SL[1].fmt(r.prazo),SL[1].fmt(c.prazo),c.prazo===r.prazo)}${row('Juros',SL[2].fmt(r.juros)+' a.m.',SL[2].fmt(c.juros)+' a.m.',c.juros===r.juros)}${row('Carência',SL[3].fmt(r.car),SL[3].fmt(c.car),c.car===r.car)}
- <tr><td><b>Parcela</b></td><td>${money(Lr.pmt)}</td><td><b>${money(L.pmt)}</b></td></tr></table>
- <div class="clock"><i></i></div><p class="muted" id="clk">${COUNTER_SECONDS}s para decidir</p>
- <div class="row"><button class="primary" id="pop-ok">Aceitar</button><button id="pop-no">Recusar</button></div></div>`;
- document.body.appendChild(ov);const bar=ov.querySelector('.clock i');requestAnimationFrame(()=>requestAnimationFrame(()=>{bar.style.transition='width '+COUNTER_SECONDS+'s linear';bar.style.width='0%';}));
- let left=COUNTER_SECONDS;const tick=setInterval(()=>{left--;const e=$('clk');if(e)e.textContent=left+'s para decidir';},1000);
+ const row=(k,name)=>`<tr class="${c[k]!==r[k]?'ch':''}"><td>${name}</td><td>${cval(k,r)}</td><td>${cval(k,c)}</td></tr>`;
+ ov.innerHTML=`<div class="sheet"><div class="stamp">CONTRAPROPOSTA</div><div class="kicker">BANCO DO BAIRRO</div><h2>O gerente desliza uma folha</h2><div class="muted">Você encerrou com ${t}. O pedido precisava de ${target(r,G.guar)}.</div>
+ <table class="cmp"><tr><th>Condição</th><th>Seu pedido</th><th>Oferta do banco</th></tr>${row('pct','Valor')}${row('prazo','Prazo')}${row('juros','Juros')}${row('car','Carência')}
+ <tr class="pay"><td>Parcela</td><td>${money(Lr.pmt)}</td><td>${money(L.pmt)}</td></tr><tr class="pay"><td>Total a pagar</td><td>${money(Lr.total)}</td><td>${money(L.total)}</td></tr></table>
+ <div class="timer"><span class="sec" id="sec">${COUNTER_SECONDS}</span><div class="bar"><i id="tbar"></i></div></div>
+ <div class="row"><button class="btn primary" id="pop-ok">Aceitar oferta</button><button class="btn" id="pop-no">Recusar</button></div></div>`;
+ document.body.appendChild(ov);const bar=$('tbar');requestAnimationFrame(()=>requestAnimationFrame(()=>{bar.style.transition='width '+COUNTER_SECONDS+'s linear';bar.style.width='0%';}));
+ let left=COUNTER_SECONDS;const tick=setInterval(()=>{left--;const e=$('sec');if(e)e.textContent=Math.max(0,left);},1000);
  const close=()=>{clearInterval(tick);clearTimeout(timer);ov.remove();};
- const lose=why=>{close();addLog('Contraproposta de '+t+' '+why+'.');table(`<div class="res bad"><b>${why==='expirou'?'Tempo esgotado.':'Você recusou.'}</b> O banco retirou a contraproposta. Nesta semana só resta a proposta inicial.${again}</div>`);paint();};
+ const lose=why=>{close();addLog('Contraproposta de '+t+' '+why+'.');finish('bad',why==='expirou'?'TEMPO ESGOTADO':'RECUSADA','O banco retirou a contraproposta.'+rest);};
  const timer=setTimeout(()=>lose('expirou'),COUNTER_SECONDS*1000);
- ov.querySelector('#pop-ok').onclick=()=>{close();table(`<div class="res ok"><b>Contraproposta assinada.</b></div>`);sign(c,'contraproposta');};ov.querySelector('#pop-no').onclick=()=>lose('recusada');}
+ $('pop-ok').onclick=()=>{close();sign(c,'contraproposta');finish('ok','ASSINADO','Contraproposta assinada.');relChange(1);};$('pop-no').onclick=()=>lose('recusada');}
 // recua todas as condições na mesma proporção até o alvo caber no número tirado
 function counterFor(r,t){for(let f=1;f>=0;f-=.01){const c={};SL.forEach(s=>{const raw=s.easy+(r[s.k]-s.easy)*f,steps=(raw-s.easy)/s.step;c[s.k]=+(s.easy+Math.trunc(steps)*s.step).toFixed(1);});if(target(c,G.guar)<=t)return c;}return{...EASY};}
-// assinar: contrato negociado sem estourar sobe o relacionamento
-function sign(c,how){const negotiated=how!=='proposta inicial',guar=negotiated&&G?.guar,L=loan(c);week.signed=true;if(negotiated)relUp();
- addLog(`✍️ Semana ${week.n} · <b>${how}</b>: ${money(L.V)} · ${SL[1].fmt(c.prazo)} · ${SL[2].fmt(c.juros)} a.m. · carência ${SL[3].fmt(c.car)}${guar?' · estoque em garantia':''} → parcela ${money(L.pmt)}, total ${money(L.total)}${negotiated?' · relacionamento +1':''}`);
- if(G)$('table').insertAdjacentHTML('beforeend',`<p class="muted">Relacionamento com o banco +1.</p><button id="again">Voltar ao pedido</button>`);
- const a=$('again');if(a)a.onclick=reset;paint();}
+function sign(c,how){const neg=how!=='proposta inicial',L=loan(c);week.signed=true;
+ addLog(`✍️ Semana ${week.n} · <b>${how}</b>: ${money(L.V)} · ${c.prazo} meses · ${fmtJ(c.juros)} · ${carTxt(c.car).toLowerCase()}${neg&&G?.guar?' · estoque em garantia':''} → parcela ${money(L.pmt)}, total ${money(L.total)}${neg?' · relacionamento +1':''}`);}
 function addLog(t){log.unshift(t);$('log').innerHTML=log.map(x=>'<div>'+x+'</div>').join('');}
-function reset(){phase='setup';G=null;$('table').innerHTML='<span class="muted">'+(week.signed||week.negotiated?'Avance a semana para negociar de novo.':'Ajuste os controles e clique em <b>Negociar</b>.')+'</span>';paint();}
+function reset(){phase='setup';G=null;result=null;renderAll();}
 
-$('take').onclick=()=>{G=null;phase='setup';sign({...EASY},'proposta inicial');$('table').innerHTML='<span class="muted">Proposta inicial assinada. Avance a semana para negociar de novo.</span>';};
+$('take').onclick=()=>{sign({...EASY},'proposta inicial');renderAll();};
 $('next').onclick=()=>{if($('offer'))return;week={n:week.n+1,negotiated:false,signed:false};addLog('📅 Começou a semana '+week.n+'.');reset();};
-$('go').onclick=start;$('rev').oninput=paint;$('guar').onchange=paint;['sk-odds','sk-plan','sk-peek','sk-guar'].forEach(id=>$(id).onchange=paint);
-buildSliders();paint();
+$('go').onclick=start;$('rev').oninput=()=>{pasta();contract();};
+['sk-odds','sk-plan','sk-peek','sk-guar'].forEach(id=>$(id).onchange=()=>{if(G)mesa();contract();});
+buildRows();renderAll();
 </script>
 </body>
 </html>
