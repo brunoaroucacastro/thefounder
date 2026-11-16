@@ -155,7 +155,10 @@ function table(msg=''){
  <div class="zones">${zones(Math.min(t,21),tg)}</div>
  <div class="hand">${G.hand.map(c=>card(c)).join('')}${G.gone.map(c=>card(c,'gone')).join('')}${G.peeked?card(G.peeked,'ghost'):''}</div>`;
  if(phase==='play'){
-  h+=`<div class="row"><button class="primary" id="hit">Pedir carta</button><button id="stand">Parar com ${t}</button></div>`;
+  // mostra o que o banco faria se você parasse agora, para o meio do caminho virar uma decisão
+  let now;if(t>=tg)now='<b>aprovado do jeito que você pediu.</b>';else if(t<MIN)now='o banco não faz oferta (precisa de '+MIN+' ou mais).';else{const c=counterFor(G.req,t),L=loan(c);now='<b>contraproposta</b> de '+money(L.V)+' · '+SL[1].fmt(c.prazo)+' · '+SL[2].fmt(c.juros)+' a.m. · carência '+SL[3].fmt(c.car)+' → parcela '+money(L.pmt);}
+  h+=`<div class="res ${t>=tg?'ok':t<MIN?'bad':'cnt'}" style="margin:0 0 10px">Se parar agora com ${t}: ${now}</div>`;
+  h+=`<div class="row"><button class="primary" id="hit">Pedir carta</button><button id="stand">${t>=tg?'Parar e fechar o pedido':t<MIN?'Parar com '+t:'Parar e ouvir a contraproposta'}</button></div>`;
   if($('sk-odds').checked)h+=`<div class="odds">Chance de estourar na próxima carta: ${Math.round(bustNext(G.hand,G.dk)*100)}%</div>`;
   h+=`<div class="trunfos">${G.plan?`<button id="t-plan" ${G.hand.length<2?'disabled':''}>📑 Plano de negócios: descartar a última carta</button>`:''}${G.peek&&!G.peeked?`<button id="t-peek">🤝 Avalista: espiar a próxima carta</button>`:''}${G.guarOk&&!G.guar?`<button id="t-guar">📦 Dar estoque em garantia: alvo ${tg} → ${target(G.req,true)}</button>`:''}</div>`;
  }
