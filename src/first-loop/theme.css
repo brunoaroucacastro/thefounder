@@ -1215,3 +1215,20 @@ body.town-open{overflow:hidden}
 .persona-comment.pc1{border-left:3px solid #c2453f}.persona-comment.pc2{border-left:3px solid #c99a1c}.persona-comment.pc3{border-left:3px solid #2f8a5f}
 /* aba Clientes fora por enquanto */
 #clients{display:none!important}
+
+/* ===== relógio digital e data na barra ===== */
+.day-time{order:2;font:400 13px Oficina,var(--q-font)!important;color:#f6efe2;background:#1f2238;border:2px solid #f6efe2;padding:3px 7px;margin-left:4px;letter-spacing:.06em}
+.wk-date{font-weight:900;color:#f2c230;margin-left:2px}
+/* ===== bairro com a mesma barra do jogo ===== */
+#town .tw-hud{left:0!important;right:0!important;top:0!important;padding:8px 12px;background:linear-gradient(180deg,#24273f,#1f2238);border-bottom:2px solid #2f3352;box-shadow:0 4px 18px rgba(0,0,0,.28);color:#f6efe2}
+#town .tw-brand{font:400 13px Oficina,var(--q-font);letter-spacing:.1em;color:#f6efe2;padding-right:10px;border-right:1px solid #ffffff22}
+#town .tw-time{background:transparent!important;box-shadow:none!important;color:#f6efe2!important;border-radius:0!important;padding:0 6px!important;align-items:center!important}
+#town .tw-time b{font:400 12px Oficina,var(--q-font)!important;letter-spacing:.06em;color:#f6efe2}
+#town .tw-time span#tw-clock{font:400 13px Oficina,var(--q-font)!important;color:#f6efe2!important;background:#1f2238;border:2px solid #f6efe2;padding:3px 7px}
+#town .tw-strip{display:inline-flex;gap:2px;margin:0 4px;vertical-align:middle}
+#town .tw-strip i{font-style:normal;font-size:9px;width:13px;height:15px;display:grid;place-items:center;background:#2f3352;color:#9aa0b8}
+#town .tw-strip i.fds{background:#3a3f63}#town .tw-strip i.on{background:#f2c230;color:#1d1b26}
+#town .tw-where,#town .tw-cash{background:#2f3352!important;color:#f6efe2!important;border-radius:0!important}
+#town .tw-cash{color:#7ccf9c!important}
+#town .tw-btn{border-radius:0!important;font:400 11px Oficina,var(--q-font)!important;letter-spacing:.08em}
+#town .tw-end{background:#f2c230!important;border:2px solid #1d1b26!important;box-shadow:0 3px 0 #9c7a14!important;color:#1d1b26!important;margin-left:0!important}

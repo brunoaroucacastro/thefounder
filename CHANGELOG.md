@@ -1,3 +1,11 @@
+# 0.93 · Tempo, calendário e fim de semana (pacote B)
+
+- Calendário: o jogo começa na segunda-feira 02/03/2026 (01/03/2026 cai num domingo) e a barra mostra o dia, a data e um relógio digital (dia útil das 8h às 18h).
+- A janela do quarto e do escritório muda com a hora: manhãzinha, dia, tarde e anoitecer, com sol e luzes da cidade.
+- Fim de expediente: perto das 18h a equipe sai pela porta do escritório e volta logo no começo do dia seguinte; no quarto, você vai para a cama (Zzz) e volta.
+- Ícones clicáveis do quarto e do escritório maiores, flutuando e com um anel pulsando.
+- Fim de semana no bairro com a mesma barra do jogo (semana, dias, data, relógio, caixa) e o botão Encerrar fim de semana; Voltar para casa virou Ir para o quarto.
+
 # 0.92 · Ajustes do playtest (pacote A)
 
 - A frase da escolha de categoria virou o tutorial Primeiro produto (com Reid Hoffman).
