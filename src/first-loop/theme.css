@@ -1011,3 +1011,11 @@ body.town-open{overflow:hidden}
 .dz-roll{display:flex;align-items:center;gap:12px}
 .dz-mentor{border-color:#f2c230;padding-bottom:8px}.dz-mentor b,.dz-mentor p{padding:0 10px}.dz-opts{display:flex;flex-wrap:wrap;gap:6px;padding:6px 10px 0}
 .dz .dz-bar.mood{height:auto!important;min-height:0!important;overflow:visible!important;background:none!important;border:0!important;padding:0!important;position:static!important;width:auto!important}
+/* dossiê: prancheta mais larga e mais baixa */
+@media (min-width:900px){
+#workshop-info .workshop-info-panel.team-wide:has(.dz){width:min(1180px,100%)!important}
+#workshop-info .tm-office.dz{grid-template-columns:minmax(270px,.75fr) minmax(0,1.5fr)!important;gap:18px}
+.dz .dz-paper{grid-template-columns:1fr 1fr;align-items:start;column-gap:14px}
+.dz .dz-paper>.dz-id,.dz .dz-paper>.dz-bar,.dz .dz-paper>.dz-foot,.dz .dz-paper>.dz-mentor,.dz .dz-paper>.dz-tr-head,.dz .dz-paper>.dz-roll,.dz .dz-paper>.dz-course{grid-column:1/-1}
+.dz .dz-board{padding:22px 16px 16px}
+}

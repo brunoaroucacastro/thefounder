@@ -1,3 +1,7 @@
+# 0.90 · Prancheta do dossiê mais larga
+
+- Em telas largas, o painel da Equipe cresce, a prancheta ganha mais espaço e Atributos e Habilidades ficam lado a lado.
+
 # 0.89 · Equipe como dossiê de funcionário
 
 - Crachás pendurados no lugar das mesas; a vaga é um porta-crachá vazio.
