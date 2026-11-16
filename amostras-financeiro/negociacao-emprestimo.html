@@ -66,7 +66,7 @@ label.chk{font-size:13px;display:flex;gap:6px;align-items:center}
     · Relacionamento com o banco <div class="rel" id="rel"></div>
   </div>
   <div id="sliders"></div>
-  <div class="target">Precisa tirar <b id="tg">13</b> <span class="muted" id="tgtxt"></span></div>
+  <div class="target">Precisa tirar <b id="tg">13</b> <span class="muted" id="tgtxt"></span><span style="margin-left:auto">Chance de sucesso <b id="ch">97%</b></span></div>
   <div class="meter"><b style="position:absolute;left:72.7%;top:-3px;bottom:-3px;width:2px;background:#b23a3a"></b><i id="tgm"></i></div>
   <div class="scale"><span>13 · proposta do banco</span><span style="margin-left:auto;margin-right:27%">21</span><span>24 · impossível</span></div>
   <div class="terms" id="terms"></div>
@@ -114,6 +114,9 @@ const MIN=13,MAX=24,SPAN=MAX-MIN; // acima de 21 o pedido inteiro é impossível
 const pts=(s,v)=>SPAN*s.w*norm(s,v);
 // alvo: 13 no pedido mínimo, 24 no pedido máximo; relacionamento ruim endurece, garantia alivia
 function target(c,guar=false){const d=SL.reduce((a,s)=>a+pts(s,c[s.k]),0);return Math.max(MIN,Math.min(MAX,Math.round(MIN+d)-rel-(guar?2:0)));}
+// chance de aprovar o pedido inteiro puxando até o alvo (20 mil simulações, 1 baralho)
+const CHANCE={13:97,14:92,15:87,16:80,17:71,18:62,19:51,20:38,21:18};
+const chance=tg=>tg>21?0:CHANCE[tg]??100;
 function loan(c){const R=+$('rev').value||0,V=R*c.pct/100,i=c.juros/100,saldo=V*Math.pow(1+i,c.car),pmt=saldo*i/(1-Math.pow(1+i,-c.prazo));return{V,pmt,total:pmt*c.prazo,juros:pmt*c.prazo-V};}
 
 /* ===== baralho ===== */
@@ -133,7 +136,7 @@ function cur(){return phase==='counter'?G.counter:req;}
 function paint(){
  const c=cur(),guar=G?.guar&&phase!=='setup';
  SL.forEach(s=>{const el=$('s-'+s.k);el.value=c[s.k];el.disabled=!(phase==='setup'||phase==='counter');$('v-'+s.k).textContent=s.fmt(c[s.k]);$('p-'+s.k).textContent='+'+pts(s,c[s.k]).toFixed(1)+' pts';});
- const tg=target(c,guar);$('tg').textContent=tg;$('tgm').style.left=((tg-MIN)/SPAN*100)+'%';
+ const tg=target(c,guar);$('tg').textContent=tg;$('ch').textContent=chance(tg)+'%';$('tgm').style.left=((tg-MIN)/SPAN*100)+'%';
  $('tgtxt').textContent=phase==='counter'?'· você tem '+G.t+(tg<=G.t?' ✔ dá para fechar':' ✘ passou do seu número'):tg===MIN?'· igual à proposta do banco':tg===21?'· só com 21 cravado':tg>21?'· passa de 21: impossível aprovar inteiro, só contraproposta':'';
  const L=loan(c);$('terms').innerHTML=`<div>Você recebe<b>${money(L.V)}</b></div><div>Parcela mensal<b>${money(L.pmt)}</b></div><div>Total pago<b>${money(L.total)}</b></div><div>Juros totais<b>${money(L.juros)}</b></div>`;
  if($('sk-odds').checked&&phase==='setup'){const o=odds(tg);$('odds').textContent=`Puxando até chegar em ${tg}: ${Math.round(o.win*100)}% de aprovar o pedido inteiro · ${Math.round(o.bust*100)}% de estourar. Parar antes (com ${MIN} ou mais) rende contraproposta.`;}else $('odds').textContent='';
@@ -148,7 +151,7 @@ const card=(c,cls='')=>`<div class="c ${['♥','♦'].includes(c.s)?'red':''} ${
 function zones(t,tg){let h='';for(let n=0;n<=21;n++)h+=`<span class="${n>=tg?'win':n>=MIN?'cnt':''} ${n===t?'me':''}">${n}</span>`;return h;}
 function table(msg=''){
  const t=total(G.hand),tg=target(G.req,G.guar),over=t>21;
- let h=`<div class="row"><span class="total">${t}</span><span class="muted">alvo do seu pedido: <b>${tg}</b>${tg>21?' (impossível inteiro)':''} · contraproposta a partir de ${MIN}</span></div>
+ let h=`<div class="row"><span class="total">${t}</span><span class="muted">alvo do seu pedido: <b>${tg}</b> · chance de sucesso ${chance(tg)}%${tg>21?' (impossível inteiro)':''} · contraproposta a partir de ${MIN}</span></div>
  <div class="zones">${zones(Math.min(t,21),tg)}</div>
  <div class="hand">${G.hand.map(c=>card(c)).join('')}${G.gone.map(c=>card(c,'gone')).join('')}${G.peeked?card(G.peeked,'ghost'):''}</div>`;
  if(phase==='play'){

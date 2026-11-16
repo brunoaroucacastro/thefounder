@@ -1,5 +1,6 @@
 # Protótipo · Negociação de empréstimo estilo blackjack
 
+- A chance de sucesso do pedido aparece ao lado do alvo (de 97% no 13 a 18% no 21; 0% acima).
 - Ajuste: o alvo vai de 13 a 24; acima de 21 o pedido inteiro é impossível e só rende contraproposta, até que habilidades baixem o alvo. Antes ia de 13 a 21 (contraproposta a partir de 13) e as chances só aparecem com o Analista ligado.
 
 - Novo protótipo em amostras-financeiro/negociacao-emprestimo.html, só mecânica.
