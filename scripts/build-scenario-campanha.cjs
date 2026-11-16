@@ -13,7 +13,9 @@ const steps=[];for(let i=0;i<20&&s.phase!=='recampaignReady';i++){steps.push(s.p
  s=until(s,'recampaignReady');}
 if(s.phase!=='recampaignReady')throw Error('não chegou ao tabuleiro: '+s.phase+' · '+steps.join(' > '));
 s.paused=false;const state=JSON.stringify(s);
-let html=fs.readFileSync('dist/The-Founder-Primeira-Aposta-'+version+'.html','utf8');const KEY='the-founder-cenario-campanha';
-html=html.replace("KEY='the-founder-contract-v1'","KEY='"+KEY+"'").replace('START_FRESH=true','START_FRESH=false');
-html=html.replace('<script>','<script>try{localStorage.setItem('+JSON.stringify(KEY)+','+JSON.stringify(state)+');}catch(e){}</script><script>');
+let html=fs.readFileSync('dist/The-Founder-Primeira-Aposta-'+version+'.html','utf8');
+// a campanha vai embutida na memória da página: não depende do armazenamento do navegador e recomeça a cada abertura
+if(!html.includes('memory=new Map()'))throw Error('memória do save não encontrada');
+const literal=JSON.stringify(state).replace(/<\//g,'<\\/');
+html=html.replace('memory=new Map()',()=>'memory=new Map([["the-founder-contract-v1",'+literal+']])');
 const out='dist/The-Founder-Cenario-Campanha-'+version+'.html';fs.writeFileSync(out,html);console.log('PASS:',out,'· fase',s.phase,'· caminho',steps.join(' > '));

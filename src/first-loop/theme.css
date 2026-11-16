@@ -761,3 +761,6 @@ body.town-open{overflow:hidden}
 .week-sheet .weekend-choices.wk-two button b{display:block;font-size:15px;margin-bottom:4px}
 .week-sheet .weekend-choices.wk-two button small{font-family:var(--q-font)!important;letter-spacing:0;opacity:.85}
 @media (max-width:640px){.week-sheet .weekend-choices.wk-two{grid-template-columns:1fr}}
+
+/* promotor no tabuleiro */
+.bc.k-m,.k-m{background:#e0569b!important;color:#fff}
