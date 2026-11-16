@@ -1,5 +1,7 @@
 # Protótipo · Negociação de empréstimo estilo blackjack
 
+- Ajuste: o alvo agora vai de 13 a 21 (contraproposta a partir de 13) e as chances só aparecem com o Analista ligado.
+
 - Novo protótipo em amostras-financeiro/negociacao-emprestimo.html, só mecânica.
 - Quatro controles (valor 100–200% do faturamento de 30 dias, prazo 3–12 meses, juros 3–16% a.m., carência 0–3 meses) definem o alvo de 10 a 21.
 - Puxa cartas: chegou ao alvo, aprova o pedido; entre 10 e o alvo, contraproposta ajustável; estourou ou parou abaixo de 10, nada feito. 21 cravado dá bônus.
