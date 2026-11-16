@@ -4,6 +4,7 @@
 - A cada carta abaixo da exigência, 25% de chance de o gerente interromper com uma proposta para a soma atual (15 segundos para aceitar). Encerrar abaixo da exigência é recusa; estourar derruba a confiança do banco; 21 cravado tira 1 ponto dos juros.
 - Uma negociação por semana e um empréstimo ativo por vez. Meses viram semanas (1 mês = 4 semanas): a parcela sai toda semana e a carência pula semanas de pagamento. A confiança do banco (−2 a +2) muda a exigência.
 - Tutoriais ilustrados de primeira vez para Produto, Clientes, Marketing, Lote e preço, Equipe e Crédito: poucas páginas, desenhos no estilo das telas, a primeira página com o contexto e uma frase de referência (Steve Jobs, Peter Drucker, Philip Kotler, Warren Buffett, Jim Collins, Roger Fisher e William Ury). Aparecem uma vez; o botão ? reabre.
+- Enquanto o jogo recomeça a cada abertura, os tutoriais também: a marcação de visto vale só para a sessão aberta.
 - Correção: os tutoriais de Produto, Clientes, Preço e Marketing também aparecem em saves antigos (antes só no formato novo de personas).
 - Novo simulador: dist/The-Founder-Cenario-Financeiro (node scripts/build-scenario-financeiro.cjs).
 
