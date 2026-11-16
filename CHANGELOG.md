@@ -1,3 +1,20 @@
+# 0.87 · RH com perfis, personalidades MBTI, níveis e treinos
+
+Equipe
+- Cada pessoa tem um perfil profissional com habilidade própria (11 de Produto, 10 de Marketing) e um traço de personalidade MBTI (16 tipos; INFJ, ISFP e INFP sem alocação por enquanto).
+- Níveis de 1 a 10: Júnior, Pleno, Sênior e Especialista. Habilidades especiais nos níveis 4 e 7 e uma lendária no 10.
+- Treinos: Curso técnico (o D20 define a EXP, sempre ganha algo), Integração (motivação) e Mentoria (rola uma habilidade nova para trocar ou manter). Curso e Integração também em grupo.
+- Atributos que crescem com o nível: velocidade, automotivação, inspiração e bônus de área.
+- Currículo mostra nível, personalidade, perfil e especiais. Saves antigos migram sozinhos.
+
+Tempo
+- Desenvolvimento leva 2 dias no NV4 e +0,5 dia por nível; campanha leva mais nas fases avançadas.
+- Cada pessoa da área acelera o trabalho, e duas pessoas somam.
+
+Habilidades no jogo
+- Prancheta: escolher peça Comum, troca grátis, casas únicas, tirar peças, trocas mais baratas, estrelas valendo mais, 4 peças, peças raras mais frequentes, D20 +3.
+- Campanha: Panfletos grátis, duplicar carta, anular casa especial, baratear carta, troca grátis ou mais barata, energia extra, Indicação de 3 casas, Viralização 5×5, bônus por persona.
+
 # 0.86 · Campanha com energia, prancheta de oficina e buffs de motivação
 
 Campanha

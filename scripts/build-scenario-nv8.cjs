@@ -1,9 +1,11 @@
 // Gera um cenário de teste: fone NV8 já vendendo, ~1000 vendas, nota média 3,9, 3000 seguidores,
 // R$150.000 em caixa e sala comercial alugada. Uso: node scripts/build-scenario-nv8.cjs
 const fs=require('fs'),assert=require('node:assert/strict');
-const {C,flags,act,until}=require('../tests/modern-support.cjs'),U=require('../src/first-loop/universal-products.js');
+const {C,flags,act}=require('../tests/modern-support.cjs'),U=require('../src/first-loop/universal-products.js');
 const version=(fs.readFileSync('scripts/build-first-loop.cjs','utf8').match(/Primeira-Aposta-(\d+\.\d+)\.html/)||[])[1];
 
+// espera uma fase, tratando a virada de semana (os trabalhos agora podem levar vários dias)
+function until(s,phase,max=60000){for(let i=0;i<max&&s.phase!==phase;i++){if(s.phase==='opportunity'){s=act(s,'offer',{choice:'decline'});continue;}if(s.weekly?.stage==='report'){s=act(s,'readWeek');continue;}if(s.weekly?.stage==='weekend'){s=act(s,'weekend',{choice:'work'});continue;}s=C.tick(s,.2);}assert.equal(s.phase,phase);return s;}
 let s=act(C.fresh(11,{...flags,traction:true,personaSet:'v2',boardCampaign:true}),'start');
 s=C.enableWeekly(s);
 s=act(s,'product',{id:'headphones'});s=until(s,'customer');s=act(s,'customer',{id:s.personaCandidates[0]});
