@@ -50,3 +50,6 @@ Ideias guardadas para puxar depois. Não entram no jogo até o Bruno pedir.
 ## Buffs e debuffs, versão completa (pedido do Bruno, 16/11/2026)
 - A primeira versão (0.86) mostra quadradinhos no topo, com efeito, origem e duração ao clicar, no estilo do Ragnarok Online.
 - Falta: mais fontes (habilidades, traços MBTI, eventos, hub social), buffs com tempo próprio, empilhamento, ícones em pixel art próprios e regras de prioridade.
+
+## Mecânica de preço (pedido do Bruno, 16/11/2026)
+- Revisar como funciona a definição de preço (pricing): margem, teto por nível, efeito nas vendas e como o jogador entende a decisão.

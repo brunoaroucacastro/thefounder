@@ -1,3 +1,9 @@
+# 0.88 · Contratar no bairro
+
+- Cinco moradores têm profissão escondida: Marina (designer de produto), Seu Antônio (engenheiro aposentado), Kaique (criador de conteúdo) e os frequentadores do bar Davi (publicitário) e Helena (prototipista).
+- Conversar com eles aumenta a amizade. Com amizade 2 você vê o currículo; com 3, convida para a empresa: sem custo de busca e sem espera.
+- Sem mesa livre (ou sem escritório), a pessoa vai para a Agenda de contatos, na tela da Equipe, e você chama quando abrir vaga.
+
 # 0.87 · RH com perfis, personalidades MBTI, níveis e treinos
 
 Equipe

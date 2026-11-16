@@ -500,7 +500,7 @@ const Town=(()=>{
  function talk(n){const day=R.week+R.day,k=friend(n.id),lines=LINES[n.id]||['Oi!'],today=R.talked[n.id]===day;let text=lines[Math.min(k,lines.length-1)];
   if(n.id==='ze'&&R.productShelf)text+=' E olha: o '+R.productShelf+' tá aqui na vitrine. Os clientes perguntam por ele!';
   if(n.id==='marina'||n.id==='antonio'||n.id==='kaique'||n.id.startsWith('freq'))text=lines[Math.floor(Math.random()*lines.length)];
-  R.talked[n.id]=day;const main=['duda','teo','ro','lia','ze','bene'].includes(n.id);
+  R.talked[n.id]=day;const main=['duda','teo','ro','lia','ze','bene','marina','antonio','kaique','freq1','freq2'].includes(n.id);
   if(!today&&main){advance(15);save({friends:{[n.id]:k+1}});emote(n,'♥');Amb.heart();diary('💬',k?'Conversou com '+PEOPLE[n.id].name+'.':'Conheceu '+PEOPLE[n.id].name+'.');}else{advance(5);emote(n,'♪');}
   say(n.id,text,null,{mood:!today&&main?'happy':null});}
  function useNpc(n){const p=PEOPLE[n.id];if(p.silent){emote(n,'🏐');toast('Eles estão no meio de uma partida.');return;}
@@ -512,7 +512,16 @@ const Town=(()=>{
   if(n.id==='lia')opts.push({t:'👕 Ver roupas',fn:clothes});
   if(n.id==='ze')opts.push({t:'🥤 Comprar refrigerante · R$ 7',fn:()=>{if(spend(7)){advance(5);toast('Refri gelado na mão.');}}});
   if(n.id==='bene')opts.push({t:'🍿 Comprar pipoca · R$ 6',fn:buyPopcorn});
-  opts.push({t:'Tchau'});const greet=planHere?'Chegou! Bora?':friend(n.id)>=3?'Opa! Que bom te ver de novo.':'';menu(n.id,opts,esc(greet));}
+  const tal=TALENT_NPC.includes(n.id)?talentOpts(n):[];opts.push(...tal);opts.push({t:'Tchau'});const greet=planHere?'Chegou! Bora?':friend(n.id)>=3?'Opa! Que bom te ver de novo.':'';menu(n.id,opts,esc(greet));}
+ // talentos do bairro: com amizade 2 dá para ver o currículo, com 3 dá para convidar para a empresa
+ const TALENT_NPC=['marina','antonio','kaique','freq1','freq2'];
+ function talentOpts(n){const k=friend(n.id),g=api.get(),c=g.team?.talents?.[n.id],hired=(g.team?.staff||[]).some(p=>p.town===n.id)||(g.team?.agenda||[]).some(p=>p.town===n.id),o=[];if(hired)return o;
+  if(k>=2)o.push({t:'📄 Perguntar sobre o trabalho',fn:()=>showResume(n)});
+  if(k>=3)o.push({t:'🤝 Convidar para a empresa',fn:()=>invite(n)});return o;}
+ function showResume(n){let next;try{next=api.act({type:'hrTownMeet',id:n.id});}catch(e){toast(e.message);return;}const c=next.team.talents[n.id];advance(10);if(!R.seen['cv-'+n.id]){R.seen['cv-'+n.id]=1;diary('📄','Descobriu que '+c.name+' é '+c.job+'.');}
+  dialog(n.id,'<b>'+esc(c.name)+'</b> · '+esc(c.job)+'<br>'+esc(c.title)+' · nível '+c.level+' · pretende '+money(c.salary)+'/semana<br><br><b>'+esc(c.pName)+'</b>: '+esc(c.pDesc)+'<br><b>'+esc(c.tName)+'</b>. '+esc(c.tDesc)+(friend(n.id)<3?'<br><br><i>Mais uma conversa e dá para fazer o convite.</i>':''),[{t:'Legal!'}]);}
+ function invite(n){let next;try{next=api.act({type:'hrTownInvite',id:n.id});}catch(e){toast(e.message);return;}const r=next.team.lastTown;advance(20);diary('🤝','Convidou '+PEOPLE[n.id].name+' para a empresa.');emote(n,'♥');Amb.heart();
+  say(n.id,r?.result==='hired'?'Fechado! Segunda-feira eu tô lá no escritório.':'Topo sim! Quando tiver uma mesa livre, me chama. Fico na sua agenda.',null,{mood:'happy'});}
  function order(v,line,log){if(spend(v)){advance(20);diary('🍽',log);say('ro',line);}}
  function buyPopcorn(){if(spend(6)){advance(10);diary('🍿','Comeu pipoca na praça.');say('bene','Pipoca doce, do jeito que a vovó fazia. Senta num banco e aproveita a tarde!');}}
  function clothes(){const L=life(),opts=Object.entries(OUTFITS).filter(([id])=>id!=='basic').map(([id,o])=>{const own=(L.owned||[]).includes(id);return {t:(own?'✓ Já é sua · ':'')+o.name+(own?'':' · '+money(o.price)),disabled:own,fn:()=>dialog('lia','Levar <b>'+esc(o.name)+'</b> por '+money(o.price)+'?',[{t:'Comprar e vestir',fn:()=>{if(spend(o.price,{owned:[...(life().owned||['basic']),id],outfit:id})){advance(15);diary('🛍','Comprou '+o.name+'.');say('lia','Ficou ótimo em você! Volta sempre.',null,{mood:'happy'});}}},{t:'Agora não'}])};});
