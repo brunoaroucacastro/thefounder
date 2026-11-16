@@ -1,3 +1,15 @@
+# 0.96 · Vendas, resultado e efeitos (pacote E)
+
+- Tutorial de Vendas na primeira loja aberta (com Sam Walton): conversão, notas e comentários, fit e ponto de equilíbrio.
+- Loja: card de ponto de equilíbrio (quanto falta para o produto se pagar ou o lucro até agora) e as 5 últimas avaliações com o total.
+- Avaliações mais úteis: cada comentário cita o ponto forte e o que faltou (e o preço pago quando a queixa é preço).
+- Buffs e debuffs numa coluna à esquerda, com nome e para quem valem (produto, equipe, empresa); tutorial no primeiro efeito. Novo buff Boca a boca / Má fama.
+- Nexus com cara de celular e tutorial na primeira abertura (com Seth Godin): consumidores, imprensa, sua marca e seguidores que viram alcance.
+- Fim das vendas: painel grande à esquerda com faturamento, unidades, clientes, nota, funil, conversão, sobra das vendas, comentários e as três saídas (melhorar o produto, vender mais, novo produto), com tutorial (Jeff Bezos): não existe caminho certo nem errado.
+- Vitrine virou catálogo: investido, faturado, lucro, ROI, versões, avaliações, vendidas e estoque.
+- Rampa do primeiro ciclo: avaliações boas puxam mais as próximas campanhas (boca a boca até +60%, antes cerca de +30%).
+- Tutoriais que chegam ao mesmo tempo entram numa fila e aparecem um depois do outro.
+
 # 0.95 · Protótipo, lote e preço (pacote D)
 
 - Teste do protótipo: frases por resultado ("Na ideia foi melhor que na prática.", "Imprevistos acontecem."…), o efeito aparece em palavras (vendas −20%, nenhum efeito, +8% ou +16%) e vira buff ou debuff na barra com o nome do produto. Corrigir custa 20% do investimento no protótipo (30% na falha crítica).
