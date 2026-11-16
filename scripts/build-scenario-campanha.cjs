@@ -7,10 +7,10 @@ const nv8=fs.readFileSync('dist/The-Founder-Cenario-NV8-Escritorio-'+version+'.h
 const m=nv8.match(/localStorage\.setItem\("the-founder-cenario-nv8",(".*?")\);\}catch/);if(!m)throw Error('estado do NV8 não encontrado');
 let s=C.load(JSON.parse(m[1]));
 s=act(s,'stopSales');if(s.phase==='recap')s=act(s,'newCampaign');
-const steps=[];for(let i=0;i<20&&s.phase!=='recampaignReady';i++){steps.push(s.phase);
+const steps=[];for(let i=0;i<200000&&s.phase!=='recampaignReady';i++){if(steps.at(-1)!==s.phase)steps.push(s.phase);
  if(s.phase==='recampaignPlan'){if(!s.campaignDraft?.priced){s=act(s,'campaignPrice');s=act(s,'confirmPrice');}s=act(s,'recampaignStart');continue;}
  if(s.weekly?.stage==='report'){s=act(s,'readWeek');continue;}if(s.weekly?.stage==='weekend'){s=act(s,'weekend',{choice:'work'});continue;}
- s=until(s,'recampaignReady');}
+ s=C.tick(s,.2);}
 if(s.phase!=='recampaignReady')throw Error('não chegou ao tabuleiro: '+s.phase+' · '+steps.join(' > '));
 s.paused=false;const state=JSON.stringify(s);
 let html=fs.readFileSync('dist/The-Founder-Primeira-Aposta-'+version+'.html','utf8');

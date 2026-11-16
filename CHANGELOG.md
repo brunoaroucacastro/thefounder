@@ -1,3 +1,24 @@
+# 0.86 · Campanha com energia, prancheta de oficina e buffs de motivação
+
+Campanha
+- Sai o cético. Entra o promotor: ao ser alcançado, dá a carta grátis Indicação (2 casas vizinhas).
+- Espalha virou Viralização e Bloqueia virou Cancelamento, com explicação na legenda.
+- Energia no lugar de jogadas: cartas custam de 0 a 3, energia de 3 a 6 por fase.
+- Visual de agência: cartas ilustradas com miniatura do alcance, rostos das personas, descarte e relatório no fim.
+
+Produto
+- Prancheta em três áreas: briefing com o protótipo, bancada técnica com passos, peças grandes e atributos em segmentos com prévia.
+- Montagem: bancada cheia = 100%, cada casa vazia −5%; multiplica o quanto o produto agrada.
+
+Equipe
+- Motivação cai 8 por semana e reage a lucro, campanhas, demissões e atrasos.
+- Faixas Inspirado, Desanimado e Esgotado com efeitos fortes; esgotado pode pedir demissão.
+- Buffs e debuffs no topo, estilo Ragnarok: clique para ver efeito, origem e duração.
+- Design completo do RH em docs/RH-DESIGN.md.
+
+Simuladores
+- Cenários que abrem direto na campanha e na prancheta.
+
 # 0.85 · Garrinha nova, vôlei em duplas e níveis da sinuca
 
 Garrinha

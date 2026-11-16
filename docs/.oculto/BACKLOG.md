@@ -42,3 +42,11 @@ Ideias guardadas para puxar depois. Não entram no jogo até o Bruno pedir.
 - Ideia para The Founder: dividir o fim de semana (e talvez as noites) em períodos, cada um com uma escolha: trabalhar, encontrar alguém do bairro, ir à cidade, comprar livros.
 - Livros comprados no bairro melhorariam atributos do fundador (por exemplo intuição de produto, de campanha, de finanças), como os livros do Persona 3 sobem os atributos sociais.
 - Em aberto: quantos períodos por fim de semana, se as noites dos dias úteis entram, e quais atributos do fundador existem.
+
+## Área financeira (pedido do Bruno, 16/11/2026)
+- Desenvolver o profissional e as mecânicas do financeiro: perfis, habilidades, buffs/debuffs, papel nos empréstimos, compras e fluxo de caixa.
+- Por enquanto o RH foi pensado só para Produto e Marketing (ver docs/RH-DESIGN.md).
+
+## Buffs e debuffs, versão completa (pedido do Bruno, 16/11/2026)
+- A primeira versão (0.86) mostra quadradinhos no topo, com efeito, origem e duração ao clicar, no estilo do Ragnarok Online.
+- Falta: mais fontes (habilidades, traços MBTI, eventos, hub social), buffs com tempo próprio, empilhamento, ícones em pixel art próprios e regras de prioridade.
