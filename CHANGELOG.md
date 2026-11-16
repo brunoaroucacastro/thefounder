@@ -1,5 +1,7 @@
 # Protótipo · Negociação de empréstimo estilo blackjack
 
+- Correções do playtest: uma negociação por semana (falhou, só resta a proposta inicial até avançar a semana); contrato negociado sem estourar sobe o relacionamento +1; contraproposta só a partir de 14; o Plano de negócios agora anula um estouro (a carta volta para o baralho); a garantia é escolhida ao montar o pedido; o popup compara o pedido com a oferta.
+
 - A contraproposta deixou de ser garantida: parando entre 13 e o alvo, há 50% de chance de o gerente oferecer. Ela abre num popup com relógio de 7 segundos; sem resposta, o banco retira a oferta. A redistribuição das condições saiu.
 - Na mesa, um aviso mostra o que o banco faria se você parasse agora: pedido aprovado, contraproposta (com valor, prazo, juros, carência e parcela) ou nada.
 - A chance de sucesso do pedido aparece ao lado do alvo (de 97% no 13 a 18% no 21; 0% acima).
