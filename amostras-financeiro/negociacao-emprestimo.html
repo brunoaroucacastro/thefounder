@@ -102,7 +102,7 @@ label.chk{font-size:13px;display:flex;gap:6px;align-items:center}
 const SL=[
  {k:'pct', name:'Valor', min:100,max:200,step:10, easy:100, w:.30, fmt:v=>v+'% do fat.'},
  {k:'prazo',name:'Prazo', min:3,  max:12, step:1,  easy:3,   w:.20, fmt:v=>v+' meses'},
- {k:'juros',name:'Juros ao mês',min:3,max:16,step:.5,easy:16, w:.35, fmt:v=>v.toFixed(1).replace('.',',')+'%'},
+ {k:'juros',name:'Juros ao mês',min:3,max:12,step:.5,easy:12, w:.35, fmt:v=>v.toFixed(1).replace('.',',')+'%'},
  {k:'car', name:'Carência', min:0,  max:3,  step:1,  easy:0,   w:.15, fmt:v=>v?v+(v>1?' meses':' mês'):'sem'},
 ];
 const EASY=Object.fromEntries(SL.map(s=>[s.k,s.easy]));
