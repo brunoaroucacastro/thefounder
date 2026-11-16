@@ -1,5 +1,7 @@
 # Protótipo · Negociação de empréstimo estilo blackjack
 
+- Nos juros, o + fica à esquerda (volta para a taxa do banco) e o − à direita (pede taxa menor): o botão da direita sempre enche a fileira.
+
 - O relacionamento virou "Confiança do banco", em barrinha de 5 casas. O faturamento dos últimos 30 dias saiu do topo e virou explicação no ? do valor solicitado.
 
 - Identidade de financeiro: painel verde-petróleo liso no lugar do quadriculado de produto, faixas verdes, cabeçalho compacto com ajuda no ?, comprovante com a parcela em destaque, exigência e limite 21 no topo da negociação com régua de alvo, faixa da ligação com o gerente e verso das cartas verde e creme com moeda. Cada condição do pedido virou uma fileira de quadradinhos da oferta do banco até o máximo (juros agora de 1 em 1 ponto). Garantia em estoque e apoio da equipe saíram por enquanto.
