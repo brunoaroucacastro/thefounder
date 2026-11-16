@@ -1207,3 +1207,11 @@ body.town-open{overflow:hidden}
 .ta-timer{height:10px;border:2px solid #1d1b26;background:#e7dfcb}.ta-timer i{display:block;height:100%;width:60%;background:#c2453f}
 
 .tut-x{color:#2a2133!important;font-size:16px!important;line-height:1!important;padding:0!important;display:grid;place-items:center}
+
+/* falas das personas: 1 exige (vermelho), 2 valoriza (amarelo), 3 não liga (verde) */
+.persona-comment{position:relative;padding-left:26px!important}
+.persona-comment .pc-n{position:absolute;left:0;top:1px;display:grid;place-items:center;width:19px;height:19px;color:#fff;font-size:11px;font-weight:900;border:1.5px solid #1d1b26}
+.persona-comment.pc1 .pc-n{background:#c2453f}.persona-comment.pc2 .pc-n{background:#c99a1c}.persona-comment.pc3 .pc-n{background:#2f8a5f}
+.persona-comment.pc1{border-left:3px solid #c2453f}.persona-comment.pc2{border-left:3px solid #c99a1c}.persona-comment.pc3{border-left:3px solid #2f8a5f}
+/* aba Clientes fora por enquanto */
+#clients{display:none!important}

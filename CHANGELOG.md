@@ -1,3 +1,12 @@
+# 0.92 · Ajustes do playtest (pacote A)
+
+- A frase da escolha de categoria virou o tutorial Primeiro produto (com Reid Hoffman).
+- Falas das personas numeradas 1, 2 e 3 nas cores do tutorial: exige (vermelho), valoriza (amarelo), não liga (verde).
+- Tutorial de Produto com os atributos reais (Qualidade, Desempenho, Praticidade…) e as mesmas cores do jogo; cores dos atributos mais vivas.
+- Saíram o "E-commerce" e a frase do D20 no resumo antes do marketing; a aba Clientes saiu do menu por enquanto.
+- Correção: desmontar estoque funciona em qualquer etapa fora das vendas (antes falhava no planejamento de campanha).
+- Correção: evoluir ou remontar o produto cobra só o próprio custo; a reserva escondida para campanha e lote travava quem tinha dinheiro.
+
 # 0.91 · Crédito negociado e tutoriais de primeira vez
 
 - Caixa: as três ofertas fixas de empréstimo deram lugar à negociação com o Banco do Bairro. Você monta o pedido em quadradinhos (valor de 100% a 200% do faturamento das últimas 4 semanas, mínimo R$ 10 mil; prazo de 3 a 12 meses; juros de 12% a 3% ao mês; carência de 0 a 3 meses), vê a exigência (13 a 24) e a chance de aprovar, e puxa cartas até a exigência sem passar de 21.

@@ -1,6 +1,6 @@
 /* Approved universal product model. Legacy data stays in gadgets.js for old saves/tests. */
 const UniversalProducts=(()=>{
- const axes=[{id:'quality',name:'Qualidade',hint:'Excelência da experiência',cost:9,color:'#ac8cc4'},{id:'durability',name:'Durabilidade',hint:'Resistência e vida útil',cost:5,color:'#7eadd1'},{id:'performance',name:'Desempenho',hint:'Eficiência na função',cost:6,color:'#e48a6d'},{id:'practicality',name:'Praticidade',hint:'Facilidade e conveniência',cost:4,color:'#80b58b'},{id:'versatility',name:'Versatilidade',hint:'Diferentes usos e aparelhos',cost:4,color:'#72bcb3'},{id:'economy',name:'Economia',hint:'Projeto de menor custo',cost:-5,color:'#dca85b'}];
+ const axes=[{id:'quality',name:'Qualidade',hint:'Excelência da experiência',cost:9,color:'#9b5de5'},{id:'durability',name:'Durabilidade',hint:'Resistência e vida útil',cost:5,color:'#3a86ff'},{id:'performance',name:'Desempenho',hint:'Eficiência na função',cost:6,color:'#ff5a36'},{id:'practicality',name:'Praticidade',hint:'Facilidade e conveniência',cost:4,color:'#22c55e'},{id:'versatility',name:'Versatilidade',hint:'Diferentes usos e aparelhos',cost:4,color:'#14b8a6'},{id:'economy',name:'Economia',hint:'Projeto de menor custo',cost:-5,color:'#f59e0b'}];
  const budgets={4:4,5:6,6:8,7:10,8:12,9:14,10:15};
  const headphones=[
  ['noise','Clara','Trabalha em ambiente barulhento','Preciso me concentrar sem ouvir cada conversa ao meu redor.',220,[.3,0,.5,.1,.1,0],[0,.6,.4,0]],
