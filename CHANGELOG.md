@@ -1,3 +1,11 @@
+# 0.91 · Crédito negociado e tutoriais de primeira vez
+
+- Caixa: as três ofertas fixas de empréstimo deram lugar à negociação com o Banco do Bairro. Você monta o pedido em quadradinhos (valor de 100% a 200% do faturamento das últimas 4 semanas, mínimo R$ 10 mil; prazo de 3 a 12 meses; juros de 12% a 3% ao mês; carência de 0 a 3 meses), vê a exigência (13 a 24) e a chance de aprovar, e puxa cartas até a exigência sem passar de 21.
+- A cada carta abaixo da exigência, 25% de chance de o gerente interromper com uma proposta para a soma atual (15 segundos para aceitar). Encerrar abaixo da exigência é recusa; estourar derruba a confiança do banco; 21 cravado tira 1 ponto dos juros.
+- Uma negociação por semana e um empréstimo ativo por vez. Meses viram semanas (1 mês = 4 semanas): a parcela sai toda semana e a carência pula semanas de pagamento. A confiança do banco (−2 a +2) muda a exigência.
+- Tutoriais ilustrados de primeira vez para Produto, Clientes, Marketing, Lote e preço, Equipe e Crédito: poucas páginas, desenhos no estilo das telas, a primeira página com o contexto e uma frase de referência (Steve Jobs, Peter Drucker, Philip Kotler, Warren Buffett, Jim Collins, Roger Fisher e William Ury). Aparecem uma vez; o botão ? reabre.
+- Novo simulador: dist/The-Founder-Cenario-Financeiro (node scripts/build-scenario-financeiro.cjs).
+
 # Protótipo · Negociação de empréstimo estilo blackjack
 
 - Contraproposta: cada carta puxada que deixa a soma abaixo da exigência tem 25% de chance de o gerente interromper com uma proposta para a soma atual (sem limite por negociação).
