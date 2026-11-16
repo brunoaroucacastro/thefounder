@@ -1,3 +1,10 @@
+# Protótipo · Negociação de empréstimo estilo blackjack
+
+- Novo protótipo em amostras-financeiro/negociacao-emprestimo.html, só mecânica.
+- Quatro controles (valor 100–200% do faturamento de 30 dias, prazo 3–12 meses, juros 3–16% a.m., carência 0–3 meses) definem o alvo de 10 a 21.
+- Puxa cartas: chegou ao alvo, aprova o pedido; entre 10 e o alvo, contraproposta ajustável; estourou ou parou abaixo de 10, nada feito. 21 cravado dá bônus.
+- Extras para testar: relacionamento com o banco, chances visíveis e três trunfos do financeiro (Plano de negócios, Avalista, Garantia em estoque).
+
 # 0.90 · Prancheta do dossiê mais larga
 
 - Em telas largas, o painel da Equipe cresce, a prancheta ganha mais espaço e Atributos e Habilidades ficam lado a lado.

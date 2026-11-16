@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Negociação de empréstimo</title>
+<style>
+:root{--bg:#f4efe4;--card:#fffdf7;--ink:#2b2620;--muted:#7a7064;--line:#d9cfbd;--ok:#2f7d4f;--warn:#b7791f;--bad:#b23a3a;--accent:#2d5b8a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 "Segoe UI",system-ui,sans-serif}
+main{max-width:1180px;margin:0 auto;padding:18px 16px 40px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+h1{grid-column:1/-1;margin:0;font-size:22px}
+h1 small{font-weight:400;color:var(--muted);font-size:14px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.box h2{margin:0 0 10px;font-size:16px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.sl{display:grid;grid-template-columns:150px 1fr 120px 64px;gap:10px;align-items:center;margin:8px 0}
+.sl input{width:100%}
+.sl .v{font-weight:600;text-align:right}
+.sl .pts{font-size:12px;color:var(--muted);text-align:right}
+.target{display:flex;align-items:baseline;gap:10px;margin:12px 0 4px;padding:10px 12px;border-radius:8px;background:#efe6d3}
+.target b{font-size:32px}
+.meter{height:10px;border-radius:5px;background:linear-gradient(90deg,#9cc8a9,#e9cf7c,#e09a8b);position:relative;margin:6px 0 2px}
+.meter i{position:absolute;top:-4px;width:4px;height:18px;background:var(--ink);border-radius:2px}
+.scale{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
+.terms{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.terms div{background:#f7f1e4;border-radius:6px;padding:6px 8px;font-size:12px;color:var(--muted)}
+.terms div b{display:block;color:var(--ink);font-size:15px}
+button{font:inherit;border:1px solid var(--ink);background:var(--card);border-radius:8px;padding:8px 14px;cursor:pointer}
+button.primary{background:var(--ink);color:#fff}
+button:disabled{opacity:.4;cursor:default}
+.hand{display:flex;gap:8px;flex-wrap:wrap;min-height:96px;margin:10px 0}
+.c{width:62px;height:88px;border:1px solid var(--ink);border-radius:7px;background:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:5px 7px;font-weight:700;font-size:20px}
+.c.red{color:#b23a3a}
+.c small{align-self:flex-end;font-size:14px}
+.c.ghost{border-style:dashed;opacity:.55}
+.c.gone{opacity:.25;text-decoration:line-through}
+.total{font-size:40px;font-weight:700}
+.zones{display:grid;grid-template-columns:repeat(22,1fr);gap:2px;margin:8px 0}
+.zones span{height:22px;font-size:10px;display:flex;align-items:center;justify-content:center;border-radius:3px;background:#e5dccb;color:var(--muted)}
+.zones span.cnt{background:#ecd9a5;color:var(--ink)}
+.zones span.win{background:#a9d3b5;color:var(--ink)}
+.zones span.me{outline:2px solid var(--ink);font-weight:700}
+.odds{font-size:13px;color:var(--muted);margin-top:6px}
+.trunfos{display:grid;gap:6px;margin-top:10px}
+.trunfos button{text-align:left;font-size:13px}
+.res{padding:12px;border-radius:8px;margin-top:10px}
+.res.ok{background:#dff0e4}.res.cnt{background:#f6ebcc}.res.bad{background:#f4dcd8}
+.log{font-size:13px;max-height:260px;overflow:auto}
+.log div{padding:5px 0;border-top:1px dashed var(--line)}
+.rel{display:flex;gap:4px}.rel span{width:22px;height:10px;border-radius:3px;background:#e5dccb}.rel span.on{background:var(--accent)}
+.muted{color:var(--muted);font-size:13px}
+.full{grid-column:1/-1}
+label.chk{font-size:13px;display:flex;gap:6px;align-items:center}
+@media (max-width:860px){main{grid-template-columns:1fr}.sl{grid-template-columns:110px 1fr 90px}.sl .pts{display:none}.terms{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<main>
+<h1>🏦 Negociação de empréstimo <small>protótipo de mecânica · sem arte</small></h1>
+
+<section class="box">
+  <h2>1. Monte o pedido</h2>
+  <div class="row muted">
+    Faturamento dos últimos 30 dias: R$ <input id="rev" type="number" value="40000" step="1000" style="width:110px">
+    · Relacionamento com o banco <div class="rel" id="rel"></div>
+  </div>
+  <div id="sliders"></div>
+  <div class="target">Precisa tirar <b id="tg">10</b> <span class="muted" id="tgtxt"></span></div>
+  <div class="meter"><i id="tgm"></i></div>
+  <div class="scale"><span>10 · proposta do banco</span><span>21 cravado</span></div>
+  <div class="terms" id="terms"></div>
+  <div class="odds" id="odds"></div>
+  <div class="row" style="margin-top:12px">
+    <button id="take">Aceitar a proposta inicial</button>
+    <button id="go" class="primary">Negociar este pedido →</button>
+  </div>
+</section>
+
+<section class="box">
+  <h2>2. Mesa do gerente</h2>
+  <div id="table" class="muted">Ajuste os controles e clique em <b>Negociar</b>. O banco começa virando uma carta.</div>
+</section>
+
+<section class="box">
+  <h2>Equipe financeira <span class="muted">(simula habilidades do financeiro)</span></h2>
+  <label class="chk"><input type="checkbox" id="sk-odds" checked> Analista: mostra as chances do pedido e de estourar na próxima carta</label>
+  <label class="chk"><input type="checkbox" id="sk-plan" checked> 📑 Plano de negócios: descarta a última carta puxada (1× por negociação)</label>
+  <label class="chk"><input type="checkbox" id="sk-peek" checked> 🤝 Avalista: espia a próxima carta (1× por negociação)</label>
+  <label class="chk"><input type="checkbox" id="sk-guar" checked> 📦 Garantia em estoque: alvo −2 (se atrasar parcela, o banco fica com o estoque)</label>
+  <p class="muted" style="margin-bottom:0">Ás vale 11 ou 1, figuras valem 10, baralho de 52 cartas embaralhado a cada negociação.</p>
+</section>
+
+<section class="box">
+  <h2>Contratos e histórico</h2>
+  <div class="log" id="log"><div class="muted">Nada ainda.</div></div>
+</section>
+</main>
+
+<script>
+/* ===== regras ===== */
+const SL=[
+ {k:'pct', name:'Valor', min:100,max:200,step:10, easy:100, w:.30, fmt:v=>v+'% do fat.'},
+ {k:'prazo',name:'Prazo', min:3,  max:12, step:1,  easy:3,   w:.20, fmt:v=>v+' meses'},
+ {k:'juros',name:'Juros ao mês',min:3,max:16,step:.5,easy:16, w:.35, fmt:v=>v.toFixed(1).replace('.',',')+'%'},
+ {k:'car', name:'Carência', min:0,  max:3,  step:1,  easy:0,   w:.15, fmt:v=>v?v+(v>1?' meses':' mês'):'sem'},
+];
+const EASY=Object.fromEntries(SL.map(s=>[s.k,s.easy]));
+let req={...EASY}, rel=0, phase='setup', G=null, log=[];
+const $=id=>document.getElementById(id);
+const money=v=>'R$ '+Math.round(v).toLocaleString('pt-BR');
+const norm=(s,v)=>Math.abs(v-s.easy)/(s.max-s.min);            // 0 = fácil, 1 = difícil
+const pts=(s,v)=>11*s.w*norm(s,v);
+// alvo: 10 no pedido mínimo, 21 no pedido máximo; relacionamento ruim endurece, garantia alivia
+function target(c,guar=false){const d=SL.reduce((a,s)=>a+pts(s,c[s.k]),0);return Math.max(10,Math.min(21,Math.round(10+d)-rel-(guar?2:0)));}
+function loan(c){const R=+$('rev').value||0,V=R*c.pct/100,i=c.juros/100,saldo=V*Math.pow(1+i,c.car),pmt=saldo*i/(1-Math.pow(1+i,-c.prazo));return{V,pmt,total:pmt*c.prazo,juros:pmt*c.prazo-V};}
+
+/* ===== baralho ===== */
+const SUITS=['♠','♥','♦','♣'],RANKS=['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
+function deck(){const d=[];for(const s of SUITS)for(const r of RANKS)d.push({r,s});for(let i=d.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[d[i],d[j]]=[d[j],d[i]];}return d;}
+const val=c=>c.r==='A'?1:['J','Q','K'].includes(c.r)?10:+c.r;
+function total(h){let t=0,a=0;for(const c of h){t+=val(c);if(c.r==='A')a++;}return a&&t+10<=21?t+10:t;}
+// chance de chegar ao alvo puxando até alcançá-lo (simulação)
+function odds(tg,hand=[],dk=null,n=3000){let win=0,bust=0;for(let k=0;k<n;k++){const d=dk?shuffle(dk.slice()):deck(),h=hand.slice();if(!h.length)h.push(d.pop());while(total(h)<tg)h.push(d.pop());total(h)>21?bust++:win++;}return{win:win/n,bust:bust/n};}
+function shuffle(d){for(let i=d.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[d[i],d[j]]=[d[j],d[i]];}return d;}
+function bustNext(h,d){const t=total(h);return d.filter(c=>total([...h,c])>21).length/d.length;}
+
+/* ===== tela do pedido ===== */
+function buildSliders(){$('sliders').innerHTML=SL.map(s=>`<div class="sl"><span>${s.name}</span><input type="range" id="s-${s.k}" min="${s.min}" max="${s.max}" step="${s.step}"><span class="v" id="v-${s.k}"></span><span class="pts" id="p-${s.k}"></span></div>`).join('');
+ SL.forEach(s=>{$('s-'+s.k).oninput=e=>{const c=phase==='counter'?G.counter:req;c[s.k]=+e.target.value;paint();};});}
+function cur(){return phase==='counter'?G.counter:req;}
+function paint(){
+ const c=cur(),guar=G?.guar&&phase!=='setup';
+ SL.forEach(s=>{const el=$('s-'+s.k);el.value=c[s.k];el.disabled=!(phase==='setup'||phase==='counter');$('v-'+s.k).textContent=s.fmt(c[s.k]);$('p-'+s.k).textContent='+'+pts(s,c[s.k]).toFixed(1)+' pts';});
+ const tg=target(c,guar);$('tg').textContent=tg;$('tgm').style.left=((tg-10)/11*100)+'%';
+ $('tgtxt').textContent=phase==='counter'?'· você tem '+G.t+(tg<=G.t?' ✔ dá para fechar':' ✘ passou do seu número'):tg===10?'· igual à proposta do banco':tg===21?'· só com 21 cravado':'';
+ const L=loan(c);$('terms').innerHTML=`<div>Você recebe<b>${money(L.V)}</b></div><div>Parcela mensal<b>${money(L.pmt)}</b></div><div>Total pago<b>${money(L.total)}</b></div><div>Juros totais<b>${money(L.juros)}</b></div>`;
+ if($('sk-odds').checked&&phase==='setup'){const o=odds(tg);$('odds').textContent=`Puxando até chegar em ${tg}: ${Math.round(o.win*100)}% de aprovar o pedido inteiro · ${Math.round(o.bust*100)}% de estourar. Parar antes (com 10 ou mais) rende contraproposta.`;}else $('odds').textContent='';
+ $('rel').innerHTML=[-2,-1,0,1,2].map(v=>`<span class="${v<=rel?'on':''}" title="${v}"></span>`).join('')+`<small class="muted">&nbsp;${rel>0?'+'+rel:rel}</small>`;
+ $('take').disabled=$('go').disabled=phase!=='setup';
+ if(phase==='counter')$('ok-counter').disabled=tg>G.t;
+}
+
+/* ===== mesa ===== */
+function start(){phase='play';G={req:{...req},dk:deck(),hand:[],gone:[],plan:$('sk-plan').checked,peek:$('sk-peek').checked,guarOk:$('sk-guar').checked,guar:false,peeked:null};G.hand.push(G.dk.pop());table();paint();}
+const card=(c,cls='')=>`<div class="c ${['♥','♦'].includes(c.s)?'red':''} ${cls}">${c.r}<small>${c.s}</small></div>`;
+function zones(t,tg){let h='';for(let n=0;n<=21;n++)h+=`<span class="${n>=tg?'win':n>=10?'cnt':''} ${n===t?'me':''}">${n}</span>`;return h;}
+function table(msg=''){
+ const t=total(G.hand),tg=target(G.req,G.guar),over=t>21;
+ let h=`<div class="row"><span class="total">${t}</span><span class="muted">alvo do seu pedido: <b>${tg}</b> · contraproposta a partir de 10</span></div>
+ <div class="zones">${zones(Math.min(t,21),tg)}</div>
+ <div class="hand">${G.hand.map(c=>card(c)).join('')}${G.gone.map(c=>card(c,'gone')).join('')}${G.peeked?card(G.peeked,'ghost'):''}</div>`;
+ if(phase==='play'){
+  h+=`<div class="row"><button class="primary" id="hit">Pedir carta</button><button id="stand">Parar com ${t}</button></div>`;
+  if($('sk-odds').checked)h+=`<div class="odds">Chance de estourar na próxima carta: ${Math.round(bustNext(G.hand,G.dk)*100)}%</div>`;
+  h+=`<div class="trunfos">${G.plan?`<button id="t-plan" ${G.hand.length<2?'disabled':''}>📑 Plano de negócios: descartar a última carta</button>`:''}${G.peek&&!G.peeked?`<button id="t-peek">🤝 Avalista: espiar a próxima carta</button>`:''}${G.guarOk&&!G.guar?`<button id="t-guar">📦 Dar estoque em garantia: alvo ${tg} → ${target(G.req,true)}</button>`:''}</div>`;
+ }
+ h+=msg;$('table').innerHTML=h;
+ const on=(id,fn)=>{const e=$(id);if(e)e.onclick=fn;};
+ on('hit',hit);on('stand',stand);
+ on('t-plan',()=>{G.gone.push(G.hand.pop());G.plan=false;table();});
+ on('t-peek',()=>{G.peeked=G.dk[G.dk.length-1];G.peek=false;table();});
+ on('t-guar',()=>{G.guar=true;table();paint();});
+ on('ok-counter',()=>sign(G.counter,'contraproposta'));
+ on('no',()=>{addLog('Recusou a contraproposta de '+G.t+'.');reset();});
+ on('again',reset);
+}
+function hit(){G.hand.push(G.dk.pop());G.peeked=null;const t=total(G.hand);if(t>21){rel=Math.max(-2,rel-1);addLog('Estourou com '+t+'. Pedido negado; relacionamento −1.');phase='done';table(`<div class="res bad"><b>Estourou (${t}).</b> O gerente achou o pedido fora da realidade e negou. Relacionamento com o banco −1: o próximo alvo fica 1 ponto mais alto.<br><br><button id="again">Nova negociação</button></div>`);paint();}else table();}
+function stand(){const t=total(G.hand),tg=target(G.req,G.guar);G.t=t;
+ if(t>=tg){let c={...G.req},bonus='';if(t===21){rel=Math.min(2,rel+1);if(c.juros>3){c.juros=Math.max(3,c.juros-1);bonus=' 21 cravado: o gerente ainda tira 1 ponto dos juros e o relacionamento sobe +1.';}else bonus=' 21 cravado: relacionamento +1.';}
+  phase='done';table(`<div class="res ok"><b>Aprovado do jeito que você pediu.</b>${bonus}</div>`);sign(c,t===21?'21 cravado':'pedido aprovado',true);return;}
+ if(t<10){phase='done';addLog('Parou com '+t+'. Abaixo de 10: nada feito.');table(`<div class="res bad"><b>${t} não convence.</b> O banco nem faz contraproposta. Fica valendo só a proposta inicial.<br><br><button id="again">Nova negociação</button></div>`);paint();return;}
+ G.counter=counterFor(G.req,t);phase='counter';
+ table(`<div class="res cnt"><b>Contraproposta para quem tem ${t}.</b> O banco cortou um pouco de cada condição. Você pode redistribuir nos controles ao lado, desde que o alvo fique em até ${t}.<br><br><div class="row"><button class="primary" id="ok-counter">Fechar contraproposta</button><button id="no">Recusar</button></div></div>`);paint();}
+// recua todas as condições na mesma proporção até o alvo caber no número tirado
+function counterFor(r,t){for(let f=1;f>=0;f-=.01){const c={};SL.forEach(s=>{const raw=s.easy+(r[s.k]-s.easy)*f,steps=(raw-s.easy)/s.step;c[s.k]=+(s.easy+Math.trunc(steps)*s.step).toFixed(1);});if(target(c,G.guar)<=t)return c;}return{...EASY};}
+function sign(c,how,skip){const L=loan(c);addLog(`✍️ <b>${how}</b>: ${money(L.V)} · ${SL[1].fmt(c.prazo)} · ${SL[2].fmt(c.juros)} a.m. · carência ${SL[3].fmt(c.car)}${G?.guar?' · estoque em garantia':''} → parcela ${money(L.pmt)}, total ${money(L.total)}`);
+ if(!skip){phase='done';table(`<div class="res ok"><b>Contraproposta assinada.</b></div>`);}
+ $('table').insertAdjacentHTML('beforeend','<br><button id="again">Nova negociação</button>');$('again').onclick=reset;paint();}
+function addLog(t){log.unshift(t);$('log').innerHTML=log.map(x=>'<div>'+x+'</div>').join('');}
+function reset(){phase='setup';G=null;$('table').innerHTML='<span class="muted">Ajuste os controles e clique em <b>Negociar</b>.</span>';paint();}
+
+$('take').onclick=()=>{G=null;phase='done';sign({...EASY},'proposta inicial',true);};
+$('go').onclick=start;$('rev').oninput=paint;['sk-odds','sk-plan','sk-peek','sk-guar'].forEach(id=>$(id).onchange=paint);
+buildSliders();paint();
+</script>
+</body>
+</html>
