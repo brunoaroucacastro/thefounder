@@ -212,7 +212,6 @@ button{font-family:inherit;cursor:pointer}button:disabled{cursor:default;opacity
 
   <div class="cols">
     <section>
-      <div class="offer"><span class="band">OFERTA RECEBIDA</span><div id="base"></div><button class="btn2 solid" id="take">ACEITAR OFERTA</button></div>
       <div class="receipt"><div class="rh"><span>SIMULAÇÃO DO PEDIDO</span><span id="r-state">em preparação</span></div><div class="rgrid" id="rgrid"></div><div class="first" id="first"></div></div>
       <div class="box">
         <div class="bh">Seu pedido de crédito<span>impacto na exigência</span></div>
@@ -308,8 +307,6 @@ function relChange(d){const o=rel;rel=Math.max(-2,Math.min(2,rel+d));if(rel===o)
 
 /* ===== lado esquerdo: oferta, simulação e pedido ===== */
 function left(){const c=G?G.req:req,lock=phase!=='setup',L=loan(c),Lb=loan(EASY);
- $('base').innerHTML=`<b>${money(Lb.V)}</b> · ${EASY.prazo} meses · ${fmtJ(EASY.juros)} · sem carência · parcela ${money(Lb.pmt)}`;
- $('take').disabled=week.signed||phase!=='setup';
  $('r-state').textContent=lock?'apresentado':'em preparação';
  $('rgrid').innerHTML=`<div><small>Você recebe</small><b>${money(L.V)}</b></div><div class="main"><small>Parcela mensal</small><b>${money(L.pmt)}</b></div><div><small>Total a pagar</small><b>${money(L.total)}</b></div>`;
  $('first').textContent='Pagamentos começam na semana '+firstWeek(c)+' · '+c.prazo+' parcelas'+(c.car?' · '+carTxt(c.car).toLowerCase()+' de carência':'');
@@ -325,7 +322,7 @@ function left(){const c=G?G.req:req,lock=phase!=='setup',L=loan(c),Lb=loan(EASY)
  // os botões andam pela fileira: esquerda volta para a oferta do banco, direita pede mais (nos juros, pedir mais é baixar a taxa)
  document.querySelectorAll('.pm').forEach(b=>b.onclick=()=>{const s=SL.find(x=>x.k===b.dataset.k),n=Math.round((s.max-s.min)/s.step),i=Math.round(norm(s,req[s.k])*n)+(+b.dataset.d);req[s.k]=valAt(s,Math.max(0,Math.min(n,i)));paint();});
  const gb=$('guar');if(gb)gb.onclick=()=>{guarSel=!guarSel;paint();};
- const n=$('note');n.classList.toggle('show',phase==='setup'&&(week.negotiated||week.signed));n.innerHTML=week.signed?'O contrato desta semana já foi assinado. Avance a semana para negociar de novo.':'A negociação desta semana já foi usada. A <b>oferta recebida</b> continua valendo.';
+ const n=$('note');n.classList.toggle('show',phase==='setup'&&(week.negotiated||week.signed));n.innerHTML=week.signed?'O contrato desta semana já foi assinado. Avance a semana para negociar de novo.':'A negociação desta semana já foi usada. Avance a semana para tentar de novo.';
  $('go').disabled=phase!=='setup'||week.negotiated||week.signed;$('go').style.display=phase==='setup'?'':'none';
 }
 
@@ -385,7 +382,7 @@ function paint(){topBar();left();board();}
 function start(){week.negotiated=true;G={req:{...req},dk:deck(),hand:[],plan:fin(),peek:fin(),guar:guarSel&&hasStock(),peeked:null};phase='play';result=null;G.hand.push(G.dk.pop());paint();}
 function hit(){G.hand.push(G.dk.pop());G.peeked=null;if(total(G.hand)>21){if(G.plan){phase='rescue';paint();return;}bust();}else paint();}
 function finish(cls,stamp,text){phase='done';result={cls,stamp,text};paint();}
-const rest=' Nesta semana só resta a oferta recebida.';
+const rest=' Tente de novo na semana que vem.';
 function bust(){const t=total(G.hand);G.tgFinal=target(G.req,G.guar);addLog('Estourou com '+t+'. Pedido negado; relacionamento −1.');relChange(-1);finish('bad','NEGADO','Estourou com '+t+'. O gerente achou o pedido fora da realidade.'+rest);}
 function stand(){const t=total(G.hand),tg=target(G.req,G.guar);G.tgFinal=tg;
  if(t>=tg){const c={...G.req},sp=t===21&&c.juros>3;if(sp)c.juros=Math.max(3,c.juros-1);sign(c,sp?'21 cravado':'pedido aprovado');relChange(1);finish(sp?'gold':'ok',sp?'CONDIÇÃO ESPECIAL':'APROVADO',sp?'21 cravado: aprovado e com juros de '+fmtJ(c.juros)+'.':'O gerente aprovou do jeito que você pediu.');return;}
@@ -408,7 +405,6 @@ function counterFor(r,t){for(let f=1;f>=0;f-=.01){const c={};SL.forEach(s=>{cons
 function sign(c,how){const neg=how!=='oferta recebida',L=loan(c);week.signed=true;addLog(`✍️ Semana ${week.n} · <b>${how}</b>: ${money(L.V)} · ${c.prazo} meses · ${fmtJ(c.juros)} · ${carTxt(c.car).toLowerCase()}${neg&&G?.guar?' · estoque em garantia':''} → parcela ${money(L.pmt)}${neg?' · relacionamento +1':''}`);}
 function addLog(t){log.unshift(t);$('log').innerHTML=log.map(x=>'<div>'+x+'</div>').join('');}
 function reset(){phase='setup';G=null;result=null;paint();}
-$('take').onclick=()=>{sign({...EASY},'oferta recebida');paint();};
 $('go').onclick=start;
 $('help').onclick=e=>{e.currentTarget.classList.toggle('open');};
 $('next').onclick=()=>{if($('offer'))return;week={n:week.n+1,negotiated:false,signed:false};addLog('📅 Começou a semana '+week.n+'.');reset();};

@@ -1,5 +1,7 @@
 # Protótipo · Negociação de empréstimo estilo blackjack
 
+- Sem atalho: a oferta recebida e o botão Aceitar oferta saíram. Todo empréstimo passa pelas cartas, mesmo o pedido mínimo (97% de chance). Falhou, só na semana seguinte.
+
 - Nos juros, o + fica à esquerda (volta para a taxa do banco) e o − à direita (pede taxa menor): o botão da direita sempre enche a fileira.
 
 - O relacionamento virou "Confiança do banco", em barrinha de 5 casas. O faturamento dos últimos 30 dias saiu do topo e virou explicação no ? do valor solicitado.
