@@ -1459,3 +1459,10 @@ body.town-open{overflow:hidden}
 @media (max-width:900px){#left-rail{width:180px}}
 
 #left-rail.rail-hint{z-index:3001}
+/* falas das personas no mesmo formato do tutorial: caixa clara, contorno escuro e número colorido */
+.persona-comment,#tray .persona-comment{display:flex!important;align-items:flex-start;gap:8px;margin:6px 0!important;padding:6px 9px!important;background:#fffdf8!important;border:2px solid #1d1b26!important;border-left-width:2px!important;color:#2a2133!important;font-weight:700;line-height:1.3;text-align:left;box-shadow:2px 2px 0 #1d1b2633}
+.persona-comment .pc-n{position:static!important;flex:none;display:grid;place-items:center;width:20px;height:20px;margin-top:1px;color:#fff;font-size:11px;font-weight:900;border:0!important}
+.persona-comment.pc1 .pc-n{background:#c2453f}.persona-comment.pc2 .pc-n{background:#c99a1c}.persona-comment.pc3 .pc-n{background:#2f8a5f}
+.persona-comment b:not(.pc-n),.persona-comment strong{font-weight:900}
+
+.persona-comment{font-style:normal!important}.persona-comment .pc-t{flex:1;min-width:0;display:block}

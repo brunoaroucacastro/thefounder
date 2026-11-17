@@ -1,3 +1,7 @@
+# 0.98 · Falas das personas no formato do tutorial
+
+- Cada fala da persona vira uma caixa clara com contorno escuro e o número colorido à esquerda (1 exige em vermelho, 2 valoriza em amarelo, 3 não liga em verde), sem itálico, igual ao tutorial de Clientes. Vale na escolha da persona e na ficha da prancheta.
+
 # 0.97 · Vários produtos ao mesmo tempo
 
 - Na loja, o botão Criar outro produto deixa o produto atual vendendo na vitrine e começa o próximo do zero (até 3 na vitrine, mais o produto em foco).
