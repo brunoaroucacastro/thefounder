@@ -1415,3 +1415,47 @@ body.town-open{overflow:hidden}
 /* catálogo: sem a mesa de rascunhos ao fundo */
 .product-book.pv-catalog,.product-book.pv-lab.pv-catalog{background:#fffdf8!important;background-image:linear-gradient(90deg,#2a2133 0 14px,transparent 14px),repeating-linear-gradient(180deg,transparent 0 46px,#eadbc4 46px 47px)!important;box-shadow:0 0 0 3px #2a2133,8px 8px 0 #0008!important;border-radius:0!important}
 .product-book.pv-catalog::before,.product-book.pv-catalog::after,.pv-catalog .pv-doodle,.pv-catalog .pv-note{display:none!important}
+
+/* ===== vitrine ativa: coluna da esquerda ===== */
+#left-rail{position:fixed;left:10px;top:64px;z-index:61;width:230px;display:grid;gap:6px}
+#left-rail[hidden]{display:none}
+#left-rail .rail-h{font:400 10px Oficina,var(--q-font);letter-spacing:.12em;color:#f6efe2;background:#11131fe8;padding:4px 8px;justify-self:start}
+#left-rail .rail-card{position:relative;display:grid;grid-template-columns:44px 1fr;gap:8px;align-items:center;text-align:left;padding:7px 8px;background:#11131fe8;color:#f6efe2;border:2px solid #3a3f63;cursor:pointer;font-family:var(--q-font)}
+#left-rail .rail-card:hover{border-color:#f2c230}
+#left-rail .rail-card.focus{border-color:#f2c230;box-shadow:0 0 0 2px #f2c23055}
+#left-rail .rail-card.done{opacity:.6}
+#left-rail .rc-ic{display:grid;place-items:center;width:44px;height:44px;background:#f6efdc;border:2px solid #1d1b26}
+#left-rail .rc-ic svg,#left-rail .rc-ic img,#left-rail .rc-ic canvas{max-width:38px;max-height:38px}
+#left-rail .rc-tx{display:grid;min-width:0;line-height:1.2}
+#left-rail .rc-tx b{font-size:13px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#left-rail .rc-tx small{font-size:10.5px;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#left-rail .rail-card em{position:absolute;top:-8px;right:6px;font-style:normal;font-size:9.5px;font-weight:900;text-transform:uppercase;padding:1px 6px;background:#2f9a6a;color:#fff}
+#left-rail .rail-card.focus em{background:#f2c230;color:#1d1b26}#left-rail .rail-card.done em{background:#8b8fa6}
+#left-rail.rail-hint .rail-card{animation:railhint .8s infinite alternate}
+@keyframes railhint{to{box-shadow:0 0 0 5px #f2c230,0 0 24px #f2c230}}
+#status-bar #buffs.buffs{top:calc(64px + var(--rail-h,0px))!important}
+/* botão de criar outro produto na loja */
+#tray .ls-next{display:grid!important;width:100%;margin-bottom:10px;text-align:center}
+#tray .ls-next small{font-size:11px;font-weight:700}
+/* painel do produto da vitrine */
+#workshop-info .sh-head{display:flex;gap:14px;align-items:center;border-bottom:2px dashed #d8cdb0;padding-bottom:10px}
+#workshop-info .sh-head h3{margin:0;font-size:22px;font-weight:900}
+#workshop-info .sh-st{display:inline-block;margin-top:4px;font-size:11px;font-weight:900;padding:2px 8px;text-transform:uppercase}
+#workshop-info .sh-st.on{background:#2f9a6a;color:#fff}#workshop-info .sh-st.off{background:#8b8fa6;color:#fff}
+#workshop-info .sh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+#workshop-info .sh-k{display:grid;justify-items:center;gap:2px;padding:8px;background:#fffdf8;border:2.5px solid #2a2133;box-shadow:3px 3px 0 #2a2133}
+#workshop-info .sh-k span{font-size:20px}#workshop-info .sh-k b{font:400 15px Oficina,var(--q-font)}#workshop-info .sh-k small{font-size:11px;color:#5b5470;font-weight:800}
+#workshop-info .sh-camp{display:grid;gap:4px;margin:8px 0}
+#workshop-info .sh-camp>span{font-weight:900}#workshop-info .sh-camp small{color:#5b5470}
+#workshop-info .sh-revs{display:grid;gap:5px;margin:8px 0;padding:10px;background:#f6efdc;border:2px dashed #d8cdb0}
+#workshop-info .sh-revs small{font:400 10px Oficina,var(--q-font);letter-spacing:.12em;color:#5b5470}
+#workshop-info .sh-revs p{margin:0;font-size:13px}#workshop-info .sh-revs b{color:#c99a1c}
+#workshop-info .sh-acts{display:grid;gap:10px;margin-top:10px}
+#workshop-info .sh-row{display:flex;gap:8px;flex-wrap:wrap}
+#workshop-info .sh-row button{display:grid;justify-items:center}
+#workshop-info .sh-row button small{font-size:10.5px}
+.ta-rail{display:grid;gap:2px;background:#11131f;color:#f6efe2;border:2px solid #f2c230;padding:8px 10px;text-align:left;min-width:170px}
+.ta-rail b{font-size:13px}.ta-rail i{font-style:normal;font-size:11px;opacity:.85}
+@media (max-width:900px){#left-rail{width:180px}}
+
+#left-rail.rail-hint{z-index:3001}

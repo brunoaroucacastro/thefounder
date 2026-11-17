@@ -1,3 +1,11 @@
+# 0.97 · Vários produtos ao mesmo tempo
+
+- Na loja, o botão Criar outro produto deixa o produto atual vendendo na vitrine e começa o próximo do zero (até 3 na vitrine, mais o produto em foco).
+- Produtos na vitrine vendem por conta agregada: visitantes que a campanha ainda traz (perdendo força a cada semana, como hoje) × conversão (a real medida ou a chance média das personas). A cada 10 vendas chega uma avaliação de verdade, que também conta para o boca a boca. O dinheiro entra no caixa e no relatório da semana.
+- Coluna da esquerda com um cartão por produto à venda: ícone, nome, nota, vendidos, faturamento e lucro por hora e estoque. Os efeitos ficam logo abaixo.
+- Clicar no cartão do produto em foco abre a loja; clicar num produto da vitrine abre o painel dele, com repor estoque, reforçar campanha (R$ 1.500), encerrar vendas e as últimas avaliações.
+- Tutorial Vários produtos (com Reid Hoffman) logo após o primeiro lançamento, com a coluna piscando em destaque.
+
 # 0.96 · Vendas, resultado e efeitos (pacote E)
 
 - Tutorial de Vendas na primeira loja aberta (com Sam Walton): conversão, notas e comentários, fit e ponto de equilíbrio.
