@@ -1,3 +1,10 @@
+# 1.00 · Categorias e prancheta mais claras
+
+- Escolha de categoria: o custo da pesquisa de mercado (R$ 1.000) aparece uma vez só, no topo; cards menores e sem o texto repetido.
+- Tutorial do produto: a página das peças explica a mecânica (3 peças de +1 ou +2, escolher atributo, encaixar, trocar até 3 vezes).
+- Prancheta: botões Trocar peças e Girar com o mesmo visual; o contador de trocas fica abaixo do botão.
+- Prancheta: clicar na grade sem peça mostra "Selecione uma peça" e destaca a bancada; com peça sem atributo, o aviso aponta para os atributos, que piscam.
+
 # 0.99 · Ajustes do playtest (24 pontos)
 
 - Correção: o popup Dê um nome ao seu produto travava ao confirmar (com Enter o foco ficava no campo e a tela não redesenhava); sair de um campo de texto não apaga mais o botão clicado.
