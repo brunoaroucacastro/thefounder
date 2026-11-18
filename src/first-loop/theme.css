@@ -1507,3 +1507,21 @@ body.town-open{overflow:hidden}
 #tray .pt-hq{display:inline-grid;place-items:center;width:16px;height:16px;margin-left:4px;border:1.5px solid #2b2f3a;background:#f6efdc;font-size:10px;font-weight:900;cursor:help;position:relative}
 #tray .pt-hq .cr-tip{display:none;position:absolute;left:-8px;top:20px;width:230px;z-index:5;background:#fffdf8;border:2px solid #2b2f3a;box-shadow:4px 4px 0 #2b2f3a;padding:8px 10px;font-weight:600;font-size:12px;line-height:1.35;text-align:left;color:#2a2133}
 #tray .pt-hq:hover .cr-tip,#tray .pt-hq:focus .cr-tip{display:block}
+
+/* estoque acabando (amarelo) e esgotado (vermelho) na vitrine */
+#left-rail .rail-card.low{border-color:#f2c230!important}#left-rail .rail-card.low .rc-stock{color:#f2c230;opacity:1;font-weight:900}
+#left-rail .rail-card.out{border-color:#e0705f!important}#left-rail .rail-card.out .rc-stock{color:#ff8b7d;opacity:1;font-weight:900}
+#left-rail .rail-new{background:transparent!important;border:2px dashed #f6efe2aa!important;color:#f6efe2}
+#left-rail .rail-new .rc-ic{background:transparent;border:2px dashed #f6efe2aa;color:#f6efe2;font-size:24px;font-weight:900}
+#left-rail .rail-new:hover{border-color:#f2c230!important}
+/* loja com botão de fechar */
+.live-store{position:relative}
+#tray .ls-close{position:absolute!important;top:6px;right:6px;width:28px!important;height:28px!important;padding:0!important;z-index:2}
+/* balão do quarto vira notificação do Nexus */
+#bubble.nexus-note{cursor:pointer;border-color:#6b4fd8!important}
+#bubble.nexus-note small{display:block;margin-top:3px;font-size:10.5px;opacity:.7}
+#bubble.empty{display:none!important}
+/* sem o contador de estoque no rodapé */
+#workshop-nav>span{display:none!important}
+
+body.rail-covered #status-bar #buffs.buffs{display:none!important}
