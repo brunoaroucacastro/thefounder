@@ -1,5 +1,7 @@
 # 0.99 · Ajustes do playtest (24 pontos)
 
+- Correção: o popup Dê um nome ao seu produto travava ao confirmar (com Enter o foco ficava no campo e a tela não redesenhava); sair de um campo de texto não apaga mais o botão clicado.
+
 - Tutoriais: Produto incentiva completar a grade; Produção fala de risco e de começar pequeno; Preço mostra o funil da conversão; Vários produtos lembra que sem estoque as vendas param e só aparece depois do de Vendas; novos tutoriais de Melhoria (Asha Sharma) e de Caixa baixo, abaixo de R$ 6.000 (Richard Branson). Citações por tema e de países variados: Ben Horowitz, Jack Ma, Jorge Paulo Lemann, Sara Blakely e Lei Jun.
 - Tempo: sem Avançar até terminar (máximo 4×), volta para 1× a cada decisão e para enquanto um tutorial está aberto ou o nome do produto está sendo digitado (que não apaga mais).
 - Produto: protótipo pago ao começar o desenvolvimento, no máximo 3 trocas de peças por versão, investimento no desenvolvimento sempre visível; evoluir não trava mais com dinheiro em caixa e o D20 vira uma etiqueta ao lado do botão.
