@@ -1466,3 +1466,6 @@ body.town-open{overflow:hidden}
 .persona-comment b:not(.pc-n),.persona-comment strong{font-weight:900}
 
 .persona-comment{font-style:normal!important}.persona-comment .pc-t{flex:1;min-width:0;display:block}
+
+/* faixa da conversão */
+.cband{display:inline-block;margin-left:6px;padding:1px 7px;color:#fff;font-size:11px;font-weight:900;vertical-align:1px;border:1.5px solid #1d1b26}
