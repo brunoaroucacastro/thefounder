@@ -1584,3 +1584,4 @@ body.rail-covered #status-bar #buffs.buffs{display:none!important}
 @keyframes pwhint{to{transform:translateX(-50%) translateY(-3px)}}
 #tray .pw-attn{outline:3px solid #f2c230;outline-offset:3px;animation:pwattn .7s infinite alternate}
 @keyframes pwattn{to{outline-color:#c99a1c;box-shadow:0 0 14px #f2c230}}
+#tray .name-pop-err,.name-pop-err{display:block;color:#b2352a;font-weight:800;font-size:12px;margin:4px 0}

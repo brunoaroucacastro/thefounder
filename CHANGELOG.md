@@ -1,3 +1,9 @@
+# 1.02 · Nome do produto confirma sempre
+
+- Correção: qualquer erro anterior na partida travava o salvamento e, a partir daí, o Confirmar nome era recusado em silêncio (a mensagem ficava escondida atrás do popup). Como o jogo recomeça a cada abertura e o save fica só em memória, esse travamento foi removido.
+- O nome é aplicado mesmo se o salvamento falhar, e qualquer erro aparece dentro do próprio popup.
+- Apertar o botão Confirmar não tira mais o foco do campo, então a tela não se redesenha no meio do clique.
+
 # 1.01 · Correção do nome do produto
 
 - Correção: ao digitar o nome e clicar fora do campo, a tela se redesenhava e apagava o que foi digitado; o Confirmar então recusava o nome vazio. Agora o texto digitado é guardado e volta ao campo depois de qualquer redesenho.
