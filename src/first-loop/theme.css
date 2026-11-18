@@ -1474,3 +1474,36 @@ body.town-open{overflow:hidden}
 #tray .pw-invest{margin-top:6px;font-size:12px;font-weight:800;color:#5b5470}
 #tray .pw-invest b{color:#c2453f}
 #tray .d20tag{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;background:#2b2f3a;color:#f6efe2;font-size:12px;font-weight:900;margin-right:auto}
+
+/* lote: controle deslizante e dinheiro que sobra */
+#tray .bo-slider{display:block;width:calc(100% - 24px);margin:6px 12px 0;accent-color:#ef8a3c}
+#tray .bo-sum{grid-template-columns:1fr 1fr!important}
+#tray .bo-cash{margin:10px 12px 12px;padding:10px;border:2.5px solid #2b2f3a;background:#fff}
+#tray .bo-cash-h{display:flex;justify-content:space-between;align-items:center;font-weight:900}
+#tray .bo-cash-h b{font:400 18px Oficina,var(--q-font);color:#2f8a5f}
+#tray .bo-cash.bad .bo-cash-h b{color:#c2453f}
+#tray .bo-cash-bar{height:16px;margin-top:6px;background:#7ccf9c;border:2px solid #2b2f3a}
+#tray .bo-cash-bar i.lote{display:block;height:100%;background:#ef8a3c}
+#tray .bo-cash.bad .bo-cash-bar{background:#f6dcd5}#tray .bo-cash.bad .bo-cash-bar i{background:#c2453f}
+#tray .bo-cash-leg{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px;font-size:11.5px;font-weight:800;color:var(--q-ink-soft)}
+#tray .bo-cash-leg span{display:flex;align-items:center;gap:4px}#tray .bo-cash-leg i{width:10px;height:10px;border:1.5px solid #2b2f3a}
+#tray .bo-cash-leg i.lote{background:#ef8a3c}#tray .bo-cash-leg i.sobra{background:#7ccf9c}
+#tray .bo-cash em{display:block;margin-top:4px;font-style:normal;font-size:12px;color:#c2453f;font-weight:800}
+/* preço: margens de 10 em 10 numa linha, margens explicadas e ponto de equilíbrio */
+#tray .pt-sims{display:block!important;padding:8px 12px!important}
+#tray .pt-sims>span{display:block;font-weight:900;margin-bottom:4px}
+#tray .pt-chips{display:grid;grid-template-columns:repeat(8,1fr);gap:3px}
+#tray .pt-chips .bo-sim{display:grid!important;justify-items:center;padding:4px 0!important;border:2px solid #2b2f3a!important;background:#fffdf8!important;border-radius:0!important;box-shadow:none!important;color:#2a2133!important;min-width:0}
+#tray .pt-chips .bo-sim b{font-size:12px;font-weight:900}#tray .pt-chips .bo-sim small{font-size:9px;font-weight:700;white-space:nowrap}
+#tray .pt-chips .bo-sim.on{background:#1e4a46!important;color:#f3ead2!important}
+#tray .pt-margins{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 12px 0}
+#tray .pt-margins>div{display:grid;gap:2px;padding:8px;border:2px solid #eadbc4;background:#fff}
+#tray .pt-margins small{font-size:11px;font-weight:900;color:var(--q-ink-soft)}
+#tray .pt-margins b{font-size:15px;font-weight:900}#tray .pt-margins b.pos{color:#2f8a5f}#tray .pt-margins b.neg{color:#c2453f}
+#tray .pt-left{grid-template-columns:1fr auto!important;align-items:center}
+#tray .pt-left b{font-size:28px!important}
+#tray .pt-be{margin:0 12px 12px;padding:10px 12px;background:#fff7d6;border:2px solid #c99a1c;font-size:13px}
+#tray .pt-be small{color:var(--q-ink-soft);font-weight:800}
+#tray .pt-hq{display:inline-grid;place-items:center;width:16px;height:16px;margin-left:4px;border:1.5px solid #2b2f3a;background:#f6efdc;font-size:10px;font-weight:900;cursor:help;position:relative}
+#tray .pt-hq .cr-tip{display:none;position:absolute;left:-8px;top:20px;width:230px;z-index:5;background:#fffdf8;border:2px solid #2b2f3a;box-shadow:4px 4px 0 #2b2f3a;padding:8px 10px;font-weight:600;font-size:12px;line-height:1.35;text-align:left;color:#2a2133}
+#tray .pt-hq:hover .cr-tip,#tray .pt-hq:focus .cr-tip{display:block}
