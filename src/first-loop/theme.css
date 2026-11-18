@@ -1525,3 +1525,5 @@ body.town-open{overflow:hidden}
 #workshop-nav>span{display:none!important}
 
 body.rail-covered #status-bar #buffs.buffs{display:none!important}
+
+#board-modal #bswap small{display:block;font-size:10.5px;font-weight:700;opacity:.8}

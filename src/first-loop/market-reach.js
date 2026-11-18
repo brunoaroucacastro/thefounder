@@ -28,13 +28,13 @@ const MarketReach=(()=>{
   const stageFor=exp=>exp<4?0:exp<10?1:exp<18?2:3;
   const shuffle=(a,rand)=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(rand()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
   const area=(n,c,rx=1)=>{const r=Math.floor(c/n),k=c%n,o=[];for(let a=r-rx;a<=r+rx;a++)for(let b=k-rx;b<=k+rx;b++)if(a>=0&&a<n&&b>=0&&b<n)o.push(a*n+b);return o;};
-  function create(stage=2,rand=Math.random){const S=stages[stage],n=S.n,kind=Array(n*n).fill('c'),blocked=[];
+  function create(stage=2,rand=Math.random,ov=null){const S={...stages[stage],...(ov||{})},n=S.n,kind=Array(n*n).fill('c'),blocked=[];
    for(let i=0;i<S.rival;i++){const c=(1+Math.floor(rand()*(n-2)))*n+1+Math.floor(rand()*(n-2));area(n,c).forEach(x=>{if(!blocked.includes(x)){blocked.push(x);kind[x]='x';}});}
    const free=()=>shuffle(kind.map((k,i)=>k==='c'?i:-1).filter(i=>i>=0),rand);
    if(S.clusters){const anchors=[n+1,n*n-n-2];let left=S.p;anchors.forEach((a,idx)=>{const spots=shuffle(area(n,a,2).filter(c=>kind[c]==='c'),rand),take=idx===0?Math.ceil(S.p/2):left;spots.slice(0,take).forEach(c=>{kind[c]='p';left--;});});}else free().slice(0,S.p).forEach(c=>kind[c]='p');
    free().slice(0,S.e).forEach(c=>kind[c]='e');free().slice(0,S.d).forEach(c=>kind[c]='d');free().slice(0,S.k).forEach(c=>kind[c]='k');free().slice(0,S.m||0).forEach(c=>kind[c]='m');
-   return{stage,n,kind,hits:{},blocked,rivals:blocked.length,firedE:[],firedD:[],firedM:[],promo:0,grow:[],played:[],byChannel:{},hand:draw(stage,rand),used:[],resets:0,spent:0};}
-  function draw(stage,rand){const list=stages[stage].cards;return Array.from({length:Math.max(5,(stages[stage].energy||stages[stage].plays)+1)},()=>list[Math.floor(rand()*list.length)]);}
+   return{stage,n,kind,hits:{},blocked,rivals:blocked.length,firedE:[],firedD:[],firedM:[],promo:0,grow:[],played:[],byChannel:{},hand:draw(stage,rand,S.cards),pool:S.cards,used:[],resets:0,spent:0};}
+  function draw(stage,rand,pool){const list=pool&&pool.length?pool:stages[stage].cards;return Array.from({length:Math.max(5,(stages[stage].energy||stages[stage].plays)+1)},()=>list[Math.floor(rand()*list.length)]);}
   function emailTargets(b){const blocked=new Set(b.blocked),hit=Object.keys(b.hits).map(Number).filter(c=>!blocked.has(c)),o=new Set();hit.forEach(c=>area(b.n,c).forEach(x=>{if(!blocked.has(x)&&x!==c)o.add(x);}));return[...o];}
   function preview(b,type,cell,rot=0){const n=b.n,r=Math.floor(cell/n),k=cell%n,row=[...Array(n).keys()].map(i=>r*n+i),col=[...Array(n).keys()].map(i=>i*n+k);if(type==='inf')return area(n,cell);if(type==='pr')return row;if(type==='ooh')return col;if(type==='tv')return[...new Set([...row,...col])];if(type==='soc')return[...Array(n*n).keys()].filter(c=>!b.blocked.includes(c));if(type==='cont'){const o=[];[[0,0],[0,1],[1,0],[1,1]].forEach(([a,c])=>{if(r+a<n&&k+c<n)o.push((r+a)*n+k+c);});return o;}if(type==='seo'){const o=[];for(let i=-n;i<=n;i++){const a=r+i,c=rot?k-i:k+i;if(a>=0&&a<n&&c>=0&&c<n)o.push(a*n+c);}return o;}return[cell];}
   function counted(b){const blocked=new Set(b.blocked);return Object.keys(b.hits).map(Number).filter(c=>!blocked.has(c)&&(b.kind[c]!=='k'||b.hits[c]>=2));}
