@@ -1,3 +1,7 @@
+# 1.01 · Correção do nome do produto
+
+- Correção: ao digitar o nome e clicar fora do campo, a tela se redesenhava e apagava o que foi digitado; o Confirmar então recusava o nome vazio. Agora o texto digitado é guardado e volta ao campo depois de qualquer redesenho.
+
 # 1.00 · Categorias e prancheta mais claras
 
 - Escolha de categoria: o custo da pesquisa de mercado (R$ 1.000) aparece uma vez só, no topo; cards menores e sem o texto repetido.
