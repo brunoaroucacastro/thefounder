@@ -1527,3 +1527,42 @@ body.town-open{overflow:hidden}
 body.rail-covered #status-bar #buffs.buffs{display:none!important}
 
 #board-modal #bswap small{display:block;font-size:10.5px;font-weight:700;opacity:.8}
+
+/* finanças: cascata e período */
+#workshop-info .fi-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 12px}
+#workshop-info .fi-tab{padding:4px 10px!important;border:2px solid #2b2f3a!important;background:#fffdf8!important;border-radius:0!important;box-shadow:none!important;font-weight:800;font-size:12px;color:#2a2133!important}
+#workshop-info .fi-tab.on{background:#1f6b55!important;color:#fff!important}
+#workshop-info .fi-row{grid-template-columns:24px 120px 1fr 92px 40px!important}
+#workshop-info .fi-row small{font-size:11px;font-weight:900;color:#5b5470;text-align:right}
+#workshop-info .fi-revrow{background:#e6f1ea}
+#workshop-info .fi-revrow b{color:#2f8a5f!important}
+#workshop-info .fi-wf{position:relative;height:16px;background:repeating-linear-gradient(90deg,#f3ead2 0 6px,#fffdf8 6px 12px);border:1.5px solid #2b2f3a}
+#workshop-info .fi-wf i{position:absolute;top:0;bottom:0;display:block}
+#workshop-info .fi-tot b small{font-size:11px;color:#5b5470}
+/* loja virtual */
+#product-overview .vs-shop{width:min(1080px,96vw);max-height:90vh;overflow:auto;background:#fffdf8;box-shadow:0 0 0 3px #2a2133,8px 8px 0 #0009;padding:16px 18px}
+#product-overview .vs-top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px dashed #d8cdb0;padding-bottom:10px;margin-bottom:14px}
+#product-overview .vs-top small{background:#6b4fd8;color:#fff;font-weight:900;font-size:10.5px;letter-spacing:.12em;padding:2px 8px}
+#product-overview .vs-top h2{margin:6px 0 0;font-size:24px;font-weight:900}#product-overview .vs-top span{color:#5b5470;font-weight:800;font-size:13px}
+#product-overview .vs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+#product-overview .vs-card{display:grid;grid-template-rows:auto 1fr;background:#fff;border:2.5px solid #2a2133;box-shadow:4px 4px 0 #2a2133;overflow:hidden;text-align:left}
+#product-overview .vs-img{position:relative;display:grid;place-items:center;height:150px;background:#f6efdc;border-bottom:2.5px solid #2a2133}
+#product-overview .vs-lvl{position:absolute;left:8px;top:8px;background:#2a2133;color:#fff;font-size:11px;font-weight:900;padding:1px 7px}
+#product-overview .vs-st{position:absolute;right:8px;top:8px;font-size:11px;font-weight:900;padding:1px 7px;color:#fff;background:#8b8fa6}
+#product-overview .vs-st.on{background:#2f9a6a}#product-overview .vs-st.mid{background:#c99a1c}
+#product-overview .vs-body{display:grid;gap:6px;padding:10px 12px}
+#product-overview .vs-body h3{margin:0;font-size:17px;font-weight:900}
+#product-overview .vs-stars{color:#c99a1c;letter-spacing:1px}
+#product-overview .vs-price{font:400 20px Oficina,var(--q-font);color:#2a2133}
+#product-overview .vs-attrs{display:flex;flex-wrap:wrap;gap:4px}
+#product-overview .vs-attrs span{display:flex;align-items:center;gap:4px;font-size:11px;font-weight:800;padding:1px 6px;border:1.5px solid #eadbc4}
+#product-overview .vs-attrs i{width:8px;height:8px;display:block}#product-overview .vs-attrs b{font-weight:900}
+#product-overview .vs-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+#product-overview .vs-k{display:grid;padding:4px 6px;border:1.5px solid #eadbc4}
+#product-overview .vs-k small{font-size:10px;font-weight:900;color:#5b5470;text-transform:uppercase}#product-overview .vs-k b{font-size:13px;font-weight:900}
+#product-overview .vs-k.pos b{color:#2f8a5f}#product-overview .vs-k.neg b{color:#c2453f}
+#product-overview .vs-ver{font-size:11.5px;color:#5b5470;font-weight:800}
+#product-overview .vs-new{display:grid!important;place-items:center;align-content:center;gap:8px;min-height:330px;background:transparent!important;border:3px dashed #2a2133!important;box-shadow:none!important;cursor:pointer;color:#2a2133!important}
+#product-overview .vs-new span{font-size:46px;font-weight:900;line-height:1}#product-overview .vs-new b{font:400 13px Oficina,var(--q-font);letter-spacing:.08em}#product-overview .vs-new small{font-size:12px;color:#5b5470}
+#product-overview .vs-new:hover{background:#f6efdc!important}
+#team-nav:disabled{opacity:.6;cursor:not-allowed}

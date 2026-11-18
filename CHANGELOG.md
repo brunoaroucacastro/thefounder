@@ -1,3 +1,16 @@
+# 0.99 · Ajustes do playtest (24 pontos)
+
+- Tutoriais: Produto incentiva completar a grade; Produção fala de risco e de começar pequeno; Preço mostra o funil da conversão; Vários produtos lembra que sem estoque as vendas param e só aparece depois do de Vendas; novos tutoriais de Melhoria (Asha Sharma) e de Caixa baixo, abaixo de R$ 6.000 (Richard Branson). Citações por tema e de países variados: Ben Horowitz, Jack Ma, Jorge Paulo Lemann, Sara Blakely e Lei Jun.
+- Tempo: sem Avançar até terminar (máximo 4×), volta para 1× a cada decisão e para enquanto um tutorial está aberto ou o nome do produto está sendo digitado (que não apaga mais).
+- Produto: protótipo pago ao começar o desenvolvimento, no máximo 3 trocas de peças por versão, investimento no desenvolvimento sempre visível; evoluir não trava mais com dinheiro em caixa e o D20 vira uma etiqueta ao lado do botão.
+- Lote: controle deslizante, − e + que aceleram ao segurar e a barra Dinheiro que sobra em caixa.
+- Preço: margens de contribuição de 10% a 80% numa linha (acende a que bate com o preço), margem bruta e de contribuição com explicação no ?, ganho por unidade em destaque e ponto de equilíbrio (Breakeven Point) em unidades.
+- Vendas: faixas de conversão com cor, ponto de equilíbrio acompanhando as vendas, loja com botão de fechar, mais avaliações com comentário e comentários concretos; balões dos visitantes viraram notificações do Nexus (1 em 20 de quem não compra comenta o motivo).
+- Vários produtos: estoque em amarelo quando acabando e vermelho quando acaba, cartão + Desenvolver novo produto, a coluna não cobre mais a tela de desenvolvimento.
+- Marketing: baralho cresce com cada pessoa de marketing, mecânicas do tabuleiro por nível do produto (viralização desde o início, cancelamento a partir do NV4, promotor a partir do NV7) e trocas de cartas com usos restantes.
+- Finanças: barras em cascata sobre o faturamento (100%) e filtro por últimos 30 dias, mês ou ano.
+- Produtos virou loja virtual, com atributos corrigidos e o cartão de novo produto. Equipe com cadeado até haver escritório. Fim das vendas sem a frase fixa; rodapé sem o contador de estoque.
+
 # 0.98 · Falas das personas no formato do tutorial
 
 - Cada fala da persona vira uma caixa clara com contorno escuro e o número colorido à esquerda (1 exige em vermelho, 2 valoriza em amarelo, 3 não liga em verde), sem itálico, igual ao tutorial de Clientes. Vale na escolha da persona e na ficha da prancheta.
