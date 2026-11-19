@@ -53,3 +53,16 @@ Ideias guardadas para puxar depois. Não entram no jogo até o Bruno pedir.
 
 ## Mecânica de preço (pedido do Bruno, 16/11/2026)
 - Revisar como funciona a definição de preço (pricing): margem, teto por nível, efeito nas vendas e como o jogador entende a decisão.
+
+## Baralho de marketing (feedback de 19/11/2026)
+- Feito na 1.03: cartas em leque, UGC, combo Efeito manada, Marketing de oportunidade, promotor um ponto de cada vez.
+- Falta: baralho que cresce (o jogador adquire cartas novas com o tempo e monta o deck).
+- Falta: influenciadores e UGCs no bairro. Ao fazer amizade, eles topam falar do produto na próxima campanha e entram na mão como carta de custo 0, com cor própria, além das cartas normais.
+- Ideias de combos para escolher:
+  - Mídia cruzada: PR e Out of Home se cruzando na mesma casa dão +1 energia.
+  - Boca a boca: duas viralizações seguidas na mesma jogada viram um 3º disparo grátis.
+  - Funil completo: SEO, depois Conteúdo, depois E-mail na mesma campanha dobram o alcance do E-mail.
+  - Lançamento coordenado: TV + Redes Sociais na mesma campanha revelam onde estão as personas.
+  - Prova social: alcançar 2 personas com a mesma carta devolve 1 energia.
+  - Embaixador: promotor alcançado por um influenciador dá 3 pontos em vez de 2.
+  - Sequência: três cartas de custo 1 seguidas deixam a próxima custando 0.

@@ -1585,3 +1585,183 @@ body.rail-covered #status-bar #buffs.buffs{display:none!important}
 #tray .pw-attn{outline:3px solid #f2c230;outline-offset:3px;animation:pwattn .7s infinite alternate}
 @keyframes pwattn{to{outline-color:#c99a1c;box-shadow:0 0 14px #f2c230}}
 #tray .name-pop-err,.name-pop-err{display:block;color:#b2352a;font-weight:800;font-size:12px;margin:4px 0}
+
+/* confirmação no meio da tela */
+.ask-pop{position:fixed;inset:0;z-index:400;display:grid;place-items:center;background:#0d0b1699}
+.ask-card{display:grid;gap:10px;max-width:360px;padding:18px 20px;background:#fffdf8;border:3px solid #1d1b26;box-shadow:6px 6px 0 #1d1b26;color:#1d1b26;text-align:center}
+.ask-card b{font-size:16px}.ask-card small{font-size:12.5px;color:#5b5470}
+.ask-row{display:flex;gap:8px;justify-content:center;margin-top:4px}
+/* botão de seguir sempre à vista no rodapé do painel */
+#tray .tray-foot{position:sticky;bottom:0;z-index:6;background:#fbf6ea;box-shadow:0 -6px 10px #fbf6ea;padding-top:6px}
+/* buff azul, debuff vermelho */
+.buffs .buff.buff{background:#1d4796ee!important;border:2px solid #7fb2ff!important}
+.buffs .buff.debuff{background:#8c2323ee!important;border:2px solid #ff8a80!important}
+/* ponto de equilíbrio */
+.pt-be{display:flex!important;gap:10px;align-items:center}
+.pt-be-ic{font-size:24px}
+.pt-be>div{display:grid;line-height:1.2}
+.pt-be-lbl{font:900 10px var(--q-font)!important;letter-spacing:.06em;color:#7a5d0e!important}
+.pt-be strong{font-size:18px}
+.pt-be-no{color:#b2352a}
+/* fim de semana: botões limpos */
+.weekend-choices button b{font-size:16px}
+
+/* janela de repor estoque: mesma ordem de produção do primeiro lote */
+/* ===== lote: ordem de produção (kraft, creme e laranja) ===== */
+#restock-modal .bo{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:16px;align-items:start}
+#restock-modal .bo-art{display:grid;justify-items:center;gap:8px;padding:12px;background:#e9d4ad;border:2.5px solid #2b2f3a;box-shadow:4px 4px 0 #2b2f3a}
+#restock-modal .bo-prod .gadget-preview{height:96px}
+#restock-modal .bo-boxes{display:grid;grid-template-columns:repeat(6,30px);gap:3px;justify-content:center;min-height:70px;align-content:end;padding:6px;background:#c79a62;border:2px solid #2b2f3a;width:100%}
+#restock-modal .bo-boxes.b1{grid-template-columns:repeat(1,30px)}
+#restock-modal .bo-boxes.b3{grid-template-columns:repeat(3,30px)}
+#restock-modal .bo-boxes i{height:24px;background:#d9a868;border:2px solid #6b4423;position:relative;animation:bopop .2s both;animation-delay:var(--d)}
+#restock-modal .bo-boxes i:after{content:'';position:absolute;left:40%;top:0;width:20%;height:100%;background:#b07a3f}
+#restock-modal .bo-art>small{font-weight:900;color:#4a3420}
+#restock-modal .bo-stock{display:flex;align-items:center;gap:10px;font-weight:900;color:#4a3420}
+#restock-modal .bo-stock span{display:grid;text-align:center;font-size:11px}
+#restock-modal .bo-stock b{font:400 15px Oficina,var(--q-font)}
+#restock-modal .bo-order{background:#fffdf8;border:2.5px solid #2b2f3a;box-shadow:4px 4px 0 #2b2f3a}
+#restock-modal .bo-oh{display:flex;justify-content:space-between;background:#ef8a3c;color:#1d1b26;font:400 11px Oficina,var(--q-font);letter-spacing:.12em;padding:6px 10px;border-bottom:2.5px solid #2b2f3a}
+#restock-modal .bo-oh span{font-family:var(--q-font);letter-spacing:0;font-weight:800;text-transform:none}
+#restock-modal .bo-counter{display:flex;justify-content:center;align-items:stretch;gap:0;margin:12px 12px 2px}
+#restock-modal .bo-counter input{width:170px!important;text-align:center;font:400 28px Oficina,var(--q-font)!important;border:2.5px solid #2b2f3a!important;border-radius:0!important;padding:6px!important}
+#restock-modal .bo-pm{width:46px!important;font-size:22px!important;font-weight:900!important;border-radius:0!important;border:2.5px solid #2b2f3a!important;background:#2b2f3a!important;color:#fff!important;box-shadow:none!important;padding:0!important}
+#restock-modal .bo-unit-lbl{display:block;text-align:center;color:var(--q-ink-soft);font-size:12px}
+#restock-modal .bo-short{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:8px 10px}
+#restock-modal .bo-short button{font-size:12px!important;padding:5px 9px!important}
+#restock-modal .bo-ruler{display:flex;margin:10px 12px 0;position:relative}
+#restock-modal .bo-ruler:before{content:'';position:absolute;left:8%;right:8%;top:9px;height:4px;background:#d8cdb0}
+#restock-modal .bo-tier{flex:1;display:grid;justify-items:center;gap:1px;background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;position:relative;cursor:pointer}
+#restock-modal .bo-tier i{width:18px;height:18px;border:2.5px solid #2b2f3a;background:#fff}
+#restock-modal .bo-tier.on i{background:#2f9a6a}
+#restock-modal .bo-tier.next i{background:#f2c230;animation:bopulse 1s infinite alternate}
+#restock-modal .bo-tier b{font-size:11.5px;font-weight:900}
+#restock-modal .bo-tier small{font-size:10.5px;color:#2f8a5f;font-weight:900}
+#restock-modal .bo-next{margin:6px 12px;font-size:12.5px;text-align:center}
+#restock-modal .bo-sum{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px dashed #d8cdb0;margin-top:6px}
+#restock-modal .bo-sum>div{display:grid;gap:2px;padding:10px;text-align:center;border-right:1px dashed #d8cdb0}
+#restock-modal .bo-sum>div:last-child{border:0}
+#restock-modal .bo-sum small{font-size:10.5px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--q-ink-soft)}
+#restock-modal .bo-sum b{font-size:16px;font-weight:900}
+#restock-modal .bo-sum s{color:#999;font-size:12px}
+#restock-modal .bo-sum .main b{font:400 20px Oficina,var(--q-font);color:#c47d1f}
+#restock-modal .bo-sum em{font-style:normal;font-size:11px;color:#2f8a5f;font-weight:800}
+#restock-modal .bo-sum .bad b{color:#c2453f}
+#restock-modal .bo-sum .bad em{color:#c2453f}
+#restock-modal .bo-c{background:#e0705f}
+#restock-modal .bo-a{background:#ef8a3c}
+#restock-modal .bo-f{background:#8b8fa6}
+#restock-modal .bo-m{background:#7ccf9c}
+#restock-modal .bo-sim{display:grid!important;justify-items:center;padding:4px 10px!important;font-weight:900!important}
+#restock-modal .bo-sim small{font-size:10.5px;font-weight:700}
+#restock-modal .bo,#tray .pt{grid-template-columns:1fr}
+/* ajustes do lote e do preço na bandeja estreita */
+#restock-modal .bo,#tray .pt{grid-template-columns:1fr!important}
+#restock-modal .bo-art{grid-template-columns:auto 1fr;display:grid!important;align-items:center;justify-items:stretch!important}
+#restock-modal .bo-art>small,#restock-modal .bo-art .bo-stock{grid-column:1/-1;justify-content:center;text-align:center}
+#restock-modal .bo-prod .gadget-preview{height:80px!important;width:96px}
+#restock-modal .bo-boxes i{background:#d9a868!important;border:2px solid #6b4423!important;border-radius:0!important}
+#restock-modal .bo-tier{border:0!important;background:transparent!important;box-shadow:none!important;border-radius:0!important}
+/* lote: controle deslizante e dinheiro que sobra */
+#restock-modal .bo-slider{display:block;width:calc(100% - 24px);margin:6px 12px 0;accent-color:#ef8a3c}
+#restock-modal .bo-sum{grid-template-columns:1fr 1fr!important}
+#restock-modal .bo-cash{margin:10px 12px 12px;padding:10px;border:2.5px solid #2b2f3a;background:#fff}
+#restock-modal .bo-cash-h{display:flex;justify-content:space-between;align-items:center;font-weight:900}
+#restock-modal .bo-cash-h b{font:400 18px Oficina,var(--q-font);color:#2f8a5f}
+#restock-modal .bo-cash.bad .bo-cash-h b{color:#c2453f}
+#restock-modal .bo-cash-bar{height:16px;margin-top:6px;background:#7ccf9c;border:2px solid #2b2f3a}
+#restock-modal .bo-cash-bar i.lote{display:block;height:100%;background:#ef8a3c}
+#restock-modal .bo-cash.bad .bo-cash-bar{background:#f6dcd5}
+#restock-modal .bo-cash.bad .bo-cash-bar i{background:#c2453f}
+#restock-modal .bo-cash-leg{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px;font-size:11.5px;font-weight:800;color:var(--q-ink-soft)}
+#restock-modal .bo-cash-leg span{display:flex;align-items:center;gap:4px}
+#restock-modal .bo-cash-leg i{width:10px;height:10px;border:1.5px solid #2b2f3a}
+#restock-modal .bo-cash-leg i.lote{background:#ef8a3c}
+#restock-modal .bo-cash-leg i.sobra{background:#7ccf9c}
+#restock-modal .bo-cash em{display:block;margin-top:4px;font-style:normal;font-size:12px;color:#c2453f;font-weight:800}
+.rk-modal{position:fixed;inset:0;z-index:380;display:grid;place-items:center;background:#0d0b1699;padding:16px}
+.rk-card{width:min(900px,100%);max-height:calc(100vh - 32px);overflow:auto;background:#fffdf8;border:3px solid #1d1b26;box-shadow:6px 6px 0 #1d1b26;padding:14px 16px;color:#1d1b26}
+.rk-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.rk-head b{font-size:16px}
+.rk-x{width:30px;height:30px;padding:0!important}
+.rk-foot{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
+.rk-modal .bo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:14px}
+@media (max-width:720px){.rk-modal .bo{grid-template-columns:1fr}}
+.ls-margin{display:block;margin-top:2px}
+.pe-row{display:flex;align-items:center;gap:6px;justify-content:center;font-weight:900;font-size:18px}.pe-row input{width:130px;font-size:18px;padding:6px 8px;text-align:right}
+.pe-charm{color:#2f9a6a}
+
+/* ===== Nexus com cara de celular ===== */
+#social-modal{display:grid;place-items:center;background:#0d0b16b3!important;padding:12px}
+#social-modal[hidden]{display:none!important}
+#social-modal .nx-device{width:min(390px,100%);height:min(780px,calc(100vh - 24px));background:#151320;border-radius:44px;padding:12px;box-shadow:0 0 0 2px #3a3650,0 24px 60px #000a,inset 0 0 0 2px #2a2738}
+#social-modal .nx-screen{position:relative;height:100%;display:flex;flex-direction:column;background:#fff;border-radius:34px;overflow:hidden;color:#16141f;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+#social-modal .nx-status{display:flex;justify-content:space-between;align-items:center;padding:10px 22px 4px;font-size:13px;font-weight:700}
+#social-modal .nx-notch{width:96px;height:24px;background:#151320;border-radius:14px}
+#social-modal .nx-sig{font-size:10px;letter-spacing:-1px;display:flex;align-items:center;gap:6px}
+#social-modal .nx-bat{display:inline-block;width:20px;height:10px;border:1.5px solid #16141f;border-radius:3px;background:linear-gradient(90deg,#16141f 70%,transparent 70%)}
+#social-modal .nx-appbar{display:flex;align-items:center;gap:10px;padding:6px 14px 8px;border-bottom:1px solid #eee}
+#social-modal .nx-logo{font:800 24px/1 "Segoe Script","Brush Script MT",cursive;background:linear-gradient(90deg,#6b4fd8,#e0457b,#f2a93b);-webkit-background-clip:text;background-clip:text;color:transparent}
+#social-modal .nx-appicons{margin-left:auto;font-size:18px;letter-spacing:8px}
+#social-modal .nx-close{width:30px!important;height:30px!important;min-width:0!important;padding:0!important;border-radius:50%!important;font-size:14px!important}
+#social-modal .nx-scroll{flex:1;overflow-y:auto;overscroll-behavior:contain}
+#social-modal .nx-stories{display:flex;gap:10px;overflow-x:auto;padding:10px 12px;border-bottom:1px solid #eee}
+#social-modal .nx-story{display:grid;justify-items:center;gap:3px;background:none!important;border:0!important;box-shadow:none!important;padding:0!important;min-width:58px;color:#16141f!important}
+#social-modal .nx-ring{padding:2.5px;border-radius:50%;background:conic-gradient(#f2a93b,#e0457b,#6b4fd8,#f2a93b)}
+#social-modal .nx-ring .nx-avatar{width:50px;height:50px;border:3px solid #fff;font-size:18px}
+#social-modal .nx-story small{font-size:11px;max-width:60px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#social-modal .nx-story.on .nx-ring{background:#16141f}
+#social-modal .nx-avatar{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--post-color,#6b4fd8);color:#fff;font-weight:800}
+#social-modal .nx-avatar.big{width:58px;height:58px;font-size:24px;background:#6b4fd8}
+#social-modal .nx-profile{display:grid;grid-template-columns:auto 1fr;gap:8px 12px;align-items:center;padding:12px 14px}
+#social-modal .nx-pname{display:grid}#social-modal .nx-pname small{color:#777}
+#social-modal .nx-profile dl{grid-column:1/-1;display:flex;justify-content:space-around;margin:0;text-align:center}
+#social-modal .nx-profile dt{font-weight:800;font-size:16px}#social-modal .nx-profile dd{margin:0;font-size:11px;color:#777}
+#social-modal .nx-check{display:inline-grid;place-items:center;width:14px;height:14px;border-radius:50%;background:#3897f0;color:#fff;font-size:9px;font-style:normal}
+#social-modal .nx-tabs{position:sticky;top:0;z-index:2;display:flex;gap:6px;padding:8px 12px;background:#fff;border-bottom:1px solid #eee;overflow-x:auto}
+#social-modal .nx-tab{border-radius:999px!important;padding:5px 12px!important;font-size:12px!important;background:#f1f1f4!important;border:0!important;box-shadow:none!important;color:#16141f!important;white-space:nowrap}
+#social-modal .nx-tab.on{background:#16141f!important;color:#fff!important}
+#social-modal .nx-filter{display:flex;justify-content:space-between;align-items:center;padding:8px 14px}
+#social-modal .nexus-summary{display:flex;gap:8px;flex-wrap:wrap;padding:8px 14px;font-size:11px;color:#777}
+#social-modal .nx-feed{display:grid}
+#social-modal .nx-card{border:0!important;border-bottom:1px solid #eee!important;border-radius:0!important;box-shadow:none!important;background:#fff!important;padding:0 0 10px!important;margin:0!important}
+#social-modal .nx-card>header{display:flex;align-items:center;justify-content:space-between;padding:10px 12px}
+#social-modal .nexus-author{display:flex;gap:8px;align-items:center;background:none!important;border:0!important;box-shadow:none!important;padding:0!important;color:#16141f!important;text-align:left}
+#social-modal .nx-who{display:grid}#social-modal .nx-who b{font-size:13px}#social-modal .nx-who small,#social-modal .nx-when{font-size:11px;color:#888}
+#social-modal .nexus-image{display:grid;place-items:center;background:var(--post-color,#73999e);aspect-ratio:1/1;margin:0!important;border-radius:0!important;position:relative}
+#social-modal .nexus-image canvas{width:62%;height:auto;image-rendering:pixelated}
+#social-modal .nexus-image b{position:absolute;left:10px;bottom:8px;background:#0008;color:#fff;font-size:11px;padding:2px 8px;border-radius:999px}
+#social-modal .nx-headline{padding:0 12px 8px}#social-modal .nx-headline h4{margin:2px 0 0;font-size:16px}
+#social-modal .nx-bar{display:flex;align-items:center;gap:14px;padding:8px 12px 2px;font-size:20px}
+#social-modal .nx-sent{margin-left:auto;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:#f1f1f4}
+#social-modal .nx-likes{padding:2px 12px;font-size:13px}
+#social-modal .nx-text{margin:2px 12px!important;font-size:13px;line-height:1.35}
+#social-modal .nx-comments{margin:4px 12px 0;font-size:12px;color:#777}#social-modal .nx-comments p{color:#16141f;margin:4px 0}
+#social-modal .nx-dock{display:flex;justify-content:space-around;align-items:center;padding:8px 10px 4px;border-top:1px solid #eee;font-size:20px;background:#fff}
+#social-modal .nx-plus{display:inline-grid;place-items:center;width:30px;height:30px;border:2px solid #16141f;border-radius:9px;font-size:16px}
+#social-modal .nx-homebar{display:block;width:120px;height:5px;border-radius:3px;background:#16141f;margin:6px auto 8px}
+
+/* ===== marketing: cartas de baralho em leque ===== */
+#board-modal .bpanel.ag .bhand{display:flex!important;flex-wrap:nowrap!important;justify-content:center;align-items:flex-end;gap:0!important;padding:26px 24px 10px!important;overflow:visible!important;min-height:200px}
+#board-modal .bpanel.ag .ag-card{flex:0 0 108px;width:108px!important;min-height:164px;margin:0 -9px!important;border-radius:12px!important;border:3px solid var(--ag-ink)!important;background:linear-gradient(160deg,#fffdf6,#f4ead2)!important;box-shadow:0 5px 0 var(--ag-ink),0 12px 18px #0004!important;transform:rotate(calc(var(--fan,0)*4deg)) translateY(calc(var(--fan,0)*var(--fan,0)*2.5px))!important;transform-origin:50% 120%;transition:transform .16s ease,box-shadow .16s ease!important;z-index:1;text-align:center;justify-items:center}
+#board-modal .bpanel.ag .ag-card::before{content:"";position:absolute;inset:5px;border:1.5px solid #1d1b2633;border-radius:8px;pointer-events:none}
+#board-modal .bpanel.ag .ag-card:not([disabled]):hover{transform:translateY(-16px) rotate(0) scale(1.06)!important;z-index:5;box-shadow:0 8px 0 var(--ag-ink),0 18px 24px #0005!important}
+#board-modal .bpanel.ag .ag-card.on{transform:translateY(-24px) rotate(0) scale(1.08)!important;z-index:6;border-color:#f2c230!important;box-shadow:0 0 0 3px #f2c230,0 10px 0 var(--ag-ink),0 20px 26px #0006!important}
+#board-modal .bpanel.ag .ag-card .ag-cost{position:absolute;top:-10px;left:-10px;min-width:30px;height:30px;display:grid;place-items:center;border-radius:50%;border:2.5px solid var(--ag-ink);background:#f2c230;color:#1d1b26;font-weight:900;font-size:11px;padding:0 4px;z-index:2}
+#board-modal .bpanel.ag .ag-card.free{background:linear-gradient(160deg,#e9fbf3,#c9efdf)!important}
+#board-modal .bpanel.ag .ag-card.free .ag-cost{background:#2f9a6a;color:#fff;font-size:9px;border-radius:999px}
+#board-modal .bpanel.ag .ag-card b{font-size:13px!important}
+#board-modal .bpanel.ag .ag-card .btag{font-size:10px!important}
+/* oportunidade com cronômetro */
+#board-modal .bc.opp{background:#f2c230!important;box-shadow:0 0 0 3px #1d1b26 inset,0 0 14px #f2c230!important;animation:oppPulse .5s infinite alternate;cursor:pointer;z-index:2}
+#board-modal .bc.opp .opp-t{font-weight:900;font-size:14px;color:#1d1b26}
+#board-modal .bc.opp .opp-t::before{content:"⏱";font-size:10px;margin-right:1px}
+@keyframes oppPulse{to{transform:scale(1.12)}}
+#board-modal .k-o{background:#f2c230;color:#1d1b26}
+.rk-modal{z-index:2000!important}
+.ask-pop{z-index:2100!important}
+#social-modal:not([hidden]){position:fixed!important;inset:0!important;width:auto!important;height:auto!important;max-width:none!important;max-height:none!important;margin:0!important;border:0!important;box-shadow:none!important;border-radius:0!important;transform:none!important;overflow:hidden!important}
+#board-modal .bpanel.ag .ag-card .ag-reach{display:grid!important;justify-items:center;gap:2px;text-align:center}
+#board-modal .bpanel.ag .ag-card .ag-reach small{font-size:9.5px!important;line-height:1.15}
+#board-modal .bpanel.ag .ag-card .ag-reach svg{width:24px;height:24px}
+#board-modal .bpanel.ag .ag-card .ag-art svg{width:46px;height:auto}
+#board-modal .bpanel.ag .ag-card{margin:0 -4px!important;padding:12px 7px 8px!important}

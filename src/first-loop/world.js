@@ -204,6 +204,8 @@ const PilotWorld=(()=>{
 
 
  /* ---------- ícones de produto (usados pelos painéis) ---------- */
+ // polígono fechado (usado pelo ícone do teclado)
+ function poly(c,pts,fill,stroke,lw=1){c.beginPath();pts.forEach(([px,py],i)=>i?c.lineTo(px,py):c.moveTo(px,py));c.closePath();if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw;c.stroke();}}
  function gadget(c,x,y,kind='headphones',color='#c78451',scale=1){
   color=hexOk(color)?color:'#c78451';c.save();c.translate(x,y);c.scale(scale,scale);const ink='#2d2a4a';
   if(kind==='headphones'){

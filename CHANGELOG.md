@@ -1,3 +1,22 @@
+# 1.03 · Playtest: travamento, vendas, Nexus e cartas de marketing
+
+- Correção: escolher **Teclado** travava o jogo inteiro (o ícone do teclado chamava uma função de desenho que não existia). Era isso que parecia "crash ao criar o terceiro produto".
+- Correção: no teste do protótipo, a frase do resultado só aparece depois que o dado para (antes mostra "Rolando o dado…").
+- Encerrar vendas (da loja e da vitrine) agora pede confirmação numa janela no meio da tela.
+- Depois de montar e dar nome ao produto, o botão Planejar marketing fica sempre à vista no rodapé.
+- Cores dos atributos trocadas por uma paleta segura para daltonismo (rosa, azul, vermelho-alaranjado, verde, azul-claro e laranja).
+- Sem o botão Trocar persona na prancheta.
+- Buffs em azul e debuffs em vermelho.
+- Tutorial do estoque com a frase "Produzir apenas o necessário, no momento certo e na quantidade exata."
+- Ponto de equilíbrio do preço em formato de cartão: quantas unidades e quanto investimento pagam.
+- Fim de semana: botões limpos (Trabalhar / Passar o fim de semana); a explicação foi para um tutorial novo.
+- Faltou caixa: abre o tutorial de finanças.
+- Loja: botão Preço para mudar o preço durante as vendas (com margem ao vivo e aviso de fazer uma nova campanha) e margem por unidade em %.
+- Repor estoque (do produto em foco e dos da vitrine) abre a mesma ordem de produção do primeiro lote, numa janela.
+- Buff escondido "Preço psicológico": preços terminados em 9,90 ou 9,99 aumentam a conversão em 5%, com tutorial de descoberta.
+- Nexus com cara de celular: moldura, barra de status, stories, abas em pílula, posts no estilo feed e barra inferior.
+- Marketing: cartas em leque estilo baralho; carta UGC (1 energia, 4 casas em linha, gira com R); combo Efeito manada (a cada 3 UGCs vem um 4º grátis); Marketing de oportunidade (casa com cronômetro: clicou a tempo, ganha 3 pontos para qualquer casa); promotor dá 2 pontos para colocar um de cada vez perto dele.
+
 # 1.02 · Nome do produto confirma sempre
 
 - Correção: qualquer erro anterior na partida travava o salvamento e, a partir daí, o Confirmar nome era recusado em silêncio (a mensagem ficava escondida atrás do popup). Como o jogo recomeça a cada abertura e o save fica só em memória, esse travamento foi removido.
