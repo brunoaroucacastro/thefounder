@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cartas Post-it</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&family=Permanent+Marker&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1d1b26;--paper:#f6efe2;--muted:#5b5470}
+*{box-sizing:border-box}
+body{margin:0;background:#2a2638;color:#f6efe2;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+header.top{padding:28px 24px 8px;max-width:1180px;margin:0 auto}
+header.top h1{margin:0 0 6px;font-size:28px}
+header.top p{margin:0;color:#cfc8de;max-width:760px;line-height:1.45}
+nav.jump{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+nav.jump a{color:var(--ink);background:#f2c230;padding:6px 12px;border-radius:999px;font-weight:800;text-decoration:none;font-size:13px}
+section.v{max-width:1180px;margin:22px auto;padding:22px 24px 30px;border-radius:18px}
+section.v h2{margin:0 0 4px;font-size:20px}
+section.v .why{margin:0 0 16px;font-size:13.5px;opacity:.85;max-width:780px;line-height:1.4}
+.hand{display:flex;flex-wrap:wrap;gap:22px;justify-content:center;padding:18px 6px 6px}
+.hand button{all:unset;cursor:pointer;position:relative;transition:transform .16s ease,box-shadow .16s ease,filter .16s}
+.hand button[disabled]{cursor:not-allowed}
+.hint{text-align:center;font-size:12px;opacity:.7;margin-top:10px}
+
+/* mini grade de alcance (comum a todas) */
+.reach{display:grid;grid-template-columns:repeat(5,7px);gap:1.5px}
+.reach i{width:7px;height:7px;background:currentColor;opacity:.18;border-radius:1px}
+.reach i.on{opacity:1}
+
+/* ========== A · Post-it clássico com fita ========== */
+#a{background:#e9e1cf;color:var(--ink)}
+#a .card{width:150px;min-height:150px;padding:22px 12px 10px;background:var(--pc);color:#2b2433;font-family:"Patrick Hand",cursive;
+ box-shadow:0 1px 0 #0002,0 10px 14px -6px #0005,inset 0 -18px 18px -14px #0002;transform:rotate(var(--r));display:grid;gap:4px;align-content:start}
+#a .card::before{content:"";position:absolute;top:-9px;left:50%;width:62px;height:20px;transform:translateX(-50%) rotate(-3deg);background:#fff9;border-left:1px dashed #0002;border-right:1px dashed #0002;box-shadow:0 1px 2px #0002}
+#a .card::after{content:"";position:absolute;right:0;bottom:0;width:22px;height:22px;background:linear-gradient(135deg,var(--pc) 50%,#0000001f 50%,#00000008);}
+#a .cost{position:absolute;top:6px;right:8px;font-family:"Permanent Marker",cursive;font-size:20px;color:#c2453f}
+#a .cost::after{content:"";position:absolute;inset:-4px -7px;border:2px solid #c2453f;border-radius:50%;transform:rotate(-8deg)}
+#a .name{font-family:"Permanent Marker",cursive;font-size:17px;line-height:1.05;padding-right:22px}
+#a .desc{font-size:16px;line-height:1.1}
+#a .tag{margin-top:2px;font-family:"Caveat",cursive;font-weight:700;font-size:17px;background:linear-gradient(transparent 55%,#fff7 55%);justify-self:start;padding:0 3px}
+#a .reach{color:#2b2433;margin:2px 0}
+#a .card:hover{transform:rotate(0) translateY(-10px) scale(1.05);box-shadow:0 18px 22px -8px #0006}
+#a .card.on{transform:rotate(0) translateY(-14px) scale(1.07);outline:3px dashed #2b2433;outline-offset:5px}
+#a .card.free .cost{color:#2f9a6a}#a .card.free .cost::after{border-color:#2f9a6a}
+
+/* ========== B · Quadro de cortiça com tachinha ========== */
+#b{background:radial-gradient(#c79a63 1px,transparent 1.5px) 0 0/7px 7px,radial-gradient(#a77945 1px,transparent 1.5px) 3px 4px/9px 9px,#b98a55;color:#fff8ec;box-shadow:inset 0 0 0 10px #6e4a2a,inset 0 0 30px #0006}
+#b .why{color:#fff3e0}
+#b .card{width:148px;min-height:148px;padding:20px 12px 12px;background:var(--pc);color:#2b2433;font-family:"Caveat",cursive;font-size:18px;
+ transform:rotate(var(--r));box-shadow:2px 3px 0 #0002,6px 12px 14px -4px #0006;clip-path:polygon(0 0,100% 0,100% 88%,88% 100%,0 100%);display:grid;gap:3px;align-content:start}
+#b .pin{position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:16px;height:16px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff9a9a,#c2272d 60%,#7a1115);box-shadow:0 3px 3px #0006;z-index:2}
+#b .name{font-weight:700;font-size:23px;line-height:1}
+#b .cost{position:absolute;bottom:6px;right:18px;font-weight:700;font-size:19px}
+#b .cost b{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#2b2433;color:#fff;font-family:system-ui;font-size:13px;margin-left:3px}
+#b .desc{line-height:1}
+#b .tag{font-size:15px;opacity:.75}
+#b .reach{color:#2b2433}
+#b .card:hover{transform:rotate(0) scale(1.06);z-index:3}
+#b .card.on{transform:rotate(0) scale(1.08) translateY(-8px);filter:drop-shadow(0 0 6px #fff)}
+#b .card.free .cost b{background:#2f9a6a}
+
+/* ========== C · Ficha pautada de brainstorm ========== */
+#c{background:#2f3e4f;color:#e9f0f6}
+#c .card{width:170px;min-height:118px;padding:10px 12px 10px 30px;background:repeating-linear-gradient(#fffdf6 0 21px,#9cc3e6 21px 22px);background-position:0 8px;color:#22304a;font-family:"Patrick Hand",cursive;font-size:16px;
+ border-top:8px solid var(--pc);box-shadow:0 8px 14px -4px #0008;transform:rotate(var(--r));display:grid;gap:0;align-content:start}
+#c .card::before{content:"";position:absolute;left:22px;top:0;bottom:0;width:1.5px;background:#e06a6a}
+#c .name{font-size:19px;font-weight:700;line-height:22px;padding-right:34px}
+#c .desc{line-height:22px}
+#c .tag{line-height:22px;color:#c2453f}
+#c .reach{color:#22304a;position:absolute;right:10px;bottom:10px}
+#c .cost{position:absolute;top:-2px;right:8px;width:30px;height:30px;display:grid;place-items:center;border:2.5px solid #c2453f;border-radius:50%;color:#c2453f;font-family:"Permanent Marker",cursive;font-size:15px;transform:rotate(12deg);background:#fffdf6cc}
+#c .card:hover{transform:rotate(0) translateY(-8px)}
+#c .card.on{transform:rotate(0) translateY(-12px);box-shadow:0 0 0 3px #f2c230,0 12px 18px -4px #0009}
+#c .card.free .cost{border-color:#2f9a6a;color:#2f9a6a}
+
+/* ========== D · Post-it em pixel art (linguagem do jogo) ========== */
+#d{background:#151320;color:#f6efe2}
+#d .card{width:150px;min-height:150px;padding:18px 10px 10px;background:var(--pc);color:#1d1b26;font-family:"Press Start 2P",monospace;font-size:8px;line-height:1.6;image-rendering:pixelated;
+ box-shadow:0 0 0 3px #1d1b26,6px 6px 0 3px #0008;transform:rotate(var(--r));display:grid;gap:6px;align-content:start}
+#d .card::before{content:"";position:absolute;top:-8px;left:50%;width:48px;height:14px;transform:translateX(-50%);background:repeating-linear-gradient(90deg,#fff8 0 4px,#fffc 4px 8px);box-shadow:0 0 0 2px #1d1b2655}
+#d .card::after{content:"";position:absolute;right:-3px;bottom:-3px;width:18px;height:18px;background:linear-gradient(135deg,var(--pc) 50%,#1d1b26 50% 56%,#00000033 56%)}
+#d .name{font-size:9.5px;line-height:1.4}
+#d .desc{font-size:7.5px;opacity:.85}
+#d .tag{font-size:7px;background:#1d1b26;color:#f2c230;justify-self:start;padding:3px 4px}
+#d .cost{position:absolute;top:-10px;left:-10px;width:26px;height:26px;display:grid;place-items:center;background:#3a86ff;color:#fff;box-shadow:0 0 0 3px #1d1b26;font-size:10px}
+#d .reach{color:#1d1b26}#d .reach i{border-radius:0}
+#d .card:hover{transform:rotate(0) translateY(-8px)}
+#d .card.on{transform:rotate(0) translateY(-12px);box-shadow:0 0 0 3px #f2c230,6px 6px 0 3px #0008}
+#d .card.free .cost{background:#2f9a6a}
+
+/* ========== E · Rabisco de marcador (doodle) ========== */
+#e{background:#fbfaf6;color:var(--ink);background-image:radial-gradient(#d9d4c8 1px,transparent 1.2px);background-size:18px 18px}
+#e .card{width:156px;min-height:156px;padding:16px 12px 12px;background:var(--pc);color:#1f1a2a;font-family:"Caveat",cursive;font-size:19px;
+ border-radius:3px 14px 4px 12px/12px 4px 14px 3px;box-shadow:0 10px 16px -8px #0005;transform:rotate(var(--r));display:grid;gap:2px;align-content:start}
+#e .card>svg.scribble{position:absolute;inset:-5px;width:calc(100% + 10px);height:calc(100% + 10px);pointer-events:none;overflow:visible}
+#e .name{font-family:"Permanent Marker",cursive;font-size:18px;line-height:1.05;padding-right:30px}
+#e .name u{text-decoration:none;background:linear-gradient(transparent 60%,#fff8 60%)}
+#e .desc{line-height:1}
+#e .tag{font-size:17px;color:#7a2fb5}
+#e .tag::before{content:"→ "}
+#e .cost{position:absolute;top:8px;right:10px;font-family:"Permanent Marker",cursive;font-size:22px}
+#e .cost small{font-size:13px}
+#e .reach{color:#1f1a2a}
+#e .card:hover{transform:rotate(0) scale(1.06)}
+#e .card.on{transform:rotate(0) scale(1.08) translateY(-8px)}
+#e .card.on>svg.scribble path{stroke:#e0457b;stroke-width:3}
+#e .card.free .cost{color:#2f9a6a}
+
+footer{max-width:1180px;margin:8px auto 40px;padding:0 24px;color:#cfc8de;font-size:13px}
+@media (max-width:640px){.hand{gap:16px}header.top h1{font-size:22px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>Cartas de marketing estilo post-it</h1>
+  <p>Cinco protótipos com as mesmas seis cartas, para comparar. Passe o mouse e clique para ver o estado selecionado. A carta Panfleto aparece como grátis, e a última está indisponível (sem energia).</p>
+  <nav class="jump"><a href="#a">A · Clássico com fita</a><a href="#b">B · Cortiça e tachinha</a><a href="#c">C · Ficha pautada</a><a href="#d">D · Pixel do jogo</a><a href="#e">E · Rabisco de marcador</a></nav>
+</header>
+
+<section class="v" id="a"><h2>A · Post-it clássico com fita</h2><p class="why">O post-it de parede de brainstorm: fita adesiva no topo, canto levantado, letra de caneta. O custo vem circulado de vermelho, como quem marca prioridade num quadro.</p><div class="hand"></div><p class="hint">Cores: uma por canal, em tons de bloquinho.</p></section>
+<section class="v" id="b"><h2>B · Quadro de cortiça com tachinha</h2><p class="why">As cartas presas num mural de cortiça. A mão vira o mural da equipe, cada ideia espetada com uma tachinha. O custo fica numa bolinha no rodapé.</p><div class="hand"></div></section>
+<section class="v" id="c"><h2>C · Ficha pautada de brainstorm</h2><p class="why">Ficha de anotação com linhas azuis e margem vermelha, como as do planejamento de campanha. A cor do canal vira a faixa de cima, e o custo é um carimbo.</p><div class="hand"></div></section>
+<section class="v" id="d"><h2>D · Post-it em pixel art</h2><p class="why">O mesmo post-it, mas na linguagem visual do jogo: pixel art, bordas retas, sombra dura. Encaixa direto ao lado do tabuleiro sem destoar.</p><div class="hand"></div></section>
+<section class="v" id="e"><h2>E · Rabisco de marcador</h2><p class="why">Post-it desenhado à mão, com contorno de marcador tremido e setinha na palavra-chave. Quando selecionado, o rabisco fica rosa, como quem circula a ideia escolhida.</p><div class="hand"></div></section>
+<footer>Protótipo fora do jogo · The Founder · amostras-marketing/cartas-postit.html</footer>
+
+<script>
+// as mesmas cartas do tabuleiro de marketing
+const CARDS=[
+ {n:'Influenciador',d:'Área 3×3',tag:'Precisão',cost:2,pc:'#ffc1d6',reach:[6,7,8,11,12,13,16,17,18]},
+ {n:'Assessoria PR',d:'Uma linha inteira',tag:'Controle',cost:1,pc:'#bfe0ff',reach:[10,11,12,13,14]},
+ {n:'Out of Home',d:'Uma coluna inteira',tag:'Cruza com PR',cost:1,pc:'#ffd7a8',reach:[2,7,12,17,22]},
+ {n:'UGC',d:'4 casas em linha',tag:'3 UGCs puxam um 4º',cost:1,pc:'#f3c6ff',reach:[10,11,12,13]},
+ {n:'Panfleto',d:'Alcança 1 casa',tag:'Panfleteiro',cost:0,pc:'#d4f5c4',reach:[12],free:true},
+ {n:'Redes Sociais',d:'10 pessoas ao acaso',tag:'Sorte',cost:2,pc:'#fff3a6',reach:[1,4,8,10,14,16,20,23],off:true}];
+const rot=[-3,2,-1.5,3,-2.5,1.5];
+const reach=r=>'<span class="reach">'+Array.from({length:25},(_,i)=>'<i class="'+(r.includes(i)?'on':'')+'"></i>').join('')+'</span>';
+// contorno tremido para a versão E
+const scribble=seed=>{let s=seed;const j=()=>{s=(s*9301+49297)%233280;return (s/233280-.5)*5;};const pts=[[3,3],[50,2],[97,4],[98,50],[96,97],[50,98],[2,96],[3,50],[4,4]].map(([x,y])=>[x+j(),y+j()]);return '<svg class="scribble" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M'+pts.map(p=>p.join(' ')).join(' L')+'" fill="none" stroke="#1f1a2a" stroke-width="2.2" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>';};
+const make={
+ a:(c,i)=>'<span class="cost">'+c.cost+'</span><span class="name">'+c.n+'</span>'+reach(c.reach)+'<span class="desc">'+c.d+'</span><span class="tag">'+c.tag+'</span>',
+ b:(c,i)=>'<span class="pin"></span><span class="name">'+c.n+'</span>'+reach(c.reach)+'<span class="desc">'+c.d+'</span><span class="tag">'+c.tag+'</span><span class="cost">custo<b>'+c.cost+'</b></span>',
+ c:(c,i)=>'<span class="cost">'+c.cost+'</span><span class="name">'+c.n+'</span><span class="desc">'+c.d+'</span><span class="tag">'+c.tag+'</span>'+reach(c.reach),
+ d:(c,i)=>'<span class="cost">'+c.cost+'</span><span class="name">'+c.n.toUpperCase()+'</span>'+reach(c.reach)+'<span class="desc">'+c.d+'</span><span class="tag">'+c.tag.toUpperCase()+'</span>',
+ e:(c,i)=>scribble(i*37+11)+'<span class="cost">'+c.cost+'<small>⚡</small></span><span class="name"><u>'+c.n+'</u></span>'+reach(c.reach)+'<span class="desc">'+c.d+'</span><span class="tag">'+c.tag+'</span>'};
+for(const id of Object.keys(make)){
+ const hand=document.querySelector('#'+id+' .hand');
+ hand.innerHTML=CARDS.map((c,i)=>'<button class="card'+(c.free?' free':'')+'" style="--pc:'+c.pc+';--r:'+rot[i]+'deg" '+(c.off?'disabled':'')+' aria-label="'+c.n+', custo '+c.cost+'">'+make[id](c,i)+'</button>').join('');
+ hand.addEventListener('click',e=>{const b=e.target.closest('button.card');if(!b||b.disabled)return;const was=b.classList.contains('on');hand.querySelectorAll('button.card.on').forEach(x=>x.classList.remove('on'));if(!was)b.classList.add('on');});
+ hand.querySelectorAll('button[disabled]').forEach(b=>b.style.filter='grayscale(.8) opacity(.55)');
+}
+</script>
+</body>
+</html>
