@@ -1,3 +1,15 @@
+# 1.06 · Nova tela de campanha com post-its
+
+- Tela de campanha dividida ao meio: o tabuleiro ocupa a metade esquerda inteira (bem maior que antes).
+- Legenda das casas escondida num botão "?" no canto do tabuleiro; ao clicar, abre a explicação de cada casa.
+- À direita, de cima para baixo: título, placar junto (alcance, energia em raios e personas), mural, cartas, explicação e botões.
+- Cartas no estilo post-it "papel de bloquinho": faixa com ícone do canal, nome e custo em raios; grade de alcance na cor do canal; efeito escrito por extenso e palavra-chave. Todas do mesmo tamanho, sem inclinação.
+- Passar o mouse numa carta mostra embaixo o que a ação é.
+- Mural: cada carta jogada fica colada em miniatura, numerada; os combos aparecem ligados por linha e numa etiqueta com o nome.
+- Cartas em que você escolhe casas (E-mail, Indicação): as casas escolhidas ficam marcadas e numeradas, e a mensagem mostra quantas já foram escolhidas e quantas faltam.
+- Enquanto há pontos de promotor ou de oportunidade para colocar, as cartas ficam travadas.
+- Protótipo da tela (amostras-marketing/tela-marketing.html) com a mesma marcação das casas escolhidas.
+
 # 1.05 · UGC em quadrado 2×2
 
 - A carta UGC (e o UGC espontâneo do Efeito manada) agora alcança um quadrado 2×2, sem girar. Ícone de alcance atualizado.
