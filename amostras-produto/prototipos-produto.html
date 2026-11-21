@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Protótipos de Produto</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1d1b26;--px:"Press Start 2P",monospace;--sys:system-ui,-apple-system,"Segoe UI",sans-serif;--cream:#fffaf0}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:#151320;color:var(--ink);font-family:var(--sys);padding:8px 12px 14px}
+.tabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:0 auto 8px;max-width:1440px}
+.tabs button{all:unset;cursor:pointer;padding:9px 14px;background:#2a2638;color:#f6efe2;font:400 8px/1 var(--px);box-shadow:0 0 0 2px #3a3650}
+.tabs button.on{background:#f2c230;color:#1d1b26;box-shadow:0 0 0 2px #1d1b26,3px 3px 0 #000a}
+.pane{display:none}.pane.on{display:block}
+.pane iframe{display:block;margin:0 auto;width:min(1440px,100%);height:calc(100vh - 64px);min-height:720px;border:3px solid #1d1b26;background:#000}
+.note{color:#cfc8de;font-size:12px;text-align:center;margin:6px 0 0}
+.screen{width:min(1440px,100%);margin:0 auto;min-height:calc(100vh - 64px);background:var(--cream);border:3px solid var(--ink);border-radius:14px;box-shadow:6px 6px 0 #000a;padding:14px 20px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 24px;align-content:start}
+.full{grid-column:1/-1}
+.tag{display:inline-block;font:900 10px/1 var(--sys);letter-spacing:.04em;background:#6b4fd8;color:#fff;padding:4px 8px;border-radius:999px}
+h2{margin:4px 0 0;font:800 22px/1.15 var(--sys)}
+.sub{margin:3px 0 0;font-size:13px;color:#5b5470;max-width:760px}
+.idea{margin-top:6px;padding:8px 12px;background:#efe7fb;border-radius:10px;font-size:12.5px;color:#3d2f6b;max-width:880px}
+/* placar */
+.score{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:10px;background:#2f2c45;border-radius:12px;box-shadow:0 0 0 3px var(--ink),4px 4px 0 var(--ink);color:#fff}
+.score>div{display:grid;gap:4px;padding:6px 12px;background:#3b3856;border-radius:8px}
+.score small{font:800 10px/1 var(--sys);color:#c9c3e0;letter-spacing:.06em;text-transform:uppercase}
+.score b{font:900 24px/1 var(--sys)}
+.score .bar{height:6px;border-radius:3px;background:#ffffff22;overflow:hidden}.score .bar i{display:block;height:100%;background:#2fbf7a}
+.score .bad b{color:#ff8a80}
+/* persona */
+.persona{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:center;padding:10px;background:#fff;border-radius:12px;box-shadow:0 0 0 2px #1d1b2626}
+.persona .face{width:52px;height:52px;border-radius:50%;background:#ffe27a;display:grid;place-items:center;box-shadow:0 0 0 2px var(--ink)}
+.persona .face svg{width:34px;height:34px}
+.persona b{font-size:14px}.persona small{display:block;color:#5b5470;font-size:12px}
+.pains{display:grid;gap:6px;margin-top:2px}
+.pain{display:grid;grid-template-columns:26px 1fr auto;gap:8px;align-items:center;padding:6px 8px;background:#fff;border-radius:8px;box-shadow:0 0 0 2px #1d1b2620;font-size:12.5px}
+.pain .n{width:26px;height:26px;border-radius:6px;display:grid;place-items:center;color:#fff;font:900 13px/1 var(--sys)}
+.pain .ok{font:800 11px/1 var(--sys);padding:3px 8px;border-radius:999px;background:#ece6da;color:#8a8270}
+.pain.done .ok{background:#2fbf7a;color:#fff}
+/* mensagem e botões */
+.msg{margin:0;padding:8px 12px;background:#fff;border-left:5px solid #f08a24;border-radius:0 8px 8px 0;box-shadow:0 0 0 2px #1d1b2620;font:600 14px/1.35 var(--sys);min-height:44px}
+.actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.btn{all:unset;cursor:pointer;text-align:center;padding:8px 14px;background:#fff;border-radius:10px;box-shadow:0 0 0 2px var(--ink),3px 3px 0 var(--ink);font:400 8px/1.4 var(--px)}
+.btn.primary{background:#f08a24;color:#fff}
+.combos{display:flex;gap:6px;flex-wrap:wrap;min-height:24px}
+.combo{padding:3px 9px;border-radius:999px;color:#fff;font:800 11px/1.4 var(--sys)}
+/* post-it de componente (papel de bloquinho) */
+.hand{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pk{all:unset;position:relative;display:block;cursor:pointer;transition:transform .15s;filter:drop-shadow(1px 2px 0 #0000001f) drop-shadow(3px 6px 6px #0000002e)}
+.pk:hover{transform:translateY(-5px);z-index:3}
+.pk.on{transform:translateY(-9px);filter:drop-shadow(3px 0 0 #f2c230) drop-shadow(-3px 0 0 #f2c230) drop-shadow(0 3px 0 #f2c230) drop-shadow(0 -3px 0 #f2c230) drop-shadow(3px 6px 6px #0000002e)}
+.pk.used{filter:grayscale(.9) opacity(.4);cursor:default;transform:none}
+.pp{position:relative;display:grid;gap:5px;padding:9px;background:linear-gradient(180deg,color-mix(in srgb,var(--pa) 88%,#fff) 0 20px,var(--pa) 20px calc(100% - 26px),color-mix(in srgb,var(--pa) 90%,#000) 100%);clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),calc(100% - 2px) calc(100% - 14px),calc(100% - 2px) calc(100% - 12px),calc(100% - 4px) calc(100% - 12px),calc(100% - 4px) calc(100% - 10px),calc(100% - 6px) calc(100% - 10px),calc(100% - 6px) calc(100% - 8px),calc(100% - 8px) calc(100% - 8px),calc(100% - 8px) calc(100% - 6px),calc(100% - 10px) calc(100% - 6px),calc(100% - 10px) calc(100% - 4px),calc(100% - 12px) calc(100% - 4px),calc(100% - 12px) calc(100% - 2px),calc(100% - 14px) calc(100% - 2px),calc(100% - 14px) 100%,0 100%)}
+.pp::before{content:"";position:absolute;left:0;right:0;top:0;height:20px;background:linear-gradient(180deg,#ffffff38,#ffffff00);border-bottom:1px solid #00000010}
+.pp::after{content:"";position:absolute;right:0;bottom:0;width:14px;height:14px;clip-path:polygon(0 0,14px 0,14px 2px,12px 2px,12px 4px,10px 4px,10px 6px,8px 6px,8px 8px,6px 8px,6px 10px,4px 10px,4px 12px,2px 12px,2px 14px,0 14px);background:color-mix(in srgb,var(--pa) 60%,#fff);box-shadow:inset 2px 2px 3px #00000022}
+.ph{display:flex;align-items:center;gap:6px;padding:4px 6px;background:color-mix(in srgb,var(--pa) 55%,#fff);min-width:0;position:relative}
+.ph .ic{flex:none;width:20px;height:18px;display:grid;place-items:center}.ph .ic svg{width:20px;height:18px}
+.ph .nm{flex:1;min-width:0;font:400 7.5px/1.25 var(--px);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ph .val{flex:none;font:900 12px/1 var(--sys);color:#fff;background:var(--ac);padding:2px 6px;border-radius:999px}
+.pw{display:grid;place-items:center;padding:6px;background:color-mix(in srgb,var(--pa) 55%,#fff);position:relative}
+.shape{display:grid;gap:2px}.shape i{width:13px;height:13px;background:transparent}.shape i.on{background:var(--ac);box-shadow:inset -2px -2px 0 #0003}
+.pb{display:grid;gap:3px;padding:5px 8px;min-height:46px;align-content:center;background:color-mix(in srgb,var(--pa) 55%,#fff);position:relative}
+.pb b{font:800 12.5px/1.15 var(--sys)}.pb em{font:800 9.5px/1 var(--sys);font-style:normal;color:var(--ac);text-transform:uppercase;letter-spacing:.04em}
+.pb .cost{font:800 11px/1 var(--sys);color:#5b5470}
+/* grade do produto */
+.canvas{position:relative;display:grid;gap:4px;padding:10px;border-radius:12px;width:min(100%,calc(100vh - 230px));aspect-ratio:1/1;margin:0 auto}
+.cell{all:unset;position:relative;cursor:pointer;border-radius:4px;display:grid;place-items:center;font:900 14px/1 var(--sys);color:#fff}
+.cell.prev{box-shadow:inset 0 0 0 3px #fff;filter:brightness(1.25)}
+.cell.bad{box-shadow:inset 0 0 0 3px #ff6b6b}
+.cell .pn{position:absolute;inset:4px;border-radius:4px;display:grid;place-items:center;font:900 15px/1 var(--sys)}
+/* P1 · bancada */
+#p1 .canvas{background:#2f2c45;box-shadow:0 0 0 3px var(--ink)}
+#p1 .cell{background:#565274}
+#p1 .cell.pain{background:#565274;box-shadow:inset 0 0 0 3px var(--pc)}
+#p1 .cell.pain .pn{color:var(--pc);border:2px dashed var(--pc)}
+#p1 .cell.filled{background:var(--fc)}
+#p1 .cell.filled.pain .pn{background:#ffffff33;color:#fff;border:2px solid #fff}
+/* P2 · planta técnica */
+#p2 .canvas{background:#1f4e8c;background-image:linear-gradient(#ffffff1f 1px,transparent 1px),linear-gradient(90deg,#ffffff1f 1px,transparent 1px);background-size:20px 20px;box-shadow:0 0 0 3px var(--ink);gap:6px}
+#p2 .cell{background:transparent;box-shadow:inset 0 0 0 1.5px #ffffff66;border-radius:2px}
+#p2 .cell.pain{box-shadow:inset 0 0 0 2px #ffef7a}
+#p2 .cell.pain .pn{background:#ffef7a;color:#1d1b26;inset:auto;width:22px;height:22px;border-radius:2px;transform:rotate(-6deg);box-shadow:2px 2px 0 #0004}
+#p2 .cell.filled{background:var(--fc);box-shadow:inset 0 0 0 2px #fff}
+#p2 .silhouette{position:absolute;inset:14%;border:3px dashed #ffffff55;border-radius:40% 40% 18% 18%;pointer-events:none}
+#p2 .label{position:absolute;color:#ffffffaa;font:400 7px/1 var(--px)}
+/* P3 · encaixes */
+.slots{display:grid;gap:10px}
+.slot{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center;padding:10px;background:#fff;border-radius:12px;box-shadow:0 0 0 2px #1d1b2626;cursor:pointer}
+.slot:hover{box-shadow:0 0 0 3px #f2c230}
+.slot .part{display:grid;gap:3px}.slot .part b{font-size:14px}.slot .part small{color:#5b5470;font-size:12px}
+.slot .drop{min-height:64px;border:2px dashed #1d1b2633;border-radius:10px;display:flex;align-items:center;gap:10px;padding:6px 10px;color:#8a8270;font-size:12.5px}
+.slot .drop.has{border-style:solid;border-color:var(--ac);background:color-mix(in srgb,var(--pa) 40%,#fff);color:var(--ink)}
+.slot .drop .chip{width:12px;height:36px;border-radius:3px;background:var(--ac)}
+.slot .painflag{font:800 11px/1.2 var(--sys);padding:3px 8px;border-radius:999px;background:#fde7e7;color:#a3322a}
+.slot .painflag.ok{background:#dcf6e8;color:#1f7a4c}
+/* P4 · teste com usuários */
+.testers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.tester{display:grid;gap:8px;padding:12px;background:#fff;border-radius:14px;box-shadow:0 0 0 2px #1d1b2626}
+.tester .who{display:flex;gap:10px;align-items:center}.tester .who .face{width:44px;height:44px;border-radius:50%;background:#ffe27a;display:grid;place-items:center;box-shadow:0 0 0 2px var(--ink)}.tester .who .face svg{width:28px;height:28px}
+.tester .bubble{position:relative;padding:10px 12px;background:#f6f1e4;border-radius:12px;font-size:13.5px;line-height:1.35}
+.tester .bubble::before{content:"";position:absolute;top:-8px;left:18px;border:8px solid transparent;border-bottom-color:#f6f1e4;border-top:0}
+.tester .tags{display:flex;gap:5px;flex-wrap:wrap}
+.tester .tags span{font:800 11px/1.4 var(--sys);padding:2px 8px;border-radius:999px;color:#fff}
+.stars{color:#f2a93b;font-size:16px;letter-spacing:1px}
+.verdict{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:12px 14px;background:#2f2c45;color:#fff;border-radius:12px;box-shadow:0 0 0 3px var(--ink),4px 4px 0 var(--ink)}
+.verdict b{font:900 26px/1 var(--sys)}.verdict small{color:#c9c3e0}
+.fixlist{display:grid;gap:8px}
+.fix{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:8px 12px;background:#fff;border-radius:10px;box-shadow:0 0 0 2px #1d1b2620;font-size:13px}
+/* P5 · quadro de prioridades */
+.board5{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.col{display:grid;gap:10px;align-content:start;min-height:420px;padding:10px;border-radius:12px;background:#efe8d8;box-shadow:inset 0 0 0 2px #1d1b2620}
+.col h3{margin:0;font:400 9px/1.3 var(--px)}.col small{color:#5b5470;font-size:12px}
+.col.k1{background:#e3f3e9}.col.k2{background:#fdf2dc}.col.k3{background:#ececf1}
+.budget{display:grid;gap:6px;padding:10px 12px;background:#fff;border-radius:12px;box-shadow:0 0 0 2px #1d1b2626}
+.budget .track{position:relative;height:16px;border-radius:8px;background:#ece6da;overflow:hidden}
+.budget .track i{position:absolute;left:0;top:0;bottom:0;background:#2fbf7a}
+.budget .track .cap{position:absolute;top:-4px;bottom:-4px;width:3px;background:#1d1b26}
+.budget.over .track i{background:#e0453b}
+@media (max-width:980px){.screen{grid-template-columns:1fr}.testers,.board5{grid-template-columns:1fr}.hand{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<nav class="tabs" id="tabs">
+ <button class="on" data-t="hoje">HOJE NO JOGO</button>
+ <button data-t="p1">1 · BANCADA COM DORES</button>
+ <button data-t="p2">2 · PLANTA TÉCNICA</button>
+ <button data-t="p3">3 · ENCAIXES</button>
+ <button data-t="p4">4 · TESTE COM USUÁRIOS</button>
+ <button data-t="p5">5 · PRIORIDADES</button>
+</nav>
+
+<div class="pane on" id="hoje"><iframe id="frame" title="Prancheta atual" data-src="../dist/The-Founder-Cenario-Prancheta-1.06.html"></iframe><p class="note">Prancheta real do jogo (versão 1.06): escolha uma peça, um atributo e encaixe na grade.</p></div>
+
+<!-- 1 · bancada com dores: igual ao marketing, com as dores da persona marcadas na grade -->
+<div class="pane" id="p1"><div class="screen">
+ <div class="full"><span class="tag">PROTÓTIPO 1 · BANCADA COM DORES</span><h2>Monte o fone do Seu Jorge</h2><p class="idea">Mesma lógica do marketing: as 3 dores da persona ficam marcadas na grade (como as personas no tabuleiro). Cada componente tem nome, atributo e formato. Cobrir uma dor com um componente do atributo certo resolve a dor.</p></div>
+ <div><div class="canvas" data-engine="p1"></div></div>
+ <div style="display:grid;gap:10px;align-content:start">
+  <div class="score" data-score></div>
+  <div class="persona" data-persona></div>
+  <div class="pains" data-pains></div>
+  <div class="combos" data-combos></div>
+  <div class="hand" data-hand></div>
+  <p class="msg" data-msg>Escolha um componente e encaixe na grade. R gira.</p>
+  <div class="actions"><button class="btn" data-rot>↻ GIRAR (R)</button><button class="btn" data-reset>RECOMEÇAR</button><button class="btn primary">CONSTRUIR PROTÓTIPO →</button></div>
+ </div>
+</div></div>
+
+<!-- 2 · planta técnica: mesma mecânica, visual de projeto de engenharia -->
+<div class="pane" id="p2"><div class="screen">
+ <div class="full"><span class="tag">PROTÓTIPO 2 · PLANTA TÉCNICA</span><h2>Projeto do fone · versão 1</h2><p class="idea">A grade vira a planta do produto (papel azul de projeto, com o contorno do fone). As dores são post-its amarelos colados na planta. Mesma regra da versão 1, com cara de engenharia.</p></div>
+ <div><div class="canvas" data-engine="p2"><div class="silhouette"></div><span class="label" style="left:12px;top:10px">PLANTA · FONE V1</span><span class="label" style="right:12px;bottom:10px">ESC 1:1</span></div></div>
+ <div style="display:grid;gap:10px;align-content:start">
+  <div class="score" data-score></div>
+  <div class="pains" data-pains></div>
+  <div class="combos" data-combos></div>
+  <div class="hand" data-hand></div>
+  <p class="msg" data-msg>Escolha um componente e encaixe na planta. R gira.</p>
+  <div class="actions"><button class="btn" data-rot>↻ GIRAR (R)</button><button class="btn" data-reset>RECOMEÇAR</button><button class="btn primary">CONSTRUIR PROTÓTIPO →</button></div>
+ </div>
+</div></div>
+
+<!-- 3 · encaixes: sem grade; cada parte do produto aceita um componente -->
+<div class="pane" id="p3"><div class="screen">
+ <div class="full"><span class="tag">PROTÓTIPO 3 · ENCAIXES</span><h2>Do que o fone é feito?</h2><p class="idea">Sem quebra-cabeça: o produto é dividido em partes (som, energia, estrutura, controle, conexão). Cada parte recebe um componente. As dores ficam presas à parte que resolve. Mais fácil de entender, menos espacial.</p></div>
+ <div class="slots" id="slots"></div>
+ <div style="display:grid;gap:10px;align-content:start">
+  <div class="score" id="score3"></div>
+  <div class="persona" data-persona></div>
+  <div class="hand" id="hand3"></div>
+  <p class="msg" id="msg3">Escolha um componente e clique na parte do fone onde ele entra.</p>
+  <div class="actions"><button class="btn" id="reset3">RECOMEÇAR</button><button class="btn primary">CONSTRUIR PROTÓTIPO →</button></div>
+ </div>
+</div></div>
+
+<!-- 4 · teste com usuários: o resultado do protótipo vira reação de pessoas -->
+<div class="pane" id="p4"><div class="screen">
+ <div class="full"><span class="tag">PROTÓTIPO 4 · TESTE COM USUÁRIOS</span><h2>Três pessoas testaram o seu fone</h2><p class="idea">No lugar de só rolar o dado, o teste do protótipo vira a reação de 3 pessoas da persona. Cada uma comenta um componente. O D20 continua por trás, mas o jogador entende o que corrigir.</p></div>
+ <div class="full verdict"><div><small>Nota do teste</small><b>Bom</b></div><div><div class="stars">★★★★☆</div><small>2 das 3 dores resolvidas · o botão único agradou, a bateria decepcionou no frio</small></div><div class="stars" style="font-size:13px;color:#c9c3e0">D20: 14</div></div>
+ <div class="full testers" id="testers"></div>
+ <div class="full" style="display:grid;gap:8px"><b style="font-size:14px">O que dá para fazer agora</b><div class="fixlist">
+  <div class="fix"><span><b>Trocar a bateria</b> por "Bateria reforçada" · resolve "não durou um inverno"</span><button class="btn">CORRIGIR · R$ 800</button></div>
+  <div class="fix"><span><b>Lançar assim mesmo</b> · vendas −10% enquanto a dor de durabilidade não for resolvida</span><button class="btn primary">LANÇAR →</button></div>
+ </div></div>
+</div></div>
+
+<!-- 5 · prioridades: o que entra nesta versão, com teto de custo -->
+<div class="pane" id="p5"><div class="screen">
+ <div class="full"><span class="tag">PROTÓTIPO 5 · PRIORIDADES</span><h2>O que entra no fone v1?</h2><p class="idea">Como um time de produto decide: cada componente vai para "Essencial", "Bom ter" ou "Fica para a v2". O custo por unidade tem um teto (o que a persona aceita pagar). As dores vão ficando resolvidas conforme você prioriza. Clique num post-it para mudar de coluna.</p></div>
+ <div class="full" style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:14px">
+  <div class="budget" id="budget"></div>
+  <div class="pains" id="pains5"></div>
+ </div>
+ <div class="full board5" id="board5"></div>
+ <p class="msg full" id="msg5">Clique num post-it para mover: Essencial → Bom ter → Fica para a v2.</p>
+</div></div>
+
+<script>
+const FACE='<svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="1" width="6" height="2" fill="#b9b2a6"/><rect x="3" y="3" width="6" height="5" fill="#edbd97"/><rect x="4" y="5" width="1" height="1" fill="#2a2133"/><rect x="7" y="5" width="1" height="1" fill="#2a2133"/><rect x="5" y="7" width="2" height="1" fill="#a65a4a"/><rect x="2" y="8" width="8" height="4" fill="#5b7fb5"/></svg>';
+const ATTR={q:{n:'Qualidade',c:'#cc79a7'},d:{n:'Durabilidade',c:'#0072b2'},p:{n:'Desempenho',c:'#d55e00'},r:{n:'Praticidade',c:'#009e73'},v:{n:'Versatilidade',c:'#56b4e9'},e:{n:'Economia',c:'#e69f00'}};
+const PAPER={q:'#ffc2dd',d:'#a9d6ff',p:'#ffc49a',r:'#b5f0cf',v:'#c7ecff',e:'#ffe08a'};
+// ícones pixel dos componentes
+const px=(w,h,rects)=>'<svg viewBox="0 0 '+w+' '+h+'" shape-rendering="crispEdges" aria-hidden="true">'+rects.map(([x,y,a,b,c])=>'<rect x="'+x+'" y="'+y+'" width="'+a+'" height="'+b+'" fill="'+c+'"/>').join('')+'</svg>';
+const IC={
+ bat:px(12,10,[[1,2,9,6,'#1d1b26'],[2,3,7,4,'#2fbf7a'],[10,4,1,2,'#1d1b26']]),
+ alu:px(12,10,[[1,1,10,8,'#1d1b26'],[2,2,8,6,'#c9d2d8'],[3,3,3,1,'#fff']]),
+ btn:px(12,10,[[2,2,8,6,'#1d1b26'],[3,3,6,4,'#e0453b'],[4,3,2,1,'#ff9a90']]),
+ drv:px(12,10,[[2,1,8,8,'#1d1b26'],[3,2,6,6,'#6b4fd8'],[5,4,2,2,'#1d1b26']]),
+ rec:px(12,10,[[2,1,8,8,'#2a7d33'],[4,3,4,4,'#b9f09a'],[5,4,2,2,'#2a7d33']]),
+ bt:px(12,10,[[5,0,2,10,'#1d1b26'],[7,2,2,2,'#1d1b26'],[7,6,2,2,'#1d1b26'],[3,3,2,1,'#3a86ff'],[3,6,2,1,'#3a86ff']]),
+ esp:px(12,10,[[1,3,10,5,'#1d1b26'],[2,4,8,3,'#ffd1e3']]),
+ app:px(12,10,[[3,0,6,10,'#1d1b26'],[4,1,4,7,'#56b4e9'],[5,8,2,1,'#fff']])};
+const COMPS=[
+ {id:'bat',n:'Bateria reforçada',a:'d',v:2,shape:[[0,0],[0,1],[1,1]],cost:9,what:'Aguenta o dia todo, até no frio.',part:'energia'},
+ {id:'btn',n:'Botão único',a:'r',v:2,shape:[[0,0]],cost:2,what:'Liga e toca com um toque, sem aplicativo.',part:'controle'},
+ {id:'drv',n:'Driver premium',a:'q',v:2,shape:[[0,0],[1,0],[0,1],[1,1]],cost:12,what:'Som limpo e grave encorpado.',part:'som'},
+ {id:'rec',n:'Plástico reciclado',a:'e',v:2,shape:[[0,0],[0,1]],cost:-3,what:'Barateia a estrutura do fone.',part:'estrutura'},
+ {id:'alu',n:'Carcaça de alumínio',a:'d',v:1,shape:[[0,0],[1,0]],cost:7,what:'Aguenta queda e dura anos.',part:'estrutura'},
+ {id:'bt',n:'Bluetooth estável',a:'p',v:1,shape:[[0,0],[1,0],[2,0]],cost:6,what:'Conexão que não cai no meio do programa.',part:'conexao'},
+ {id:'esp',n:'Espuma macia',a:'q',v:1,shape:[[0,0],[1,0]],cost:3,what:'Confortável por horas seguidas.',part:'som'},
+ {id:'app',n:'App de equalizador',a:'v',v:1,shape:[[0,0]],cost:4,what:'Ajusta o som pelo celular.',part:'controle'}];
+const PAINS=[
+ {k:1,t:'"O último que comprei não durou um inverno."',a:'d',cell:[1,1],part:'energia'},
+ {k:2,t:'"Aposentado tem que fazer conta, né? Não pode ser caro."',a:'e',cell:[4,2],part:'estrutura'},
+ {k:3,t:'"Quero apertar um botão e ouvir meu programa."',a:'r',cell:[2,4],part:'controle'}];
+const BASE=24,CAP=55;
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const rot=(sh,r)=>{let o=sh.map(([x,y])=>[x,y]);for(let i=0;i<r;i++)o=o.map(([x,y])=>[-y,x]);const mx=Math.min(...o.map(p=>p[0])),my=Math.min(...o.map(p=>p[1]));return o.map(([x,y])=>[x-mx,y-my]);};
+const shapeHtml=sh=>{const w=Math.max(...sh.map(p=>p[0]))+1,h=Math.max(...sh.map(p=>p[1]))+1;let s='<span class="shape" style="grid-template-columns:repeat('+Math.max(w,1)+',13px)">';for(let y=0;y<h;y++)for(let x=0;x<w;x++)s+='<i class="'+(sh.some(p=>p[0]===x&&p[1]===y)?'on':'')+'"></i>';return s+'</span>';};
+const postit=(c,used,on)=>'<button class="pk'+(used?' used':'')+(on?' on':'')+'" data-c="'+c.id+'" style="--pa:'+PAPER[c.a]+';--ac:'+ATTR[c.a].c+'"><span class="pp"><span class="ph"><span class="ic">'+IC[c.id]+'</span><span class="nm">'+esc(c.n)+'</span><span class="val">+'+c.v+'</span></span><span class="pw">'+shapeHtml(c.shape)+'</span><span class="pb"><b>'+ATTR[c.a].n+' +'+c.v+'</b><span class="cost">'+(c.cost<0?'−R$ '+(-c.cost):'+R$ '+c.cost)+' por unidade</span></span></span></button>';
+const info=c=>'<b>'+esc(c.n)+'</b> · '+ATTR[c.a].n+' +'+c.v+' — '+esc(c.what)+' Custo: '+(c.cost<0?'reduz R$ '+(-c.cost):'R$ '+c.cost)+' por unidade.';
+const painHtml=(p,done)=>'<div class="pain'+(done?' done':'')+'"><span class="n" style="background:'+ATTR[p.a].c+'">'+p.k+'</span><span>'+esc(p.t)+' <small style="color:'+ATTR[p.a].c+';font-weight:800">'+ATTR[p.a].n+'</small></span><span class="ok">'+(done?'resolvida':'aberta')+'</span></div>';
+const personaHtml=()=>'<span class="face">'+FACE+'</span><div><b>Seu Jorge · 55+</b><small>Ouve rádio e podcast o dia todo. "Sem ficar mexendo em aplicativo."</small></div>';
+document.querySelectorAll('[data-persona]').forEach(e=>e.innerHTML=personaHtml());
+// combos de componentes encostados
+const COMBOS=[{n:'Kit premium',c:'#8a4fd8',pair:['q','d'],fx:'+1 de qualidade'},{n:'Simplicidade',c:'#2f8a3e',pair:['r','e'],fx:'−R$ 3 por unidade'},{n:'Conflito',c:'#c2453f',pair:['p','e'],fx:'−1 de desempenho'}];
+
+// ---- motor da grade (protótipos 1 e 2)
+function gridEngine(root){const N=6,pane=root.closest('.pane'),canvas=root,st={sel:null,r:0,placed:[]};
+ canvas.style.gridTemplateColumns='repeat('+N+',1fr)';canvas.style.gridTemplateRows='repeat('+N+',1fr)';
+ const occ=()=>{const m={};st.placed.forEach((p,i)=>p.cells.forEach(([x,y])=>m[x+','+y]={i,a:COMPS.find(c=>c.id===p.id).a}));return m;};
+ const painAt=(x,y)=>PAINS.find(p=>p.cell[0]===x&&p.cell[1]===y);
+ function solved(){const o=occ();return PAINS.filter(p=>{const c=o[p.cell[0]+','+p.cell[1]];return c&&c.a===p.a;});}
+ function combos(){const o=occ(),found=[];const nb=[[1,0],[-1,0],[0,1],[0,-1]];COMBOS.forEach(cb=>{let hit=false;Object.entries(o).forEach(([k,v])=>{const[x,y]=k.split(',').map(Number);nb.forEach(([dx,dy])=>{const w=o[(x+dx)+','+(y+dy)];if(w&&w.i!==v.i&&((v.a===cb.pair[0]&&w.a===cb.pair[1])||(v.a===cb.pair[1]&&w.a===cb.pair[0])))hit=true;});});if(hit)found.push(cb);});return found;}
+ function totals(){let q=0,cost=BASE;st.placed.forEach(p=>{const c=COMPS.find(x=>x.id===p.id);q+=c.v;cost+=c.cost;});const cb=combos();cb.forEach(c=>{if(c.n==='Kit premium')q+=1;if(c.n==='Simplicidade')cost-=3;if(c.n==='Conflito')q-=1;});return{q,cost,cb};}
+ function paint(){const o=occ();canvas.querySelectorAll('.cell').forEach(e=>e.remove());for(let y=0;y<N;y++)for(let x=0;x<N;x++){const b=document.createElement('button');b.className='cell';b.dataset.x=x;b.dataset.y=y;const c=o[x+','+y],pn=painAt(x,y);if(c){b.classList.add('filled');b.style.setProperty('--fc',ATTR[c.a].c);}if(pn){b.classList.add('pain');b.style.setProperty('--pc',ATTR[pn.a].c);b.innerHTML='<span class="pn">'+pn.k+'</span>';b.title='Dor '+pn.k+': '+pn.t;}canvas.appendChild(b);}
+  const t=totals(),sv=solved();
+  pane.querySelector('[data-score]').innerHTML='<div><small>Qualidade</small><b>'+t.q+'</b><span class="bar"><i style="width:'+Math.min(100,t.q/14*100)+'%"></i></span></div><div><small>Dores</small><b>'+sv.length+'/3</b><span class="bar"><i style="width:'+sv.length/3*100+'%"></i></span></div><div class="'+(t.cost>CAP?'bad':'')+'"><small>Custo/unid.</small><b>R$ '+t.cost+'</b><span class="bar"><i style="width:'+Math.min(100,t.cost/CAP*100)+'%;background:'+(t.cost>CAP?'#e0453b':'#2fbf7a')+'"></i></span></div>';
+  const pe=pane.querySelector('[data-pains]');if(pe)pe.innerHTML=PAINS.map(p=>painHtml(p,sv.includes(p))).join('');
+  pane.querySelector('[data-combos]').innerHTML=t.cb.map(c=>'<span class="combo" style="background:'+c.c+'">'+(c.n==='Conflito'?'⚠ ':'✦ ')+c.n+' · '+c.fx+'</span>').join('');
+  const used=st.placed.map(p=>p.id),hand=pane.querySelector('[data-hand]');hand.innerHTML=COMPS.slice(0,6).map(c=>postit(c,used.includes(c.id),st.sel===c.id)).join('');}
+ function cellsFor(x,y){const c=COMPS.find(q=>q.id===st.sel);return rot(c.shape,st.r).map(([dx,dy])=>[x+dx,y+dy]);}
+ function fits(cells){const o=occ();return cells.every(([x,y])=>x>=0&&y>=0&&x<N&&y<N&&!o[x+','+y]);}
+ const msg=t=>pane.querySelector('[data-msg]').innerHTML=t;
+ canvas.addEventListener('mouseover',e=>{const c=e.target.closest('.cell');canvas.querySelectorAll('.prev,.bad').forEach(q=>q.classList.remove('prev','bad'));if(!c||!st.sel)return;const cells=cellsFor(+c.dataset.x,+c.dataset.y),ok=fits(cells);cells.forEach(([x,y])=>canvas.querySelector('[data-x="'+x+'"][data-y="'+y+'"]')?.classList.add(ok?'prev':'bad'));});
+ canvas.addEventListener('click',e=>{const c=e.target.closest('.cell');if(!c)return;if(!st.sel){msg('Primeiro escolha um componente ao lado.');return;}const cells=cellsFor(+c.dataset.x,+c.dataset.y);if(!fits(cells)){msg('Não cabe aí. Gire (R) ou tente outra casa.');return;}const before=solved().length,cb0=combos().map(x=>x.n);st.placed.push({id:st.sel,cells});const comp=COMPS.find(q=>q.id===st.sel);st.sel=null;st.r=0;paint();const sv=solved().length,cb=combos().filter(x=>!cb0.includes(x.n));msg('<b>'+esc(comp.n)+'</b> encaixado.'+(sv>before?' ✅ Resolveu uma dor do Seu Jorge!':'')+(cb.length?' '+cb.map(x=>(x.n==='Conflito'?'⚠ ':'✦ ')+'Combo '+x.n+': '+x.fx).join(' · '):''));});
+ pane.querySelector('[data-hand]').addEventListener('click',e=>{const b=e.target.closest('.pk');if(!b||b.classList.contains('used'))return;st.sel=st.sel===b.dataset.c?null:b.dataset.c;st.r=0;paint();if(st.sel)msg(info(COMPS.find(c=>c.id===st.sel))+' <br><i>Passe o mouse na grade e clique para encaixar.</i>');});
+ pane.querySelector('[data-hand]').addEventListener('mouseover',e=>{const b=e.target.closest('.pk');if(b)msg(info(COMPS.find(c=>c.id===b.dataset.c)));});
+ pane.querySelector('[data-rot]').onclick=()=>{st.r=(st.r+1)%4;msg('Girou o componente.');};
+ addEventListener('keydown',e=>{if((e.key==='r'||e.key==='R')&&pane.classList.contains('on')){st.r=(st.r+1)%4;}});
+ pane.querySelector('[data-reset]').onclick=()=>{st.placed=[];st.sel=null;paint();msg('Escolha um componente e encaixe. R gira.');};
+ paint();}
+document.querySelectorAll('[data-engine]').forEach(gridEngine);
+
+// ---- protótipo 3: encaixes por parte
+(function(){const PARTS=[{id:'som',n:'Som',d:'O que você ouve'},{id:'energia',n:'Energia',d:'Quanto tempo dura'},{id:'estrutura',n:'Estrutura',d:'Do que é feito por fora'},{id:'controle',n:'Controle',d:'Como liga e usa'},{id:'conexao',n:'Conexão',d:'Como fala com o rádio ou celular'}];const st={sel:null,fill:{}};
+ function paint(){const sv=PAINS.filter(p=>{const c=COMPS.find(x=>x.id===st.fill[p.part]);return c&&c.a===p.a;});let q=0,cost=BASE;Object.values(st.fill).forEach(id=>{const c=COMPS.find(x=>x.id===id);q+=c.v;cost+=c.cost;});
+  document.getElementById('slots').innerHTML=PARTS.map(p=>{const c=COMPS.find(x=>x.id===st.fill[p.id]),pn=PAINS.find(x=>x.part===p.id),ok=pn&&c&&c.a===pn.a;return '<div class="slot" data-p="'+p.id+'"><div class="part"><b>'+p.n+'</b><small>'+p.d+'</small>'+(pn?'<span class="painflag'+(ok?' ok':'')+'">Dor '+pn.k+(ok?' resolvida':': '+ATTR[pn.a].n)+'</span>':'')+'</div><div class="drop'+(c?' has':'')+'" style="'+(c?'--ac:'+ATTR[c.a].c+';--pa:'+PAPER[c.a]:'')+'">'+(c?'<span class="chip"></span><span style="width:20px">'+IC[c.id]+'</span><span><b>'+esc(c.n)+'</b><br><small>'+ATTR[c.a].n+' +'+c.v+' · '+(c.cost<0?'−R$ '+(-c.cost):'+R$ '+c.cost)+'</small></span>':'Vazio · clique para colocar o componente escolhido')+'</div></div>';}).join('');
+  document.getElementById('score3').innerHTML='<div><small>Qualidade</small><b>'+q+'</b></div><div><small>Dores</small><b>'+sv.length+'/3</b></div><div class="'+(cost>CAP?'bad':'')+'"><small>Custo/unid.</small><b>R$ '+cost+'</b></div>';
+  const used=Object.values(st.fill);document.getElementById('hand3').innerHTML=COMPS.slice(0,6).map(c=>postit(c,used.includes(c.id),st.sel===c.id)).join('');}
+ const msg=t=>document.getElementById('msg3').innerHTML=t;
+ document.getElementById('hand3').addEventListener('click',e=>{const b=e.target.closest('.pk');if(!b||b.classList.contains('used'))return;st.sel=st.sel===b.dataset.c?null:b.dataset.c;paint();if(st.sel){const c=COMPS.find(x=>x.id===st.sel);msg(info(c)+'<br><i>Combina com a parte: '+c.part+'.</i>');}});
+ document.getElementById('hand3').addEventListener('mouseover',e=>{const b=e.target.closest('.pk');if(b)msg(info(COMPS.find(c=>c.id===b.dataset.c)));});
+ document.getElementById('slots').addEventListener('click',e=>{const s=e.target.closest('.slot');if(!s)return;const p=s.dataset.p;if(!st.sel){if(st.fill[p]){delete st.fill[p];paint();msg('Componente retirado.');}else msg('Escolha um componente ao lado primeiro.');return;}st.fill[p]=st.sel;const c=COMPS.find(x=>x.id===st.sel);st.sel=null;paint();msg('<b>'+esc(c.n)+'</b> colocado em '+p+'.');});
+ document.getElementById('reset3').onclick=()=>{st.fill={};st.sel=null;paint();};paint();})();
+
+// ---- protótipo 4: reações dos testadores
+document.getElementById('testers').innerHTML=[
+ {n:'Seu Jorge',a:'58 anos · rádio o dia todo',s:4,t:'"Apertei um botão e já estava tocando o meu programa. Isso é o que eu queria!"',tags:[['Botão único','r'],['Praticidade','r']]},
+ {n:'Dona Lurdes',a:'63 anos · ouve novela',s:3,t:'"O som é bom, mas a bateria morreu no segundo dia de frio. Igual ao anterior."',tags:[['Bateria comum','d'],['Durabilidade','d']]},
+ {n:'Seu Antônio',a:'71 anos · ouve futebol',s:4,t:'"Pelo preço, está ótimo. Não parece coisa barata."',tags:[['Plástico reciclado','e'],['Economia','e']]}].map(p=>'<div class="tester"><div class="who"><span class="face">'+FACE+'</span><div><b>'+p.n+'</b><br><small style="color:#5b5470">'+p.a+'</small></div><span class="stars" style="margin-left:auto">'+'★'.repeat(p.s)+'☆'.repeat(5-p.s)+'</span></div><div class="bubble">'+esc(p.t)+'</div><div class="tags">'+p.tags.map(([t,a])=>'<span style="background:'+ATTR[a].c+'">'+t+'</span>').join('')+'</div></div>').join('');
+
+// ---- protótipo 5: prioridades com teto de custo
+(function(){const st={col:{bat:1,btn:1,drv:2,rec:1,alu:3,bt:2,esp:3,app:3}};
+ function paint(){let cost=BASE,q=0;COMPS.forEach(c=>{if(st.col[c.id]<3){cost+=c.cost;q+=c.v;}});const sv=PAINS.filter(p=>COMPS.some(c=>st.col[c.id]<3&&c.a===p.a));const over=cost>CAP;
+  document.getElementById('budget').className='budget'+(over?' over':'');document.getElementById('budget').innerHTML='<div style="display:flex;justify-content:space-between"><b>Custo por unidade: R$ '+cost+'</b><span style="color:#5b5470">teto do Seu Jorge: R$ '+CAP+' · qualidade '+q+'</span></div><div class="track"><i style="width:'+Math.min(100,cost/(CAP*1.3)*100)+'%"></i><span class="cap" style="left:'+(CAP/(CAP*1.3)*100)+'%"></span></div><small style="color:'+(over?'#c2453f':'#2f8a3e')+';font-weight:800">'+(over?'Passou do que a persona aceita pagar. Tire algo de "Bom ter".':'Dentro do que a persona aceita pagar.')+'</small>';
+  document.getElementById('pains5').innerHTML=PAINS.map(p=>painHtml(p,sv.includes(p))).join('');
+  const cols=[[1,'ESSENCIAL','Entra de qualquer jeito','k1'],[2,'BOM TER','Entra se couber no custo','k2'],[3,'FICA PARA A V2','Não entra agora','k3']];
+  document.getElementById('board5').innerHTML=cols.map(([k,t,d,cls])=>'<div class="col '+cls+'"><div><h3>'+t+'</h3><small>'+d+'</small></div>'+COMPS.filter(c=>st.col[c.id]===k).map(c=>postit(c,false,false)).join('')+'</div>').join('');}
+ document.getElementById('board5').addEventListener('click',e=>{const b=e.target.closest('.pk');if(!b)return;const id=b.dataset.c;st.col[id]=st.col[id]%3+1;paint();const c=COMPS.find(x=>x.id===id);document.getElementById('msg5').innerHTML='<b>'+esc(c.n)+'</b> foi para '+['','Essencial','Bom ter','Fica para a v2'][st.col[id]]+'.';});
+ document.getElementById('board5').addEventListener('mouseover',e=>{const b=e.target.closest('.pk');if(b)document.getElementById('msg5').innerHTML=info(COMPS.find(c=>c.id===b.dataset.c));});
+ paint();})();
+
+// ---- abas
+document.getElementById('tabs').addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(!b)return;document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id===b.dataset.t));const fr=document.getElementById('frame');if(b.dataset.t==='hoje'&&!fr.src)fr.src=fr.dataset.src;});
+{const fr=document.getElementById('frame');fr.src=fr.dataset.src;}
+</script>
+</body>
+</html>
