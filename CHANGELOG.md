@@ -1,3 +1,8 @@
+# 1.05 · UGC em quadrado 2×2
+
+- A carta UGC (e o UGC espontâneo do Efeito manada) agora alcança um quadrado 2×2, sem girar. Ícone de alcance atualizado.
+- Protótipo de comparação das cartas: o post-it pixel ganhou o desenho da ação, uma frase curta explicando o que ela é e a grade de alcance na cor do canal.
+
 # 1.04 · Combos de marketing e cartas estilo TCG
 
 - Combos no tabuleiro de marketing (cada um vale uma vez por campanha, menos o Efeito manada):
