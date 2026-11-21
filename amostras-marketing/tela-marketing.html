@@ -11,56 +11,55 @@ body{margin:0;min-height:100vh;background:#151320;color:var(--ink);font-family:s
 .pane{display:none;justify-content:center}.pane.on{display:flex}
 .pane iframe{width:min(1366px,100%);height:calc(100vh - 70px);min-height:760px;border:3px solid #1d1b26;background:#000}
 .pane .note{color:#cfc8de;font-size:12px;text-align:center;margin:6px 0 0}
-.screen{width:min(1320px,100%);background:var(--paper-bg);border:3px solid var(--ink);box-shadow:8px 8px 0 #000a;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;gap:10px 16px;padding:14px 16px 10px}
-.top{grid-column:1/-1;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.tag{font:400 8px/1 var(--px);background:#6b4fd8;color:#fff;padding:5px 7px}
-.top h1{margin:0;font:400 15px/1.2 var(--px)}
-.top p{margin:0;font-size:13px;color:#5b5470}
-.faces{display:flex;gap:4px;margin-left:auto}.faces span{width:30px;height:30px;padding:3px;background:#e8e2d4;box-shadow:0 0 0 2px #1d1b2633;filter:grayscale(1) opacity(.5)}.faces span.on{filter:none;background:#ffe27a;box-shadow:0 0 0 2px var(--ink)}
+.screen{width:min(1180px,100%);background:#fffaf0;border:3px solid var(--ink);border-radius:14px;box-shadow:6px 6px 0 #000a;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto auto;gap:10px 22px;padding:12px 22px 6px}
+.top{grid-column:1/-1;display:flex;align-items:flex-start;gap:14px;border-bottom:2px dashed #1d1b2622;padding-bottom:8px}
+.tag{display:inline-block;font:900 10px/1 system-ui,sans-serif;letter-spacing:.04em;background:#6b4fd8;color:#fff;padding:4px 8px;border-radius:999px;margin-bottom:6px}
+.top h1{margin:0;font:800 22px/1.1 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:-.01em}
+.top p{margin:4px 0 0;font-size:13px;color:#5b5470}
+.faces{display:flex;gap:6px;margin-left:auto}.faces span{width:38px;height:38px;padding:6px;border-radius:50%;background:#ece6da;box-shadow:0 0 0 2px #1d1b2626;filter:grayscale(1) opacity(.5)}.faces span.on{filter:none;background:#ffe27a;box-shadow:0 0 0 2px var(--ink)}
 .faces svg{width:100%;height:100%}
-.stats{display:flex;gap:8px}.stat{display:grid;gap:3px;padding:5px 9px;background:#fff;box-shadow:0 0 0 2px var(--ink),3px 3px 0 #1d1b2655}.stat small{font:400 6px/1 var(--px);color:#5b5470}.stat b{font:400 20px/1 var(--vt)}
-.energy{display:flex;gap:1px;align-items:center}.energy svg{width:10px;height:15px}.energy svg.off{opacity:.22}
-/* tabuleiro */
-.left{display:grid;gap:8px;align-content:start}
-.board{display:grid;gap:3px;padding:6px;background:#2a2638;box-shadow:0 0 0 3px var(--ink);width:min(440px,calc(100vh - 330px));height:min(440px,calc(100vh - 330px))}
-.bc{min-width:0;min-height:0}
-.bc{all:unset;cursor:pointer;display:grid;place-items:center;background:#4b4766;font:400 12px/1 var(--vt);color:#fff;position:relative}
+.left{display:grid;gap:10px;align-content:start}
+.board{display:grid;gap:4px;padding:8px;background:#2f2c45;border-radius:10px;box-shadow:0 0 0 3px var(--ink);width:min(400px,max(260px,calc(100vh - 480px)),100%);aspect-ratio:1/1;height:auto}
+.bc{all:unset;min-width:0;min-height:0;cursor:pointer;display:grid;place-items:center;background:#565274;border-radius:3px;font:900 13px/1 system-ui,sans-serif;color:#fff;position:relative}
 .bc.k-p{background:#f2c230;color:#1d1b26}.bc.k-e{background:#3a86ff}.bc.k-d{background:#e0453b}.bc.k-m{background:#e0457b}.bc.k-x{background:repeating-linear-gradient(45deg,#3b2f2f 0 4px,#2a2222 4px 8px)}
 .bc.hit{background:#2fbf7a;color:#fff}.bc.hit.k-p{background:#ffe27a;box-shadow:inset 0 0 0 3px #2fbf7a}
 .bc.blocked{background:repeating-linear-gradient(45deg,#8c2a2a 0 4px,#5c1b1b 4px 8px)!important;color:#ffb3b3}
 .bc.prev{box-shadow:inset 0 0 0 3px #fff;filter:brightness(1.25)}
 .bc.flash{animation:flash .45s ease}@keyframes flash{0%{transform:scale(1.25);filter:brightness(1.8)}100%{transform:scale(1)}}
 .bc.opp{background:#f2c230!important;color:#1d1b26;animation:pulse .5s infinite alternate;z-index:2}@keyframes pulse{to{transform:scale(1.15)}}
-.legend{display:flex;gap:6px;flex-wrap:wrap;font-size:11px}.legend span{display:flex;align-items:center;gap:4px;background:#fff;padding:2px 6px;box-shadow:0 0 0 1.5px #1d1b2633}.legend i{width:12px;height:12px;display:inline-block}
-/* mural */
-.right{display:grid;grid-template-rows:auto auto auto auto 1fr;gap:8px;min-width:0;align-content:start}
-.msg{margin:0;padding:8px 10px;background:#fff;box-shadow:0 0 0 2px var(--ink);font:400 19px/1 var(--vt);min-height:38px}
-.mural-h{display:flex;justify-content:space-between;align-items:center}.mural-h b{font:400 9px/1 var(--px)}.mural-h small{font-size:12px;color:#5b5470}
-.mural{position:relative;min-height:0;height:118px;padding:12px 12px;overflow-x:auto!important;background:#e9e3d3;background-image:linear-gradient(#d8d0bd 1px,transparent 1px),linear-gradient(90deg,#d8d0bd 1px,transparent 1px);background-size:24px 24px;box-shadow:inset 0 0 0 3px var(--ink);overflow:hidden}
-.mural .empty{position:absolute;inset:0;display:grid;place-items:center;color:#8a8270;font:400 17px/1.05 var(--vt);text-align:center;padding:10px 20px}
-.mural .row{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start;flex-wrap:nowrap!important;width:max-content}
-.mini{position:relative;width:70px;min-height:76px;padding:7px 4px 5px;background:var(--paper);clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),calc(100% - 2px) calc(100% - 14px),calc(100% - 2px) calc(100% - 12px),calc(100% - 4px) calc(100% - 12px),calc(100% - 4px) calc(100% - 10px),calc(100% - 6px) calc(100% - 10px),calc(100% - 6px) calc(100% - 8px),calc(100% - 8px) calc(100% - 8px),calc(100% - 8px) calc(100% - 6px),calc(100% - 10px) calc(100% - 6px),calc(100% - 10px) calc(100% - 4px),calc(100% - 12px) calc(100% - 4px),calc(100% - 12px) calc(100% - 2px),calc(100% - 14px) calc(100% - 2px),calc(100% - 14px) 100%,0 100%);filter:drop-shadow(2px 2px 0 #1d1b2655);transform:rotate(var(--r));display:grid;gap:2px;justify-items:center}
-.mini-wrap{position:relative;filter:drop-shadow(2px 2px 0 #1d1b2655)}
-.mini-wrap .mini{filter:none}
-.mini .glue{position:absolute;inset:0 0 auto 0;height:4px;background:#0000001a}
-.mini .n{font:400 5px/1.3 var(--px);text-transform:uppercase;text-align:center}
-.mini .a svg{width:30px;height:auto;display:block}
-.mini .o{font:400 6px/1 var(--px);color:#5b5470}
-.mini .fold{position:absolute;right:0;bottom:0;width:14px;height:14px;clip-path:polygon(0 0,14px 0px,14px 2px,12px 2px,12px 4px,10px 4px,10px 6px,8px 6px,8px 8px,6px 8px,6px 10px,4px 10px,4px 12px,2px 12px,2px 14px,0 14px);background:color-mix(in srgb,var(--paper) 65%,#fff)}
-.mini-wrap.combo-hit .mini{outline:3px solid var(--cc,#f2c230);outline-offset:2px}
-#links{position:absolute;inset:0;pointer-events:none;z-index:2}
-.combos{display:flex;gap:6px;flex-wrap:wrap;min-height:26px}
-.combo-tag{display:flex;align-items:center;gap:6px;padding:4px 8px;background:var(--cc);color:#fff;font:400 7px/1.2 var(--px);box-shadow:0 0 0 2px var(--ink),3px 3px 0 #1d1b2655;cursor:help}
-.combo-tag span{font:400 15px/1 var(--vt)}
-/* mão */
-.handbar{grid-column:1/-1;display:flex;align-items:flex-end;gap:12px;border-top:2px dashed #1d1b2633;padding-top:10px}
-.hand{flex:1;display:flex;justify-content:center;align-items:flex-end;gap:12px;padding:18px 4px 6px;min-height:200px}
-.actions{display:grid;gap:6px;align-self:center}
-.actions button{all:unset;cursor:pointer;text-align:center;padding:8px 10px;background:#fff;box-shadow:0 0 0 2px var(--ink),3px 3px 0 var(--ink);font:400 7px/1.4 var(--px)}
-.actions button.primary{background:#f2c230}
+.legend{display:flex;gap:6px;flex-wrap:wrap;font-size:11.5px;font-weight:700;max-width:430px}.legend span{display:flex;align-items:center;gap:5px;background:#fff;padding:3px 9px 3px 4px;border-radius:999px;box-shadow:0 0 0 1.5px #1d1b2640}.legend i{width:14px;height:14px;border-radius:3px;display:inline-block}
+/* coluna lateral, como no jogo */
+.right{display:grid;gap:12px;align-content:start;min-width:0}
+.stats{display:flex;gap:8px}.stat{display:grid;gap:2px;padding:6px 12px;background:#fff;border-radius:10px;box-shadow:0 0 0 2px var(--ink),3px 3px 0 var(--ink)}.stat small{font:800 10px/1 system-ui,sans-serif;color:#5b5470}.stat b{font:900 20px/1.1 system-ui,sans-serif;display:flex;align-items:center;gap:6px}
+.energy svg{width:10px;height:15px}.energy svg.off{opacity:.22}.energy em{font-style:normal}
+.msg{margin:0;padding:4px 0 4px 12px;border-left:5px solid #f08a24;font:800 15px/1.35 system-ui,-apple-system,"Segoe UI",sans-serif;min-height:42px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.actions button{all:unset;cursor:pointer;text-align:center;padding:8px 14px;background:#fff;border-radius:10px;box-shadow:0 0 0 2px var(--ink),3px 3px 0 var(--ink);font:400 8px/1.4 var(--px)}
+.actions button.primary{background:#f08a24;color:#fff}
 .actions button:disabled{opacity:.4;cursor:not-allowed}
 .actions button[hidden]{display:none}
-.actions small{display:block;font:400 14px/1 var(--vt);margin-top:3px}
+.actions small{display:block;font:700 11px/1 system-ui,sans-serif;margin-top:3px;color:#5b5470}
+/* mural: um detalhe pequeno */
+.muralbox{width:min(270px,50%);display:grid;gap:5px}
+.mural-h{display:flex;align-items:center;gap:6px}.mural-h b{font:900 9.5px/1 system-ui,sans-serif;letter-spacing:.06em;color:#5b5470}.mural-h small{font-size:10.5px;color:#8a8270}
+.mural{position:relative;height:60px;padding:8px;overflow-x:auto;overflow-y:hidden;background:#e9e3d3;background-image:linear-gradient(#d8d0bd 1px,transparent 1px),linear-gradient(90deg,#d8d0bd 1px,transparent 1px);background-size:12px 12px;border-radius:8px;box-shadow:inset 0 0 0 2px #1d1b2655}
+.mural .empty{position:absolute;inset:0;display:grid;place-items:center;color:#8a8270;font:700 11px/1.2 system-ui,sans-serif;text-align:center;padding:4px 10px}
+.mural .row{position:relative;z-index:1;display:flex;gap:6px;flex-wrap:nowrap;width:max-content}
+.mini-wrap{position:relative;filter:drop-shadow(1.5px 1.5px 0 #1d1b2655)}
+.mini{position:relative;width:40px;height:42px;padding:6px 2px 2px;background:var(--paper);clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),calc(100% - 2px) calc(100% - 14px),calc(100% - 2px) calc(100% - 12px),calc(100% - 4px) calc(100% - 12px),calc(100% - 4px) calc(100% - 10px),calc(100% - 6px) calc(100% - 10px),calc(100% - 6px) calc(100% - 8px),calc(100% - 8px) calc(100% - 8px),calc(100% - 8px) calc(100% - 6px),calc(100% - 10px) calc(100% - 6px),calc(100% - 10px) calc(100% - 4px),calc(100% - 12px) calc(100% - 4px),calc(100% - 12px) calc(100% - 2px),calc(100% - 14px) calc(100% - 2px),calc(100% - 14px) 100%,0 100%);transform:rotate(var(--r));display:grid;justify-items:center;align-content:start}
+.mini .glue{position:absolute;inset:0 0 auto 0;height:3px;background:#0000001a}
+.mini .n{display:none}
+.mini .a svg{width:26px;height:auto;display:block}
+.mini .o{position:absolute;left:2px;bottom:1px;font:900 8px/1 system-ui,sans-serif;color:#5b5470}
+.mini .fold{position:absolute;right:0;bottom:0;width:14px;height:14px;clip-path:polygon(0 0,14px 0px,14px 2px,12px 2px,12px 4px,10px 4px,10px 6px,8px 6px,8px 8px,6px 8px,6px 10px,4px 10px,4px 12px,2px 12px,2px 14px,0 14px);background:color-mix(in srgb,var(--paper) 65%,#fff)}
+.mini-wrap.combo-hit .mini{outline:2px solid var(--cc,#f2c230);outline-offset:1px}
+#links{position:absolute;inset:0;pointer-events:none;z-index:2}
+.combos{display:flex;gap:4px;flex-wrap:wrap}
+.combo-tag{display:flex;align-items:center;gap:4px;padding:2px 7px;background:var(--cc);color:#fff;font:800 10px/1.3 system-ui,sans-serif;border-radius:999px;cursor:help}
+.combo-tag span{opacity:.85;font-weight:700}
+/* mão */
+.handbar{grid-column:1/-1;border-top:2px dashed #1d1b2622;padding-top:6px}
+.hand{display:flex;justify-content:center;align-items:flex-end;gap:12px;padding:14px 4px 4px;min-height:190px}
 /* carta post-it (versão 1) */
 .card{all:unset;position:relative;cursor:pointer;width:150px;transform:rotate(var(--r));transition:transform .15s ease;filter:drop-shadow(4px 4px 0 #1d1b2655)}
 .card:not([disabled]):hover{transform:rotate(0) translateY(-12px) scale(1.05);z-index:4}
@@ -86,14 +85,16 @@ body{margin:0;min-height:100vh;background:#151320;color:var(--ink);font-family:s
 .result>div{background:var(--paper-bg);border:3px solid var(--ink);box-shadow:8px 8px 0 #000a;padding:18px 22px;display:grid;gap:8px;text-align:center;max-width:420px}
 .result b{font:400 13px/1.3 var(--px)}.result p{margin:0;font:400 20px/1 var(--vt)}
 .result button{all:unset;cursor:pointer;justify-self:center;padding:8px 12px;background:#f2c230;box-shadow:0 0 0 2px var(--ink),3px 3px 0 var(--ink);font:400 8px/1 var(--px)}
-@media (max-width:980px){.screen{grid-template-columns:1fr}.board{width:min(430px,100%)}}
+@media (max-width:980px){.screen{grid-template-columns:1fr;padding:12px}.board{width:min(400px,100%)}.hand{flex-wrap:wrap}.muralbox{width:100%}}
 </style></head><body>
 <nav class="tabs"><button class="on" data-tab="proto">PROTÓTIPO</button><button data-tab="game">COMO ESTÁ NO JOGO</button></nav>
 <div class="pane on" id="pane-proto"><div class="screen">
- <div class="top"><span class="tag">PROTÓTIPO · FORA DO JOGO</span><div><h1>Crie sua campanha</h1><p>Alcance as 3 personas. Cada uma multiplica o resultado.</p></div><div class="stats"><div class="stat"><small>ALCANCE</small><b id="reach">0%</b></div><div class="stat"><small>ENERGIA</small><b class="energy" id="energy"></b></div></div><div class="faces" id="faces"></div></div>
- <div class="left"><div class="board" id="board"></div><div class="legend"><span><i style="background:#f2c230"></i>Persona</span><span><i style="background:#3a86ff"></i>Viralização</span><span><i style="background:#e0453b"></i>Cancelamento</span><span><i style="background:#e0457b"></i>Promotor</span><span><i style="background:#2fbf7a"></i>Alcançado</span></div></div>
- <div class="right"><p class="msg" id="msg"></p><div class="mural-h"><b>MURAL DA CAMPANHA</b><small>os post-its que você jogou ficam colados aqui</small></div><div class="mural" id="mural"></div><div class="combos" id="combos"></div></div>
- <div class="handbar"><div class="hand" id="hand"></div><div class="actions"><button id="swap">TROCAR CARTAS<small id="swapn"></small></button><button id="rot" hidden>GIRAR (R)</button><button id="send" hidden class="primary">ENVIAR E-MAIL</button><button id="end" class="primary">ENCERRAR</button><button id="restart">RECOMEÇAR</button></div></div>
+ <div class="top"><div><span class="tag">PROTÓTIPO · CAMPANHA · EXPERIENTE</span><h1>Crie sua campanha</h1><p>Alcance as <b>3 personas</b>. Cada uma multiplica o resultado.</p></div><div class="faces" id="faces"></div></div>
+ <div class="left"><div class="board" id="board"></div><div class="legend"><span><i style="background:#f2c230"></i>Persona</span><span><i style="background:#3a86ff"></i>Viralização: alcança os vizinhos</span><span><i style="background:#e0453b"></i>Cancelamento: apaga o 3×3</span><span><i style="background:#e0457b"></i>Promotor: 2 pontos perto dele</span><span><i style="background:#f2c230"></i>Oportunidade: clique a tempo</span></div></div>
+ <div class="right"><div class="stats"><div class="stat"><small>Alcance</small><b id="reach">0%</b></div><div class="stat"><small>Energia</small><b class="energy" id="energy"></b></div></div><p class="msg" id="msg"></p>
+  <div class="actions"><button id="swap">TROCAR CARTAS<small id="swapn"></small></button><button id="rot" hidden>GIRAR (R)</button><button id="send" hidden class="primary">ENVIAR E-MAIL</button><button id="end" class="primary">ENCERRAR CAMPANHA →</button><button id="restart">RECOMEÇAR</button></div>
+  <div class="muralbox"><div class="mural-h"><b>📌 MURAL</b><small>o que você jogou</small></div><div class="mural" id="mural"></div><div class="combos" id="combos"></div></div></div>
+ <div class="handbar"><div class="hand" id="hand"></div></div>
 </div></div>
 <div class="pane" id="pane-game"><div style="display:grid;justify-items:center;width:100%"><iframe id="game-frame" title="Jogo atual" data-src="../dist/The-Founder-Cenario-Campanha-1.05.html"></iframe><p class="note">Cenário real do jogo (versão 1.05), aberto direto na campanha. Feche os tutoriais para ver o tabuleiro.</p></div></div>
 <script src="../src/first-loop/universal-products.js"></script>
@@ -115,14 +116,14 @@ const cost=(t,i)=>b.nextFree&&!B.cards[t].free?0:(B.cards[t].cost||0);
 const counted=()=>new Set(B.counted(b));
 function boardHtml(){const n=b.n,on=counted();$('board').style.gridTemplateColumns='repeat('+n+',1fr)';$('board').style.gridTemplateRows='repeat('+n+',1fr)';$('board').innerHTML=b.kind.map((k,i)=>{const bl=b.blocked.includes(i);return '<button class="bc k-'+k+(on.has(i)?' hit':'')+(bl?' blocked':'')+'" data-c="'+i+'">'+({p:'★',e:'✶',d:'✕',m:'♥',k:'?'}[k]||'')+'</button>';}).join('');if(st.opp){const e=cell(st.opp.c);e.classList.add('opp');e.textContent=st.opp.t;}}
 const cell=i=>$('board').querySelector('[data-c="'+i+'"]');
-function stats(){const on=counted(),sc=B.score(b);$('reach').textContent=Math.round(sc.pct)+'%';$('energy').innerHTML=Array.from({length:Math.max(st.max,st.energy)},(_,k)=>BOLT.replace('<svg','<svg class="'+(k<st.energy?'':'off')+'"')).join('');$('faces').innerHTML=Array.from({length:sc.total},(_,k)=>'<span class="'+(k<sc.personas?'on':'')+'">'+FACE+'</span>').join('');$('msg').textContent=st.msg;}
+function stats(){const on=counted(),sc=B.score(b);$('reach').textContent=Math.round(sc.pct)+'%';$('energy').innerHTML='<span>'+Array.from({length:Math.max(st.max,st.energy)},(_,k)=>BOLT.replace('<svg','<svg class="'+(k<st.energy?'':'off')+'"')).join('')+'</span><em>'+st.energy+'/'+st.max+'</em>';$('faces').innerHTML=Array.from({length:sc.total},(_,k)=>'<span class="'+(k<sc.personas?'on':'')+'">'+FACE+'</span>').join('');$('msg').textContent=st.msg;}
 function cardHtml(t,i,k,n){const c=B.cards[t],[paper,ink]=PAPER[t]||['#eee','#555'],cs=cost(t,i),off=st.busy||st.done||b.free>0||b.promo>0||cs>st.energy||(t==='email'&&!B.emailTargets(b).length);return '<button class="card'+(st.sel===i?' on':'')+'" data-i="'+i+'" style="--paper:'+paper+';--cink:'+ink+';--r:'+((k-(n-1)/2)*2.2).toFixed(1)+'deg" '+(off?'disabled':'')+'><span class="paper"><span class="glue"></span><span class="ttl"><span class="nm">'+esc(c.n)+'</span><span class="cost">'+(cs?BOLT.repeat(cs):'<b class="gratis">GRÁTIS</b>')+'</span></span><span class="art">'+(ART[t]||'')+'</span><span class="what">'+esc(WHAT[t]||c.d)+'</span><span class="foot"><span class="pg">'+Array.from({length:25},(_,q)=>'<i class="'+((SHAPE[t]||[]).includes(q)?'on':'')+'"></i>').join('')+'</span><span class="meta"><b>'+esc(c.d)+'</b><em>'+esc(c.tag)+'</em></span></span><span class="fold"></span></span></button>';}
 function handHtml(){const vis=b.hand.map((t,i)=>[t,i]).filter(([t,i])=>!b.used.includes(i));$('hand').innerHTML=vis.map(([t,i],k)=>cardHtml(t,i,k,vis.length)).join('');const t=type();$('rot').hidden=t!=='seo';$('send').hidden=!(t==='email'&&st.picks.length);$('send').textContent='ENVIAR PARA '+st.picks.length;const left=3-b.resets;$('swap').disabled=st.busy||st.done||left<=0;$('swapn').textContent=left+' trocas';$('end').disabled=st.done;}
-function muralHtml(){const m=$('mural');if(!st.mural.length){m.innerHTML='<div class="empty">Os post-its que você jogar ficam colados aqui, na ordem. Quando eles formam um combo, aparecem ligados.</div>';$('combos').innerHTML='';return;}
+function muralHtml(){const m=$('mural');if(!st.mural.length){m.innerHTML='<div class="empty">Seus post-its aparecem aqui</div>';$('combos').innerHTML='';return;}
  m.innerHTML='<svg id="links"></svg><div class="row">'+st.mural.map((p,k)=>{const [paper]=PAPER[p.t]||['#eee'];const cc=p.combos.length?COMBO_COLOR[p.combos.at(-1)]:'';return '<div class="mini-wrap'+(p.combos.length?' combo-hit':'')+'" data-k="'+k+'" style="--cc:'+cc+'"><div class="mini" style="--paper:'+paper+';--r:'+(((k*37)%7)-3)+'deg"><span class="glue"></span><span class="o">'+(k+1)+'</span><span class="a">'+(ART[p.t]||'')+'</span><span class="n">'+esc(B.cards[p.t].n)+'</span><span class="fold"></span></div></div>';}).join('')+'</div>';
- $('combos').innerHTML=st.combos.map(c=>{const k=B.combos[c.id];return '<span class="combo-tag" style="--cc:'+COMBO_COLOR[c.id]+'" title="'+esc(k.t)+'">'+k.ic+' '+esc(k.n.toUpperCase())+'<span>'+c.cards.map(x=>'#'+(x+1)).join(' + ')+'</span></span>';}).join('');
+ $('combos').innerHTML=st.combos.map(c=>{const k=B.combos[c.id];return '<span class="combo-tag" style="--cc:'+COMBO_COLOR[c.id]+'" title="'+esc(k.t)+'">'+k.ic+' '+esc(k.n)+' <span>'+c.cards.map(x=>'#'+(x+1)).join('+')+'</span></span>';}).join('');
  requestAnimationFrame(links);}
-function links(){const m=$('mural'),svg=$('links');if(!svg)return;const r0=m.getBoundingClientRect();svg.setAttribute('width',r0.width);svg.setAttribute('height',r0.height);let out='';st.combos.forEach(c=>{const pts=c.cards.map(k=>{const e=m.querySelector('[data-k="'+k+'"]');if(!e)return null;const r=e.getBoundingClientRect();return [r.left-r0.left+r.width/2,r.top-r0.top+r.height/2];}).filter(Boolean);if(pts.length>1)out+='<polyline points="'+pts.map(p=>p.join(',')).join(' ')+'" fill="none" stroke="'+COMBO_COLOR[c.id]+'" stroke-width="4" stroke-dasharray="6 4" stroke-linecap="square" opacity=".85"/>'+pts.map(p=>'<rect x="'+(p[0]-4)+'" y="'+(p[1]-4)+'" width="8" height="8" fill="'+COMBO_COLOR[c.id]+'" stroke="#1d1b26" stroke-width="2"/>').join('');});svg.innerHTML=out;}
+function links(){const m=$('mural'),svg=$('links');if(!svg)return;const r0=m.getBoundingClientRect();svg.setAttribute('width',r0.width);svg.setAttribute('height',r0.height);let out='';st.combos.forEach(c=>{const pts=c.cards.map(k=>{const e=m.querySelector('[data-k="'+k+'"]');if(!e)return null;const r=e.getBoundingClientRect();return [r.left-r0.left+r.width/2,r.top-r0.top+r.height/2];}).filter(Boolean);if(pts.length>1)out+='<polyline points="'+pts.map(p=>p.join(',')).join(' ')+'" fill="none" stroke="'+COMBO_COLOR[c.id]+'" stroke-width="2" stroke-dasharray="3 2" stroke-linecap="square" opacity=".85"/>'+pts.map(p=>'<rect x="'+(p[0]-2)+'" y="'+(p[1]-2)+'" width="4" height="4" fill="'+COMBO_COLOR[c.id]+'" stroke="#1d1b26" stroke-width="2"/>').join('');});svg.innerHTML=out;}
 function paintAll(){boardHtml();stats();handHtml();muralHtml();}
 const type=()=>st.sel==null?null:b.hand[st.sel];
 function preview(c){$('board').querySelectorAll('.prev').forEach(e=>e.classList.remove('prev'));const t=type();if(!t||st.busy)return;let cells=[];if(b.free>0)return;if(b.promo>0)cells=B.promoNearTargets(b);else if(t==='email')cells=B.emailTargets(b);else if(c!=null)cells=B.preview(b,t,c,st.rot);cells.forEach(x=>cell(x)?.classList.add('prev'));st.picks.forEach(x=>cell(x)?.classList.add('prev'));}
