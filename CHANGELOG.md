@@ -1,3 +1,17 @@
+# 1.04 · Combos de marketing e cartas estilo TCG
+
+- Combos no tabuleiro de marketing (cada um vale uma vez por campanha, menos o Efeito manada):
+  - Mídia cruzada: PR e Out of Home se cruzando dão +1 de energia.
+  - Boca a boca: duas viralizações na mesma jogada puxam um 3º disparo.
+  - Funil completo: SEO, depois Conteúdo, depois E-mail dobram o alcance do E-mail.
+  - Lançamento coordenado: TV e Redes Sociais na mesma campanha alcançam uma persona que faltava (as personas já ficam visíveis no tabuleiro, então o combo alcança em vez de revelar).
+  - Prova social: duas personas numa jogada só devolvem 1 de energia.
+  - Embaixador: promotor alcançado por um Influenciador dá 3 pontos em vez de 2.
+  - Sequência: três cartas de custo 1 seguidas deixam a próxima de graça.
+- Aviso de combo no meio da tela, com nome e efeito.
+- Cartas redesenhadas no estilo de jogo de cartas colecionáveis: moldura na cor do canal, gema de custo, faixa de nome, janela de arte, faixa do canal, caixa de texto, palavra-chave e brilho ao passar o mouse.
+- A mão de cartas fica numa faixa larga embaixo do tabuleiro; o tabuleiro encolheu um pouco para tudo caber sem rolar.
+
 # 1.03 · Playtest: travamento, vendas, Nexus e cartas de marketing
 
 - Correção: escolher **Teclado** travava o jogo inteiro (o ícone do teclado chamava uma função de desenho que não existia). Era isso que parecia "crash ao criar o terceiro produto".
