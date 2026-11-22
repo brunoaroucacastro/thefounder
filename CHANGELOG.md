@@ -1,3 +1,12 @@
+# 1.07 · Prancheta de produto com cara de desenvolvimento
+
+- Peças: o número (+1, +2) ficou bem maior, e peças separadas mostram o vazio entre os blocos (quadradinho tracejado); na grade, a prévia também marca esse vazio.
+- Escolha do atributo: ao escolher a peça, a ficha do produto acende com "② Escolha o atributo desta peça", e passar o mouse num atributo mostra quanto ele vai subir.
+- Atributos viraram a "Ficha do produto" (com a versão NV).
+- Protótipo que amadurece: Esboço (traço de lápis), Maquete (cores simples) e Protótipo (cor cheia, brilho e selo da versão), conforme as peças encaixadas. Funciona com qualquer produto.
+- Moldura de estúdio em volta da grade: linhas de medida e carimbo "PROTÓTIPO NV".
+- Na tela de resultado da montagem aparece o protótipo pronto.
+
 # 1.06 · Nova tela de campanha com post-its
 
 - Tela de campanha dividida ao meio: o tabuleiro ocupa a metade esquerda inteira (bem maior que antes).
