@@ -99,6 +99,31 @@ iframe{display:block;margin:0 auto;width:min(1440px,100%);height:calc(100vh - 60
 .sbar .scale{position:relative;height:30px;font:700 10.5px/1 var(--sys);color:#c9e9dc}
 .sbar .scale span{position:absolute;top:18px;transform:translateX(-50%)}
 .sbar .chance{font-size:12px;color:#e6f7ef}.sbar .chance b{color:#fff}
+/* painel no formato do jogo */
+.boxes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bx{display:grid;justify-items:center;gap:4px;padding:12px 10px;background:#173f36;border:2px solid #0e3a30}
+.bx small{font:800 11px/1 var(--sys);color:#c9e9dc;letter-spacing:.1em}
+.bx b{font:400 46px/1 var(--sys);font-weight:300;color:#f6efe2}.bx b.y{color:var(--yellow)}
+.bx em{font:800 12px/1.2 var(--sys);font-style:normal;color:#e6f7ef}
+.gbar{display:grid;gap:4px}
+.gbar .lbls{position:relative;height:14px}
+.gbar .lbls span{position:absolute;transform:translateX(-50%);font:800 11.5px/1 var(--sys);color:#fff3c4}.gbar .lbls span.red{color:#ff9d8f}
+.gbar .track{position:relative;height:24px;border:2px solid #0a2d25;background:#0e3a30}
+.gbar .z{position:absolute;top:0;bottom:0;display:grid;place-items:center;font:800 11.5px/1 var(--sys);white-space:nowrap;overflow:hidden;color:#1d1b26}
+.gbar .z.weak{left:0;background:#8aa6a0}.gbar .z.ok{background:#7ccf98}.gbar .z.bad{background:#e0705f;color:#fff}
+.gbar .tick{position:absolute;top:-6px;bottom:-6px;width:2px;background:#fff3c4}.gbar .tick.red{background:#ff9d8f}
+.gbar .mk{position:absolute;top:-8px;bottom:-8px;width:3px;background:#fff;transform:translateX(-50%);transition:left .35s;z-index:2}
+.gbar .mk b{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);padding:0 5px;background:#fff;color:var(--ink);font:800 11px/1.4 var(--sys)}
+.gbar .scale{position:relative;height:16px;font:700 11.5px/1 var(--sys);color:#c9e9dc}
+.gbar .scale span{position:absolute;top:4px;transform:translateX(-50%)}
+.intro{margin:0;align-self:end;color:#e6f7ef;font-size:14px;line-height:1.4}
+.table{min-height:170px}
+.chancebox{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;padding:12px 16px;background:#173f36;border:2px solid #0e3a30}
+.chancebox small{font:800 11px/1 var(--sys);color:#c9e9dc;letter-spacing:.1em}
+.chancebox b{display:block;font:300 52px/1.05 var(--sys);color:#7ccf98}
+.chancebox em{font:800 13px/1.2 var(--sys);font-style:normal;color:#fff}
+.chancebox .cb{height:20px;background:#0e3a30;border:2px solid #0a2d25}.chancebox .cb i{display:block;height:100%;background:#7ccf98}
+.btns .full{grid-column:1/-1}
 @media (max-width:1000px){.cols{grid-template-columns:1fr}}
 </style>
 </head>
@@ -141,23 +166,23 @@ const DOCS=[
  {v:'10',p:10,n:'Carta de investidor',s:'gar',face:true}];
 const T=13;let st;
 const total=h=>{let t=0,a=0;h.forEach(c=>{t+=c.p;if(c.ace)a++;});return a&&t+10<=21?t+10:t;};
-function reset(){st={hand:[],deck:52,done:null};paint();}
+function reset(){st={hand:[],deck:52,done:null,started:false};paint();}
 function gauge(t){const r=78,cx=100,cy=96,toR=d=>d*Math.PI/180,pos=v=>{const a=180-Math.min(v,24)/24*180;return[cx+r*Math.cos(toR(a)),cy-r*Math.sin(toR(a))];},arc=(a0,a1,c)=>{const[x0,y0]=pos(a0),[x1,y1]=pos(a1);return '<path d="M'+x0.toFixed(1)+' '+y0.toFixed(1)+' A'+r+' '+r+' 0 0 1 '+x1.toFixed(1)+' '+y1.toFixed(1)+'" stroke="'+c+'" stroke-width="16" fill="none"/>';};const[nx,ny]=pos(t),col=t>21?'#ff6b5a':t>=T?'#7ef0b2':'#fff';
  return '<svg viewBox="0 0 200 112">'+arc(0,T,'#8aa69c')+arc(T,21,'#5fbf8a')+arc(21,24,'#e0705f')+'<line x1="'+cx+'" y1="'+cy+'" x2="'+nx.toFixed(1)+'" y2="'+ny.toFixed(1)+'" stroke="'+col+'" stroke-width="4" stroke-linecap="round"/><circle cx="'+cx+'" cy="'+cy+'" r="7" fill="'+col+'" stroke="#0e3a30" stroke-width="2"/><text x="'+cx+'" y="'+(cy-24)+'" text-anchor="middle" font-family="VT323" font-size="30" fill="'+col+'">'+t+'</text><text x="22" y="110" font-size="8" fill="#c9e9dc">0</text><text x="'+(pos(T)[0]-6).toFixed(0)+'" y="'+(pos(T)[1]-12).toFixed(0)+'" font-size="8" fill="#fff3c4">'+T+'</text><text x="'+(pos(21)[0]-4).toFixed(0)+'" y="'+(pos(21)[1]-12).toFixed(0)+'" font-size="8" fill="#ffd6cf">21</text></svg>';}
 // a barra de hoje, com os nomes novos: faixas, marcadores e chance do próximo documento
 function nextSafe(t){if(t>=21)return 0;let ok=0;DOCS.forEach(c=>{if(t+c.p<=21)ok++;});return Math.round(ok/DOCS.length*100);}
-function barHtml(t){const MAX=24,p=v=>Math.min(100,v/MAX*100),chance=st.done?null:nextSafe(t);
- return '<div class="sbar"><div class="track"><span class="z weak" style="left:0;width:'+p(T)+'%">Dossiê fraco</span><span class="z ok" style="left:'+p(T)+'%;width:'+(p(21.5)-p(T))+'%">Aprovado</span><span class="z bad" style="left:'+p(21.5)+'%;right:0">Diverg.</span><i class="fill" style="width:'+p(Math.min(t,MAX))+'%"></i><span class="mk" style="left:'+p(t)+'%"><b>'+t+'</b></span><span class="tick" style="left:'+p(T)+'%"><em>exigência '+T+'</em></span><span class="tick red" style="left:'+p(21.5)+'%"><em>limite 21</em></span></div><div class="scale"><span style="left:'+p(T/2)+'%">até '+(T-1)+'</span><span style="left:'+p((T+21)/2)+'%">'+T+'–21</span><span style="left:'+p(22.8)+'%">22+</span></div>'+(chance==null?'':'<div class="chance">Chance do próximo documento <b>não</b> gerar divergência: <b>'+chance+'%</b></div>')+'</div>';}
+function barHtml(t,started){const MAX=24,p=v=>Math.min(100,v/MAX*100);
+ return '<div class="gbar"><div class="lbls"><span style="left:'+p(T)+'%">alvo '+T+'</span><span class="red" style="left:'+p(21.5)+'%">limite 21</span></div><div class="track"><span class="z weak" style="width:'+p(T)+'%">Abaixo da exigência</span><span class="z ok" style="left:'+p(T)+'%;width:'+(p(21.5)-p(T))+'%">Aprovado</span><span class="z bad" style="left:'+p(21.5)+'%;right:0">Diverg.</span><i class="tick" style="left:'+p(T)+'%"></i><i class="tick red" style="left:'+p(21.5)+'%"></i>'+(started?'<i class="mk" style="left:'+p(Math.min(t,MAX))+'%"><b>'+t+'</b></i>':'')+'</div><div class="scale"><span style="left:'+p(T/2)+'%">até '+(T-1)+'</span><span style="left:'+p((T+21)/2)+'%">'+T+'–21</span><span style="left:'+p(22.8)+'%">22+</span></div></div>';}
 function card(c){const S=SUIT[c.s];return '<div class="dcard'+(c.face?' face':'')+(c.ace?' ace':'')+'" style="--sc:'+S.c+'"><span class="corner"><b>'+c.v+'</b><i>'+S.i+'</i></span><span class="paper"><span></span><span></span><span></span><span></span><span></span><i class="seal">'+(c.ace?'1/11':c.p)+'</i></span><span class="name">'+c.n+'</span><span class="corner br"><b>'+c.v+'</b><i>'+S.i+'</i></span></div>';}
 function paint(){const t=total(st.hand),d=st.done;
  const q=d==='bust'?'"Os números do balanço não batem com o extrato. Não consigo aprovar assim."':d==='win'?'"Documentação completa. Pedido aprovado!"':d==='short'?'"Com isso aqui eu só consigo liberar menos. Topa?"':st.hand.length?'"Hum... tem mais algum documento?"':'"Ainda não me convenceu."';
- document.getElementById('right').innerHTML='<div class="mgr"><span class="face">🧑‍💼</span><div><small>● ANALISANDO SEU PEDIDO</small><b>Gerente do Banco do Bairro</b><em>'+q+'</em></div></div>'+
-  '<div class="nums"><div class="k"><small>SCORE DO PEDIDO</small><b style="color:'+(t>21?'#ff8a7a':t>=T?'#7ef0b2':'#fff')+'">'+t+'</b></div><div class="k req"><small>EXIGÊNCIA DO BANCO</small><b>'+T+'</b><em>limite de análise 21</em></div></div>'+
-  barHtml(t)+
-  '<div class="table"><div class="hand">'+(st.hand.length?st.hand.map(card).join(''):'<p style="margin:0;color:#c9e9dc;font-size:13px">Peça um documento para começar a análise.</p>')+'</div><div class="deck"><div class="back"></div><small>'+st.deck+' documentos</small></div>'+
+ const go=st.started;document.getElementById('right').innerHTML='<div class="mgr"><span class="face">🧑‍💼</span><div><small>'+(go?'● ANALISANDO SEU PEDIDO':'■ LIGAÇÃO PRONTA PARA INICIAR')+'</small><b>Gerente do Banco do Bairro</b><em>'+(go?q:'"Quando quiser, me apresente o pedido."')+'</em></div></div>'+
+  (go?'<div class="boxes"><div class="bx"><small>SCORE DO PEDIDO</small><b style="color:'+(t>21?'#ff8a7a':t>=T?'#7ef0b2':'#fff')+'">'+t+'</b><em>soma dos documentos</em></div><div class="bx"><small>EXIGÊNCIA DO BANCO</small><b class="y">'+T+'</b><em>soma mínima para aprovar</em></div></div>':'<div class="boxes"><div class="bx"><small>EXIGÊNCIA DO BANCO</small><b class="y">'+T+'</b><em>soma mínima para aprovar</em></div><div class="bx"><small>LIMITE DE ANÁLISE</small><b>21</b><em>passou disso, divergência</em></div></div>')+
+  barHtml(t,go)+
+  '<div class="table"><div class="hand">'+(st.hand.length?st.hand.map(card).join(''):'<p class="intro">Apresente o pedido para o gerente analisar o primeiro documento.<br>Some até a exigência sem passar de 21.</p>')+'</div><div class="deck"><div class="back"></div><small>'+st.deck+' documentos</small></div>'+
   '<div class="stamp '+(d==='bust'?'on':d==='win'?'on ok':d==='short'?'on short':'')+'">'+(d==='bust'?'DIVERGÊNCIA<br>ENCONTRADA<small>A confiança do banco caiu</small>':d==='win'?'APROVADO<small>Crédito liberado</small>':d==='short'?'DOSSIÊ FRACO<small>O gerente fez uma contraproposta</small>':'')+'</div></div>'+
-  '<div class="btns">'+(d?'<button class="hit" data-x="again">NEGOCIAR DE NOVO</button><span></span>':'<button class="hit" data-x="hit">PEDIR DOCUMENTO</button><button class="stand" data-x="stand" '+(st.hand.length?'':'disabled')+'>ENCERRAR COM '+t+'</button><small>O score sobe... ou os números deixam de bater.</small><small>Abaixo da exigência: o gerente recusa o pedido.</small>')+'</div>';}
-document.getElementById('right').addEventListener('click',e=>{const x=e.target.closest('[data-x]')?.dataset.x;if(!x)return;if(x==='again'){reset();return;}if(x==='hit'){st.hand.push(DOCS[Math.floor(Math.random()*DOCS.length)]);st.deck--;if(total(st.hand)>21)st.done='bust';paint();return;}if(x==='stand'){st.done=total(st.hand)>=T?'win':'short';paint();}});
+  (go?'':'<div class="chancebox"><div><small>CHANCE DE APROVAR O PEDIDO</small><b>97%</b><em>O gerente deve aprovar sem muito esforço.</em></div><span class="cb"><i style="width:97%"></i></span></div>')+'<div class="btns">'+(!go?'<button class="hit full" data-x="start">APRESENTAR PEDIDO</button>':d?'<button class="hit" data-x="again">NEGOCIAR DE NOVO</button><span></span>':'<button class="hit" data-x="hit">PEDIR DOCUMENTO</button><button class="stand" data-x="stand" '+(st.hand.length?'':'disabled')+'>ENCERRAR COM '+t+'</button><small>O score sobe... ou os números deixam de bater.</small><small>Abaixo da exigência: o gerente recusa o pedido.</small>')+'</div>';}
+document.getElementById('right').addEventListener('click',e=>{const x=e.target.closest('[data-x]')?.dataset.x;if(!x)return;if(x==='again'){reset();return;}if(x==='start'){st.started=true;paint();return;}if(x==='hit'){st.hand.push(DOCS[Math.floor(Math.random()*DOCS.length)]);st.deck--;if(total(st.hand)>21)st.done='bust';paint();return;}if(x==='stand'){st.done=total(st.hand)>=T?'win':'short';paint();}});
 document.querySelectorAll('.req .sq').forEach((e,k)=>e.innerHTML=Array.from({length:10},(_,i)=>'<i class="'+(i<[1,1,1,1][k]?'on':'')+'"></i>').join(''));
 document.getElementById('tabs').addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(!b)return;document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id===b.dataset.t));});
 {const fr=document.getElementById('frame');fr.src=fr.dataset.src;const h=location.hash.slice(1);if(h)document.querySelector('[data-t="'+h+'"]')?.click();}
