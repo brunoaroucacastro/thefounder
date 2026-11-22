@@ -1,3 +1,11 @@
+# 1.08 · Negociação de crédito com documentos para análise
+
+- As cartas do baralho viraram documentos com cara de carta: valor e ícone no canto, ícone em pixel art no meio e o nome do documento. O Ás é o Avalista (vale 1 ou 11); do 2 ao 9: comprovante de endereço, contrato social, extrato do mês, notas fiscais, certidão negativa, contrato com cliente, balanço do trimestre e pedidos em carteira; os que valem 10 são histórico de 12 meses, fluxo de caixa projetado, plano de negócios e carta de investidor.
+- Score do pedido em formato de termômetro (ponteiro e número), com as mesmas faixas e cores da barra, que continua igual logo abaixo.
+- Nomes de crédito: Score do pedido, Exigência do banco, Limite de análise, Divergência (no lugar de estouro), Pedir documento.
+- A mão fica sempre em uma fileira: quando falta espaço, os documentos se sobrepõem como cartas na mão.
+- Tutorial de crédito: a página das cartas virou "Apresente documentos".
+
 # 1.07 · Prancheta de produto com cara de desenvolvimento
 
 - Peças: o número (+1, +2) ficou bem maior, e peças separadas mostram o vazio entre os blocos (quadradinho tracejado); na grade, a prévia também marca esse vazio.

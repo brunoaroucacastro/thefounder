@@ -1925,3 +1925,22 @@ body.rail-covered #status-bar #buffs.buffs{display:none!important}
 #tray .pw-attr[data-plus]:not([data-plus=""]):hover>b::after{content:" " attr(data-plus);color:var(--c);font-weight:900}
 .pw-proto-done{width:min(260px,100%);justify-self:center;margin:4px auto 8px}
 .pw-proto-done .gadget-preview,.pw-proto-done .product-sprite{width:150px!important;height:132px!important}
+
+/* ===== negociação de crédito (1.08): documentos para análise ===== */
+/* mão sempre em uma fileira: as cartas se sobrepõem quando falta espaço */
+#workshop-info .cr-table{min-width:0}
+#workshop-info .cr-hand{flex-wrap:nowrap!important;flex:1;min-width:0;gap:0!important}
+#workshop-info .cr-slot{flex:0 1 86px;min-width:14px}
+#workshop-info .cr-slot:last-child{flex:none;width:78px}
+/* carta-documento: valor e ícone no canto, ícone grande no meio, nome do documento */
+#workshop-info .cr-card.doc .cr-pip{position:absolute;top:25px;left:6px;width:12px;height:12px}
+#workshop-info .cr-card.doc .cr-pip svg,#workshop-info .cr-card.doc .cr-ic svg{display:block;width:100%;height:100%}
+#workshop-info .cr-card.doc .cr-ic{position:absolute;top:16px;left:50%;width:34px;height:34px;transform:translateX(-50%)}
+#workshop-info .cr-card.doc .cr-dn{position:absolute;top:56px;left:4px;right:4px;text-align:center;font-size:10px;font-weight:900;line-height:1.15;color:#1d1b26}
+#workshop-info .cr-card.doc .cr-r,#workshop-info .cr-card.doc .cr-r2{color:#1d1b26}
+/* termômetro do score */
+#workshop-info .cr-sc{display:grid;align-content:center}
+#workshop-info .cr-sc.gz{padding:6px 10px 6px}
+#workshop-info .cr-gauge{display:block;width:100%;max-width:170px;height:auto;margin:2px auto 0}
+/* tutorial */
+.ta-card.doc i{width:26px;height:26px;display:block}.ta-card.doc i svg{display:block;width:100%;height:100%}
