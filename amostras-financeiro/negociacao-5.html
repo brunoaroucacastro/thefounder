@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Negociação Financeira</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1d1b26;--px:"Press Start 2P",monospace;--vt:"VT323",monospace;--sys:system-ui,-apple-system,"Segoe UI",sans-serif;--cream:#fbf6ea;--yellow:#f2c230;--green:#2f9a6a;--red:#c2453f}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:#151320;font-family:var(--sys);padding:8px 12px 14px;color:var(--ink)}
+.tabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:0 auto 8px}
+.tabs button{all:unset;cursor:pointer;padding:9px 14px;background:#2a2638;color:#f6efe2;font:400 8px/1 var(--px);box-shadow:0 0 0 2px #3a3650}
+.tabs button.on{background:var(--yellow);color:#1d1b26;box-shadow:0 0 0 2px #1d1b26,3px 3px 0 #000a}
+.pane{display:none}.pane.on{display:block}
+iframe{display:block;margin:0 auto;width:min(1440px,100%);height:calc(100vh - 60px);min-height:720px;border:3px solid #1d1b26;background:#000}
+.idea{max-width:1180px;margin:0 auto 8px;padding:8px 12px;background:#efe7fb;border-radius:10px;font-size:13px;color:#3d2f6b}
+/* moldura comum: igual ao painel do jogo */
+.neg{max-width:1180px;margin:0 auto;background:var(--cream);border:3px solid var(--ink);box-shadow:6px 6px 0 #000a;padding:16px 20px;display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px 22px}
+.neg h1{grid-column:1/-1;margin:0;font:400 14px/1.2 var(--px);display:flex;justify-content:space-between;align-items:center}
+.neg h1 small{font:800 12px/1 var(--sys);color:#5b5470}
+.lbl{justify-self:start;padding:5px 10px;background:var(--yellow);border:2px solid var(--ink);font:400 7px/1 var(--px)}
+.side{display:grid;gap:10px;align-content:start}
+.box{background:#fff;border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);padding:10px}
+.ask{display:grid;gap:8px}
+.amb{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.amb button{all:unset;cursor:pointer;display:grid;gap:3px;padding:8px 6px;text-align:center;border:2px solid var(--ink);background:#fff}
+.amb button b{font-size:14px}.amb button small{font-size:11px;color:#5b5470}
+.amb button.on{background:#fff3c4;box-shadow:0 0 0 3px var(--yellow)}
+.terms{font-size:12.5px;line-height:1.5}
+.terms b{font-size:13px}
+.manager{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:center}
+.manager .face{width:44px;height:44px;border-radius:50%;background:#cfe2ff;border:2px solid var(--ink);display:grid;place-items:center;font-size:22px}
+.manager p{margin:0;font-size:13px;line-height:1.35}
+.stage{display:grid;gap:12px;align-content:start;min-width:0}
+.btns{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.btn{all:unset;cursor:pointer;padding:9px 14px;border:2px solid var(--ink);background:#fff;font:400 8px/1.4 var(--px);box-shadow:3px 3px 0 var(--ink)}
+.btn.go{background:#f0a52c}.btn.ok{background:#b8ecd0}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.result{padding:10px 12px;border:2px solid var(--ink);font:800 14px/1.35 var(--sys);display:none}
+.result.on{display:block}.result.win{background:#dcf6e8}.result.bust{background:#fde2df}.result.short{background:#fff3c4}
+.meter{display:grid;gap:4px}
+.meter .bar{position:relative;height:22px;background:#ece6da;border:2px solid var(--ink);overflow:hidden}
+.meter .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--green);transition:width .35s}
+.meter .bar .zone{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(45deg,#2f9a6a33 0 6px,transparent 6px 12px);border-left:2px dashed var(--green)}
+.meter .bar .cap{position:absolute;top:-2px;bottom:-2px;right:0;width:4px;background:var(--red)}
+.meter .row{display:flex;justify-content:space-between;font:800 12px/1 var(--sys)}
+
+/* 1 · pasta de documentos na mesa do gerente */
+.v1 .desk{position:relative;min-height:330px;padding:16px;background:#7a5230;background-image:repeating-linear-gradient(90deg,#86603a 0 4px,#7a5230 4px 11px);border:3px solid var(--ink)}
+.v1 .folder{position:relative;min-height:290px;padding:30px 16px 16px;background:#f0c36b;border:3px solid var(--ink);border-radius:4px 12px 4px 4px;box-shadow:4px 4px 0 #0005}
+.v1 .folder::before{content:"PEDIDO DE CRÉDITO";position:absolute;top:-16px;left:14px;padding:4px 12px;background:#f0c36b;border:3px solid var(--ink);border-bottom:0;border-radius:6px 6px 0 0;font:400 7px/1 var(--px)}
+.v1 .docs{display:flex;flex-wrap:wrap;gap:10px}
+.v1 .doc{width:112px;min-height:132px;padding:8px;background:#fff;border:2px solid var(--ink);box-shadow:2px 3px 0 #0003;display:grid;gap:4px;align-content:start;transform:rotate(var(--r));animation:drop .3s ease}
+.v1 .doc small{font:400 6.5px/1.3 var(--px);color:#5b5470}.v1 .doc b{font-size:12.5px;line-height:1.15}
+.v1 .doc .lines{height:24px;background:repeating-linear-gradient(180deg,#c9c3d6 0 2px,transparent 2px 6px)}
+.v1 .doc .pts{justify-self:end;font:900 22px/1 var(--sys);color:var(--green)}
+@keyframes drop{from{transform:translateY(-20px) rotate(0);opacity:0}}
+
+/* 2 · score de crédito no velocímetro */
+.v2 .gauge{display:grid;justify-items:center;gap:6px;padding:16px;background:#1f2333;border:3px solid var(--ink);color:#fff}
+.v2 svg{width:min(420px,100%);height:auto}
+.v2 .num{font:400 44px/1 var(--vt);color:#7ef0b2}
+.v2 .chips{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.v2 .chip{padding:4px 9px;border-radius:999px;background:#2e3448;border:1.5px solid #4a5170;font:700 12px/1.2 var(--sys)}
+.v2 .chip b{color:#7ef0b2}
+
+/* 3 · planilha de projeção */
+.v3 .sheet{border:3px solid var(--ink);background:#fff;font:400 20px/1 var(--vt)}
+.v3 .sheet .r{display:grid;grid-template-columns:40px 1fr 110px;border-bottom:1px solid #c9d6c9}
+.v3 .sheet .r>*{padding:6px 8px;border-right:1px solid #c9d6c9}
+.v3 .sheet .h{background:#1f7a4c;color:#fff;font:400 8px/1.6 var(--px)}
+.v3 .sheet .n{background:#eef5ee;color:#5b7a5b;text-align:center}
+.v3 .sheet .v{text-align:right;color:#1f7a4c}
+.v3 .sheet .tot{background:#fff6c4;font-weight:700}.v3 .sheet .tot .v{color:var(--ink)}
+.v3 .sheet .new{animation:hl 1s ease}
+@keyframes hl{from{background:#fff176}}
+.v3 .sheet .over .v{color:var(--red)}
+
+/* 4 · fita da calculadora somadora */
+.v4 .calc{display:grid;grid-template-columns:220px 1fr;gap:16px;align-items:start}
+.v4 .tape{min-height:320px;padding:14px 12px;background:#fffdf4;border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);font:400 22px/1.15 var(--vt);clip-path:polygon(0 0,100% 0,100% calc(100% - 6px),95% 100%,90% calc(100% - 6px),85% 100%,80% calc(100% - 6px),75% 100%,70% calc(100% - 6px),65% 100%,60% calc(100% - 6px),55% 100%,50% calc(100% - 6px),45% 100%,40% calc(100% - 6px),35% 100%,30% calc(100% - 6px),25% 100%,20% calc(100% - 6px),15% 100%,10% calc(100% - 6px),5% 100%,0 calc(100% - 6px))}
+.v4 .tape div{display:flex;justify-content:space-between;animation:print .3s steps(4)}
+.v4 .tape .sum{border-top:2px dashed var(--ink);margin-top:6px;padding-top:6px;font-size:26px}
+.v4 .tape .red{color:var(--red)}
+@keyframes print{from{clip-path:inset(0 100% 0 0)}}
+.v4 .machine{padding:14px;background:#3b4256;border:3px solid var(--ink);border-radius:12px;color:#fff;display:grid;gap:10px}
+.v4 .lcd{padding:10px;background:#a8c49a;color:#1d2a1a;font:400 40px/1 var(--vt);text-align:right;border:3px solid #1d1b26}
+.v4 .keys{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.v4 .keys span{padding:10px 0;text-align:center;background:#59617a;border-radius:6px;box-shadow:0 3px 0 #2a2f3e;font:700 14px/1 var(--sys)}
+
+/* 5 · comitê de crédito (carimbos no contrato) */
+.v5 .contract{position:relative;min-height:330px;padding:18px 20px;background:#fffdf6;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);background-image:repeating-linear-gradient(180deg,transparent 0 23px,#1d1b2612 23px 24px)}
+.v5 .contract h3{margin:0 0 8px;font:400 9px/1.4 var(--px)}
+.v5 .clauses{display:grid;gap:6px;font-size:13px}
+.v5 .stamps{position:absolute;inset:80px 20px 20px;pointer-events:none}
+.v5 .st{position:absolute;padding:6px 10px;border:3px solid var(--c);color:var(--c);font:400 8px/1.3 var(--px);text-align:center;transform:rotate(var(--r));background:#fffdf6cc;animation:stamp .25s ease-out}
+.v5 .st b{display:block;font-size:15px}
+@keyframes stamp{from{transform:rotate(var(--r)) scale(1.8);opacity:0}}
+@media (max-width:900px){.neg{grid-template-columns:1fr}.v4 .calc{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="tabs" id="tabs">
+ <button class="on" data-t="hoje">HOJE NO JOGO</button>
+ <button data-t="v1">1 · PASTA DE DOCUMENTOS</button>
+ <button data-t="v2">2 · SCORE DE CRÉDITO</button>
+ <button data-t="v3">3 · PLANILHA</button>
+ <button data-t="v4">4 · CALCULADORA</button>
+ <button data-t="v5">5 · COMITÊ DE CRÉDITO</button>
+</nav>
+<div class="pane on" id="hoje"><iframe id="frame" title="Financeiro atual" data-src="../dist/The-Founder-Cenario-Financeiro-1.07.html"></iframe></div>
+<div class="pane" id="v1"><p class="idea"><b>A mesma regra do blackjack, com cara de banco.</b> Cada "carta" é um documento que você coloca na pasta do pedido (balanço, contrato com cliente, nota fiscal...). Cada um soma credibilidade. Passou de 21? "As contas não fecham" e o gerente desconfia.</p><div class="neg v1" data-v="v1"></div></div>
+<div class="pane" id="v2"><p class="idea"><b>A mesma regra, como score de crédito.</b> Cada argumento faz o ponteiro do score subir. A faixa verde é onde o banco aprova o que você pediu; passou do vermelho, o pedido é recusado.</p><div class="neg v2" data-v="v2"></div></div>
+<div class="pane" id="v3"><p class="idea"><b>A mesma regra, como planilha de projeção.</b> Cada linha nova é uma receita que você projeta para o gerente. O total precisa chegar à meta; se passar de 21, a projeção fica otimista demais e perde credibilidade.</p><div class="neg v3" data-v="v3"></div></div>
+<div class="pane" id="v4"><p class="idea"><b>A mesma regra, na calculadora somadora.</b> Cada número sai impresso na fita, como conta de contador. O visor mostra o total; passou de 21, a fita sai em vermelho.</p><div class="neg v4" data-v="v4"></div></div>
+<div class="pane" id="v5"><p class="idea"><b>A mesma regra, no comitê de crédito.</b> Cada analista do comitê carimba o contrato com uma nota. A soma das notas precisa bater a meta; passou de 21, o comitê vê exagero e veta.</p><div class="neg v5" data-v="v5"></div></div>
+<script>
+// mesma lógica do jogo: alvo pelo tamanho do pedido, cartas de 1 a 10 (A vale 1 ou 11), parar entre o alvo e 21
+const DOCS=['Extrato bancário','Nota fiscal','Contrato com cliente','Balanço do mês','Carta de recomendação','Garantia do equipamento','Pedido em carteira','Avaliação no Nexus','Plano de negócios','Histórico de vendas'];
+const ARGS=['Faturamento crescendo','Clientes recorrentes','Estoque como garantia','Avaliações boas','Pedido grande fechado','Margem saudável','Sem dívidas','Mercado aquecido','Sócio investidor','Contrato de 12 meses'];
+const ANALYSTS=['Risco','Comercial','Jurídico','Diretoria','Compliance','Operações'];
+const AMB=[{n:'Pequeno',v:'R$ 15 mil',t:15,terms:'12 meses · 3% ao mês'},{n:'Médio',v:'R$ 30 mil',t:17,terms:'12 meses · 2,5% ao mês'},{n:'Grande',v:'R$ 60 mil',t:19,terms:'18 meses · 2% ao mês'}];
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+const total=h=>{let t=0,a=0;h.forEach(c=>{t+=c.v;if(c.ace)a++;});return a&&t+10<=21?t+10:t;};
+const draw=()=>{const r=Math.floor(Math.random()*13);return r===0?{v:1,ace:true,l:'A'}:{v:Math.min(10,r+1),l:String(Math.min(10,r+1))};};
+const MSG={win:'✅ Aprovado! O banco libera o que você pediu.',bust:'❌ As contas não fecham. O gerente desconfia e recusa (a confiança cai).',short:'🤝 Não chegou na meta. O gerente faz uma contraproposta menor.'};
+function build(root){const V=root.dataset.v,st={amb:1,hand:[],done:null};
+ function view(){const T=AMB[st.amb].t,t=total(st.hand),cards=st.hand;let body='';
+  if(V==='v1')body='<div class="desk"><div class="folder"><div class="docs">'+(cards.length?cards.map((c,i)=>'<div class="doc" style="--r:'+((i*7%5)-2)+'deg"><small>DOCUMENTO '+(i+1)+'</small><b>'+c.name+'</b><span class="lines"></span><span class="pts">+'+(c.ace?'1/11':c.v)+'</span></div>').join(''):'<p style="margin:0;font-weight:800">A pasta está vazia. Apresente documentos para o gerente.</p>')+'</div></div></div>';
+  if(V==='v2'){const ang=Math.min(21,t)/21*180,ax=180-ang,toR=d=>d*Math.PI/180,px=110+90*Math.cos(toR(ax)),py=110-90*Math.sin(toR(ax)),arc=(a0,a1,c)=>{const p=a=>[110+90*Math.cos(toR(180-a/21*180)),110-90*Math.sin(toR(180-a/21*180))];const[x0,y0]=p(a0),[x1,y1]=p(a1);return '<path d="M'+x0+' '+y0+' A90 90 0 0 1 '+x1+' '+y1+'" stroke="'+c+'" stroke-width="16" fill="none"/>';};
+   body='<div class="gauge"><svg viewBox="0 0 220 125">'+arc(0,T,'#4a5170')+arc(T,21,'#2f9a6a')+'<line x1="110" y1="110" x2="'+px.toFixed(1)+'" y2="'+py.toFixed(1)+'" stroke="'+(t>21?'#ff6b6b':'#fff')+'" stroke-width="4"/><circle cx="110" cy="110" r="7" fill="#fff"/><text x="22" y="122" fill="#c9c3e0" font-size="9">0</text><text x="190" y="122" fill="#c9c3e0" font-size="9">21</text></svg><div class="num" style="color:'+(t>21?'#ff6b6b':'#7ef0b2')+'">'+t+'</div><small>Faixa de aprovação: '+T+' a 21</small><div class="chips">'+cards.map(c=>'<span class="chip">'+c.name+' <b>+'+(c.ace?'1/11':c.v)+'</b></span>').join('')+'</div></div>';}
+  if(V==='v3')body='<div class="sheet"><div class="r h"><span>#</span><span>PROJEÇÃO PARA O BANCO</span><span>PONTOS</span></div>'+cards.map((c,i)=>'<div class="r'+(i===cards.length-1?' new':'')+'"><span class="n">'+(i+1)+'</span><span>'+c.name+'</span><span class="v">'+(c.ace?'1/11':c.v)+'</span></div>').join('')+'<div class="r tot'+(t>21?' over':'')+'"><span class="n">Σ</span><span>Total · meta '+T+' a 21</span><span class="v">'+t+'</span></div></div>';
+  if(V==='v4')body='<div class="calc"><div class="tape">'+cards.map(c=>'<div><span>+</span><span>'+(c.ace?'1/11':c.v)+'</span></div>').join('')+'<div class="sum'+(t>21?' red':'')+'"><span>=</span><span>'+t+'</span></div></div><div class="machine"><div class="lcd">'+t+'</div><small>META '+T+' – 21</small><div class="keys">'+'789÷456×123−0.=+'.split('').map(k=>'<span>'+k+'</span>').join('')+'</div></div></div>';
+  if(V==='v5')body='<div class="contract"><h3>CONTRATO DE CRÉDITO · '+AMB[st.amb].v+'</h3><div class="clauses"><span>Cláusula 1 · Valor: '+AMB[st.amb].v+'</span><span>Cláusula 2 · Condições: '+AMB[st.amb].terms+'</span><span>Cláusula 3 · Aprovação com nota entre '+T+' e 21</span></div><div class="stamps">'+cards.map((c,i)=>'<span class="st" style="--c:'+(t>21&&i===cards.length-1?'#c2453f':'#1f5fb8')+';--r:'+((i*13%17)-8)+'deg;left:'+((i*31)%70)+'%;top:'+((i*47)%60)+'%">'+c.name.toUpperCase()+'<b>'+(c.ace?'1/11':c.v)+'</b></span>').join('')+'</div></div>';
+  const resTxt=st.done?MSG[st.done]:'';
+  root.innerHTML='<h1>BANCO DO BAIRRO · NEGOCIAÇÃO <small>Confiança do banco: ★★☆</small></h1>'+
+   '<div class="side"><span class="lbl">SEU PEDIDO</span><div class="box ask"><div class="amb">'+AMB.map((a,i)=>'<button class="'+(i===st.amb?'on':'')+'" data-amb="'+i+'" '+(cards.length?'disabled':'')+'><b>'+a.n+'</b><small>'+a.v+'</small></button>').join('')+'</div><div class="terms">'+AMB[st.amb].terms+'<br>Meta para aprovar: <b>'+T+' a 21</b></div></div>'+
+   '<div class="box manager"><span class="face">🧑‍💼</span><p>'+(st.done==='win'?'"Negócio fechado. Boa sorte com a empresa!"':st.done==='bust'?'"Isso aqui não bate. Volte semana que vem."':st.done==='short'?'"Consigo liberar menos do que você pediu. Topa?"':cards.length?'"Hum... tem mais alguma coisa para me mostrar?"':'"Me convença. O que você tem aí?"')+'</p></div>'+
+   '<div class="meter box"><div class="row"><span>'+(V==='v1'?'Credibilidade':V==='v2'?'Score':V==='v3'?'Total projetado':V==='v4'?'Total':'Nota do comitê')+'</span><span>'+t+' / 21</span></div><div class="bar"><span class="zone" style="left:'+(T/21*100)+'%;right:0"></span><i style="width:'+Math.min(100,t/21*100)+'%;background:'+(t>21?'#c2453f':'#2f9a6a')+'"></i><span class="cap"></span></div></div></div>'+
+   '<div class="stage">'+body+'<div class="result '+(st.done?'on '+st.done:'')+'">'+resTxt+'</div><div class="btns">'+(st.done?'<button class="btn" data-x="again">NEGOCIAR DE NOVO</button>':'<button class="btn go" data-x="hit">'+(V==='v1'?'+ APRESENTAR DOCUMENTO':V==='v2'?'+ APRESENTAR ARGUMENTO':V==='v3'?'+ PROJETAR RECEITA':V==='v4'?'+ SOMAR':'+ CHAMAR ANALISTA')+'</button><button class="btn ok" data-x="stand" '+(cards.length?'':'disabled')+'>FECHAR PEDIDO</button>')+'</div></div>';}
+ root.addEventListener('click',e=>{const a=e.target.closest('[data-amb]');if(a&&!st.hand.length){st.amb=+a.dataset.amb;view();return;}const x=e.target.closest('[data-x]')?.dataset.x;if(!x)return;
+  if(x==='again'){st.hand=[];st.done=null;view();return;}
+  if(x==='hit'){const c=draw();c.name=V==='v1'||V==='v3'?rnd(DOCS):V==='v5'?rnd(ANALYSTS):rnd(ARGS);if(V==='v3')c.name=rnd(['Venda para loja parceira','Pedido recorrente','Feira do bairro','Revenda online','Contrato com escola','Assinatura mensal','Exportação teste','Atacado']);st.hand.push(c);if(total(st.hand)>21)st.done='bust';view();return;}
+  if(x==='stand'){st.done=total(st.hand)>=AMB[st.amb].t?'win':'short';view();}});
+ view();}
+document.querySelectorAll('[data-v]').forEach(build);
+document.getElementById('tabs').addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(!b)return;document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id===b.dataset.t));});
+{const fr=document.getElementById('frame');fr.src=fr.dataset.src;}
+</script>
+</body>
+</html>
