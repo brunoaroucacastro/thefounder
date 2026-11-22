@@ -1944,3 +1944,43 @@ body.rail-covered #status-bar #buffs.buffs{display:none!important}
 #workshop-info .cr-gauge{display:block;width:100%;max-width:170px;height:auto;margin:2px auto 0}
 /* tutorial */
 .ta-card.doc i{width:26px;height:26px;display:block}.ta-card.doc i svg{display:block;width:100%;height:100%}
+
+/* ===== 1.09 · sistema único de botões =====
+   Primário: amarelo, borda preta, cantos retos, Oficina 13px, 38px de altura.
+   Secundário: papel, borda preta, mesma fonte. Ajuda "?": quadrado papel 30px. */
+:root{--bt-yel:#f2a93b;--bt-yel-d:#b9741c;--bt-ink:#241d33;--bt-paper:#fffdf8}
+#game button.primary,#board-modal button.primary,#board-modal .bpanel.ag button.primary,.ask-pop button.primary,#workshop-info .cr-hit,#workshop-info .dz .dz-course button.primary{
+ background:var(--bt-yel)!important;color:var(--bt-ink)!important;border:2px solid var(--bt-ink)!important;border-radius:0!important;
+ box-shadow:0 3px 0 var(--bt-yel-d)!important;font:400 13px/1.15 Oficina,var(--q-font)!important;letter-spacing:.08em!important;text-transform:uppercase;min-height:38px}
+#game button.secondary,#board-modal button.secondary,.ask-pop button.secondary,#workshop-info .cr-stand,#board-modal #bswap{
+ background:var(--bt-paper)!important;color:var(--bt-ink)!important;border:2px solid var(--bt-ink)!important;border-radius:0!important;
+ box-shadow:0 3px 0 #0003!important;font-family:Oficina,var(--q-font)!important;letter-spacing:.06em}
+#game button.primary:disabled,#game button.secondary:disabled,#board-modal button.primary:disabled{opacity:.45!important;filter:grayscale(.6);box-shadow:none!important;cursor:not-allowed}
+#game .tray-foot button{min-height:38px;font-size:13px!important}
+#game button[data-action="discardDraft"]{font-size:12px!important;min-height:32px}
+#game .help-btn,#board-modal .help-btn,#board-modal .mk-help{background:var(--bt-paper)!important;color:var(--bt-ink)!important;border:2px solid var(--bt-ink)!important;border-radius:0!important;width:30px!important;height:30px!important;min-height:0!important;font:400 15px Oficina,var(--q-font)!important;box-shadow:0 2px 0 #0003!important}
+/* cartões de escolha com cantos retos, como o resto do jogo */
+#tray .choice,#tray .choices button{border-radius:0!important}
+/* popups de confirmação: fonte do jogo, sem Consolas */
+.ask-pop,.ask-pop *{font-family:var(--q-font)!important}
+.ask-pop h3,.ask-pop b:first-child{font-family:Oficina,var(--q-font)!important}
+.ask-pop button{font-family:Oficina,var(--q-font)!important}
+/* ---- o que não é botão deixa de parecer botão ---- */
+.day-time{background:none!important;border:0!important;padding:3px 2px!important}
+.creation-route span{border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;padding:3px 0!important;color:#8a8270!important}
+.creation-route .active{background:none!important;color:var(--q-ink)!important;border-bottom:3px solid var(--bt-yel)!important}
+.pw-stages span{border:0!important;border-radius:0!important;background:none!important;padding:2px 0!important;color:#8a8270!important}
+.pw-stages span.on{color:var(--bt-ink)!important;border-bottom:3px solid var(--bt-yel)!important;background:none!important}
+.pw-stages span.done{color:#2f8a5b!important;background:none!important}
+.pw-stages span.done:before{content:"✓ "}
+/* buffs/debuffs são clicáveis: mostram isso */
+.buff{cursor:pointer}.buff:hover{filter:brightness(1.15)}
+/* o aviso do canto não repete o status enquanto há trabalho em andamento */
+body.has-job #world .guide{display:none!important}
+/* avisos acima do menu inferior */
+#toast{bottom:74px!important}
+.hero-for{display:block;font-size:12px;color:#5b5470;font-weight:800}
+/* 1.09 · ajustes finais */
+#bswap,#board-modal .bpanel #bswap,#board-modal .bpanel.ag #bswap{border-radius:0!important;background:#fffdf8!important;border:2px solid #241d33!important;box-shadow:0 3px 0 #0003!important}
+#tray .ls-actions{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+#tray .pw{padding-bottom:76px}

@@ -267,7 +267,7 @@ const PilotWorld=(()=>{
  function bubbles(c,s,t,v){
   const task=s.crew||s.job,research=RESEARCH.includes(s.phase);
   if(task){const rate=task===s.job?(s.weekly?.effect?.workRate||1):1,ratio=Math.max(0,Math.min(1,((task.elapsed||0)+(s.weekly?(s.weekly.elapsed||0)/.4*rate:0))/(task.duration||1)));const at=s.crew?P(6.6,4.6,1.6):P(4.9,2.05,2.75);
-   const msg=research?'PESQUISA '+Math.floor(ratio*100)+'%':s.crew?'MONTAGEM '+Math.floor(ratio*(s.crew.quantity||0))+'/'+(s.crew.quantity||0):'DESENVOLVENDO '+Math.floor(ratio*100)+'%';pill(c,at[0],at[1],msg,{progress:ratio,h:28});}
+   const msg=research?'PESQUISA '+Math.floor(ratio*100)+'%':s.crew?'MONTAGEM '+Math.floor(ratio*(s.crew.quantity||0))+'/'+(s.crew.quantity||0):/ampaignWork/.test(s.phase||'')?'CAMPANHA '+Math.floor(ratio*100)+'%':'DESENVOLVENDO '+Math.floor(ratio*100)+'%';pill(c,at[0],at[1],msg,{progress:ratio,h:28});}
   if(s.phase==='selling'&&(s.stock||0)===0){const p=P(6.7,4.6,1.1);pill(c,p[0],p[1],'SEM ESTOQUE',{bg:'#e46d6d',color:'#fff',border:'#9c3b3b'});}
   if(s.phase==='opportunity'){const p=P(4.8,.4,2.05),b=Math.sin(t*5)*2;pill(c,p[0],p[1]+b,'💬 NOVA PROPOSTA',{bg:'#8fd4ff',border:'#3a7ea8'});}
   if((v.saleFlash||0)>0){const p=P(4.15,.6,1.85),k=1-v.saleFlash;pill(c,p[0],p[1]-k*44,'+ R$ '+Math.round(v.saleValue||0).toLocaleString('pt-BR'),{bg:'#4fbf8a',color:'#fff',border:'#2a7a54',alpha:Math.min(1,v.saleFlash*2.5),font:'900 13px "Segoe UI",system-ui,sans-serif'});}

@@ -1,3 +1,15 @@
+# 1.09 · Revisão de UX/UI da rotina do escritório
+
+- Botões com um padrão só: primário amarelo, secundário papel, borda preta, cantos retos, fonte Oficina e altura de 38px; o "?" de ajuda tem um único estilo. Popups de confirmação deixaram a fonte Consolas.
+- Fluxo da criação na ordem real (Produto › Protótipo › Marketing › Lote e preço › Lançamento). "Planejar marketing" virou "Concluir projeto" e fica desligado até encaixar uma peça.
+- Escolher produto: um clique seleciona e um botão confirma a pesquisa (sem "clique de novo").
+- Nova campanha: "Rever preço" só aparece depois que o preço foi definido. O fim do tabuleiro diz "Abrir as vendas".
+- Menu e avisos dizem Escritório quando a empresa já alugou a sala; o balão do computador mostra "Campanha" ao preparar campanha.
+- Produto à venda: as ações (Repor, Programar, Preço, Campanha, Encerrar) ficam numa linha logo abaixo do faturamento.
+- Menos repetição: a persona não volta no resumo do projeto nem no resultado da prancheta; a precificação mostra a margem uma vez; o aviso do canto some enquanto há trabalho em andamento; saíram textos de tutorial das telas e o "Acelerar 4×" repetido.
+- O que não é botão deixou de parecer botão: relógio, trilha da criação, etapas do protótipo, ícone de Play do progresso e a caixa de nome vazia.
+- Avaliações sem frase repetida. Avisos aparecem acima do menu inferior.
+
 # 1.08 · Negociação de crédito com documentos para análise
 
 - As cartas do baralho viraram documentos com cara de carta: valor e ícone no canto, ícone em pixel art no meio e o nome do documento. O Ás é o Avalista (vale 1 ou 11); do 2 ao 9: comprovante de endereço, contrato social, extrato do mês, notas fiscais, certidão negativa, contrato com cliente, balanço do trimestre e pedidos em carteira; os que valem 10 são histórico de 12 meses, fluxo de caixa projetado, plano de negócios e carta de investidor.
