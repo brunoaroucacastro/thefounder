@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Negociação Documentos</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1d1b26;--px:"Press Start 2P",monospace;--vt:"VT323",monospace;--sys:system-ui,-apple-system,"Segoe UI",sans-serif;--cream:#fbf6ea;--yellow:#f2c230;--teal:#1f5a4c;--teal2:#2a6b5b;--green:#5fbf8a;--red:#e0705f}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:#151320;font-family:var(--sys);padding:8px 12px 12px;color:var(--ink)}
+.tabs{display:flex;gap:6px;justify-content:center;margin:0 auto 8px}
+.tabs button{all:unset;cursor:pointer;padding:9px 14px;background:#2a2638;color:#f6efe2;font:400 8px/1 var(--px);box-shadow:0 0 0 2px #3a3650}
+.tabs button.on{background:var(--yellow);color:#1d1b26;box-shadow:0 0 0 2px #1d1b26,3px 3px 0 #000a}
+.pane{display:none}.pane.on{display:block}
+iframe{display:block;margin:0 auto;width:min(1440px,100%);height:calc(100vh - 60px);min-height:720px;border:3px solid #1d1b26;background:#000}
+.idea{max-width:1240px;margin:0 auto 8px;padding:8px 12px;background:#efe7fb;border-radius:10px;font-size:13px;color:#3d2f6b}
+/* janela de finanças (igual à do jogo) */
+.win{max-width:1240px;margin:0 auto;background:var(--cream);border:3px solid var(--ink);padding:14px 18px 16px;display:grid;gap:12px}
+.win h1{margin:0;font:400 13px/1 var(--px);letter-spacing:.06em}
+.hdr{display:flex;align-items:flex-end;gap:14px}
+.hdr .t small{display:inline-block;padding:3px 6px;background:var(--teal);color:#fff;font:400 6.5px/1 var(--px)}
+.hdr .t b{display:block;font:400 14px/1.3 var(--px)}
+.pill{border:2px solid var(--ink);background:#fff;padding:5px 9px;font:800 11px/1.3 var(--sys)}
+.pill small{display:block;font:400 6px/1 var(--px);color:#5b5470}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:14px}
+.left{display:grid;gap:10px;align-content:start}
+.sim{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px;border:2px solid var(--ink);background:#fff}
+.sim small{font-size:10px;color:#5b5470;letter-spacing:.05em}.sim b{display:block;font-size:17px}.sim .big{color:var(--teal);font-size:21px}
+.req{border:2px solid var(--ink);background:#fff}
+.req .h{background:var(--teal);color:#fff;padding:6px 10px;font:400 7px/1 var(--px)}
+.req .row{display:grid;grid-template-columns:34px 1fr;gap:10px;padding:9px 10px;border-top:1px solid #ece6da}
+.req .ico{width:30px;height:30px;border:2px solid var(--ink);display:grid;place-items:center;font-size:15px;background:#fbf6ea}
+.req b{font-size:13.5px}.req b em{font-style:normal;color:var(--teal)}
+.req .sq{display:flex;gap:3px;margin-top:5px}.req .sq i{flex:1;height:14px;border:2px solid #c9c3b3}.req .sq i.on{background:#c9d6d0}
+.right{background:var(--teal);border:3px solid var(--ink);padding:12px;display:grid;gap:10px;align-content:start;color:#fff}
+.mgr{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:center}
+.mgr .face{width:44px;height:44px;border:2px solid #fff;background:#f3d1b0;display:grid;place-items:center;font-size:24px}
+.mgr small{font:800 10px/1 var(--sys);color:#9fe0c4}.mgr b{display:block;font-size:14px}.mgr em{font-size:13px;font-style:italic}
+/* score: velocímetro */
+.score{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:10px;align-items:center;padding:10px;background:var(--teal2);border:2px solid #0e3a30}
+.score svg{width:100%;height:auto;display:block}
+.score .info{display:grid;gap:8px}
+.score .k{display:grid;gap:2px;padding:6px 10px;background:#0e3a30}
+.score .k small{font:800 10px/1 var(--sys);color:#9fe0c4;letter-spacing:.06em}
+.score .k b{font:400 30px/1 var(--vt)}
+.score .k.req b{color:var(--yellow)}
+/* cartas-documento */
+.table{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;min-height:186px;position:relative}
+.hand{display:flex;flex-wrap:wrap;gap:10px}
+.dcard{position:relative;width:104px;height:150px;background:#fffdf6;border:2px solid var(--ink);border-radius:8px;box-shadow:3px 3px 0 #0e3a30;color:var(--ink);animation:deal .3s ease;display:grid;grid-template-rows:auto 1fr auto;padding:5px 6px}
+@keyframes deal{from{transform:translate(120px,-20px) rotate(8deg);opacity:0}}
+.dcard .corner{display:grid;justify-items:center;line-height:1;width:22px}
+.dcard .corner b{font:400 20px/1 var(--vt);color:var(--sc)}
+.dcard .corner i{font-style:normal;font-size:12px}
+.dcard .corner.br{justify-self:end;transform:rotate(180deg)}
+.dcard .paper{justify-self:center;align-self:center;display:grid;gap:3px;width:62px;padding:6px 6px 7px;background:#fff;border:1.5px solid #1d1b2655;box-shadow:2px 2px 0 #0001;position:relative}
+.dcard .paper::before{content:"";height:5px;background:var(--sc)}
+.dcard .paper span{height:2px;background:#c9c3d6}.dcard .paper span:nth-child(3){width:70%}.dcard .paper span:nth-child(5){width:55%}
+.dcard .paper .seal{position:absolute;right:-6px;bottom:-6px;width:18px;height:18px;border-radius:50%;background:var(--sc);color:#fff;display:grid;place-items:center;font-size:9px;box-shadow:0 0 0 2px #fff}
+.dcard .name{position:absolute;left:0;right:0;bottom:24px;text-align:center;font:800 9.5px/1.15 var(--sys);padding:0 6px}
+.dcard.face{background:linear-gradient(#fffdf6,#fff6dc)}
+.dcard.ace{background:linear-gradient(#fffdf6,#eef7ff)}
+.deck{display:grid;justify-items:center;gap:6px}
+.back{width:104px;height:150px;border:2px solid var(--ink);border-radius:8px;background:#15493d;box-shadow:3px 3px 0 #0e3a30;display:grid;place-items:center;position:relative;background-image:repeating-linear-gradient(45deg,#1d5a4b 0 6px,#15493d 6px 12px)}
+.back::after{content:"ANÁLISE";padding:8px 6px;background:#fffdf6;border:2px solid var(--ink);color:var(--ink);font:400 6.5px/1.4 var(--px);border-radius:4px;text-align:center}
+.deck small{font-size:11px;color:#c9e9dc}
+.stamp{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%) rotate(-10deg);padding:10px 16px;border:4px solid #ff6b5a;color:#ff6b5a;background:#1f5a4ccc;font:400 11px/1.4 var(--px);text-align:center;display:none;z-index:3;animation:stampin .3s ease-out}
+.stamp small{display:block;font:800 11px/1.3 var(--sys);color:#ffd6cf;margin-top:4px}
+.stamp.on{display:block}
+.stamp.ok{border-color:#7ef0b2;color:#7ef0b2}.stamp.ok small{color:#d7ffe9}
+.stamp.short{border-color:var(--yellow);color:var(--yellow)}.stamp.short small{color:#fff3c4}
+@keyframes stampin{from{transform:translate(-50%,-50%) rotate(-10deg) scale(1.8);opacity:0}}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btns button{all:unset;cursor:pointer;text-align:center;padding:11px 8px;border:2px solid var(--ink);font:400 8px/1.3 var(--px)}
+.btns .hit{background:#f0a52c;color:var(--ink)}.btns .stand{background:#f4efe3;color:var(--ink)}
+.btns button:disabled{opacity:.45;cursor:not-allowed}
+.btns small{font-size:11px;color:#c9e9dc}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:11px;color:#c9e9dc}
+.legend span{display:flex;align-items:center;gap:4px}.legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+@media (max-width:1000px){.cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="tabs" id="tabs"><button class="on" data-t="hoje">HOJE NO JOGO</button><button data-t="teste">TESTE · DOCUMENTOS + SCORE</button></nav>
+<div class="pane on" id="hoje"><iframe id="frame" title="Financeiro atual" data-src="../dist/The-Founder-Cenario-Financeiro-1.07.html"></iframe></div>
+<div class="pane" id="teste"><p class="idea"><b>Mesmo layout, mesma regra.</b> As cartas do baralho viram documentos para análise, mas continuam com cara de carta: número no canto, "naipe" que é o tipo de documento, verso igual para todas. O Ás é o Avalista (vale 1 ou 11). Passou de 21: "Divergência encontrada". E o score mostra onde seu pedido está.</p>
+<div class="win">
+ <h1>FINANÇAS</h1>
+ <div class="hdr"><div class="t"><small>FINANCEIRO / CRÉDITO</small><b>NEGOCIAR EMPRÉSTIMO</b></div><div class="pill"><small>CONFIANÇA DO BANCO</small>Neutro</div><div class="pill"><small>SEMANA 11</small>Pode negociar</div></div>
+ <div class="cols">
+  <div class="left">
+   <div class="sim"><div><small>VOCÊ RECEBE</small><b>R$ 33.264</b></div><div><small>PARCELA MENSAL</small><b class="big">R$ 13.849</b></div><div><small>TOTAL A PAGAR</small><b>R$ 41.556</b></div></div>
+   <div class="req"><div class="h">SEU PEDIDO DE CRÉDITO</div>
+    <div class="row"><span class="ico">💰</span><div><b>Valor solicitado <em>R$ 33.264</em></b><div class="sq">'+'</div></div></div>
+    <div class="row"><span class="ico">📅</span><div><b>Prazo <em>3 meses</em></b><div class="sq"></div></div></div>
+    <div class="row"><span class="ico">%</span><div><b>Juros <em>12% a.m.</em></b><div class="sq"></div></div></div>
+    <div class="row"><span class="ico">⏳</span><div><b>Carência <em>Sem carência</em></b><div class="sq"></div></div></div>
+   </div>
+  </div>
+  <div class="right" id="right"></div>
+ </div>
+</div></div>
+<script>
+// mesmos valores do baralho do jogo, cada carta virou um documento
+const SUIT={cad:{c:'#8a8fa3',i:'🗂',n:'Cadastro'},fin:{c:'#2f9a6a',i:'💲',n:'Finanças'},ven:{c:'#1f5fb8',i:'🧾',n:'Vendas'},gar:{c:'#b8860b',i:'🛡',n:'Garantia'}};
+const DOCS=[
+ {v:'A',p:1,ace:true,n:'Avalista',s:'gar'},
+ {v:'2',p:2,n:'Comprovante de endereço',s:'cad'},
+ {v:'3',p:3,n:'Contrato social',s:'cad'},
+ {v:'4',p:4,n:'Extrato do mês',s:'fin'},
+ {v:'5',p:5,n:'Notas fiscais',s:'ven'},
+ {v:'6',p:6,n:'Certidão negativa',s:'cad'},
+ {v:'7',p:7,n:'Contrato com cliente',s:'ven'},
+ {v:'8',p:8,n:'Balanço do trimestre',s:'fin'},
+ {v:'9',p:9,n:'Pedidos em carteira',s:'ven'},
+ {v:'10',p:10,n:'Histórico de 12 meses',s:'fin',face:true},
+ {v:'10',p:10,n:'Fluxo de caixa projetado',s:'fin',face:true},
+ {v:'10',p:10,n:'Plano de negócios',s:'ven',face:true},
+ {v:'10',p:10,n:'Carta de investidor',s:'gar',face:true}];
+const T=13;let st;
+const total=h=>{let t=0,a=0;h.forEach(c=>{t+=c.p;if(c.ace)a++;});return a&&t+10<=21?t+10:t;};
+function reset(){st={hand:[],deck:52,done:null};paint();}
+function gauge(t){const r=78,cx=100,cy=96,toR=d=>d*Math.PI/180,pos=v=>{const a=180-Math.min(v,24)/24*180;return[cx+r*Math.cos(toR(a)),cy-r*Math.sin(toR(a))];},arc=(a0,a1,c)=>{const[x0,y0]=pos(a0),[x1,y1]=pos(a1);return '<path d="M'+x0.toFixed(1)+' '+y0.toFixed(1)+' A'+r+' '+r+' 0 0 1 '+x1.toFixed(1)+' '+y1.toFixed(1)+'" stroke="'+c+'" stroke-width="16" fill="none"/>';};const[nx,ny]=pos(t),col=t>21?'#ff6b5a':t>=T?'#7ef0b2':'#fff';
+ return '<svg viewBox="0 0 200 112">'+arc(0,T,'#8aa69c')+arc(T,21,'#5fbf8a')+arc(21,24,'#e0705f')+'<line x1="'+cx+'" y1="'+cy+'" x2="'+nx.toFixed(1)+'" y2="'+ny.toFixed(1)+'" stroke="'+col+'" stroke-width="4" stroke-linecap="round"/><circle cx="'+cx+'" cy="'+cy+'" r="7" fill="'+col+'" stroke="#0e3a30" stroke-width="2"/><text x="'+cx+'" y="'+(cy-24)+'" text-anchor="middle" font-family="VT323" font-size="30" fill="'+col+'">'+t+'</text><text x="22" y="110" font-size="8" fill="#c9e9dc">0</text><text x="'+(pos(T)[0]-6).toFixed(0)+'" y="'+(pos(T)[1]-12).toFixed(0)+'" font-size="8" fill="#fff3c4">'+T+'</text><text x="'+(pos(21)[0]-4).toFixed(0)+'" y="'+(pos(21)[1]-12).toFixed(0)+'" font-size="8" fill="#ffd6cf">21</text></svg>';}
+function card(c){const S=SUIT[c.s];return '<div class="dcard'+(c.face?' face':'')+(c.ace?' ace':'')+'" style="--sc:'+S.c+'"><span class="corner"><b>'+c.v+'</b><i>'+S.i+'</i></span><span class="paper"><span></span><span></span><span></span><span></span><span></span><i class="seal">'+(c.ace?'1/11':c.p)+'</i></span><span class="name">'+c.n+'</span><span class="corner br"><b>'+c.v+'</b><i>'+S.i+'</i></span></div>';}
+function paint(){const t=total(st.hand),d=st.done;
+ const q=d==='bust'?'"Os números do balanço não batem com o extrato. Não consigo aprovar assim."':d==='win'?'"Documentação completa. Pedido aprovado!"':d==='short'?'"Com isso aqui eu só consigo liberar menos. Topa?"':st.hand.length?'"Hum... tem mais algum documento?"':'"Ainda não me convenceu."';
+ document.getElementById('right').innerHTML='<div class="mgr"><span class="face">🧑‍💼</span><div><small>● ANALISANDO SEU PEDIDO</small><b>Gerente do Banco do Bairro</b><em>'+q+'</em></div></div>'+
+  '<div class="score">'+gauge(t)+'<div class="info"><div class="k"><small>SCORE DO PEDIDO</small><b style="color:'+(t>21?'#ff6b5a':t>=T?'#7ef0b2':'#fff')+'">'+t+'</b></div><div class="k req"><small>EXIGÊNCIA DO BANCO</small><b>'+T+'</b></div></div></div>'+
+  '<div class="legend"><span><i style="background:#8aa69c"></i>Dossiê fraco (até '+(T-1)+')</span><span><i style="background:#5fbf8a"></i>Aprovado ('+T+'–21)</span><span><i style="background:#e0705f"></i>Divergência (22+)</span></div>'+
+  '<div class="table"><div class="hand">'+(st.hand.length?st.hand.map(card).join(''):'<p style="margin:0;color:#c9e9dc;font-size:13px">Peça um documento para começar a análise.</p>')+'</div><div class="deck"><div class="back"></div><small>'+st.deck+' documentos</small></div>'+
+  '<div class="stamp '+(d==='bust'?'on':d==='win'?'on ok':d==='short'?'on short':'')+'">'+(d==='bust'?'DIVERGÊNCIA<br>ENCONTRADA<small>A confiança do banco caiu</small>':d==='win'?'APROVADO<small>Crédito liberado</small>':d==='short'?'DOSSIÊ FRACO<small>O gerente fez uma contraproposta</small>':'')+'</div></div>'+
+  '<div class="btns">'+(d?'<button class="hit" data-x="again">NEGOCIAR DE NOVO</button><span></span>':'<button class="hit" data-x="hit">PEDIR DOCUMENTO</button><button class="stand" data-x="stand" '+(st.hand.length?'':'disabled')+'>ENCERRAR COM '+t+'</button><small>O score sobe... ou os números deixam de bater.</small><small>Abaixo da exigência: o gerente recusa o pedido.</small>')+'</div>';}
+document.getElementById('right').addEventListener('click',e=>{const x=e.target.closest('[data-x]')?.dataset.x;if(!x)return;if(x==='again'){reset();return;}if(x==='hit'){st.hand.push(DOCS[Math.floor(Math.random()*DOCS.length)]);st.deck--;if(total(st.hand)>21)st.done='bust';paint();return;}if(x==='stand'){st.done=total(st.hand)>=T?'win':'short';paint();}});
+document.querySelectorAll('.req .sq').forEach((e,k)=>e.innerHTML=Array.from({length:10},(_,i)=>'<i class="'+(i<[1,1,1,1][k]?'on':'')+'"></i>').join(''));
+document.getElementById('tabs').addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(!b)return;document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id===b.dataset.t));});
+{const fr=document.getElementById('frame');fr.src=fr.dataset.src;const h=location.hash.slice(1);if(h)document.querySelector('[data-t="'+h+'"]')?.click();}
+reset();
+</script>
+</body>
+</html>
