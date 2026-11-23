@@ -1984,3 +1984,65 @@ body.has-job #world .guide{display:none!important}
 #bswap,#board-modal .bpanel #bswap,#board-modal .bpanel.ag #bswap{border-radius:0!important;background:#fffdf8!important;border:2px solid #241d33!important;box-shadow:0 3px 0 #0003!important}
 #tray .ls-actions{grid-template-columns:repeat(5,minmax(0,1fr))!important}
 #tray .pw{padding-bottom:76px}
+
+/* ===== 1.10 · feedbacks ===== */
+/* abertura: só o "Clique no computador" */
+body.is-intro #world .guide,body.is-intro #bubble,body.is-intro #work-order{display:none!important}
+#bubble.gone{display:none!important}
+/* rostos em pixel art */
+.client-face{display:inline-grid;place-items:center;width:48px;height:48px;flex:none;background:#f1ece0;border:2px solid #241d33;image-rendering:pixelated}
+.client-face svg{width:40px;height:40px;display:block}
+/* pesquisa: tipografia única nos cartões de pessoa e cartão claramente clicável */
+#tray .choices .choice[data-action="customer"]{position:relative;display:grid!important;grid-template-columns:56px 1fr;gap:12px;align-items:start;text-align:left;padding:14px 14px 48px!important;background:#fffdf8!important;border:2px solid #241d33!important;box-shadow:0 3px 0 #0003!important;cursor:pointer;transition:transform .08s}
+#tray .choices .choice[data-action="customer"]:hover{transform:translateY(-2px);box-shadow:0 5px 0 #f2a93b!important;border-color:#b9741c!important}
+#tray .choice[data-action="customer"] h3,.persona-reminder>div>b{font:400 15px/1.2 Oficina,var(--q-font)!important;letter-spacing:.04em!important;color:#241d33;margin:0 0 2px}
+#tray .choice[data-action="customer"] small,.persona-reminder small{font:700 12px/1.2 var(--q-font)!important;color:#6b6478!important}
+#tray .choice[data-action="customer"] p,.persona-reminder p{font:600 13px/1.4 var(--q-font)!important;color:#3b3548;margin:6px 0 0}
+.persona-comment{display:grid!important;grid-template-columns:22px 1fr;gap:8px;align-items:start;margin:6px 0 0!important;padding:6px 8px!important;background:#fff;border:1.5px solid #241d3333!important;border-radius:0!important;box-shadow:none!important}
+.persona-comment .pc-n{display:grid;place-items:center;width:22px;height:22px;font:400 12px Oficina,var(--q-font)!important;color:#fff}
+.persona-comment .pc-t{font:600 13px/1.4 var(--q-font)!important}.persona-comment .pc-t b{font-weight:900!important}
+#tray .choice .choose-cta{position:absolute;right:12px;bottom:10px;padding:7px 12px;background:#fffdf8;border:2px solid #241d33;font:400 12px Oficina,var(--q-font);letter-spacing:.08em;text-transform:uppercase;color:#241d33}
+#tray .choice:hover .choose-cta{background:#f2a93b}
+/* prancheta: persona no mesmo visual da pesquisa, sem o boneco (mais espaço para as falas) */
+.pw-brief .persona-reminder{background:#fffdf8!important;border:2px solid #241d33!important;border-radius:0!important;padding:10px!important;display:block!important}
+.pw-brief .persona-reminder .client-face,.pw-brief .persona-reminder .client-mini{display:none!important}
+.pw-brief .persona-reminder p{font-size:12.5px!important}
+/* atributo escolhido ganha a cor dele; passar o mouse também pinta */
+#tray .pw-attr:hover:not(:disabled){background:color-mix(in srgb,var(--c) 14%,#fff)!important}
+#tray .pw-attr.on{background:color-mix(in srgb,var(--c) 26%,#fff)!important;outline:3px solid var(--c)!important;outline-offset:-1px}
+/* girar e trocar lado a lado */
+.pw-toolrow{display:flex;gap:8px;align-items:stretch;flex-wrap:wrap}
+.pw-toolrow button{min-height:34px!important;font-size:12px!important}
+/* lixeira */
+#game button.trash{min-width:40px;font-size:17px!important;letter-spacing:0!important}
+/* a prancheta cabe inteira em tela cheia: rodapé no fluxo (não cobre nada) e peças maiores encolhem pela altura */
+#tray .tray-foot{position:static!important}
+#tray .pw{padding-bottom:0!important;align-items:start}
+#tray .pw .gboard{width:min(440px,calc(100vh - 430px))!important;height:auto!important;aspect-ratio:1;margin:0 auto}
+#tray .pw .pw-proto .gadget-preview{max-height:calc(100vh - 640px);min-height:90px}
+#tray .pw .pw-attrs .pw-attr{min-height:30px!important;padding-top:3px!important;padding-bottom:3px!important}
+#tray .pw .pw-offer .pw-piece{padding-top:6px!important;padding-bottom:6px!important}
+#tray .creation-title{margin-bottom:2px}#tray .creation-route{margin-bottom:6px}
+/* 1.10 · prancheta cabe sem rolagem em 1478×810 */
+#tray:has(.pw){padding-top:14px!important}
+#tray .creation-route{padding-bottom:4px!important}
+#tray .pw .pw-proto{padding:8px!important;gap:4px}
+#tray .pw .pw-proto .pw-art,#tray .pw .pw-proto .gadget-preview{height:78px!important;max-height:78px!important;min-height:0!important}
+#tray .pw .pw-proto .gadget-preview canvas,#tray .pw .pw-proto .gadget-preview svg,#tray .pw .pw-proto .gadget-preview img{max-height:70px!important;width:auto!important}
+#tray .pw .gboard{width:min(400px,calc(100vh - 470px))!important}
+#tray .pw .pw-attrs .pw-attr{min-height:27px!important;padding-top:2px!important;padding-bottom:2px!important}
+#tray .pw .pw-offer .pw-piece{min-height:0!important}
+#tray .pw .pw-attrs .pw-attr.on{background:color-mix(in srgb,var(--c) 28%,#fff)!important;outline:3px solid var(--c)!important;outline-offset:-1px}
+#tray .pw .pw-attrs .pw-attr:hover:not(:disabled):not(.on){background:color-mix(in srgb,var(--c) 14%,#fff)!important}
+/* custo da criação na mesma linha do rodapé */
+#tray > *:has(> .pw){position:relative}
+#tray > *:has(> .pw) > .creation-cost{position:absolute;left:50%;transform:translateX(-50%);bottom:24px;margin:0!important;padding:4px 10px!important;white-space:nowrap;font-size:12px!important}
+#tray > *:has(> .pw) > .tray-foot{margin-top:10px!important}
+#tray > *:has(> .pw) > .pw{margin-bottom:0!important}
+#tray .pw .gboard{width:min(400px,calc(100vh - 500px))!important}
+#tray .pw .pw-proto .pw-art,#tray .pw .pw-proto .gadget-preview{height:64px!important;max-height:64px!important}
+#tray:has(.pw){padding-bottom:4px!important}
+#tray > *:has(> .pw){padding-bottom:0!important;padding-top:8px!important}
+#tray .pw .pw-parts{gap:6px!important}
+#tray .pw .pw-attrs{gap:4px!important}
+#tray .pw .pw-attrs .pw-attr{min-height:25px!important}

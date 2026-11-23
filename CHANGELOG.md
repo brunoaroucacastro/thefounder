@@ -1,3 +1,10 @@
+# 1.10 · Abertura, pesquisa e prancheta
+
+- Abertura: só o "Clique no computador"; saíram o cartão "Seu quarto", o balão "Você pensa" e o aviso do canto.
+- Tutorial de público: "Ouça seu público-alvo" e "Crie para uma pessoa", com textos diretos.
+- Pesquisa: título "O que a pesquisa encontrou", sem o texto falso de "trocar depois", rostos novos em pixel art (cabelo, pele, acessório e expressão por pessoa), tipografia única e botão "Escolher →" em cada cartão.
+- Prancheta: corrigido o travamento do nome ("Concluir projeto" sem nome agora abre o campo de nome); a persona segue o visual da pesquisa e perdeu o boneco, dando espaço às falas; o atributo escolhido fica com a cor dele; Girar e Trocar peças lado a lado; lixeira com confirmação no lugar de "Outro projeto"; a tela cabe inteira em 1478×810, sem rolagem e sem o rodapé cobrindo nada.
+
 # 1.09 · Revisão de UX/UI da rotina do escritório
 
 - Botões com um padrão só: primário amarelo, secundário papel, borda preta, cantos retos, fonte Oficina e altura de 38px; o "?" de ajuda tem um único estilo. Popups de confirmação deixaram a fonte Consolas.
