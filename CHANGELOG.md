@@ -1,3 +1,9 @@
+# 1.12 · Contraproposta colorida, ? em toda mecânica e cartão de pessoa
+
+- Contraproposta do banco: linhas em verde são as condições que o banco aceitou; em amarelo, o que ele está propondo. Legenda logo abaixo da tabela.
+- Botão ? em toda tela de mecânica (pesquisa, prancheta, resumo do projeto, preço, lote, campanha, nova versão, vendas, vitrine, equipe, finanças e crédito). Ele reabre o tutorial daquela parte a qualquer momento.
+- Cartão de pessoa na pesquisa: rosto e nome em cima; descrição e falas 1, 2 e 3 encostadas na lateral esquerda, sem vão.
+
 # 1.11 · Crédito em duas etapas e voltar único
 
 - Crédito em duas etapas: primeiro o pedido, só com a exigência do banco e a chance de aprovar; a negociação abre numa tela própria, só com a mesa; ao terminar, volta para o pedido mostrando apenas o resultado e o botão Concluir.

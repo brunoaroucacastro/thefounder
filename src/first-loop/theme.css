@@ -2061,3 +2061,21 @@ body.is-intro #world .guide,body.is-intro #bubble,body.is-intro #work-order{disp
 #workshop-info .cr-card.doc .cr-ic{top:24px!important;width:26px!important;height:26px!important}
 #workshop-info .cr-card.doc .cr-dn{top:56px!important;font-size:9.5px!important;left:8px!important;right:8px!important}
 #workshop-info .cr-card.back{border-radius:7px!important}
+/* ===== 1.12 ===== */
+/* contraproposta: verde = aceitou, amarelo = o banco propõe */
+#workshop-info .cr-cmp tr:not(.ch):not(.pay) td{background:#d9f1df!important}
+#workshop-info .cr-cmp tr.ch td{background:#f7e3a1!important;font-weight:900}
+#workshop-info .cr-legend{display:flex;gap:14px;margin:-4px 0 8px;font-size:12px;font-weight:800;color:#3b3548}
+#workshop-info .cr-legend i{display:inline-block;width:12px;height:12px;margin-right:5px;vertical-align:-1px;border:1.5px solid #241d33}
+#workshop-info .cr-legend i.ok{background:#d9f1df}#workshop-info .cr-legend i.pr{background:#f7e3a1}
+/* "?" do tutorial: sempre no canto de cima à direita das telas de mecânica */
+#workshop-info .workshop-info-panel>.help-btn,#workshop-info h2+.help-btn{position:absolute;top:14px;right:62px;z-index:3}
+/* cartão de pessoa: falas encostadas na lateral esquerda, sem o vão do rosto */
+#tray .choices .choice[data-action="customer"]>div{display:contents}
+#tray .choices .choice[data-action="customer"]>.client-face{grid-column:1;grid-row:1/3}
+#tray .choices .choice[data-action="customer"] h3{grid-column:2;grid-row:1;align-self:end}
+#tray .choices .choice[data-action="customer"] h3+small{grid-column:2;grid-row:2;align-self:start}
+#tray .choices .choice[data-action="customer"]>div>*:not(h3):not(small){grid-column:1/-1}
+#tray .choices .choice[data-action="customer"]{row-gap:2px!important}
+#workshop-info .workshop-info-panel>.help-btn,#workshop-info h2+.help-btn{position:static!important;display:inline-grid!important;place-items:center;margin:0 0 0 10px;vertical-align:middle}
+#workshop-info h2{display:inline-block}
