@@ -1,3 +1,11 @@
+# 1.11 · Crédito em duas etapas e voltar único
+
+- Crédito em duas etapas: primeiro o pedido, só com a exigência do banco e a chance de aprovar; a negociação abre numa tela própria, só com a mesa; ao terminar, volta para o pedido mostrando apenas o resultado e o botão Concluir.
+- Tutorial de crédito explica a mecânica: o que é o empréstimo, como as condições mudam a exigência e quando parar de pedir documentos. Nova citação (Muhammad Yunus).
+- Menos texto no pedido: saíram as legendas repetidas "oferta do banco / máximo" debaixo de cada escala e o texto longo de abertura do banco.
+- Documentos com mais cara de carta de baralho: cantos arredondados, moldura interna e ícones menores.
+- Voltar único: todo "×", "✕", "Voltar", "Voltar ao quarto" e "Minimizar" de painel virou o mesmo botão ↩, sem texto.
+
 # 1.10 · Abertura, pesquisa e prancheta
 
 - Abertura: só o "Clique no computador"; saíram o cartão "Seu quarto", o balão "Você pensa" e o aviso do canto.
