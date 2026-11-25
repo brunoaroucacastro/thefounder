@@ -1,3 +1,11 @@
+# 1.18 · Ajuste dos números dos concorrentes
+
+- Ritmo de vendas dos rivais 30% menor (SomMax 49, Zuvi 27, Klik 42, Kora 32, TecLab 36, Tipo 24, BoomBox 41, Nuvem 28 por semana).
+- Cada cliente do rival convertido no tabuleiro tira 6 vendas dele (antes 4).
+- Bolsa: um lote de q unidades sobe o índice em q/2.000 (antes q/3.000) e sai em média a índice × (1 + q/4.000); volta 8% por dia para 100% (antes 12%). Lote de 600 leva a bolsa a 130% por cerca de 3 dias; lote de 1.000, a 150% por cerca de 9.
+- Rival que copia quem lidera: −10% (antes −15%).
+- Proposta para funcionário desmotivado: 20% por semana (antes 30%).
+
 # 1.17 · Concorrentes que jogam
 
 - Cada rival tem foco, ponto fraco, nota e preço. Preço do rival = preço de partida da categoria × perfil do foco × bolsa^0,4 × corte de preço.
