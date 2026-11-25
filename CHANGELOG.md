@@ -1,3 +1,18 @@
+# 1.17 · Concorrentes que jogam
+
+- Cada rival tem foco, ponto fraco, nota e preço. Preço do rival = preço de partida da categoria × perfil do foco × bolsa^0,4 × corte de preço.
+- Bolsa de componentes no lugar do desconto por volume: índice 100% = preço normal. Um lote de q unidades sai em média a índice × (1 + q/6.000) e empurra o índice em q/3.000. Todo dia volta 12% para 100%, com ruído de ±3%, e sobe 1,5% se um rival estiver em campanha. Acima de 125%, um rival pode ficar sem estoque (+12% para você na categoria por 1 semana, no estágio 2).
+- Vendas semanais do rival = ritmo × (1/bolsa)^0,8 × 1,3 em campanha × 0 sem estoque × vantagem de preço, menos os clientes que você tirou, mais os que voltaram para ele. Ranking das últimas 4 semanas com tendência, no panorama, no mercado e em Finanças. Passar um rival dá peça ou carta.
+- Estágio 2 (escritório): preço contra o concorrente mais próximo vale de −12% a +8% de conversão; rival baixa 10% se você ficar 5% mais barato por 2 semanas (dentro da faixa dele); entra em campanha quando você cresce (mais clientes dele no próximo tabuleiro); copia quem lidera (−15%); comparativo da imprensa (+8% ou −6%); provocações; clientes do rival reclamando; e propostas para quem está desmotivado.
+- Tabuleiro (estágio 2): casas de concorrente viram clientes convertíveis com 2 alcances; cada um tira 4 vendas do rival.
+- Avaliações: nota baixa pode dizer "Voltei pra X" (venda para o rival), nota 5 pode dizer "Larguei a X por esse".
+- Nexus: regras de resposta explicadas num tutorial; provocação (agradecer +5% sem risco, explicar +8%/−6%, brincar +12%/−8%) e cliente do rival (educação traz promotor, tira clientes dele e revela o ponto fraco).
+- Fãs pedem produto melhor que o do rival; superar (3 ou mais no atributo) dá +15%.
+- Livro: ficha dos concorrentes (foco, ponto fraco, reação a preço) com a tentativa do lançamento podendo ser usada num rival. P&D: estudar concorrente (R$ 1.500, sem ponto).
+- Alternativa ao rival: foco do seu produto no ponto fraco dele dá +8% por 3 semanas.
+- Cidade: Seu Zé conta fofocas da concorrência e troca a vitrine quando você passa o líder. Equipe: candidatos ex-concorrente revelam segredos (e o rival reage com campanha).
+- Corrigido: título do gráfico de Finanças mostrava código em semanas negativas.
+
 # 1.16 · P&D, livro de deduções, rivais, fãs e menos barulho
 
 Progressão

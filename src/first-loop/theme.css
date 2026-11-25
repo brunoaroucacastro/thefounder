@@ -2257,3 +2257,26 @@ body.is-intro #world .guide,body.is-intro #bubble,body.is-intro #work-order{disp
 #game .dd-line.on{background:#f0e6ff!important;outline:3px solid #51425e}
 #game .dd-line.ok{background:#dcefc5!important}
 #game .pd-opt{box-shadow:4px 4px 0 #51425e!important}
+
+/* 1.17 · concorrentes: bolsa, preço, participação, ficha no livro, casas convertíveis, respostas */
+.bolsa{background:#1f2637;color:#eaf0ff;border:2px solid #3a4766;padding:10px 12px;margin:10px 0}
+.bolsa-h{display:flex;justify-content:space-between;align-items:center}.bolsa-h b{font-size:22px}.bolsa-h b.up{color:#ff9a8a}.bolsa-h b.down{color:#8ff0bf}
+.bolsa-chart{width:100%;height:54px;display:block;margin:6px 0}.bolsa-chart polyline{fill:none;stroke:#ffd166;stroke-width:2.5;vector-effect:non-scaling-stroke}.bolsa-chart line{stroke:#ffffff55;stroke-dasharray:3 3;vector-effect:non-scaling-stroke}
+.bolsa p{margin:4px 0;font-size:13px}.bolsa small{font-size:12px;opacity:.8;display:block}
+.pt-rivals{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;background:#f3ecd9;border:2px solid #c9b88f;padding:8px 10px;margin:8px 0;color:#3b3046}
+.pt-rivals>span{font-weight:700;text-transform:uppercase;font-size:12px}.pt-rivals b{background:#fff;border:1px solid #c9b88f;padding:2px 8px}.pt-rivals i{font-style:normal;color:#a33b2b;font-size:12px}.pt-rivals small{width:100%;font-size:12px}
+.fi-share{margin-top:10px;background:#f6f0de;border:2px solid #c9b88f;padding:8px 10px;color:#3b3046}.fi-share>i{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.04em}
+.sh-row{margin-top:6px}.sh-bar{display:flex;height:12px;gap:2px;margin:3px 0}.sh-bar span{background:var(--c);display:block}.sh-bar span.you{outline:2px solid #1d1626}.sh-row small{font-size:12px}
+.rv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.rv-card{background:#fffaf0;border:2px solid #c9b88f;border-top:6px solid var(--rv);padding:8px 10px}.rv-card h4{margin:0 0 6px}.rv-card h4 small{font-weight:400;opacity:.7}
+.rv-card dl{display:grid;grid-template-columns:auto 1fr;gap:2px 8px;margin:0;font-size:13px}.rv-card dt{opacity:.7}.rv-card dd{margin:0;font-weight:700}.rv-card em{font-style:normal;color:#a33b2b;font-weight:400}
+#game .rv-ded{margin-top:8px;width:100%;font-size:12px!important}
+.bc.k-r{background:repeating-linear-gradient(135deg,#5a4a7a 0 4px,#3f3458 4px 8px);color:#ffd9a8}.bc.k-r.half{box-shadow:inset 0 0 0 3px #ffd166}.bc.hit.k-r{background:#7b5cd6;color:#fff}
+.nx-ask.prov{background:#fde8e4;color:#8a2c1e}.nx-ask.rf{background:#e6f0ff;color:#1e4e8a}
+.cv-ex{background:#fff4cf;color:#6b5200;font-size:12px;padding:5px 8px;margin:6px 0;border-radius:4px}
+.pd-opts{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.pd-opts{grid-template-columns:1fr 1fr}}
+#game .fi-share .sh-row{display:block!important}
+#game .fi-share .sh-bar{display:flex!important;width:100%!important;height:12px}
+#game .fi-share .sh-row small{display:block}
+#game .bolsa p,#game .bolsa small{text-transform:none!important;letter-spacing:normal!important;font-family:var(--q-font)!important}
