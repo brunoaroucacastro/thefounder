@@ -1,3 +1,12 @@
+# 1.14 · Acompanhamento de vendas, fim das vendas, avaliações, lote e preço
+
+- Acompanhamento de vendas cabe numa tela só: faturamento, vendidos e margem numa linha; ponto de equilíbrio logo abaixo; estoque, funil e campanha lado a lado; botões menores embaixo.
+- Avaliações saíram do painel: clicando nas estrelas abre a janela de avaliações, com a nota média, barras de 1 a 5 estrelas e filtro por nota.
+- Fim das vendas no mesmo visual do acompanhamento: produto, vendas, faturamento, margem total, estoque, ponto de equilíbrio e os próximos passos como botões (retomar, fabricar mais, nova campanha, nova versão, novo produto, tirar uma lição). Saíram a janela "Seu produto ganhou as ruas", o "Rever lançamento" e os blocos de texto.
+- Ponto de equilíbrio do acompanhamento usa todo o custo de desenvolvimento.
+- Lote: saiu o bloco "Dinheiro que sobra em caixa" (só avisa se faltar dinheiro) e a tela ficou mais compacta.
+- Preço: "Você ganha por unidade" e ponto de equilíbrio lado a lado.
+
 # 1.13 · Textos, tutoriais, interface e mecânicas
 
 Textos e tutoriais
