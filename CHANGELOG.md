@@ -1,3 +1,7 @@
+# Protótipo · ciclo simples
+
+- amostras-ux/simples/ciclo-simples.html: o jogo em 5 passos (Persona, Criar, Preço, Lançar, Vender), sem tutorial, uma frase de dica por tela. Persona em 2 cartas (um clique escolhe); prancheta com peças coloridas e ícone do atributo; preço em 3 cartas (Popular, Justo, Premium); tabuleiro com 5 cartas e 4 de energia; vendas automáticas com 3 frases de clientes dizendo o que faltou ou sobrou; no fim, só Nova versão (mesma persona, prancheta maior, peças mantidas) ou Produto novo.
+
 # 1.21 · Pregão no lote
 
 - O modelo Pregão dos protótipos entrou no jogo: no lote e na reposição, o gráfico de velas ocupa o lugar da arte. Uma vela por dia útil do jogo (abertura, fechamento, máxima e mínima), azul em alta e laranja em baixa.
