@@ -1,3 +1,11 @@
+# Protótipo · loja simples (v2)
+
+- amostras-ux/simples/ciclo-simples-v2.html: a loja é a tela principal e o tempo só anda nela (pausa, 1× e 2×). Até 3 produtos vendem ao mesmo tempo, cada um num cartão com vendas por dia (roxo = campanha no ar), vendidos, faturamento, nota, estoque e a última fala de cliente.
+- Cada cartão mostra só a ação do momento: Esgotado → Fabricar mais (100, 300 ou 1.000); Vendas fracas → Campanha ou Melhorar. Vendendo bem → nenhum botão.
+- Melhorar volta para a prancheta com as peças mantidas, grade maior e as falas dos clientes ao lado; o lote da nova versão pode manter o estoque.
+- O jogador define o preço (− / + e régua); 10 rostos da persona mostram quantos compram e o lucro por unidade aparece ao lado. Lote escolhido na mesma tela.
+- Nota baixa espanta clientes (boca a boca negativo); a campanha perde força a cada dia.
+
 # Protótipo · ciclo simples
 
 - amostras-ux/simples/ciclo-simples.html: o jogo em 5 passos (Persona, Criar, Preço, Lançar, Vender), sem tutorial, uma frase de dica por tela. Persona em 2 cartas (um clique escolhe); prancheta com peças coloridas e ícone do atributo; preço em 3 cartas (Popular, Justo, Premium); tabuleiro com 5 cartas e 4 de energia; vendas automáticas com 3 frases de clientes dizendo o que faltou ou sobrou; no fim, só Nova versão (mesma persona, prancheta maior, peças mantidas) ou Produto novo.
