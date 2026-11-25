@@ -2280,3 +2280,10 @@ body.is-intro #world .guide,body.is-intro #bubble,body.is-intro #work-order{disp
 #game .fi-share .sh-bar{display:flex!important;width:100%!important;height:12px}
 #game .fi-share .sh-row small{display:block}
 #game .bolsa p,#game .bolsa small{text-transform:none!important;letter-spacing:normal!important;font-family:var(--q-font)!important}
+
+/* 1.19 · bolsa com tendência */
+.bolsa-h{gap:8px}.bolsa-h span{flex:1}.bolsa-h em{font-style:normal;font-size:12px;padding:2px 8px;border-radius:10px;background:#ffffff1f}.bolsa-h em.up{color:#ff9a8a}.bolsa-h em.down{color:#8ff0bf}
+.bolsa-range{display:flex;justify-content:space-between;font-size:11px;opacity:.75}
+#game .bolsa .bolsa-why{color:#ffd166;opacity:1;margin:4px 0}
+#game #restock-modal .bolsa p,#game #restock-modal .bolsa small,#game #restock-modal .bolsa-range span,#game #tray .bolsa p,#game #tray .bolsa small,#game #tray .bolsa-range span{font-family:var(--q-font)!important;text-transform:none!important;letter-spacing:normal!important}
+.bolsa p,.bolsa small,.bolsa-range span{font-family:var(--q-font)!important;text-transform:none!important;letter-spacing:normal!important}

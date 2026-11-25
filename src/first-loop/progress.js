@@ -88,7 +88,7 @@ const Progress=(()=>{
  function checkAch(s,revenue){const P=ensure(s),sold=(s.history||[]).filter(h=>h.cycle!==s.cycle).reduce((n,h)=>n+(h.sold||0),0)+(s.sold||0);if(sold>=100)achieve(s,'sold100');if((s.reviews||[]).some(r=>r.stars===5))achieve(s,'five');if(revenue>=50000)achieve(s,'rev50');if((s.level||0)>=6)achieve(s,'nv6');if(P.fans.pos>=10)achieve(s,'fans10');
   if(!P.ach.credit&&revenue>=CREDIT_AT){P.ach.credit=week(s)+1;news(s,{kind:'credit',icon:'🏦',title:'Crédito liberado',text:'Por conta do seu faturamento de R$ 20 mil, o Banco do Bairro liberou crédito para você. Ele fica em Finanças.'});}}
  // ---------- semana: pesquisa termina, rivais se mexem, fãs pedem, quem ficou sem resposta reclama ----------
- function onWeek(s,publish,img){const P=ensure(s),w=week(s);finishLab(s);
+ function onWeek(s,publish,img){const P=ensure(s),w=week(s);finishLab(s);P.mat.weekChange=Math.round((P.mat.v-(P.mat.weekStart??1))*100);P.mat.weekStart=P.mat.v;
   const cats=(s.unlocked||[]).filter(c=>RIVALS[c]),k=s.id+':wk:'+w;
   const R=P.rivals;for(const m of Object.values(R.m)){if(m.camp>0)m.camp--;if(m.out>0)m.out--;}
   for(const cat of cats)rivalWeek(s,cat);
@@ -149,12 +149,27 @@ const Progress=(()=>{
  function nearestRival(s,cat=s.productId){const L=rivalPrices(s,cat).filter(x=>!x.out);if(!L.length||!(s.price>0))return null;return L.sort((a,b)=>Math.abs(a.price-s.price)-Math.abs(b.price-s.price))[0];}
  // estágio 2: (preço do concorrente mais próximo / seu preço) elevado a 0,25, limitado entre −12% e +8%
  function priceComp(s){if(!stage2(s)||!s.productId||!RIVALS[s.productId]||!(s.price>0))return 1;const pm=avgRivalPrice(s);if(!pm)return 1;return Math.round(Math.max(.88,Math.min(1.08,Math.pow(pm/s.price,.25)))*1000)/1000;}
- // bolsa de componentes: índice 100% = preço normal. Comprar q unidades custa em média índice × (1 + q/4000) e empurra o índice em q/2000.
+ // bolsa de componentes (1.19): índice 100% = preço normal.
+ // Todo dia: hoje = ontem + 15% × (onda − ontem) + embalo + demanda dos rivais + ruído de ±1,5%.
+ // Onda: ciclo dos fornecedores de ~6 semanas (30 dias úteis) que leva a bolsa de ~85% a ~115%. Embalo: tendência que persiste alguns dias (até ±2,5%/dia).
+ // Demanda: 2% × (compras dos rivais hoje / compras normais − 1). Notícias: ~1 por mês, ±12% a 18% de uma vez.
+ // Sua compra não muda o preço do próprio lote (que tem desconto por volume): ela sobe a bolsa em lote/2.000 para as próximas compras.
  const LIQ=2000;
- function matPrice(s,q){return matIndex(s)*(1+Math.max(0,q||0)/(2*LIQ));}
- function onBuy(s,q){const P=ensure(s);P.mat.v=Math.round(Math.min(1.6,P.mat.v+Math.max(0,q)/LIQ)*1000)/1000;P.mat.hist[P.mat.hist.length-1]=P.mat.v;}
- // todo dia: volta 8% em direção a 100%, ruído de ±3% e +1,5% se algum rival estiver em campanha
- function onDay(s){const P=ensure(s),d=s.weekly?.days||0,camp=Object.values(P.rivals.m).some(m=>m.camp>0)?.015:0;const v=P.mat.v+.08*(1-P.mat.v)+(hash(s.id+':mat:'+d)-.5)*.06+camp;P.mat.v=Math.round(Math.max(.7,Math.min(1.6,v))*1000)/1000;P.mat.hist.push(P.mat.v);if(P.mat.hist.length>20)P.mat.hist.shift();}
+ function matPrice(s){return matIndex(s);}
+ function onBuy(s,q){const P=ensure(s),dv=Math.max(0,q)/LIQ;P.mat.v=Math.round(Math.min(1.6,P.mat.v+dv)*1000)/1000;P.mat.hist[P.mat.hist.length-1]=P.mat.v;P.mat.why='Sua compra de '+q.toLocaleString('pt-BR')+' unidades subiu a bolsa em '+Math.round(dv*100)+' pontos.';}
+ function onDay(s){const P=ensure(s),M=P.mat,d=s.weekly?.days||0,h=t=>hash(s.id+':mat:'+t+':'+d);
+  M.phase??=hash(s.id+':phase')*Math.PI*2;M.m??=0;
+  const wave=1+.26*Math.sin(2*Math.PI*d/30+M.phase);
+  M.m=Math.max(-.025,Math.min(.025,.75*M.m+(h('m')-.5)*.02));
+  let normal=0,today=0;for(const r of allRivals()){const x=P.rivals.m[r.id];normal+=r.pace;today+=r.pace*Math.pow(1/M.v,.8)*(x.camp>0?1.3:1)*(x.out>0?0:1);}
+  const demand=normal?.02*(today/normal-1):0;
+  let v=M.v+.15*(wave-M.v)+M.m+demand+(h('n')-.5)*.03,why=null;
+  if(d-(M.lastEvent??-99)>=10&&h('ev')<.06){const up=h('dir')<.5,size=.12+h('sz')*.06,p=Math.round(size*100);v+=up?size:-size;M.lastEvent=d;
+   why=up?pick(['Falta de chips no mundo: componentes subiram '+p+'% de uma vez.','Porto parado por greve: componentes subiram '+p+'% de uma vez.'],s.id+':evu:'+d):pick(['Fábrica nova de componentes abriu: preços caíram '+p+'% de uma vez.','Estoque encalhado nos fornecedores: componentes caíram '+p+'% de uma vez.'],s.id+':evd:'+d);
+   news(s,{kind:'fx',icon:up?'📈':'📉',title:up?'Componentes em alta':'Componentes em baixa',text:why+(up?' Hora de segurar a mão nos lotes.':' Boa hora para estocar.')});}
+  M.v=Math.round(Math.max(.7,Math.min(1.6,v))*1000)/1000;M.hist.push(M.v);if(M.hist.length>20)M.hist.shift();
+  if(why){M.why=why;return;}const t=M.hist.length>=5?M.v-M.hist[M.hist.length-5]:0;
+  M.why=Math.abs(t)<.03?'Mercado estável nos últimos dias.':(t>0?'Em alta nos últimos dias':'Em baixa nos últimos dias')+(t<0&&today<normal*.92?': os concorrentes estão comprando menos.':t>0&&today>normal*1.08?': os concorrentes estão comprando mais.':(wave-1)*t>0?': o ciclo dos fornecedores está '+(t>0?'subindo.':'caindo.'):'.');}
  function catSold(s,cat){return(s.history||[]).filter(h=>h.productId===cat&&h.cycle!==s.cycle).reduce((n,h)=>n+(h.sold||0),0)+(s.productId===cat?s.sold||0:0)+(s.portfolio||[]).filter(p=>p.productId===cat).reduce((n,p)=>n+(p.sold||0),0);}
  // vendas da semana do rival = ritmo × (1/bolsa)^0,8 × campanha 1,3 × (0 se sem estoque) × vantagem de preço − clientes que você tirou + clientes que voltaram para ele
  function rivalWeek(s,cat){const R=s.prog.rivals,total=catSold(s,cat),mine=Math.max(0,total-(R.snap[cat]??0));R.snap[cat]=total;const M=matIndex(s),row={w:week(s),you:mine},conv=R.conv[cat]||0;R.conv[cat]=0;

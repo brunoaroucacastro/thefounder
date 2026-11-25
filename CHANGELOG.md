@@ -1,3 +1,11 @@
+# 1.19 · Bolsa de componentes com altas e baixas
+
+- Volume volta a dar desconto (300 un. −2%, 1.000 −4%, 3.000 −6%, 5.000 −8%, 10.000 −10%). O lote custa bolsa do dia × (1 − desconto).
+- Sua compra não encarece o próprio lote: depois dela a bolsa sobe lote/2.000 e a próxima compra (sua e dos concorrentes) fica mais cara.
+- A bolsa flutua todo dia: hoje = ontem + 15% × (onda − ontem) + embalo + demanda dos concorrentes + ruído de ±1,5%. A onda é um ciclo dos fornecedores de cerca de 6 semanas, que leva a bolsa de uns 85% a uns 120%; o embalo mantém a tendência por alguns dias.
+- O que faz cair: o ciclo, concorrentes comprando menos (bolsa alta, sem estoque, clientes que você tirou) e notícias de fornecedor (fábrica nova, estoque encalhado). O que faz subir: o ciclo, suas compras, concorrentes em campanha e notícias (falta de chips, greve no porto). Notícias saem cerca de uma vez por mês, com saltos de 12% a 18%.
+- Tela do lote: gráfico dos últimos 20 dias, mínima e máxima, etiqueta em alta, em baixa ou estável, o motivo do movimento e a régua de desconto por volume. Panorama da semana mostra a bolsa e a variação.
+
 # 1.18 · Ajuste dos números dos concorrentes
 
 - Ritmo de vendas dos rivais 30% menor (SomMax 49, Zuvi 27, Klik 42, Kora 32, TecLab 36, Tipo 24, BoomBox 41, Nuvem 28 por semana).
