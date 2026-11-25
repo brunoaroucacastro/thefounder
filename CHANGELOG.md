@@ -1,3 +1,9 @@
+# 1.15 · Nexus, fontes e planilha de citações
+
+- Nexus: relógio igual ao do jogo; saíram stories, abas e ícones que pareciam clicáveis; embaixo, Perfil (posts da sua marca), @ Menções (quem citou sua marca) e Para você (em breve); lupa no topo filtra por produto e por comentário positivo, misto ou negativo; entrada para as avaliações em estrelas.
+- Fontes padronizadas: Oficina para títulos e números, Nunito para textos. Saíram Consolas, system-ui, Trebuchet e Georgia.
+- docs/CITACOES.xlsx: todas as citações do jogo, com autor, país, área e quando aparecem.
+
 # 1.14 · Acompanhamento de vendas, fim das vendas, avaliações, lote e preço
 
 - Acompanhamento de vendas cabe numa tela só: faturamento, vendidos e margem numa linha; ponto de equilíbrio logo abaixo; estoque, funil e campanha lado a lado; botões menores embaixo.

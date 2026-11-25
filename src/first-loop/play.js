@@ -177,7 +177,7 @@ setTimeout(()=>{if(typingIn('tray')||typingIn('work-order'))return;if(typingPaus
  nexus:{area:'NEXUS',pages:[
    {title:'Nexus',text:'É a rede social da sua empresa: o que falam de você aparece aqui.',quote:['Se você estiver onde o vento sopra, até um porco voa.','Lei Jun, fundador da Xiaomi'],
     art:'<div class="ta-phone"><b>nexus</b><span>@clara: amei o fone! ★★★★★</span><span>@ravi: chegou rápido</span></div>'},
-   {title:'Consumidores, imprensa e sua marca',text:'Leia o feedback dos clientes, as notícias da imprensa e os posts da sua própria marca.',
+   {title:'Perfil e menções',text:'Em Perfil ficam os posts da sua marca. Em @ estão as pessoas e a imprensa que citaram você. A lupa filtra por produto e por comentário positivo ou negativo.',
     art:'<div class="ta-row"><span class="ta-mcard"><b>💬</b>Pessoas</span><span class="ta-mcard"><b>📰</b>Imprensa</span><span class="ta-mcard"><b>📣</b>Marca</span></div>'},
    {title:'Seguidores viram alcance',text:'Quanto mais seguidores, mais gente as próximas campanhas alcançam.',
     art:'<div class="ta-row"><span class="ta-num">SEGUIDORES <b>3.000</b></span><span class="ta-arrow">➜</span><span class="ta-num">ALCANCE <b>+</b></span></div>'}]},
@@ -809,46 +809,48 @@ setTimeout(()=>{if(typingIn('tray')||typingIn('work-order'))return;if(typingPaus
   return '<details class="product-reviews"><summary>Avaliações do produto · '+reviews.length+'</summary>'+
    reviews.slice().reverse().map(r=>'<div><b aria-label="'+r.stars+' de 5 estrelas">'+ '★'.repeat(r.stars)+'☆'.repeat(5-r.stars)+'</b> · '+esc(r.buyer)+(r.feedback?'<p>'+esc(r.feedback)+'</p>':'')+'</div>').join('')+'</details>';
  }
+ let socialFilter={product:'',sent:''},socialSearch=false;
  function socialPopup(){
   const node=$('social-modal');
   node.hidden=!socialOpen;
   if(node.hidden)return;
   const feed=g.social.posts;
-  const tabOf=p=>p.origin==='media'?(p.verified?'press':'people'):p.origin==='consumer'?'people':'brand';const visible=feed.filter(p=>(!socialAuthor||p.authorId===socialAuthor)&&(socialTab==='all'||tabOf(p)===socialTab));
-  const consumers=visible.filter(p=>p.origin==='consumer');
-  const summary=Object.entries(sentimentLabels).map(([key,label])=>'<span class="'+key+'">'+consumers.filter(p=>p.sentiment===key).length+' '+label.toLowerCase()+'</span>').join('');
+  const tabOf=p=>p.origin==='company'?'brand':'mentions';
+  const products=[...new Set(feed.map(p=>p.product).filter(Boolean))];
+  const visible=feed.filter(p=>(!socialAuthor||p.authorId===socialAuthor)&&tabOf(p)===socialTab&&(!socialFilter.product||p.product===socialFilter.product)&&(!socialFilter.sent||p.sentiment===socialFilter.sent));
   const handleOf=p=>p.handle||String(p.author).toLowerCase().normalize('NFD').replace(/[^a-z0-9]/g,'');
   const cards=visible.slice(-socialLimit).reverse().map(p=>{
    const color=/^#[a-f0-9]{6}$/i.test(p.image?.color||'')?p.image.color:'#73999e',media=p.origin==='media',brand=p.origin==='company';
    return '<article class="nexus-post nx-card '+(brand?'company ':'')+(media?'media media-'+esc(p.mediaType||''):'')+'" style="--post-color:'+color+'">'+
-    '<header><button class="nexus-author" data-social-author="'+esc(p.authorId)+'"><span class="nx-avatar" aria-hidden="true">'+esc(p.author.slice(0,1))+'</span><span class="nx-who"><b>'+esc(p.author)+(p.verified||brand?' <i class="nx-check" title="Conta verificada">✓</i>':'')+'</b><small>'+(p.context?esc(p.context):'@'+esc(handleOf(p)))+'</small></span></button><small class="nx-when">S'+p.week+' · '+weekdayNames[p.weekday]+'</small></header>'+
+    '<header><button class="nexus-author" data-social-author="'+esc(p.authorId)+'" title="Ver só deste perfil"><span class="nx-avatar" aria-hidden="true">'+esc(p.author.slice(0,1))+'</span><span class="nx-who"><b>'+esc(p.author)+(p.verified||brand?' <i class="nx-check" title="Conta verificada">✓</i>':'')+'</b><small>'+(p.context?esc(p.context):'@'+esc(handleOf(p)))+'</small></span></button><small class="nx-when">S'+p.week+' · '+weekdayNames[p.weekday]+'</small></header>'+
     (p.headline?'<div class="nx-headline"><small>'+esc(p.context||'')+'</small><h4>'+esc(p.headline)+'</h4></div>':'')+
     (p.image?'<div class="nexus-image"><canvas width="100" height="76" data-social-image="'+esc(p.image.kind)+'" data-color="'+color+'" aria-hidden="true"></canvas><b>'+esc(p.product)+'</b></div>':'')+
-    '<div class="nx-bar"><span class="nx-ico">♡</span><span class="nx-ico">💬</span><span class="nx-ico">↗</span>'+(p.sentiment?'<span class="nx-sent '+p.sentiment+'">'+sentimentLabels[p.sentiment]+'</span>':'')+'</div>'+
-    '<div class="nx-likes"><b>'+(p.reactions||0).toLocaleString('pt-BR')+' curtidas</b></div>'+
+    '<div class="nx-meta"><b>'+(p.reactions||0).toLocaleString('pt-BR')+' curtidas</b>'+(p.sentiment?'<span class="nx-sent '+p.sentiment+'">'+sentimentLabels[p.sentiment]+'</span>':'')+'</div>'+
     '<p class="nx-text"><b>@'+esc(handleOf(p))+'</b> '+esc(p.text)+'</p>'+
     (p.comments.length?'<details class="nx-comments"><summary>Ver '+(p.comments.length>1?'os '+p.comments.length+' comentários':'1 comentário')+'</summary>'+p.comments.map(c=>'<p>'+esc(c)+'</p>').join('')+'</details>':'')+'</article>';
   }).join('');
   const likes=feed.reduce((n,p)=>n+(p.reactions||0),0),followers=Math.round(40+likes*3.2+feed.filter(p=>p.origin==='media').length*55);
-  const tab=(id,label)=>'<button class="nx-tab'+(socialTab===id?' on':'')+'" data-social-tab="'+id+'">'+label+'</button>';
-  const seenA=new Set(),stories=feed.slice().reverse().filter(p=>p.origin!=='company'&&!seenA.has(p.authorId)&&seenA.add(p.authorId)).slice(0,8);
-  const clock=($('day-time')?.textContent||'09:41').trim();
+  const R=g.reviews||[],avg=R.length?R.reduce((n,r)=>n+r.stars,0)/R.length:0;
+  const clock=($('day-time')?.textContent||'08:00').trim();
+  const dock=(id,ic,label,dis)=>'<button class="nx-dockbtn'+(socialTab===id?' on':'')+'" '+(dis?'disabled title="Em breve"':'data-social-tab="'+id+'"')+'><span>'+ic+'</span><small>'+label+'</small></button>';
+  const fcount=(socialFilter.product?1:0)+(socialFilter.sent?1:0);
   node.innerHTML='<div class="nx-device" role="document"><div class="nx-screen">'+
-   '<div class="nx-status"><b>'+esc(clock)+'</b><span class="nx-notch" aria-hidden="true"></span><span class="nx-sig" aria-hidden="true">▂▄▆ <i class="nx-bat"></i></span></div>'+
-   '<header class="nx-appbar"><b class="nx-logo">nexus</b><span class="nx-appicons" aria-hidden="true">♡ ✉</span>'+button('✕','socialClose','aria-label="Fechar o Nexus"','secondary nx-close')+'</header>'+
+   '<div class="nx-status"><b id="nx-clock">'+esc(clock)+'</b><span class="nx-notch" aria-hidden="true"></span><span class="nx-sig" aria-hidden="true"><i class="nx-bat"></i></span></div>'+
+   '<header class="nx-appbar"><b class="nx-logo">nexus</b><button class="nx-search'+(socialSearch||fcount?' on':'')+'" data-nx="search" aria-label="Filtrar" title="Filtrar">⌕'+(fcount?'<i>'+fcount+'</i>':'')+'</button>'+button('✕','socialClose','aria-label="Fechar o Nexus"','secondary nx-close')+'</header>'+
+   (socialSearch?'<div class="nx-filters"><label>Produto<select data-nx-filter="product"><option value="">Todos</option>'+products.map(p=>'<option'+(socialFilter.product===p?' selected':'')+'>'+esc(p)+'</option>').join('')+'</select></label><div class="nx-sentf">'+[['','Todos'],['positive','Positivos'],['mixed','Mistos'],['negative','Negativos']].map(([k,l])=>'<button class="'+(socialFilter.sent===k?'on':'')+'" data-nx-sent="'+k+'">'+l+'</button>').join('')+'</div></div>':'')+
    '<div class="nx-scroll">'+
-   (stories.length?'<div class="nx-stories">'+stories.map(p=>'<button class="nx-story'+(socialAuthor===p.authorId?' on':'')+'" data-social-author="'+esc(p.authorId)+'"><span class="nx-ring"><span class="nx-avatar">'+esc(p.author.slice(0,1))+'</span></span><small>'+esc(String(p.author).split(' ')[0])+'</small></button>').join('')+'</div>':'')+
-   '<section class="nx-profile"><span class="nx-avatar big" aria-hidden="true">'+esc((g.company||'?').slice(0,1))+'</span><div class="nx-pname"><b>'+esc(g.company||'Sua empresa')+' <i class="nx-check">✓</i></b><small>@'+esc(String(g.company||'empresa').toLowerCase().normalize('NFD').replace(/[^a-z0-9]/g,''))+'</small></div><dl><div><dt>'+feed.length+'</dt><dd>posts</dd></div><div><dt>'+followers.toLocaleString('pt-BR')+'</dt><dd>seguidores</dd></div><div><dt>'+likes.toLocaleString('pt-BR')+'</dt><dd>curtidas</dd></div></dl></section>'+
-   '<nav class="nx-tabs">'+tab('all','Tudo')+tab('press','Imprensa')+tab('people','Clientes')+tab('brand','Sua marca')+'</nav>'+
+   (socialTab==='brand'?'<section class="nx-profile"><span class="nx-avatar big" aria-hidden="true">'+esc((g.company||'?').slice(0,1))+'</span><div class="nx-pname"><b>'+esc(g.company||'Sua empresa')+' <i class="nx-check">✓</i></b><small>@'+esc(String(g.company||'empresa').toLowerCase().normalize('NFD').replace(/[^a-z0-9]/g,''))+'</small></div><dl><div><dt>'+feed.filter(p=>p.origin==='company').length+'</dt><dd>posts</dd></div><div><dt>'+followers.toLocaleString('pt-BR')+'</dt><dd>seguidores</dd></div><div><dt>'+likes.toLocaleString('pt-BR')+'</dt><dd>curtidas</dd></div></dl></section>':'<div class="nx-section-h"><b>@ Quem citou sua marca</b><small>'+visible.length+' publicações</small></div>')+
+   (R.length?'<button class="nx-reviews" data-action="reviewsOpen">'+starsHtml(avg)+' <b>'+avg.toFixed(1).replace('.',',')+'</b> <small>'+R.length+' avaliações de '+esc(g.name)+' ›</small></button>':'')+
    (socialAuthor?'<div class="nx-filter"><b>'+esc(visible.at(-1)?.author||'Perfil')+'</b>'+button('Ver tudo','socialAll','','secondary')+'</div>':'')+
-   '<div class="nexus-summary">'+summary+'</div><div class="nx-feed">'+
-   (cards||'<p class="nexus-empty">'+(feed.length?'Nada por aqui ainda.':'Seu primeiro lançamento aparece aqui quando o e-commerce abrir.')+'</p>')+
+   '<div class="nx-feed">'+
+   (cards||'<p class="nexus-empty">'+(feed.length?'Nada por aqui com esse filtro.':'Seu primeiro lançamento aparece aqui quando o e-commerce abrir.')+'</p>')+
    (visible.length>socialLimit?button('Ver publicações anteriores','socialMore','','secondary'):'')+'</div></div>'+
-   '<nav class="nx-dock" aria-hidden="true"><span>⌂</span><span>⌕</span><span class="nx-plus">＋</span><span>♡</span><span>◉</span></nav><i class="nx-homebar" aria-hidden="true"></i></div></div>';
+   '<nav class="nx-dock">'+dock('brand','◉','Perfil')+dock('mentions','@','Menções')+dock('foryou','✦','Para você',true)+'</nav><i class="nx-homebar" aria-hidden="true"></i></div></div>';
   for(const canvas of node.querySelectorAll?.('[data-social-image]')||[]){
    const context=canvas.getContext('2d');
    PilotWorld.headphones(context,50,39,canvas.dataset.socialImage,canvas.dataset.color,2.4);
   }
+  if(!node.dataset.nxBound){node.dataset.nxBound='1';node.addEventListener('change',e=>{const f=e.target.closest('[data-nx-filter]');if(f){socialFilter[f.dataset.nxFilter]=f.value;socialPopup();}});setInterval(()=>{const c=document.getElementById('nx-clock');if(c&&!node.hidden){const t=($('day-time')?.textContent||'').trim();if(t&&c.textContent!==t)c.textContent=t;}},500);}
   node.querySelector?.('button[data-action="socialClose"]')?.focus?.();
  }
  function openSocial(){
@@ -856,7 +858,7 @@ setTimeout(()=>{if(typingIn('tray')||typingIn('work-order'))return;if(typingPaus
   try{
    const next=C.act(g,{type:'socialSeen'});
    persist(next);g=next;
-   socialAuthor=null;socialLimit=30;socialTab='all';socialOpen=true;
+   socialAuthor=null;socialLimit=30;socialTab='mentions';socialOpen=true;
    render();helpOnce('nexus');
   }catch(e){fail(e);}
  }
@@ -996,7 +998,7 @@ node.innerHTML='<div class="dice-popup '+kind+'">'+button('×','diceClose','aria
   const author=event.target.closest('[data-social-author]');
   const action=event.target.closest('button[data-action]')?.dataset.action;
   const tabBtn=event.target.closest('[data-social-tab]');
-  if(tabBtn){socialTab=tabBtn.dataset.socialTab;socialAuthor=null;socialLimit=30;socialPopup();}
+  const nxb=event.target.closest('[data-nx],[data-nx-sent]');if(nxb){if(nxb.dataset.nx==='search')socialSearch=!socialSearch;else{socialFilter.sent=nxb.dataset.nxSent;}socialPopup();return;}if(event.target.closest('[data-action="reviewsOpen"]')){openReviews(0);return;}if(tabBtn){socialTab=tabBtn.dataset.socialTab;socialAuthor=null;socialLimit=30;socialPopup();}
   else if(author){socialAuthor=author.dataset.socialAuthor;socialLimit=30;socialPopup();}
   else if(action==='socialAll'){socialAuthor=null;socialLimit=30;socialPopup();}
   else if(action==='socialMore'){socialLimit+=30;socialPopup();}
