@@ -66,3 +66,46 @@ Ideias guardadas para puxar depois. Não entram no jogo até o Bruno pedir.
   - Prova social: alcançar 2 personas com a mesma carta devolve 1 energia.
   - Embaixador: promotor alcançado por um influenciador dá 3 pontos em vez de 2.
   - Sequência: três cartas de custo 1 seguidas deixam a próxima custando 0.
+
+## Recursos humanos: o que veio do Reddit de Game Dev Tycoon (25/11/2026)
+- A mecânica de funcionários já está bem desenhada: manter e aprimorar, não refazer.
+- Equipe pequena é qualidade: poucas pessoas deixam o jogo administrável.
+- O "braço direito": a pessoa que acompanha o jogador a vida toda precisa importar e ficar. Nome nos créditos do produto, marca no protótipo, momento especial quando sobe de nível (4, 7, 10).
+- Nunca obrigar o jogador a trocar a equipe porque os números não acompanharam. Veteranos continuam úteis.
+- A equipe é quem traz dados: quem tem time ganha análise. Exemplos:
+  - Pessoa de marketing agrupa as avaliações por causa ("34 reclamaram do acabamento").
+  - Pessoa de produto monta o resultado explicado ("por que vendeu assim").
+  - Pessoa de finanças mostra o histórico por produto e o antes e depois de mudar o preço.
+- Sem equipe, o jogador lê os comentários e deduz sozinho. É isso que dá vontade de contratar gente boa.
+- A equipe também potencializa as descobertas (combinações produto × persona que deram certo).
+
+## Mais categorias de produto, liberadas como roleta (25/11/2026)
+- Cada lançamento pode liberar uma categoria nova, e o jogador não sabe qual vem (como os temas de Game Dev Tycoon).
+- Precisa servir para outros tipos de empresa no futuro: eletrônicos, roupas, comida.
+
+## Pressão no meio do jogo (25/11/2026)
+- Depois que entra dinheiro, as escolhas não podem deixar de importar.
+- Concorrentes são a principal fonte dessa pressão.
+- Custos que crescem com o tamanho da empresa (calibrar).
+- Nicho de persona repetido satura.
+
+## Saltos de fase (25/11/2026)
+- O salto de estágio vem de progresso acumulado, nunca de um único lançamento na hora certa.
+- Ao criar um estágio novo (escritório maior), não exigir troca de equipe.
+
+## Nome da linha herda efeito (25/11/2026)
+- Mecânica oculta, igual ao preço psicológico: se o jogador digitar o mesmo nome do produto anterior, o novo herda um buff (se o anterior foi bem) ou um debuff (se foi mal).
+- Depende do jogador digitar o nome de novo; o jogo não avisa antes.
+
+## Personalização do fundador e do escritório (25/11/2026)
+- Roupas, casa e objetos do fundador; decoração do escritório.
+- Em aberto: se a decoração dá pequenos efeitos (planta: + motivação; quadro branco: + criatividade).
+
+## Canais de venda com identidade (25/11/2026)
+- E-commerce próprio (margem alta, pouco alcance), marketplace (alcance alto, taxa alta, guerra de preço), varejo físico (lote grande, devoluções).
+- Cada canal favorece certas personas e produtos. Dá à Praça dos 4Ps um lugar de verdade no jogo.
+- Por enquanto, não teremos.
+
+## Ritmo nas configurações (25/11/2026)
+- Opção de dias mais longos nas configurações.
+- Não pausar automaticamente nas decisões: pensar custa tempo, e isso faz parte.
