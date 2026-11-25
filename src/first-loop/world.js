@@ -1,4 +1,4 @@
-/* Quarto e escritório do fundador — pixel art 2D, vista de cima em 3/4 (0.86).
+/* Quarto e escritório do fundador: pixel art 2D, vista de cima em 3/4 (0.86).
    Mesma API de antes: width, height, render, actors, hit, project, headphones, spots.
    A renderização só lê o estado do jogo; nunca altera regras nem a partida. */
 const PilotWorld=(()=>{

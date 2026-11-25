@@ -1,3 +1,29 @@
+# 1.13 · Textos, tutoriais, interface e mecânicas
+
+Textos e tutoriais
+- Lote de produção, preço (com os 4Ps e a curva de lucro), marketing (canal certo, cartas, tabuleiro, objetivo), vendas junto com "crie o próximo" e crédito (empréstimo, condições, score e documentos) reescritos. 4Ps citados também no tutorial de produto.
+- Citações trocadas: Philip Kotler (preço), Seth Godin (marketing), Thomas Jefferson (crédito).
+- "Custo do produto" virou "Custo da mercadoria vendida".
+- Nenhum texto do jogo usa mais o travessão.
+
+Interface
+- Peças sem tracejado: o vazio entre blocos fica igual aos outros vazios.
+- Saiu o cartão "Acompanhar" do canto, que repetia a coluna da esquerda.
+- Card "Novo produto" aparece assim que há produto vendendo, com o texto inteiro, e fica desligado até o lote ficar pronto.
+- Valores em dinheiro com a mesma fonte do "No cofre".
+- Negociação: com o Avalista na mão, o placar mostra também o valor se ele valer 1.
+- Empréstimo ativo mostra valor, prazo, juros e carência, e o botão de novo empréstimo fica cinza até quitar.
+
+Mecânicas
+- O desenvolvimento para enquanto o fundador vai para casa e volta.
+- Saiu a barra de "preparar campanha" depois do protótipo: a campanha é o tabuleiro.
+- Slider do lote atualiza as caixas e o estoque enquanto arrasta.
+- Ponto de equilíbrio conta todo o custo de desenvolvimento (pesquisa, protótipo, trocas e campanha).
+- Mão de cartas de marketing sempre variada (no máximo 2 do mesmo canal).
+- Pontos grátis (boca a boca, oportunidade) aparecem como cartas grátis na mão.
+- A oportunidade nunca aparece numa casa já escolhida.
+- Fim de semana travado enquanto o fundador mora no quarto, com a frase "Estou focado em fazer a empresa dar certo"; o tutorial do fim de semana só aparece quando liberar.
+
 # 1.12 · Contraproposta colorida, ? em toda mecânica e cartão de pessoa
 
 - Contraproposta do banco: linhas em verde são as condições que o banco aceitou; em amarelo, o que ele está propondo. Legenda logo abaixo da tabela.

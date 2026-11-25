@@ -1,4 +1,4 @@
-/* Bairro do fim de semana (0.85) — vida fora da startup, em clima cozy.
+/* Bairro do fim de semana (0.85): vida fora da startup, em clima cozy.
    Casa, rua com praça, Bar da Praça e Galeria do Bairro em isométrico vetorial, com luz que muda ao longo do dia.
    Conversas com retrato, amizades, celular (mãe, convites e loja online), gato, planta, diário do dia e três minigames.
    Só altera a partida via api.act({type:'life'|'weekendSales', ...}); o resto é estado local da visita. */
@@ -1214,7 +1214,7 @@ const Town=(()=>{
    const jx=((now.r?1:0)-(now.l?1:0))*7,jy=((now.d?1:0)-(now.u?1:0))*7;o(J[0],J[1]+2,15,'#120d24');o(J[0],J[1],14,'#2d2a4a');ln(J[0],J[1],J[0]+jx,J[1]+jy-5,'#9aa3b5',5);o(J[0]+jx,J[1]+jy-6,8,'#e46d6d');f(J[0]+jx-4,J[1]+jy-10,3,3,'#ffffff');
    const ok=st.phase==='move';o(GO[0],GO[1]+4,28,'#120d24');o(GO[0],GO[1],28,ok?'#b03a68':'#4a3f60');o(GO[0],GO[1]-3,23,ok?'#ffd84a':'#6b6080');
    show();x.textAlign='center';
-   x.fillStyle=ok&&sec<=10?'#ff6b6b':'#ffe46b';x.font='900 24px '+FONT;x.fillText(ok?String(sec):'—',149,357);
+   x.fillStyle=ok&&sec<=10?'#ff6b6b':'#ffe46b';x.font='900 24px '+FONT;x.fillText(ok?String(sec):'-',149,357);
    x.textAlign='left';
    if(M===tok)M.raf=requestAnimationFrame(loop);}
   function finishClaw(){if(st.over)return;st.over=true;const won=st.won;if(won)items.splice(items.indexOf(won),1);st.msg=won?'Pegou! Caiu na saída.':'Não foi desta vez.';

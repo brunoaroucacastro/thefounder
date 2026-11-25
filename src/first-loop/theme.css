@@ -2079,3 +2079,31 @@ body.is-intro #world .guide,body.is-intro #bubble,body.is-intro #work-order{disp
 #tray .choices .choice[data-action="customer"]{row-gap:2px!important}
 #workshop-info .workshop-info-panel>.help-btn,#workshop-info h2+.help-btn{position:static!important;display:inline-grid!important;place-items:center;margin:0 0 0 10px;vertical-align:middle}
 #workshop-info h2{display:inline-block}
+
+/* 1.13 · curva de lucro no tutorial de preço */
+.ta-curve{width:220px;height:120px;display:block;margin:0 auto}
+
+/* ===== 1.13 · interface ===== */
+/* peças: o vazio entre blocos fica igual aos outros vazios (sem tracejado) */
+.pw-piece .gshape i.gap,.gshape i.gap{background:transparent!important;outline:0!important;box-shadow:none!important}
+#tray .gcell.ggap{outline:0!important}
+/* o cartão "Acompanhar" do canto repetia a coluna da esquerda */
+#work-order{display:none!important}
+/* card de novo produto: texto inteiro, desligado enquanto o lote não fica pronto */
+#left-rail .rail-new .rc-tx b,#left-rail .rail-new .rc-tx small{white-space:normal!important;overflow:visible!important}
+#left-rail .rail-new:disabled{opacity:.55;cursor:not-allowed}
+/* dinheiro: a mesma fonte do "No cofre" em todo o jogo */
+#workshop-info .cr-pill b,#workshop-info .cr-rgrid b,#workshop-info .fi-loan b,#workshop-info .cr-sc b,#tray .ls-money strong,#tray .ls-money small b,#tray .pt-unit b,#tray .pt-legend b,#tray .bo-total b,#tray .bo-unit b,#game .cash-value,#game #cash,#game .top-cash b,#left-rail .rc-tx small b,#workshop-info .fi-kpi b,#workshop-info .kpi b{font-family:Oficina,var(--q-font)!important;font-weight:400!important;letter-spacing:.02em}
+/* empréstimo ativo: condições negociadas */
+#workshop-info .fi-loan-terms{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:6px 0 8px}
+#workshop-info .fi-loan-terms span{display:grid;gap:2px;background:#fffdf8;border:2px solid #241d33;padding:6px 8px}
+#workshop-info .fi-loan-terms small{font-size:10.5px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#6b6478}
+#workshop-info .fi-loan-terms b{font-size:16px}
+#workshop-info .fi-loan-lock{margin-top:8px;opacity:.6}
+
+/* ===== 1.13 · mecânicas ===== */
+#board-modal .pk-card.free-pt{display:grid;place-items:center;align-content:center;gap:4px;background:#d9f1df!important;border:2px dashed #2f8a5b!important;cursor:default;text-align:center;padding:10px}
+#board-modal .pk-card.free-pt .fp-tag{font:400 11px Oficina,var(--q-font);letter-spacing:.1em;background:#2f8a5b;color:#fff;padding:2px 6px}
+#board-modal .pk-card.free-pt b{font:400 30px Oficina,var(--q-font);color:#1f6b45}
+#board-modal .pk-card.free-pt small{font-size:11.5px;font-weight:800;color:#1f6b45}
+#game button.locked{opacity:.6}
