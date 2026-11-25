@@ -2318,3 +2318,25 @@ body.is-intro #world .guide,body.is-intro #bubble,body.is-intro #work-order{disp
  #game #tray .tray-foot{margin-top:4px!important;padding-top:4px!important}
 }
 @media (max-height:740px){#game #tray[data-phase="design"] .pw-brief .pw-proto{display:none!important}}
+
+/* 1.21 · Pregão no lote */
+.pregao{background:#1f1a30;color:#f4ecd8;border:3px solid #4a3f63;padding:8px 10px}
+.pg-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.pg-ix{font-size:26px;line-height:1}.pg-px{font-size:13px;opacity:.8}
+.pg-h em{font-style:normal;font-size:12px;font-weight:700;padding:1px 8px;border-radius:10px;background:#ffffff14}.pg-h em.up{color:#4ea3ff}.pg-h em.dn{color:#f0a020}
+.pg-h small{margin-left:auto;font-size:12px;opacity:.8}
+.pregao-chart{width:100%;height:118px;display:block;margin:4px 0}
+.pregao-chart .ref{stroke:#ffffff55;stroke-dasharray:3 3;vector-effect:non-scaling-stroke}
+.pregao-chart .ax{fill:#9d93b8;font-size:7px}
+.pregao-chart rect.up{fill:#4ea3ff}.pregao-chart rect.dn{fill:#f0a020}
+.pregao-chart .wk{stroke-width:1;vector-effect:non-scaling-stroke}.pregao-chart .wk.up{stroke:#4ea3ff}.pregao-chart .wk.dn{stroke:#f0a020}
+.pregao-chart .you{fill:#ffd166}.pregao-chart .rv{fill:#c58cff}.pregao-chart .nw{fill:#fff;font-size:8px;text-anchor:middle}
+.pg-f{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:11px;opacity:.9;align-items:center}
+.pg-f i{display:inline-block;width:8px;height:8px;margin-right:3px}.pg-f i.up{background:#4ea3ff}.pg-f i.dn{background:#f0a020}
+.pg-f b{margin-left:auto;color:#ffd166}
+.pregao,.pregao *{font-family:var(--q-font)!important;text-transform:none!important;letter-spacing:normal!important}
+.pregao .pg-ix{font-family:Oficina,var(--q-font)!important}
+.pg-wrap{position:relative;padding-left:34px}
+.pg-ax{position:absolute;left:0;top:4px;bottom:4px;width:32px}
+.pg-ax span{position:absolute;left:0;transform:translateY(-50%);font-size:10px;opacity:.7}
+.pregao-chart .ax{display:none}

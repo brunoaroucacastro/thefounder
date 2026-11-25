@@ -156,18 +156,21 @@ const Progress=(()=>{
  // Sua compra não muda o preço do próprio lote (que tem desconto por volume): ela sobe a bolsa em lote/2.000 para as próximas compras.
  const LIQ=2000;
  function matPrice(s){return matIndex(s);}
- function onBuy(s,q){const P=ensure(s),dv=Math.max(0,q)/LIQ;P.mat.v=Math.round(Math.min(1.6,P.mat.v+dv)*1000)/1000;P.mat.hist[P.mat.hist.length-1]=P.mat.v;P.mat.why='Sua compra de '+q.toLocaleString('pt-BR')+' unidades subiu a bolsa em '+Math.round(dv*100)+' pontos.';}
+ function onBuy(s,q){const P=ensure(s),dv=Math.max(0,q)/LIQ;P.mat.v=Math.round(Math.min(1.6,P.mat.v+dv)*1000)/1000;P.mat.hist[P.mat.hist.length-1]=P.mat.v;{const c=P.mat.candles?.at(-1);if(c){c.c=P.mat.v;c.h=Math.max(c.h,P.mat.v+.005);c.you=(c.you||0)+q;}}P.mat.why='Sua compra de '+q.toLocaleString('pt-BR')+' unidades subiu a bolsa em '+Math.round(dv*100)+' pontos.';}
  function onDay(s){const P=ensure(s),M=P.mat,d=s.weekly?.days||0,h=t=>hash(s.id+':mat:'+t+':'+d);
   M.phase??=hash(s.id+':phase')*Math.PI*2;M.m??=0;
   const wave=1+.26*Math.sin(2*Math.PI*d/30+M.phase);
   M.m=Math.max(-.025,Math.min(.025,.75*M.m+(h('m')-.5)*.02));
   let normal=0,today=0;for(const r of allRivals()){const x=P.rivals.m[r.id];normal+=r.pace;today+=r.pace*Math.pow(1/M.v,.8)*(x.camp>0?1.3:1)*(x.out>0?0:1);}
   const demand=normal?.02*(today/normal-1):0;
-  let v=M.v+.15*(wave-M.v)+M.m+demand+(h('n')-.5)*.03,why=null;
+  const open=M.v;let v=M.v+.15*(wave-M.v)+M.m+demand+(h('n')-.5)*.03,why=null,rivalBuy=null;
+  if(h('rb')<.07){const rr=pick(allRivals(),s.id+':rb:'+d),q=100+Math.round(h('rq')*300);v+=q/LIQ;rivalBuy={name:rr.name,q};}
   if(d-(M.lastEvent??-99)>=10&&h('ev')<.06){const up=h('dir')<.5,size=.12+h('sz')*.06,p=Math.round(size*100);v+=up?size:-size;M.lastEvent=d;
    why=up?pick(['Falta de chips no mundo: componentes subiram '+p+'% de uma vez.','Porto parado por greve: componentes subiram '+p+'% de uma vez.'],s.id+':evu:'+d):pick(['Fábrica nova de componentes abriu: preços caíram '+p+'% de uma vez.','Estoque encalhado nos fornecedores: componentes caíram '+p+'% de uma vez.'],s.id+':evd:'+d);
    news(s,{kind:'fx',icon:up?'📈':'📉',title:up?'Componentes em alta':'Componentes em baixa',text:why+(up?' Hora de segurar a mão nos lotes.':' Boa hora para estocar.')});}
   M.v=Math.round(Math.max(.7,Math.min(1.6,v))*1000)/1000;M.hist.push(M.v);if(M.hist.length>20)M.hist.shift();
+  M.candles??=[];const wk=.006+h('w')*.02;M.candles.push({d,o:open,c:M.v,h:Math.round((Math.max(open,M.v)+wk)*1000)/1000,l:Math.round((Math.min(open,M.v)-wk*.8)*1000)/1000,rival:rivalBuy,news:why?(why.split(':')[0]):null});if(M.candles.length>30)M.candles.shift();
+  if(rivalBuy&&!why)why=rivalBuy.name+' comprou '+rivalBuy.q+' unidades e a bolsa subiu.';
   if(why){M.why=why;return;}const t=M.hist.length>=5?M.v-M.hist[M.hist.length-5]:0;
   M.why=Math.abs(t)<.03?'Mercado estável nos últimos dias.':(t>0?'Em alta nos últimos dias':'Em baixa nos últimos dias')+(t<0&&today<normal*.92?': os concorrentes estão comprando menos.':t>0&&today>normal*1.08?': os concorrentes estão comprando mais.':(wave-1)*t>0?': o ciclo dos fornecedores está '+(t>0?'subindo.':'caindo.'):'.');}
  function catSold(s,cat){return(s.history||[]).filter(h=>h.productId===cat&&h.cycle!==s.cycle).reduce((n,h)=>n+(h.sold||0),0)+(s.productId===cat?s.sold||0:0)+(s.portfolio||[]).filter(p=>p.productId===cat).reduce((n,p)=>n+(p.sold||0),0);}

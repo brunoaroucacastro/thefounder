@@ -1,3 +1,10 @@
+# 1.21 · Pregão no lote
+
+- O modelo Pregão dos protótipos entrou no jogo: no lote e na reposição, o gráfico de velas ocupa o lugar da arte. Uma vela por dia útil do jogo (abertura, fechamento, máxima e mínima), azul em alta e laranja em baixa.
+- Marcas no gráfico: ● sua compra, ◆ compra de concorrente (cerca de 1 a cada 14 dias, 100 a 400 unidades, que também sobe a bolsa) e ✦ notícia de fornecedor.
+- Topo do bloco: índice do dia, preço por unidade, tendência e estoque antes e depois. Rodapé: para quanto a bolsa vai depois da sua compra.
+- Continua sem scroll em 1280×720, 1366×768 e 1920×1080.
+
 # 1.20 · Telas sem scroll, sem encaixe na persona e bolsa compacta
 
 - Saiu para sempre o buff de encaixe na persona (Encaixou, Quase lá, Errou o alvo).
