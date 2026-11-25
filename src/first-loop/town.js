@@ -495,7 +495,7 @@ const Town=(()=>{
   bene:['Pipoca quentinha! Doce ou salgada? Tô nessa praça faz vinte anos.','Já vi muita criança dessa praça virar gente grande. Você tem cara de quem vai longe.'],
   marina:['Oi, vizinho! Mudou faz pouco? Seja bem-vindo.','Domingo de manhã tem feirinha aqui perto. A pastelaria é imperdível.'],
   antonio:['Bom dia! Esses pombos já me conhecem. Trago milho toda manhã.','No meu tempo a praça era só terra. Hoje tem até quadra. O bairro cresce junto com a gente.'],
-  kaique:['E aí! Tô treinando um flip novo no skate. Ainda não sai, mas sai.','À noite a praça fica bonita com as luzinhas, né?'],
+  kaique:['E aí! Tô treinando um flip novo no skate. Ainda não sai, mas sai.','Gravo vídeo de skate pra internet. Já são 40 mil seguidores, acredita?','À noite a praça fica bonita com as luzinhas, né?'],
   freq1:['Esse bar tem o melhor clima da cidade. Não conta pra ninguém.'],freq2:['A jukebox só tem música boa. O Rô escolhe a dedo.']};
  function talk(n){const day=R.week+R.day,k=friend(n.id),lines=LINES[n.id]||['Oi!'],today=R.talked[n.id]===day;let text=lines[Math.min(k,lines.length-1)];
   if(n.id==='ze'&&R.productShelf)text+=' E olha: o '+R.productShelf+' tá aqui na vitrine. Os clientes perguntam por ele!';
@@ -503,6 +503,7 @@ const Town=(()=>{
   R.talked[n.id]=day;const main=['duda','teo','ro','lia','ze','bene','marina','antonio','kaique','freq1','freq2'].includes(n.id);
   if(!today&&main){advance(15);save({friends:{[n.id]:k+1}});emote(n,'♥');Amb.heart();diary('💬',k?'Conversou com '+PEOPLE[n.id].name+'.':'Conheceu '+PEOPLE[n.id].name+'.');}else{advance(5);emote(n,'♪');}
   say(n.id,text,null,{mood:!today&&main?'happy':null});}
+ function progTown(who,what,cost,line){if(cost&&api.get().cash<cost){toast('Dinheiro insuficiente.');return;}try{api.act({type:'life',spend:cost,prog:what,patch:{}});if(cost)R.spentToday=(R.spentToday||0)+cost;hud();say(who,line);}catch(e){toast(e.message);}}
  function useNpc(n){const p=PEOPLE[n.id];if(p.silent){emote(n,'🏐');toast('Eles estão no meio de uma partida.');return;}
   n.face=R.p.x-R.p.y<n.x-n.y?-1:1;const opts=[{t:'💬 Conversar',fn:()=>talk(n)}],planHere=R.plan&&R.plan.who===n.id&&R.plan.place===R.scene.id;
   if(planHere){opts.unshift({t:'⭐ '+(R.plan.game==='volley'?'Jogar o vôlei combinado':R.plan.game==='pool'?'Jogar a sinuca combinada':'Curtir o programa combinado'),fn:()=>keepPlan(n)});}
@@ -512,6 +513,8 @@ const Town=(()=>{
   if(n.id==='lia')opts.push({t:'👕 Ver roupas',fn:clothes});
   if(n.id==='ze')opts.push({t:'🥤 Comprar refrigerante · R$ 7',fn:()=>{if(spend(7)){advance(5);toast('Refri gelado na mão.');}}});
   if(n.id==='bene')opts.push({t:'🍿 Comprar pipoca · R$ 6',fn:buyPopcorn});
+  if(n.id==='ze'&&api.get().prog){opts.push({t:'🧩 Comprar uma peça para a bancada · R$ 1.500',fn:()=>progTown('ze','zeBuy',1500,'Chegou essa semana. Leva que é boa, eu mesmo testei.')});if(friend('ze')>=2&&!api.get().prog.town?.zeGift)opts.push({t:'🎁 Perguntar se sobrou alguma peça',fn:()=>progTown('ze','zeGift',0,'Sobrou essa aqui, ó. Separei pra você. Amigo é amigo.')});}
+  if(n.id==='kaique'&&api.get().prog&&friend('kaique')>=2)opts.push({t:'📱 Pedir um vídeo sobre a sua marca',fn:()=>progTown('kaique','kaique',0,'Fechou! Gravo andando de skate com o seu produto. Meus 40 mil seguidores vão ver.')});
   const tal=TALENT_NPC.includes(n.id)?talentOpts(n):[];opts.push(...tal);opts.push({t:'Tchau'});const greet=planHere?'Chegou! Bora?':friend(n.id)>=3?'Opa! Que bom te ver de novo.':'';menu(n.id,opts,esc(greet));}
  // talentos do bairro: com amizade 2 dá para ver o currículo, com 3 dá para convidar para a empresa
  const TALENT_NPC=['marina','antonio','kaique','freq1','freq2'];

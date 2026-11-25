@@ -1,3 +1,32 @@
+# 1.16 · P&D, livro de deduções, rivais, fãs e menos barulho
+
+Progressão
+- P&D (nova aba na barra): cada produto novo lançado rende 1 ponto de pesquisa. Escolha entre nova categoria, nova peça ou nova carta; o sorteio decide qual, custa R$ 1.200 e o resultado chega no fim da semana, com a tela de descoberta.
+- Peças e cartas viraram baralho: a prancheta só sorteia as peças que a empresa tem, e o tabuleiro só usa as cartas do baralho. Abas Peças e Cartas mostram o que tem e o que falta (?). Empresa nova começa com 11 peças e 4 cartas; saves antigos mantêm tudo.
+- Categorias: empresa nova começa com fone e mouse. Teclado e caixa de som saem da pesquisa, sorteados.
+- Outras fontes: conquistas (100 unidades, primeira nota 5, R$ 50 mil, nível 6, duas categorias, 10 posts positivos), loja do Seu Zé no fim de semana (R$ 1.500, uma por semana; com amizade ele dá uma de presente) e quem entra na equipe (produto traz peça, marketing traz carta).
+- Crédito libera com R$ 20 mil faturados, com aviso.
+- Tabuleiro de campanha cresce pelo nível do produto (NV4 iniciante, NV5-6, NV7-8, NV9-10).
+
+Efeitos (coluna de buffs)
+- Encaixe na persona: Encaixou, Quase lá ou Errou o alvo, com tela de descoberta.
+- Novidade no ar (categoria nova), Marca de um produto só (3 lançamentos iguais seguidos), Sem novidade (4 semanas sem lançar), Fãs cansados (3a versão seguida), Ouviu sua comunidade (pedido de fã atendido), Protótipo quebrou e os movimentos dos rivais.
+
+Livro de aprendizados
+- Saiu o Tirar uma lição com dado. Entrou a dedução: depois de um lançamento com 10 compras da persona, uma tentativa de dizer qual atributo está por trás de uma fala. Acertou, vira aprendizado na prancheta; errou, o atributo fica riscado.
+- Checklist por categoria e persona com tudo o que já foi decifrado e o que falta.
+
+Rivais e fãs
+- Dois rivais por categoria aparecem no Nexus, são citados nos comentários e dão nome à casa de concorrente do tabuleiro. Com escritório, reagem (baixam preço, fazem campanha, copiam) e viram debuff por algumas semanas. Copiar o foco de um rival dá Parece cópia.
+- Ranking da categoria na semana e no bloco de mercado.
+- Responder posts no Nexus (agradecer, explicar, brincar): resposta boa vira promotor na próxima campanha, ruim ou reclamação ignorada vira cancelamento. Fãs pedem categorias e versões novas. Posts positivos viram pontos grátis no tabuleiro. Kaique (com amizade) grava vídeo e põe um influenciador extra na campanha.
+
+Dado
+- Saiu do teste do protótipo. Ficou na nova versão, agora com as faixas na tela e a quebra crescendo com o nível. Treino de equipe mostra o dado com faixa de esgotado.
+
+Menos barulho
+- Moeda no máximo a cada 1,5 s, +R$ somado, avaliações e boca a boca agrupados, digitação mais espaçada, balão do Nexus só para posts marcantes e um tutorial por vez (o que não abriu espera o próximo evento).
+
 # 1.15 · Nexus, fontes e planilha de citações
 
 - Nexus: relógio igual ao do jogo; saíram stories, abas e ícones que pareciam clicáveis; embaixo, Perfil (posts da sua marca), @ Menções (quem citou sua marca) e Para você (em breve); lupa no topo filtra por produto e por comentário positivo, misto ou negativo; entrada para as avaliações em estrelas.
