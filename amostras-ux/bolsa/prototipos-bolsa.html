@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bolsa de componentes · 5 protótipos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#191529;--panel:#241d33;--panel2:#2e2542;--ink:#f4ecd8;--mute:#b7aecb;--line:#4a3f63;--up:#4ea3ff;--dn:#f0a020;--you:#ffd166;--rival:#c58cff;--ok:#7fd3a8}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif;overflow:hidden}
+header{display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:3px solid var(--line);height:58px}
+header h1{font:12px 'Press Start 2P',monospace;margin:0;letter-spacing:.04em;color:var(--you)}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav button{font:700 13px Nunito;background:var(--panel2);color:var(--ink);border:2px solid var(--line);padding:6px 12px;cursor:pointer;box-shadow:0 3px 0 #0006}
+nav button.on{background:var(--you);color:#241d33;border-color:var(--you)}
+.speed{margin-left:auto;display:flex;gap:6px;align-items:center;font-size:12px;color:var(--mute)}
+.speed button{font:700 12px Nunito;background:var(--panel2);color:var(--ink);border:2px solid var(--line);padding:4px 8px;cursor:pointer}
+.speed button.on{border-color:var(--you)}
+main{height:calc(100% - 58px);padding:14px 16px;display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:14px}
+.chartbox{background:var(--panel);border:3px solid var(--line);padding:10px 12px;display:flex;flex-direction:column;min-height:0}
+.ch-head{display:flex;align-items:baseline;gap:12px}
+.ch-head h2{font:11px 'Press Start 2P',monospace;margin:0;color:var(--mute)}
+.ch-head .px{font:900 34px Nunito;line-height:1}
+.ch-head .px small{font-size:14px;color:var(--mute);font-weight:700;margin-left:4px}
+.tag{font:900 12px Nunito;padding:3px 8px;border-radius:12px;background:#ffffff14}
+.tag.up{color:var(--up)}.tag.dn{color:var(--dn)}
+.idea{margin-left:auto;font-size:13px;color:var(--mute);max-width:55%;text-align:right}
+svg.chart{flex:1;min-height:0;width:100%;display:block;margin-top:6px}
+.side{background:var(--panel);border:3px solid var(--line);padding:12px;display:flex;flex-direction:column;gap:10px;min-height:0}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.stat{background:var(--panel2);padding:6px 8px}.stat small{display:block;font-size:11px;color:var(--mute)}.stat b{font:900 18px Nunito}
+.qty{display:flex;gap:6px}.qty button{flex:1}
+.btn{font:900 14px Nunito;background:var(--panel2);color:var(--ink);border:2px solid var(--line);padding:9px 10px;cursor:pointer;box-shadow:0 3px 0 #0006}
+.btn.on{border-color:var(--you);color:var(--you)}
+.btn.go{background:var(--you);color:#241d33;border-color:var(--you)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.ghost{background:transparent}
+.line{font-size:13px;color:var(--mute)}.line b{color:var(--ink)}
+.log{margin-top:auto;font-size:12px;color:var(--mute);border-top:2px solid var(--line);padding-top:8px;min-height:54px}
+.log b{color:var(--ink)}
+.bar{height:16px;background:var(--panel2);border:2px solid var(--line);position:relative}.bar i{position:absolute;inset:0 auto 0 0;background:var(--ok)}
+.bar span{position:absolute;right:6px;top:-1px;font-size:11px;font-weight:900}
+.legend{display:flex;gap:12px;font-size:11px;color:var(--mute);margin-top:4px}
+.legend i{display:inline-block;width:10px;height:10px;margin-right:4px;vertical-align:-1px}
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.days button{padding:8px 4px}
+.days button small{display:block;font-weight:700;font-size:11px;color:var(--mute)}
+</style>
+</head>
+<body>
+<header>
+ <h1>BOLSA DE COMPONENTES</h1>
+ <nav id="tabs"></nav>
+ <div class="speed">Dia passa a cada <button data-sp="900" class="on">0,9 s</button><button data-sp="350">0,35 s</button><button data-sp="0">pausa</button></div>
+</header>
+<main>
+ <section class="chartbox">
+  <div class="ch-head"><h2 id="t-name"></h2><div class="px" id="px"></div><span class="tag" id="trend"></span><div class="idea" id="idea"></div></div>
+  <svg class="chart" id="chart" preserveAspectRatio="none"></svg>
+  <div class="legend"><span><i style="background:var(--up)"></i>dia de alta</span><span><i style="background:var(--dn)"></i>dia de baixa</span><span><i style="background:var(--you)"></i>sua compra</span><span><i style="background:var(--rival)"></i>concorrente comprou</span><span>linha tracejada = preço normal (100%)</span></div>
+ </section>
+ <aside class="side" id="side"></aside>
+</main>
+<script>
+// ---------- mercado: mesma lógica do jogo (onda de ~30 dias, embalo, ruído, notícias, compras mexem no preço) ----------
+const BASE=20; // R$ por unidade de componente, quando a bolsa está em 100%
+function rng(seed){let x=seed>>>0||1;return()=>{x^=x<<13;x^=x>>>17;x^=x<<5;return(x>>>0)/4294967296;};}
+function Market(seed){const r=rng(seed),M={v:1,m:0,day:0,phase:r()*6.28,candles:[],marks:[],news:null,r};
+ M.step=(extra=0)=>{const o=M.v,wave=1+.26*Math.sin(2*Math.PI*M.day/30+M.phase);M.m=Math.max(-.025,Math.min(.025,.75*M.m+(r()-.5)*.02));let v=o+.15*(wave-o)+M.m+(r()-.5)*.03+extra;M.news=null;
+  if(r()<.04){const up=r()<.5,sz=.12+r()*.06;v+=up?sz:-sz;M.news=up?'Falta de chips: +'+Math.round(sz*100)+'%':'Fábrica nova abriu: −'+Math.round(sz*100)+'%';}
+  let rival=null;if(r()<.07){const q=100+Math.round(r()*300);v+=q/2000;rival=q;}
+  v=Math.max(.7,Math.min(1.6,v));const hi=Math.max(o,v)+.008+r()*.02,lo=Math.min(o,v)-.008-r()*.02;M.candles.push({o,c:v,h:hi,l:lo,day:M.day,rival,news:M.news});if(M.candles.length>40)M.candles.shift();M.v=v;M.day++;return M.candles.at(-1);};
+ M.buy=q=>{M.v=Math.min(1.6,M.v+q/2000);const c=M.candles.at(-1);c.c=M.v;c.h=Math.max(c.h,M.v+.005);c.you=(c.you||0)+q;};
+ for(let i=0;i<30;i++)M.step();return M;}
+const pc=v=>Math.round(v*100)+'%',money=v=>'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+function draw(svg,M,o={}){const W=svg.clientWidth||800,H=svg.clientHeight||400;svg.setAttribute('viewBox','0 0 '+W+' '+H);const C=M.candles,n=C.length,pad=36;
+ const lo0=Math.min(...C.map(c=>c.l),...(o.lines||[]).map(l=>l.v),.85)-.02,hi0=Math.max(...C.map(c=>c.h),...(o.lines||[]).map(l=>l.v),1.15)+.02,fut=o.future?o.future.length:0,cw=(W-pad-10)/(n+fut),y=v=>(H-18)-(v-lo0)/(hi0-lo0)*(H-30);
+ let s='';for(let k=Math.ceil(lo0*10)/10;k<=hi0;k+=.1)s+='<line x1="'+pad+'" x2="'+W+'" y1="'+y(k)+'" y2="'+y(k)+'" stroke="#ffffff10"/><text x="2" y="'+(y(k)+4)+'" fill="#8d84a5" font-size="11">'+pc(k)+'</text>';
+ s+='<line x1="'+pad+'" x2="'+W+'" y1="'+y(1)+'" y2="'+y(1)+'" stroke="#ffffff66" stroke-dasharray="5 4"/>';
+ if(o.band)s+='<rect x="'+pad+'" width="'+(W-pad)+'" y="'+y(o.band[1])+'" height="'+(y(o.band[0])-y(o.band[1]))+'" fill="#7fd3a822"/>';
+ (o.lines||[]).forEach(l=>{s+='<line x1="'+pad+'" x2="'+W+'" y1="'+y(l.v)+'" y2="'+y(l.v)+'" stroke="'+l.col+'" stroke-width="2" '+(l.dash?'stroke-dasharray="6 4"':'')+'/><text x="'+(W-4)+'" y="'+(y(l.v)-5)+'" fill="'+l.col+'" font-size="12" font-weight="900" text-anchor="end">'+l.label+'</text>';});
+ C.forEach((c,i)=>{const x=pad+i*cw+cw/2,up=c.c>=c.o,col=up?'var(--up)':'var(--dn)';s+='<line x1="'+x+'" x2="'+x+'" y1="'+y(c.h)+'" y2="'+y(c.l)+'" stroke="'+col+'" stroke-width="2"/><rect x="'+(x-cw*.32)+'" width="'+(cw*.64)+'" y="'+y(Math.max(c.o,c.c))+'" height="'+Math.max(2,Math.abs(y(c.o)-y(c.c)))+'" fill="'+(up?col:col)+'" '+(up?'':'')+'/>';
+  if(c.you)s+='<circle cx="'+x+'" cy="'+(y(c.h)-10)+'" r="6" fill="var(--you)"/>';if(c.rival)s+='<rect x="'+(x-5)+'" y="'+(y(c.l)+6)+'" width="10" height="10" fill="var(--rival)" transform="rotate(45 '+x+' '+(y(c.l)+11)+')"/>';if(c.news)s+='<text x="'+x+'" y="'+(y(c.h)-20)+'" fill="#fff" font-size="12" text-anchor="middle">📰</text>';});
+ if(o.future){o.future.forEach((f,j)=>{const x=pad+(n+j)*cw+cw/2;s+='<line x1="'+x+'" x2="'+x+'" y1="'+y(f[1])+'" y2="'+y(f[0])+'" stroke="#7fd3a8" stroke-width="'+cw*.6+'" stroke-opacity=".28"/><text x="'+x+'" y="'+(H-4)+'" fill="#7fd3a8" font-size="11" text-anchor="middle">'+['seg','ter','qua','qui','sex'][j]+'</text>';});}
+ svg.innerHTML=s;}
+function trendTag(M){const C=M.candles,t=C.at(-1).c-C[Math.max(0,C.length-5)].o;return t>.03?['up','▲ em alta']:t<-.03?['dn','▼ em baixa']:['','estável'];}
+
+// ---------- os 5 modelos ----------
+const UNIT=1; // 1 componente por produto
+const P=[
+ {id:'p1',name:'Pregão',idea:'Compra na hora, ao preço do dia. Comprar muito empurra o preço para cima para todo mundo, inclusive para a sua próxima compra.',
+  init(S){S.q=300;},
+  side(S){return stats(S)+'<div class="line">Quantidade</div><div class="qty">'+[100,300,1000].map(q=>'<button class="btn '+(S.q===q?'on':'')+'" data-q="'+q+'">'+q+'</button>').join('')+'</div><button class="btn go" data-act="buy">Comprar '+S.q+' · '+money(S.q*BASE*S.M.v)+'</button><div class="line">Depois da compra, a bolsa vai para <b>'+pc(Math.min(1.6,S.M.v+S.q/2000))+'</b>.</div>';},
+  act(S,a,el){if(el.dataset.q){S.q=+el.dataset.q;}if(a==='buy')buy(S,S.q,S.M.v);}},
+ {id:'p2',name:'Ordem programada',idea:'Você marca o preço que aceita pagar. Quando a bolsa tocar nele, a compra acontece sozinha, mesmo sem você olhar.',
+  init(S){S.q=500;S.target=.92;S.order=null;},
+  side(S){return stats(S)+'<div class="line">Comprar quando chegar a</div><div class="qty">'+[.85,.9,.95].map(t=>'<button class="btn '+(Math.abs(S.target-t)<.001?'on':'')+'" data-t="'+t+'">'+pc(t)+'</button>').join('')+'</div><div class="qty">'+[300,500,1000].map(q=>'<button class="btn '+(S.q===q?'on':'')+'" data-q="'+q+'">'+q+'</button>').join('')+'</div>'+(S.order?'<button class="btn ghost" data-act="cancel">Cancelar ordem: '+S.order.q+' a '+pc(S.order.t)+'</button>':'<button class="btn go" data-act="order">Deixar ordem: '+S.q+' a '+pc(S.target)+'</button>')+'<button class="btn" data-act="buy">Comprar agora a '+pc(S.M.v)+'</button>';},
+  lines(S){return S.order?[{v:S.order.t,col:'var(--ok)',label:'sua ordem '+pc(S.order.t),dash:true}]:[{v:S.target,col:'#7fd3a888',label:'alvo '+pc(S.target),dash:true}];},
+  tick(S){if(S.order&&S.M.candles.at(-1).l<=S.order.t){buy(S,S.order.q,S.order.t);S.msg='Ordem executada: '+S.order.q+' a '+pc(S.order.t)+'.';S.order=null;}},
+  act(S,a,el){if(el.dataset.t)S.target=+el.dataset.t;if(el.dataset.q)S.q=+el.dataset.q;if(a==='order')S.order={t:S.target,q:S.q};if(a==='cancel')S.order=null;if(a==='buy')buy(S,S.q,S.M.v);}},
+ {id:'p3',name:'Travar preço',idea:'Pague uma taxa para travar o preço de hoje pelas próximas 2 semanas. Protege da alta, mas se a bolsa cair você paga mais que o mercado.',
+  init(S){S.q=300;S.lock=null;},
+  side(S){const L=S.lock,left=L?L.until-S.M.day:0;return stats(S)+(L&&left>0?'<div class="line">Preço travado em <b>'+pc(L.v)+'</b> por mais <b>'+left+' dias</b></div><div class="bar"><i style="width:'+(left/10*100)+'%"></i></div>':'<button class="btn" data-act="lock">Travar '+pc(S.M.v)+' por 10 dias · taxa '+money(400)+'</button>')+'<div class="qty">'+[100,300,1000].map(q=>'<button class="btn '+(S.q===q?'on':'')+'" data-q="'+q+'">'+q+'</button>').join('')+'</div><button class="btn go" data-act="buy">Comprar '+S.q+' a '+pc(L&&left>0?L.v:S.M.v)+'</button>';},
+  lines(S){return S.lock&&S.lock.until>S.M.day?[{v:S.lock.v,col:'var(--ok)',label:'travado '+pc(S.lock.v)}]:[];},
+  act(S,a,el){if(el.dataset.q)S.q=+el.dataset.q;if(a==='lock'&&S.cash>=400){S.cash-=400;S.lock={v:S.M.v,until:S.M.day+10};S.msg='Preço travado.';}if(a==='buy'){const L=S.lock&&S.lock.until>S.M.day;buy(S,S.q,L?S.lock.v:S.M.v,!L);}}},
+ {id:'p4',name:'Janela da semana',idea:'O fornecedor abre a semana com uma previsão (faixa verde). Você escolhe um dia para comprar. A previsão erra às vezes.',
+  init(S){S.q=500;S.plan=null;S.forecast=forecast(S.M);},
+  side(S){const days=['seg','ter','qua','qui','sex'];return stats(S)+'<div class="line">Dia da compra desta semana</div><div class="days">'+S.forecast.map((f,i)=>'<button class="btn '+(S.plan===i?'on':'')+'" data-d="'+i+'">'+days[i]+'<small>'+pc(f[0])+'–'+pc(f[1])+'</small></button>').join('')+'</div><div class="qty">'+[300,500,1000].map(q=>'<button class="btn '+(S.q===q?'on':'')+'" data-q="'+q+'">'+q+'</button>').join('')+'</div><div class="line">'+(S.plan==null?'Escolha um dia.':'Compra marcada para <b>'+days[S.plan]+'</b>: '+S.q+' unidades.')+'</div>';},
+  future(S){return S.week==null?S.forecast:S.forecast.slice(S.M.day-S.week);},
+  tick(S){if(S.week==null)S.week=S.M.day;const d=S.M.day-S.week;if(S.plan!=null&&d-1===S.plan){buy(S,S.q,S.M.v);S.msg='Compra da semana feita a '+pc(S.M.v)+'.';S.plan=null;}if(d>=5){S.week=S.M.day;S.forecast=forecast(S.M);S.plan=null;}},
+  act(S,a,el){if(el.dataset.d!=null)S.plan=+el.dataset.d;if(el.dataset.q)S.q=+el.dataset.q;}},
+ {id:'p5',name:'Armazém',idea:'Componentes ficam guardados num armazém e cada produto fabricado gasta 1. Na baixa você enche, na alta vive do estoque. Armazém cheio custa aluguel.',
+  init(S){S.q=500;S.wh=400;S.cap=2000;S.use=60;},
+  side(S){return stats(S)+'<div class="line">Armazém: <b>'+S.wh+'</b> de '+S.cap+' · gasta '+S.use+' por dia</div><div class="bar"><i style="width:'+(S.wh/S.cap*100)+'%"></i><span>'+Math.floor(S.wh/S.use)+' dias</span></div><div class="qty">'+[300,500,1000].map(q=>'<button class="btn '+(S.q===q?'on':'')+'" data-q="'+q+'">'+q+'</button>').join('')+'</div><button class="btn go" data-act="buy" '+(S.wh+S.q>S.cap?'disabled':'')+'>Guardar '+S.q+' · '+money(S.q*BASE*S.M.v)+'</button><div class="line">Aluguel do armazém: '+money(Math.round(S.wh*.15))+' por dia.</div>';},
+  tick(S){S.cash-=Math.round(S.wh*.15);if(S.wh>=S.use){S.wh-=S.use;}else{const miss=S.use-S.wh;S.wh=0;buy(S,miss,S.M.v*1.25,false);S.msg='Armazém vazio: compra de emergência de '+miss+' a '+pc(S.M.v*1.25)+'.';}},
+  act(S,a,el){if(el.dataset.q)S.q=+el.dataset.q;if(a==='buy'&&S.wh+S.q<=S.cap){buy(S,S.q,S.M.v);S.wh+=S.q;}}}];
+function forecast(M){const r=rng(M.day*97+13),out=[];let v=M.v;for(let i=0;i<5;i++){v+=.15*((1+.26*Math.sin(2*Math.PI*(M.day+i)/30+M.phase))-v);const w=.04+i*.015,c=v+(r()-.5)*.04;out.push([c-w,c+w]);}return out;}
+function stats(S){const avg=S.units?S.spent/S.units:0;return '<div class="stats"><div class="stat"><small>Caixa</small><b>'+money(S.cash)+'</b></div><div class="stat"><small>Bolsa hoje</small><b>'+pc(S.M.v)+'</b></div><div class="stat"><small>Comprado</small><b>'+S.units.toLocaleString('pt-BR')+' un.</b></div><div class="stat"><small>Seu custo médio</small><b>'+(S.units?pc(avg/BASE):'-')+'</b></div></div>';}
+function buy(S,q,at,move=true){const cost=q*BASE*at;if(cost>S.cash){S.msg='Caixa não cobre essa compra.';return;}S.cash-=cost;S.spent+=cost;S.units+=q;if(move)S.M.buy(q);else{const c=S.M.candles.at(-1);c.you=(c.you||0)+q;}S.msg=S.msg||('Comprou '+q+' a '+pc(at)+'.');}
+// ---------- tela ----------
+const states={};let cur=P[0],timer=null,speed=900;
+function state(p){if(!states[p.id]){const S={M:Market(p.id.charCodeAt(1)*7919),cash:30000,spent:0,units:0,msg:''};p.init(S);states[p.id]=S;}return states[p.id];}
+function paint(){const S=state(cur),t=trendTag(S.M);document.getElementById('t-name').textContent=cur.name.toUpperCase();document.getElementById('px').innerHTML=pc(S.M.v)+'<small>'+money(BASE*S.M.v)+' / un.</small>';const tg=document.getElementById('trend');tg.className='tag '+t[0];tg.textContent=t[1];document.getElementById('idea').textContent=cur.idea;
+ draw(document.getElementById('chart'),S.M,{lines:cur.lines?cur.lines(S):[],future:cur.future?cur.future(S):null});
+ const last=S.M.candles.at(-1);document.getElementById('side').innerHTML=cur.side(S)+'<div class="log">'+(last.news?'📰 <b>'+last.news+'</b><br>':'')+(last.rival?'◆ Concorrente comprou <b>'+last.rival+'</b> unidades.<br>':'')+(S.msg?'<b>'+S.msg+'</b>':'')+'</div>';
+ document.getElementById('tabs').innerHTML=P.map((p,i)=>'<button class="'+(p===cur?'on':'')+'" data-tab="'+i+'">'+(i+1)+'. '+p.name+'</button>').join('');}
+function day(){for(const p of P){const S=state(p);S.msg='';S.M.step();p.tick&&p.tick(S);}paint();}
+function run(){clearInterval(timer);if(speed)timer=setInterval(day,speed);}
+document.addEventListener('click',e=>{const tab=e.target.closest('[data-tab]');if(tab){cur=P[+tab.dataset.tab];paint();return;}const sp=e.target.closest('[data-sp]');if(sp){speed=+sp.dataset.sp;document.querySelectorAll('[data-sp]').forEach(b=>b.classList.toggle('on',b===sp));run();return;}const b=e.target.closest('#side button');if(!b||b.disabled)return;const S=state(cur);S.msg='';cur.act(S,b.dataset.act,b);paint();});
+addEventListener('resize',paint);paint();run();
+</script>
+</body>
+</html>

@@ -1,3 +1,12 @@
+# 1.20 · Telas sem scroll, sem encaixe na persona e bolsa compacta
+
+- Saiu para sempre o buff de encaixe na persona (Encaixou, Quase lá, Errou o alvo).
+- Tela de persona: as duas pessoas lado a lado num painel lateral mais largo, sem scroll.
+- Sem scroll em 1280×720, 1366×768 e 1920×1080 nas telas de persona, prancheta, ficha, lote e preço (em telas baixas, a arte do protótipo e as caixas do lote somem).
+- Lote: saiu o desconto por volume nos jogos novos; a bolsa virou um bloco compacto com índice, tendência e gráfico de velas (azul alta, laranja baixa), sem textos.
+- Preço: linha de concorrência numa linha só.
+- amostras-ux/bolsa/prototipos-bolsa.html: 5 protótipos de compra estilo bolsa (pregão, ordem programada, travar preço, janela da semana, armazém).
+
 # 1.19 · Bolsa de componentes com altas e baixas
 
 - Volume volta a dar desconto (300 un. −2%, 1.000 −4%, 3.000 −6%, 5.000 −8%, 10.000 −10%). O lote custa bolsa do dia × (1 − desconto).

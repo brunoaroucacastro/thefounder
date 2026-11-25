@@ -2287,3 +2287,34 @@ body.is-intro #world .guide,body.is-intro #bubble,body.is-intro #work-order{disp
 #game .bolsa .bolsa-why{color:#ffd166;opacity:1;margin:4px 0}
 #game #restock-modal .bolsa p,#game #restock-modal .bolsa small,#game #restock-modal .bolsa-range span,#game #tray .bolsa p,#game #tray .bolsa small,#game #tray .bolsa-range span{font-family:var(--q-font)!important;text-transform:none!important;letter-spacing:normal!important}
 .bolsa p,.bolsa small,.bolsa-range span{font-family:var(--q-font)!important;text-transform:none!important;letter-spacing:normal!important}
+
+/* 1.20 · bolsa compacta com velas */
+.bolsa.compact{padding:8px 10px;margin:8px 0}
+.bolsa-candles{width:100%;height:64px;display:block;margin-top:4px}
+.bolsa-candles .ref{stroke:#ffffff44;stroke-dasharray:2 2;vector-effect:non-scaling-stroke}
+.bolsa-candles rect.up{fill:#2fbf71}.bolsa-candles rect.dn{fill:#e0584a}
+.bolsa-candles .wk{stroke-width:1;vector-effect:non-scaling-stroke}.bolsa-candles .wk.up{stroke:#2fbf71}.bolsa-candles .wk.dn{stroke:#e0584a}
+.bolsa-candles rect.up{fill:#4ea3ff}.bolsa-candles rect.dn{fill:#f0a020}.bolsa-candles .wk.up{stroke:#4ea3ff}.bolsa-candles .wk.dn{stroke:#f0a020}
+
+/* 1.20 · telas sem scroll em 1366x768 */
+#game.editor-open.wide-tray{grid-template-columns:minmax(0,1fr) min(880px,64vw)!important}
+#game #tray[data-phase="customer"] .choices{display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px!important}
+#game #tray[data-phase="customer"] .tray-foot{margin-top:4px!important}
+#game #tray[data-phase="design"]{padding-top:26px!important;padding-bottom:22px!important}
+#game #tray[data-phase="design"] .tray-foot{margin-top:4px!important}
+.bolsa.compact{padding:6px 10px!important;margin:6px 0!important}
+.bolsa-candles{height:40px!important}
+.pt-rivals{padding:4px 8px!important;margin:6px 0!important;gap:4px 8px!important;font-size:12px}
+.pt-rivals b{padding:1px 6px!important}.pt-rivals em{font-style:normal;font-weight:700;padding:1px 6px}.pt-rivals em.up{color:#1f5fbf}.pt-rivals em.dn{color:#b36b00}
+#game #tray[data-phase="pricing"] .pt-art{padding-top:2px!important}
+#game #tray[data-phase="pricing"] .pt-art small{margin-top:2px!important}
+@media (max-height:740px){
+ #game #tray{padding-top:8px!important;padding-bottom:8px!important}
+ #game #tray[data-phase="design"]{padding-top:8px!important;padding-bottom:8px!important}
+ #game #tray .bo-art .bo-boxes{display:none!important}
+ #game #tray .pt-art .gadget-preview{transform:scale(.7);margin:-14px 0!important}
+ #game #tray[data-phase="customer"] .choices p{margin:3px 0!important}
+ #game #tray[data-phase="customer"] .tray-head{margin-bottom:4px!important}
+ #game #tray .tray-foot{margin-top:4px!important;padding-top:4px!important}
+}
+@media (max-height:740px){#game #tray[data-phase="design"] .pw-brief .pw-proto{display:none!important}}
