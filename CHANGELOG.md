@@ -1,3 +1,14 @@
+# 1.31 · Janelas no lugar das abas
+
+- As telas de criação deixam de ser abas de navegador e viram janelas que aparecem sobre a área de trabalho, cada uma com a barra de título na sua cor:
+  - Pesquisa: uma janela de perfil por pessoa, com o botão de criar no pé, e uma janelinha para pesquisar outras pessoas.
+  - Prancheta: janelas de ferramentas, da pessoa, da planta azul com as peças e da ficha técnica.
+  - Loja: uma janela com preço, concorrentes e estoque.
+  - Campanha: o tabuleiro ganha barra de título de janela.
+- As janelas surgem com uma pequena animação ao entrar em cada tela.
+- Campanha: as cartas da mão ficam todas do mesmo tamanho, alinhadas, e não cobrem mais a mensagem.
+- Painel de vendas virou uma janela flutuante na mesma identidade (barra de título, números em Oswald, rótulos em fonte de máquina de escrever, botões iguais aos das outras telas).
+
 # 1.30 · Planta de volta e galpão consertado
 
 - Prancheta: a grade volta a ficar sobre a planta azul (blueprint) e as peças voltam ao formato de carta com a etiqueta de raridade, dentro do editor do navegador.
