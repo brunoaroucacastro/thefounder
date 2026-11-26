@@ -1,3 +1,12 @@
+# 1.24 · O que dava sentido, de volta, com a cara de cada tela
+
+- Identidade visual: Criar virou uma planta azul (blueprint) com carimbo do projeto; Persona virou fichas de pesquisa presas com clipe; Preço é uma etiqueta pendurada; o lote mostra caixas empilhando conforme a quantidade.
+- Criar: peças com raridade (Comum, Incomum, Rara, Épica) e pontos (+1, +2, +3); nome do produto editável no título; ao lado de cada atributo, o que você já aprendeu da persona (! exigência, +++/++/+ valoriza, · não importa, ? não sabemos); aviso das casas vazias (−5% cada) e do bônus de grade cheia; botão de trocar as 3 peças (pago, até 3 vezes).
+- Persona: voltou Pesquisar outras pessoas (R$ 1.000).
+- Preço: livre (digite qualquer valor ou use − / + de R$ 1 e a régua); o ,90 deixou de ser automático e volta a ser descoberta. Barra de margem mostra custo, comissão e quanto você ganha (ou perde) nesse preço. Marquinhas dos concorrentes na régua.
+- Estoque: qualquer quantidade (digite, − / +, 100, 300, 1.000 ou Máximo); setinha da bolsa ao lado do custo.
+- Vendas: barras finas de Pago (ponto de equilíbrio) e Campanha (quanto ainda rende).
+
 # 1.23 · As telas do protótipo dentro do jogo
 
 - Persona, Criar (prancheta), Nova versão e Preço e estoque agora são as telas do protótipo v2, em tela cheia (sem o quarto), ligadas ao motor do jogo.
