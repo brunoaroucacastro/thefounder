@@ -1,3 +1,23 @@
+# 1.22 · A loja simples dentro do jogo
+
+Backup antes desta versão: etiqueta git backup-1.21-antes-simplificacao e backup/The-Founder-1.21-antes-simplificacao.html.
+
+Fase 1 · criar
+- Persona, prancheta, nova versão e preço e estoque ocupam quase a tela inteira (o quarto fica numa faixa à esquerda).
+- Saiu a tela da ficha: Concluir projeto já constrói o protótipo.
+- Lote e preço viraram uma tela só, Preço e estoque: à esquerda o preço (− / + de R$ 10 e régua), custo, comissão, quanto você ganha por unidade, a fala da persona sobre dinheiro e os preços dos concorrentes; à direita o Pregão, a quantidade (− / +, 100, 300, 1.000, Máximo), total do lote e caixa depois. Sem prever quantas pessoas compram. Um botão: Lançar campanha.
+
+Fase 2 · vender
+- Painel de vendas continua na lateral. O funil virou Viram a campanha → Entraram na loja → Compraram, com barras e o motivo mais comum de quem entrou e não comprou (achou caro, não era o que queria, faltou estoque…).
+- Botões durante as vendas só quando fazem sentido: Repor (estoque baixo), Campanha (campanha fraca), Preço, Programar (com financeiro) e Encerrar.
+- Fim das vendas: esgotou → Fabricar mais ou Melhorar; vendas pararam → Nova campanha ou Melhorar; e um link para criar outro produto.
+- Vitrine marca vendas fracas.
+
+Fase 3 · melhorar
+- Na nova versão, O que disseram da versão anterior fica ao lado da prancheta (até 3 falas, com estrelas).
+- A etapa de escolher as peças que ficam virou duas colunas, sem scroll.
+- O estoque da versão anterior continua à venda na vitrine (aviso na tela de preço e estoque).
+
 # Protótipo · loja simples (v2)
 
 - amostras-ux/simples/ciclo-simples-v2.html: a loja é a tela principal e o tempo só anda nela (pausa, 1× e 2×). Até 3 produtos vendem ao mesmo tempo, cada um num cartão com vendas por dia (roxo = campanha no ar), vendidos, faturamento, nota, estoque e a última fala de cliente.
