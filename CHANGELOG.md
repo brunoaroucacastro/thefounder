@@ -1,3 +1,12 @@
+# 1.29 · Visual de navegador
+
+- As telas de criação viraram um navegador sobre uma área de trabalho colorida: cada etapa é uma aba (Pesquisa, Prancheta, Loja, Campanha), as já feitas ganham ✓ e as distantes ficam apagadas; a barra de endereço mostra onde você está.
+- Pesquisa: perfil da pessoa (capa na cor dela, foto, nome, fala principal e as pistas como posts), com os resultados da pesquisa ao lado para alternar entre as pessoas e buscar outras.
+- Prancheta: editor com ferramentas e a pessoa à esquerda, a grade no centro com as peças embaixo e a ficha técnica à direita.
+- Nome do produto abre numa janela flutuante ("batizar produto").
+- Loja (preço e estoque) e Campanha ganharam a mesma moldura; na campanha, as cartas ficam numa fileira só e não cobrem mais a mensagem.
+- Títulos em Oswald e textos de sistema em fonte de máquina de escrever (carregadas da internet; sem conexão, o jogo usa as fontes do sistema).
+
 # Protótipo · navegador com toques de janelas
 
 - amostras-ux/estilos/prototipo-navegador.html: caminho escolhido (navegador) refinado. Cada etapa é uma aba (Pesquisa, Prancheta, Campanha, Loja), as já feitas ganham ✓ e as distantes ficam apagadas. Do modelo de janelas entram só a área de trabalho com barra de tarefas (caixa e dia) e no máximo uma janela flutuante por tela para o que é momentâneo: aviso da pesquisa, nome do produto e bônus da campanha. Botão no topo liga e desliga a janela para comparar.
