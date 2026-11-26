@@ -1,3 +1,10 @@
+# 1.25 · Padrão do marketing em todas as telas e painel de vendas visual
+
+- Padrão único (o do tabuleiro de marketing): fundo creme arredondado, cartões com contorno escuro e sombra deslocada, rótulos pequenos em maiúsculas, números grandes, etiqueta roxa no topo de cada tela e botão principal laranja.
+- Produto: a tela volta a ser papel; a planta azul fica só atrás da grade. Campo de nome do produto à vista no topo. Ficha com a imagem do produto, radar dos 6 atributos, valores, o que você já aprendeu e o custo por unidade em destaque. Raridade nas peças.
+- Preço: três colunas. Seu preço (imagem do produto, etiqueta editável, régua com os concorrentes, barra de margem e, em destaque, custo por unidade e quanto você ganha por unidade). Concorrentes na prateleira (produto, nome, estrelas, foco se já conhecido, preço, promoção). Estoque (galpão de fulfillment com prateleiras enchendo, quantidade livre e Máximo, valor do lote em destaque, caixa depois e o gráfico de velas da bolsa). Saíram os atalhos 100/300/1.000.
+- Painel de vendas: preço, vendidos e faturou em destaque; funil de verdade (viram → entraram → compraram) com o motivo mais comum de desistência; prateleira de estoque, bateria da campanha e anel de quanto o produto já se pagou; última fala como balão. Fim das vendas no mesmo visual.
+
 # 1.24 · O que dava sentido, de volta, com a cara de cada tela
 
 - Identidade visual: Criar virou uma planta azul (blueprint) com carimbo do projeto; Persona virou fichas de pesquisa presas com clipe; Preço é uma etiqueta pendurada; o lote mostra caixas empilhando conforme a quantidade.
