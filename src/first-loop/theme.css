@@ -2651,3 +2651,9 @@ body.creator-on #tray,body.creator-on #left-rail,body.creator-on #buffs,body.cre
 #game .cr-card .cr-acts button,#game .cr-card .ls-actions button{border:0!important;border-radius:10px!important;box-shadow:0 0 0 3px #1d1b26,3px 3px 0 #1d1b26!important;background:#fffaf0!important;color:#1d1b26!important;font-family:var(--q-font)!important;font-weight:900!important;text-transform:none!important;letter-spacing:normal!important;font-size:13px!important;padding:8px 12px!important;min-height:0!important}
 #game .cr-card .ls-actions.two button{background:#f08a24!important;color:#fff!important;min-height:52px!important;font-size:15px!important}
 #game .cr-card .ls-actions.two button+button{background:#fffaf0!important;color:#1d1b26!important}
+
+/* 1.26 */
+#creator .cr-pg.sq{gap:3px!important}#creator .cr-pg.sq i{width:16px;height:16px;border-radius:3px}#creator .cr-pg.sq i.on{box-shadow:0 0 0 2px #1d1b26}
+#creator .cr-tool.swap{position:relative}#creator .cr-swn{position:absolute;top:-8px;right:-8px;font-style:normal;background:#6b4fd8;color:#fff;font-size:10px;font-weight:900;border-radius:999px;padding:1px 5px;box-shadow:0 0 0 2px #1d1b26}
+#creator .cr-cost{flex-wrap:wrap}#creator .cr-cost b{font-size:17px!important}#creator .cr-cost em{width:100%;font-style:normal;font-size:11px;color:#5b5470}
+#creator .cr-radar{width:176px;height:176px;overflow:visible}

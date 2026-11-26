@@ -1,3 +1,11 @@
+# 1.26 · Ajustes do produto
+
+- Radar não corta mais os ícones das pontas.
+- Custo por unidade na ficha virou faixa (de 85% a 120% do custo base, conforme a bolsa de componentes), com o custo de hoje embaixo.
+- Peças da oferta desenhadas em quadradinhos separados.
+- Trocar peças mostra quantas sobram (3 por versão) e trava ao acabar.
+- Nome: salva enquanto você digita, as teclas não vão para os atalhos do jogo e dá para renomear também a nova versão.
+
 # 1.25 · Padrão do marketing em todas as telas e painel de vendas visual
 
 - Padrão único (o do tabuleiro de marketing): fundo creme arredondado, cartões com contorno escuro e sombra deslocada, rótulos pequenos em maiúsculas, números grandes, etiqueta roxa no topo de cada tela e botão principal laranja.
