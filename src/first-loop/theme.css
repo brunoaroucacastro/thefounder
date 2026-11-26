@@ -2690,3 +2690,90 @@ body.creator-on #tray,body.creator-on #left-rail,body.creator-on #buffs,body.cre
 #creator .cr-attrpop button:hover{background:#f0e6ff}
 #creator .cr-clues{align-content:start!important;gap:10px!important}
 #creator .cr-pc .cr-btn{margin-top:auto!important}
+
+/* 1.28 · identidade original: papel creme, cantos retos, traço fino, borda de baixo mais grossa, títulos na fonte pixel */
+#creator *,#game .cr-card *{border-radius:0!important}
+#creator{background:#1d1729b8}
+#creator .cr-screen{background:#fff7ea!important;border:3px solid #241d33!important;box-shadow:6px 6px 0 rgba(10,8,25,.45)!important;padding:16px 20px}
+#creator h2{font-family:Oficina,var(--q-font)!important;font-weight:400!important;font-size:17px!important;letter-spacing:.04em;text-transform:uppercase;color:#241d33!important}
+#creator .cr-hint{font-weight:400!important}
+#creator .cr-pill{background:transparent!important;color:#6d6378!important;font-family:Oficina,var(--q-font)!important;font-weight:400!important;font-size:11px!important;letter-spacing:.06em;padding:0!important}
+#creator b,#creator strong{font-weight:700}
+#creator .cr-box,#creator .cr-pcard,#creator .cr-pc,#creator .cr-piece,#creator .cr-rival,#creator .cr-wh,#creator .cr-mbar,#creator .cr-fbox{background:#fff9e9!important;border:2px solid #241d33!important;border-bottom-width:5px!important;box-shadow:none!important}
+#creator .cr-k,#creator small.cr-k,#creator .cr-duo small,#creator .cr-lotv small,#creator .cr-cost small,#creator .cr-prod small,#creator .cr-rename small,#creator .cr-candles small{font-family:Oficina,var(--q-font)!important;font-weight:400!important;font-size:10px!important;letter-spacing:.05em;color:#6d6378!important}
+#creator .cr-btn{background:#f0a830!important;color:#241d33!important;border:2px solid #241d33!important;border-bottom-width:5px!important;box-shadow:none!important;font-family:Oficina,var(--q-font)!important;font-weight:400!important;font-size:14px!important;letter-spacing:.05em;text-transform:uppercase;padding:10px 18px!important}
+#creator .cr-btn:hover{background:#ffbb45!important}
+#creator .cr-btn2{background:#fff9e9!important;border:2px solid #241d33!important;border-bottom-width:4px!important;box-shadow:none!important;font-weight:600!important;font-size:13px!important}
+#creator .cr-btn2 span{font-size:16px}#creator .cr-btn2 small{background:transparent!important;border:1px solid #dac3a2;font-weight:600}
+#creator button:not(.cr-btn):not(.cr-btn2){font-weight:600!important}
+/* persona */
+#creator .cr-pers .cr-personas{gap:22px!important;align-content:center!important}
+#creator .cr-pc{display:flex!important;flex-direction:column;text-align:left;cursor:pointer;padding:0!important;color:#241d33;font:inherit;transition:transform .08s,background .08s}
+#creator .cr-pc:hover{background:#fff!important;transform:translate(-2px,-2px);box-shadow:4px 4px 0 #241d33!important}
+#creator .cr-pchead{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:2px solid #241d33;border-left:8px solid var(--pc);background:transparent!important}
+#creator .cr-pcface{width:58px;height:58px;background:#fff;border:2px solid #241d33;display:grid;place-items:center;overflow:hidden;box-shadow:none!important}
+#creator .cr-pcface .client-face{width:52px;height:52px}
+#creator .cr-pcname{flex:1}#creator .cr-pcname b{display:block;font-family:Oficina,var(--q-font)!important;font-weight:400!important;font-size:16px;letter-spacing:.04em;color:#241d33;text-shadow:none!important}
+#creator .cr-pcname small{display:block;font-size:13px;color:#6d6378;margin-top:2px}
+#creator .cr-pcgo{font-family:Oficina,var(--q-font)!important;font-size:11px;color:#6d6378;letter-spacing:.05em}
+#creator .cr-pc:hover .cr-pcgo{color:#241d33}
+#creator .cr-say{display:block;margin:12px 14px 6px!important;background:#fff!important;border:2px solid #241d33!important;box-shadow:none!important;padding:10px 12px!important;font-size:15px!important;font-weight:600!important}
+#creator .cr-say::after{border-color:#241d33!important}
+#creator .cr-clues{display:grid;gap:8px;margin:6px 14px 14px;align-content:start}
+#creator .cr-clue{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;font-size:14px;font-weight:400}
+#creator .cr-clue i{font-style:normal;width:22px;height:22px;border:2px solid #241d33;background:#fff;display:grid;place-items:center;font-family:Oficina,var(--q-font)!important;font-size:11px;box-shadow:none!important}
+#creator .cr-clue b{background:#fff3c4;font-weight:700}
+/* produto */
+#creator .cr-plan{border:3px solid #241d33!important;box-shadow:none!important;padding:22px 16px 12px!important}
+#creator .cr-planlbl{font-family:Oficina,var(--q-font)!important;font-weight:400!important}
+#creator .cr-cell{font-family:var(--q-font);font-weight:400!important;font-size:22px!important}
+#creator .cr-offer{align-items:stretch!important}
+#creator .cr-piece{width:118px!important;height:112px!important;padding:22px 6px 8px!important;display:flex!important;flex-direction:column;align-items:center;justify-content:space-between;margin-top:10px}
+#creator .cr-piece.sel{background:#fff!important;outline:3px solid #f0a830;outline-offset:2px;transform:translateY(-4px)}
+#creator .cr-pg.sq{flex:1;align-content:center}
+#creator .cr-piece small{display:flex;align-items:center;gap:6px;font-weight:600!important;font-size:13px!important;color:#241d33!important}
+#creator .cr-ib{display:inline-grid;place-items:center;width:20px;height:20px;border:1.5px solid #241d33;color:#fff;font-size:12px}
+#creator .cr-tier{font-family:Oficina,var(--q-font)!important;font-weight:400!important;font-size:10px!important;border:2px solid #241d33!important;letter-spacing:.04em}
+#creator .cr-tool{background:#fff9e9!important;border:2px solid #241d33!important;border-bottom-width:4px!important;box-shadow:none!important;height:112px!important;margin-top:10px;justify-content:center}
+#creator .cr-tool small{font-family:Oficina,var(--q-font)!important;font-weight:400!important;font-size:9px!important}
+#creator .cr-swn{border:2px solid #241d33!important;box-shadow:none!important;background:#6b4fd8!important;font-family:Oficina,var(--q-font)!important;font-weight:400!important}
+#creator .cr-tool.on{outline:3px solid #f0a830;box-shadow:none!important}
+#creator .cr-attrpop{border:2px solid #241d33!important;border-bottom-width:5px!important;box-shadow:none!important}
+#creator .cr-attrpop button{border:2px solid #241d33!important;box-shadow:none!important}
+#creator .cr-rename span{border:2px solid #241d33!important;border-bottom-width:4px!important;box-shadow:none!important;background:#fff9e9!important}
+#creator #cr-name{font-family:Oficina,var(--q-font)!important;font-weight:400!important;font-size:15px!important;letter-spacing:.04em}
+#creator .cr-prod b{font-family:Oficina,var(--q-font)!important;font-weight:400!important;font-size:14px!important}
+#creator .cr-arow{font-weight:400!important}#creator .cr-arow b{font-weight:700!important}
+#creator .cr-arow .ic{border:1.5px solid #241d33}
+#creator .cr-cost b{font-weight:700!important}
+#creator .cr-free{font-weight:600!important}
+/* preço e estoque */
+#creator .cr-pricetag{border:2px solid #241d33!important;border-bottom-width:5px!important;box-shadow:none!important;transform:none!important;background:#f0a830!important}
+#creator #cr-price{font-weight:700!important;font-size:36px!important}
+#creator .cr-duo div,#creator .cr-lotv,#creator .cr-tiles div,#creator .cr-w{border:2px solid #dac3a2!important;background:#fff!important}
+#creator .cr-duo b,#creator .cr-lotv>b{font-weight:700!important}
+#creator .cr-pstep button,#creator .cr-qset button,#creator .cr-qset input#cr-qty{border:2px solid #241d33!important;border-bottom-width:4px!important;box-shadow:none!important}
+#creator .cr-rinfo b,#creator .cr-rprice{font-weight:700!important}
+/* painel de vendas */
+#game .cr-card{border-radius:0!important}
+#game .cr-tiles div,#game .cr-w{background:#fff!important;border:2px solid #dac3a2!important}
+#game .cr-tiles small,#game .cr-w small{font-family:Oficina,var(--q-font)!important;font-weight:400!important;font-size:9.5px!important}
+#game .cr-tiles b,#game .cr-w b{font-weight:700!important}
+#game .cr-fbox{box-shadow:none!important;border:2px solid #241d33!important;border-bottom-width:5px!important;background:#fff9e9!important}
+#game .cr-funnel .fn-n{font-weight:700}
+#game .cr-bubble{box-shadow:none!important;border:2px solid #241d33;font-weight:400!important}
+#game .cr-card .cr-acts button,#game .cr-card .ls-actions button{box-shadow:none!important;border:2px solid #241d33!important;border-bottom-width:4px!important;font-family:Oficina,var(--q-font)!important;font-weight:400!important;text-transform:uppercase!important;letter-spacing:.04em!important;font-size:11px!important}
+#game .cr-card .ls-actions.two button{background:#f0a830!important;color:#241d33!important}
+#game .cr-card .ls-actions.two button+button{background:#fff9e9!important}
+#game .cr-bat{border-radius:0!important}
+
+/* 1.28 · popup do nome */
+#creator .cr-screen{position:relative}
+#creator .cr-npop{position:absolute;inset:0;z-index:20;background:#241d3399;display:grid;place-items:center}
+#creator .cr-nbox{width:min(440px,90%);background:#fff7ea;border:3px solid #241d33;border-bottom-width:6px;box-shadow:6px 6px 0 rgba(10,8,25,.45);padding:22px 24px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+#creator .cr-nbox h3{margin:0;font-family:Oficina,var(--q-font)!important;font-weight:400;font-size:18px;letter-spacing:.04em;text-transform:uppercase;color:#241d33}
+#creator .cr-nimg{width:84px;height:84px;border:2px solid #241d33;background:#fff;display:grid;place-items:center}
+#creator #cr-name2{width:100%;font-family:Oficina,var(--q-font)!important;font-size:20px;letter-spacing:.04em;text-align:center;border:2px solid #241d33;border-bottom-width:4px;background:#fff;padding:10px;color:#241d33;outline:none;box-shadow:none}
+#creator #cr-name2:focus{border-color:#6b4fd8}
+#creator .cr-nacts{display:flex;gap:10px;width:100%}#creator .cr-nacts button{flex:1}
+#speed-test{color:#ff9a8a!important}

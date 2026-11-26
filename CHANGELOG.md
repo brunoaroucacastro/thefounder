@@ -1,3 +1,11 @@
+# 1.28 · Identidade original do jogo nas telas novas
+
+- Telas de criação e painel de vendas voltam à identidade da escolha de produto: papel creme, cantos retos, traço fino com a borda de baixo mais grossa, títulos e rótulos na fonte pixel, texto sem negrito pesado, botão principal âmbar.
+- Persona: o card inteiro é o botão (ESCOLHER ›), sem gradiente; Pesquisar outras pessoas continua como botão no topo.
+- Prancheta: as três peças da oferta têm o mesmo tamanho; o ícone do atributo é o mesmo da grade (sem emoji colorido); ↻ gira todas as peças juntas e a rotação continua depois de colocar; trocar atributo ganhou um símbolo de texto (◐).
+- Nome do produto: saiu do topo e aparece num popup no centro ao apertar Pronto, com um nome sugerido já selecionado (Enter confirma, Esc volta).
+- Botão de velocidade 20× (só para testes).
+
 # 1.27 · Persona com novo design e troca de atributo
 
 - Persona: cartas no padrão do marketing, com cabeçalho na cor da pessoa (rosto, nome, idade, rotina), a fala principal num balão, as três pistas numeradas e um botão de verdade "Criar para (nome inteiro)". Pesquisar outras pessoas virou botão no topo. Saíram os links azuis.
