@@ -1,3 +1,9 @@
+# 1.30 · Planta de volta e galpão consertado
+
+- Prancheta: a grade volta a ficar sobre a planta azul (blueprint) e as peças voltam ao formato de carta com a etiqueta de raridade, dentro do editor do navegador.
+- Loja: o galpão era espremido pela moldura e escondia as caixas; agora mantém a altura e as caixas aparecem, sem rolagem em 1280, 1366 e 1920.
+- Pesquisa continua com o perfil da 1.29.
+
 # 1.29 · Visual de navegador
 
 - As telas de criação viraram um navegador sobre uma área de trabalho colorida: cada etapa é uma aba (Pesquisa, Prancheta, Loja, Campanha), as já feitas ganham ✓ e as distantes ficam apagadas; a barra de endereço mostra onde você está.

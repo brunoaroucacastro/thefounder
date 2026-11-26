@@ -2829,14 +2829,14 @@ body.creator-on #tray,body.creator-on #left-rail,body.creator-on #buffs,body.cre
 #creator .nb-ed{display:flex;flex-direction:column;min-height:0;min-width:0}
 #creator .nb-edhd{display:flex;align-items:baseline;gap:12px;padding:10px 16px;border-bottom:2px solid #241d33}
 #creator .nb-edhd b{font:700 24px Oswald,'Arial Narrow',sans-serif;text-transform:uppercase}
-#creator .nb-canvas{flex:1;min-height:0;display:grid;place-items:center;background:conic-gradient(#efe8f7 25%,#fff7ea 0 50%,#efe8f7 0 75%,#fff7ea 0) 0 0/24px 24px}
-#creator .nb-canvas .cr-grid{gap:4px!important;background:none!important;padding:0!important;border:0!important;box-shadow:none!important}
-#creator .nb-canvas .cr-cell{border:2px dashed #c9bfd9!important;background-color:#fff;border-radius:4px!important;box-shadow:none!important}
-#creator .nb-canvas .cr-cell.on{border:2px solid #241d33!important}#creator .nb-canvas .cr-cell.dead{background:#d9d0e6!important;border:0!important}
+
+
+
+
 #creator .nb-strip{border-top:2px solid #241d33;padding:10px 16px;display:flex;gap:10px;align-items:center;flex:none}
-#creator .nb-piece{display:flex!important;flex-direction:row!important;gap:10px;align-items:center;width:auto!important;height:auto!important;min-height:0!important;padding:8px 12px!important;background:#fff!important;border:2px solid #241d33!important;border-radius:8px!important;box-shadow:none!important;cursor:pointer}
-#creator .nb-piece.sel{box-shadow:0 0 0 3px #3a86d8!important}#creator .nb-piece b{font-weight:900}
-#creator .nb-piece .cr-pg i{width:14px!important;height:14px!important}
+
+
+
 #creator .nb-insp{border-left:2px solid #241d33;padding:12px 14px;display:flex;flex-direction:column;gap:8px;min-height:0;overflow:hidden}
 #creator .nb-insp .cr-radar{width:170px;height:170px;align-self:center}
 #creator .nb-alist{display:grid;gap:3px}
@@ -2868,3 +2868,10 @@ body.creator-on #tray,body.creator-on #left-rail,body.creator-on #buffs,body.cre
 #board-modal.nb-board .bpanel .mk-right .bhand.mk-hand{grid-template-columns:none!important;grid-auto-flow:column!important;grid-auto-columns:minmax(0,1fr)!important;height:auto!important;gap:8px!important}
 #board-modal.nb-board .bpanel .mk-hand .pk-card{min-width:0!important;width:auto!important}
 @media (max-height:760px){#creator .nb-cover{height:104px}#creator .nb-bio{font-size:20px;margin-top:10px;padding-bottom:10px}#creator .nb-posts{gap:8px;padding-top:10px}#creator .nb-post{font-size:16px;padding:9px 12px}}
+
+/* 1.30 · planta azul de volta na prancheta; galpão sem esmagar */
+#creator .nb-canvas{flex:1;min-height:0;display:grid;place-items:center;padding:10px}
+#creator .nb-strip{gap:12px}#creator .nb-strip .cr-piece{width:118px;height:104px;flex:none}
+#creator .nb-preco .cr-wh{flex:none!important;min-height:max-content!important}#creator .nb-preco .cr-rack i{height:12px}#creator .nb-preco .cr-roof{height:24px}
+#creator .nb-preco .cr-candles{flex:1 1 0;min-height:0;overflow:hidden}
+@media (max-height:760px){#creator .nb-preco .cr-lotv{padding:6px 10px!important}#creator .nb-preco .cr-lotv b{font-size:20px!important}#creator .nb-preco .cr-wh{transform:none}#creator .nb-preco .cr-rack i{height:9px}#creator .nb-preco .cr-roof{height:20px}}
