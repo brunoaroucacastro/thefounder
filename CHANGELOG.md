@@ -1,3 +1,9 @@
+# 1.27 · Persona com novo design e troca de atributo
+
+- Persona: cartas no padrão do marketing, com cabeçalho na cor da pessoa (rosto, nome, idade, rotina), a fala principal num balão, as três pistas numeradas e um botão de verdade "Criar para (nome inteiro)". Pesquisar outras pessoas virou botão no topo. Saíram os links azuis.
+- Prancheta: três ferramentas com rótulo (girar, trocar peças e trocar atributo), cada troca com contador de 3 por versão e o custo embaixo. Trocar atributo abre os 6 atributos e as 3 peças da oferta passam a ser do atributo escolhido, mantendo os formatos.
+- A oferta normal sempre vem com 3 atributos diferentes.
+
 # 1.26 · Ajustes do produto
 
 - Radar não corta mais os ícones das pontas.
