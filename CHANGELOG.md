@@ -1,3 +1,7 @@
+# Protótipo · navegador com toques de janelas
+
+- amostras-ux/estilos/prototipo-navegador.html: caminho escolhido (navegador) refinado. Cada etapa é uma aba (Pesquisa, Prancheta, Campanha, Loja), as já feitas ganham ✓ e as distantes ficam apagadas. Do modelo de janelas entram só a área de trabalho com barra de tarefas (caixa e dia) e no máximo uma janela flutuante por tela para o que é momentâneo: aviso da pesquisa, nome do produto e bônus da campanha. Botão no topo liga e desliga a janela para comparar.
+
 # Protótipos · 5 caminhos de interface
 
 - amostras-ux/estilos/prototipos-caminhos.html: depois do retorno sobre os 5 estilos, 5 caminhos novos para persona, produto e marketing: dossiê claro, mesa do escritório, janelas (2 ou 3 por tela), chapado de escritório e navegador com abas. Só visuais.

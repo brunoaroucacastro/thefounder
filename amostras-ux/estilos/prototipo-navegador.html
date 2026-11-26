@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Founder · Navegador</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Share+Tech+Mono&family=Silkscreen:wght@400;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;font-family:Nunito,system-ui,sans-serif;background:#15121e}
+.top{height:52px;display:flex;align-items:center;gap:8px;padding:0 14px;background:#0e0c14;color:#ddd;border-bottom:1px solid #2a2535}
+.top b{white-space:nowrap;font:800 12px Nunito;letter-spacing:.08em;color:#ffd166;margin-right:6px}
+.top button{white-space:nowrap;font:700 11px Nunito;background:#221d2e;color:#cfc8de;border:1px solid #3a3350;padding:6px 10px;cursor:pointer;border-radius:6px}
+.top button.on{background:#ffd166;color:#1d1729;border-color:#ffd166}
+.top .sep{width:1px;height:26px;background:#3a3350;margin:0 6px}
+.top small{white-space:nowrap;margin-left:auto;color:#8d84a5;font-size:11px}
+.stage{position:absolute;inset:52px 0 0 0;overflow:hidden;background:radial-gradient(circle at 82% 18%,#fff4 0 110px,transparent 111px),linear-gradient(160deg,#6b4fd8 0%,#b77cc0 50%,#f2b779 100%);display:flex;align-items:center;justify-content:center}
+.fit{transform-origin:center center;flex:none}
+
+/* ---------- área de trabalho ---------- */
+.dt{position:relative;width:1280px;height:730px;color:#241d33}
+.task{position:absolute;left:0;right:0;bottom:0;height:40px;background:#241d33;display:flex;align-items:center;gap:8px;padding:0 8px;border-top:2px solid #6b4fd8;border-radius:8px 8px 0 0}
+.start{background:#f0a830;color:#241d33;font:700 13px Silkscreen;padding:6px 14px;border-radius:0 12px 12px 0}
+.tk{background:#3a3150;color:#e9e1ff;font:700 11px Silkscreen;padding:6px 12px;border-radius:4px;border-bottom:3px solid var(--c)}
+.tk.on{background:#524870}
+.tray{margin-left:auto;display:flex;gap:14px;color:#e9e1ff;font:12px 'Share Tech Mono'}
+.tray b{color:#f0a830;font-weight:400}
+
+/* ---------- navegador ---------- */
+.bw{position:absolute;left:20px;top:10px;width:1240px;height:664px;background:#fff7ea;border:2px solid #241d33;border-radius:12px;overflow:hidden;box-shadow:8px 8px 0 #241d3355;display:flex;flex-direction:column}
+.tabs{height:46px;background:#241d33;display:flex;align-items:flex-end;gap:4px;padding:0 10px}
+.tab{height:38px;display:flex;align-items:center;gap:8px;padding:0 16px;border-radius:10px 10px 0 0;background:#3a3150;color:#cfc6e6;font:600 13px Oswald;letter-spacing:.04em;min-width:170px;position:relative}
+.tab .fv{width:20px;height:20px;border-radius:4px;background:var(--c);display:grid;place-items:center;color:#fff;font-size:12px}
+.tab.on{background:#fff7ea;color:#241d33}.tab.on::after{content:'';position:absolute;left:0;right:0;top:0;height:4px;border-radius:10px 10px 0 0;background:var(--c)}
+.tab.done .fv::after{content:'✓';position:absolute;right:-7px;top:-6px;border:1.5px solid #241d33;font-size:9px;background:#2c9a8a;color:#fff;border-radius:50%;width:13px;height:13px;display:grid;place-items:center}
+.tab.lock{opacity:.45}
+.tab em{margin-left:auto;font-style:normal;opacity:.5}
+.addr{height:46px;display:flex;align-items:center;gap:10px;padding:0 12px;border-bottom:2px solid #241d33}
+.url{flex:1;background:#fff;border:2px solid #241d33;border-radius:20px;padding:5px 14px;font:13px 'Share Tech Mono'}
+.url span{color:#8a7f99}
+.nav{font-size:18px;opacity:.6}
+.page{flex:1;min-height:0;display:grid}
+.mono{font:12px 'Share Tech Mono';color:#6d6378;letter-spacing:.04em}
+.h1{font:700 34px Oswald;text-transform:uppercase;line-height:1}
+.btn{display:inline-block;background:#e8933a;color:#241d33;font:600 15px Oswald;letter-spacing:.06em;padding:10px 18px;border:2px solid #241d33;border-radius:6px;box-shadow:0 4px 0 #241d33;text-align:center}
+.btn.b{background:#3a86d8;color:#fff}.btn.g{background:#fff;color:#241d33}
+.card{background:#fff;border:2px solid #241d33;border-radius:8px}
+.page b{font-weight:800;background:#ffe9a8}
+.gc{display:grid;place-items:center;color:#fff;font-size:22px;background:#fff;border:2px dashed #c9bfd9;border-radius:4px}.gc.on{border:2px solid #241d33}.gc.dead{background:#d9d0e6;border:0}.gc.star{color:#e8933a}
+.bc{display:grid;place-items:center;color:#fff;font-size:16px;border:2px solid #241d33;border-radius:4px}
+.tool{display:flex;flex-direction:column;align-items:center;gap:2px;width:58px;padding:8px 0;border:2px solid #241d33;border-radius:8px;background:#fff;font-size:20px;box-shadow:0 3px 0 #241d33}.tool small{font:10px 'Share Tech Mono'}
+.sw{width:40px;height:22px;border-radius:11px;background:#d9d0e6;border:2px solid #241d33;position:relative;flex:none}.sw::after{content:'';position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;border:1.5px solid #241d33}.sw.on{background:#6b4fd8}.sw.on::after{left:20px}
+
+/* ---------- janela flutuante (do modelo de janelas, uma por tela no máximo) ---------- */
+.w{position:absolute;background:#fff7ea;border:2px solid #241d33;border-radius:9px 9px 4px 4px;box-shadow:6px 6px 0 #241d3366;overflow:hidden;z-index:5}
+.tb{height:34px;display:flex;align-items:center;gap:8px;padding:0 6px 0 10px;color:#fff;font:700 12px Silkscreen;background:linear-gradient(#fff3,transparent 60%),var(--c);border-bottom:2px solid #241d33;text-shadow:0 1px 0 #241d3388}
+.ctl{margin-left:auto;display:flex;gap:4px}.ctl i{width:22px;height:22px;background:#fff4;border:1.5px solid #241d33;border-radius:5px;display:grid;place-items:center;font:700 11px Nunito;font-style:normal}.ctl i:last-child{background:#f08a24}
+.bd{padding:14px}
+.dim{position:absolute;inset:92px 0 0 0;background:#241d3355;z-index:4}
+</style>
+</head>
+<body>
+<div class="top"><b>THE FOUNDER · NAVEGADOR</b><span id="screens"></span><span class="sep"></span><button id="win">Janela flutuante: sim</button><small>Base: navegador · das janelas: área de trabalho e uma janela por tela</small></div>
+<div class="stage" id="stage"></div>
+<script>
+const ATTR=[{id:'q',n:'Qualidade',s:'QUALID.',i:'✦',c:'#cc79a7',v:3},{id:'d',n:'Durabilidade',s:'DURAB.',i:'⛨',c:'#0072b2',v:4},{id:'p',n:'Desempenho',s:'DESEMP.',i:'ϟ',c:'#d55e00',v:2},{id:'r',n:'Praticidade',s:'PRÁTICO',i:'✋',c:'#009e73',v:1},{id:'v',n:'Versatilidade',s:'VERSÁTIL',i:'⇄',c:'#56b4e9',v:0},{id:'e',n:'Economia',s:'ECONOMIA',i:'$',c:'#e69f00',v:3}];
+const AC=Object.fromEntries(ATTR.map(a=>[a.id,a]));const P5=ATTR.slice(0,5);
+const PERS=[{n:'Clara',h:'clara',age:'25 a 34',job:'Trabalha em escritório aberto',col:'#3a86d8',hair:'#59414b',skin:'#e7b48f',q:'No escritório aberto ninguém fala baixo. Preciso sumir do barulho.',c:['Tem que ser <b>gostoso de usar</b>, não um aperto.','Uso <b>no computador e no celular</b>.','<b>Não me importo se não durar anos</b>.'],stats:[4,2,5,3,2],budget:'R$ 220'},
+ {n:'Seu Jorge',h:'seujorge',age:'55+',job:'Ouve rádio e podcast o dia todo',col:'#e8933a',hair:'#d8d8d8',skin:'#d79a72',q:'Quero apertar um botão e ouvir meu programa. Sem mexer em aplicativo.',c:['Quero um que <b>aguente</b>.','<b>Não pode ser caro</b>.','<b>Não me importo com acabamento</b>.'],stats:[2,5,1,4,4],budget:'R$ 120'}];
+const GRID=['dd e*','ddqqe','pp qe','x r  '].map(r=>r.split(''));
+const OFFER=[{t:'Comum',tc:'#8a94a6',s:['##'],a:'v',pts:1},{t:'Incomum',tc:'#2c9a8a',s:['##','##'],a:'p',pts:2},{t:'Rara',tc:'#6b4fd8',s:['##.','.##','..#'],a:'q',pts:3}];
+const BOARD=['c c p c e c','c h h h c d','p h h h c c','c h h h m c','e c c x x c','c c d x x p'].map(r=>r.split(' '));
+const CARDS=[{n:'Influenciador',d:'Área 3×3',e:2,sh:[[1,1],[2,1],[3,1],[1,2],[2,2],[3,2],[1,3],[2,3],[3,3]],on:true},{n:'Assessoria',d:'Linha inteira',e:1,sh:[[0,2],[1,2],[2,2],[3,2],[4,2]]},{n:'Outdoor',d:'Coluna inteira',e:1,sh:[[2,0],[2,1],[2,2],[2,3],[2,4]]},{n:'Vídeo de cliente',d:'Área 2×2',e:1,sh:[[1,1],[2,1],[1,2],[2,2]]}];
+const ICO={c:'',h:'',p:'★',e:'✶',d:'✕',m:'♥',x:''};
+const PAL={c:'#efe8f7',h:'#6b4fd8',p:'#f2c230',e:'#56b4e9',d:'#d55e00',m:'#cc79a7',x:'#9a90aa'};
+function face(p,px=6){const H=p.hair,S=p.skin,K='#2b2238',C=p.col;const M=['..HHHH..','.HHHHHH.','.HSSSSH.','.SKSSKS.','.SSSSSS.','..SKKS..','.CCCCCC.','CCCCCCCC'];let r='';M.forEach((row,y)=>[...row].forEach((ch,x)=>{const f={H,S,K,C}[ch];if(f)r+=`<rect x="${x}" y="${y}" width="1" height="1" fill="${f}"/>`;}));return `<svg viewBox="0 0 8 8" width="${px*8}" height="${px*8}" shape-rendering="crispEdges" style="display:block">${r}</svg>`;}
+function shapeGrid(s,col,cell=14,gap=2,ring='#241d33'){const w=Math.max(...s.map(r=>r.length));return `<span style="display:inline-grid;grid-template-columns:repeat(${w},${cell}px);gap:${gap}px">`+s.flatMap(r=>[...r.padEnd(w,'.')].map(ch=>`<i style="width:${cell}px;height:${cell}px;${ch==='#'?`background:${col};box-shadow:inset 0 0 0 1.5px ${ring}`:''}"></i>`)).join('')+'</span>';}
+function cardShape(c,col,cell=7,off='#0001'){const set=new Set(c.sh.map(q=>q.join()));let o='';for(let y=0;y<5;y++)for(let x=0;x<5;x++)o+=`<i style="width:${cell}px;height:${cell}px;background:${set.has(x+','+y)?col:off}"></i>`;return `<span style="display:inline-grid;grid-template-columns:repeat(5,${cell}px);gap:1px">${o}</span>`;}
+function radar(vals,labels,o){const {size=280,stroke='#e8933a',fill='#e8933a44',grid='#241d3322',txt='#241d33',font='Share Tech Mono',fs=11,off=40}=o||{};const n=vals.length,c=size/2,R=size/2-off,pt=(i,v)=>{const a=-Math.PI/2+i*2*Math.PI/n,r=R*v/5;return[(c+r*Math.cos(a)).toFixed(1),(c+r*Math.sin(a)).toFixed(1)];};let s='';for(let k=1;k<=5;k++)s+=`<polygon points="${vals.map((_,i)=>pt(i,k).join(',')).join(' ')}" fill="none" stroke="${grid}"/>`;vals.forEach((_,i)=>{const [x,y]=pt(i,5);s+=`<line x1="${c}" y1="${c}" x2="${x}" y2="${y}" stroke="${grid}"/>`;const [lx,ly]=pt(i,6.6);s+=`<text x="${lx}" y="${ly}" fill="${txt}" font-family="${font}" font-size="${fs}" text-anchor="middle" dominant-baseline="middle">${labels[i]}</text>`;});s+=`<polygon points="${vals.map((v,i)=>pt(i,v).join(',')).join(' ')}" fill="${fill}" stroke="${stroke}" stroke-width="2.5" stroke-linejoin="round"/>`;vals.forEach((v,i)=>{const [x,y]=pt(i,v);s+=`<circle cx="${x}" cy="${y}" r="3.5" fill="${stroke}"/>`;});return `<svg viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" style="display:block">${s}</svg>`;}
+const gridCells=(cell)=>GRID.flatMap(r=>r.map(ch=>{const a=AC[ch];return `<i class="gc${ch==='x'?' dead':ch==='*'?' star':a?' on':''}" style="width:${cell}px;height:${cell}px;${a?'background:'+a.c:''}">${a?a.i:ch==='*'?'★':''}</i>`;})).join('');
+const boardCells=(cell)=>BOARD.flatMap(r=>r.map(k=>`<i class="bc" style="width:${cell}px;height:${cell}px;background:${PAL[k]}">${ICO[k]}</i>`)).join('');
+const grid=(cols,cell,inner,gap=3)=>`<div style="display:grid;grid-template-columns:repeat(${cols},${cell}px);gap:${gap}px">${inner}</div>`;
+const KPI=[['ALCANCE','32%','#3a86d8'],['PERSONAS','2/3','#f2c230'],['ENERGIA','3/4','#6b4fd8']];
+
+const TABS=[['Pesquisa','#e8933a','⌕'],['Prancheta','#3a86d8','▦'],['Campanha','#6b4fd8','✶'],['Loja','#2c9a8a','$']];
+const URLS=['founder://pesquisa/<span>clara</span>','founder://prancheta/<span>fone-aurora</span>','founder://campanha/<span>fone-aurora</span>'];
+const W=(t,c,st,body,ic='▣')=>`<div class="w" style="--c:${c};${st}"><div class="tb">${ic} ${t}<span class="ctl"><i>_</i><i>□</i><i>✕</i></span></div><div class="bd">${body}</div></div>`;
+let WIN=true;
+function desk(on,page,win){return `<div class="dt"><div class="bw"><div class="tabs">${TABS.map((t,i)=>`<div class="tab${i===on?' on':''}${i<on?' done':''}${i>on+1?' lock':''}" style="--c:${t[1]}"><span class="fv" style="position:relative">${t[2]}</span>${t[0]}<em>✕</em></div>`).join('')}</div><div class="addr"><span class="nav">‹ › ↻</span><div class="url">${URLS[on]}</div><span class="nav">☆</span></div><div class="page">${page}</div></div>${WIN&&win?win:''}
+ <div class="task"><span class="start">▶ FOUNDER</span><span class="tk on" style="--c:${TABS[on][1]}">navegador</span>${WIN&&win?`<span class="tk" style="--c:${win.match(/--c:([^;]+)/)[1]}">${win.match(/<div class="tb">[^ ]+ ([^<]+)</)[1]}</span>`:''}<span class="tray"><span>CAIXA <b>R$ 24.000</b></span><span>DIA 12 · 09:40</span></span></div></div>`;}
+
+function persona(){const p=PERS[0];return desk(0,`<div style="display:grid;grid-template-columns:250px 1fr 290px;min-height:0">
+ <div style="border-right:2px solid #241d33;padding:14px;display:flex;flex-direction:column;gap:8px"><div class="mono">RESULTADOS DA PESQUISA</div>${PERS.map((q,i)=>`<div class="card" style="display:flex;gap:10px;align-items:center;padding:8px;${i?'':'border-left:6px solid #e8933a;background:#fff1dc'}"><div style="background:${q.col}33;border-radius:6px;padding:3px">${face(q,5)}</div><div><div style="font:600 16px Oswald">${q.n.toUpperCase()}</div><div style="font-size:12px">${q.job}</div></div></div>`).join('')}
+  <div style="margin-top:auto" class="card"><div style="padding:8px 10px;border-bottom:2px solid #241d33;font:13px 'Share Tech Mono';color:#8a7f99">⌕ buscar outras pessoas</div><div style="padding:8px 10px;display:flex;justify-content:space-between;align-items:center"><span class="mono">R$ 1.000</span><span class="btn b" style="padding:5px 12px;font-size:13px;box-shadow:0 3px 0 #241d33">BUSCAR</span></div></div></div>
+ <div style="overflow:hidden"><div style="height:120px;background:repeating-linear-gradient(45deg,#fff3 0 12px,transparent 12px 24px),${p.col};border-bottom:2px solid #241d33"></div>
+  <div style="padding:0 20px;display:flex;gap:16px;align-items:flex-end;margin-top:-50px"><div style="background:#fff;border:3px solid #241d33;border-radius:10px;padding:6px">${face(p,12)}</div><div style="flex:1;padding-bottom:4px;padding-top:58px"><div class="h1">${p.n}</div><div class="mono">@${p.h} · ${p.age} anos · ${p.job.toLowerCase()}</div></div><span class="btn" style="margin-bottom:6px">CRIAR PARA CLARA ›</span></div>
+  <div style="padding:12px 20px;font:500 19px/1.3 Oswald;border-bottom:2px dashed #dac3a2">“${p.q}”</div>
+  <div style="padding:12px 20px;display:grid;gap:8px">${p.c.map((c,i)=>`<div class="card" style="padding:10px 12px;display:flex;gap:10px;align-items:center"><div style="background:${p.col}33;border-radius:50%;padding:3px">${face(p,3)}</div><div style="flex:1;font-size:15px">“${c}”</div><span class="mono">♥ ${[24,9,17][i]}</span></div>`).join('')}</div></div>
+ <div style="border-left:2px solid #241d33;padding:14px;display:flex;flex-direction:column;align-items:center;gap:8px"><div class="mono" style="align-self:flex-start">INTERESSES</div>${radar(p.stats,P5.map(a=>a.s),{size:260})}<div class="card" style="padding:10px;width:100%;text-align:center"><div class="mono">ORÇAMENTO</div><div class="h1" style="font-size:28px">${p.budget}</div></div></div></div>`,
+ W('pesquisa','#e8933a','left:960px;top:560px;width:280px',`<div style="display:flex;gap:10px;align-items:center"><span style="font-size:26px">⌕</span><div style="font-weight:800;font-size:14px">2 pessoas encontradas<br><span class="mono">COMPARE ANTES DE ESCOLHER</span></div></div>`,'⌕'));}
+function produto(){const page=`<div style="display:grid;grid-template-columns:80px 1fr 320px;min-height:0">
+ <div style="border-right:2px solid #241d33;padding:12px 10px;display:flex;flex-direction:column;gap:12px;align-items:center">${[['↻','GIRAR'],['⇄','PEÇAS 3/3'],['◐','ATRIB. 3/3']].map(t=>`<div class="tool">${t[0]}<small>${t[1]}</small></div>`).join('')}</div>
+ <div style="display:flex;flex-direction:column;min-height:0"><div style="padding:10px 16px;display:flex;align-items:baseline;gap:12px;border-bottom:2px solid #241d33"><span class="h1" style="font-size:26px">Fone Aurora</span><span class="mono">NV 4 · 100% MONTADO</span></div>
+  <div style="flex:1;display:grid;place-items:center;background:conic-gradient(#efe8f7 25%,#fff7ea 0 50%,#efe8f7 0 75%,#fff7ea 0) 0 0/24px 24px">${grid(5,74,gridCells(74),4)}</div>
+  <div style="border-top:2px solid #241d33;padding:10px 16px;display:flex;gap:10px;align-items:center"><span class="mono">PEÇAS</span>${OFFER.map((o,i)=>`<div class="card" style="padding:8px 12px;display:flex;gap:10px;align-items:center${i===1?';box-shadow:0 0 0 3px #3a86d8':''}"><span class="mono" style="color:${o.tc}">${o.t.toUpperCase()}</span>${shapeGrid(o.s,AC[o.a].c,13,2)}<span style="font-weight:900;color:${AC[o.a].c}">${AC[o.a].i} +${o.pts}</span></div>`).join('')}</div></div>
+ <div style="border-left:2px solid #241d33;padding:14px;display:flex;flex-direction:column;gap:10px"><div class="mono">FICHA TÉCNICA</div><div style="display:grid;place-items:center">${radar(ATTR.map(a=>a.v),ATTR.map(a=>a.s),{size:270,stroke:'#3a86d8',fill:'#3a86d840',fs:10})}</div>
+  <div class="card" style="padding:10px"><div class="mono">CUSTO POR UNIDADE</div><div class="h1" style="font-size:26px">R$ 35 a 49</div></div><span class="btn b" style="margin-top:auto">CONCLUIR PROJETO ›</span></div></div>`;
+ const win=`<div class="dim"></div>`+W('batizar produto','#3a86d8','left:440px;top:200px;width:400px',`<div style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><span class="mono">PRODUTO MONTADO</span><div style="font:600 20px Oswald;text-transform:uppercase">Como vai se chamar?</div><div style="width:100%;background:#fff;border:2px solid #241d33;border-bottom-width:4px;border-radius:6px;padding:10px;font:600 22px Oswald;letter-spacing:.04em">Fone Aurora<span style="display:inline-block;width:2px;height:22px;background:#3a86d8;vertical-align:middle;margin-left:2px"></span></div><div style="display:flex;gap:10px;width:100%;margin-top:4px"><span class="btn g" style="flex:1">VOLTAR</span><span class="btn b" style="flex:1">CONCLUIR ›</span></div></div>`,'✎');
+ return desk(1,page,win);}
+function mkt(){return desk(2,`<div style="display:grid;grid-template-columns:auto 1fr;min-height:0">
+ <div style="border-right:2px solid #241d33;padding:14px"><div class="mono" style="margin-bottom:8px">MAPA DE PÚBLICO</div>${grid(6,74,boardCells(74),3)}</div>
+ <div style="padding:14px;display:flex;flex-direction:column;gap:12px"><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">${KPI.map(x=>`<div class="card" style="padding:10px 12px;border-top:6px solid ${x[2]}"><div class="mono">${x[0]}</div><div class="h1">${x[1]}</div></div>`).join('')}</div>
+  <div class="mono">ANÚNCIOS</div>${CARDS.map(c=>`<div class="card" style="padding:8px 12px;display:flex;gap:14px;align-items:center${c.on?';background:#efe8f7':''}">${cardShape(c,'#6b4fd8',8,'#6b4fd81a')}<div style="flex:1"><div style="font:600 17px Oswald">${c.n.toUpperCase()}</div><div class="mono">${c.d.toUpperCase()} · ${'ϟ'.repeat(c.e)}</div></div><span class="sw${c.on?' on':''}"></span></div>`).join('')}
+  <div style="display:flex;align-items:center;gap:12px;margin-top:auto"><span class="btn" style="margin-left:auto">LANÇAR CAMPANHA ›</span></div></div></div>`,
+ W('bônus!','#cc79a7','left:960px;top:6px;width:290px',`<div style="display:flex;gap:10px;align-items:center"><span style="font-size:28px;color:#cc79a7">♥</span><div style="font-weight:900;font-size:15px">Um promotor apareceu<br><span class="mono">+2 PONTOS NA PRÓXIMA VERSÃO</span></div></div>`,'♥'));}
+
+const SCREENS=[['Persona',persona],['Produto',produto],['Marketing',mkt]];
+let S=0;
+function paint(){document.getElementById('screens').innerHTML=SCREENS.map((x,i)=>`<button class="${i===S?'on':''}" data-s="${i}">${x[0]}</button>`).join(' ');document.getElementById('win').textContent='Janela flutuante: '+(WIN?'sim':'não');document.getElementById('win').className=WIN?'on':'';
+ document.getElementById('stage').innerHTML=`<div class="fit" id="fit">${SCREENS[S][1]()}</div>`;fit();history.replaceState(null,'','#'+S+(WIN?'':'-sem'));}
+function fit(){const f=document.getElementById('fit');if(!f)return;f.style.transform='none';const st=document.getElementById('stage'),k=Math.min(1.1,(st.clientWidth-30)/f.offsetWidth,(st.clientHeight-30)/f.offsetHeight);f.style.transform=`scale(${k})`;}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(b){S=+b.dataset.s;paint();}if(e.target.id==='win'){WIN=!WIN;paint();}});
+addEventListener('resize',fit);
+addEventListener('keydown',e=>{if(e.key==='ArrowRight'){S=(S+1)%3;paint();}if(e.key==='ArrowLeft'){S=(S+2)%3;paint();}if(e.key===' '){WIN=!WIN;paint();}});
+{const m=/^#(\d)(-sem)?$/.exec(location.hash);if(m){S=+m[1];WIN=!m[2];}}
+if(document.fonts)document.fonts.ready.then(fit);
+paint();
+</script>
+</body>
+</html>
