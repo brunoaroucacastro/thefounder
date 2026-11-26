@@ -1,3 +1,13 @@
+# 1.23 · As telas do protótipo dentro do jogo
+
+- Persona, Criar (prancheta), Nova versão e Preço e estoque agora são as telas do protótipo v2, em tela cheia (sem o quarto), ligadas ao motor do jogo.
+- Persona: duas cartas lado a lado com rosto, frase e 3 falas; clicar na carta escolhe.
+- Criar: cartão da persona à esquerda (na nova versão, com O que disseram), grade grande no centro, 3 peças que já vêm com o atributo (cor e ícone), ↻ ou R gira, clicar numa peça colocada tira; barras dos 6 atributos e custo por unidade à direita; só o botão Pronto. Sem limite de peças: a grade é o limite. Sem passos 1-2-3, escolha de atributo, Terminar montagem, raridade, trocas, ficha e arte do protótipo.
+- Preço e estoque: preço grande com − / + e régua; à direita, Você ganha por unidade, custo para fabricar, lote 100/300/1.000 e a linha Lote e Caixa depois; um botão, Fabricar e lançar. Em nova campanha, só o preço e Lançar campanha.
+- Nova versão: pula a escolha de peças a manter (ficam as que cabem) e já começa a campanha sozinha.
+- Vendas na lateral no visual do cartão do protótipo: preço, vendas por dia, vendidos, faturamento, margem, estoque, funil (viram, entraram, compraram), última fala e o estado com a ação do momento. Fim das vendas com dois botões grandes e o link para outro produto.
+- Núcleo: a oferta da prancheta sorteia o atributo de cada peça; sem limite de peças nos jogos novos (save aceita); dá para tirar peça.
+
 # 1.22 · A loja simples dentro do jogo
 
 Backup antes desta versão: etiqueta git backup-1.21-antes-simplificacao e backup/The-Founder-1.21-antes-simplificacao.html.
