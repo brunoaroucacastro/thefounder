@@ -1,3 +1,7 @@
+# Protótipos · 5 caminhos de interface
+
+- amostras-ux/estilos/prototipos-caminhos.html: depois do retorno sobre os 5 estilos, 5 caminhos novos para persona, produto e marketing: dossiê claro, mesa do escritório, janelas (2 ou 3 por tela), chapado de escritório e navegador com abas. Só visuais.
+
 # Protótipos · 5 estilos de interface
 
 - amostras-ux/estilos/prototipos-estilos.html: persona, produto e marketing desenhados em 5 linguagens visuais (pergaminho e madeira, painel chapado com tabela, app moderno, dossiê cinematográfico e tycoon clássico), só visuais, para escolher a direção de arte das telas.
