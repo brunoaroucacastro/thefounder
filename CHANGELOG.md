@@ -1,3 +1,7 @@
+# Protótipos · 5 estilos de interface
+
+- amostras-ux/estilos/prototipos-estilos.html: persona, produto e marketing desenhados em 5 linguagens visuais (pergaminho e madeira, painel chapado com tabela, app moderno, dossiê cinematográfico e tycoon clássico), só visuais, para escolher a direção de arte das telas.
+
 # 1.28 · Identidade original do jogo nas telas novas
 
 - Telas de criação e painel de vendas voltam à identidade da escolha de produto: papel creme, cantos retos, traço fino com a borda de baixo mais grossa, títulos e rótulos na fonte pixel, texto sem negrito pesado, botão principal âmbar.
