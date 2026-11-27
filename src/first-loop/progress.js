@@ -11,10 +11,10 @@ const Progress=(()=>{
  const AXIS=Object.fromEntries(U.axes.map(a=>[a.id,a.name]));
  // Rivais: dois por categoria, cada um com um foco (o atributo em que aposta) e um ritmo de vendas.
  const RIVALS={
-  headphones:[{id:'sommax',name:'SomMax',focus:'economy',weak:'durability',rating:3.9,pace:49,color:'#d55e00'},{id:'zuvi',name:'Zuvi',focus:'quality',weak:'economy',rating:4.3,pace:27,color:'#56b4e9'}],
-  mouse:[{id:'klik',name:'Klik',focus:'performance',weak:'durability',rating:4.1,pace:42,color:'#cc79a7'},{id:'kora',name:'Kora',focus:'economy',weak:'quality',rating:3.8,pace:32,color:'#009e73'}],
-  keyboard:[{id:'teclab',name:'TecLab',focus:'durability',weak:'practicality',rating:4.0,pace:36,color:'#e69f00'},{id:'tipo',name:'Tipo',focus:'versatility',weak:'durability',rating:3.9,pace:24,color:'#0072b2'}],
-  speaker:[{id:'boombox',name:'BoomBox',focus:'performance',weak:'practicality',rating:4.0,pace:41,color:'#d55e00'},{id:'nuvem',name:'Nuvem',focus:'practicality',weak:'performance',rating:3.9,pace:28,color:'#56b4e9'}]};
+  headphones:[{id:'sommax',name:'SomMax',focus:'economy',weak:'durability',rating:3.9,pace:49,color:'#d55e00'},{id:'zuvi',name:'Zuvi',focus:'quality',weak:'economy',rating:4.3,pace:27,color:'#56b4e9'},{id:'fonix',name:'Fonix',focus:'economy',weak:'quality',rating:2.4,pace:22,color:'#8a8f9c',mult:.48,low:true}],
+  mouse:[{id:'klik',name:'Klik',focus:'performance',weak:'durability',rating:4.1,pace:42,color:'#cc79a7'},{id:'kora',name:'Kora',focus:'economy',weak:'quality',rating:3.8,pace:32,color:'#009e73'},{id:'clicao',name:'Clicão',focus:'economy',weak:'durability',rating:2.5,pace:20,color:'#8a8f9c',mult:.48,low:true}],
+  keyboard:[{id:'teclab',name:'TecLab',focus:'durability',weak:'practicality',rating:4.0,pace:36,color:'#e69f00'},{id:'tipo',name:'Tipo',focus:'versatility',weak:'durability',rating:3.9,pace:24,color:'#0072b2'},{id:'teklado',name:'Teklado',focus:'economy',weak:'quality',rating:2.3,pace:18,color:'#8a8f9c',mult:.48,low:true}],
+  speaker:[{id:'boombox',name:'BoomBox',focus:'performance',weak:'practicality',rating:4.0,pace:41,color:'#d55e00'},{id:'nuvem',name:'Nuvem',focus:'practicality',weak:'performance',rating:3.9,pace:28,color:'#56b4e9'},{id:'zumbox',name:'Zumbox',focus:'economy',weak:'durability',rating:2.6,pace:20,color:'#8a8f9c',mult:.48,low:true}]};
  const CAT_PRICE={headphones:129,mouse:99,keyboard:169,speaker:189},FOCUS_MULT={economy:.7,quality:1.35,performance:1.1,durability:1.05,versatility:1,practicality:.9};
  const ADJ={durability:'durável',economy:'barato',quality:'caprichado',performance:'rápido',practicality:'fácil de usar',versatility:'versátil'};
  const WEAK_LINE={durability:(n,p)=>'Meu '+p+' da '+n+' quebrou de novo. Terceiro em um ano.',economy:(n,p)=>'O '+p+' da '+n+' é bom, mas o preço está um absurdo.',quality:(n,p)=>'O acabamento do '+p+' da '+n+' é fraquinho, descascou todo.',performance:(n,p)=>'O '+p+' da '+n+' é lento demais pro que eu preciso.',practicality:(n,p)=>'Configurar o '+p+' da '+n+' é um parto.',versatility:(n,p)=>'O '+p+' da '+n+' só funciona num aparelho. Que raiva.'};
@@ -143,7 +143,7 @@ const Progress=(()=>{
  // ================= CONCORRENTES (1.17) =================
  const charm=p=>Math.max(9.9,Math.round(p/10)*10-.1),stage2=s=>!!s.office,matIndex=s=>s.prog?.mat?.v??1,pn=c=>G.products.find(x=>x.id===c).name.toLowerCase();
  // preço do rival: preço de partida da categoria × perfil do foco × bolsa (raiz de 0,4) × corte de preço
- function rivalPrice(s,r,cat){const m=s.prog?.rivals?.m?.[r.id]||{cut:0};return charm(CAT_PRICE[cat]*FOCUS_MULT[r.focus]*Math.pow(matIndex(s),.4)*(1-(m.cut||0)));}
+ function rivalPrice(s,r,cat){const m=s.prog?.rivals?.m?.[r.id]||{cut:0};return charm(CAT_PRICE[cat]*(r.mult||FOCUS_MULT[r.focus]*.85)*Math.pow(matIndex(s),.4)*(1-(m.cut||0)));}
  function rivalPrices(s,cat=s.productId){return(RIVALS[cat]||[]).map(r=>({id:r.id,name:r.name,price:rivalPrice(s,r,cat),cut:s.prog?.rivals?.m?.[r.id]?.cut||0,out:!!s.prog?.rivals?.m?.[r.id]?.out,known:s.prog?.rivals?.k?.[r.id]||{}}));}
  function avgRivalPrice(s,cat=s.productId){return nearestRival(s,cat)?.price||0;}
  function nearestRival(s,cat=s.productId){const L=rivalPrices(s,cat).filter(x=>!x.out);if(!L.length||!(s.price>0))return null;return L.sort((a,b)=>Math.abs(a.price-s.price)-Math.abs(b.price-s.price))[0];}

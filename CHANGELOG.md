@@ -1,3 +1,24 @@
+# 1.32 · Telas conversando entre si
+
+- Escolher o produto agora é uma tela de janelas, igual à pesquisa: uma janela por categoria, com botão de pesquisar ou de abrir o P&D.
+- Prancheta:
+  - As ferramentas (girar, trocar peças, trocar atributo) ficam junto das peças, embaixo da planta.
+  - Cada peça mostra o nome do atributo e uma barra da cor dele.
+  - Ao escolher uma peça, o atributo dela fica em destaque na ficha técnica, com quanto ela soma.
+  - Clicar numa peça já encaixada não tira mais a peça.
+  - A janela de trocar atributo abre para cima, sem esconder as opções.
+  - O radar sempre forma uma área preenchida.
+- Loja em 3 janelas, na ordem: 1 matéria-prima, 2 concorrentes, 3 seu preço.
+  - O lote volta a ser mostrado como uma pilha de caixinhas.
+  - A margem de contribuição aparece em destaque, em %.
+  - Concorrentes mais baratos e um terceiro concorrente barato e mal avaliado em cada categoria.
+- Campanha nas mesmas janelas das outras telas: campanha e mural à esquerda, tabuleiro com planta azul no centro, post-its e ferramentas (girar e trocar cartas) embaixo, igual à prancheta.
+  - As cartas viraram post-its de verdade: papel colorido, fita adesiva, letra de caneta e leve inclinação.
+  - Os botões de ajuda ficam na barra de título, sem cobrir nada.
+  - O resultado da campanha aparece numa janela.
+- Vendas: a janela de vendas já abre à direita quando as vendas começam.
+- Tutoriais atualizados para as mecânicas atuais (início, pesquisa, prancheta, loja, campanha e vendas).
+
 # 1.31 · Janelas no lugar das abas
 
 - As telas de criação deixam de ser abas de navegador e viram janelas que aparecem sobre a área de trabalho, cada uma com a barra de título na sua cor:
